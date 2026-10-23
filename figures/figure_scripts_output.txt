@@ -1,0 +1,88 @@
+== python3 scripts/fig01_concept.py --out figures
+wrote figures/fig01_concept.svg/.png/.pdf
+== python3 scripts/fig_diagrams.py --out figures
+== python3 scripts/fig06_accuracy.py --paper2 . --out figures
+LeNet-5 no protection 91.11 90.74 91.01 90.36 88.70 87.70 85.49
+LeNet-5 uniform 95.79 96.10 96.02 95.77 95.19 94.31 92.07
+LeNet-5 layer-aware 98.19 98.24 98.27 98.26 98.10 98.07 97.97
+ResNet-50 no protection 0.08 0.03 0.05 0.05
+ResNet-50 uniform 71.82 72.28 71.95 70.78
+ResNet-50 layer-aware 72.78 73.02 73.30 73.15
+(a) lowest mean - sd: 80.95 %
+== python3 scripts/fig07_latency.py --paper2 . --out figures
+FIXED 21789 steps(25) 16684 trace 16684
+K= 9 L=8  1,043,029  +68.89 %
+K=16 L=8    829,781  +34.36 %
+K=25 L=8    617,573   +0.00 %
+K=36 L=8    688,481  +11.48 %
+K=49 L=8    748,077  +21.13 %
+K=30 L=8    615,617   -0.32 %
+K=25 L= 4   550,837
+K=25 L= 8   617,573
+K=25 L=12   684,309
+K=25 L=16   751,045
+T(25,16)/T(25,4) = 1.3635; slope 16684 cycles per cycle of L
+share of array waits L+3 at L=8: 0.2972; of L alone: 0.2161
+== python3 scripts/fig08_rom_race.py --paper2 . --out figures
+13 macros, 416 reads; wrong: generated 52, CS delayed 0
+footers on after the cells are off: generated -0.518..-0.119 ns, CS delayed 9.229..9.675 ns
+lowest one-cell bit line: generated 0.253 V, CS delayed 1.012 V; rise 19.4..1473.0 mV
+192-row macro: generated 4 of 10 wrong, CS delayed 2 wrong; lag 8.357..8.798 ns
+== python3 scripts/fig09_rom_margin.py --paper2 . --out figures
+simulated 97, lowest bit line at tt 1.1275 V (margin 0.2515 V)
+other 303: lowest lower bound 1.1521 V; coverage level 1.151 V
+tt:25:1.80: 97 macros, smallest margin 0.2515 V
+fs:25:1.80: 41 macros, smallest margin 0.1816 V
+tt:25:1.60: 41 macros, smallest margin 0.2297 V
+fs:-40:1.60: 41 macros, smallest margin 0.1484 V
+13 re-simulated: measured minus lower bound 68.7..137.7 mV
+MC B_pcm01_tt_25C_1v80: sd 10.7 mV, min 0.240 V, mean-3sd 0.225 V
+MC B_pcm01_fs_25C_1v80: sd 12.1 mV, min 0.186 V, mean-3sd 0.177 V
+MC B_pcm01_tt_25C_1v60: sd 11.8 mV, min 0.207 V, mean-3sd 0.194 V
+MC B_pcm01_fs_m40C_1v60: sd 10.9 mV, min 0.163 V, mean-3sd 0.157 V
+MC B_pcm07_tt_25C_1v80: sd 9.6 mV, min 0.274 V, mean-3sd 0.258 V
+MC B_pcm07_fs_25C_1v80: sd 12.6 mV, min 0.174 V, mean-3sd 0.150 V
+MC B_pcm07_tt_25C_1v60: sd 11.0 mV, min 0.228 V, mean-3sd 0.207 V
+MC B_pcm07_fs_m40C_1v60: sd 11.4 mV, min 0.127 V, mean-3sd 0.116 V
+== python3 scripts/fig10_rom_static.py --paper2 . --out figures
+tt 25 C: 12 lookup words (zero bits [3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 7]), 6 parked macros
+  B_pcm_l00_r48k1 current tt:25:1.80       z=3  0.5 ms  194.44  1 ms  65.81  end 0.287 uW
+  B_pcm_l00_r48k1 candidate1 tt:25:1.80    z=4  0.5 ms  114.03  1 ms  48.55  end 0.289 uW
+  B_pcm_l00_r48k1 candidate2 tt:25:1.80    z=4  0.5 ms  106.97  1 ms  47.40  end 0.288 uW
+  B_pcm_l00_r48k1 candidate3 tt:25:1.80    z=4  0.5 ms  105.12  1 ms  47.14  end 0.284 uW
+  A_pcm_l04_r48k1 current tt:25:1.80       z=4  0.5 ms  241.08  1 ms  69.01  end 0.292 uW
+  A_pcm_l04_r48k1 candidate1 tt:25:1.80    z=5  0.5 ms  155.53  1 ms  55.74  end 0.295 uW
+  A_pcm_l04_r48k1 candidate2 tt:25:1.80    z=5  0.5 ms  192.72  1 ms  62.06  end 0.285 uW
+  A_pcm_l04_r48k1 candidate3 tt:25:1.80    z=6  0.5 ms  125.28  1 ms  48.94  end 0.286 uW
+  A_pcm_l18_r48k1 current tt:25:1.80       z=3  0.5 ms  181.42  1 ms  63.03  end 0.288 uW
+  A_pcm_l18_r48k1 candidate1 tt:25:1.80    z=5  0.5 ms  139.99  1 ms  55.72  end 0.294 uW
+  A_pcm_l18_r48k1 candidate2 tt:25:1.80    z=5  0.5 ms  107.43  1 ms  50.61  end 0.289 uW
+  A_pcm_l18_r48k1 candidate3 tt:25:1.80    z=7  0.5 ms  161.32  1 ms  57.43  end 0.292 uW
+  A_pcm_l00_r48k0 park tt:25:1.80          5-10 us 0.298 uW, last 0.274 uW, min/max after 5 us 0.184/0.298
+  A_pcm_l00_r48k1 park tt:25:1.80          5-10 us 0.301 uW, last 0.278 uW, min/max after 5 us 0.247/0.301
+  A_pcm_l00_r48k2 park tt:25:1.80          5-10 us 0.301 uW, last 0.278 uW, min/max after 5 us 0.278/0.460
+  A_pcm_l00_r48k3 park tt:25:1.80          5-10 us 0.300 uW, last 0.278 uW, min/max after 5 us 0.278/0.323
+  A_sram_l00_r48k0 park tt:25:1.80         5-10 us 0.300 uW, last 0.277 uW, min/max after 5 us 0.181/0.300
+  A_sram_l00_r48k1 park tt:25:1.80         5-10 us 0.301 uW, last 0.276 uW, min/max after 5 us 0.276/0.515
+  tt:-40:1.80: lookup word end 0.449 uW, parked end 0.047 uW
+  ss:25:1.80: lookup word end 0.226 uW, parked end 0.046 uW
+  tt:25:1.80: lookup word end 0.292 uW, parked end 0.274 uW
+  ff:25:1.80: lookup word end 4.549 uW, parked end 4.548 uW
+  tt:85:1.80: lookup word end 7.411 uW, parked end 7.410 uW
+  ff:85:1.80: lookup word end 59.444 uW, parked end 59.442 uW
+== python3 scripts/fig11_conditions.py --paper2 . --out figures
+tt:-40: at rest 1.4% of corrected D_ROM (1.4% before the correction)
+ss:25: at rest 1.3% of corrected D_ROM (1.3% before the correction)
+ff:25: at rest 32.6% of corrected D_ROM (32.1% before the correction)
+tt:85: at rest 47.6% of corrected D_ROM (46.9% before the correction)
+ff:85: at rest 81.7% of corrected D_ROM (81.4% before the correction)
+tt:-40 D_ROM A   4.11 (0.56x, at rest 1%)  B   3.89 (0.55x)  SRAM read 0.995x static 0.52x  A: 1 macro 12.87, 25 copies 12.97 uJ
+ss:25  D_ROM A   4.54 (0.62x, at rest 1%)  B   4.36 (0.62x)  SRAM read 0.971x static 0.53x  A: 1 macro 12.56, 25 copies 12.66 uJ
+tt:25  D_ROM A   7.29 (1.00x, at rest 5%)  B   7.05 (1.00x)  SRAM read 1.000x static 1.00x  A: 1 macro 12.94, 25 copies 13.13 uJ
+ff:25  D_ROM A  16.71 (2.29x, at rest 33%)  B  16.53 (2.34x)  SRAM read 1.008x static 13.76x  A: 1 macro 13.15, 25 copies 15.70 uJ
+tt:85  D_ROM A  18.65 (2.56x, at rest 48%)  B  18.61 (2.64x)  SRAM read 1.005x static 12.75x  A: 1 macro 13.10, 25 copies 15.47 uJ
+ff:85  D_ROM A  87.02 (11.94x, at rest 82%)  B  86.99 (12.34x)  SRAM read 1.033x static 116.86x  A: 1 macro 14.27, 25 copies 36.00 uJ
+== python3 scripts/fig12_sram.py --paper2 . --out figures
+data valid 10.625 ns (tt 25 C), slowest 13.48 ns at ss:25
+ROM lookup read window 41.91 pJ; SRAM read after idle 69.65-70.24 pJ; system read 86.48 pJ (85.38-90.09); ratio 7.32; static 1.255 uW, 1/27.4
+== python3 scripts/e8_6_figures.py --out figures

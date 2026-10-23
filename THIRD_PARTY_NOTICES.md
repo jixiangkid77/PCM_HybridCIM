@@ -9,7 +9,7 @@ The MIT license in `LICENSE` covers my own code and data. The files below come f
 
 ## OpenRAM
 
-- The memory macros in `reports/12e_openram/macros/` and `reports/e8_rom/` (LEF, Liberty, Verilog models, configuration files and logs) were generated with OpenRAM.
+- The memory macros in `reports/12e_openram/macros/` and `reports/e8_rom/` (LEF, Liberty, Verilog models, configuration files and logs) and the timing library in `reports/12e_openram/lib_20260608/` were generated with OpenRAM.
 - `scripts/e8_4c_openram_fix.py` and `scripts/e8_4f_openram_spc.py` contain code adapted from OpenRAM (commit e16d9eb), and the `sky130_sram_common.py` files in `reports/e8_rom/e8_4c/configs/`, `reports/e8_rom/e8_4c5k/configs/` and `reports/e8_rom/e8_4f/configs/` are OpenRAM example configurations.
 - OpenRAM license:
 

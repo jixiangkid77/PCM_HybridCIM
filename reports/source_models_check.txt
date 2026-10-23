@@ -1,0 +1,17 @@
+Model A: data/source_models/Model_Baseline.pth, data/source_models/LayerAware_Ratios.json -> data/rtl_inputs_A/
+   tensors: conv1.weight (6, 1, 5, 5), conv1.bias (6,), conv2.weight (16, 6, 5, 5), conv2.bias (16,), fc1.weight (120, 400), fc1.bias (120,), fc2.weight (84, 120), fc2.bias (84,), fc3.weight (10, 84), fc3.bias (10,)
+   conv1:   150 weights identical; scale_w 0.005064, RSHIFT 9 identical; ratio 1.000000,   150 protected, index lists and summary identical
+   conv2:  2400 weights identical; scale_w 0.004986, RSHIFT 9 identical; ratio 0.617287,  1481 protected, index lists and summary identical
+   fc1  : 48000 weights identical; scale_w 0.004786, RSHIFT 8 identical; ratio 0.006969,   335 protected, index lists and summary identical
+   fc2  : 10080 weights identical; scale_w 0.003072, RSHIFT 8 identical; ratio 0.031126,   314 protected, index lists and summary identical
+   fc3  :   840 weights identical; scale_w 0.003646, RSHIFT 8 identical; ratio 0.944916,   794 protected, index lists and summary identical
+   biases: 236 identical; protected weights in total: 3074
+Model B: data/source_models/Model_Baseline_B.pth, data/source_models/LayerAware_Ratios_B.json -> data/rtl_inputs_B/
+   tensors: conv1.weight (6, 1, 5, 5), conv1.bias (6,), conv2.weight (16, 6, 5, 5), conv2.bias (16,), fc1.weight (120, 400), fc1.bias (120,), fc2.weight (84, 120), fc2.bias (84,), fc3.weight (10, 84), fc3.bias (10,)
+   conv1:   150 weights identical; scale_w 0.004037, RSHIFT 10 identical; ratio 1.000000,   150 protected, index lists and summary identical
+   conv2:  2400 weights identical; scale_w 0.001960, RSHIFT 10 identical; ratio 0.358187,   860 protected, index lists and summary identical
+   fc1  : 48000 weights identical; scale_w 0.000962, RSHIFT 10 identical; ratio 0.009970,   479 protected, index lists and summary identical
+   fc2  : 10080 weights identical; scale_w 0.001229, RSHIFT 9 identical; ratio 0.073936,   745 protected, index lists and summary identical
+   fc3  :   840 weights identical; scale_w 0.002151, RSHIFT 9 identical; ratio 1.000000,   840 protected, index lists and summary identical
+   biases: 236 identical; protected weights in total: 3074
+ALL IDENTICAL

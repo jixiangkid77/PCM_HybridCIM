@@ -1,0 +1,30 @@
+P2R-E8.4c analysis: proxy_sram_1rw_1x4096  period 10.0 ns  vdd 1.8 V  corner tt 25.0 C  load 10.0 fF per output  points 13531
+data: simulated to 262.5 of 262.5 ns, 25 of 25 cycles complete
+E_vdd: energy from the supply from the cycle's rising edge to the next; E_in: from the input sources; P_end: supply power at the end of the cycle (stopped segment: average over its last fifth)
+  k kind   addr  data read@half read@end  ok  E_vdd pJ  E_in pJ  P_end uW t_acc ns
+  0 idle            -         -        -         6.049    0.002     1.577 
+  1 idle            -         -        -         3.066   -0.018    32.891 
+  2 write     0    00         -        -        17.350    0.196   577.021 
+  3 write  4095    01         -        -        24.645   -0.125   708.971 
+  4 write  2055    00         -        -        22.143   -0.003   624.897 
+  5 write  1032    01         -        -        20.979    0.017   617.960 
+  6 write    19    01         -        -        21.646    0.015   643.191 
+  7 write  3084    00         -        -        21.630   -0.009   626.269 
+  8 write   513    01         -        -        21.561    0.050   617.079 
+  9 write  3598    00         -        -        20.397    0.024   574.845 
+ 10 idle            -         -        -         6.600   -0.081    98.755 
+ 11 read      0    00        00       00 yes    17.657    0.010   602.765    0.000   after the stop: 00 yes, t_acc 0.000 ns
+ 12 stop            -         -        -         1.555    0.177    10.952 
+ 13 read   4095    01        00       00  NO    24.445    0.011   600.730    0.000   after the stop: 01 yes, t_acc 10.340 ns
+ 14 stop            -         -        -         1.742   -0.125     9.235 
+ 15 read   2055    00        00       00 yes    22.399    0.011   597.396    1.937   after the stop: 00 yes, t_acc 1.937 ns
+ 16 stop            -         -        -         1.422   -0.023     7.698 
+ 17 read   1032    01        00       00  NO    21.187    0.011   599.867    0.000   after the stop: 01 yes, t_acc 10.340 ns
+ 18 stop            -         -        -         1.449    0.007     9.629 
+ 19 read     19    01        00       00  NO    21.719    0.011   600.038    1.937   after the stop: 01 yes, t_acc 10.340 ns
+ 20 stop            -         -        -         1.555    0.016    10.069 
+ 21 read   3084    00        00       00 yes    21.887    0.011   596.772    1.938   after the stop: 00 yes, t_acc 1.938 ns
+ 22 stop            -         -        -         1.419   -0.030     7.644 
+ 23 read    513    01        00       00  NO    21.688    0.011   599.577    0.000   after the stop: 01 yes, t_acc 10.340 ns
+ 24 stop            -         -        -         1.134    0.000    10.729 
+summary: {"reads": 7, "reads_ok": 3, "E_read_pJ_mean": 21.5689, "E_read_pJ_min": 17.6572, "E_read_pJ_max": 24.4455, "E_write_pJ_mean": 21.2938, "E_idle_pJ_mean": 5.2382, "P_stop_uW": 10.7287, "P_stop_after_read_uW": [10.9524, 9.2349, 7.6976, 9.6288, 10.0692, 7.6438, 10.7287], "P_stop_after_idle_uW": [], "E_read_after_stop_pJ_mean": 22.2208, "reads_ok_at_half": 3, "E_read_gated_pJ": [19.1028, 26.0946, 23.7437, 22.539, 23.174, 23.2294, 22.7141], "t_acc_ns_max": 1.9376, "reads_gated": 7, "reads_ok_after_stop": 7, "t_acc_gated_ns_max": 10.34, "wrong_bits": [{"k": 13, "addr": 4095, "bit": 0, "expected": 1, "read": 0, "prev_addr": 0, "prev_bit": 0}, {"k": 17, "addr": 1032, "bit": 0, "expected": 1, "read": 0, "prev_addr": 2055, "prev_bit": 0}, {"k": 19, "addr": 19, "bit": 0, "expected": 1, "read": 0, "prev_addr": 1032, "prev_bit": 0}, {"k": 23, "addr": 513, "bit": 0, "expected": 1, "read": 0, "prev_addr": 3084, "prev_bit": 0}], "complete": true}

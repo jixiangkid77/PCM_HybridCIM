@@ -1,0 +1,19 @@
+E8.7 model A: reports/e8_7/A/power/gate_instances.rpt.gz (187111 instances) with reports/e8_7/A/names.tsv.gz; window 6.175755 ms (reports/e8_7/A/power.json)
+   address-map unit     1.5983 mW    9.871 uJ  (power.json 9.871 uJ: identical)
+   conv1 cache          0.7494 mW    4.628 uJ  (power.json 4.628 uJ: identical)
+   rest of the logic    3.4160 mW   21.096 uJ  (power.json 21.096 uJ: identical)
+
+AMU by block (cells, clock-gating cells, power, energy per inference, share of the AMU):
+   U_PF                     1004  200    0.5341 mW    3.299 uJ   33.4%
+   U_CORE                   2908   38    0.4312 mW    2.663 uJ   27.0%
+   tab[*].U_PTAB            7399    0    0.2753 mW    1.700 uJ   17.2%
+   tab[*].U_STAB            6411    0    0.2629 mW    1.624 uJ   16.5%
+   U_BUF                    6408    8    0.0460 mW    0.284 uJ    2.9%
+   (top level of U_AMU)      280    0    0.0171 mW    0.105 uJ    1.1%
+   U_ENTRY                  1616    0    0.0158 mW    0.098 uJ    1.0%
+   U_LANES                  1768    0    0.0158 mW    0.097 uJ    1.0%
+   AMU                     27794  246    1.5983 mW    9.871 uJ
+
+clock-gating cells in the whole logic: 628, 1.7940 mW = 31.1% of the report total 5.7648 mW (Clock group of the report: 1.8082 mW = 31.4%)
+
+parking flags, E8.5b (AMU synthesized alone, reports/e8_rom/e8_5b/): module amu_pflags 662 cells, 4 clock-gating cells; U_PF 0.0130 mW over 6.17574 ms = 0.080 uJ

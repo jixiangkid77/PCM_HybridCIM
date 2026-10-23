@@ -1,0 +1,24 @@
+reference: reports/e8_rom/e8_4b_rel5/model.json (relative tolerance 1e-5): 98 runs, 12 tables, 1173 reads
+
+reports/e8_rom/e8_4b/model.json (relative tolerance 1e-3) against 1e-5, 1173 reads in both:
+   right word with the right selection in both runs: 1173 of 1173
+   lowest one-cell bit line of a read: 1173 reads, difference -12.92 to +4.92 mV, largest |difference| 12.92 mV
+   read energy: median |difference| 1.48%, largest +174.42%
+   static power after a read, 509 reads above 20 uW at 1e-5: median |difference| 4.78%, |difference| >= 20% in 191, largest +2257.4% (35.84 -> 844.77 uW, x23.6, A_sram_l24/k3_parta read 11)
+
+reports/e8_rom/e8_4b_rel4/model.json (relative tolerance 1e-4) against 1e-5, 1173 reads in both:
+   right word with the right selection in both runs: 1173 of 1173
+   lowest one-cell bit line of a read: 1173 reads, difference -7.55 to +6.68 mV, largest |difference| 7.55 mV
+   read energy: median |difference| 0.14%, largest +2.99%
+   static power after a read, 509 reads above 20 uW at 1e-5: median |difference| 0.15%, |difference| >= 20% in 0, largest -5.3% (21.15 -> 20.02 uW, x0.9, B_sram_l00/conv2 read 25)
+
+D_ROM per inference (bits form, corrected), reports/e8_rom/e8_6a3_rel4 against e8_6a3_rel5:
+   model A: 1e-4 10.064 uJ, 1e-5 10.078 uJ, difference +0.014 uJ = +0.14% (reads -0.005, parking reads -0.000, static +0.014 uJ before the correction); 0.19% of the final D_ROM 7.29 uJ (reports/e8_6/e8_6_summary.json)
+   model B: 1e-4 8.315 uJ, 1e-5 8.329 uJ, difference +0.014 uJ = +0.16% (reads -0.006, parking reads -0.000, static +0.017 uJ before the correction); 0.19% of the final D_ROM 7.05 uJ (reports/e8_6/e8_6_summary.json)
+
+the same runs twice at 1e-5: reports/e8_rom/e8_4b_rc/model.json against e8_4b_rel5, 8 runs of e8rom_B_sram_l00_16x2496:
+   reads: 101 records, identical 101, records in only one run 0
+   waits: 76 records, identical 76, records in only one run 0
+   idles: 28 records, identical 28, records in only one run 0
+   part A of the macros: 4 records, identical 4
+   measured energy of the lookup trains: 4 trains, identical 4 (their model predictions differ because each model is fitted to the tables of its own run)
