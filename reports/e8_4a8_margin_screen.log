@@ -1,0 +1,137 @@
+P2R-E8.4a-8 part 1 (margin screening)  2026-10-14 13:58:43
+   script : 6597e8735b185910c14702f3eb86d72c  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_4a8_margin_screen.py
+   bench  : ab03b774d0d919830b01bfaf3b4528b0  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_4_rom_bench.py
+   e8rom_A_pcm_l00_16x2496_r48k0: 4603 one cells
+   e8rom_A_pcm_l00_16x2496_r48k1: 4779 one cells
+   e8rom_A_pcm_l00_16x2496_r48k2: 4951 one cells
+   e8rom_A_pcm_l00_16x2496_r48k3: 5022 one cells
+   e8rom_A_pcm_l12_16x2496_r48k0: 4675 one cells
+   e8rom_A_pcm_l12_16x2496_r48k1: 4750 one cells
+   e8rom_A_pcm_l12_16x2496_r48k2: 4878 one cells
+   e8rom_A_pcm_l12_16x2496_r48k3: 4828 one cells
+   e8rom_A_pcm_l24_16x2496_r48k0: 4493 one cells
+   e8rom_A_pcm_l24_16x2496_r48k1: 4846 one cells
+   e8rom_A_pcm_l24_16x2496_r48k2: 4950 one cells
+   e8rom_A_pcm_l24_16x2496_r48k3: 5624 one cells
+   e8rom_A_sram_l00_16x2496_r48k0: 9087 one cells
+   e8rom_A_sram_l00_16x2496_r48k1: 9703 one cells
+   e8rom_A_sram_l00_16x2496_r48k2: 9641 one cells
+   e8rom_A_sram_l00_16x2496_r48k3: 8976 one cells
+   e8rom_A_sram_l12_16x2496_r48k0: 9043 one cells
+   e8rom_A_sram_l12_16x2496_r48k1: 9754 one cells
+   e8rom_A_sram_l12_16x2496_r48k2: 9728 one cells
+   e8rom_A_sram_l12_16x2496_r48k3: 9347 one cells
+   e8rom_A_sram_l24_16x2496_r48k0: 9184 one cells
+   e8rom_A_sram_l24_16x2496_r48k1: 9648 one cells
+   e8rom_A_sram_l24_16x2496_r48k2: 9633 one cells
+   e8rom_A_sram_l24_16x2496_r48k3: 9344 one cells
+   e8rom_B_pcm_l00_16x2496_r48k0: 4341 one cells
+   e8rom_B_pcm_l00_16x2496_r48k1: 4730 one cells
+   e8rom_B_pcm_l00_16x2496_r48k2: 4870 one cells
+   e8rom_B_pcm_l00_16x2496_r48k3: 4997 one cells
+   e8rom_B_pcm_l12_16x2496_r48k0: 4360 one cells
+   e8rom_B_pcm_l12_16x2496_r48k1: 4783 one cells
+   e8rom_B_pcm_l12_16x2496_r48k2: 4907 one cells
+   e8rom_B_pcm_l12_16x2496_r48k3: 5077 one cells
+   e8rom_B_pcm_l24_16x2496_r48k0: 4251 one cells
+   e8rom_B_pcm_l24_16x2496_r48k1: 4779 one cells
+   e8rom_B_pcm_l24_16x2496_r48k2: 4836 one cells
+   e8rom_B_pcm_l24_16x2496_r48k3: 5766 one cells
+   e8rom_B_sram_l00_16x2496_r48k0: 9360 one cells
+   e8rom_B_sram_l00_16x2496_r48k1: 9776 one cells
+   e8rom_B_sram_l00_16x2496_r48k2: 9752 one cells
+   e8rom_B_sram_l00_16x2496_r48k3: 9048 one cells
+   e8rom_B_sram_l12_16x2496_r48k0: 9324 one cells
+   e8rom_B_sram_l12_16x2496_r48k1: 9731 one cells
+   e8rom_B_sram_l12_16x2496_r48k2: 9676 one cells
+   e8rom_B_sram_l12_16x2496_r48k3: 9036 one cells
+   e8rom_B_sram_l24_16x2496_r48k0: 9479 one cells
+   e8rom_B_sram_l24_16x2496_r48k1: 9738 one cells
+   e8rom_B_sram_l24_16x2496_r48k2: 9765 one cells
+   e8rom_B_sram_l24_16x2496_r48k3: 9163 one cells
+
+1. 343032 measured one cells in 48 macros of 12 tables
+   0 neighbours discharging:  280074 cells, mean 1.758 V, lowest 1.708 V
+   1 neighbours discharging:   45803 cells, mean 1.630 V, lowest 1.378 V
+   2 neighbours discharging:   17155 cells, mean 1.477 V, lowest 1.136 V
+
+2. models of the one-cell bitline (V), least squares; features: 1, row, string, string^2, ones_above, row_zeros, string x row_zeros, string x row
+   1 neighbours: 45803 cells, r^2 0.784, residual SD 33.4 mV, lowest residual -212.2 mV; coefficients 1 +1.7485, row -0.0036532, string +0.0070385, string^2 +2.586e-05, ones_above -0.0014683, row_zeros -0.00013934, string x row_zeros -7.082e-05, string x row -1.7646e-05
+   2 neighbours: 17155 cells, r^2 0.808, residual SD 52.1 mV, lowest residual -248.9 mV; coefficients 1 +1.7139, row -0.006287, string -0.0026213, string^2 +0.00016029, ones_above -0.0024118, row_zeros -0.00052077, string x row_zeros -8.251e-07, string x row -3.6076e-05
+   lowest measured cells and the model:
+      1.136 V  e8rom_A_pcm_l00_16x2496_r48k3      row 43 col  12  neighbours 2  string 32  ones above 11  row zeros 114  model 1.385 V
+      1.208 V  e8rom_B_pcm_l24_16x2496_r48k1      row 45 col 131  neighbours 2  string  0  ones above 31  row zeros  91  model 1.309 V
+      1.212 V  e8rom_B_pcm_l00_16x2496_r48k1      row 45 col 132  neighbours 2  string  0  ones above 30  row zeros  94  model 1.310 V
+      1.213 V  e8rom_B_pcm_l24_16x2496_r48k1      row 44 col 131  neighbours 2  string  0  ones above 30  row zeros 104  model 1.311 V
+      1.214 V  e8rom_B_pcm_l24_16x2496_r48k1      row 42 col 131  neighbours 2  string  0  ones above 28  row zeros 105  model 1.328 V
+      1.215 V  e8rom_B_pcm_l24_16x2496_r48k1      row 41 col 131  neighbours 2  string  0  ones above 27  row zeros  92  model 1.343 V
+      1.215 V  e8rom_B_pcm_l00_16x2496_r48k1      row 44 col 132  neighbours 2  string  0  ones above 29  row zeros 107  model 1.312 V
+      1.217 V  e8rom_B_pcm_l00_16x2496_r48k1      row 41 col 132  neighbours 2  string  0  ones above 26  row zeros 107  model 1.338 V
+
+3. check on the lowest cell of each simulated macro (each table left out of the fit):
+   47 macros: predicted - measured minimum +12.9 mV on average, from -100.0 to +175.1 mV; rank correlation (Spearman) 0.586
+   the 6 lowest measured macros, their predicted minimum and predicted rank:
+      e8rom_A_pcm_l00_16x2496_r48k3      measured 1.136 V  predicted 1.311 V  rank 25 of 47
+      e8rom_B_pcm_l24_16x2496_r48k1      measured 1.208 V  predicted 1.306 V  rank 24 of 47
+      e8rom_B_pcm_l00_16x2496_r48k1      measured 1.212 V  predicted 1.298 V  rank 21 of 47
+      e8rom_B_pcm_l00_16x2496_r48k2      measured 1.229 V  predicted 1.289 V  rank 14 of 47
+      e8rom_B_pcm_l24_16x2496_r48k2      measured 1.238 V  predicted 1.291 V  rank 15 of 47
+      e8rom_B_pcm_l12_16x2496_r48k2      measured 1.247 V  predicted 1.286 V  rank 13 of 47
+
+4. all tables (r48, 2496 words, from data/rtl_inputs_<model>_v3): lowest predicted one-cell bitline per table
+   table                       pred. V  macro row col  nb string ones row-zeros  longest string (two-sided)  simulated
+   e8rom_A_sram_l08_16x2496      1.239  k3   46  12   2      3   43       135                           5  
+   e8rom_A_sram_l00_16x2496      1.240  k3   46  12   2      3   42       138                           3  yes
+   e8rom_A_sram_l02_16x2496      1.242  k3   46 116   2      3   43       129                           5  
+   e8rom_A_sram_l07_16x2496      1.242  k3   46 163   2      1   45       134                           5  
+   e8rom_B_sram_l03_16x2496      1.243  k3   46 159   2      2   44       130                           4  
+   e8rom_B_sram_l01_16x2496      1.243  k3   46 161   2      3   43       127                           3  
+   e8rom_A_sram_l04_16x2496      1.244  k3   45 156   2      1   44       148                           3  
+   e8rom_B_sram_l07_16x2496      1.244  k3   46 164   2      2   44       128                           4  
+   e8rom_B_sram_l04_16x2496      1.244  k3   46  12   2      3   42       130                           3  
+   e8rom_B_sram_l00_16x2496      1.244  k3   45 129   2      2   43       144                           4  yes
+   e8rom_B_sram_l02_16x2496      1.244  k3   46 198   2      1   45       130                           3  
+   e8rom_B_sram_l06_16x2496      1.244  k3   46 140   2      2   44       127                           3  
+   e8rom_A_sram_l03_16x2496      1.244  k3   44 167   2      1   43       163                           3  
+   e8rom_B_sram_l05_16x2496      1.245  k3   46 155   2      1   45       129                           3  
+   e8rom_B_sram_l08_16x2496      1.245  k3   45 197   2      1   44       145                           3  
+   e8rom_A_sram_l05_16x2496      1.246  k3   46  12   2      3   42       126                           6  
+   e8rom_A_sram_l06_16x2496      1.247  k3   45 195   2      1   44       142                           4  
+   e8rom_A_sram_l01_16x2496      1.248  k3   44 130   2      0   44       159                           3  
+   e8rom_B_sram_l20_16x2496      1.258  k3   46   7   2      2   44       101                           3  
+   e8rom_A_sram_l21_16x2496      1.258  k3   46   3   2      3   43        98                           4  
+   e8rom_B_sram_l12_16x2496      1.259  k3  (simulated; rank 21 of 100)
+   e8rom_B_sram_l24_16x2496      1.260  k3  (simulated; rank 25 of 100)
+   e8rom_A_sram_l24_16x2496      1.266  k3  (simulated; rank 44 of 100)
+   e8rom_A_sram_l12_16x2496      1.266  k3  (simulated; rank 46 of 100)
+   e8rom_A_pcm_l00_16x2496       1.276  k0  (simulated; rank 55 of 100)
+   e8rom_A_pcm_l12_16x2496       1.277  k0  (simulated; rank 56 of 100)
+   e8rom_B_pcm_l00_16x2496       1.277  k0  (simulated; rank 57 of 100)
+   e8rom_B_pcm_l12_16x2496       1.280  k0  (simulated; rank 70 of 100)
+   e8rom_A_pcm_l24_16x2496       1.281  k0  (simulated; rank 76 of 100)
+   e8rom_B_pcm_l24_16x2496       1.281  k0  (simulated; rank 77 of 100)
+   simulated tables: measured minimum (E8.4a-7, tt) against predicted:
+      e8rom_A_sram_l00_16x2496   measured 1.331 V, predicted 1.240 V
+      e8rom_B_sram_l00_16x2496   measured 1.336 V, predicted 1.244 V
+      e8rom_B_sram_l12_16x2496   measured 1.336 V, predicted 1.259 V
+      e8rom_B_sram_l24_16x2496   measured 1.336 V, predicted 1.260 V
+      e8rom_A_sram_l24_16x2496   measured 1.334 V, predicted 1.266 V
+      e8rom_A_sram_l12_16x2496   measured 1.335 V, predicted 1.266 V
+      e8rom_A_pcm_l00_16x2496    measured 1.136 V, predicted 1.276 V
+      e8rom_A_pcm_l12_16x2496    measured 1.249 V, predicted 1.277 V
+      e8rom_B_pcm_l00_16x2496    measured 1.212 V, predicted 1.277 V
+      e8rom_B_pcm_l12_16x2496    measured 1.247 V, predicted 1.280 V
+      e8rom_A_pcm_l24_16x2496    measured 1.247 V, predicted 1.281 V
+      e8rom_B_pcm_l24_16x2496    measured 1.208 V, predicted 1.281 V
+
+5. selection for part 2 (tables not simulated): (a) the 4 lowest predicted bitlines; (b) up to 2 tables whose longest string of 0 cells above a two-sided cell is longer than in any simulated table (42): 14 such tables, the longest first
+   64 tables not simulated are predicted below the highest predicted minimum of the simulated PCM-side tables (1.281 V)
+   (a) e8rom_A_sram_l08_16x2496: predicted 1.239 V (k3 row 46 col 12), longest string 5; /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a8/tables/e8rom_A_sram_l08_16x2496.bin md5 5534f9bebe71d5a63503e5ef0f64551b
+   (a) e8rom_A_sram_l02_16x2496: predicted 1.242 V (k3 row 46 col 116), longest string 5; /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a8/tables/e8rom_A_sram_l02_16x2496.bin md5 2bf9bc7d642de76032f18f15d3c82ccf
+   (a) e8rom_A_sram_l07_16x2496: predicted 1.242 V (k3 row 46 col 163), longest string 5; /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a8/tables/e8rom_A_sram_l07_16x2496.bin md5 7474223b2768a9782bc5ad2929f536b4
+   (a) e8rom_B_sram_l03_16x2496: predicted 1.243 V (k3 row 46 col 159), longest string 4; /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a8/tables/e8rom_B_sram_l03_16x2496.bin md5 cfee958bc9405c9bf1272adf6bf62248
+   (b) e8rom_A_pcm_l06_16x2496: predicted 1.278 V (k0 row 47 col 198), longest string 47; /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a8/tables/e8rom_A_pcm_l06_16x2496.bin md5 8954395e36412feafaf55021823b5a51
+   (b) e8rom_A_pcm_l22_16x2496: predicted 1.280 V (k0 row 47 col 198), longest string 47; /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a8/tables/e8rom_A_pcm_l22_16x2496.bin md5 6848cf157a6cd654eec05f8ef894bd3a
+   6 tables selected for part 2: e8rom_A_sram_l08_16x2496 e8rom_A_sram_l02_16x2496 e8rom_A_sram_l07_16x2496 e8rom_B_sram_l03_16x2496 e8rom_A_pcm_l06_16x2496 e8rom_A_pcm_l22_16x2496
+
+written: /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a8/screen.json  (20 s)

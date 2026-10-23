@@ -1,0 +1,111 @@
+============================================================
+Address-ROM Capacity Report   (Model A)
+============================================================
+Source dir       : data\rtl_inputs_A_v3
+Method           : derived from actual hex file row counts
+Bit-width / entry: 16 bit  (RTL param WADDR_W)
+Lane count       : 25      (RTL SIMD width)
+Sides per lane   : 2       (SRAM-side decoder + PCM-side decoder)
+
+Lane-sliced invariants verified:
+  [PASS] All 25 lanes have identical row count per (layer, side)
+  [PASS] SRAM and PCM sides share identical per-lane depth per layer
+
+Per-layer per-lane compact depth (verified ground-truth):
+  Layer     Total weights   Per-lane depth
+  -------- -------------- ----------------
+  conv1               150                6
+  conv2              2400               96
+  fc1               48000             1920
+  fc2               10080              420
+  fc3                 840               40
+  -------- -------------- ----------------
+  Total             61470             2482
+
+------------------------------------------------------------
+Baseline: naive full-table per-lane ROM (pre-refactor)
+  Each lane stores the COMPLETE 5-layer addr_to_slot table.
+  Entries per decoder    :      61470  (= sum of all model weights)
+  Bits per decoder       :     983520  (0.984 Mbit)
+  Number of decoders     :         50  (25 lanes x 2 sides)
+  TOTAL                  :   49176000 bit
+                         = 49.176 Mbit
+
+------------------------------------------------------------
+Implemented: lane-sliced ROM (this work)
+  Each lane stores only its share, padded uniformly per layer.
+  Entries per decoder    :       2482  (= sum of per-lane depths)
+  Bits per decoder       :      39712  (39.71 Kbit)
+  Number of decoders     :         50  (25 lanes x 2 sides)
+  TOTAL entries verified :     124100  (matches sum of hex rows)
+  TOTAL                  :    1985600 bit
+                         = 1.9856 Mbit
+
+------------------------------------------------------------
+Reduction factor         : 24.77x
+  (49.176 Mbit -> 1.9856 Mbit)
+============================================================
+
+Paper-ready statement (English):
+  The implemented lane-sliced address-mapping ROM stores
+  1,985,600 bits (1.986 Mbit) in total
+  (39.71 Kbit per decoder x 50 decoders),
+  a 24.77x reduction from the naive per-lane full-table
+  baseline of 49.176 Mbit.
+============================================================
+
+============================================================
+Address-ROM Capacity Report   (Model B)
+============================================================
+Source dir       : data\rtl_inputs_B_v3
+Method           : derived from actual hex file row counts
+Bit-width / entry: 16 bit  (RTL param WADDR_W)
+Lane count       : 25      (RTL SIMD width)
+Sides per lane   : 2       (SRAM-side decoder + PCM-side decoder)
+
+Lane-sliced invariants verified:
+  [PASS] All 25 lanes have identical row count per (layer, side)
+  [PASS] SRAM and PCM sides share identical per-lane depth per layer
+
+Per-layer per-lane compact depth (verified ground-truth):
+  Layer     Total weights   Per-lane depth
+  -------- -------------- ----------------
+  conv1               150                6
+  conv2              2400               96
+  fc1               48000             1920
+  fc2               10080              420
+  fc3                 840               40
+  -------- -------------- ----------------
+  Total             61470             2482
+
+------------------------------------------------------------
+Baseline: naive full-table per-lane ROM (pre-refactor)
+  Each lane stores the COMPLETE 5-layer addr_to_slot table.
+  Entries per decoder    :      61470  (= sum of all model weights)
+  Bits per decoder       :     983520  (0.984 Mbit)
+  Number of decoders     :         50  (25 lanes x 2 sides)
+  TOTAL                  :   49176000 bit
+                         = 49.176 Mbit
+
+------------------------------------------------------------
+Implemented: lane-sliced ROM (this work)
+  Each lane stores only its share, padded uniformly per layer.
+  Entries per decoder    :       2482  (= sum of per-lane depths)
+  Bits per decoder       :      39712  (39.71 Kbit)
+  Number of decoders     :         50  (25 lanes x 2 sides)
+  TOTAL entries verified :     124100  (matches sum of hex rows)
+  TOTAL                  :    1985600 bit
+                         = 1.9856 Mbit
+
+------------------------------------------------------------
+Reduction factor         : 24.77x
+  (49.176 Mbit -> 1.9856 Mbit)
+============================================================
+
+Paper-ready statement (English):
+  The implemented lane-sliced address-mapping ROM stores
+  1,985,600 bits (1.986 Mbit) in total
+  (39.71 Kbit per decoder x 50 decoders),
+  a 24.77x reduction from the naive per-lane full-table
+  baseline of 49.176 Mbit.
+============================================================

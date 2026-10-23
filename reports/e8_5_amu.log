@@ -1,0 +1,459 @@
+==============================================================
+P2R-E8.5 address-map unit, started 2026-10-15 03:15:28
+==============================================================
+---- delivered files against the manifest ----
+rtl/e8/amu_buf.v: OK
+rtl/e8/amu_core.v: OK
+rtl/e8/amu_entry.v: OK
+rtl/e8/amu_lanes.v: OK
+rtl/e8/amu_pflags.v: OK
+rtl/e8/amu_table.v: OK
+rtl/e8/amu_top.v: OK
+rtl/e8/e8_rom_r48.v: OK
+rtl/e8/e8_rom_r48_stub.v: OK
+rtl/e8/pcm_imc_unit_e8.v: OK
+rtl/e8/tb/e8_5_amu_monitor.v: OK
+rtl/e8/tb/tb_amu_engines.v: OK
+rtl/e8/tb/tb_amu_entry_exh.v: OK
+rtl/e8/tb/tb_amu_lanes.v: OK
+scripts/e8_5_amu.sh: OK
+scripts/e8_5_check.py: OK
+scripts/e8_5_park_words.py: OK
+---- unchanged files used (md5) ----
+   cf2ff298f33a5951bf4708872eb6579a  /mnt/d/Project/hybrid_memory/paper2/rtl/src/pcm_imc_unit.v
+   8793052228b4a6afd6d2de4b685f4d7a  /mnt/d/Project/hybrid_memory/paper2/rtl/src/sram_addr_decoder.v
+   8ff28e5516599c7855cdf247e8197c9c  /mnt/d/Project/hybrid_memory/paper2/rtl/src/pcm_addr_decoder.v
+   f8323afb4162ee9efb4034ab5a8b8039  /mnt/d/Project/hybrid_memory/paper2/rtl/src/conv_engine.v
+   94103f230f8742b628c1645f3ba43943  /mnt/d/Project/hybrid_memory/paper2/rtl/src/fc_engine.v
+   f251ef0a8dfe9bdf225c26e91f2576d8  /mnt/d/Project/hybrid_memory/paper2/rtl/src/lenet5_top.v
+   23ff16d1cb27dcad218dd56097866545  /mnt/d/Project/hybrid_memory/paper2/rtl/tb/tb_lenet5_full_inference_v3.v
+   fe997fbee582d9cc4a3230376cded618  /mnt/d/Project/hybrid_memory/paper2/rtl/tb/e8_lookup_monitor.v
+   a4f7fb7aca7f7c672b74e24882c51050  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_6a2_rom_energy.py
+   4e89089f8b3bf85c81658d4a26c3cec4  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/trace/trace_A.txt
+   3269174c62831481ec5851fe749c9e4b  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/trace/trace_B.txt
+   12a1d61fcd2982fc8ba63993919c8ff8  /home/kid/sky130/orfs/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+   (E8.2: tb_lenet5_full_inference_v3.v 23ff16d1cb27dcad218dd56097866545)
+iverilog : /usr/bin/iverilog  Icarus Verilog version 12.0 (stable) ()
+python3  : /usr/bin/python3  Python 3.12.3
+yosys    : /home/kid/oss-cad-suite/bin/yosys  Yosys 0.68+36 (git sha1 17d51a330-dirty, Release, Clang /usr/bin/clang++ 21.1.8)
+
+==== 1. parking words (E8.6a-2 choice) ====
+P2R-E8.5 parking words  2026-10-15 03:15:29
+   script : 39e38f2d133cfdd5a01f57c50d0e63e2  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_5_park_words.py
+   E8.6a-2: a4f7fb7aca7f7c672b74e24882c51050
+   E8.4b model: f0cbdaef8fa31f29e937f5f2880a09c6  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4b/model.json (rows 48)
+   model A: 200 macros; E8.4b 12, Pd rule 186, no word of 0xFFFF 2; written /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_park_A.vh  md5 32c1b2b4d11c72140a1ff6cb18275585
+   model B: 200 macros; E8.4b 11, Pd rule 188, no word of 0xFFFF 1; written /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_park_B.vh  md5 7459db54f5787fcf8b3d0ab9d95dca5d
+  PASS  parking words written (exit 0)
+   32c1b2b4d11c72140a1ff6cb18275585  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_park_A.vh
+   7459db54f5787fcf8b3d0ab9d95dca5d  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_park_B.vh
+   [03:15:36, 8 s since the start]
+
+==== 2. unit tests ====
+   amu_entry exhaustive check: 524288 vectors, 2482 valid lookups, 0 mismatches
+  PASS  U1 entry arithmetic, all (layer, address) pairs
+   lanes 1-24, engine pattern: 59568 lane lookups (580 FC dummy lanes), 0 mismatches
+   lanes 1-24, random addresses: 119136 lane lookups, 59606 flagged, 0 silent mismatches
+  PASS  U1 lane check, engine patterns
+  PASS  U1 lane check, random addresses
+   [03:15:39, 11 s since the start]
+
+==== 3. engine level (REF = rtl/src unit, NEW = E8.5 unit), A and B in parallel ====
+Model A: iverilog exit 0
+Model B: iverilog exit 0
+---- model A: vvp exit 0, 150.60 s wall, 72192 kB peak
+   ==== P2R-E8.5 sandbox: engines + REF / NEW IMC units, data data/rtl_inputs_A_v3, result_valid from NEW ====
+      layer 0: 4704 operations, cycles 34-192900 (192866)
+      layer 1: 9600 operations, cycles 192924-562526 (369602)
+      layer 2: 1920 operations, cycles 562550-590193 (27643)
+      layer 3: 420 operations, cycles 590217-596472 (6255)
+      layer 4: 40 operations, cycles 596496-597173 (677)
+      operations: REF 16684, NEW 16684, mismatches 0; lane hits SRAM 238159 PCM 147607, out of range 30754
+      address-map unit: starts 16684, stall cycles 0, lookup read pulses 2486, parking pulses 115, errors {queue,lane0,mismatch} 000
+      parking rule (a table parks a macro exactly when the last word it read there has a zero bit): 0 violations; macros left unparked at the end 0
+      ROM clock low before a pulse (core): lookup >= 90.0 ns (2486), park >= 50.0 ns (115)
+      ROM models (200): reads 126015, CS at the edge 0, address changed while high 0, invalid word 0, shortest low before a read 50.0 ns
+      engine watchdogs: 00000
+      total cycles 597243
+P2R-E8.5 engine-level checks: eng_A.log  (md5 8eba7d1c4a13423f644e6efbb2b923f4)
+  PASS  REF / NEW operations and mismatches: (16684, 16684, 0) (16684, 16684, 0)
+  PASS  unit errors 000 (000)
+        starts 16684, stall cycles 0, lookup pulses 2486, parking pulses 115
+  PASS  parking rule violations, macros left unparked: (0, 0) (0, 0)
+  PASS  ROM clock low before lookups / parks: 90.0 / 50.0 ns (>= 90 / >= 50)
+  PASS  ROM models: CS at the edge / address changed / invalid word (0.0, 0.0, 0.0) (0, 0, 0); reads 126015, shortest low 50.0 ns
+  PASS  engine watchdogs 00000 (00000)
+        total cycles 597243
+   engine level: ALL CHECKS PASS
+  PASS  U2 engine level, model A
+---- model B: vvp exit 0, 151.97 s wall, 72064 kB peak
+   ==== P2R-E8.5 sandbox: engines + REF / NEW IMC units, data data/rtl_inputs_B_v3, result_valid from NEW ====
+      layer 0: 4704 operations, cycles 34-192900 (192866)
+      layer 1: 9600 operations, cycles 192924-562526 (369602)
+      layer 2: 1920 operations, cycles 562550-590193 (27643)
+      layer 3: 420 operations, cycles 590217-596472 (6255)
+      layer 4: 40 operations, cycles 596496-597173 (677)
+      operations: REF 16684, NEW 16684, mismatches 0; lane hits SRAM 204303 PCM 209517, out of range 2700
+      address-map unit: starts 16684, stall cycles 0, lookup read pulses 2486, parking pulses 115, errors {queue,lane0,mismatch} 000
+      parking rule (a table parks a macro exactly when the last word it read there has a zero bit): 0 violations; macros left unparked at the end 0
+      ROM clock low before a pulse (core): lookup >= 90.0 ns (2486), park >= 50.0 ns (115)
+      ROM models (200): reads 126015, CS at the edge 0, address changed while high 0, invalid word 0, shortest low before a read 50.0 ns
+      engine watchdogs: 00000
+      total cycles 597243
+P2R-E8.5 engine-level checks: eng_B.log  (md5 154230b441d293d93e0769ccd1c78c3c)
+  PASS  REF / NEW operations and mismatches: (16684, 16684, 0) (16684, 16684, 0)
+  PASS  unit errors 000 (000)
+        starts 16684, stall cycles 0, lookup pulses 2486, parking pulses 115
+  PASS  parking rule violations, macros left unparked: (0, 0) (0, 0)
+  PASS  ROM clock low before lookups / parks: 90.0 / 50.0 ns (>= 90 / >= 50)
+  PASS  ROM models: CS at the edge / address changed / invalid word (0.0, 0.0, 0.0) (0, 0, 0); reads 126015, shortest low 50.0 ns
+  PASS  engine watchdogs 00000 (00000)
+        total cycles 597243
+   engine level: ALL CHECKS PASS
+  PASS  U2 engine level, model B
+   [03:18:12, 164 s since the start]
+
+==== 4. full inference: E8.5 unit and baseline, A and B (four runs in parallel) ====
+Model A: iverilog exit E8.5 0, baseline 0
+  PASS  F0 model A: the E8.5 compile uses rtl/e8/pcm_imc_unit_e8.v and not the original unit or decoders
+Model B: iverilog exit E8.5 0, baseline 0
+  PASS  F0 model B: the E8.5 compile uses rtl/e8/pcm_imc_unit_e8.v and not the original unit or decoders
+---- source files of the E8.5 compile (model A), with checksums ----
+   f052198c7a66  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_buf.v
+   8ade1b5409b0  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_core.v
+   3dad9932b80d  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_entry.v
+   6b6743793e40  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_lanes.v
+   32c1b2b4d11c  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_park_A.vh
+   45ad881c2714  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_pflags.v
+   ffb346bd2da4  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_table.v
+   70c844246dfe  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_top.v
+   d033df35e492  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/e8_rom_r48.v
+   a730fb7c8e23  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/pcm_imc_unit_e8.v
+   90fb91ebd736  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/tb/e8_5_amu_monitor.v
+   73169f323366  /mnt/d/Project/hybrid_memory/paper2/rtl/src/argmax10.v
+   a13c5bfdc98e  /mnt/d/Project/hybrid_memory/paper2/rtl/src/argmax_wrapper.v
+   c895003667bd  /mnt/d/Project/hybrid_memory/paper2/rtl/src/bias_storage.v
+   d5ddf2ae7f80  /mnt/d/Project/hybrid_memory/paper2/rtl/src/combiner.v
+   f8323afb4162  /mnt/d/Project/hybrid_memory/paper2/rtl/src/conv_engine.v
+   94103f230f87  /mnt/d/Project/hybrid_memory/paper2/rtl/src/fc_engine.v
+   456811ccb911  /mnt/d/Project/hybrid_memory/paper2/rtl/src/feature_buffer.v
+   f0fb32c3ce0c  /mnt/d/Project/hybrid_memory/paper2/rtl/src/layer_config_regfile.v
+   063b1d55977f  /mnt/d/Project/hybrid_memory/paper2/rtl/src/layer_desc_rom.v
+   f251ef0a8dfe  /mnt/d/Project/hybrid_memory/paper2/rtl/src/lenet5_top.v
+   dfcfbd26d555  /mnt/d/Project/hybrid_memory/paper2/rtl/src/logit_rf.v
+   7a78d30f2af1  /mnt/d/Project/hybrid_memory/paper2/rtl/src/maxpool2x2.v
+   9ccbf846a598  /mnt/d/Project/hybrid_memory/paper2/rtl/src/pcm_crossbar.v
+   f12aa505d3db  /mnt/d/Project/hybrid_memory/paper2/rtl/src/pool_wrapper.v
+   5c1a15878147  /mnt/d/Project/hybrid_memory/paper2/rtl/src/sram_mac.v
+   9b40cb4a5169  /mnt/d/Project/hybrid_memory/paper2/rtl/src/sram_pool_25lane.v
+   ef9ddd99302e  /mnt/d/Project/hybrid_memory/paper2/rtl/src/top_fsm.v
+   fe997fbee582  /mnt/d/Project/hybrid_memory/paper2/rtl/tb/e8_lookup_monitor.v
+   23ff16d1cb27  /mnt/d/Project/hybrid_memory/paper2/rtl/tb/tb_lenet5_full_inference_v3.v
+---- simulate, started 2026-10-15 03:18:14 ----
+---- model A: E8.5 vvp exit 0, 155.45 s wall, 55424 kB peak; baseline vvp exit 0, 107.63 s wall, 24192 kB peak
+   E8.5  [E8 MONITOR] 16684 MAC operations recorded to /home/kid/p2r_e8/e8_5/e8_trace_A.txt
+   E8.5    [PASS] inference complete at cycle 617573
+   E8.5  SRAM protected-weight reads (per MAC op): 267143
+   E8.5      [raw lane-cycles, NOT the energy count: 8747455]
+   E8.5  RESULT: ALL TESTS PASSED
+   E8.5  [E8.5 MONITOR] ==== address-map unit (E8.5) ====
+   E8.5  [E8.5 MONITOR] operations at the datapath start 16684, engine start pulses 16684 -> trace /home/kid/p2r_e8/e8_5/e85_trace_A.txt
+   E8.5  [E8.5 MONITOR] unit counters: starts 16684, stall cycles 0, lookup pulses 2484, parking pulses 113
+   E8.5  [E8.5 MONITOR] error flags {queue,lane0,mismatch} 000; parking rule violations 0; macros unparked at the end 0
+   E8.5  [E8.5 MONITOR] ROM pulses in the event list: lookup 2484, parking 113 (before start 2, after done 0) -> /home/kid/p2r_e8/e8_5/e85_events_A.txt
+   E8.5  [E8.5 MONITOR] macro reads implied by the events: lookup 123040 + parking 2825 = 125865
+   E8.5  [E8.5 MONITOR] macro reads counted by the 200 models: 125865 (equal); models never read 0
+   E8.5  [E8.5 MONITOR] ROM protocol at the models: CS at the clock edge 0, address changed while high 0, invalid word 0, shortest clock low before a read 50.0 ns
+   base  [E8 MONITOR] 16684 MAC operations recorded to /home/kid/p2r_e8/e8_5/base_trace_A.txt
+   base    [PASS] inference complete at cycle 617573
+   base  SRAM protected-weight reads (per MAC op): 267143
+   base      [raw lane-cycles, NOT the energy count: 10569613]
+   base  RESULT: ALL TESTS PASSED
+P2R-E8.5 full-inference checks, model A   2026-10-15 03:20:52
+   script      c5030c3a43bf4c0041ffb0fe0ae1bebb
+   E8.2 trace  4e89089f8b3bf85c81658d4a26c3cec4  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/trace/trace_A.txt
+   base log    baf171c7c75b4df561d90ebad8ef7cd0  base_A.log
+   base trace  4e89089f8b3bf85c81658d4a26c3cec4  base_trace_A.txt
+   E8.5 log    2d95e36bd945ad5175c45692bed58190  full_e8_A.log
+   E8.5 ext    4e89089f8b3bf85c81658d4a26c3cec4  e8_trace_A.txt
+   E8.5 go     f4b03894b6cb840f3de0bd5b807caed5  e85_trace_A.txt
+   events      0a4ee0258b239eb239c888559ef753b7  e85_events_A.txt
+  PASS  F1 baseline: RESULT: ALL TESTS PASSED
+  PASS  F1 baseline: inference complete at cycle 617573
+  PASS  F1 baseline: SRAM protected-weight reads (per MAC op): 267143
+  PASS  F1 E8.5 unit: RESULT: ALL TESTS PASSED
+  PASS  F1 E8.5 unit: inference complete at cycle 617573
+  PASS  F1 E8.5 unit: SRAM protected-weight reads (per MAC op): 267143
+   E8.2 trace: 16684 operations; # done_cycle 617573 mac_operations 16684
+  PASS  F2 baseline, E8.2 monitor: 16684 operations against 16684, all lines identical; done line identical
+  PASS  F3 E8.5 unit, E8.2 monitor (engine start): 16684 operations against 16684, all lines identical; done line identical
+  PASS  F4 E8.5 unit, E8.5 monitor (datapath start): 16684 operations against 16684, all lines identical
+  PASS  F5 lookup pulses reading another word than their entry's: 0
+  info  lookups of an entry no operation uses: 0
+  PASS  F6 unit errors 000 (000), parking rule violations 0 (0), macros left unparked at the end 0 (0)
+  PASS  F6 macro reads counted by the models 125865: equal to the pulses
+  PASS  F6 ROM protocol (0.0, 0.0, 0.0) (0, 0, 0); shortest low 50.0 ns
+  info  unit counters: stall cycles 0, lookup pulses 2484, parking pulses 113
+  info  raw SRAM lane-cycles (not a gate; the E8.5 hits appear when the entry is in the buffer): baseline 10569613, E8.5 8747455
+
+   layer   operations  entry changes  lookup pulses
+   conv1        4704              6              7
+   conv2        9600           9600             96
+   fc1          1920           1920           1920
+   fc2           420            420            420
+   fc3            40             40             40
+   total       16684          11986           2483
+   lookup pulses before the start 1, after done 0; parking pulses before 1, during 112, after 0
+   macro reads: lookup SRAM 61520, PCM 61520; parking SRAM 1732, PCM 1093; total 125865
+   model A: ALL CHECKS PASS
+  PASS  F1-F6 full inference, model A
+---- model B: E8.5 vvp exit 0, 157.73 s wall, 55680 kB peak; baseline vvp exit 0, 105.83 s wall, 24064 kB peak
+   E8.5  [E8 MONITOR] 16684 MAC operations recorded to /home/kid/p2r_e8/e8_5/e8_trace_B.txt
+   E8.5    [PASS] inference complete at cycle 617573
+   E8.5  SRAM protected-weight reads (per MAC op): 205664
+   E8.5      [raw lane-cycles, NOT the energy count: 7143942]
+   E8.5  RESULT: ALL TESTS PASSED
+   E8.5  [E8.5 MONITOR] ==== address-map unit (E8.5) ====
+   E8.5  [E8.5 MONITOR] operations at the datapath start 16684, engine start pulses 16684 -> trace /home/kid/p2r_e8/e8_5/e85_trace_B.txt
+   E8.5  [E8.5 MONITOR] unit counters: starts 16684, stall cycles 0, lookup pulses 2484, parking pulses 113
+   E8.5  [E8.5 MONITOR] error flags {queue,lane0,mismatch} 000; parking rule violations 0; macros unparked at the end 0
+   E8.5  [E8.5 MONITOR] ROM pulses in the event list: lookup 2484, parking 113 (before start 2, after done 0) -> /home/kid/p2r_e8/e8_5/e85_events_B.txt
+   E8.5  [E8.5 MONITOR] macro reads implied by the events: lookup 123040 + parking 2825 = 125865
+   E8.5  [E8.5 MONITOR] macro reads counted by the 200 models: 125865 (equal); models never read 0
+   E8.5  [E8.5 MONITOR] ROM protocol at the models: CS at the clock edge 0, address changed while high 0, invalid word 0, shortest clock low before a read 50.0 ns
+   base  [E8 MONITOR] 16684 MAC operations recorded to /home/kid/p2r_e8/e8_5/base_trace_B.txt
+   base    [PASS] inference complete at cycle 617573
+   base  SRAM protected-weight reads (per MAC op): 205664
+   base      [raw lane-cycles, NOT the energy count: 8175227]
+   base  RESULT: ALL TESTS PASSED
+P2R-E8.5 full-inference checks, model B   2026-10-15 03:20:52
+   script      c5030c3a43bf4c0041ffb0fe0ae1bebb
+   E8.2 trace  3269174c62831481ec5851fe749c9e4b  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/trace/trace_B.txt
+   base log    a2ebf914b60f77f9a883fb31299d32b3  base_B.log
+   base trace  3269174c62831481ec5851fe749c9e4b  base_trace_B.txt
+   E8.5 log    71977c3307df9d6488da70025947886b  full_e8_B.log
+   E8.5 ext    3269174c62831481ec5851fe749c9e4b  e8_trace_B.txt
+   E8.5 go     eea87bea3f0b6c61bab4ff84d1085563  e85_trace_B.txt
+   events      397e3540050a9a99dcfce86d6323a4cd  e85_events_B.txt
+  PASS  F1 baseline: RESULT: ALL TESTS PASSED
+  PASS  F1 baseline: inference complete at cycle 617573
+  PASS  F1 baseline: SRAM protected-weight reads (per MAC op): 205664
+  PASS  F1 E8.5 unit: RESULT: ALL TESTS PASSED
+  PASS  F1 E8.5 unit: inference complete at cycle 617573
+  PASS  F1 E8.5 unit: SRAM protected-weight reads (per MAC op): 205664
+   E8.2 trace: 16684 operations; # done_cycle 617573 mac_operations 16684
+  PASS  F2 baseline, E8.2 monitor: 16684 operations against 16684, all lines identical; done line identical
+  PASS  F3 E8.5 unit, E8.2 monitor (engine start): 16684 operations against 16684, all lines identical; done line identical
+  PASS  F4 E8.5 unit, E8.5 monitor (datapath start): 16684 operations against 16684, all lines identical
+  PASS  F5 lookup pulses reading another word than their entry's: 0
+  info  lookups of an entry no operation uses: 0
+  PASS  F6 unit errors 000 (000), parking rule violations 0 (0), macros left unparked at the end 0 (0)
+  PASS  F6 macro reads counted by the models 125865: equal to the pulses
+  PASS  F6 ROM protocol (0.0, 0.0, 0.0) (0, 0, 0); shortest low 50.0 ns
+  info  unit counters: stall cycles 0, lookup pulses 2484, parking pulses 113
+  info  raw SRAM lane-cycles (not a gate; the E8.5 hits appear when the entry is in the buffer): baseline 8175227, E8.5 7143942
+
+   layer   operations  entry changes  lookup pulses
+   conv1        4704              6              7
+   conv2        9600           9600             96
+   fc1          1920           1920           1920
+   fc2           420            420            420
+   fc3            40             40             40
+   total       16684          11986           2483
+   lookup pulses before the start 1, after done 0; parking pulses before 1, during 112, after 0
+   macro reads: lookup SRAM 61520, PCM 61520; parking SRAM 1113, PCM 1712; total 125865
+   model B: ALL CHECKS PASS
+  PASS  F1-F6 full inference, model B
+   [03:20:52, 324 s since the start]
+
+==== 5. Yosys, flow B of E3, amu_top (ROM macros as black boxes) ====
+---- model A: yosys exit 0; Elapsed (wall clock) time (h:mm:ss or m:ss): 0:21.55; Maximum resident set size (kbytes): 195768
+       110 ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+        55 ABC: Warning: Detected 9 multi-output cells (for example, "sky130_fd_sc_hd__fa_1").
+         2 Warning: Replacing memory \rq_v with list of registers. See /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_core.v:229
+         2 Warning: Replacing memory \rq_s with list of registers. See /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_core.v:230
+         2 Warning: Replacing memory \rq_e with list of registers. See /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_core.v:230
+         1 Warnings: 3 unique messages, 6 total
+   RAW: final area
+      Chip area for top module '\amu_top': 295570.976000
+        of which used for sequential elements: 138082.432000 (46.72%)
+   P2R-E8.5 area by module: /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/amu_A_stat_final.txt  (md5 5ed886c416274e439353d32d18e65037)
+      module       count     area um2   share   per instance
+      amu_buf          1     128263.0   43.4%   128263.0
+      amu_table       50     111982.4   37.9%   2124.5-2379.8
+      amu_core         1      23722.8    8.0%   23722.8
+      amu_lanes        1      11893.9    4.0%   11893.9
+      amu_entry        1      11332.1    3.8%   11332.1
+      amu_pflags       1       6563.8    2.2%   6563.8
+      amu_top          1       1813.0    0.6%   1813.0
+      sum of modules 295571.0 um2; top module 295570.976 um2
+     PASS  the modules add up to the top-module area
+   RAW: sequential and clock-gating cells in the netlist
+      6782 sky130_fd_sc_hd__dfxtp_1
+        77 sky130_fd_sc_hd__edfxtp_1
+        37 sky130_fd_sc_hd__dlclkp_1
+   cell lines: netlist 27756, sta 27756; lpflow / probe cells 0; ROM black-box instances 200 (200 expected)
+  PASS  S1 synthesis, model A
+---- model B: yosys exit 0; Elapsed (wall clock) time (h:mm:ss or m:ss): 0:21.64; Maximum resident set size (kbytes): 195796
+       110 ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+        55 ABC: Warning: Detected 9 multi-output cells (for example, "sky130_fd_sc_hd__fa_1").
+         2 Warning: Replacing memory \rq_v with list of registers. See /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_core.v:229
+         2 Warning: Replacing memory \rq_s with list of registers. See /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_core.v:230
+         2 Warning: Replacing memory \rq_e with list of registers. See /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_core.v:230
+         1 Warnings: 3 unique messages, 6 total
+   RAW: final area
+      Chip area for top module '\amu_top': 295298.214400
+        of which used for sequential elements: 138082.432000 (46.76%)
+   P2R-E8.5 area by module: /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/amu_B_stat_final.txt  (md5 b80e6a7f3c61ecc9b1b5ce9ee07de0ce)
+      module       count     area um2   share   per instance
+      amu_buf          1     128263.0   43.4%   128263.0
+      amu_table       50     111871.0   37.9%   2124.5-2376.0
+      amu_core         1      23722.8    8.0%   23722.8
+      amu_lanes        1      11893.9    4.0%   11893.9
+      amu_entry        1      11170.7    3.8%   11170.7
+      amu_pflags       1       6563.8    2.2%   6563.8
+      amu_top          1       1813.0    0.6%   1813.0
+      sum of modules 295298.2 um2; top module 295298.2144 um2
+     PASS  the modules add up to the top-module area
+   RAW: sequential and clock-gating cells in the netlist
+      6782 sky130_fd_sc_hd__dfxtp_1
+        77 sky130_fd_sc_hd__edfxtp_1
+        37 sky130_fd_sc_hd__dlclkp_1
+   cell lines: netlist 27653, sta 27653; lpflow / probe cells 0; ROM black-box instances 200 (200 expected)
+  PASS  S1 synthesis, model B
+   [03:21:15, 347 s since the start]
+
+==== 6. information for the gate-level power step (nothing is run) ====
+---- build/ (gate-level runs of E5) ----
+total 256188
+drwxrwxrwx 1 kid kid      4096 Jun  8 22:51 .
+drwxrwxrwx 1 kid kid      4096 Oct 15 03:10 ..
+-rwxrwxrwx 1 kid kid     12494 Jun  8 19:59 compile_gate.log
+-rwxrwxrwx 1 kid kid  42547921 Jun  8 20:24 gate.vcd
+-rwxrwxrwx 1 kid kid  39984584 Jun  8 22:51 gate_clean.vcd
+-rwxrwxrwx 1 kid kid 155448275 Jun  8 20:00 gate_sim.vvp
+-rwxrwxrwx 1 kid kid   1308510 May 11 18:34 tb_elab_lenet5_v3
+-rwxrwxrwx 1 kid kid   1330150 May 11 17:50 tb_imc
+-rwxrwxrwx 1 kid kid     62906 May 11 16:42 tb_int
+-rwxrwxrwx 1 kid kid     85234 May 11 16:42 tb_lcr
+-rwxrwxrwx 1 kid kid     51978 May 11 15:44 tb_lcr_A
+-rwxrwxrwx 1 kid kid     51978 May 11 15:44 tb_lcr_B
+-rwxrwxrwx 1 kid kid     69674 May 11 16:50 tb_pad
+-rwxrwxrwx 1 kid kid    275257 May 11 17:04 tb_pcb
+-rwxrwxrwx 1 kid kid    786219 May 11 17:22 tb_pci
+-rwxrwxrwx 1 kid kid     73596 May 11 16:06 tb_sad
+-rwxrwxrwx 1 kid kid     29443 May 11 16:13 tb_sp
+-rwxrwxrwx 1 kid kid    104971 May 11 17:36 tb_sp25
+-rwxrwxrwx 1 kid kid   1325267 May 11 23:14 tb_step10a_A
+-rwxrwxrwx 1 kid kid   1325267 May 11 23:14 tb_step10a_B
+-rwxrwxrwx 1 kid kid   2243459 May 12 15:31 tb_step10b_A
+-rwxrwxrwx 1 kid kid   2243459 May 12 15:31 tb_step10b_B
+-rwxrwxrwx 1 kid kid   1521348 May 11 19:05 tb_step7b
+-rwxrwxrwx 1 kid kid   1524347 May 11 19:16 tb_step8a
+---- build/compile_gate.log, first 25 lines ----
+/home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v:44881: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+/home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v:45302: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+/home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v:45717: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+/home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v:46104: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+/home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v:46476: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+/home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v:46849: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+/home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v:47210: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+/home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v:47568: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+/home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v:47926: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+/home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v:48294: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+/home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v:48668: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+/home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v:49032: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+/home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v:49390: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+/home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v:49748: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+/home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v:50095: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+/home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v:50435: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+/home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v:50766: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+/home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v:51092: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+/home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v:51418: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+/home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v:53033: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+/home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v:53426: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+/home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v:53813: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+/home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v:54198: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+/home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v:54574: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+/home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v:54944: warning: macro UNIT_DELAY undefined (and assumed null) at this point.
+---- files that mention tb_lenet5_gate ----
+/mnt/d/Project/hybrid_memory/paper2/scripts/e4_preflight.sh
+/mnt/d/Project/hybrid_memory/paper2/scripts/e4_run.sh
+/mnt/d/Project/hybrid_memory/paper2/scripts/e5_power.sh
+/mnt/d/Project/hybrid_memory/paper2/scripts/e5_power_b_gate_b_8160_1000000000_clean.tcl
+/mnt/d/Project/hybrid_memory/paper2/scripts/e5_power_gated_gate_gated_8160_1000000000_clean.tcl
+/mnt/d/Project/hybrid_memory/paper2/scripts/e5_power_u2_gate_u2_8160_1000000000_clean.tcl
+/mnt/d/Project/hybrid_memory/paper2/scripts/e5_power_ungated_gate_ungated_208160_408160_clean.tcl
+/mnt/d/Project/hybrid_memory/paper2/scripts/e5_power_ungated_gate_ungated_8160_1000000000_clean.tcl
+/mnt/d/Project/hybrid_memory/paper2/build/gate.vcd
+/mnt/d/Project/hybrid_memory/paper2/build/gate_clean.vcd
+1059:find /home/kid -maxdepth 10 \( -name "sky130_fd_sc_hd.v" -o -name "primitives.v" \) 2>/dev/null | head
+1061:grep -n "include\|sky130\|primitives\|timescale" rtl/tb/tb_lenet5_gate.v 2>/dev/null | head -20
+1069:find / -xdev -iname "sky130_fd_sc_hd.v" 2>/dev/null
+1070:find / -xdev -iname "primitives.v" -path "*sky130*" 2>/dev/null
+1275:find /home/kid -name "sky130_fd_sc_hd.v" 2>/dev/null | head -3
+1276:for f in $(find /home/kid -name "sky130_fd_sc_hd.v" 2>/dev/null | head -3); do echo "-- $f"; grep -c "dlclkp" "$f"; done
+1278:grep -n "dumpfile\|dumpvars\|dumpon\|dumpoff\|finish\|timescale\|CYCLES\|repeat" rtl/tb/tb_lenet5_gate.v
+1291:grep -n "dump_from\|dump_to\|localparam\|parameter\|CYCLE\|MAX_\|timeout" rtl/tb/tb_lenet5_gate.v | head -30
+1292:sed -n '145,165p' rtl/tb/tb_lenet5_gate.v
+1319:grep -n "max_cycles" rtl/tb/tb_lenet5_gate.v
+---- standard-cell Verilog models on this machine ----
+/home/kid/oss-cad-suite/examples/eqy/spm/sky130_fd_sc_hd.v
+/home/kid/oss-cad-suite/examples/eqy/spm/primitives.v
+   (end)
+
+---- files written to /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5 ----
+total 41584
+drwxrwxrwx 1 kid kid    4096 Oct 15 03:21 .
+drwxrwxrwx 1 kid kid    4096 Oct 15 03:15 ..
+-rwxrwxrwx 1 kid kid   39462 Oct 15 03:21 amu_A_stat_after_clockgate.txt
+-rwxrwxrwx 1 kid kid   39344 Oct 15 03:21 amu_A_stat_after_synth.txt
+-rwxrwxrwx 1 kid kid   39319 Oct 15 03:21 amu_A_stat_after_transform.txt
+-rwxrwxrwx 1 kid kid  146734 Oct 15 03:21 amu_A_stat_final.txt
+-rwxrwxrwx 1 kid kid   39329 Oct 15 03:21 amu_B_stat_after_clockgate.txt
+-rwxrwxrwx 1 kid kid   39211 Oct 15 03:21 amu_B_stat_after_synth.txt
+-rwxrwxrwx 1 kid kid   39186 Oct 15 03:21 amu_B_stat_after_transform.txt
+-rwxrwxrwx 1 kid kid  148311 Oct 15 03:21 amu_B_stat_final.txt
+-rwxrwxrwx 1 kid kid   21054 Oct 15 03:15 amu_park_A.vh
+-rwxrwxrwx 1 kid kid   21074 Oct 15 03:15 amu_park_B.vh
+-rwxrwxrwx 1 kid kid 1856006 Oct 15 03:21 amu_syn_A.log
+-rwxrwxrwx 1 kid kid    2070 Oct 15 03:20 amu_syn_A.ys
+-rwxrwxrwx 1 kid kid 1858224 Oct 15 03:21 amu_syn_B.log
+-rwxrwxrwx 1 kid kid    2079 Oct 15 03:20 amu_syn_B.ys
+-rwxrwxrwx 1 kid kid 4188171 Oct 15 03:21 amu_top_A_netlist.v
+-rwxrwxrwx 1 kid kid 3373882 Oct 15 03:21 amu_top_A_sta.v
+-rwxrwxrwx 1 kid kid 4176762 Oct 15 03:21 amu_top_B_netlist.v
+-rwxrwxrwx 1 kid kid 3363469 Oct 15 03:21 amu_top_B_sta.v
+-rwxrwxrwx 1 kid kid    3026 Oct 15 03:20 base_A.log
+-rwxrwxrwx 1 kid kid    3023 Oct 15 03:20 base_B.log
+-rwxrwxrwx 1 kid kid       0 Oct 15 03:20 base_compile_A.log
+-rwxrwxrwx 1 kid kid       0 Oct 15 03:20 base_compile_B.log
+-rwxrwxrwx 1 kid kid 3818115 Oct 15 03:20 base_trace_A.txt
+-rwxrwxrwx 1 kid kid 3818115 Oct 15 03:20 base_trace_B.txt
+-rwxrwxrwx 1 kid kid   81919 Oct 15 03:20 e85_events_A.txt
+-rwxrwxrwx 1 kid kid   81919 Oct 15 03:20 e85_events_B.txt
+-rwxrwxrwx 1 kid kid 3818134 Oct 15 03:20 e85_trace_A.txt
+-rwxrwxrwx 1 kid kid 3818134 Oct 15 03:20 e85_trace_B.txt
+-rwxrwxrwx 1 kid kid     748 Oct 15 03:20 e8_5_summary_A.json
+-rwxrwxrwx 1 kid kid    2513 Oct 15 03:20 e8_5_summary_A.txt
+-rwxrwxrwx 1 kid kid     748 Oct 15 03:20 e8_5_summary_B.json
+-rwxrwxrwx 1 kid kid    2512 Oct 15 03:20 e8_5_summary_B.txt
+-rwxrwxrwx 1 kid kid 3818115 Oct 15 03:20 e8_trace_A.txt
+-rwxrwxrwx 1 kid kid 3818115 Oct 15 03:20 e8_trace_B.txt
+-rwxrwxrwx 1 kid kid    1144 Oct 15 03:18 eng_A.log
+-rwxrwxrwx 1 kid kid    1143 Oct 15 03:18 eng_B.log
+-rwxrwxrwx 1 kid kid       0 Oct 15 03:18 eng_compile_A.log
+-rwxrwxrwx 1 kid kid       0 Oct 15 03:18 eng_compile_B.log
+-rwxrwxrwx 1 kid kid    2253 Oct 15 03:18 eng_deps_A.txt
+-rwxrwxrwx 1 kid kid    2253 Oct 15 03:18 eng_deps_B.txt
+-rwxrwxrwx 1 kid kid    3886 Oct 15 03:20 full_e8_A.log
+-rwxrwxrwx 1 kid kid    3884 Oct 15 03:20 full_e8_B.log
+-rwxrwxrwx 1 kid kid       0 Oct 15 03:20 full_e8_compile_A.log
+-rwxrwxrwx 1 kid kid       0 Oct 15 03:20 full_e8_compile_B.log
+-rwxrwxrwx 1 kid kid    3177 Oct 15 03:20 full_e8_deps_A.txt
+-rwxrwxrwx 1 kid kid    3177 Oct 15 03:20 full_e8_deps_B.txt
+
+==============================================================
+Finished 2026-10-15 03:21:37, 6 min.
+All gates pass.
+==============================================================

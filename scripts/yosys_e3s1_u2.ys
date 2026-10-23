@@ -1,0 +1,69 @@
+# scripts/yosys_12c_sky130.ys
+# Step 12c: sky130 standard-cell technology mapping for the digital
+# periphery of Paper 2's LeNet-5 RTL implementation.
+#
+# Pipeline:
+#   1. Read sky130 high-density Liberty file (defines target cells)
+#   2. Read synthesis-only RTL (rtl/synth/) + macro stubs (rtl/stub/)
+#   3. synth -top lenet5_top (full Yosys generic synth flow)
+#   4. dfflibmap -liberty  (map sequential elements to sky130 DFF cells)
+#   5. abc -liberty        (technology-map combinational to sky130 cells)
+#   6. clean               (remove unused wires/cells)
+#   7. stat -liberty       (final cell breakdown + area in um^2)
+#   8. write_verilog       (save post-tech-map netlist for archival)
+#
+# Memory macros (PCM crossbar, addr ROMs, SRAM pool, feature buffer,
+# bias ROM) stay black-boxed. Reported separately via NeuroSim /
+# OpenRAM in Step 12e-h.
+#
+# Expected runtime: 5-15 minutes (abc -liberty is the slowest phase).
+# Expected peak memory: 1-3 GB.
+
+# ============================================================
+# Step 1: Liberty file (target library)
+# ============================================================
+read_liberty -lib /home/kid/sky130/orfs/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+# ============================================================
+# Step 2a: Project RTL (synthesis-stripped versions)
+# ============================================================
+read_verilog -sv -DLOAD_REAL_DATA rtl/synth/layer_config_regfile.v
+read_verilog -sv -DLOAD_REAL_DATA rtl/synth/layer_desc_rom.v
+read_verilog -sv -DLOAD_REAL_DATA rtl/synth/logit_rf.v
+read_verilog -sv -DLOAD_REAL_DATA rtl/synth/sram_mac.v
+read_verilog -sv -DLOAD_REAL_DATA rtl/synth/combiner.v
+read_verilog -sv -DLOAD_REAL_DATA rtl/synth/mac_unit.v
+read_verilog -sv -DLOAD_REAL_DATA rtl/synth/maxpool2x2.v
+read_verilog -sv -DLOAD_REAL_DATA rtl/synth/pool_wrapper.v
+read_verilog -sv -DLOAD_REAL_DATA rtl/synth/relu.v
+read_verilog -sv -DLOAD_REAL_DATA rtl/synth/argmax10.v
+read_verilog -sv -DLOAD_REAL_DATA rtl/synth/argmax_wrapper.v
+read_verilog -sv -DLOAD_REAL_DATA rtl/synth/conv_engine.v
+read_verilog -sv -DLOAD_REAL_DATA rtl/synth/fc_engine.v
+read_verilog -sv -DLOAD_REAL_DATA rtl/synth/pcm_imc_unit.v
+read_verilog -sv -DLOAD_REAL_DATA rtl/synth/top_fsm.v
+read_verilog -sv -DLOAD_REAL_DATA rtl/synth/lenet5_top.v
+
+# ============================================================
+# Step 2b: Macro stubs (black-box memory / PCM macros)
+# ============================================================
+read_verilog -sv rtl/stub/bias_storage_stub.v
+read_verilog -sv rtl/stub/sram_addr_decoder_stub.v
+read_verilog -sv rtl/stub/pcm_addr_decoder_stub.v
+read_verilog -sv rtl/stub/sram_pool_25lane_stub.v
+read_verilog -sv rtl/stub/feature_buffer_stub.v
+read_verilog -sv rtl/stub/pcm_crossbar_stub.v
+
+# =============================================================
+# P2R-E3 stage 1, variant u2. Yosys 0.68+36 (OSS CAD Suite 20260807).
+# =============================================================
+synth -top lenet5_top
+tee -o reports/e3_u2_stat_after_synth.txt stat
+
+dfflegalize -cell $_DFF_?_ 01 -cell $_DFFE_??_ 01 -cell $_DFF_???_ 01 -cell $_DFFE_????_ 01 -cell $_SDFFCE_????_ 01
+opt_expr
+opt_merge
+opt_clean
+tee -o reports/e3_u2_stat_after_transform.txt stat
+
+write_rtlil /home/kid/p2r_build/e3_u2_s1.rtlil

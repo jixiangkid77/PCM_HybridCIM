@@ -1,0 +1,477 @@
+==============================================================
+P2R-E8.4c protected-weight SRAM macro by the method of the ROMs, started 2026-10-20 15:27:33
+==============================================================
+macro    : sky130_sram_4kbytes_1rw_8x4096_8 (4096 words, 16 words per row); submitted folder /mnt/d/Project/hybrid_memory/paper2/reports/12e_openram/macros/paper2_sram_pool_8x4096
+runs     : r10 (10 ns clock), r20 (20 ns clock); tt, 25 C, 1.80 V
+OpenRAM  : /home/kid/openram/OpenRAM  1.2.49  e16d9eb0 2026-05-04
+ngspice  : /nix/store/4ssrcgdvyb8car0yxay8cwfa5wc89f1w-ngspice-45/bin/ngspice
+magic    : /nix/store/1zcyq032zc3mzhmgs2j3q2rmfrjj5v6b-magic-vlsi-8.3.629/bin/magic
+netgen   : /nix/store/h3crgmx1w7h86qjpr131igi7p576mp3x-netgen-1.5.318/bin/netgen
+models   : /home/kid/gf/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice
+work     : /home/kid/p2r_e8/e8_4f (copies of the results: /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4f)
+machine  : 8 cores, 23 GiB memory, 22 GiB available, 848G free for the work folder
+
+########## a. tools and files ##########
+   d120197ca2914ba7720e2718f7ba51b4  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_4_rom_bench.py
+   4f4d3530c6e1c06a2971e33aa6fc8b49  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_4c_sram_bench.py
+   44ee0d67a8c4b92fb59aac8dccb4271c  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_4c_sram_tools.py
+   50e73d7a1e5c1ec0ec0b19ddeecd4ca5  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_4c_openram_fix.py
+   8586878decc28906281c148c6f6579e6  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_4f_openram_spc.py
+   4465e66321b257af13ea828bb1f0fc7c  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_4c_sram_char.sh
+   OpenRAM route correction (E8_OPENRAM_FIX): off
+   sense-side precharge in the layout (E8_OPENRAM_SPC, v7): on, scripts/e8_4f_openram_spc.py (with the route correction); results /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4f
+   ** ngspice-45 : Circuit level simulation program
+
+########## b. the macro ##########
+   submitted folder: /mnt/d/Project/hybrid_memory/paper2/reports/12e_openram/macros/paper2_sram_pool_8x4096
+      datasheet.info                                         2300 bytes  md5 12855f7f4b479693b1b595e24bd92364
+      delay_meas.sp                                         17627 bytes  md5 8dfbdcf2b2cae16c9264525e46b9b7b9
+      delay_stim.sp                                         10614 bytes  md5 efcad33c6eaa10ff7790805ab12dd1f7
+      functional_meas.sp                                    47574 bytes  md5 3a3325f9ddd41394fb08881168338257
+      functional_stim.sp                                   260231 bytes  md5 1d7b70f0e388723203b085801d6228a1
+      sky130_sram_4kbytes_1rw_8x4096_8.gds               32045710 bytes  md5 d861ae46769595458e05c652cb3aa2ba
+      sky130_sram_4kbytes_1rw_8x4096_8.html                 89686 bytes  md5 8b6b1ba1302ff6ead9663966e86ca55d
+      sky130_sram_4kbytes_1rw_8x4096_8.lef                   8765 bytes  md5 c3532bf2c54a76a7c5d72c467cf077c1
+      sky130_sram_4kbytes_1rw_8x4096_8.log                   5175 bytes  md5 e04753faf49a67c0759559699784a29c
+      sky130_sram_4kbytes_1rw_8x4096_8.lvs.sp             6264828 bytes  md5 df48e2b83ca0148458e1dd3868032c8a
+      sky130_sram_4kbytes_1rw_8x4096_8.py                     536 bytes  md5 046c5e86a95abc7b0073fd96daefe816
+      sky130_sram_4kbytes_1rw_8x4096_8.sp                 6266462 bytes  md5 7ec074288b83b48ae98bccdf2f184e0a
+      sky130_sram_4kbytes_1rw_8x4096_8.v                     2016 bytes  md5 3704c150b57c4bfac5a767ecd7f65dcb
+      sky130_sram_4kbytes_1rw_8x4096_8_TT_1p8V_25C.lib      10001 bytes  md5 a1eb454de85a2fbf805a7f6cbb52d6b5
+      sram.sp                                             6266462 bytes  md5 7ec074288b83b48ae98bccdf2f184e0a
+      trimmed.sp                                          6266461 bytes  md5 899ad05a5cc381b0a2dee88014e96a4b
+   generating the macro again (E8_OPENRAM_SPC=1: with the sense precharge in the layout and the corrected route)
+   OpenRAM Python: /home/kid/openram-venv/bin/python3 3.11.15
+   configuration: the submitted sky130_sram_4kbytes_1rw_8x4096_8.py with output_path, netlist_only = False and check_lvsdrc = False
+   OpenRAM log of the submitted macro: OpenRAM v1.2.49; configuration not named
+   the configuration reads sky130_sram_common.py from its own folder; copies:
+      /mnt/d/Project/hybrid_memory/paper2/reports/12e_openram/macros/paper2_sram_pool_8x4096/sky130_sram_common.py  (not there)
+      /home/kid/openram/OpenRAM/macros/sram_configs/sky130_sram_common.py  md5 ae83f95463817caf7f4fe67edb8a84de
+      used: /home/kid/openram/OpenRAM/macros/sram_configs/sky130_sram_common.py
+         | # Include with
+         | #   import os
+         | #   exec(open(os.path.join(os.path.dirname(__file__), 'sky130_sram_common.py')).read())
+         | 
+         | 
+         | tech_name = "sky130"
+         | nominal_corner_only = True
+         | 
+         | # Local wordlines have issues with met3 power routing for now
+         | #local_array_size = 16
+         | 
+         | route_supplies = "ring"
+         | #route_supplies = "left"
+         | check_lvsdrc = True
+         | uniquify = True
+         | #perimeter_pins = False
+         | netlist_only = True
+         | analytical_delay = True
+         | trim_netlist = True
+         | 
+         | output_name = "{tech_name}_sram_{human_byte_size}_{ports_human}_{word_size}x{num_words}_{write_size}".format(**locals())
+         | output_path = "macro/{output_name}".format(**locals())
+         | use_nix = False
+         | spice_name = "ngspice"
+         | use_specified_load_slew = [(6.89, 0.005)]
+      # Paper 2 macro: sram_pool_25lane physical macro
+      # RTL logical: 8 bit x 3074 words = 24.592 Kbit
+      # Physical macro: 8 bit x 4096 words = 32.768 Kbit
+      # 1 spare col + 1 spare row required by OpenRAM array organization
+      
+      word_size = 8
+      num_words = 4096
+      human_byte_size = "{:.0f}kbytes".format((word_size * num_words)/1024/8)
+      write_size = 8
+      num_rw_ports = 1
+      num_r_ports = 0
+      num_w_ports = 0
+      ports_human = '1rw'
+      num_spare_cols = 1
+      num_spare_rows = 1
+      
+      import os
+      exec(open(os.path.join(os.path.dirname(__file__), 'sky130_sram_common.py')).read())
+      output_name = "sky130_sram_4kbytes_1rw_8x4096_8"
+      output_path = "/home/kid/p2r_e8/e8_4f/macro/"
+      netlist_only = False
+      check_lvsdrc = False
+   generation started at 2026-10-20 15:27:34 (sandbox, 2 cores: 1 KB 12 min; 4 KB more than 2 h, see claude/p2r-e8-4c-sandbox.md)
+   OpenRAM exit 0, 3128 s
+      ** Start: 10/20/2026 15:27:36
+      ** Submodules: 1656.3 seconds
+      ** Placement: 0.0 seconds
+      ** Routing: 1457.3 seconds
+      ** Verification: 0.0 seconds
+      ** SRAM creation: 3113.7 seconds
+      ** Spice writing: 0.4 seconds
+      ** DELAY: 3.8 seconds
+      ** GDS: 1.2 seconds
+      ** LEF: 0.0 seconds
+      ** LVS writing: 0.4 seconds
+      ** Characterization: 2.5 seconds
+      ** Config: 0.0 seconds
+      ** Datasheet: 0.0 seconds
+      ** Verilog: 0.0 seconds
+      ** End: 3122.3 seconds
+      E8FIX sram_1bank.route_control_logic replaced (OpenRAM ?)
+      E8FIX {"port": 0, "signal": "s_en", "pin_y_um": 89.935, "select_lines": 16, "band_um": [99.74, 109.34], "moved": false}
+      E8FIX {"port": 0, "signal": "w_en", "pin_y_um": 97.005, "select_lines": 16, "band_um": [99.74, 109.34], "moved": false}
+      E8FIX {"port": 0, "signal": "p_en_bar", "pin_y_um": 104.075, "select_lines": 16, "band_um": [99.74, 109.34], "moved": true, "new_y_um": 98.5, "jog_x_um": 1.64, "conflict_free_of_other_pins": true}
+      E8FIX {"port": 0, "signal": "wl_en", "pin_y_um": 118.215, "select_lines": 16, "band_um": [99.74, 109.34], "moved": false}
+      E8SPC port_data: sense precharge added (add_modules, create_instances, compute_instance_offsets, place_instances, route_sense_amp_to_column_mux_or_precharge_array, route_control_pins)
+      E8SPC module {"port": 0, "cells": 8, "columns": [0, 16, 32, 48, 64, 80, 96, 112], "offsets_um": [3.8, 43.8, 83.8, 123.8, 163.8, 203.8, 243.8, 283.8], "words_per_row": 16}
+      E8SPC geometry {"pre_inst": [0.0, 326.3], "spc_inst": [0.0, 286.3], "pre_en_bar": ["m3", 0.165, 326.465, 4.58, 4.91], "spc_en_bar": ["m3", 0.165, 286.465, 29.07, 29.4], "rbl_bl": ["m1", 3.33, 3.47, 1.26, 4.87], "rbl_br": ["m1", 1.63, 1.77, 1.26, 4.87], "spc_bl_0": ["m1", 4.13, 4.27, 25.75, 29.36], "spc_br_0": ["m1", 5.83, 5.97, 25.75, 29.36], "colmux": [0.0, 6.13, 24.49], "m2_pitch": 0.42}
+      E8SPC enable {"port": 0, "x_um": 0.815, "from_y_um": 29.235, "to_y_um": 4.745, "rail_layers": ["m3", "m3"], "vertical_layer": "m2"}
+   files used (generated with the sense precharge in the layout and the corrected route):
+      datasheet.info                                   md5 34b33397b3879347f271ae24b693c9ba
+      delay_meas.sp                                    md5 726c2e46a078079d17bc7a4422f56379
+      delay_stim.sp                                    md5 cd73cbed3528d9dec0a7de8a088d7310
+      functional_meas.sp                               md5 e55acb91bdd9ca81e0307ab786821561
+      functional_stim.sp                               md5 f03ffead7beacd7f019b126be2a424ec
+      gen_finished                                     md5 b17d1eede51ff1ce8fb982311db08200
+      gen_started                                      md5 4c2735595def6d8a1bbb0f38ee15fbc2
+      sky130_sram_4kbytes_1rw_8x4096_8.e8spc.json      md5 5a73840a3236858e2e9792bf7a66d18a
+      sky130_sram_4kbytes_1rw_8x4096_8.gds             md5 720deae20dff6ab79e0a046208953184
+      sky130_sram_4kbytes_1rw_8x4096_8.html            md5 7b1c2bab67e3cb76c306787d70184923
+      sky130_sram_4kbytes_1rw_8x4096_8.lef             md5 30fac51185c1fb32d7f89ba2dd258eb8
+      sky130_sram_4kbytes_1rw_8x4096_8.log             md5 e64ef379327707e4e61fc1e8c890dba8
+      sky130_sram_4kbytes_1rw_8x4096_8.lvs.sp          md5 a0c094a17bfb27f01d56dc86b96f2907
+      sky130_sram_4kbytes_1rw_8x4096_8.py              md5 867f1b964c7af368d5d50ad965aa5337
+      sky130_sram_4kbytes_1rw_8x4096_8.sp              md5 35d14410bd4c9c33d0d6385e2df9a642
+      sky130_sram_4kbytes_1rw_8x4096_8.v               md5 3704c150b57c4bfac5a767ecd7f65dcb
+      sky130_sram_4kbytes_1rw_8x4096_8_TT_1p8V_25C.lib md5 6e32cf94b6dd5999bf3fbc40078da087
+      sram.sp                                          md5 35d14410bd4c9c33d0d6385e2df9a642
+      trimmed.sp                                       md5 c7449cea778eefd9e78a4bd6197f955f
+   LEF size: 477.365 588.13 um; the submitted macro (E8.1b): 477.365 588.13 um
+   v7: width +0.000 um, height +0.000 um (+0.000 %), area +0.000 % against the submitted macro
+   netlists generated again, against the submitted ones:
+      sky130_sram_4kbytes_1rw_8x4096_8.sp: the submitted netlist plus the sense precharge
+         sense precharge: 8 cells of ['sky130_sram_4kbytes_1rw_8x4096_8_precharge_0'] (the main precharge array uses ['sky130_sram_4kbytes_1rw_8x4096_8_precharge_0']); port_data = the submitted port_data plus its instance on bl_out_*, br_out_*, p_en_bar, vdd
+      sky130_sram_4kbytes_1rw_8x4096_8.lvs.sp: the submitted netlist plus the sense precharge
+         sense precharge: 8 cells of ['sky130_sram_4kbytes_1rw_8x4096_8_precharge_0'] (the main precharge array uses ['sky130_sram_4kbytes_1rw_8x4096_8_precharge_0']); port_data = the submitted port_data plus its instance on bl_out_*, br_out_*, p_en_bar, vdd
+   G0 (v7: the macro of the manuscript plus the sense precharge): PASS (LEF width equal, height not smaller: PASS; netlists: SAME PLUS SENSE PRECHARGE)
+   OpenRAM analytical values, liberty sky130_sram_4kbytes_1rw_8x4096_8_TT_1p8V_25C.lib: {"leakage": 0.034375, "leakage_unit": "1mW", "internal_power": [["!csb0 & !web0", "1.649653e+11"], ["csb0 & !web0", "1.649653e+11"], ["!csb0 & web0", "1.649653e+11"], ["csb0 & web0", "1.649653e+11"]]}
+
+########## b2. top-level check (magic, top cell only): a column-select line joined to a control signal ##########
+   magic exit 0, 523 s
+   top-level check: {"ext": "/home/kid/p2r_e8/e8_4f/topcheck/sky130_sram_4kbytes_1rw_8x4096_8.ext", "merge_lines": 71269, "control_signals_seen_at_top": ["p_en_bar", "s_en", "w_en", "wl_en"], "control_routes_found": ["p_en_bar", "s_en", "w_en", "wl_en"], "shorts": [], "verdict": "NO SHORT OF THIS KIND"}
+   G1t (no column-select line joined to a control signal at the top level): NO SHORT OF THIS KIND
+
+########## c. extraction (magic, flat; LVS netlist without and simulation netlist with parasitic capacitance) ##########
+   started at 2026-10-20 16:28:26 (sandbox: see claude/p2r-e8-4c-sandbox.md)
+   ... extraction running, 30 min
+   ... extraction running, 60 min
+   ... extraction running, 90 min
+   ... extraction running, 120 min
+   ... extraction running, 150 min
+   ... extraction running, 180 min
+   magic exit 0, 11146 s, peak memory about 3474 MB
+   log:      43 Warning:  Ports "vdd" and "VPWR" are electrically shorted.
+   log:      31 Warning:  Ports "gnd" and "VGND" are electrically shorted.
+   log:       9 Warning:  Ports "wl" and "WL" are electrically shorted.
+   log:       9 Warning:  Ports "vpb" and "VPB" are electrically shorted.
+   log:       9 Warning:  Ports "vnb" and "VNB" are electrically shorted.
+   log:       8 Warning:  Ports "vdd" and "VDD" are electrically shorted.
+   log:       7 Warning:  Ports "gnd" and "GND" are electrically shorted.
+   log:       7 Warning:  Ports "br" and "BR" are electrically shorted.
+   extraction errors: 414
+   cells that report errors: sky130_sram_4kbytes_1rw_8x4096_8_sky130_col_cap_array sky130_sram_4kbytes_1rw_8x4096_8_sky130_col_cap_array_0
+   extraction feedback: {"known_type_entries": 414, "errors_expected": 414, "other_entries": {"device missing 1 terminal;": 2, "Label \"gnd\" attached to more than one unconnected node: <node>": 772, "Label \"vdd\" attached to more than one unconnected node: <node>": 772}, "verdict": "ALL ERRORS OF THE KNOWN TYPE"}
+   top-level merges in /home/kid/p2r_e8/e8_4f/extract/sky130_sram_4kbytes_1rw_8x4096_8.ext: 71020 named nodes, 66 nets
+   no signal node is merged into a supply net at the top level
+   LVS netlist: devices (flattened): 274487
+   LVS netlist: capacitors (flattened): 0, total 0.000 pF
+   simulation netlist: devices (flattened): 274487
+   simulation netlist: capacitors (flattened): 664209, total 172.284 pF
+   simulation netlist: negative capacitors (flattened): 0, sum 0.000 pF, most negative 0.000 fF
+   G1 (extraction: errors only of the known foundry-cell type, no supply short, no negative capacitor): PASS
+
+########## d. LVS (netgen, against OpenRAM's LVS netlist; preparation in scripts/e8_4c_sram_tools.py) ##########
+   lvsprep: {"layout_cell_substrates_to_vssd1": 132612, "layout_nfet_body_only_nets": 33153, "of_them_named_SUB_or_VSUBS": 33153, "layout_nfet_body_only_terminals_to_vssd1": 0, "layout_special_nfet_01v8_renamed": 0, "layout_pullup_names": {"sky130_fd_pr__special_pfet_pass": 134160, "sky130_fd_pr__special_pfet_latch": 0}, "reference_pullups_renamed": "sky130_fd_pr__special_pfet_latch -> sky130_fd_pr__special_pfet_pass", "reference_pullups_renamed_count": 0, "reference_wl_values_in_um": 320}
+   started at 2026-10-20 19:40:22
+   LVS: 108 s
+      Circuit 1 contains 274039 devices, Circuit 2 contains 274039 devices.
+      Circuit 1 contains 70138 nets,    Circuit 2 contains 70138 nets.
+      Final result: 
+LVS: PASS  (device and net counts equal; property differences 67210, of which unexpected 0; pin differences 2: [['spare_wen0', '(no pin, node is spare_wen0[0])'], ['(no matching pin)', 'spare_wen0']])
+   devices: Number of devices: 274039 | Number of devices: 274039   nets: Number of nets: 70138 | Number of nets: 70138
+   sky130_fd_pr__nfet_01v8 (2879->2720)          | sky130_fd_pr__nfet_01v8 (2879->2720)
+   sky130_fd_pr__pfet_01v8 (3028->2869)          | sky130_fd_pr__pfet_01v8 (3028->2869)
+   sky130_fd_pr__special_nfet_pass (67340->67    | sky130_fd_pr__special_nfet_pass (67340->67
+   sky130_fd_pr__special_pfet_pass (134160)      | sky130_fd_pr__special_pfet_pass (134160)
+   sky130_fd_pr__special_nfet_latch (67080)      | sky130_fd_pr__special_nfet_latch (67080)
+   G2 (LVS: counts equal, differences only the known ones): PASS
+
+########## e. simulations (r10, r20; tt, 25 C, 1.80 V) ##########
+   r10 sequence: i i w:0:00 w:4095:ff w:2055:00 w:1032:ff w:19:55 w:3084:aa w:513:0f w:3598:f0 i r:0 s:10 r:4095 s:10 r:2055 s:10 r:1032 s:10 r:19 s:10 r:3084 s:10 r:513 s:10 r:3598 s:10 r:0 r:4095 r:2055 r:1032 r:19 r:3084 r:513 r:3598 i i i s:60 r:4095 s:60
+   r20 sequence: i i w:0:00 w:4095:ff w:2055:00 w:1032:ff w:19:55 w:3084:aa w:513:0f w:3598:f0 i r:0 s:10 r:4095 s:10 r:2055 s:10 r:1032 s:10 r:19 s:10 r:3084 s:10 r:513 s:10 r:3598 s:10 i i s:60
+   substrate node of the simulation netlist: VSUBS (whole-token counts: VSUBS 69952, SUB 0)
+   maximum time step of the simulations: 0.05 ns (v6; the period / 50 was too coarse for the sense amplifier)
+   model check: {"netlist": "/home/kid/p2r_e8/e8_4f/extract/sky130_sram_4kbytes_1rw_8x4096_8.flat_pex.spice", "models": "/home/kid/gf/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice", "corner": "tt", "names": {"sky130_fd_pr__special_nfet_latch": {"usable": true, "errors": []}, "sky130_fd_pr__special_nfet_pass": {"usable": true, "errors": []}, "sky130_fd_pr__special_pfet_pass": {"usable": true, "errors": []}}, "pfet_pass_alias": false, "unusable": [], "verdict": "OK"}
+   model check: OK (the library takes every special device name of the netlist as it is)
+   r10: bench written: /home/kid/p2r_e8/e8_4f/r10/tb.sp  (41 cycles, period 10.0 ns, stop 522.5 ns, 13 address bits, 9 data bits of which 8 compared)
+   r10:    note: substrate node VSUBS tied to ground in 69952 places
+   r10:    note: hierarchical node names rewritten ('/' -> '__', '#' -> 'h') in 1865904 places
+   r10:    note: substrate nodes of the foundry cells ('<path>/SUB' or '<path>/VSUBS', 33153 nodes) tied to ground in 132612 places (p-substrate; the flat extraction leaves one per cell)
+   r10:    note: nets reaching transistors only through nFET bodies, other names (0 nodes; leaf names ) tied to ground in 0 places
+   r10:    note: floating gates (nets that reach transistors only through gates: 258, in sky130_fd_bd_sram__openram_sp_cell_opt1a_dummy 258) tied to ground in 4506 places
+   r10:    note: sky130_fd_pr__special_nfet_01v8 written as sky130_fd_pr__nfet_01v8 in 0 places (as the ROM bench)
+   r10:    note: transient started from 0 V on every node with the supply on (uic, no DC operating point)
+   r10:    note: initial condition on 33153 storage-node pairs (latch pull-downs): smaller name 0 V, other VDD
+   r10:    note: internal nodes saved: 21
+   r20: bench written: /home/kid/p2r_e8/e8_4f/r20/tb.sp  (30 cycles, period 20.0 ns, stop 585.0 ns, 13 address bits, 9 data bits of which 8 compared)
+   r20:    note: substrate node VSUBS tied to ground in 69952 places
+   r20:    note: hierarchical node names rewritten ('/' -> '__', '#' -> 'h') in 1865904 places
+   r20:    note: substrate nodes of the foundry cells ('<path>/SUB' or '<path>/VSUBS', 33153 nodes) tied to ground in 132612 places (p-substrate; the flat extraction leaves one per cell)
+   r20:    note: nets reaching transistors only through nFET bodies, other names (0 nodes; leaf names ) tied to ground in 0 places
+   r20:    note: floating gates (nets that reach transistors only through gates: 258, in sky130_fd_bd_sram__openram_sp_cell_opt1a_dummy 258) tied to ground in 4506 places
+   r20:    note: sky130_fd_pr__special_nfet_01v8 written as sky130_fd_pr__nfet_01v8 in 0 places (as the ROM bench)
+   r20:    note: transient started from 0 V on every node with the supply on (uic, no DC operating point)
+   r20:    note: initial condition on 33153 storage-node pairs (latch pull-downs): smaller name 0 V, other VDD
+   r20:    note: internal nodes saved: 21
+   G1b (the floating gates tied to ground are all in the dummy cells): PASS
+   available memory 22 GiB: at most 3 simulation(s) at a time
+   started r10 at 2026-10-20 19:43:17
+   started r20 at 2026-10-20 19:43:17
+   progress at 2026-10-20 20:13:19:
+      generation : finished (3128 s)
+      extraction : finished (11146 s, magic exit 0)
+      LVS        : finished
+      r10  running                                  0h30m  no data yet
+      r20  running                                  0h30m  no data yet
+   progress at 2026-10-20 20:43:21:
+      generation : finished (3128 s)
+      extraction : finished (11146 s, magic exit 0)
+      LVS        : finished
+      r10  running                                  1h00m  no data yet
+      r20  running                                  1h00m  no data yet
+   progress at 2026-10-20 21:13:23:
+      generation : finished (3128 s)
+      extraction : finished (11146 s, magic exit 0)
+      LVS        : finished
+      r10  running                                  1h30m  no data yet
+      r20  running                                  1h30m  no data yet
+   progress at 2026-10-20 21:43:26:
+      generation : finished (3128 s)
+      extraction : finished (11146 s, magic exit 0)
+      LVS        : finished
+      r10  running                                  2h00m  no data yet
+      r20  running                                  2h00m  no data yet
+   progress at 2026-10-20 22:13:28:
+      generation : finished (3128 s)
+      extraction : finished (11146 s, magic exit 0)
+      LVS        : finished
+      r10  running                                  2h30m  no data yet
+      r20  running                                  2h30m  no data yet
+   progress at 2026-10-20 22:43:30:
+      generation : finished (3128 s)
+      extraction : finished (11146 s, magic exit 0)
+      LVS        : finished
+      r10  running                                  3h00m  no data yet
+      r20  running                                  3h00m  no data yet
+   progress at 2026-10-20 23:13:32:
+      generation : finished (3128 s)
+      extraction : finished (11146 s, magic exit 0)
+      LVS        : finished
+      r10  running                                  3h30m  no data yet
+      r20  running                                  3h30m  no data yet
+   progress at 2026-10-20 23:43:34:
+      generation : finished (3128 s)
+      extraction : finished (11146 s, magic exit 0)
+      LVS        : finished
+      r10  running                                  4h00m  no data yet
+      r20  running                                  4h00m  no data yet
+   progress at 2026-10-21 00:13:36:
+      generation : finished (3128 s)
+      extraction : finished (11146 s, magic exit 0)
+      LVS        : finished
+      r10  running                                  4h30m  no data yet
+      r20  running                                  4h30m  no data yet
+   progress at 2026-10-21 00:43:37:
+      generation : finished (3128 s)
+      extraction : finished (11146 s, magic exit 0)
+      LVS        : finished
+      r10  running                                  5h00m  no data yet
+      r20  running                                  5h00m  no data yet
+   progress at 2026-10-21 01:13:40:
+      generation : finished (3128 s)
+      extraction : finished (11146 s, magic exit 0)
+      LVS        : finished
+      r10  running                                  5h30m  no data yet
+      r20  running                                  5h30m  no data yet
+   progress at 2026-10-21 01:43:42:
+      generation : finished (3128 s)
+      extraction : finished (11146 s, magic exit 0)
+      LVS        : finished
+      r10  running                                  6h00m  no data yet
+      r20  running                                  6h00m  no data yet
+   progress at 2026-10-21 02:13:44:
+      generation : finished (3128 s)
+      extraction : finished (11146 s, magic exit 0)
+      LVS        : finished
+      r10  running                                  6h30m  no data yet
+      r20  running                                  6h30m  no data yet
+   progress at 2026-10-21 02:43:46:
+      generation : finished (3128 s)
+      extraction : finished (11146 s, magic exit 0)
+      LVS        : finished
+      r10  running                                  7h00m      50.0 of    522.5 ns (  9.6 %)
+      r20  running                                  7h00m  no data yet
+   progress at 2026-10-21 03:13:49:
+      generation : finished (3128 s)
+      extraction : finished (11146 s, magic exit 0)
+      LVS        : finished
+      r10  running                                  7h30m     100.0 of    522.5 ns ( 19.1 %)
+      r20  running                                  7h30m     100.0 of    585.0 ns ( 17.1 %)
+   progress at 2026-10-21 03:43:51:
+      generation : finished (3128 s)
+      extraction : finished (11146 s, magic exit 0)
+      LVS        : finished
+      r10  running                                  8h00m     150.0 of    522.5 ns ( 28.7 %)
+      r20  running                                  8h00m     100.0 of    585.0 ns ( 17.1 %)
+   progress at 2026-10-21 04:13:54:
+      generation : finished (3128 s)
+      extraction : finished (11146 s, magic exit 0)
+      LVS        : finished
+      r10  running                                  8h30m     200.0 of    522.5 ns ( 38.3 %)
+      r20  running                                  8h30m     200.0 of    585.0 ns ( 34.2 %)
+   progress at 2026-10-21 04:43:56:
+      generation : finished (3128 s)
+      extraction : finished (11146 s, magic exit 0)
+      LVS        : finished
+      r10  running                                  9h00m     250.0 of    522.5 ns ( 47.8 %)
+      r20  running                                  9h00m     300.0 of    585.0 ns ( 51.3 %)
+   progress at 2026-10-21 05:13:59:
+      generation : finished (3128 s)
+      extraction : finished (11146 s, magic exit 0)
+      LVS        : finished
+      r10  running                                  9h30m     300.0 of    522.5 ns ( 57.4 %)
+      r20  running                                  9h30m     300.0 of    585.0 ns ( 51.3 %)
+   progress at 2026-10-21 05:44:02:
+      generation : finished (3128 s)
+      extraction : finished (11146 s, magic exit 0)
+      LVS        : finished
+      r10  running                                  10h00m    350.0 of    522.5 ns ( 67.0 %)
+      r20  running                                  10h00m    400.0 of    585.0 ns ( 68.4 %)
+   progress at 2026-10-21 06:14:04:
+      generation : finished (3128 s)
+      extraction : finished (11146 s, magic exit 0)
+      LVS        : finished
+      r10  running                                  10h30m    400.0 of    522.5 ns ( 76.6 %)
+      r20  running                                  10h30m    400.0 of    585.0 ns ( 68.4 %)
+   progress at 2026-10-21 06:44:07:
+      generation : finished (3128 s)
+      extraction : finished (11146 s, magic exit 0)
+      LVS        : finished
+      r10  running                                  11h00m    450.0 of    522.5 ns ( 86.1 %)
+      r20  running                                  11h00m    500.0 of    585.0 ns ( 85.5 %)
+
+########## f. results ##########
+   G2 LVS (step d): PASS
+
+---- run r10: finished, wall time 11h06m, ngspice exit 0 ----
+   Total analysis time (seconds) = 17640.8
+   peak memory of ngspice: 7139 MB
+P2R-E8.4c analysis: sky130_sram_4kbytes_1rw_8x4096_8  period 10.0 ns  vdd 1.8 V  corner tt 25.0 C  load 10.0 fF per output  points 11461
+data: simulated to 522.5 of 522.5 ns, 41 of 41 cycles complete
+E_vdd: energy from the supply from the cycle's rising edge to the next; E_in: from the input sources; P_end: supply power at the end of the cycle (stopped segment: average over its last fifth)
+  k kind   addr  data read@half read@end  ok  E_vdd pJ  E_in pJ  P_end uW t_acc ns
+  0 idle            -         -        -         8.314    0.003   195.134 
+  1 idle            -         -        -         4.016   -0.018     3.738 
+  2 write     0    00         -        -        78.131    0.297  2212.956 
+  3 write  4095    ff         -        -        78.035   -0.197  2806.020 
+  4 write  2055    00         -        -        71.948    0.084  2450.728 
+  5 write  1032    ff         -        -        73.559   -0.017  2773.146 
+  6 write    19    55         -        -        72.331    0.037  2595.226 
+  7 write  3084    aa         -        -        73.240   -0.014  2669.653 
+  8 write   513    0f         -        -        72.188    0.072  2564.537 
+  9 write  3598    f0         -        -        71.537    0.027  2675.700 
+ 10 idle            -         -        -         9.879   -0.083    15.613 
+ 11 read      0    00        00       00 yes    62.879    0.011  2751.808    2.184   after the stop: 00 yes, t_acc 2.184 ns
+ 12 stop            -         -        -         7.741    0.192    38.399 
+ 13 read   4095    ff        00       00  NO    81.818    0.013  2749.766    0.000   after the stop: ff yes, t_acc 10.625 ns
+ 14 stop            -         -        -         8.792   -0.130    52.302 
+ 15 read   2055    00        00       00 yes    78.497    0.014  2707.002    2.049   after the stop: 00 yes, t_acc 2.049 ns
+ 16 stop            -         -        -         7.458   -0.023    35.789 
+ 17 read   1032    ff        00       00  NO    78.598    0.013  2747.466    0.000   after the stop: ff yes, t_acc 10.609 ns
+ 18 stop            -         -        -         8.481    0.009    51.966 
+ 19 read     19    55        00       00  NO    78.007    0.014  2727.819    2.061   after the stop: 55 yes, t_acc 10.609 ns
+ 20 stop            -         -        -         8.040    0.016    44.128 
+ 21 read   3084    aa        00       00  NO    78.692    0.014  2725.789    2.048   after the stop: aa yes, t_acc 10.609 ns
+ 22 stop            -         -        -         8.031   -0.029    44.007 
+ 23 read    513    0f        00       00  NO    78.294    0.013  2729.270    2.055   after the stop: 0f yes, t_acc 10.625 ns
+ 24 stop            -         -        -         7.976    0.053    43.920 
+ 25 read   3598    f0        00       00  NO    77.789    0.014  2726.050    2.097   after the stop: f0 yes, t_acc 10.609 ns
+ 26 stop            -         -        -         8.033   -0.085    43.739 
+ 27 read      0    00        00       00 yes    78.046    0.202  2499.147    1.997
+ 28 read   4095    ff        00       00  NO    71.426   -0.119  2776.316    0.000
+ 29 read   2055    00        00       00 yes    68.370   -0.013  2717.249    1.458
+ 30 read   1032    ff        00       00  NO    67.324    0.020  2729.301    0.000
+ 31 read     19    55        00       00  NO    67.915    0.027  2689.615    1.454
+ 32 read   3084    aa        00       00  NO    67.995   -0.019  2734.348    1.458
+ 33 read    513    0f        00       00  NO    67.560    0.064  2663.547    1.455
+ 34 read   3598    f0        00       00  NO    66.866    0.013  2744.862    1.462
+ 35 idle            -         -        -        10.376    0.004   222.035 
+ 36 idle            -         -        -         4.918    0.001   229.012 
+ 37 idle            -         -        -         4.924    0.001   228.632 
+ 38 stop            -         -        -         7.581    0.099   145.060 
+ 39 read   4095    ff        00       00  NO    61.249    0.011  2765.481    1.600   after the stop: ff yes, t_acc 10.609 ns
+ 40 stop            -         -        -         8.472   -0.001     1.255 
+summary: {"reads": 17, "reads_ok": 4, "E_read_pJ_mean": 72.4309, "E_read_pJ_min": 61.2495, "E_read_pJ_max": 81.8182, "E_write_pJ_mean": 73.8713, "E_idle_pJ_mean": 7.0712, "P_stop_uW": 1.2548, "P_stop_after_read_uW": [38.3989, 52.3018, 35.7894, 51.9665, 44.1277, 44.0067, 43.9198, 43.7393, 1.2548], "P_stop_after_idle_uW": [145.0605], "E_read_after_stop_pJ_mean": 76.7767, "reads_ok_at_half": 4, "E_read_gated_pJ": [70.2366, 90.0876, 85.597, 86.5594, 85.6056, 86.2828, 85.8302, 85.384, 69.6462], "t_acc_ns_max": 2.1843, "reads_gated": 9, "reads_ok_after_stop": 9, "t_acc_gated_ns_max": 10.625, "wrong_bits": [{"k": 13, "addr": 4095, "bit": 0, "expected": 1, "read": 0, "prev_addr": 0, "prev_bit": 0}, {"k": 13, "addr": 4095, "bit": 1, "expected": 1, "read": 0, "prev_addr": 0, "prev_bit": 0}, {"k": 13, "addr": 4095, "bit": 2, "expected": 1, "read": 0, "prev_addr": 0, "prev_bit": 0}, {"k": 13, "addr": 4095, "bit": 3, "expected": 1, "read": 0, "prev_addr": 0, "prev_bit": 0}, {"k": 13, "addr": 4095, "bit": 4, "expected": 1, "read": 0, "prev_addr": 0, "prev_bit": 0}, {"k": 13, "addr": 4095, "bit": 5, "expected": 1, "read": 0, "prev_addr": 0, "prev_bit": 0}, {"k": 13, "addr": 4095, "bit": 6, "expected": 1, "read": 0, "prev_addr": 0, "prev_bit": 0}, {"k": 13, "addr": 4095, "bit": 7, "expected": 1, "read": 0, "prev_addr": 0, "prev_bit": 0}, {"k": 17, "addr": 1032, "bit": 0, "expected": 1, "read": 0, "prev_addr": 2055, "prev_bit": 0}, {"k": 17, "addr": 1032, "bit": 1, "expected": 1, "read": 0, "prev_addr": 2055, "prev_bit": 0}, {"k": 17, "addr": 1032, "bit": 2, "expected": 1, "read": 0, "prev_addr": 2055, "prev_bit": 0}, {"k": 17, "addr": 1032, "bit": 3, "expected": 1, "read": 0, "prev_addr": 2055, "prev_bit": 0}, {"k": 17, "addr": 1032, "bit": 4, "expected": 1, "read": 0, "prev_addr": 2055, "prev_bit": 0}, {"k": 17, "addr": 1032, "bit": 5, "expected": 1, "read": 0, "prev_addr": 2055, "prev_bit": 0}, {"k": 17, "addr": 1032, "bit": 6, "expected": 1, "read": 0, "prev_addr": 2055, "prev_bit": 0}, {"k": 17, "addr": 1032, "bit": 7, "expected": 1, "read": 0, "prev_addr": 2055, "prev_bit": 0}, {"k": 19, "addr": 19, "bit": 0, "expected": 1, "read": 0, "prev_addr": 1032, "prev_bit": 0}, {"k": 19, "addr": 19, "bit": 2, "expected": 1, "read": 0, "prev_addr": 1032, "prev_bit": 0}, {"k": 19, "addr": 19, "bit": 4, "expected": 1, "read": 0, "prev_addr": 1032, "prev_bit": 0}, {"k": 19, "addr": 19, "bit": 6, "expected": 1, "read": 0, "prev_addr": 1032, "prev_bit": 0}, {"k": 21, "addr": 3084, "bit": 1, "expected": 1, "read": 0, "prev_addr": 19, "prev_bit": 0}, {"k": 21, "addr": 3084, "bit": 3, "expected": 1, "read": 0, "prev_addr": 19, "prev_bit": 0}, {"k": 21, "addr": 3084, "bit": 5, "expected": 1, "read": 0, "prev_addr": 19, "prev_bit": 0}, {"k": 21, "addr": 3084, "bit": 7, "expected": 1, "read": 0, "prev_addr": 19, "prev_bit": 0}, {"k": 23, "addr": 513, "bit": 0, "expected": 1, "read": 0, "prev_addr": 3084, "prev_bit": 0}, {"k": 23, "addr": 513, "bit": 1, "expected": 1, "read": 0, "prev_addr": 3084, "prev_bit": 0}, {"k": 23, "addr": 513, "bit": 2, "expected": 1, "read": 0, "prev_addr": 3084, "prev_bit": 0}, {"k": 23, "addr": 513, "bit": 3, "expected": 1, "read": 0, "prev_addr": 3084, "prev_bit": 0}, {"k": 25, "addr": 3598, "bit": 4, "expected": 1, "read": 0, "prev_addr": 513, "prev_bit": 0}, {"k": 25, "addr": 3598, "bit": 5, "expected": 1, "read": 0, "prev_addr": 513, "prev_bit": 0}, {"k": 25, "addr": 3598, "bit": 6, "expected": 1, "read": 0, "prev_addr": 513, "prev_bit": 0}, {"k": 25, "addr": 3598, "bit": 7, "expected": 1, "read": 0, "prev_addr": 513, "prev_bit": 0}, {"k": 28, "addr": 4095, "bit": 0, "expected": 1, "read": 0, "prev_addr": 0, "prev_bit": 0}, {"k": 28, "addr": 4095, "bit": 1, "expected": 1, "read": 0, "prev_addr": 0, "prev_bit": 0}, {"k": 28, "addr": 4095, "bit": 2, "expected": 1, "read": 0, "prev_addr": 0, "prev_bit": 0}, {"k": 28, "addr": 4095, "bit": 3, "expected": 1, "read": 0, "prev_addr": 0, "prev_bit": 0}, {"k": 28, "addr": 4095, "bit": 4, "expected": 1, "read": 0, "prev_addr": 0, "prev_bit": 0}, {"k": 28, "addr": 4095, "bit": 5, "expected": 1, "read": 0, "prev_addr": 0, "prev_bit": 0}, {"k": 28, "addr": 4095, "bit": 6, "expected": 1, "read": 0, "prev_addr": 0, "prev_bit": 0}, {"k": 28, "addr": 4095, "bit": 7, "expected": 1, "read": 0, "prev_addr": 0, "prev_bit": 0}, {"k": 30, "addr": 1032, "bit": 0, "expected": 1, "read": 0, "prev_addr": 2055, "prev_bit": 0}, {"k": 30, "addr": 1032, "bit": 1, "expected": 1, "read": 0, "prev_addr": 2055, "prev_bit": 0}, {"k": 30, "addr": 1032, "bit": 2, "expected": 1, "read": 0, "prev_addr": 2055, "prev_bit": 0}, {"k": 30, "addr": 1032, "bit": 3, "expected": 1, "read": 0, "prev_addr": 2055, "prev_bit": 0}, {"k": 30, "addr": 1032, "bit": 4, "expected": 1, "read": 0, "prev_addr": 2055, "prev_bit": 0}, {"k": 30, "addr": 1032, "bit": 5, "expected": 1, "read": 0, "prev_addr": 2055, "prev_bit": 0}, {"k": 30, "addr": 1032, "bit": 6, "expected": 1, "read": 0, "prev_addr": 2055, "prev_bit": 0}, {"k": 30, "addr": 1032, "bit": 7, "expected": 1, "read": 0, "prev_addr": 2055, "prev_bit": 0}, {"k": 31, "addr": 19, "bit": 0, "expected": 1, "read": 0, "prev_addr": 1032, "prev_bit": 0}, {"k": 31, "addr": 19, "bit": 2, "expected": 1, "read": 0, "prev_addr": 1032, "prev_bit": 0}, {"k": 31, "addr": 19, "bit": 4, "expected": 1, "read": 0, "prev_addr": 1032, "prev_bit": 0}, {"k": 31, "addr": 19, "bit": 6, "expected": 1, "read": 0, "prev_addr": 1032, "prev_bit": 0}, {"k": 32, "addr": 3084, "bit": 1, "expected": 1, "read": 0, "prev_addr": 19, "prev_bit": 0}, {"k": 32, "addr": 3084, "bit": 3, "expected": 1, "read": 0, "prev_addr": 19, "prev_bit": 0}, {"k": 32, "addr": 3084, "bit": 5, "expected": 1, "read": 0, "prev_addr": 19, "prev_bit": 0}, {"k": 32, "addr": 3084, "bit": 7, "expected": 1, "read": 0, "prev_addr": 19, "prev_bit": 0}, {"k": 33, "addr": 513, "bit": 0, "expected": 1, "read": 0, "prev_addr": 3084, "prev_bit": 0}, {"k": 33, "addr": 513, "bit": 1, "expected": 1, "read": 0, "prev_addr": 3084, "prev_bit": 0}, {"k": 33, "addr": 513, "bit": 2, "expected": 1, "read": 0, "prev_addr": 3084, "prev_bit": 0}, {"k": 33, "addr": 513, "bit": 3, "expected": 1, "read": 0, "prev_addr": 3084, "prev_bit": 0}, {"k": 34, "addr": 3598, "bit": 4, "expected": 1, "read": 0, "prev_addr": 513, "prev_bit": 0}, {"k": 34, "addr": 3598, "bit": 5, "expected": 1, "read": 0, "prev_addr": 513, "prev_bit": 0}, {"k": 34, "addr": 3598, "bit": 6, "expected": 1, "read": 0, "prev_addr": 513, "prev_bit": 0}, {"k": 34, "addr": 3598, "bit": 7, "expected": 1, "read": 0, "prev_addr": 513, "prev_bit": 0}, {"k": 39, "addr": 4095, "bit": 0, "expected": 1, "read": 0, "prev_addr": 3598, "prev_bit": 0}, {"k": 39, "addr": 4095, "bit": 1, "expected": 1, "read": 0, "prev_addr": 3598, "prev_bit": 0}, {"k": 39, "addr": 4095, "bit": 2, "expected": 1, "read": 0, "prev_addr": 3598, "prev_bit": 0}, {"k": 39, "addr": 4095, "bit": 3, "expected": 1, "read": 0, "prev_addr": 3598, "prev_bit": 0}, {"k": 39, "addr": 4095, "bit": 4, "expected": 1, "read": 0, "prev_addr": 3598, "prev_bit": 0}, {"k": 39, "addr": 4095, "bit": 5, "expected": 1, "read": 0, "prev_addr": 3598, "prev_bit": 0}, {"k": 39, "addr": 4095, "bit": 6, "expected": 1, "read": 0, "prev_addr": 3598, "prev_bit": 0}, {"k": 39, "addr": 4095, "bit": 7, "expected": 1, "read": 0, "prev_addr": 3598, "prev_bit": 0}], "complete": true}
+
+---- run r20: finished, wall time 11h15m, ngspice exit 0 ----
+   Total analysis time (seconds) = 18197.9
+   peak memory of ngspice: 7140 MB
+P2R-E8.4c analysis: sky130_sram_4kbytes_1rw_8x4096_8  period 20.0 ns  vdd 1.8 V  corner tt 25.0 C  load 10.0 fF per output  points 12405
+data: simulated to 585.0 of 585.0 ns, 30 of 30 cycles complete
+E_vdd: energy from the supply from the cycle's rising edge to the next; E_in: from the input sources; P_end: supply power at the end of the cycle (stopped segment: average over its last fifth)
+  k kind   addr  data read@half read@end  ok  E_vdd pJ  E_in pJ  P_end uW t_acc ns
+  0 idle            -         -        -         7.164    0.003    23.973 
+  1 idle            -         -        -         4.015   -0.018     2.122 
+  2 write     0    00         -        -        83.575    0.298   875.117 
+  3 write  4095    ff         -        -        92.692   -0.204   375.059 
+  4 write  2055    00         -        -        86.592    0.084   439.851 
+  5 write  1032    ff         -        -        88.756   -0.017   423.783 
+  6 write    19    55         -        -        87.218    0.038   443.566 
+  7 write  3084    aa         -        -        88.123   -0.014   408.832 
+  8 write   513    0f         -        -        87.097    0.073   467.877 
+  9 write  3598    f0         -        -        86.451    0.027   396.376 
+ 10 idle            -         -        -         7.691   -0.083     7.422 
+ 11 read      0    00        00       00 yes    80.722    0.011   433.024    2.184   after the stop: 00 yes, t_acc 2.184 ns
+ 12 stop            -         -        -         1.099    0.192     2.136 
+ 13 read   4095    ff        00       ff yes    89.474    0.012   481.261   15.609   after the stop: ff yes, t_acc 15.609 ns
+ 14 stop            -         -        -         1.371   -0.129     3.939 
+ 15 read   2055    00        00       00 yes    85.020    0.014   441.989    2.057   after the stop: 00 yes, t_acc 2.057 ns
+ 16 stop            -         -        -         0.991   -0.023     1.947 
+ 17 read   1032    ff        00       ff yes    86.162    0.012   479.218   15.609   after the stop: ff yes, t_acc 15.609 ns
+ 18 stop            -         -        -         1.068    0.010     3.985 
+ 19 read     19    55        00       55 yes    85.096    0.013   462.466   15.609   after the stop: 55 yes, t_acc 15.609 ns
+ 20 stop            -         -        -         1.087    0.018     3.024 
+ 21 read   3084    aa        00       aa yes    85.762    0.014   448.073   15.563   after the stop: aa yes, t_acc 15.563 ns
+ 22 stop            -         -        -         1.072   -0.029     2.940 
+ 23 read    513    0f        00       0f yes    85.411    0.012   460.995   15.609   after the stop: 0f yes, t_acc 15.609 ns
+ 24 stop            -         -        -         0.987    0.055     2.977 
+ 25 read   3598    f0        00       f0 yes    84.810    0.014   461.001   15.609   after the stop: f0 yes, t_acc 15.609 ns
+ 26 stop            -         -        -         0.664    0.001     2.843 
+ 27 idle            -         -        -         7.194    0.003   -24.207 
+ 28 idle            -         -        -         3.712    0.001   -19.803 
+ 29 stop            -         -        -         0.074   -0.000     1.173 
+summary: {"reads": 8, "reads_ok": 8, "E_read_pJ_mean": 85.3071, "E_read_pJ_min": 80.7217, "E_read_pJ_max": 89.4738, "E_write_pJ_mean": 87.563, "E_idle_pJ_mean": 5.9554, "P_stop_uW": 1.1733, "P_stop_after_read_uW": [2.1363, 3.9388, 1.9467, 3.9847, 3.0238, 2.9396, 2.9766, 2.8427], "P_stop_after_idle_uW": [1.1733], "E_read_after_stop_pJ_mean": 85.9621, "reads_ok_at_half": 2, "E_read_gated_pJ": [81.7992, 90.8051, 85.9915, 87.1898, 86.1522, 86.8046, 86.3677, 85.4459], "t_acc_ns_max": 15.6088, "reads_gated": 8, "reads_ok_after_stop": 8, "t_acc_gated_ns_max": 15.6088, "wrong_bits": [], "complete": true}
+
+P2R-E8.4c summary (v7, E8.4f: the sense-side precharge drawn in the layout)
+   G0 the macro of the manuscript plus the sense precharge (netlists; LEF width equal, height 477.365 588.13 um): PASS
+   G1t top-level check (no column-select line joined to a control signal): NO SHORT OF THIS KIND
+   G1 extraction: PASS; G1b floating gates only in the dummy cells: PASS
+   G2 LVS: PASS
+   G3 both simulations complete, at least 90 % of the reads correct with a 20 ns clock: PASS
+   F1 wrong bits in the two runs: 72
+   F2 every read correct with the 10 ns clock (the system clock), r10: no
+   F2b every gated read of r10 correct at the end of its 10 ns stop (data within two system cycles): yes
+   r10: reads 4/17 correct at the end of the cycle, 4 at the falling edge; read cycle 72.431 pJ (min 61.249, max 81.818); gated read [70.2366, 90.0876, 85.597, 86.5594, 85.6056, 86.2828, 85.8302, 85.384, 69.6462]; cycle without access 7.071 pJ; stopped after a read [38.3989, 52.3018, 35.7894, 51.9665, 44.1277, 44.0067, 43.9198, 43.7393, 1.2548] uW, after cycles without access [145.0605] uW; access time up to 2.1842840000000128 ns; gated reads correct at the end of the stop 9/9, access time up to 10.624999999999977 ns
+   r10: reads in consecutive cycles (after a read): 7, 68.208 pJ (min 66.866, max 71.426)
+   r20: reads 8/8 correct at the end of the cycle, 2 at the falling edge; read cycle 85.307 pJ (min 80.722, max 89.474); gated read [81.7992, 90.8051, 85.9915, 87.1898, 86.1522, 86.8046, 86.3677, 85.4459]; cycle without access 5.955 pJ; stopped after a read [2.1363, 3.9388, 1.9467, 3.9847, 3.0238, 2.9396, 2.9766, 2.8427] uW, after cycles without access [1.1733] uW; access time up to 15.608795999999993 ns; gated reads correct at the end of the stop 8/8, access time up to 15.608795999999993 ns
+   r10: 72 wrong bits, 72 of them read 0 where the previous read of that output gave 0 and 1 was expected: k13 addr 4095 bit 0 (previous read addr 0, bit 0); k13 addr 4095 bit 1 (previous read addr 0, bit 0); k13 addr 4095 bit 2 (previous read addr 0, bit 0); k13 addr 4095 bit 3 (previous read addr 0, bit 0); k13 addr 4095 bit 4 (previous read addr 0, bit 0); k13 addr 4095 bit 5 (previous read addr 0, bit 0); k13 addr 4095 bit 6 (previous read addr 0, bit 0); k13 addr 4095 bit 7 (previous read addr 0, bit 0); k17 addr 1032 bit 0 (previous read addr 2055, bit 0); k17 addr 1032 bit 1 (previous read addr 2055, bit 0); k17 addr 1032 bit 2 (previous read addr 2055, bit 0); k17 addr 1032 bit 3 (previous read addr 2055, bit 0)
+   OpenRAM analytical values used by the manuscript: 11.81819 pJ per access, 0.034375 mW leakage
+
+copied the logs and results to /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4f (81M); work folder /home/kid/p2r_e8/e8_4f (3.0G)
+finished 2026-10-21 06:59:10, 931 min; send the log of this run (reports/e8_4f_sram_char*.log)

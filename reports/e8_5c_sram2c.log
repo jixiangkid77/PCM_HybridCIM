@@ -1,0 +1,417 @@
+==============================================================
+P2R-E8.5c two-cycle SRAM read (RTL), started 2026-10-18 20:03:00
+==============================================================
+---- delivered files against the manifest ----
+rtl/e8/sram_pool_25lane_2c.v: OK
+rtl/e8/pcm_imc_unit_e8s.v: OK
+rtl/e8/e8_5c_inputs.md5: OK
+rtl/e8/tb/e8_5c_monitor.v: OK
+rtl/e8/tb/tb_sram_pool_2c.v: OK
+scripts/e8_5c_sram2c.sh: OK
+scripts/e8_5c_check.py: OK
+---- unchanged inputs (E8.5 and before) against their checksums ----
+rtl/src/argmax10.v: OK
+rtl/src/argmax_wrapper.v: OK
+rtl/src/bias_storage.v: OK
+rtl/src/combiner.v: OK
+rtl/src/conv_engine.v: OK
+rtl/src/fc_engine.v: OK
+rtl/src/feature_buffer.v: OK
+rtl/src/layer_config_regfile.v: OK
+rtl/src/layer_desc_rom.v: OK
+rtl/src/lenet5_top.v: OK
+rtl/src/logit_rf.v: OK
+rtl/src/maxpool2x2.v: OK
+rtl/src/pcm_crossbar.v: OK
+rtl/src/pool_wrapper.v: OK
+rtl/src/sram_mac.v: OK
+rtl/src/sram_pool_25lane.v: OK
+rtl/src/top_fsm.v: OK
+rtl/src/pcm_imc_unit.v: OK
+rtl/src/sram_addr_decoder.v: OK
+rtl/src/pcm_addr_decoder.v: OK
+rtl/tb/tb_lenet5_full_inference_v3.v: OK
+rtl/tb/e8_lookup_monitor.v: OK
+rtl/e8/amu_park_A.vh: OK
+rtl/e8/amu_park_B.vh: OK
+reports/e8_rom/trace/trace_A.txt: OK
+reports/e8_rom/trace/trace_B.txt: OK
+   rtl/e8/amu_buf.v: OK
+   rtl/e8/amu_core.v: OK
+   rtl/e8/amu_entry.v: OK
+   rtl/e8/amu_lanes.v: OK
+   rtl/e8/amu_pflags.v: OK
+   rtl/e8/amu_table.v: OK
+   rtl/e8/amu_top.v: OK
+   rtl/e8/e8_rom_r48.v: OK
+   rtl/e8/e8_rom_r48_stub.v: OK
+   rtl/e8/pcm_imc_unit_e8.v: OK
+   rtl/e8/tb/e8_5_amu_monitor.v: OK
+   rtl/e8/tb/tb_amu_engines.v: OK
+   rtl/e8/tb/tb_amu_entry_exh.v: OK
+   rtl/e8/tb/tb_amu_lanes.v: OK
+   scripts/e8_5_amu.sh: OK
+   scripts/e8_5_check.py: OK
+   scripts/e8_5_park_words.py: OK
+   f4b03894b6cb840f3de0bd5b807caed5  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/e85_trace_A.txt
+   eea87bea3f0b6c61bab4ff84d1085563  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/e85_trace_B.txt
+   0a4ee0258b239eb239c888559ef753b7  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/e85_events_A.txt
+   397e3540050a9a99dcfce86d6323a4cd  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/e85_events_B.txt
+iverilog : /usr/bin/iverilog  Icarus Verilog version 12.0 (stable) ()
+python3  : /usr/bin/python3  Python 3.12.3
+jobs     : at most 2 simulations at a time (E8_JOBS)
+disk     : 850 GB free for /home/kid/p2r_e8/e8_5c
+
+==== 1. unit test U1: two-cycle pool against the one-cycle pool ====
+   sram_pool_25lane_2c against sram_pool_25lane one cycle earlier: 203075 cycles compared, 1951207 lane hits, sweep 76850 lane reads (every address on every lane), reset check 0 bad, 0 mismatches
+P2R-E8.5c unit test: u2c.log  (md5 e3d8404dbf466f30067261228ca80415)
+  PASS  U1 two-cycle pool = one-cycle pool one cycle earlier: cycles 203075 (>= 200000), sweep lane reads 76850 (76850), reset check bad 0 (0), mismatches 0 (0); lane hits 1951207
+  PASS  U1 unit test
+   [20:04:13, 73 s since the start]
+
+==== 2. full inference: base (E8.5 design), new, once; models A and B ====
+model A, base: iverilog exit 0
+model A, new: iverilog exit 0
+model A, once: iverilog exit 0
+model B, base: iverilog exit 0
+model B, new: iverilog exit 0
+model B, once: iverilog exit 0
+---- source files of the new compile (model A), with checksums ----
+   f052198c7a66  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_buf.v
+   8ade1b5409b0  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_core.v
+   3dad9932b80d  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_entry.v
+   6b6743793e40  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_lanes.v
+   32c1b2b4d11c  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_park_A.vh
+   45ad881c2714  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_pflags.v
+   ffb346bd2da4  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_table.v
+   70c844246dfe  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_top.v
+   d033df35e492  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/e8_rom_r48.v
+   58e180840ae6  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/pcm_imc_unit_e8s.v
+   ea0f0f37286f  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/sram_pool_25lane_2c.v
+   90fb91ebd736  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/tb/e8_5_amu_monitor.v
+   74fcf0537638  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/tb/e8_5c_monitor.v
+   73169f323366  /mnt/d/Project/hybrid_memory/paper2/rtl/src/argmax10.v
+   a13c5bfdc98e  /mnt/d/Project/hybrid_memory/paper2/rtl/src/argmax_wrapper.v
+   c895003667bd  /mnt/d/Project/hybrid_memory/paper2/rtl/src/bias_storage.v
+   d5ddf2ae7f80  /mnt/d/Project/hybrid_memory/paper2/rtl/src/combiner.v
+   f8323afb4162  /mnt/d/Project/hybrid_memory/paper2/rtl/src/conv_engine.v
+   94103f230f87  /mnt/d/Project/hybrid_memory/paper2/rtl/src/fc_engine.v
+   456811ccb911  /mnt/d/Project/hybrid_memory/paper2/rtl/src/feature_buffer.v
+   f0fb32c3ce0c  /mnt/d/Project/hybrid_memory/paper2/rtl/src/layer_config_regfile.v
+   063b1d55977f  /mnt/d/Project/hybrid_memory/paper2/rtl/src/layer_desc_rom.v
+   f251ef0a8dfe  /mnt/d/Project/hybrid_memory/paper2/rtl/src/lenet5_top.v
+   dfcfbd26d555  /mnt/d/Project/hybrid_memory/paper2/rtl/src/logit_rf.v
+   7a78d30f2af1  /mnt/d/Project/hybrid_memory/paper2/rtl/src/maxpool2x2.v
+   9ccbf846a598  /mnt/d/Project/hybrid_memory/paper2/rtl/src/pcm_crossbar.v
+   f12aa505d3db  /mnt/d/Project/hybrid_memory/paper2/rtl/src/pool_wrapper.v
+   5c1a15878147  /mnt/d/Project/hybrid_memory/paper2/rtl/src/sram_mac.v
+   ef9ddd99302e  /mnt/d/Project/hybrid_memory/paper2/rtl/src/top_fsm.v
+   fe997fbee582  /mnt/d/Project/hybrid_memory/paper2/rtl/tb/e8_lookup_monitor.v
+   23ff16d1cb27  /mnt/d/Project/hybrid_memory/paper2/rtl/tb/tb_lenet5_full_inference_v3.v
+---- simulate, started 2026-10-18 20:04:19 ----
+---- model A, base: vvp exit 0, 333.81 s wall, 55680 kB peak 334 s 
+   base  [E8 MONITOR] 16684 MAC operations recorded to /home/kid/p2r_e8/e8_5c/e8t_base_A.txt
+   base    [PASS] inference complete at cycle 617573
+   base  SRAM protected-weight reads (per MAC op): 267143
+   base      [raw lane-cycles, NOT the energy count: 8747455]
+   base  RESULT: ALL TESTS PASSED
+   base  [E8.5 MONITOR] ==== address-map unit (E8.5) ====
+   base  [E8.5 MONITOR] operations at the datapath start 16684, engine start pulses 16684 -> trace /home/kid/p2r_e8/e8_5c/e85t_base_A.txt
+   base  [E8.5 MONITOR] unit counters: starts 16684, stall cycles 0, lookup pulses 2484, parking pulses 113
+   base  [E8.5 MONITOR] error flags {queue,lane0,mismatch} 000; parking rule violations 0; macros unparked at the end 0
+   base  [E8.5 MONITOR] ROM pulses in the event list: lookup 2484, parking 113 (before start 2, after done 0) -> /home/kid/p2r_e8/e8_5c/e85e_base_A.txt
+   base  [E8.5 MONITOR] macro reads implied by the events: lookup 123040 + parking 2825 = 125865
+   base  [E8.5 MONITOR] macro reads counted by the 200 models: 125865 (equal); models never read 0
+   base  [E8.5 MONITOR] ROM protocol at the models: CS at the clock edge 0, address changed while high 0, invalid word 0, shortest clock low before a read 50.0 ns
+   base  [E8.5c MONITOR] SRAM_LATENCY 2, ALIGN_DELAY 6
+   base  [E8.5c MONITOR] results 16684 -> /home/kid/p2r_e8/e8_5c/res_base_A.txt
+   base  [E8.5c MONITOR] datapath starts 16684, SRAM reads 267143
+   base  [E8.5c MONITOR] shortest interval between two SRAM reads of one lane 14 cycles (lane 1); intervals below 2: 0
+   base  [E8.5c MONITOR] cycles with a pool hit while the datapath start is low: 560568
+---- model A, new: vvp exit 0, 331.88 s wall, 55296 kB peak 332 s 
+   new  [E8 MONITOR] 16684 MAC operations recorded to /home/kid/p2r_e8/e8_5c/e8t_new_A.txt
+   new    [PASS] inference complete at cycle 617573
+   new  SRAM protected-weight reads (per MAC op): 267143
+   new      [raw lane-cycles, NOT the energy count: 8747455]
+   new  RESULT: ALL TESTS PASSED
+   new  [E8.5 MONITOR] ==== address-map unit (E8.5) ====
+   new  [E8.5 MONITOR] operations at the datapath start 16684, engine start pulses 16684 -> trace /home/kid/p2r_e8/e8_5c/e85t_new_A.txt
+   new  [E8.5 MONITOR] unit counters: starts 16684, stall cycles 0, lookup pulses 2484, parking pulses 113
+   new  [E8.5 MONITOR] error flags {queue,lane0,mismatch} 000; parking rule violations 0; macros unparked at the end 0
+   new  [E8.5 MONITOR] ROM pulses in the event list: lookup 2484, parking 113 (before start 2, after done 0) -> /home/kid/p2r_e8/e8_5c/e85e_new_A.txt
+   new  [E8.5 MONITOR] macro reads implied by the events: lookup 123040 + parking 2825 = 125865
+   new  [E8.5 MONITOR] macro reads counted by the 200 models: 125865 (equal); models never read 0
+   new  [E8.5 MONITOR] ROM protocol at the models: CS at the clock edge 0, address changed while high 0, invalid word 0, shortest clock low before a read 50.0 ns
+   new  [E8.5c MONITOR] SRAM_LATENCY 2, ALIGN_DELAY 6
+   new  [E8.5c MONITOR] results 16684 -> /home/kid/p2r_e8/e8_5c/res_new_A.txt
+   new  [E8.5c MONITOR] datapath starts 16684, SRAM reads 267143
+   new  [E8.5c MONITOR] shortest interval between two SRAM reads of one lane 14 cycles (lane 1); intervals below 2: 0
+   new  [E8.5c MONITOR] cycles with a pool hit while the datapath start is low: 560568
+---- model A, once: vvp exit 0, 302.22 s wall, 55296 kB peak 302 s 
+   once  [E8 MONITOR] 16684 MAC operations recorded to /home/kid/p2r_e8/e8_5c/e8t_once_A.txt
+   once    [PASS] inference complete at cycle 617573
+   once  SRAM protected-weight reads (per MAC op): 267143
+   once      [raw lane-cycles, NOT the energy count: 267143]
+   once  RESULT: ALL TESTS PASSED
+   once  [E8.5 MONITOR] ==== address-map unit (E8.5) ====
+   once  [E8.5 MONITOR] operations at the datapath start 16684, engine start pulses 16684 -> trace /home/kid/p2r_e8/e8_5c/e85t_once_A.txt
+   once  [E8.5 MONITOR] unit counters: starts 16684, stall cycles 0, lookup pulses 2484, parking pulses 113
+   once  [E8.5 MONITOR] error flags {queue,lane0,mismatch} 000; parking rule violations 0; macros unparked at the end 0
+   once  [E8.5 MONITOR] ROM pulses in the event list: lookup 2484, parking 113 (before start 2, after done 0) -> /home/kid/p2r_e8/e8_5c/e85e_once_A.txt
+   once  [E8.5 MONITOR] macro reads implied by the events: lookup 123040 + parking 2825 = 125865
+   once  [E8.5 MONITOR] macro reads counted by the 200 models: 125865 (equal); models never read 0
+   once  [E8.5 MONITOR] ROM protocol at the models: CS at the clock edge 0, address changed while high 0, invalid word 0, shortest clock low before a read 50.0 ns
+   once  [E8.5c MONITOR] SRAM_LATENCY 2, ALIGN_DELAY 6
+   once  [E8.5c MONITOR] results 16684 -> /home/kid/p2r_e8/e8_5c/res_once_A.txt
+   once  [E8.5c MONITOR] datapath starts 16684, SRAM reads 267143
+   once  [E8.5c MONITOR] shortest interval between two SRAM reads of one lane 14 cycles (lane 1); intervals below 2: 0
+   once  [E8.5c MONITOR] cycles with a pool hit while the datapath start is low: 0
+---- model B, base: vvp exit 0, 330.96 s wall, 55552 kB peak 331 s 
+   base  [E8 MONITOR] 16684 MAC operations recorded to /home/kid/p2r_e8/e8_5c/e8t_base_B.txt
+   base    [PASS] inference complete at cycle 617573
+   base  SRAM protected-weight reads (per MAC op): 205664
+   base      [raw lane-cycles, NOT the energy count: 7143942]
+   base  RESULT: ALL TESTS PASSED
+   base  [E8.5 MONITOR] ==== address-map unit (E8.5) ====
+   base  [E8.5 MONITOR] operations at the datapath start 16684, engine start pulses 16684 -> trace /home/kid/p2r_e8/e8_5c/e85t_base_B.txt
+   base  [E8.5 MONITOR] unit counters: starts 16684, stall cycles 0, lookup pulses 2484, parking pulses 113
+   base  [E8.5 MONITOR] error flags {queue,lane0,mismatch} 000; parking rule violations 0; macros unparked at the end 0
+   base  [E8.5 MONITOR] ROM pulses in the event list: lookup 2484, parking 113 (before start 2, after done 0) -> /home/kid/p2r_e8/e8_5c/e85e_base_B.txt
+   base  [E8.5 MONITOR] macro reads implied by the events: lookup 123040 + parking 2825 = 125865
+   base  [E8.5 MONITOR] macro reads counted by the 200 models: 125865 (equal); models never read 0
+   base  [E8.5 MONITOR] ROM protocol at the models: CS at the clock edge 0, address changed while high 0, invalid word 0, shortest clock low before a read 50.0 ns
+   base  [E8.5c MONITOR] SRAM_LATENCY 2, ALIGN_DELAY 6
+   base  [E8.5c MONITOR] results 16684 -> /home/kid/p2r_e8/e8_5c/res_base_B.txt
+   base  [E8.5c MONITOR] datapath starts 16684, SRAM reads 205664
+   base  [E8.5c MONITOR] shortest interval between two SRAM reads of one lane 14 cycles (lane 11); intervals below 2: 0
+   base  [E8.5c MONITOR] cycles with a pool hit while the datapath start is low: 554538
+---- model B, new: vvp exit 0, 323.87 s wall, 55424 kB peak 323 s 
+   new  [E8 MONITOR] 16684 MAC operations recorded to /home/kid/p2r_e8/e8_5c/e8t_new_B.txt
+   new    [PASS] inference complete at cycle 617573
+   new  SRAM protected-weight reads (per MAC op): 205664
+   new      [raw lane-cycles, NOT the energy count: 7143942]
+   new  RESULT: ALL TESTS PASSED
+   new  [E8.5 MONITOR] ==== address-map unit (E8.5) ====
+   new  [E8.5 MONITOR] operations at the datapath start 16684, engine start pulses 16684 -> trace /home/kid/p2r_e8/e8_5c/e85t_new_B.txt
+   new  [E8.5 MONITOR] unit counters: starts 16684, stall cycles 0, lookup pulses 2484, parking pulses 113
+   new  [E8.5 MONITOR] error flags {queue,lane0,mismatch} 000; parking rule violations 0; macros unparked at the end 0
+   new  [E8.5 MONITOR] ROM pulses in the event list: lookup 2484, parking 113 (before start 2, after done 0) -> /home/kid/p2r_e8/e8_5c/e85e_new_B.txt
+   new  [E8.5 MONITOR] macro reads implied by the events: lookup 123040 + parking 2825 = 125865
+   new  [E8.5 MONITOR] macro reads counted by the 200 models: 125865 (equal); models never read 0
+   new  [E8.5 MONITOR] ROM protocol at the models: CS at the clock edge 0, address changed while high 0, invalid word 0, shortest clock low before a read 50.0 ns
+   new  [E8.5c MONITOR] SRAM_LATENCY 2, ALIGN_DELAY 6
+   new  [E8.5c MONITOR] results 16684 -> /home/kid/p2r_e8/e8_5c/res_new_B.txt
+   new  [E8.5c MONITOR] datapath starts 16684, SRAM reads 205664
+   new  [E8.5c MONITOR] shortest interval between two SRAM reads of one lane 14 cycles (lane 11); intervals below 2: 0
+   new  [E8.5c MONITOR] cycles with a pool hit while the datapath start is low: 554538
+---- model B, once: vvp exit 0, 306.99 s wall, 55424 kB peak 307 s 
+   once  [E8 MONITOR] 16684 MAC operations recorded to /home/kid/p2r_e8/e8_5c/e8t_once_B.txt
+   once    [PASS] inference complete at cycle 617573
+   once  SRAM protected-weight reads (per MAC op): 205664
+   once      [raw lane-cycles, NOT the energy count: 205664]
+   once  RESULT: ALL TESTS PASSED
+   once  [E8.5 MONITOR] ==== address-map unit (E8.5) ====
+   once  [E8.5 MONITOR] operations at the datapath start 16684, engine start pulses 16684 -> trace /home/kid/p2r_e8/e8_5c/e85t_once_B.txt
+   once  [E8.5 MONITOR] unit counters: starts 16684, stall cycles 0, lookup pulses 2484, parking pulses 113
+   once  [E8.5 MONITOR] error flags {queue,lane0,mismatch} 000; parking rule violations 0; macros unparked at the end 0
+   once  [E8.5 MONITOR] ROM pulses in the event list: lookup 2484, parking 113 (before start 2, after done 0) -> /home/kid/p2r_e8/e8_5c/e85e_once_B.txt
+   once  [E8.5 MONITOR] macro reads implied by the events: lookup 123040 + parking 2825 = 125865
+   once  [E8.5 MONITOR] macro reads counted by the 200 models: 125865 (equal); models never read 0
+   once  [E8.5 MONITOR] ROM protocol at the models: CS at the clock edge 0, address changed while high 0, invalid word 0, shortest clock low before a read 50.0 ns
+   once  [E8.5c MONITOR] SRAM_LATENCY 2, ALIGN_DELAY 6
+   once  [E8.5c MONITOR] results 16684 -> /home/kid/p2r_e8/e8_5c/res_once_B.txt
+   once  [E8.5c MONITOR] datapath starts 16684, SRAM reads 205664
+   once  [E8.5c MONITOR] shortest interval between two SRAM reads of one lane 14 cycles (lane 11); intervals below 2: 0
+   once  [E8.5c MONITOR] cycles with a pool hit while the datapath start is low: 0
+   [20:20:48, 1068 s since the start]
+
+==== 3. checks ====
+---- model A ----
+P2R-E8.5c full-inference checks, model A   2026-10-18 20:20:48
+   script     a64f57dc29521ea768a1a4ce4afde9d2
+   base log   e1f31b44aaea0ab5a938d87e255114c8  /home/kid/p2r_e8/e8_5c/sim_base_A.log
+   base e82   4e89089f8b3bf85c81658d4a26c3cec4  /home/kid/p2r_e8/e8_5c/e8t_base_A.txt
+   base e85t  f4b03894b6cb840f3de0bd5b807caed5  /home/kid/p2r_e8/e8_5c/e85t_base_A.txt
+   base e85e  0a4ee0258b239eb239c888559ef753b7  /home/kid/p2r_e8/e8_5c/e85e_base_A.txt
+   base res   4de64a6eef99f1ada89d95735dc47fc6  /home/kid/p2r_e8/e8_5c/res_base_A.txt
+   new  log   1d65cea7e400a48c905a3542796adb02  /home/kid/p2r_e8/e8_5c/sim_new_A.log
+   new  e82   4e89089f8b3bf85c81658d4a26c3cec4  /home/kid/p2r_e8/e8_5c/e8t_new_A.txt
+   new  e85t  f4b03894b6cb840f3de0bd5b807caed5  /home/kid/p2r_e8/e8_5c/e85t_new_A.txt
+   new  e85e  0a4ee0258b239eb239c888559ef753b7  /home/kid/p2r_e8/e8_5c/e85e_new_A.txt
+   new  res   4de64a6eef99f1ada89d95735dc47fc6  /home/kid/p2r_e8/e8_5c/res_new_A.txt
+   once log   c059ae7df58d47fca19c640c435f3545  /home/kid/p2r_e8/e8_5c/sim_once_A.log
+   once e82   4e89089f8b3bf85c81658d4a26c3cec4  /home/kid/p2r_e8/e8_5c/e8t_once_A.txt
+   once e85t  f4b03894b6cb840f3de0bd5b807caed5  /home/kid/p2r_e8/e8_5c/e85t_once_A.txt
+   once e85e  0a4ee0258b239eb239c888559ef753b7  /home/kid/p2r_e8/e8_5c/e85e_once_A.txt
+   once res   4de64a6eef99f1ada89d95735dc47fc6  /home/kid/p2r_e8/e8_5c/res_once_A.txt
+  PASS  F0 base compile: rtl/e8/pcm_imc_unit_e8.v, rtl/src/sram_pool_25lane.v, rtl/src/lenet5_top.v; none of the new files
+  PASS  F0 new compile: the two new files and rtl/src/lenet5_top.v, none of rtl/src/pcm_imc_unit.v, rtl/src/sram_pool_25lane.v, rtl/e8/pcm_imc_unit_e8.v; other files identical to base
+  PASS  F0 once compile: the two new files and rtl/src/lenet5_top.v, none of rtl/src/pcm_imc_unit.v, rtl/src/sram_pool_25lane.v, rtl/e8/pcm_imc_unit_e8.v; other files identical to base
+        files per compile: base 31, new 31, once 31
+  PASS  F1 base: RESULT: ALL TESTS PASSED
+  PASS  F1 base: inference complete at cycle 617573
+  PASS  F1 base: SRAM reads 267143 (267143)
+  PASS  F1 new: RESULT: ALL TESTS PASSED
+  PASS  F1 new: inference complete at cycle 617573
+  PASS  F1 new: SRAM reads 267143 (267143)
+  PASS  F1 once: RESULT: ALL TESTS PASSED
+  PASS  F1 once: inference complete at cycle 617573
+  PASS  F1 once: SRAM reads 267143 (267143)
+  PASS  F2 base, E8.2 monitor = E8.2 trace /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/trace/trace_A.txt: 16684 lines against 16684, all identical; done line identical
+  PASS  F2 new, E8.2 monitor = base: 16684 lines against 16684, all identical; done line identical; 16684 operations (16684)
+  PASS  F2 once, E8.2 monitor = base: 16684 lines against 16684, all identical; done line identical; 16684 operations (16684)
+  PASS  F3 new, E8.5 trace = base: 16684 lines against 16684, all identical
+  PASS  F3 once, E8.5 trace = base: 16684 lines against 16684, all identical
+  PASS  F3 base, E8.5 trace = E8.5 (/mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/e85_trace_A.txt, md5 f4b03894b6cb840f3de0bd5b807caed5): 16684 lines against 16684, all identical
+  PASS  F3 new, ROM events = base: 2597 lines against 2597, all identical
+  PASS  F3 once, ROM events = base: 2597 lines against 2597, all identical
+  PASS  F3 base, ROM events = E8.5 (/mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/e85_events_A.txt, md5 0a4ee0258b239eb239c888559ef753b7): 2597 lines against 2597, all identical
+  PASS  F4 base: 16684 results (16684)
+  PASS  F4 new, results (cycle and value) = base: 16684 lines against 16684, all identical
+  PASS  F4 once, results (cycle and value) = base: 16684 lines against 16684, all identical
+  info  results different from 0: 16483 of 16684
+  PASS  F4 base: every result 10 cycles after its datapath start: offsets [10] over 16684 results and 16684 starts
+  PASS  F4 new: every result 10 cycles after its datapath start: offsets [10] over 16684 results and 16684 starts
+  PASS  F4 once: every result 10 cycles after its datapath start: offsets [10] over 16684 results and 16684 starts
+  PASS  F5 base: SRAM_LATENCY, ALIGN_DELAY (2, 6) ((2, 6))
+  PASS  F5 base: datapath starts 16684 (16684); SRAM reads at the datapath start 267143 = testbench 267143
+  PASS  F5 base: shortest interval between two SRAM reads of one lane 14 cycles (lane 1; >= 2), intervals below 2: 0 (0)
+  info  base: cycles with a pool hit outside the datapath start 560568 (addresses held while the operation runs)
+  PASS  F5 new: SRAM_LATENCY, ALIGN_DELAY (2, 6) ((2, 6))
+  PASS  F5 new: datapath starts 16684 (16684); SRAM reads at the datapath start 267143 = testbench 267143
+  PASS  F5 new: shortest interval between two SRAM reads of one lane 14 cycles (lane 1; >= 2), intervals below 2: 0 (0)
+  info  new: cycles with a pool hit outside the datapath start 560568 (addresses held while the operation runs)
+  PASS  F5 once: SRAM_LATENCY, ALIGN_DELAY (2, 6) ((2, 6))
+  PASS  F5 once: datapath starts 16684 (16684); SRAM reads at the datapath start 267143 = testbench 267143
+  PASS  F5 once: shortest interval between two SRAM reads of one lane 14 cycles (lane 1; >= 2), intervals below 2: 0 (0)
+  PASS  F5 once: cycles with a pool hit outside the datapath start 0 (0)
+  PASS  F6 new, E8.5 monitor summary = base: 8 lines against 8, all identical
+  PASS  F6 once, E8.5 monitor summary = base: 8 lines against 8, all identical
+  info  base E8.5 monitor: errors 000, parking rule violations 0, unparked 0
+  info  base: raw SRAM lane-cycles 8747455 (not a gate)
+  info  new: raw SRAM lane-cycles 8747455 (not a gate)
+  info  once: raw SRAM lane-cycles 267143 (not a gate)
+   model A: ALL CHECKS PASS
+  PASS  F0-F6 model A
+---- model B ----
+P2R-E8.5c full-inference checks, model B   2026-10-18 20:20:49
+   script     a64f57dc29521ea768a1a4ce4afde9d2
+   base log   777cb4bac30ff2e7cd90f262e1df4de3  /home/kid/p2r_e8/e8_5c/sim_base_B.log
+   base e82   3269174c62831481ec5851fe749c9e4b  /home/kid/p2r_e8/e8_5c/e8t_base_B.txt
+   base e85t  eea87bea3f0b6c61bab4ff84d1085563  /home/kid/p2r_e8/e8_5c/e85t_base_B.txt
+   base e85e  397e3540050a9a99dcfce86d6323a4cd  /home/kid/p2r_e8/e8_5c/e85e_base_B.txt
+   base res   6eaa6eac67488fb715f955ba58eb04d0  /home/kid/p2r_e8/e8_5c/res_base_B.txt
+   new  log   200abd9b870822766e4481e6580405df  /home/kid/p2r_e8/e8_5c/sim_new_B.log
+   new  e82   3269174c62831481ec5851fe749c9e4b  /home/kid/p2r_e8/e8_5c/e8t_new_B.txt
+   new  e85t  eea87bea3f0b6c61bab4ff84d1085563  /home/kid/p2r_e8/e8_5c/e85t_new_B.txt
+   new  e85e  397e3540050a9a99dcfce86d6323a4cd  /home/kid/p2r_e8/e8_5c/e85e_new_B.txt
+   new  res   6eaa6eac67488fb715f955ba58eb04d0  /home/kid/p2r_e8/e8_5c/res_new_B.txt
+   once log   b152eac9d5ec6b65ab06286b8c4b63bd  /home/kid/p2r_e8/e8_5c/sim_once_B.log
+   once e82   3269174c62831481ec5851fe749c9e4b  /home/kid/p2r_e8/e8_5c/e8t_once_B.txt
+   once e85t  eea87bea3f0b6c61bab4ff84d1085563  /home/kid/p2r_e8/e8_5c/e85t_once_B.txt
+   once e85e  397e3540050a9a99dcfce86d6323a4cd  /home/kid/p2r_e8/e8_5c/e85e_once_B.txt
+   once res   6eaa6eac67488fb715f955ba58eb04d0  /home/kid/p2r_e8/e8_5c/res_once_B.txt
+  PASS  F0 base compile: rtl/e8/pcm_imc_unit_e8.v, rtl/src/sram_pool_25lane.v, rtl/src/lenet5_top.v; none of the new files
+  PASS  F0 new compile: the two new files and rtl/src/lenet5_top.v, none of rtl/src/pcm_imc_unit.v, rtl/src/sram_pool_25lane.v, rtl/e8/pcm_imc_unit_e8.v; other files identical to base
+  PASS  F0 once compile: the two new files and rtl/src/lenet5_top.v, none of rtl/src/pcm_imc_unit.v, rtl/src/sram_pool_25lane.v, rtl/e8/pcm_imc_unit_e8.v; other files identical to base
+        files per compile: base 31, new 31, once 31
+  PASS  F1 base: RESULT: ALL TESTS PASSED
+  PASS  F1 base: inference complete at cycle 617573
+  PASS  F1 base: SRAM reads 205664 (205664)
+  PASS  F1 new: RESULT: ALL TESTS PASSED
+  PASS  F1 new: inference complete at cycle 617573
+  PASS  F1 new: SRAM reads 205664 (205664)
+  PASS  F1 once: RESULT: ALL TESTS PASSED
+  PASS  F1 once: inference complete at cycle 617573
+  PASS  F1 once: SRAM reads 205664 (205664)
+  PASS  F2 base, E8.2 monitor = E8.2 trace /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/trace/trace_B.txt: 16684 lines against 16684, all identical; done line identical
+  PASS  F2 new, E8.2 monitor = base: 16684 lines against 16684, all identical; done line identical; 16684 operations (16684)
+  PASS  F2 once, E8.2 monitor = base: 16684 lines against 16684, all identical; done line identical; 16684 operations (16684)
+  PASS  F3 new, E8.5 trace = base: 16684 lines against 16684, all identical
+  PASS  F3 once, E8.5 trace = base: 16684 lines against 16684, all identical
+  PASS  F3 base, E8.5 trace = E8.5 (/mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/e85_trace_B.txt, md5 eea87bea3f0b6c61bab4ff84d1085563): 16684 lines against 16684, all identical
+  PASS  F3 new, ROM events = base: 2597 lines against 2597, all identical
+  PASS  F3 once, ROM events = base: 2597 lines against 2597, all identical
+  PASS  F3 base, ROM events = E8.5 (/mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/e85_events_B.txt, md5 397e3540050a9a99dcfce86d6323a4cd): 2597 lines against 2597, all identical
+  PASS  F4 base: 16684 results (16684)
+  PASS  F4 new, results (cycle and value) = base: 16684 lines against 16684, all identical
+  PASS  F4 once, results (cycle and value) = base: 16684 lines against 16684, all identical
+  info  results different from 0: 16422 of 16684
+  PASS  F4 base: every result 10 cycles after its datapath start: offsets [10] over 16684 results and 16684 starts
+  PASS  F4 new: every result 10 cycles after its datapath start: offsets [10] over 16684 results and 16684 starts
+  PASS  F4 once: every result 10 cycles after its datapath start: offsets [10] over 16684 results and 16684 starts
+  PASS  F5 base: SRAM_LATENCY, ALIGN_DELAY (2, 6) ((2, 6))
+  PASS  F5 base: datapath starts 16684 (16684); SRAM reads at the datapath start 205664 = testbench 205664
+  PASS  F5 base: shortest interval between two SRAM reads of one lane 14 cycles (lane 11; >= 2), intervals below 2: 0 (0)
+  info  base: cycles with a pool hit outside the datapath start 554538 (addresses held while the operation runs)
+  PASS  F5 new: SRAM_LATENCY, ALIGN_DELAY (2, 6) ((2, 6))
+  PASS  F5 new: datapath starts 16684 (16684); SRAM reads at the datapath start 205664 = testbench 205664
+  PASS  F5 new: shortest interval between two SRAM reads of one lane 14 cycles (lane 11; >= 2), intervals below 2: 0 (0)
+  info  new: cycles with a pool hit outside the datapath start 554538 (addresses held while the operation runs)
+  PASS  F5 once: SRAM_LATENCY, ALIGN_DELAY (2, 6) ((2, 6))
+  PASS  F5 once: datapath starts 16684 (16684); SRAM reads at the datapath start 205664 = testbench 205664
+  PASS  F5 once: shortest interval between two SRAM reads of one lane 14 cycles (lane 11; >= 2), intervals below 2: 0 (0)
+  PASS  F5 once: cycles with a pool hit outside the datapath start 0 (0)
+  PASS  F6 new, E8.5 monitor summary = base: 8 lines against 8, all identical
+  PASS  F6 once, E8.5 monitor summary = base: 8 lines against 8, all identical
+  info  base E8.5 monitor: errors 000, parking rule violations 0, unparked 0
+  info  base: raw SRAM lane-cycles 7143942 (not a gate)
+  info  new: raw SRAM lane-cycles 7143942 (not a gate)
+  info  once: raw SRAM lane-cycles 205664 (not a gate)
+   model B: ALL CHECKS PASS
+  PASS  F0-F6 model B
+   [20:20:51, 1071 s since the start]
+
+---- files written to /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5c ----
+total 46536
+drwxrwxrwx 1 kid kid    4096 Oct 18 20:20 .
+drwxrwxrwx 1 kid kid    4096 Oct 18 20:03 ..
+-rwxrwxrwx 1 kid kid       0 Oct 18 20:20 comp_base_A.log
+-rwxrwxrwx 1 kid kid       0 Oct 18 20:20 comp_base_B.log
+-rwxrwxrwx 1 kid kid       0 Oct 18 20:20 comp_new_A.log
+-rwxrwxrwx 1 kid kid       0 Oct 18 20:20 comp_new_B.log
+-rwxrwxrwx 1 kid kid       0 Oct 18 20:20 comp_once_A.log
+-rwxrwxrwx 1 kid kid       0 Oct 18 20:20 comp_once_B.log
+-rwxrwxrwx 1 kid kid    3239 Oct 18 20:20 deps_base_A.txt
+-rwxrwxrwx 1 kid kid    3239 Oct 18 20:20 deps_base_B.txt
+-rwxrwxrwx 1 kid kid    3179 Oct 18 20:20 deps_new_A.txt
+-rwxrwxrwx 1 kid kid    3179 Oct 18 20:20 deps_new_B.txt
+-rwxrwxrwx 1 kid kid    3179 Oct 18 20:20 deps_once_A.txt
+-rwxrwxrwx 1 kid kid    3179 Oct 18 20:20 deps_once_B.txt
+-rwxrwxrwx 1 kid kid   81919 Oct 18 20:20 e85e_base_A.txt
+-rwxrwxrwx 1 kid kid   81919 Oct 18 20:20 e85e_base_B.txt
+-rwxrwxrwx 1 kid kid   81919 Oct 18 20:20 e85e_new_A.txt
+-rwxrwxrwx 1 kid kid   81919 Oct 18 20:20 e85e_new_B.txt
+-rwxrwxrwx 1 kid kid   81919 Oct 18 20:20 e85e_once_A.txt
+-rwxrwxrwx 1 kid kid   81919 Oct 18 20:20 e85e_once_B.txt
+-rwxrwxrwx 1 kid kid 3818134 Oct 18 20:20 e85t_base_A.txt
+-rwxrwxrwx 1 kid kid 3818134 Oct 18 20:20 e85t_base_B.txt
+-rwxrwxrwx 1 kid kid 3818134 Oct 18 20:20 e85t_new_A.txt
+-rwxrwxrwx 1 kid kid 3818134 Oct 18 20:20 e85t_new_B.txt
+-rwxrwxrwx 1 kid kid 3818134 Oct 18 20:20 e85t_once_A.txt
+-rwxrwxrwx 1 kid kid 3818134 Oct 18 20:20 e85t_once_B.txt
+-rwxrwxrwx 1 kid kid 3818115 Oct 18 20:20 e8t_base_A.txt
+-rwxrwxrwx 1 kid kid 3818115 Oct 18 20:20 e8t_base_B.txt
+-rwxrwxrwx 1 kid kid 3818115 Oct 18 20:20 e8t_new_A.txt
+-rwxrwxrwx 1 kid kid 3818115 Oct 18 20:20 e8t_new_B.txt
+-rwxrwxrwx 1 kid kid 3818115 Oct 18 20:20 e8t_once_A.txt
+-rwxrwxrwx 1 kid kid 3818115 Oct 18 20:20 e8t_once_B.txt
+-rwxrwxrwx 1 kid kid  200919 Oct 18 20:20 res_base_A.txt
+-rwxrwxrwx 1 kid kid  204336 Oct 18 20:20 res_base_B.txt
+-rwxrwxrwx 1 kid kid  200919 Oct 18 20:20 res_new_A.txt
+-rwxrwxrwx 1 kid kid  204336 Oct 18 20:20 res_new_B.txt
+-rwxrwxrwx 1 kid kid  200919 Oct 18 20:20 res_once_A.txt
+-rwxrwxrwx 1 kid kid  204336 Oct 18 20:20 res_once_B.txt
+-rwxrwxrwx 1 kid kid    4251 Oct 18 20:20 sim_base_A.log
+-rwxrwxrwx 1 kid kid    4250 Oct 18 20:20 sim_base_B.log
+-rwxrwxrwx 1 kid kid    4247 Oct 18 20:20 sim_new_A.log
+-rwxrwxrwx 1 kid kid    4246 Oct 18 20:20 sim_new_B.log
+-rwxrwxrwx 1 kid kid    4245 Oct 18 20:20 sim_once_A.log
+-rwxrwxrwx 1 kid kid    4244 Oct 18 20:20 sim_once_B.log
+-rwxrwxrwx 1 kid kid     297 Oct 18 20:04 u2c.log
+-rwxrwxrwx 1 kid kid       0 Oct 18 20:04 u2c_compile.log
+
+==============================================================
+Finished 2026-10-18 20:20:51, 17 min.
+All gates pass.
+==============================================================

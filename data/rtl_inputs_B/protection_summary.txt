@@ -1,0 +1,15 @@
+# Paper 1 layer-aware protection bitmap summary (Model B)
+# Each weight is tagged with 1 bit: 1 = drift-immune partition, 0 = PCM
+# Selection rule: within each layer, top-N weights by |w| are protected,
+# where N = int(ratio * total). Ratio comes from Paper 1's
+# sensitivity-weighted allocation algorithm (Section III-C).
+
+layer       total  protected      ratio
+------------------------------------------
+conv1         150        150   1.000000
+conv2        2400        859   0.358187
+fc1         48000        478   0.009970
+fc2         10080        745   0.073936
+fc3           840        840   1.000000
+------------------------------------------
+TOTAL       61470       3072     4.998%

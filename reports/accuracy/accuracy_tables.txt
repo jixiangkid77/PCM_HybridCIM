@@ -1,0 +1,32 @@
+Input files
+  lenet_imc_full_pre.json      md5 1a088c67782162ec7cb43b32be84b4e3
+  final_imc_results.json       md5 8f512265836dc52cc4a8bc22f7846654
+  lenet_imc_full.json          md5 53dd5eeddb3fc33070bcd6ab1770c7f7
+  lenet_imc_resid_signed.json  md5 b69c8fbd329bfc56541fc0d2f467a719
+
+Table I. Top-1 accuracy (%) at t = 1 s and t = 1e6 s
+  MNIST: 10000 images, 5 seeds; ImageNet: 2000 images, 3 seeds
+  drift-free INT8 reference: MNIST 98.92, ImageNet 76.45
+  Readout          Allocation    MNIST t=1  MNIST t=1e6  ImageNet t=1  ImageNet t=1e6
+  Ideal converter  None              98.75        96.41          6.10            0.12
+  Ideal converter  Uniform           98.75        97.11         54.57           33.47
+  Ideal converter  Layer-aware       98.84        98.52         72.03           69.40
+  5-bit ADC        None              91.11        85.49          0.08            0.05
+  5-bit ADC        Uniform           95.79        92.07         71.82           70.78
+  5-bit ADC        Layer-aware       98.19        97.97         72.78           73.15
+
+Section IV-C. MNIST, 5-bit ADC, t = 1e6 s: compensation at the ADC reference against after the converter
+  None         reference side  85.49   output side  16.52
+  Uniform      reference side  92.07   output side  32.37
+  Layer-aware  reference side  97.97   output side  77.20
+
+Section IV-D. MNIST, residual conductance of vacated cells, change against r = inf (points)
+  max |change| over the drift grid; within std: |change| <= std of the r = inf run at every drift time
+  r = 100  Uniform      Ideal converter  max |change|  0.05 at t = 1e+06 s; within std: yes;  accuracy at t = 1e6 s  97.16
+  r = 100  Uniform      5-bit ADC        max |change|  0.74 at t = 1e+05 s; within std: yes;  accuracy at t = 1e6 s  91.50
+  r = 100  Layer-aware  Ideal converter  max |change|  0.03 at t = 1e+03 s; within std: yes;  accuracy at t = 1e6 s  98.55
+  r = 100  Layer-aware  5-bit ADC        max |change|  0.07 at t = 1e+00 s; within std: yes;  accuracy at t = 1e6 s  98.02
+  r =  10  Uniform      Ideal converter  max |change|  0.15 at t = 1e+03 s; within std: no ;  accuracy at t = 1e6 s  97.11
+  r =  10  Uniform      5-bit ADC        max |change|  1.44 at t = 1e+06 s; within std: yes;  accuracy at t = 1e6 s  93.52
+  r =  10  Layer-aware  Ideal converter  max |change|  1.22 at t = 1e+06 s; within std: no ;  accuracy at t = 1e6 s  97.30
+  r =  10  Layer-aware  5-bit ADC        max |change| 11.53 at t = 1e+06 s; within std: no ;  accuracy at t = 1e6 s  86.44

@@ -1,0 +1,68 @@
+P2R-E8.6a-3  2026-10-19 17:47:15
+   script     : 1e216cf0983787bb4fe4cab0d816fdb6  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_6a3_rom_energy.py
+   E8.6a-2    : a4f7fb7aca7f7c672b74e24882c51050  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_6a2_rom_energy.py
+   E8.4b model: fd281561e7bf1865040ffcd75a7217a3  reports/e8_rom/e8_4b_rel5/model.json
+   pcm: parked power 1.173 uW (mean of 23 macros)
+   sram: parked power 1.053 uW (mean of 24 macros)
+
+==== C2 code check: replay of the GPp reads and parks of E8.6a-2 against simulate() ====
+   trace A: 4e89089f8b3bf85c81658d4a26c3cec4  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/trace/trace_A.txt
+   trace B: 3269174c62831481ec5851fe749c9e4b  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/trace/trace_B.txt
+  PASS  C2 200 table x form: largest relative difference 0.00e+00 (read, park, static)
+
+==== model A ====
+   events      : 0a4ee0258b239eb239c888559ef753b7  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/e85_events_A.txt
+   parking     : 32c1b2b4d11c72140a1ff6cb18275585  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/amu_park_A.vh
+   E8.5 summary: e236f689dc44b32286666fc74dae57b8  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/e8_5_summary_A.json
+   rtl/e8 copy : 32c1b2b4d11c72140a1ff6cb18275585 (same)
+   pulses: lookup {'B': 1, 'I': 2483, 'A': 0}, parking {'B': 1, 'I': 112, 'A': 0}; inference ends at cycle 617573 (6.176 ms)
+  PASS  C1 parking words of the RTL = E8.6a-2's choice (row and word value, which set the energy): 200 of 200 macros
+  PASS  C3 lookup pulses on the macro and word of their entry: 0 differ
+  PASS  C3 reads per side taken by the tables = implied by the pulses: lookup [61520, 61520] / [61520, 61520], parking [1732, 1093] / [1732, 1093]
+  PASS  C3 = E8.5 summary: lookup [61520, 61520], parking [1732, 1093]
+  PASS  C3 read windows of a macro that overlap the next read: 0
+   model error of the parking trains (E8.4b, leave one table out), weighted by the RTL lookups:
+      bits  pcm : +3.3 +3.5 +8.1 +5.5 +1.2 -1.9 %  -> mean +3.3 %, SE 1.4 %
+      bits  sram: -6.6 -0.2 +1.9 +4.0 -4.4 +0.8 %  -> mean -0.7 %, SE 1.6 %
+      count pcm : -5.1 -3.7 -3.7 -0.2 -2.5 -3.1 %  -> mean -3.1 %, SE 0.7 %
+      count sram: -9.3 -6.3 -6.5 -4.8 -8.7 +0.0 %  -> mean -5.9 %, SE 1.4 %
+   D_ROM per inference, RTL schedule (E8.5), clock gated, parking as the RTL does it:
+   form      D uJ  x 9.85 |  reads  parks  static uJ | ROM reads  parks | range (mean +- 2 SE) | corrected
+   bits    10.331    1.05 |  5.274  0.069   4.988    |    122990   2800 |   9.801- 10.372      | 10.078
+   count   10.692    1.09 |  5.267  0.070   5.356    |    122990   2800 |  10.907- 11.274      | 11.087
+   bits, by side: pcm 8.349 uJ, sram 1.982 uJ
+   bits, by layer (reads + parks + static above the parked level; uJ): conv1 0.027, conv2 0.337, fc1 5.064, fc2 1.148, fc3 0.141; parked level (leakage) 3.614
+   information: E8.6a-2's parking rule (GPp) on the same RTL lookups: 10.266 uJ, 3359 parks (RTL: 10.331 uJ, 2800 parks)
+   E8.6a-2 (R, GPp, bits; read sequence from the E8.2 trace): 39.22 uJ, corrected 40.83 uJ -> now 10.331 uJ, corrected 10.078 uJ
+
+==== model B ====
+   events      : 397e3540050a9a99dcfce86d6323a4cd  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/e85_events_B.txt
+   parking     : 7459db54f5787fcf8b3d0ab9d95dca5d  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/amu_park_B.vh
+   E8.5 summary: 39706a942ab471802fe1850ed05e3fe5  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/e8_5_summary_B.json
+   rtl/e8 copy : 7459db54f5787fcf8b3d0ab9d95dca5d (same)
+   pulses: lookup {'B': 1, 'I': 2483, 'A': 0}, parking {'B': 1, 'I': 112, 'A': 0}; inference ends at cycle 617573 (6.176 ms)
+  PASS  C1 parking words of the RTL = E8.6a-2's choice (row and word value, which set the energy): 200 of 200 macros
+  PASS  C3 lookup pulses on the macro and word of their entry: 0 differ
+  PASS  C3 reads per side taken by the tables = implied by the pulses: lookup [61520, 61520] / [61520, 61520], parking [1113, 1712] / [1113, 1712]
+  PASS  C3 = E8.5 summary: lookup [61520, 61520], parking [1113, 1712]
+  PASS  C3 read windows of a macro that overlap the next read: 0
+   model error of the parking trains (E8.4b, leave one table out), weighted by the RTL lookups:
+      bits  pcm : -4.9 -0.8 -3.2 +22.8 +3.0 +6.0 %  -> mean +3.8 %, SE 4.1 %
+      bits  sram: +2.4 -4.8 -0.6 +1.3 +0.6 +0.7 %  -> mean -0.1 %, SE 1.0 %
+      count pcm : -7.0 -8.0 -10.2 +3.1 -3.3 -3.3 %  -> mean -4.8 %, SE 1.9 %
+      count sram: -5.4 -1.7 -3.8 -7.5 -9.3 -9.1 %  -> mean -6.1 %, SE 1.2 %
+   D_ROM per inference, RTL schedule (E8.5), clock gated, parking as the RTL does it:
+   form      D uJ  x 9.85 |  reads  parks  static uJ | ROM reads  parks | range (mean +- 2 SE) | corrected
+   bits     8.569    0.87 |  5.280  0.082   3.207    |    122990   2800 |   7.822-  8.918      | 8.329
+   count    9.248    0.94 |  5.276  0.083   3.889    |    122990   2800 |   9.387- 10.123      | 9.741
+   bits, by side: pcm 6.563 uJ, sram 2.006 uJ
+   bits, by layer (reads + parks + static above the parked level; uJ): conv1 0.027, conv2 0.338, fc1 5.073, fc2 1.165, fc3 0.141; parked level (leakage) 1.825
+   information: E8.6a-2's parking rule (GPp) on the same RTL lookups: 8.504 uJ, 3359 parks (RTL: 8.569 uJ, 2800 parks)
+   E8.6a-2 (R, GPp, bits; read sequence from the E8.2 trace): 39.08 uJ, corrected 40.35 uJ -> now 8.569 uJ, corrected 8.329 uJ
+
+summary (D_ROM per inference, uJ, bits form; manuscript 9.85):
+   model A: 10.331 (range 9.801-10.372; corrected 10.078); count form 10.692; 122990 ROM reads, 2800 parks
+   model B: 8.569 (range 7.822-8.918; corrected 8.329); count form 9.248; 122990 ROM reads, 2800 parks
+
+written: reports/e8_rom/e8_6a3_rel5/d_rom.json  (16 s)
+ALL CHECKS PASS

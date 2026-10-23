@@ -1,0 +1,81 @@
+// ============================================================
+// argmax10.v
+// ------------------------------------------------------------
+// Compute the index of the maximum element among 10 signed
+// inputs. Used at the output of fc3 in LeNet-5 to produce
+// the final class prediction (0..9).
+//
+// Inputs:  10 signed values, each WIDTH bits wide
+// Output:  4-bit index of the largest input (0..9)
+//
+// Tie-breaking rule: if multiple inputs share the maximum
+// value, the LOWEST index wins. This matches PyTorch's default
+// argmax behavior so the golden reference comparison is clean.
+//
+// Implementation: pure combinational.
+//   Cascade of "keep the better of (running best, next input)"
+//   stages. Synthesis tools handle this as a chain of
+//   comparators + muxes. Zero clock cycles.
+//
+// Parameter:
+//   WIDTH - bit width of each logit (default 16, matches fc3
+//           output in our LeNet-5 pipeline)
+// ============================================================
+
+`timescale 1ns / 1ps
+
+module argmax10 #(
+    parameter integer WIDTH = 16
+)(
+    input  wire signed [WIDTH-1:0] in0,
+    input  wire signed [WIDTH-1:0] in1,
+    input  wire signed [WIDTH-1:0] in2,
+    input  wire signed [WIDTH-1:0] in3,
+    input  wire signed [WIDTH-1:0] in4,
+    input  wire signed [WIDTH-1:0] in5,
+    input  wire signed [WIDTH-1:0] in6,
+    input  wire signed [WIDTH-1:0] in7,
+    input  wire signed [WIDTH-1:0] in8,
+    input  wire signed [WIDTH-1:0] in9,
+    output wire [3:0]              idx_out
+);
+
+    // Cascade of compare-and-keep stages.
+    // Strict '>' ensures ties go to the lower index.
+    wire signed [WIDTH-1:0] best1_val, best2_val, best3_val, best4_val,
+                            best5_val, best6_val, best7_val, best8_val,
+                            best9_val;
+    wire [3:0]              best1_idx, best2_idx, best3_idx, best4_idx,
+                            best5_idx, best6_idx, best7_idx, best8_idx,
+                            best9_idx;
+
+    assign best1_val = (in1 > in0)        ? in1 : in0;
+    assign best1_idx = (in1 > in0)        ? 4'd1 : 4'd0;
+
+    assign best2_val = (in2 > best1_val)  ? in2 : best1_val;
+    assign best2_idx = (in2 > best1_val)  ? 4'd2 : best1_idx;
+
+    assign best3_val = (in3 > best2_val)  ? in3 : best2_val;
+    assign best3_idx = (in3 > best2_val)  ? 4'd3 : best2_idx;
+
+    assign best4_val = (in4 > best3_val)  ? in4 : best3_val;
+    assign best4_idx = (in4 > best3_val)  ? 4'd4 : best3_idx;
+
+    assign best5_val = (in5 > best4_val)  ? in5 : best4_val;
+    assign best5_idx = (in5 > best4_val)  ? 4'd5 : best4_idx;
+
+    assign best6_val = (in6 > best5_val)  ? in6 : best5_val;
+    assign best6_idx = (in6 > best5_val)  ? 4'd6 : best5_idx;
+
+    assign best7_val = (in7 > best6_val)  ? in7 : best6_val;
+    assign best7_idx = (in7 > best6_val)  ? 4'd7 : best6_idx;
+
+    assign best8_val = (in8 > best7_val)  ? in8 : best7_val;
+    assign best8_idx = (in8 > best7_val)  ? 4'd8 : best7_idx;
+
+    assign best9_val = (in9 > best8_val)  ? in9 : best8_val;
+    assign best9_idx = (in9 > best8_val)  ? 4'd9 : best8_idx;
+
+    assign idx_out = best9_idx;
+
+endmodule

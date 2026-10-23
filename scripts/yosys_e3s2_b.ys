@@ -1,0 +1,14 @@
+# =============================================================
+# P2R-E3 stage 2, variant b. Yosys 0.68+36.
+# =============================================================
+read_liberty -lib /home/kid/sky130/orfs/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_rtlil /home/kid/p2r_build/e3_b_s1.rtlil
+
+dfflibmap -liberty /home/kid/sky130/orfs/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib -dont_use sky130_fd_sc_hd__lpflow_* -dont_use sky130_fd_sc_hd__probe*
+abc -liberty /home/kid/sky130/orfs/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib -dont_use sky130_fd_sc_hd__lpflow_* -dont_use sky130_fd_sc_hd__probe*
+clean
+
+tee -o reports/e3_b_stat_final.txt stat -liberty /home/kid/sky130/orfs/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+write_verilog reports/lenet5_top_b_netlist.v
+write_verilog -noattr reports/lenet5_top_b_sta.v

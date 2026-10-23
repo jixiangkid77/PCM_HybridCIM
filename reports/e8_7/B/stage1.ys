@@ -1,0 +1,33 @@
+# P2R-E8.7 stage 1, model B, design chip (written by scripts/e8_7_digital_pnr.sh)
+read_liberty -lib /home/kid/sky130/orfs/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog -sv -DLOAD_REAL_DATA /mnt/d/Project/hybrid_memory/paper2/rtl/synth/layer_config_regfile.v
+read_verilog -sv -DLOAD_REAL_DATA /mnt/d/Project/hybrid_memory/paper2/rtl/synth/logit_rf.v
+read_verilog -sv -DLOAD_REAL_DATA /mnt/d/Project/hybrid_memory/paper2/rtl/synth/sram_mac.v
+read_verilog -sv -DLOAD_REAL_DATA /mnt/d/Project/hybrid_memory/paper2/rtl/synth/combiner.v
+read_verilog -sv -DLOAD_REAL_DATA /mnt/d/Project/hybrid_memory/paper2/rtl/synth/mac_unit.v
+read_verilog -sv -DLOAD_REAL_DATA /mnt/d/Project/hybrid_memory/paper2/rtl/synth/maxpool2x2.v
+read_verilog -sv -DLOAD_REAL_DATA /mnt/d/Project/hybrid_memory/paper2/rtl/synth/pool_wrapper.v
+read_verilog -sv -DLOAD_REAL_DATA /mnt/d/Project/hybrid_memory/paper2/rtl/synth/relu.v
+read_verilog -sv -DLOAD_REAL_DATA /mnt/d/Project/hybrid_memory/paper2/rtl/synth/argmax10.v
+read_verilog -sv -DLOAD_REAL_DATA /mnt/d/Project/hybrid_memory/paper2/rtl/synth/argmax_wrapper.v
+read_verilog -sv -DLOAD_REAL_DATA /mnt/d/Project/hybrid_memory/paper2/rtl/synth/conv_engine.v
+read_verilog -sv -DLOAD_REAL_DATA /mnt/d/Project/hybrid_memory/paper2/rtl/synth/fc_engine.v
+read_verilog -sv -DLOAD_REAL_DATA /mnt/d/Project/hybrid_memory/paper2/rtl/synth/top_fsm.v
+read_verilog -sv -DLOAD_REAL_DATA /home/kid/p2r_e8/e87/B/syn/layer_desc_rom.v
+read_verilog -sv -DLOAD_REAL_DATA /mnt/d/Project/hybrid_memory/paper2/rtl/synth/lenet5_top.v
+read_verilog -sv -DE8_AS_PCM_IMC_UNIT -DMODEL_B -I /mnt/d/Project/hybrid_memory/paper2/rtl/e8 /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_entry.v /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_lanes.v /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_core.v /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_buf.v /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_pflags.v /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_table.v /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_top.v /mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v /mnt/d/Project/hybrid_memory/paper2/rtl/e8/pcm_imc_unit_e8c.v 
+read_verilog -sv /mnt/d/Project/hybrid_memory/paper2/rtl/stub/bias_storage_stub.v
+read_verilog -sv /mnt/d/Project/hybrid_memory/paper2/rtl/stub/feature_buffer_stub.v
+read_verilog -sv /mnt/d/Project/hybrid_memory/paper2/rtl/stub/pcm_crossbar_stub.v
+read_verilog -sv /mnt/d/Project/hybrid_memory/paper2/rtl/e8/e8_rom_r48_stub.v
+read_verilog -sv /mnt/d/Project/hybrid_memory/paper2/rtl/e8/sram_pool_25lane_2c_stub.v
+synth -top lenet5_top
+tee -o /home/kid/p2r_e8/e87/B/syn/stat_after_synth.txt stat
+dfflegalize -cell $_DFF_?_ 01 -cell $_DFFE_??_ 01 -cell $_DFF_???_ 01 -cell $_DFFE_????_ 01 -cell $_SDFFCE_????_ 01
+opt_expr
+opt_merge
+opt_clean
+tee -o /home/kid/p2r_e8/e87/B/syn/stat_after_transform.txt stat
+clockgate -liberty /home/kid/sky130/orfs/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib -dont_use sky130_fd_sc_hd__sdlclkp*
+tee -o /home/kid/p2r_e8/e87/B/syn/stat_after_clockgate.txt stat
+write_rtlil /home/kid/p2r_e8/e87/B/syn/s1.rtlil

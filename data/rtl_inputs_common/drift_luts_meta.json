@@ -1,0 +1,15 @@
+{
+  "log2_lut": {
+    "size": 1024,
+    "output_bits": 12,
+    "format": "Q4.8 unsigned",
+    "description": "log2_lut[i] = round(log2(i) * 256), clamped 12-bit"
+  },
+  "exp2_lut": {
+    "size": 1024,
+    "output_bits": 8,
+    "format": "Q1.7 unsigned",
+    "description": "exp2_lut[i] = round(2^(-i/256) * 128), clamped 8-bit",
+    "input_format": "Q2.8 (exponent value = i/256, range [0, 4))"
+  }
+}

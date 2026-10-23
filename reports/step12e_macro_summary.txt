@@ -1,0 +1,183 @@
+
+================================================================
+10. PCM-CIM macro estimation via NeuroSim  (12e-3)
+================================================================
+Method:  NeuroSim Inference_pytorch C++ backend, standalone mode
+         (PyTorch frontend bypassed; LeNet-5 functional correctness
+         already verified by RTL/Python bit-exact tests).
+Tool:    Modified NeuroSim main.cpp (early `return 0` removed to
+         enable latency/energy path; KID-added area print preserved).
+         Build at ~/NeuroSim/Inference_pytorch/NeuroSIM/main
+         (566 KB ELF, May 14 2026 02:13).
+Tech:    22 nm CMOS (Param.cpp technode=22)
+         PCM device parameters: Ron=3 kohm, Roff=3 Mohm,
+         on/off ratio = 1000, writeVoltage=3 V
+         widthInFeatureSize1T1R=24, heightInFeatureSize1T1R=4
+Mapping: Conventional (novelMapping=false)
+         subArray = 64 x 64 (smallest size that fits LeNet-5 in
+         NeuroSim hierarchy: needs maxTileSize >= 4 x subArray)
+ADC:     MultilevelSenseAmp, 32 levels = 5-bit (param->levelOutput)
+         numColMuxed = 8 (8 cols share 1 ADC)
+
+Network: LeNet-5 (61,470 total weights), described in
+         reports/12e_neurosim/configs/NetWork_LeNet5.csv:
+           conv1: 32x32x1  -> 5x5 -> 6  (150 weights)
+           conv2: 16x16x6  -> 5x5 -> 16 (2400 weights)
+           fc1:   400 -> 120              (48000 weights)
+           fc2:   120 -> 84               (10080 weights)
+           fc3:   84  -> 10               (840 weights)
+         NeuroSim assumes same-padding: introduces ~30 % ops
+         inflation vs. true LeNet-5 valid-padding (28x28 conv1
+         output). Acceptable approximation for area; energy
+         and latency are conservative upper bounds.
+
+Trace:   Random INT8-quantized weights + bit-serial random
+         activations (smoke trace). For final paper energy,
+         real activation traces from Paper 1 PyTorch golden
+         pipeline are required (deferred to next refinement).
+
+PCM encoding sensitivity sweep (4 schemes)
+-------------------------------------------
+NeuroSim natively supports cellBit in {1, 2, 4, 8}. To cover
+4 encoding schemes (single-ended/differential x sign-magnitude
+embedded/external), 3 NeuroSim runs were performed and post-
+processed:
+
+  cellBit=1:  ChipArea 3.455 mm^2, PCM array 0.085, ADC 1.502
+  cellBit=2:  ChipArea 2.522 mm^2, PCM array 0.061, ADC 1.073
+  cellBit=4:  ChipArea 0.872 mm^2, PCM array 0.018, ADC 0.322
+     (all 3 runs at subArray=64, conventional mapping, 22nm)
+
+For each encoding scheme, PCM array and ADC area were scaled by
+  factor = (final_cells_per_INT8) / (NeuroSim_native_cells_per_INT8)
+to model differential pair (factor=2) and sign-magnitude (factor
+=(N+1)/N for the extra sign cell). All weight-count-dependent
+quantities were further scaled by the PCM weight ratio:
+  PCM ratio = 58,396 / 61,470 = 0.9500
+(58,396 PCM-side weights vs 61,470 total LeNet-5, with the
+remaining 3,074 weights stored in SRAM under layer-aware
+protection; see Section 7 of step12c_synthesis_summary_lanesliced.txt).
+
+  Scheme  Encoding              Cells   Factor   PCM-CIM area   Latency   Energy
+                                /INT8                  (mm^2)      (us)     (nJ)
+  -----   --------------------  ----- --------   ------------   -------   ------
+  I       1-bit + sign-mag        9    1.125 (+1)    1.696       115.7    461.2
+  II      2-bit differential (*)  8    2.000 (x2)    2.154       102.6    550.8
+  III     2-bit + sign-mag        5    1.250 (+1)    1.346       102.6    344.3
+  IV      4-bit differential      4    2.000 (x2)    0.646       131.8    386.5
+
+  (*) Scheme II is the paper baseline (IBM 2018 Nature precedent).
+      Schemes I, III, IV form the sensitivity range.
+
+  PCM-CIM = PCM array + ADC only. NeuroSim's reported Accumulation,
+  IC, and Other components are NOT added to C, because they overlap
+  with Yosys digital (Step 12c, A) and OpenRAM SRAM (Step 12e-1, B);
+  including them would double-count.
+
+  Energy includes only PCM-side dynamic energy (read). SRAM dynamic
+  energy is deferred to SPICE (Section 8 caveat).
+
+Evidence:
+  reports/12e_neurosim/configs/Param_scheme_IV_4bit_diff.cpp
+  reports/12e_neurosim/configs/Param_neurosim_cellBit_1.cpp
+  reports/12e_neurosim/configs/Param_neurosim_cellBit_2.cpp
+  reports/12e_neurosim/configs/Param_neurosim_cellBit_4_verify.cpp
+  reports/12e_neurosim/configs/NetWork_LeNet5.csv
+  reports/12e_neurosim/configs/gen_lenet5_dummy_trace.py
+  reports/12e_neurosim/outputs/{neurosim_cellBit_1,_2,_4_verify}/
+       full_run.log, summary_section.txt, key_numbers.json
+  reports/12e_neurosim/outputs/schemeIV_4bit_diff_baseline/
+       full_run.log, summary_section.txt, key_numbers.json
+  reports/12e_neurosim/summaries/step12e_3_sensitivity.json
+  reports/12e_neurosim/logs/smoke_LeNet5_*.log
+  reports/12e_neurosim/neurosim_before_step12e3.diff (NeuroSim git
+       baseline before 12e-3 modifications)
+
+
+================================================================
+11. Final macro summary  A + B + C  (12e-4)
+================================================================
+Putting together the three estimation paths:
+
+  A = Yosys digital periphery       (Step 12c, sky130A bit-exact)
+  B = OpenRAM SRAM and ROM macros   (Step 12e-1/-2/-2b, sky130A)
+  C = NeuroSim PCM-CIM macro        (Step 12e-3, NeuroSim 22nm)
+
+Note: A and B are sky130 (130 nm-derived rules under sky130A),
+C is NeuroSim 22 nm (NeuroSim's native PDK abstraction). A direct
+sum is technology-mixed; this is acknowledged as a limitation.
+For paper rigor, the components are reported separately, and the
+total is given as an estimate for system-level discussion.
+
+Component breakdown
+-------------------
+                                                Lower      Upper
+                                               (mm^2)     (mm^2)
+  A. Digital periphery (Yosys, Step 12c)        1.263      1.263
+                                                ----------------
+  B. Conventional SRAM + ROM (sky130A):
+     B.1 sram_pool                              0.281      7.025
+         (storage-only lower / 25-replicated upper, PENDING 5.4)
+     B.2 feature_buffer (2 banks)               0.669      0.669
+     B.3 addr_decoder x 50 lanes                3.984      3.984
+     B.4 bias_storage / drift_lut_exp2          0.0215     0.0215
+     B.5 drift_lut_log2                         0.0373     0.0373
+     B.6 nu_pcm_pool ROM (if HW, +5.2)          0          0.089
+         (0 if simulation-only; ~0.089 mm^2 if 467 Kbit ROM @ 0.19
+          um^2/bit derived from addr_decoder per-bit density)
+     ----------------------------------------- ------     ------
+     B subtotal                                 4.956     11.835
+
+  C. PCM-CIM macro (NeuroSim, by scheme):
+     C.I   1-bit + sign-mag                     1.696      1.696
+     C.II  2-bit differential (paper baseline)  2.154      2.154
+     C.III 2-bit + sign-mag                     1.346      1.346
+     C.IV  4-bit differential                   0.646      0.646
+                                                ------     ------
+     C range (sensitivity)                      0.646      2.154
+
+A + B + C  (using C.II baseline):
+  Lower:  1.263 + 4.956 + 2.154 =  8.373 mm^2
+  Upper:  1.263 + 11.835 + 2.154 = 15.252 mm^2
+
+A + B + C  (full sensitivity range):
+  Min (Scheme IV, lower B):   1.263 + 4.956 + 0.646 =  6.865 mm^2
+  Max (Scheme II, upper B):   1.263 + 11.835 + 2.154 = 15.252 mm^2
+
+Latency (per image):
+  RTL cycle-accurate (Step 9, 100 MHz):  6.18 ms (617,573 cycles)
+  PCM-CIM macro access (NeuroSim):       102.6 - 131.8 us (per scheme)
+  Note: These two latencies are at different levels of abstraction
+  (RTL controls cycle-by-cycle execution; NeuroSim reports macro
+  access time) and should not be directly compared.
+
+Energy (PCM-CIM dynamic, per image):
+  Scheme II baseline:  ~551 nJ  (NeuroSim, dummy random trace)
+  Sensitivity range:   344 - 551 nJ
+  Refinement needed:   Replace dummy random activation with real
+                       traces from Paper 1 PyTorch golden pipeline
+                       (post-conv, post-ReLU activation maps from
+                       MNIST test set).
+
+What this section DOES NOT cover
+---------------------------------
+  - SRAM dynamic Read/Write energy (broken in OpenRAM analytical
+    output; SPICE characterization deferred; see Section 8 caveat)
+  - ROM timing and power (Section 9 policy: area-only)
+  - System-level pipelining, off-chip I/O, NoC overhead beyond what
+    Yosys + NeuroSim individually report
+  - Layout-level effects (routing congestion, power grid, decap)
+
+Status of pending decisions (Section 5 of inventory)
+----------------------------------------------------
+  5.1 PCM physical encoding:     Addressed via 4-scheme sensitivity
+                                 (no longer blocking). Paper baseline
+                                 = Scheme II.
+  5.2 nu_pcm_pool HW vs sim:     Reported both branches in B.6.
+  5.3 bias dense pattern:        RESOLVED (sub-second per-test ROM).
+  5.4 sram_pool 25-lane impl:    Reported lower and upper bounds in
+                                 B.1.
+
+12e-3 and 12e-4 are now COMPLETE.
+
+================================================================

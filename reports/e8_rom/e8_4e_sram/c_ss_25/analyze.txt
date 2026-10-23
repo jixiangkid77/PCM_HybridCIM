@@ -1,0 +1,23 @@
+P2R-E8.4c analysis: sky130_sram_4kbytes_1rw_8x4096_8  period 10.0 ns  vdd 1.8 V  corner ss 25.0 C  load 10.0 fF per output  points 5268
+data: simulated to 242.5 of 242.5 ns, 18 of 18 cycles complete
+E_vdd: energy from the supply from the cycle's rising edge to the next; E_in: from the input sources; P_end: supply power at the end of the cycle (stopped segment: average over its last fifth)
+  k kind   addr  data read@half read@end  ok  E_vdd pJ  E_in pJ  P_end uW t_acc ns
+  0 idle            -         -        -         8.540    0.003    38.293 
+  1 idle            -         -        -         4.697   -0.019    56.956 
+  2 write     0    00         -        -        74.032    0.307  1862.002 
+  3 write  4095    ff         -        -        68.024   -0.200  2181.989 
+  4 write  2055    00         -        -        61.745    0.088  1903.343 
+  5 write  1032    ff         -        -        62.599   -0.018  2153.038 
+  6 write    19    55         -        -        59.663    0.028  2030.476 
+  7 idle            -         -        -        11.115   -0.045    45.394 
+  8 read      0    00        00       00 yes    47.867    0.011  1887.681    3.298   after the stop: 00 yes, t_acc 3.298 ns
+  9 stop            -         -        -        11.919    0.197   213.666 
+ 10 read   4095    ff        00       00  NO    77.069    0.013  2013.291    0.000   after the stop: ff yes, t_acc 13.475 ns
+ 11 stop            -         -        -        13.036   -0.130   252.689 
+ 12 read   2055    00        00       00 yes    73.705    0.013  1897.958    2.996   after the stop: 00 yes, t_acc 2.996 ns
+ 13 stop            -         -        -        11.652   -0.023   199.761 
+ 14 read   1032    ff        00       00  NO    73.586    0.013  2015.543    0.000   after the stop: ff yes, t_acc 13.475 ns
+ 15 stop            -         -        -        12.710    0.011   252.809 
+ 16 read     19    55        00       00  NO    73.156    0.013  1952.842    3.004   after the stop: 55 yes, t_acc 13.427 ns
+ 17 stop            -         -        -        12.174    0.000     0.674 
+summary: {"reads": 5, "reads_ok": 2, "E_read_pJ_mean": 69.0765, "E_read_pJ_min": 47.867, "E_read_pJ_max": 77.0685, "E_write_pJ_mean": 65.2125, "E_idle_pJ_mean": 8.1175, "P_stop_uW": 0.674, "P_stop_after_read_uW": [213.6661, 252.6886, 199.7607, 252.8086, 0.674], "P_stop_after_idle_uW": [], "E_read_after_stop_pJ_mean": 74.3789, "reads_ok_at_half": 2, "E_read_gated_pJ": [57.6497, 87.5781, 83.3597, 83.7677, 85.289], "t_acc_ns_max": 3.2981, "reads_gated": 5, "reads_ok_after_stop": 5, "t_acc_gated_ns_max": 13.475, "wrong_bits": [{"k": 10, "addr": 4095, "bit": 0, "expected": 1, "read": 0, "prev_addr": 0, "prev_bit": 0}, {"k": 10, "addr": 4095, "bit": 1, "expected": 1, "read": 0, "prev_addr": 0, "prev_bit": 0}, {"k": 10, "addr": 4095, "bit": 2, "expected": 1, "read": 0, "prev_addr": 0, "prev_bit": 0}, {"k": 10, "addr": 4095, "bit": 3, "expected": 1, "read": 0, "prev_addr": 0, "prev_bit": 0}, {"k": 10, "addr": 4095, "bit": 4, "expected": 1, "read": 0, "prev_addr": 0, "prev_bit": 0}, {"k": 10, "addr": 4095, "bit": 5, "expected": 1, "read": 0, "prev_addr": 0, "prev_bit": 0}, {"k": 10, "addr": 4095, "bit": 6, "expected": 1, "read": 0, "prev_addr": 0, "prev_bit": 0}, {"k": 10, "addr": 4095, "bit": 7, "expected": 1, "read": 0, "prev_addr": 0, "prev_bit": 0}, {"k": 14, "addr": 1032, "bit": 0, "expected": 1, "read": 0, "prev_addr": 2055, "prev_bit": 0}, {"k": 14, "addr": 1032, "bit": 1, "expected": 1, "read": 0, "prev_addr": 2055, "prev_bit": 0}, {"k": 14, "addr": 1032, "bit": 2, "expected": 1, "read": 0, "prev_addr": 2055, "prev_bit": 0}, {"k": 14, "addr": 1032, "bit": 3, "expected": 1, "read": 0, "prev_addr": 2055, "prev_bit": 0}, {"k": 14, "addr": 1032, "bit": 4, "expected": 1, "read": 0, "prev_addr": 2055, "prev_bit": 0}, {"k": 14, "addr": 1032, "bit": 5, "expected": 1, "read": 0, "prev_addr": 2055, "prev_bit": 0}, {"k": 14, "addr": 1032, "bit": 6, "expected": 1, "read": 0, "prev_addr": 2055, "prev_bit": 0}, {"k": 14, "addr": 1032, "bit": 7, "expected": 1, "read": 0, "prev_addr": 2055, "prev_bit": 0}, {"k": 16, "addr": 19, "bit": 0, "expected": 1, "read": 0, "prev_addr": 1032, "prev_bit": 0}, {"k": 16, "addr": 19, "bit": 2, "expected": 1, "read": 0, "prev_addr": 1032, "prev_bit": 0}, {"k": 16, "addr": 19, "bit": 4, "expected": 1, "read": 0, "prev_addr": 1032, "prev_bit": 0}, {"k": 16, "addr": 19, "bit": 6, "expected": 1, "read": 0, "prev_addr": 1032, "prev_bit": 0}], "complete": true}

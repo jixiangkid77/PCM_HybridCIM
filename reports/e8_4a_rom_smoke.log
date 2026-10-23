@@ -1,0 +1,348 @@
+==============================================================
+P2R-E8.4a ROM smoke simulation, started 2026-10-08 23:59:31
+==============================================================
+macro    : e8rom_A_pcm_l00_16x2496  (word bytes 2)
+ngspice  : /nix/store/4ssrcgdvyb8car0yxay8cwfa5wc89f1w-ngspice-45/bin/ngspice
+magic    : /nix/store/1zcyq032zc3mzhmgs2j3q2rmfrjj5v6b-magic-vlsi-8.3.629/bin/magic
+models   : /home/kid/gf/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice (tt)
+period   : 100 ns   time limit per simulation: none   threads per simulation: 2
+machine  : 8 cores, 23 GiB memory, 22 GiB available
+   ** ngspice-45 : Circuit level simulation program
+
+########## a. the generator's netlist ##########
+netlist   : /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/macros/e8rom_A_pcm_l00_16x2496/e8rom_A_pcm_l00_16x2496.sp
+top       : e8rom_A_pcm_l00_16x2496, 32 ports, 42 subcircuits
+ports     : clk0 cs0 addr0[0] addr0[1] addr0[2] addr0[3] addr0[4] addr0[5] addr0[6] addr0[7] addr0[8] addr0[9] addr0[10] addr0[11] dout0[0] dout0[1] dout0[2] dout0[3] dout0[4] dout0[5] dout0[6] dout0[7] dout0[8] dout0[9] dout0[10] dout0[11] dout0[12] dout0[13] dout0[14] dout0[15] vccd1 vssd1
+mapped to : clk cs a0 a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 d0 d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15 vdd 0
+address bits 12, data bits 16
+devices (flattened): 45620
+     43530  sky130_fd_pr__nfet_01v8  w=0.36  l=0.15
+       413  sky130_fd_pr__pfet_01v8  w=0.42  l=0.15
+       386  sky130_fd_pr__pfet_01v8  w=7.0  l=0.15
+       267  sky130_fd_pr__pfet_01v8  w=5.0  l=0.15
+       224  sky130_fd_pr__nfet_01v8  w=1.68  l=0.15
+       208  sky130_fd_pr__nfet_01v8  w=2.88  l=0.15
+       197  sky130_fd_pr__nfet_01v8  w=7.0  l=0.15
+       192  sky130_fd_pr__nfet_01v8  w=3.0  l=0.15
+        77  sky130_fd_pr__nfet_01v8  w=0.74  l=0.15
+        55  sky130_fd_pr__pfet_01v8  w=1.12  l=0.15
+        36  sky130_fd_pr__nfet_01v8  w=5.0  l=0.15
+        25  sky130_fd_pr__pfet_01v8  w=3.0  l=0.15
+         4  sky130_fd_pr__nfet_01v8  w=1.26  l=0.15
+         2  sky130_fd_pr__pfet_01v8  w=1.26  l=0.15
+         2  sky130_fd_pr__pfet_01v8  w=2.0  l=0.15
+         2  sky130_fd_pr__nfet_01v8  w=2.0  l=0.15
+capacitors (flattened): 0, total 0.000 pF
+instances in the top cell:
+       1  e8rom_A_pcm_l00_16x2496_rom_base_array
+       1  e8rom_A_pcm_l00_16x2496_rom_row_decode
+       1  e8rom_A_pcm_l00_16x2496_rom_control_logic
+       1  e8rom_A_pcm_l00_16x2496_rom_column_mux_array
+       1  e8rom_A_pcm_l00_16x2496_rom_column_decode
+       1  e8rom_A_pcm_l00_16x2496_rom_bitline_inverter
+       1  e8rom_A_pcm_l00_16x2496_rom_output_buffer
+
+########## b. read sequences ##########
+rows 192, words per row 13, zero bits per row: min 0, max 155 (row 8), mean 104.6 of 208; words with no zero bit: 173
+   main     : i,r3056,r6,r128,r6,r3068,i,s3
+   recovery : i,r128,s2,r3056,r128,s5,r3056,r128,s15,r3056
+
+########## c. start the simulations of the generator's netlist (no wire capacitance) ##########
+bench written: /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a/e8rom_A_pcm_l00_16x2496/sch_main/tb.sp  (10 cycles, period 100.0 ns, stop 1050.2 ns, 12 address bits, 16 data bits)
+   note: internal probes: bitline 6 and multiplexer output 0 of the first read (address 6), wordline 0
+   started sch_main at 2026-10-08 23:59:33
+bench written: /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a/e8rom_A_pcm_l00_16x2496/sch_recovery/tb.sp  (29 cycles, period 100.0 ns, stop 2950.2 ns, 12 address bits, 16 data bits)
+   note: internal probes: bitline 0 and multiplexer output 0 of the first read (address 128), wordline 8
+   started sch_recovery at 2026-10-08 23:59:33
+
+########## d. extraction with magic (devices and parasitic capacitance), meanwhile ##########
+   magic exit 0, wall time 2218 s
+   log: Error while reading cell "e8rom_A_pcm_l00_16x2496_rom_poly_tap" (byte position 7496560): Warning:  Cell e8rom_A_pcm_l00_16x2496_rom_poly_tap boundary was redefined.
+   log: Error while reading cell "e8rom_A_pcm_l00_16x2496_rom_poly_tap_0" (byte position 7600880): Warning:  Cell e8rom_A_pcm_l00_16x2496_rom_poly_tap_0 boundary was redefined.
+   log: Error while reading cell "e8rom_A_pcm_l00_16x2496_pmos_m1_w0_420_sli_dm1" (byte position 7603054): Warning:  Cell e8rom_A_pcm_l00_16x2496_pmos_m1_w0_420_sli_dm1 boundary was redefined.
+   log: Error while reading cell "e8rom_A_pcm_l00_16x2496_pmos_m1_w0_420_sli_dm1" (byte position 7603054): Warning:  Cell e8rom_A_pcm_l00_16x2496_pmos_m1_w0_420_sli_dm1 boundary was redefined.
+   log: Error while reading cell "e8rom_A_pcm_l00_16x2496_precharge_cell" (byte position 7602008): Warning:  Cell e8rom_A_pcm_l00_16x2496_precharge_cell boundary was redefined.
+   log: Error while reading cell "e8rom_A_pcm_l00_16x2496_rom_precharge_array" (byte position 7600244): Warning:  Cell e8rom_A_pcm_l00_16x2496_rom_precharge_array boundary was redefined.
+   log: Error while reading cell "e8rom_A_pcm_l00_16x2496_rom_precharge_array" (byte position 7600244): Warning:  Cell e8rom_A_pcm_l00_16x2496_rom_precharge_array boundary was redefined.
+   log: Error while reading cell "e8rom_A_pcm_l00_16x2496_rom_precharge_array" (byte position 7600244): Warning:  Cell e8rom_A_pcm_l00_16x2496_rom_precharge_array boundary was redefined.
+   log: Error while reading cell "e8rom_A_pcm_l00_16x2496_rom_precharge_array" (byte position 7600244): Warning:  Cell e8rom_A_pcm_l00_16x2496_rom_precharge_array boundary was redefined.
+   log: Error while reading cell "e8rom_A_pcm_l00_16x2496_rom_precharge_array" (byte position 7600244): Warning:  Cell e8rom_A_pcm_l00_16x2496_rom_precharge_array boundary was redefined.
+   -rwxrwxrwx 1 kid kid 26281589 Oct  9 00:36 /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a/e8rom_A_pcm_l00_16x2496/extract/e8rom_A_pcm_l00_16x2496.pex.spice
+   first lines and first devices of the extracted netlist:
+      
+      .subckt e8rom_A_pcm_l00_16x2496_pmos_m1_w5_000_sli_dli_da_p G S D w_n59_416# VSUBS
+      X0 D G S w_n59_416# sky130_fd_pr__pfet_01v8 ad=1.5 pd=10.6 as=1.5 ps=10.6 w=5 l=0.15
+      C0 G D 0.00279f
+      X0 D G S VSUBS sky130_fd_pr__nfet_01v8 ad=0.504 pd=3.96 as=0.504 ps=3.96 w=1.68 l=0.15
+      X0 a_90_0# G S VSUBS sky130_fd_pr__nfet_01v8 ad=0.222 pd=2.08 as=0.222 ps=2.08 w=0.74 l=0.15
+      X0 D G a_0_0# VSUBS sky130_fd_pr__nfet_01v8 ad=0.222 pd=2.08 as=0.222 ps=2.08 w=0.74 l=0.15
+      C0 G D 0.00279f
+      C1 G S 0.00279f
+netlist   : /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a/e8rom_A_pcm_l00_16x2496/extract/e8rom_A_pcm_l00_16x2496.pex.spice
+top       : e8rom_A_pcm_l00_16x2496, 32 ports, 72 subcircuits
+ports     : clk0 cs0 addr0[0] addr0[1] addr0[2] addr0[3] addr0[4] addr0[5] addr0[6] addr0[7] addr0[8] addr0[9] addr0[10] addr0[11] dout0[0] dout0[1] dout0[2] dout0[3] dout0[4] dout0[5] dout0[6] dout0[7] dout0[8] dout0[9] dout0[10] dout0[11] dout0[12] dout0[13] dout0[14] dout0[15] vccd1 vssd1
+mapped to : clk cs a0 a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 d0 d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15 vdd 0
+address bits 12, data bits 16
+devices (flattened): 45620
+     43530  sky130_fd_pr__nfet_01v8  w=0.36  l=0.15
+       413  sky130_fd_pr__pfet_01v8  w=0.42  l=0.15
+       386  sky130_fd_pr__pfet_01v8  w=7  l=0.15
+       267  sky130_fd_pr__pfet_01v8  w=5  l=0.15
+       224  sky130_fd_pr__nfet_01v8  w=1.68  l=0.15
+       208  sky130_fd_pr__nfet_01v8  w=2.88  l=0.15
+       197  sky130_fd_pr__nfet_01v8  w=7  l=0.15
+       192  sky130_fd_pr__nfet_01v8  w=3  l=0.15
+        77  sky130_fd_pr__nfet_01v8  w=0.74  l=0.15
+        55  sky130_fd_pr__pfet_01v8  w=1.12  l=0.15
+        36  sky130_fd_pr__nfet_01v8  w=5  l=0.15
+        25  sky130_fd_pr__pfet_01v8  w=3  l=0.15
+         4  sky130_fd_pr__nfet_01v8  w=1.26  l=0.15
+         2  sky130_fd_pr__pfet_01v8  w=2  l=0.15
+         2  sky130_fd_pr__nfet_01v8  w=2  l=0.15
+         2  sky130_fd_pr__pfet_01v8  w=1.26  l=0.15
+capacitors (flattened): 589938, total -18.131 pF
+instances in the top cell:
+       1  e8rom_A_pcm_l00_16x2496_rom_bitline_inverter
+       1  e8rom_A_pcm_l00_16x2496_rom_output_buffer
+       1  e8rom_A_pcm_l00_16x2496_rom_control_logic
+       1  e8rom_A_pcm_l00_16x2496_rom_row_decode
+       1  e8rom_A_pcm_l00_16x2496_rom_base_array
+       1  e8rom_A_pcm_l00_16x2496_rom_column_mux_array
+       1  e8rom_A_pcm_l00_16x2496_rom_column_decode
+
+   start the simulations of the extracted netlist (with parasitic capacitance)
+bench written: /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a/e8rom_A_pcm_l00_16x2496/ext_main/tb.sp  (10 cycles, period 100.0 ns, stop 1050.2 ns, 12 address bits, 16 data bits)
+   note: substrate node VSUBS tied to ground in 1688 places
+   started ext_main at 2026-10-09 00:36:34
+bench written: /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a/e8rom_A_pcm_l00_16x2496/ext_recovery/tb.sp  (29 cycles, period 100.0 ns, stop 2950.2 ns, 12 address bits, 16 data bits)
+   note: substrate node VSUBS tied to ground in 1688 places
+   started ext_recovery at 2026-10-09 00:36:36
+
+########## e. waiting for the simulations (progress every 1800 s) ##########
+   progress at 2026-10-09 00:36:36:
+      sch_main      finished                             0h16m      1050.2 of   1050.2 ns (100.0 %)
+      sch_recovery  finished                             0h19m      2950.2 of   2950.2 ns (100.0 %)
+      ext_main      running                              0h00m    no data yet
+      ext_recovery  running                              0h00m    no data yet
+   progress at 2026-10-09 01:06:37:
+      sch_main      finished                             0h16m      1050.2 of   1050.2 ns (100.0 %)
+      sch_recovery  finished                             0h19m      2950.2 of   2950.2 ns (100.0 %)
+      ext_main      running                              0h30m    no data yet
+      ext_recovery  running                              0h30m    no data yet
+   progress at 2026-10-09 01:36:39:
+      sch_main      finished                             0h16m      1050.2 of   1050.2 ns (100.0 %)
+      sch_recovery  finished                             0h19m      2950.2 of   2950.2 ns (100.0 %)
+      ext_main      running                              1h00m    no data yet
+      ext_recovery  running                              1h00m    no data yet
+   progress at 2026-10-09 02:06:41:
+      sch_main      finished                             0h16m      1050.2 of   1050.2 ns (100.0 %)
+      sch_recovery  finished                             0h19m      2950.2 of   2950.2 ns (100.0 %)
+      ext_main      running                              1h30m    no data yet
+      ext_recovery  running                              1h30m    no data yet
+   progress at 2026-10-09 02:36:43:
+      sch_main      finished                             0h16m      1050.2 of   1050.2 ns (100.0 %)
+      sch_recovery  finished                             0h19m      2950.2 of   2950.2 ns (100.0 %)
+      ext_main      running                              2h00m    no data yet
+      ext_recovery  running                              2h00m    no data yet
+   progress at 2026-10-09 03:06:44:
+      sch_main      finished                             0h16m      1050.2 of   1050.2 ns (100.0 %)
+      sch_recovery  finished                             0h19m      2950.2 of   2950.2 ns (100.0 %)
+      ext_main      running                              2h30m    no data yet
+      ext_recovery  running                              2h30m    no data yet
+   progress at 2026-10-09 03:36:46:
+      sch_main      finished                             0h16m      1050.2 of   1050.2 ns (100.0 %)
+      sch_recovery  finished                             0h19m      2950.2 of   2950.2 ns (100.0 %)
+      ext_main      finished                             2h48m    no data yet
+      ext_recovery  running                              3h00m    no data yet
+   progress at 2026-10-09 04:06:48:
+      sch_main      finished                             0h16m      1050.2 of   1050.2 ns (100.0 %)
+      sch_recovery  finished                             0h19m      2950.2 of   2950.2 ns (100.0 %)
+      ext_main      finished                             2h48m    no data yet
+      ext_recovery  running                              3h30m    no data yet
+   progress at 2026-10-09 04:36:49:
+      sch_main      finished                             0h16m      1050.2 of   1050.2 ns (100.0 %)
+      sch_recovery  finished                             0h19m      2950.2 of   2950.2 ns (100.0 %)
+      ext_main      finished                             2h48m    no data yet
+      ext_recovery  running                              4h00m    no data yet
+   progress at 2026-10-09 05:06:51:
+      sch_main      finished                             0h16m      1050.2 of   1050.2 ns (100.0 %)
+      sch_recovery  finished                             0h19m      2950.2 of   2950.2 ns (100.0 %)
+      ext_main      finished                             2h48m    no data yet
+      ext_recovery  running                              4h30m    no data yet
+   progress at 2026-10-09 05:36:52:
+      sch_main      finished                             0h16m      1050.2 of   1050.2 ns (100.0 %)
+      sch_recovery  finished                             0h19m      2950.2 of   2950.2 ns (100.0 %)
+      ext_main      finished                             2h48m    no data yet
+      ext_recovery  running                              5h00m    no data yet
+   progress at 2026-10-09 06:06:53:
+      sch_main      finished                             0h16m      1050.2 of   1050.2 ns (100.0 %)
+      sch_recovery  finished                             0h19m      2950.2 of   2950.2 ns (100.0 %)
+      ext_main      finished                             2h48m    no data yet
+      ext_recovery  running                              5h30m    no data yet
+   progress at 2026-10-09 06:16:54:
+      sch_main      finished                             0h16m      1050.2 of   1050.2 ns (100.0 %)
+      sch_recovery  finished                             0h19m      2950.2 of   2950.2 ns (100.0 %)
+      ext_main      finished                             2h48m    no data yet
+      ext_recovery  finished                             5h40m    no data yet
+
+########## f. results ##########
+
+---- sch_main: finished, wall time 0h16m, ngspice exit 0 ----
+   Total analysis time (seconds) = 503.854
+P2R-E8.4 analysis: e8rom_A_pcm_l00_16x2496  period 100.0 ns  vdd 1.8 V  load 10.0 fF per output  points 1140
+data: simulated to 1050.2 of 1050.2 ns, 10 of 10 cycles complete (complete)
+E_vdd: energy from the supply from this cycle's rising edge to the next one; P_after: supply power just before the next rising edge (static state after the cycle)
+  k kind   addr  row   w precharge ns z_row z_word expected     read  ok  E_vdd pJ  E_in pJ P_after uW t_acc ns  dout min/max V
+  0 idle                                                                    4.598    0.056       0.99
+  1 read   3056  191   0       150.0     0      0     ffff     ffff yes    11.468   -0.025       2.05     0.00  1.80/1.80
+  2 read      6    0   6        50.0    53     16     0000     0000 yes    79.491   -0.004     220.35    19.85  -0.04/1.80  bitline below VDD/2 after 9.40 ns
+  3 read    128    8   0        50.0   155     13     0031     0031 yes    99.192    0.010     112.19    11.81  -0.02/1.90  bitline below VDD/2 after 8.53 ns
+  4 read      6    0   6        50.0    53     16     0000     0000 yes    80.673    0.054     258.57    11.77  -0.02/1.89  bitline below VDD/2 after 8.41 ns
+  5 read   3068  191  12        50.0     0      0     ffff     0000  NO   452.297   -0.002     636.53    18.44  -0.02/1.92  bitline below VDD/2 after 14.44 ns
+  6 idle                                                                   67.683    0.002     622.62
+  7 stop                                                                   61.748   -0.002     618.25
+  8 stop                                                                   61.753   -0.000     617.21
+  9 stop                                                                   61.699   -0.000     616.87
+summary: {"cycles_complete": 10, "cycles_total": 10, "simulated_ns": 1050.1999999999998, "tstop_ns": 1050.2, "reads": 5, "reads_ok": 4, "E_read_pJ_mean": 144.624199769977, "E_read_pJ_min": 11.467874652213617, "E_read_pJ_max": 452.29718523144976, "t_access_ns_max": 19.84705899999998, "E_idle_clocked_pJ_mean": 67.68320985325363, "P_stopped_uW": 617.3740021451999}
+
+---- sch_recovery: finished, wall time 0h19m, ngspice exit 0 ----
+   Total analysis time (seconds) = 671.651
+P2R-E8.4 analysis: e8rom_A_pcm_l00_16x2496  period 100.0 ns  vdd 1.8 V  load 10.0 fF per output  points 2203
+data: simulated to 2950.2 of 2950.2 ns, 29 of 29 cycles complete (complete)
+E_vdd: energy from the supply from this cycle's rising edge to the next one; P_after: supply power just before the next rising edge (static state after the cycle)
+  k kind   addr  row   w precharge ns z_row z_word expected     read  ok  E_vdd pJ  E_in pJ P_after uW t_acc ns  dout min/max V
+  0 idle                                                                    4.609    0.012       1.00
+  1 read    128    8   0       150.0   155     13     0031     0031 yes   107.555   -0.003     240.57    20.01  -0.05/1.80  bitline below VDD/2 after 11.44 ns
+  2 stop                                                                   18.873   -0.000     174.77
+  3 stop                                                                   17.021    0.049     168.27
+  4 read   3056  191   0       250.0     0      0     ffff     bfff  NO    85.303   -0.034      11.90    37.20  -0.01/1.90  bitline below VDD/2 after 39.20 ns
+  5 read    128    8   0        50.0   155     13     0031     0031 yes   105.044   -0.003     221.97    15.35  -0.03/1.80  bitline below VDD/2 after 8.63 ns
+  6 stop                                                                   16.969   -0.000     155.63
+  7 stop                                                                   15.123   -0.000     149.11
+  8 stop                                                                   14.788   -0.000     147.18
+  9 stop                                                                   14.669   -0.000     146.40
+ 10 stop                                                                   14.601    0.049     146.04
+ 11 read   3056  191   0       550.0     0      0     ffff     ffff yes    33.937   -0.034       9.71     1.01  -0.01/1.89
+ 12 read    128    8   0        50.0   155     13     0031     0031 yes   105.810   -0.003     225.50    15.84  -0.05/1.80  bitline below VDD/2 after 8.51 ns
+ 13 stop                                                                   17.325   -0.000     159.20
+ 14 stop                                                                   15.480   -0.000     152.68
+ 15 stop                                                                   15.145   -0.000     150.76
+ 16 stop                                                                   15.027   -0.000     149.98
+ 17 stop                                                                   14.977   -0.000     149.64
+ 18 stop                                                                   14.955    0.000     149.50
+ 19 stop                                                                   14.948   -0.000     149.47
+ 20 stop                                                                   14.949   -0.000     149.51
+ 21 stop                                                                   14.956   -0.000     149.60
+ 22 stop                                                                   14.966   -0.000     149.71
+ 23 stop                                                                   14.979   -0.000     149.85
+ 24 stop                                                                   14.993   -0.000     150.00
+ 25 stop                                                                   15.009   -0.000     150.16
+ 26 stop                                                                   15.026   -0.000     150.33
+ 27 stop                                                                   15.026    0.049     150.50
+ 28 read   3056  191   0      1550.0     0      0     ffff     ffff yes    14.240   -0.002       5.87     1.01  -0.01/1.89
+summary: {"cycles_complete": 29, "cycles_total": 29, "simulated_ns": 2950.2000000000003, "tstop_ns": 2950.2000000000003, "reads": 6, "reads_ok": 5, "E_read_pJ_mean": 75.3148949155367, "E_read_pJ_min": 14.2397091462137, "E_read_pJ_max": 107.55540376409039, "t_access_ns_max": 37.196257999999915}
+
+---- ext_main: finished, wall time 2h48m, ngspice exit 0 ----
+   log: Warning: singular matrix:  check node xrom.e8rom_a_pcm_l00_16x2496_rom_base_array_0/e8rom_a_pcm_l00_16x2496_rom_base_one_cell_2633/d
+   log: Warning: singular matrix:  check node xrom.e8rom_a_pcm_l00_16x2496_rom_base_array_0/e8rom_a_pcm_l00_16x2496_rom_base_one_cell_2633/d
+   log: Warning: singular matrix:  check node xrom.e8rom_a_pcm_l00_16x2496_rom_base_array_0/e8rom_a_pcm_l00_16x2496_rom_base_one_cell_2633/d
+   log: Warning: singular matrix:  check node xrom.e8rom_a_pcm_l00_16x2496_rom_base_array_0/e8rom_a_pcm_l00_16x2496_rom_base_one_cell_2633/d
+   log: Warning: singular matrix:  check node xrom.e8rom_a_pcm_l00_16x2496_rom_base_array_0/e8rom_a_pcm_l00_16x2496_rom_base_one_cell_2633/d
+   log: Warning: singular matrix:  check node xrom.e8rom_a_pcm_l00_16x2496_rom_base_array_0/e8rom_a_pcm_l00_16x2496_rom_base_one_cell_2633/d
+   log: Error: Transient op failed, timestep too small
+   log: Error: The operating point could not be simulated successfully.
+   Total analysis time (seconds) = 9618.32
+P2R-E8.4 analysis: e8rom_A_pcm_l00_16x2496: no waveform data written yet
+
+---- ext_recovery: finished, wall time 5h40m, ngspice exit 0 ----
+   log: Warning: singular matrix:  check node xrom.e8rom_a_pcm_l00_16x2496_rom_base_array_0/e8rom_a_pcm_l00_16x2496_rom_base_one_cell_2633/d
+   log: Warning: singular matrix:  check node xrom.e8rom_a_pcm_l00_16x2496_rom_base_array_0/e8rom_a_pcm_l00_16x2496_rom_base_one_cell_2633/d
+   log: Warning: singular matrix:  check node xrom.e8rom_a_pcm_l00_16x2496_rom_base_array_0/e8rom_a_pcm_l00_16x2496_rom_base_one_cell_2633/d
+   log: Warning: singular matrix:  check node xrom.e8rom_a_pcm_l00_16x2496_rom_base_array_0/e8rom_a_pcm_l00_16x2496_rom_base_one_cell_2633/d
+   log: Warning: singular matrix:  check node xrom.e8rom_a_pcm_l00_16x2496_rom_base_array_0/e8rom_a_pcm_l00_16x2496_rom_base_one_cell_2633/d
+   log: Warning: singular matrix:  check node xrom.e8rom_a_pcm_l00_16x2496_rom_base_array_0/e8rom_a_pcm_l00_16x2496_rom_base_one_cell_2633/d
+   log: Error: Transient op failed, timestep too small
+   log: Error: The operating point could not be simulated successfully.
+   Total analysis time (seconds) = 19822.1
+P2R-E8.4 analysis: e8rom_A_pcm_l00_16x2496: no waveform data written yet
+
+---- files, all in the folder /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a/e8rom_A_pcm_l00_16x2496 ----
+   /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a/e8rom_A_pcm_l00_16x2496/ext_main:
+   total 83432
+   drwxrwxrwx 1 kid kid     4096 Oct  9 03:24 .
+   drwxrwxrwx 1 kid kid     4096 Oct  9 00:36 ..
+   -rwxrwxrwx 1 kid kid      124 Oct  9 00:36 .spiceinit
+   -rwxrwxrwx 1 kid kid        2 Oct  9 03:24 exit_code
+   -rwxrwxrwx 1 kid kid       11 Oct  9 03:24 finished
+   -rwxrwxrwx 1 kid kid 26274837 Oct  9 00:36 netlist.sp
+   -rwxrwxrwx 1 kid kid 59146149 Oct  9 03:24 ngspice.log
+   -rwxrwxrwx 1 kid kid        4 Oct  9 00:36 pid
+   -rwxrwxrwx 1 kid kid       11 Oct  9 00:36 started
+   -rwxrwxrwx 1 kid kid     7633 Oct  9 00:36 tb.sp
+   -rwxrwxrwx 1 kid kid        0 Oct  9 03:24 tb_done
+   -rwxrwxrwx 1 kid kid     3602 Oct  9 00:36 tb_meta.json
+   
+   /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a/e8rom_A_pcm_l00_16x2496/ext_recovery:
+   total 183212
+   drwxrwxrwx 1 kid kid      4096 Oct  9 06:16 .
+   drwxrwxrwx 1 kid kid      4096 Oct  9 00:36 ..
+   -rwxrwxrwx 1 kid kid       124 Oct  9 00:36 .spiceinit
+   -rwxrwxrwx 1 kid kid         2 Oct  9 06:16 exit_code
+   -rwxrwxrwx 1 kid kid        11 Oct  9 06:16 finished
+   -rwxrwxrwx 1 kid kid  26274837 Oct  9 00:36 netlist.sp
+   -rwxrwxrwx 1 kid kid 161307154 Oct  9 06:16 ngspice.log
+   -rwxrwxrwx 1 kid kid         4 Oct  9 00:36 pid
+   -rwxrwxrwx 1 kid kid        11 Oct  9 00:36 started
+   -rwxrwxrwx 1 kid kid     15395 Oct  9 00:36 tb.sp
+   -rwxrwxrwx 1 kid kid         0 Oct  9 06:16 tb_done
+   -rwxrwxrwx 1 kid kid      7883 Oct  9 00:36 tb_meta.json
+   
+   /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a/e8rom_A_pcm_l00_16x2496/extract:
+   total 116952
+   drwxrwxrwx 1 kid kid     4096 Oct  9 00:36 .
+   drwxrwxrwx 1 kid kid     4096 Oct  9 00:36 ..
+   -rwxrwxrwx 1 kid kid 26281589 Oct  9 00:36 e8rom_A_pcm_l00_16x2496.pex.spice
+   -rwxrwxrwx 1 kid kid      547 Oct  8 23:59 extract.tcl
+   -rwxrwxrwx 1 kid kid       11 Oct  9 00:36 finished
+   -rwxrwxrwx 1 kid kid   369735 Oct  9 00:36 magic_extract.log
+   -rwxrwxrwx 1 kid kid       11 Oct  8 23:59 started
+   
+   /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a/e8rom_A_pcm_l00_16x2496/sch_main:
+   total 6296
+   drwxrwxrwx 1 kid kid    4096 Oct  9 06:16 .
+   drwxrwxrwx 1 kid kid    4096 Oct  9 00:36 ..
+   -rwxrwxrwx 1 kid kid     124 Oct  8 23:59 .spiceinit
+   -rwxrwxrwx 1 kid kid       2 Oct  9 00:16 exit_code
+   -rwxrwxrwx 1 kid kid      11 Oct  9 00:16 finished
+   -rwxrwxrwx 1 kid kid 4240759 Oct  8 23:59 netlist.sp
+   -rwxrwxrwx 1 kid kid 1198928 Oct  9 00:16 ngspice.log
+   -rwxrwxrwx 1 kid kid       4 Oct  8 23:59 pid
+   -rwxrwxrwx 1 kid kid    9568 Oct  9 06:16 result.json
+   -rwxrwxrwx 1 kid kid      11 Oct  8 23:59 started
+   -rwxrwxrwx 1 kid kid    9427 Oct  8 23:59 tb.sp
+   -rwxrwxrwx 1 kid kid       0 Oct  9 00:16 tb_done
+   -rwxrwxrwx 1 kid kid  128944 Oct  9 00:16 tb_int.txt
+   -rwxrwxrwx 1 kid kid    3762 Oct  8 23:59 tb_meta.json
+   -rwxrwxrwx 1 kid kid  840917 Oct  9 00:16 tb_out.txt
+   
+   /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a/e8rom_A_pcm_l00_16x2496/sch_recovery:
+   total 7220
+   drwxrwxrwx 1 kid kid    4096 Oct  9 06:16 .
+   drwxrwxrwx 1 kid kid    4096 Oct  9 00:36 ..
+   -rwxrwxrwx 1 kid kid     124 Oct  8 23:59 .spiceinit
+   -rwxrwxrwx 1 kid kid       2 Oct  9 00:18 exit_code
+   -rwxrwxrwx 1 kid kid      11 Oct  9 00:18 finished
+   -rwxrwxrwx 1 kid kid 4240759 Oct  8 23:59 netlist.sp
+   -rwxrwxrwx 1 kid kid 1222108 Oct  9 00:18 ngspice.log
+   -rwxrwxrwx 1 kid kid       4 Oct  8 23:59 pid
+   -rwxrwxrwx 1 kid kid   19803 Oct  9 06:16 result.json
+   -rwxrwxrwx 1 kid kid      11 Oct  8 23:59 started
+   -rwxrwxrwx 1 kid kid   20115 Oct  8 23:59 tb.sp
+   -rwxrwxrwx 1 kid kid       0 Oct  9 00:18 tb_done
+   -rwxrwxrwx 1 kid kid  249063 Oct  9 00:18 tb_int.txt
+   -rwxrwxrwx 1 kid kid    8045 Oct  8 23:59 tb_meta.json
+   -rwxrwxrwx 1 kid kid 1624348 Oct  9 00:18 tb_out.txt
+
+==============================================================
+Finished 2026-10-09 06:17:00.
+==============================================================

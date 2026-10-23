@@ -1,0 +1,2384 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.68+36 (git sha1 17d51a330-dirty, Release, Clang /usr/bin/clang++ 21.1.8)
+
+-- Executing script file `/home/kid/p2r_e8/e8_5e/c1cache_syn.ys' --
+
+1. Executing Liberty frontend: /home/kid/sky130/orfs/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+Imported 428 cell types from liberty file.
+
+2. Executing Verilog-2005 frontend: /mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v
+Parsing SystemVerilog input from `/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v' to AST representation.
+Generating RTLIL representation for module `\conv1_cache'.
+Successfully finished Verilog frontend.
+
+3. Executing SYNTH pass.
+
+3.1. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1.1. Analyzing design hierarchy..
+Top module:  \conv1_cache
+
+3.1.2. Analyzing design hierarchy..
+Top module:  \conv1_cache
+Removed 0 unused modules.
+
+3.2. Executing PROC pass (convert processes to netlists).
+
+3.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+3.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:122$21 in module conv1_cache.
+Marked 1 switch rules as full_case in process $proc$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:99$4 in module conv1_cache.
+Removed a total of 0 dead cases.
+
+3.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 3 assignments to connections.
+
+3.2.4. Executing PROC_INIT pass (extract init attributes).
+
+3.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\conv1_cache.$proc$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:122$21'.
+
+3.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~2 debug messages>
+
+3.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\conv1_cache.$proc$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:122$21'.
+     1/4: $0\idx_s2[74:0]
+     2/4: $0\idx_s1[74:0]
+     3/4: $0\sel_s2[24:0]
+     4/4: $0\sel_s1[24:0]
+Creating decoders for process `\conv1_cache.$proc$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:99$4'.
+     1/3: $1$memwr$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:100$1_EN[7:0]$12
+     2/3: $1$memwr$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:100$1_DATA[7:0]$11
+     3/3: $1$memwr$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:100$1_ADDR[7:0]$10
+
+3.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+3.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\conv1_cache.\sel_s1' using process `\conv1_cache.$proc$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:122$21'.
+  created $adff cell `$procdff$769' with positive edge clock and positive level reset.
+Creating register for signal `\conv1_cache.\sel_s2' using process `\conv1_cache.$proc$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:122$21'.
+  created $adff cell `$procdff$774' with positive edge clock and positive level reset.
+Creating register for signal `\conv1_cache.\idx_s1' using process `\conv1_cache.$proc$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:122$21'.
+  created $adff cell `$procdff$779' with positive edge clock and positive level reset.
+Creating register for signal `\conv1_cache.\idx_s2' using process `\conv1_cache.$proc$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:122$21'.
+  created $adff cell `$procdff$784' with positive edge clock and positive level reset.
+Creating register for signal `\conv1_cache.$memwr$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:100$1_ADDR' using process `\conv1_cache.$proc$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:99$4'.
+  created $dff cell `$procdff$785' with positive edge clock.
+Creating register for signal `\conv1_cache.$memwr$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:100$1_DATA' using process `\conv1_cache.$proc$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:99$4'.
+  created $dff cell `$procdff$786' with positive edge clock.
+Creating register for signal `\conv1_cache.$memwr$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:100$1_EN' using process `\conv1_cache.$proc$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:99$4'.
+  created $dff cell `$procdff$787' with positive edge clock.
+
+3.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+3.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\conv1_cache.$proc$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:122$21'.
+Removing empty process `conv1_cache.$proc$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:122$21'.
+Found and cleaned up 1 empty switch in `\conv1_cache.$proc$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:99$4'.
+Removing empty process `conv1_cache.$proc$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:99$4'.
+Cleaned up 2 empty switches.
+
+3.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module conv1_cache.
+<suppressed ~34 debug messages>
+
+3.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module conv1_cache.
+
+3.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \conv1_cache..
+Removed 8 unused cells and 309 unused wires.
+<suppressed ~10 debug messages>
+
+3.5. Executing CHECK pass (checking for obvious problems).
+Checking module conv1_cache...
+Found and reported 0 problems.
+
+3.6. Executing OPT pass (performing simple optimizations).
+
+3.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module conv1_cache.
+
+3.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\conv1_cache'.
+Computing hashes of 749 cells of `\conv1_cache'.
+Finding duplicate cells in `\conv1_cache'.
+Removed a total of 0 cells.
+
+3.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \conv1_cache..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~314 debug messages>
+
+3.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \conv1_cache.
+    Consolidated identical input bits for $mux cell $procmux$757:
+      Old ports: A=8'00000000, B=8'11111111, Y=$0$memwr$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:100$1_EN[7:0]$7
+      New ports: A=1'0, B=1'1, Y=$0$memwr$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:100$1_EN[7:0]$7 [0]
+      New connections: $0$memwr$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:100$1_EN[7:0]$7 [7:1] = { $0$memwr$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:100$1_EN[7:0]$7 [0] $0$memwr$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:100$1_EN[7:0]$7 [0] $0$memwr$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:100$1_EN[7:0]$7 [0] $0$memwr$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:100$1_EN[7:0]$7 [0] $0$memwr$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:100$1_EN[7:0]$7 [0] $0$memwr$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:100$1_EN[7:0]$7 [0] $0$memwr$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:100$1_EN[7:0]$7 [0] }
+  Optimizing cells in module \conv1_cache.
+Performed a total of 1 changes.
+
+3.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\conv1_cache'.
+Computing hashes of 749 cells of `\conv1_cache'.
+Finding duplicate cells in `\conv1_cache'.
+Removed a total of 0 cells.
+
+3.6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \conv1_cache..
+
+3.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module conv1_cache.
+
+3.6.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.6.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \conv1_cache..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~314 debug messages>
+
+3.6.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \conv1_cache.
+Performed a total of 0 changes.
+
+3.6.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\conv1_cache'.
+Computing hashes of 749 cells of `\conv1_cache'.
+Finding duplicate cells in `\conv1_cache'.
+Removed a total of 0 cells.
+
+3.6.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.6.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \conv1_cache..
+
+3.6.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module conv1_cache.
+
+3.6.16. Finished fast OPT passes. (There is nothing left to do.)
+
+3.7. Executing FSM pass (extract and optimize FSM).
+
+3.7.1. Executing FSM_DETECT pass (finding FSMs in design).
+Not marking conv1_cache.idx_s1 as FSM state register:
+    Users of register don't seem to benefit from recoding.
+
+3.7.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+3.7.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+3.7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \conv1_cache..
+
+3.7.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+3.7.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+3.7.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+3.7.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+3.8. Executing OPT pass (performing simple optimizations).
+
+3.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module conv1_cache.
+
+3.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\conv1_cache'.
+Computing hashes of 749 cells of `\conv1_cache'.
+Finding duplicate cells in `\conv1_cache'.
+Removed a total of 0 cells.
+
+3.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \conv1_cache..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~314 debug messages>
+
+3.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \conv1_cache.
+Performed a total of 0 changes.
+
+3.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\conv1_cache'.
+Computing hashes of 749 cells of `\conv1_cache'.
+Finding duplicate cells in `\conv1_cache'.
+Removed a total of 0 cells.
+
+3.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$774 ($adff) from module conv1_cache (D = \sel_s1, Q = \sel_s2).
+Adding EN signal on $procdff$779 ($adff) from module conv1_cache (D = \idx, Q = \idx_s1).
+Adding EN signal on $procdff$769 ($adff) from module conv1_cache (D = \sel, Q = \sel_s1).
+Adding EN signal on $procdff$784 ($adff) from module conv1_cache (D = \idx_s1, Q = \idx_s2).
+
+3.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \conv1_cache..
+Removed 4 unused cells and 4 unused wires.
+<suppressed ~5 debug messages>
+
+3.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module conv1_cache.
+
+3.8.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.8.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \conv1_cache..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~331 debug messages>
+
+3.8.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \conv1_cache.
+Performed a total of 0 changes.
+
+3.8.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\conv1_cache'.
+Computing hashes of 745 cells of `\conv1_cache'.
+Finding duplicate cells in `\conv1_cache'.
+Removed a total of 0 cells.
+
+3.8.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.8.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \conv1_cache..
+
+3.8.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module conv1_cache.
+
+3.8.16. Finished fast OPT passes. (There is nothing left to do.)
+
+3.9. Executing WREDUCE pass (reducing word size of cells).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:145$735 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:144$734 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:143$733 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:142$732 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:141$731 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:140$730 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:145$717 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:144$716 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:143$715 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:142$714 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:141$713 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:140$712 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:145$699 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:144$698 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:143$697 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:142$696 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:141$695 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:140$694 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:145$681 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:144$680 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:143$679 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:142$678 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:141$677 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:140$676 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:145$663 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:144$662 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:143$661 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:142$660 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:141$659 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:140$658 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:145$645 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:144$644 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:143$643 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:142$642 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:141$641 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:140$640 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:145$627 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:144$626 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:143$625 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:142$624 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:141$623 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:140$622 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:145$609 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:144$608 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:143$607 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:142$606 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:141$605 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:140$604 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:145$591 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:144$590 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:143$589 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:142$588 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:141$587 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:140$586 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:145$573 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:144$572 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:143$571 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:142$570 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:141$569 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:140$568 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:145$555 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:144$554 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:143$553 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:142$552 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:141$551 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:140$550 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:145$537 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:144$536 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:143$535 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:142$534 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:141$533 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:140$532 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:145$519 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:144$518 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:143$517 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:142$516 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:141$515 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:140$514 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:145$501 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:144$500 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:143$499 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:142$498 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:141$497 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:140$496 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:145$483 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:144$482 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:143$481 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:142$480 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:141$479 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:140$478 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:145$465 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:144$464 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:143$463 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:142$462 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:141$461 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:140$460 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:145$447 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:144$446 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:143$445 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:142$444 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:141$443 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:140$442 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:145$429 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:144$428 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:143$427 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:142$426 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:141$425 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:140$424 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:145$411 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:144$410 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:143$409 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:142$408 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:141$407 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:140$406 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:145$393 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:144$392 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:143$391 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:142$390 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:141$389 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:140$388 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:145$375 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:144$374 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:143$373 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:142$372 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:141$371 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:140$370 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:145$357 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:144$356 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:143$355 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:142$354 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:141$353 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:140$352 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:145$339 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:144$338 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:143$337 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:142$336 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:141$335 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:140$334 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:145$321 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:144$320 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:143$319 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:142$318 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:141$317 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:140$316 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:145$303 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:144$302 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:143$301 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:142$300 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:141$299 (mem).
+Removed top 24 address bits (of 32) from memory read port conv1_cache.$memrd$\mem$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:140$298 (mem).
+Removed top 24 bits (of 32) from port B of cell conv1_cache.$lt$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:100$8 ($lt).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$23 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$24 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$25 ($ge).
+Removed top 26 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$26 ($ge).
+Removed top 27 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$27 ($ge).
+Removed top 2 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$28 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$29 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$30 ($mux).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$34 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$35 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$36 ($ge).
+Removed top 26 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$37 ($ge).
+Removed top 27 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$38 ($ge).
+Removed top 2 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$39 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$40 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$41 ($mux).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$45 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$46 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$47 ($ge).
+Removed top 26 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$48 ($ge).
+Removed top 27 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$49 ($ge).
+Removed top 2 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$50 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$51 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$52 ($mux).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$56 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$57 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$58 ($ge).
+Removed top 26 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$59 ($ge).
+Removed top 27 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$60 ($ge).
+Removed top 2 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$61 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$62 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$63 ($mux).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$67 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$68 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$69 ($ge).
+Removed top 26 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$70 ($ge).
+Removed top 27 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$71 ($ge).
+Removed top 2 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$72 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$73 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$74 ($mux).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$78 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$79 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$80 ($ge).
+Removed top 26 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$81 ($ge).
+Removed top 27 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$82 ($ge).
+Removed top 2 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$83 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$84 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$85 ($mux).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$89 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$90 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$91 ($ge).
+Removed top 26 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$92 ($ge).
+Removed top 27 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$93 ($ge).
+Removed top 2 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$94 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$95 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$96 ($mux).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$100 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$101 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$102 ($ge).
+Removed top 26 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$103 ($ge).
+Removed top 27 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$104 ($ge).
+Removed top 2 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$105 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$106 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$107 ($mux).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$111 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$112 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$113 ($ge).
+Removed top 26 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$114 ($ge).
+Removed top 27 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$115 ($ge).
+Removed top 2 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$116 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$117 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$118 ($mux).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$122 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$123 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$124 ($ge).
+Removed top 26 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$125 ($ge).
+Removed top 27 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$126 ($ge).
+Removed top 2 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$127 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$128 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$129 ($mux).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$133 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$134 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$135 ($ge).
+Removed top 26 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$136 ($ge).
+Removed top 27 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$137 ($ge).
+Removed top 2 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$138 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$139 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$140 ($mux).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$144 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$145 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$146 ($ge).
+Removed top 26 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$147 ($ge).
+Removed top 27 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$148 ($ge).
+Removed top 2 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$149 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$150 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$151 ($mux).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$155 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$156 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$157 ($ge).
+Removed top 26 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$158 ($ge).
+Removed top 27 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$159 ($ge).
+Removed top 2 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$160 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$161 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$162 ($mux).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$166 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$167 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$168 ($ge).
+Removed top 26 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$169 ($ge).
+Removed top 27 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$170 ($ge).
+Removed top 2 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$171 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$172 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$173 ($mux).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$177 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$178 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$179 ($ge).
+Removed top 26 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$180 ($ge).
+Removed top 27 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$181 ($ge).
+Removed top 2 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$182 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$183 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$184 ($mux).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$188 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$189 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$190 ($ge).
+Removed top 26 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$191 ($ge).
+Removed top 27 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$192 ($ge).
+Removed top 2 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$193 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$194 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$195 ($mux).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$199 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$200 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$201 ($ge).
+Removed top 26 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$202 ($ge).
+Removed top 27 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$203 ($ge).
+Removed top 2 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$204 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$205 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$206 ($mux).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$210 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$211 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$212 ($ge).
+Removed top 26 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$213 ($ge).
+Removed top 27 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$214 ($ge).
+Removed top 2 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$215 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$216 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$217 ($mux).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$221 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$222 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$223 ($ge).
+Removed top 26 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$224 ($ge).
+Removed top 27 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$225 ($ge).
+Removed top 2 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$226 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$227 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$228 ($mux).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$232 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$233 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$234 ($ge).
+Removed top 26 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$235 ($ge).
+Removed top 27 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$236 ($ge).
+Removed top 2 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$237 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$238 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$239 ($mux).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$243 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$244 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$245 ($ge).
+Removed top 26 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$246 ($ge).
+Removed top 27 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$247 ($ge).
+Removed top 2 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$248 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$249 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$250 ($mux).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$254 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$255 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$256 ($ge).
+Removed top 26 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$257 ($ge).
+Removed top 27 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$258 ($ge).
+Removed top 2 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$259 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$260 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$261 ($mux).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$265 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$266 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$267 ($ge).
+Removed top 26 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$268 ($ge).
+Removed top 27 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$269 ($ge).
+Removed top 2 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$270 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$271 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$272 ($mux).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$276 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$277 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$278 ($ge).
+Removed top 26 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$279 ($ge).
+Removed top 27 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$280 ($ge).
+Removed top 2 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$281 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$282 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$283 ($mux).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$287 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$288 ($ge).
+Removed top 25 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$289 ($ge).
+Removed top 26 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$290 ($ge).
+Removed top 27 bits (of 32) from port B of cell conv1_cache.$ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$291 ($ge).
+Removed top 2 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$292 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$293 ($mux).
+Removed top 1 bits (of 3) from mux cell conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$294 ($mux).
+Removed top 2 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$305 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$306 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:147$307 ($eq).
+Removed top 2 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$323 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$324 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:147$325 ($eq).
+Removed top 2 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$341 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$342 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:147$343 ($eq).
+Removed top 2 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$359 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$360 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:147$361 ($eq).
+Removed top 2 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$377 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$378 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:147$379 ($eq).
+Removed top 2 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$395 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$396 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:147$397 ($eq).
+Removed top 2 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$413 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$414 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:147$415 ($eq).
+Removed top 2 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$431 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$432 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:147$433 ($eq).
+Removed top 2 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$449 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$450 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:147$451 ($eq).
+Removed top 2 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$467 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$468 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:147$469 ($eq).
+Removed top 2 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$485 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$486 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:147$487 ($eq).
+Removed top 2 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$503 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$504 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:147$505 ($eq).
+Removed top 2 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$521 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$522 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:147$523 ($eq).
+Removed top 2 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$539 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$540 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:147$541 ($eq).
+Removed top 2 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$557 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$558 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:147$559 ($eq).
+Removed top 2 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$575 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$576 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:147$577 ($eq).
+Removed top 2 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$593 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$594 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:147$595 ($eq).
+Removed top 2 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$611 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$612 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:147$613 ($eq).
+Removed top 2 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$629 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$630 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:147$631 ($eq).
+Removed top 2 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$647 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$648 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:147$649 ($eq).
+Removed top 2 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$665 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$666 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:147$667 ($eq).
+Removed top 2 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$683 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$684 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:147$685 ($eq).
+Removed top 2 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$701 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$702 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:147$703 ($eq).
+Removed top 2 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$719 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$720 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:147$721 ($eq).
+Removed top 2 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$737 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:146$738 ($eq).
+Removed top 1 bits (of 3) from port B of cell conv1_cache.$eq$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:147$739 ($eq).
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$294_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$293_Y.
+Removed top 2 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$292_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$283_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$282_Y.
+Removed top 2 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$281_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$272_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$271_Y.
+Removed top 2 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$270_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$261_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$260_Y.
+Removed top 2 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$259_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$250_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$249_Y.
+Removed top 2 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$248_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$239_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$238_Y.
+Removed top 2 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$237_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$228_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$227_Y.
+Removed top 2 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$226_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$217_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$216_Y.
+Removed top 2 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$215_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$206_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$205_Y.
+Removed top 2 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$204_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$195_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$194_Y.
+Removed top 2 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$193_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$184_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$183_Y.
+Removed top 2 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$182_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$173_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$172_Y.
+Removed top 2 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$171_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$162_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$161_Y.
+Removed top 2 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$160_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$151_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$150_Y.
+Removed top 2 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$149_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$140_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$139_Y.
+Removed top 2 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$138_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$129_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$128_Y.
+Removed top 2 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$127_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$118_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$117_Y.
+Removed top 2 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$116_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$107_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$106_Y.
+Removed top 2 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$105_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$96_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$95_Y.
+Removed top 2 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$94_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$85_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$84_Y.
+Removed top 2 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$83_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$74_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$73_Y.
+Removed top 2 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$72_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$63_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$62_Y.
+Removed top 2 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$61_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$52_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$51_Y.
+Removed top 2 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$50_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$41_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$40_Y.
+Removed top 2 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$39_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$30_Y.
+Removed top 1 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$29_Y.
+Removed top 2 bits (of 3) from wire conv1_cache.$ternary$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$28_Y.
+
+3.10. Executing PEEPOPT pass (run peephole optimizers).
+
+3.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \conv1_cache..
+Removed 0 unused cells and 75 unused wires.
+<suppressed ~1 debug messages>
+
+3.12. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module conv1_cache:
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$291 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$290 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$289 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$288 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$287 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$280 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$279 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$278 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$277 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$276 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$269 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$268 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$267 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$266 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$265 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$258 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$257 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$256 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$255 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$254 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$247 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$246 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$245 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$244 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$243 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$236 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$235 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$234 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$233 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$232 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$225 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$224 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$223 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$222 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$221 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$214 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$213 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$212 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$211 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$210 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$203 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$202 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$201 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$200 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$199 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$192 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$191 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$190 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$189 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$188 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$181 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$180 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$179 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$178 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$177 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$170 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$169 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$168 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$167 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$166 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$159 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$158 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$157 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$156 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$155 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$148 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$147 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$146 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$145 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$144 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$137 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$136 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$135 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$134 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$133 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$126 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$125 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$124 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$123 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$122 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$115 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$114 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$113 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$112 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$111 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$104 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$103 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$102 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$101 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$100 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$93 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$92 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$91 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$90 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$89 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$82 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$81 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$80 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$79 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$78 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$71 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$70 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$69 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$68 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$67 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$60 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$59 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$58 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$57 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$56 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$49 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$48 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$47 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$46 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$45 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$38 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$37 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$36 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$35 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$34 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$27 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$26 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$25 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$24 ($ge): new $alu
+  creating $alu model for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$23 ($ge): new $alu
+  creating $alu model for $lt$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:100$8 ($lt): new $alu
+  creating $alu cell for $lt$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:100$8: $auto$alumacc.cc:548:replace_alu$994
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$23: $auto$alumacc.cc:548:replace_alu$999
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$24: $auto$alumacc.cc:548:replace_alu$1012
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$25: $auto$alumacc.cc:548:replace_alu$1025
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$26: $auto$alumacc.cc:548:replace_alu$1038
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$27: $auto$alumacc.cc:548:replace_alu$1051
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$34: $auto$alumacc.cc:548:replace_alu$1064
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$35: $auto$alumacc.cc:548:replace_alu$1077
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$36: $auto$alumacc.cc:548:replace_alu$1090
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$37: $auto$alumacc.cc:548:replace_alu$1103
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$38: $auto$alumacc.cc:548:replace_alu$1116
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$45: $auto$alumacc.cc:548:replace_alu$1129
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$46: $auto$alumacc.cc:548:replace_alu$1142
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$47: $auto$alumacc.cc:548:replace_alu$1155
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$48: $auto$alumacc.cc:548:replace_alu$1168
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$49: $auto$alumacc.cc:548:replace_alu$1181
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$56: $auto$alumacc.cc:548:replace_alu$1194
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$57: $auto$alumacc.cc:548:replace_alu$1207
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$58: $auto$alumacc.cc:548:replace_alu$1220
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$59: $auto$alumacc.cc:548:replace_alu$1233
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$60: $auto$alumacc.cc:548:replace_alu$1246
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$67: $auto$alumacc.cc:548:replace_alu$1259
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$68: $auto$alumacc.cc:548:replace_alu$1272
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$69: $auto$alumacc.cc:548:replace_alu$1285
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$70: $auto$alumacc.cc:548:replace_alu$1298
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$71: $auto$alumacc.cc:548:replace_alu$1311
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$78: $auto$alumacc.cc:548:replace_alu$1324
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$79: $auto$alumacc.cc:548:replace_alu$1337
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$80: $auto$alumacc.cc:548:replace_alu$1350
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$81: $auto$alumacc.cc:548:replace_alu$1363
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$82: $auto$alumacc.cc:548:replace_alu$1376
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$89: $auto$alumacc.cc:548:replace_alu$1389
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$90: $auto$alumacc.cc:548:replace_alu$1402
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$91: $auto$alumacc.cc:548:replace_alu$1415
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$92: $auto$alumacc.cc:548:replace_alu$1428
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$93: $auto$alumacc.cc:548:replace_alu$1441
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$100: $auto$alumacc.cc:548:replace_alu$1454
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$101: $auto$alumacc.cc:548:replace_alu$1467
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$102: $auto$alumacc.cc:548:replace_alu$1480
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$103: $auto$alumacc.cc:548:replace_alu$1493
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$104: $auto$alumacc.cc:548:replace_alu$1506
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$111: $auto$alumacc.cc:548:replace_alu$1519
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$112: $auto$alumacc.cc:548:replace_alu$1532
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$113: $auto$alumacc.cc:548:replace_alu$1545
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$114: $auto$alumacc.cc:548:replace_alu$1558
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$115: $auto$alumacc.cc:548:replace_alu$1571
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$122: $auto$alumacc.cc:548:replace_alu$1584
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$123: $auto$alumacc.cc:548:replace_alu$1597
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$124: $auto$alumacc.cc:548:replace_alu$1610
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$125: $auto$alumacc.cc:548:replace_alu$1623
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$126: $auto$alumacc.cc:548:replace_alu$1636
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$133: $auto$alumacc.cc:548:replace_alu$1649
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$134: $auto$alumacc.cc:548:replace_alu$1662
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$135: $auto$alumacc.cc:548:replace_alu$1675
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$136: $auto$alumacc.cc:548:replace_alu$1688
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$137: $auto$alumacc.cc:548:replace_alu$1701
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$144: $auto$alumacc.cc:548:replace_alu$1714
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$145: $auto$alumacc.cc:548:replace_alu$1727
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$146: $auto$alumacc.cc:548:replace_alu$1740
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$147: $auto$alumacc.cc:548:replace_alu$1753
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$148: $auto$alumacc.cc:548:replace_alu$1766
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$155: $auto$alumacc.cc:548:replace_alu$1779
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$156: $auto$alumacc.cc:548:replace_alu$1792
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$157: $auto$alumacc.cc:548:replace_alu$1805
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$158: $auto$alumacc.cc:548:replace_alu$1818
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$159: $auto$alumacc.cc:548:replace_alu$1831
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$166: $auto$alumacc.cc:548:replace_alu$1844
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$167: $auto$alumacc.cc:548:replace_alu$1857
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$168: $auto$alumacc.cc:548:replace_alu$1870
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$169: $auto$alumacc.cc:548:replace_alu$1883
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$170: $auto$alumacc.cc:548:replace_alu$1896
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$177: $auto$alumacc.cc:548:replace_alu$1909
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$178: $auto$alumacc.cc:548:replace_alu$1922
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$179: $auto$alumacc.cc:548:replace_alu$1935
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$180: $auto$alumacc.cc:548:replace_alu$1948
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$181: $auto$alumacc.cc:548:replace_alu$1961
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$188: $auto$alumacc.cc:548:replace_alu$1974
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$189: $auto$alumacc.cc:548:replace_alu$1987
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$190: $auto$alumacc.cc:548:replace_alu$2000
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$191: $auto$alumacc.cc:548:replace_alu$2013
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$192: $auto$alumacc.cc:548:replace_alu$2026
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$199: $auto$alumacc.cc:548:replace_alu$2039
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$200: $auto$alumacc.cc:548:replace_alu$2052
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$201: $auto$alumacc.cc:548:replace_alu$2065
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$202: $auto$alumacc.cc:548:replace_alu$2078
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$203: $auto$alumacc.cc:548:replace_alu$2091
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$210: $auto$alumacc.cc:548:replace_alu$2104
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$211: $auto$alumacc.cc:548:replace_alu$2117
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$212: $auto$alumacc.cc:548:replace_alu$2130
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$213: $auto$alumacc.cc:548:replace_alu$2143
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$214: $auto$alumacc.cc:548:replace_alu$2156
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$221: $auto$alumacc.cc:548:replace_alu$2169
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$222: $auto$alumacc.cc:548:replace_alu$2182
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$223: $auto$alumacc.cc:548:replace_alu$2195
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$224: $auto$alumacc.cc:548:replace_alu$2208
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$225: $auto$alumacc.cc:548:replace_alu$2221
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$232: $auto$alumacc.cc:548:replace_alu$2234
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$233: $auto$alumacc.cc:548:replace_alu$2247
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$234: $auto$alumacc.cc:548:replace_alu$2260
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$235: $auto$alumacc.cc:548:replace_alu$2273
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$236: $auto$alumacc.cc:548:replace_alu$2286
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$243: $auto$alumacc.cc:548:replace_alu$2299
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$244: $auto$alumacc.cc:548:replace_alu$2312
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$245: $auto$alumacc.cc:548:replace_alu$2325
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$246: $auto$alumacc.cc:548:replace_alu$2338
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$247: $auto$alumacc.cc:548:replace_alu$2351
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$254: $auto$alumacc.cc:548:replace_alu$2364
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$255: $auto$alumacc.cc:548:replace_alu$2377
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$256: $auto$alumacc.cc:548:replace_alu$2390
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$257: $auto$alumacc.cc:548:replace_alu$2403
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$258: $auto$alumacc.cc:548:replace_alu$2416
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$265: $auto$alumacc.cc:548:replace_alu$2429
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$266: $auto$alumacc.cc:548:replace_alu$2442
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$267: $auto$alumacc.cc:548:replace_alu$2455
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$268: $auto$alumacc.cc:548:replace_alu$2468
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$269: $auto$alumacc.cc:548:replace_alu$2481
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$276: $auto$alumacc.cc:548:replace_alu$2494
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$277: $auto$alumacc.cc:548:replace_alu$2507
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$278: $auto$alumacc.cc:548:replace_alu$2520
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$279: $auto$alumacc.cc:548:replace_alu$2533
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$280: $auto$alumacc.cc:548:replace_alu$2546
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$287: $auto$alumacc.cc:548:replace_alu$2559
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$288: $auto$alumacc.cc:548:replace_alu$2572
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:111$289: $auto$alumacc.cc:548:replace_alu$2585
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$290: $auto$alumacc.cc:548:replace_alu$2598
+  creating $alu cell for $ge$/mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v:112$291: $auto$alumacc.cc:548:replace_alu$2611
+  created 126 $alu and 0 $macc cells.
+
+3.13. Executing SHARE pass (SAT-based resource sharing).
+
+3.14. Executing OPT pass (performing simple optimizations).
+
+3.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module conv1_cache.
+
+3.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\conv1_cache'.
+Computing hashes of 1371 cells of `\conv1_cache'.
+Finding duplicate cells in `\conv1_cache'.
+Removed a total of 0 cells.
+
+3.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \conv1_cache..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~331 debug messages>
+
+3.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \conv1_cache.
+Performed a total of 0 changes.
+
+3.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\conv1_cache'.
+Computing hashes of 1371 cells of `\conv1_cache'.
+Finding duplicate cells in `\conv1_cache'.
+Removed a total of 0 cells.
+
+3.14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \conv1_cache..
+Removed 0 unused cells and 126 unused wires.
+<suppressed ~1 debug messages>
+
+3.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module conv1_cache.
+
+3.14.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.14.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \conv1_cache..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~331 debug messages>
+
+3.14.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \conv1_cache.
+Performed a total of 0 changes.
+
+3.14.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\conv1_cache'.
+Computing hashes of 1371 cells of `\conv1_cache'.
+Finding duplicate cells in `\conv1_cache'.
+Removed a total of 0 cells.
+
+3.14.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.14.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \conv1_cache..
+
+3.14.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module conv1_cache.
+
+3.14.16. Finished fast OPT passes. (There is nothing left to do.)
+
+3.15. Executing MEMORY pass.
+
+3.15.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+3.15.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+3.15.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+  Analyzing conv1_cache.mem write port 0.
+
+3.15.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+3.15.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+Checking read port `\mem'[0] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[1] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[2] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[3] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[4] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[5] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[6] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[7] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[8] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[9] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[10] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[11] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[12] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[13] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[14] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[15] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[16] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[17] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[18] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[19] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[20] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[21] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[22] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[23] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[24] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[25] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[26] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[27] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[28] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[29] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[30] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[31] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[32] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[33] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[34] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[35] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[36] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[37] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[38] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[39] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[40] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[41] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[42] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[43] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[44] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[45] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[46] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[47] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[48] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[49] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[50] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[51] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[52] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[53] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[54] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[55] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[56] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[57] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[58] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[59] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[60] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[61] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[62] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[63] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[64] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[65] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[66] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[67] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[68] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[69] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[70] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[71] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[72] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[73] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[74] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[75] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[76] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[77] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[78] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[79] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[80] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[81] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[82] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[83] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[84] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[85] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[86] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[87] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[88] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[89] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[90] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[91] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[92] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[93] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[94] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[95] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[96] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[97] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[98] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[99] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[100] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[101] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[102] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[103] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[104] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[105] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[106] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[107] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[108] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[109] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[110] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[111] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[112] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[113] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[114] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[115] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[116] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[117] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[118] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[119] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[120] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[121] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[122] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[123] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[124] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[125] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[126] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[127] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[128] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[129] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[130] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[131] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[132] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[133] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[134] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[135] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[136] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[137] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[138] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[139] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[140] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[141] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[142] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[143] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[144] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[145] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[146] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[147] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[148] in module `\conv1_cache': no output FF found.
+Checking read port `\mem'[149] in module `\conv1_cache': no output FF found.
+Checking read port address `\mem'[0] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[1] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[2] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[3] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[4] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[5] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[6] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[7] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[8] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[9] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[10] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[11] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[12] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[13] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[14] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[15] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[16] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[17] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[18] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[19] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[20] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[21] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[22] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[23] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[24] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[25] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[26] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[27] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[28] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[29] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[30] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[31] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[32] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[33] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[34] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[35] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[36] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[37] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[38] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[39] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[40] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[41] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[42] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[43] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[44] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[45] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[46] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[47] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[48] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[49] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[50] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[51] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[52] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[53] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[54] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[55] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[56] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[57] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[58] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[59] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[60] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[61] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[62] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[63] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[64] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[65] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[66] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[67] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[68] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[69] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[70] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[71] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[72] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[73] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[74] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[75] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[76] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[77] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[78] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[79] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[80] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[81] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[82] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[83] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[84] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[85] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[86] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[87] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[88] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[89] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[90] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[91] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[92] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[93] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[94] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[95] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[96] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[97] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[98] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[99] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[100] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[101] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[102] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[103] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[104] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[105] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[106] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[107] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[108] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[109] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[110] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[111] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[112] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[113] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[114] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[115] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[116] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[117] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[118] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[119] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[120] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[121] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[122] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[123] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[124] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[125] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[126] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[127] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[128] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[129] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[130] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[131] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[132] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[133] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[134] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[135] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[136] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[137] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[138] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[139] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[140] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[141] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[142] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[143] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[144] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[145] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[146] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[147] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[148] in module `\conv1_cache': no address FF found.
+Checking read port address `\mem'[149] in module `\conv1_cache': no address FF found.
+
+3.15.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \conv1_cache..
+
+3.15.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+Consolidating read ports of memory conv1_cache.mem by address:
+  Merging ports 0, 1 (address 8'00000000).
+  Merging ports 0, 2 (address 8'00000000).
+  Merging ports 0, 3 (address 8'00000000).
+  Merging ports 0, 4 (address 8'00000000).
+  Merging ports 0, 5 (address 8'00000000).
+  Merging ports 0, 6 (address 8'00000000).
+  Merging ports 0, 7 (address 8'00000000).
+  Merging ports 0, 8 (address 8'00000000).
+  Merging ports 0, 9 (address 8'00000000).
+  Merging ports 0, 10 (address 8'00000000).
+  Merging ports 0, 11 (address 8'00000000).
+  Merging ports 0, 12 (address 8'00000000).
+  Merging ports 0, 13 (address 8'00000000).
+  Merging ports 0, 14 (address 8'00000000).
+  Merging ports 0, 15 (address 8'00000000).
+  Merging ports 0, 16 (address 8'00000000).
+  Merging ports 0, 17 (address 8'00000000).
+  Merging ports 0, 18 (address 8'00000000).
+  Merging ports 0, 19 (address 8'00000000).
+  Merging ports 0, 20 (address 8'00000000).
+  Merging ports 0, 21 (address 8'00000000).
+  Merging ports 0, 22 (address 8'00000000).
+  Merging ports 0, 23 (address 8'00000000).
+  Merging ports 0, 24 (address 8'00000000).
+  Merging ports 0, 25 (address 8'00000000).
+  Merging ports 0, 26 (address 8'00000000).
+  Merging ports 0, 27 (address 8'00000000).
+  Merging ports 0, 28 (address 8'00000000).
+  Merging ports 0, 29 (address 8'00000000).
+  Merging ports 0, 30 (address 8'00000000).
+  Merging ports 0, 31 (address 8'00000000).
+  Merging ports 0, 32 (address 8'00000000).
+  Merging ports 0, 33 (address 8'00000000).
+  Merging ports 0, 34 (address 8'00000000).
+  Merging ports 0, 35 (address 8'00000000).
+  Merging ports 0, 36 (address 8'00000000).
+  Merging ports 0, 37 (address 8'00000000).
+  Merging ports 0, 38 (address 8'00000000).
+  Merging ports 0, 39 (address 8'00000000).
+  Merging ports 0, 40 (address 8'00000000).
+  Merging ports 0, 41 (address 8'00000000).
+  Merging ports 0, 42 (address 8'00000000).
+  Merging ports 0, 43 (address 8'00000000).
+  Merging ports 0, 44 (address 8'00000000).
+  Merging ports 0, 45 (address 8'00000000).
+  Merging ports 0, 46 (address 8'00000000).
+  Merging ports 0, 47 (address 8'00000000).
+  Merging ports 0, 48 (address 8'00000000).
+  Merging ports 0, 49 (address 8'00000000).
+  Merging ports 0, 50 (address 8'00000000).
+  Merging ports 0, 51 (address 8'00000000).
+  Merging ports 0, 52 (address 8'00000000).
+  Merging ports 0, 53 (address 8'00000000).
+  Merging ports 0, 54 (address 8'00000000).
+  Merging ports 0, 55 (address 8'00000000).
+  Merging ports 0, 56 (address 8'00000000).
+  Merging ports 0, 57 (address 8'00000000).
+  Merging ports 0, 58 (address 8'00000000).
+  Merging ports 0, 59 (address 8'00000000).
+  Merging ports 0, 60 (address 8'00000000).
+  Merging ports 0, 61 (address 8'00000000).
+  Merging ports 0, 62 (address 8'00000000).
+  Merging ports 0, 63 (address 8'00000000).
+  Merging ports 0, 64 (address 8'00000000).
+  Merging ports 0, 65 (address 8'00000000).
+  Merging ports 0, 66 (address 8'00000000).
+  Merging ports 0, 67 (address 8'00000000).
+  Merging ports 0, 68 (address 8'00000000).
+  Merging ports 0, 69 (address 8'00000000).
+  Merging ports 0, 70 (address 8'00000000).
+  Merging ports 0, 71 (address 8'00000000).
+  Merging ports 0, 72 (address 8'00000000).
+  Merging ports 0, 73 (address 8'00000000).
+  Merging ports 0, 74 (address 8'00000000).
+  Merging ports 0, 75 (address 8'00000000).
+  Merging ports 0, 76 (address 8'00000000).
+  Merging ports 0, 77 (address 8'00000000).
+  Merging ports 0, 78 (address 8'00000000).
+  Merging ports 0, 79 (address 8'00000000).
+  Merging ports 0, 80 (address 8'00000000).
+  Merging ports 0, 81 (address 8'00000000).
+  Merging ports 0, 82 (address 8'00000000).
+  Merging ports 0, 83 (address 8'00000000).
+  Merging ports 0, 84 (address 8'00000000).
+  Merging ports 0, 85 (address 8'00000000).
+  Merging ports 0, 86 (address 8'00000000).
+  Merging ports 0, 87 (address 8'00000000).
+  Merging ports 0, 88 (address 8'00000000).
+  Merging ports 0, 89 (address 8'00000000).
+  Merging ports 0, 90 (address 8'00000000).
+  Merging ports 0, 91 (address 8'00000000).
+  Merging ports 0, 92 (address 8'00000000).
+  Merging ports 0, 93 (address 8'00000000).
+  Merging ports 0, 94 (address 8'00000000).
+  Merging ports 0, 95 (address 8'00000000).
+  Merging ports 0, 96 (address 8'00000000).
+  Merging ports 0, 97 (address 8'00000000).
+  Merging ports 0, 98 (address 8'00000000).
+  Merging ports 0, 99 (address 8'00000000).
+  Merging ports 0, 100 (address 8'00000000).
+  Merging ports 0, 101 (address 8'00000000).
+  Merging ports 0, 102 (address 8'00000000).
+  Merging ports 0, 103 (address 8'00000000).
+  Merging ports 0, 104 (address 8'00000000).
+  Merging ports 0, 105 (address 8'00000000).
+  Merging ports 0, 106 (address 8'00000000).
+  Merging ports 0, 107 (address 8'00000000).
+  Merging ports 0, 108 (address 8'00000000).
+  Merging ports 0, 109 (address 8'00000000).
+  Merging ports 0, 110 (address 8'00000000).
+  Merging ports 0, 111 (address 8'00000000).
+  Merging ports 0, 112 (address 8'00000000).
+  Merging ports 0, 113 (address 8'00000000).
+  Merging ports 0, 114 (address 8'00000000).
+  Merging ports 0, 115 (address 8'00000000).
+  Merging ports 0, 116 (address 8'00000000).
+  Merging ports 0, 117 (address 8'00000000).
+  Merging ports 0, 118 (address 8'00000000).
+  Merging ports 0, 119 (address 8'00000000).
+  Merging ports 0, 120 (address 8'00000000).
+  Merging ports 0, 121 (address 8'00000000).
+  Merging ports 0, 122 (address 8'00000000).
+  Merging ports 0, 123 (address 8'00000000).
+  Merging ports 0, 124 (address 8'00000000).
+  Merging ports 0, 125 (address 8'00000000).
+  Merging ports 0, 126 (address 8'00000000).
+  Merging ports 0, 127 (address 8'00000000).
+  Merging ports 0, 128 (address 8'00000000).
+  Merging ports 130, 131 (address 8'10000010).
+  Merging ports 132, 133 (address 8'10000100).
+  Merging ports 132, 134 (address 8'10000100).
+  Merging ports 132, 135 (address 8'10000100).
+  Merging ports 136, 137 (address 8'10001000).
+  Merging ports 136, 138 (address 8'10001000).
+  Merging ports 136, 139 (address 8'10001000).
+  Merging ports 136, 140 (address 8'10001000).
+  Merging ports 136, 141 (address 8'10001000).
+  Merging ports 136, 142 (address 8'10001000).
+  Merging ports 136, 143 (address 8'10001000).
+  Merging ports 144, 145 (address 8'10010000).
+  Merging ports 144, 146 (address 8'10010000).
+  Merging ports 144, 147 (address 8'10010000).
+  Merging ports 144, 148 (address 8'10010000).
+  Merging ports 144, 149 (address 8'10010000).
+Consolidating read ports of memory conv1_cache.mem by address:
+  Merging ports 1, 2 (address 8'10000001).
+  Merging ports 1, 3 (address 8'10000000).
+  Merging ports 1, 4 (address 8'10000000).
+  Merging ports 1, 5 (address 8'10000000).
+Consolidating read ports of memory conv1_cache.mem by address:
+
+3.15.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+3.15.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \conv1_cache..
+Removed 0 unused cells and 144 unused wires.
+<suppressed ~1 debug messages>
+
+3.15.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+3.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \conv1_cache..
+
+3.17. Executing OPT pass (performing simple optimizations).
+
+3.17.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module conv1_cache.
+<suppressed ~79 debug messages>
+
+3.17.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\conv1_cache'.
+Computing hashes of 1269 cells of `\conv1_cache'.
+Finding duplicate cells in `\conv1_cache'.
+Computing hashes of 1244 cells of `\conv1_cache'.
+Finding duplicate cells in `\conv1_cache'.
+<suppressed ~75 debug messages>
+Removed a total of 25 cells.
+
+3.17.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.17.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \conv1_cache..
+Removed 1 unused cells and 104 unused wires.
+<suppressed ~2 debug messages>
+
+3.17.5. Finished fast OPT passes.
+
+3.18. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+Mapping memory \mem in module \conv1_cache:
+  created 256 $dff cells and 0 static cells of width 8.
+  read interface: 0 $dff and 7 $mux cells.
+  write interface: 256 write mux blocks.
+
+3.19. Executing OPT pass (performing simple optimizations).
+
+3.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module conv1_cache.
+<suppressed ~23 debug messages>
+
+3.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\conv1_cache'.
+Computing hashes of 2322 cells of `\conv1_cache'.
+Finding duplicate cells in `\conv1_cache'.
+Removed a total of 0 cells.
+
+3.19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \conv1_cache..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~812 debug messages>
+
+3.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \conv1_cache.
+Performed a total of 0 changes.
+
+3.19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\conv1_cache'.
+Computing hashes of 2322 cells of `\conv1_cache'.
+Finding duplicate cells in `\conv1_cache'.
+Removed a total of 0 cells.
+
+3.19.6. Executing OPT_SHARE pass.
+
+3.19.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.19.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \conv1_cache..
+Removed 431 unused cells and 713 unused wires.
+<suppressed ~538 debug messages>
+
+3.19.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module conv1_cache.
+
+3.19.10. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.19.11. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \conv1_cache..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~600 debug messages>
+
+3.19.12. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \conv1_cache.
+Performed a total of 0 changes.
+
+3.19.13. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\conv1_cache'.
+Computing hashes of 1891 cells of `\conv1_cache'.
+Finding duplicate cells in `\conv1_cache'.
+Removed a total of 0 cells.
+
+3.19.14. Executing OPT_SHARE pass.
+
+3.19.15. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $memory\mem[0]$3224 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[0]).
+Adding EN signal on $memory\mem[1]$3226 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[1]).
+Adding EN signal on $memory\mem[2]$3228 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[2]).
+Adding EN signal on $memory\mem[3]$3230 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[3]).
+Adding EN signal on $memory\mem[4]$3232 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[4]).
+Adding EN signal on $memory\mem[5]$3234 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[5]).
+Adding EN signal on $memory\mem[6]$3236 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[6]).
+Adding EN signal on $memory\mem[7]$3238 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[7]).
+Adding EN signal on $memory\mem[8]$3240 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[8]).
+Adding EN signal on $memory\mem[9]$3242 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[9]).
+Adding EN signal on $memory\mem[10]$3244 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[10]).
+Adding EN signal on $memory\mem[11]$3246 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[11]).
+Adding EN signal on $memory\mem[12]$3248 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[12]).
+Adding EN signal on $memory\mem[13]$3250 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[13]).
+Adding EN signal on $memory\mem[14]$3252 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[14]).
+Adding EN signal on $memory\mem[15]$3254 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[15]).
+Adding EN signal on $memory\mem[16]$3256 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[16]).
+Adding EN signal on $memory\mem[17]$3258 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[17]).
+Adding EN signal on $memory\mem[18]$3260 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[18]).
+Adding EN signal on $memory\mem[19]$3262 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[19]).
+Adding EN signal on $memory\mem[20]$3264 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[20]).
+Adding EN signal on $memory\mem[21]$3266 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[21]).
+Adding EN signal on $memory\mem[22]$3268 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[22]).
+Adding EN signal on $memory\mem[23]$3270 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[23]).
+Adding EN signal on $memory\mem[24]$3272 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[24]).
+Adding EN signal on $memory\mem[25]$3274 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[25]).
+Adding EN signal on $memory\mem[26]$3276 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[26]).
+Adding EN signal on $memory\mem[27]$3278 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[27]).
+Adding EN signal on $memory\mem[28]$3280 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[28]).
+Adding EN signal on $memory\mem[29]$3282 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[29]).
+Adding EN signal on $memory\mem[30]$3284 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[30]).
+Adding EN signal on $memory\mem[31]$3286 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[31]).
+Adding EN signal on $memory\mem[32]$3288 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[32]).
+Adding EN signal on $memory\mem[33]$3290 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[33]).
+Adding EN signal on $memory\mem[34]$3292 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[34]).
+Adding EN signal on $memory\mem[35]$3294 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[35]).
+Adding EN signal on $memory\mem[36]$3296 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[36]).
+Adding EN signal on $memory\mem[37]$3298 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[37]).
+Adding EN signal on $memory\mem[38]$3300 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[38]).
+Adding EN signal on $memory\mem[39]$3302 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[39]).
+Adding EN signal on $memory\mem[40]$3304 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[40]).
+Adding EN signal on $memory\mem[41]$3306 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[41]).
+Adding EN signal on $memory\mem[42]$3308 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[42]).
+Adding EN signal on $memory\mem[43]$3310 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[43]).
+Adding EN signal on $memory\mem[44]$3312 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[44]).
+Adding EN signal on $memory\mem[45]$3314 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[45]).
+Adding EN signal on $memory\mem[46]$3316 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[46]).
+Adding EN signal on $memory\mem[47]$3318 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[47]).
+Adding EN signal on $memory\mem[48]$3320 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[48]).
+Adding EN signal on $memory\mem[49]$3322 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[49]).
+Adding EN signal on $memory\mem[50]$3324 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[50]).
+Adding EN signal on $memory\mem[51]$3326 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[51]).
+Adding EN signal on $memory\mem[52]$3328 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[52]).
+Adding EN signal on $memory\mem[53]$3330 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[53]).
+Adding EN signal on $memory\mem[54]$3332 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[54]).
+Adding EN signal on $memory\mem[55]$3334 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[55]).
+Adding EN signal on $memory\mem[56]$3336 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[56]).
+Adding EN signal on $memory\mem[57]$3338 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[57]).
+Adding EN signal on $memory\mem[58]$3340 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[58]).
+Adding EN signal on $memory\mem[59]$3342 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[59]).
+Adding EN signal on $memory\mem[60]$3344 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[60]).
+Adding EN signal on $memory\mem[61]$3346 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[61]).
+Adding EN signal on $memory\mem[62]$3348 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[62]).
+Adding EN signal on $memory\mem[63]$3350 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[63]).
+Adding EN signal on $memory\mem[64]$3352 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[64]).
+Adding EN signal on $memory\mem[65]$3354 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[65]).
+Adding EN signal on $memory\mem[66]$3356 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[66]).
+Adding EN signal on $memory\mem[67]$3358 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[67]).
+Adding EN signal on $memory\mem[68]$3360 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[68]).
+Adding EN signal on $memory\mem[69]$3362 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[69]).
+Adding EN signal on $memory\mem[70]$3364 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[70]).
+Adding EN signal on $memory\mem[71]$3366 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[71]).
+Adding EN signal on $memory\mem[72]$3368 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[72]).
+Adding EN signal on $memory\mem[73]$3370 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[73]).
+Adding EN signal on $memory\mem[74]$3372 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[74]).
+Adding EN signal on $memory\mem[75]$3374 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[75]).
+Adding EN signal on $memory\mem[76]$3376 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[76]).
+Adding EN signal on $memory\mem[77]$3378 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[77]).
+Adding EN signal on $memory\mem[78]$3380 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[78]).
+Adding EN signal on $memory\mem[79]$3382 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[79]).
+Adding EN signal on $memory\mem[80]$3384 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[80]).
+Adding EN signal on $memory\mem[81]$3386 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[81]).
+Adding EN signal on $memory\mem[82]$3388 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[82]).
+Adding EN signal on $memory\mem[83]$3390 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[83]).
+Adding EN signal on $memory\mem[84]$3392 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[84]).
+Adding EN signal on $memory\mem[85]$3394 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[85]).
+Adding EN signal on $memory\mem[86]$3396 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[86]).
+Adding EN signal on $memory\mem[87]$3398 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[87]).
+Adding EN signal on $memory\mem[88]$3400 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[88]).
+Adding EN signal on $memory\mem[89]$3402 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[89]).
+Adding EN signal on $memory\mem[90]$3404 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[90]).
+Adding EN signal on $memory\mem[91]$3406 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[91]).
+Adding EN signal on $memory\mem[92]$3408 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[92]).
+Adding EN signal on $memory\mem[93]$3410 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[93]).
+Adding EN signal on $memory\mem[94]$3412 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[94]).
+Adding EN signal on $memory\mem[95]$3414 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[95]).
+Adding EN signal on $memory\mem[96]$3416 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[96]).
+Adding EN signal on $memory\mem[97]$3418 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[97]).
+Adding EN signal on $memory\mem[98]$3420 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[98]).
+Adding EN signal on $memory\mem[99]$3422 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[99]).
+Adding EN signal on $memory\mem[100]$3424 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[100]).
+Adding EN signal on $memory\mem[101]$3426 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[101]).
+Adding EN signal on $memory\mem[102]$3428 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[102]).
+Adding EN signal on $memory\mem[103]$3430 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[103]).
+Adding EN signal on $memory\mem[104]$3432 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[104]).
+Adding EN signal on $memory\mem[105]$3434 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[105]).
+Adding EN signal on $memory\mem[106]$3436 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[106]).
+Adding EN signal on $memory\mem[107]$3438 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[107]).
+Adding EN signal on $memory\mem[108]$3440 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[108]).
+Adding EN signal on $memory\mem[109]$3442 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[109]).
+Adding EN signal on $memory\mem[110]$3444 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[110]).
+Adding EN signal on $memory\mem[111]$3446 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[111]).
+Adding EN signal on $memory\mem[112]$3448 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[112]).
+Adding EN signal on $memory\mem[113]$3450 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[113]).
+Adding EN signal on $memory\mem[114]$3452 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[114]).
+Adding EN signal on $memory\mem[115]$3454 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[115]).
+Adding EN signal on $memory\mem[116]$3456 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[116]).
+Adding EN signal on $memory\mem[117]$3458 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[117]).
+Adding EN signal on $memory\mem[118]$3460 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[118]).
+Adding EN signal on $memory\mem[119]$3462 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[119]).
+Adding EN signal on $memory\mem[120]$3464 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[120]).
+Adding EN signal on $memory\mem[121]$3466 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[121]).
+Adding EN signal on $memory\mem[122]$3468 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[122]).
+Adding EN signal on $memory\mem[123]$3470 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[123]).
+Adding EN signal on $memory\mem[124]$3472 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[124]).
+Adding EN signal on $memory\mem[125]$3474 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[125]).
+Adding EN signal on $memory\mem[126]$3476 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[126]).
+Adding EN signal on $memory\mem[127]$3478 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[127]).
+Adding EN signal on $memory\mem[128]$3480 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[128]).
+Adding EN signal on $memory\mem[129]$3482 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[129]).
+Adding EN signal on $memory\mem[130]$3484 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[130]).
+Adding EN signal on $memory\mem[131]$3486 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[131]).
+Adding EN signal on $memory\mem[132]$3488 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[132]).
+Adding EN signal on $memory\mem[133]$3490 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[133]).
+Adding EN signal on $memory\mem[134]$3492 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[134]).
+Adding EN signal on $memory\mem[135]$3494 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[135]).
+Adding EN signal on $memory\mem[136]$3496 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[136]).
+Adding EN signal on $memory\mem[137]$3498 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[137]).
+Adding EN signal on $memory\mem[138]$3500 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[138]).
+Adding EN signal on $memory\mem[139]$3502 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[139]).
+Adding EN signal on $memory\mem[140]$3504 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[140]).
+Adding EN signal on $memory\mem[141]$3506 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[141]).
+Adding EN signal on $memory\mem[142]$3508 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[142]).
+Adding EN signal on $memory\mem[143]$3510 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[143]).
+Adding EN signal on $memory\mem[144]$3512 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[144]).
+Adding EN signal on $memory\mem[145]$3514 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[145]).
+Adding EN signal on $memory\mem[146]$3516 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[146]).
+Adding EN signal on $memory\mem[147]$3518 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[147]).
+Adding EN signal on $memory\mem[148]$3520 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[148]).
+Adding EN signal on $memory\mem[149]$3522 ($dff) from module conv1_cache (D = \wr_data [7:0], Q = \mem[149]).
+
+3.19.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \conv1_cache..
+Removed 150 unused cells and 150 unused wires.
+<suppressed ~151 debug messages>
+
+3.19.17. Executing OPT_EXPR pass (perform const folding).
+Optimizing module conv1_cache.
+
+3.19.18. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.19.19. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \conv1_cache..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~300 debug messages>
+
+3.19.20. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \conv1_cache.
+Performed a total of 0 changes.
+
+3.19.21. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\conv1_cache'.
+Computing hashes of 1741 cells of `\conv1_cache'.
+Finding duplicate cells in `\conv1_cache'.
+Removed a total of 0 cells.
+
+3.19.22. Executing OPT_SHARE pass.
+
+3.19.23. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.19.24. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \conv1_cache..
+
+3.19.25. Executing OPT_EXPR pass (perform const folding).
+Optimizing module conv1_cache.
+
+3.19.26. Finished fast OPT passes. (There is nothing left to do.)
+
+3.20. Executing TECHMAP pass (map to technology primitives).
+
+3.20.1. Executing Verilog-2005 frontend: /home/kid/oss-cad-suite/lib/../share/yosys/techmap.v
+Parsing Verilog input from `/home/kid/oss-cad-suite/lib/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+3.20.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $dffe.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $reduce_and.
+Using template $paramod$66ec77ad03fd12c9dabfacff9efd0d4e34f37640\_90_alu for cells of type $alu.
+Using template $paramod$aa4d174a6a4017dbd0af54f2e2c1487444d1c1ae\_90_alu for cells of type $alu.
+Using template $paramod$795d817be7d199881e47de72f8a46d9f056cb4cd\_90_alu for cells of type $alu.
+Using template $paramod$91ac1c3d230da38959672caa04368801d488af78\_90_alu for cells of type $alu.
+Using template $paramod$dbcdc7e8aa1a4080cea2deda6fdc8772064f4d90\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $adffe.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000010000 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000010000 for cells of type $lcu.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000001110 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000001110 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000001111 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000001111 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000111 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000111 for cells of type $lcu.
+No more expansions possible.
+<suppressed ~11494 debug messages>
+
+3.21. Executing OPT pass (performing simple optimizations).
+
+3.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module conv1_cache.
+<suppressed ~16137 debug messages>
+
+3.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\conv1_cache'.
+Computing hashes of 16187 cells of `\conv1_cache'.
+Finding duplicate cells in `\conv1_cache'.
+Computing hashes of 13858 cells of `\conv1_cache'.
+Finding duplicate cells in `\conv1_cache'.
+Computing hashes of 12783 cells of `\conv1_cache'.
+Finding duplicate cells in `\conv1_cache'.
+Computing hashes of 12233 cells of `\conv1_cache'.
+Finding duplicate cells in `\conv1_cache'.
+Computing hashes of 12058 cells of `\conv1_cache'.
+Finding duplicate cells in `\conv1_cache'.
+Computing hashes of 11958 cells of `\conv1_cache'.
+Finding duplicate cells in `\conv1_cache'.
+Computing hashes of 11908 cells of `\conv1_cache'.
+Finding duplicate cells in `\conv1_cache'.
+Computing hashes of 11858 cells of `\conv1_cache'.
+Finding duplicate cells in `\conv1_cache'.
+<suppressed ~12987 debug messages>
+Removed a total of 4329 cells.
+
+3.21.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \conv1_cache..
+Removed 4160 unused cells and 11483 unused wires.
+<suppressed ~4161 debug messages>
+
+3.21.5. Finished fast OPT passes.
+
+3.22. Executing ABC pass (technology mapping using ABC).
+
+3.22.1. Extracting gate netlist of module `\conv1_cache' to `<abc-temp-dir>/input.blif'..
+
+3.22.1.1. Executed ABC.
+Extracted 6298 gates and 8293 wires to a netlist network with 1993 inputs and 501 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Aug  7 2026 03:35:51)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+ABC: 
+ABC: YOSYS_ABC_DONE 
+
+3.22.1.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:      764
+ABC RESULTS:            ANDNOT cells:      160
+ABC RESULTS:               MUX cells:      804
+ABC RESULTS:              NAND cells:      687
+ABC RESULTS:               NOR cells:      218
+ABC RESULTS:               NOT cells:       32
+ABC RESULTS:                OR cells:      690
+ABC RESULTS:             ORNOT cells:      280
+ABC RESULTS:        internal signals:     5799
+ABC RESULTS:           input signals:     1993
+ABC RESULTS:          output signals:      501
+Removing temp directory.
+Removing global temp directory.
+
+3.23. Executing OPT pass (performing simple optimizations).
+
+3.23.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module conv1_cache.
+
+3.23.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\conv1_cache'.
+Computing hashes of 5035 cells of `\conv1_cache'.
+Finding duplicate cells in `\conv1_cache'.
+Removed a total of 0 cells.
+
+3.23.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.23.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \conv1_cache..
+Removed 0 unused cells and 5878 unused wires.
+<suppressed ~28 debug messages>
+
+3.23.5. Finished fast OPT passes.
+
+3.24. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `conv1_cache'. Setting top module to conv1_cache.
+
+3.24.1. Analyzing design hierarchy..
+Top module:  \conv1_cache
+
+3.24.2. Analyzing design hierarchy..
+Top module:  \conv1_cache
+Removed 0 unused modules.
+
+3.25. Printing statistics.
+
+=== conv1_cache ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     3680 wires
+     7437 wire bits
+      396 public wires
+     4153 public wire bits
+       13 ports
+      944 port bits
+     5035 cells
+      160   $_ANDNOT_
+      764   $_AND_
+      200   $_DFFE_PN0P_
+     1200   $_DFFE_PP_
+      804   $_MUX_
+      687   $_NAND_
+      218   $_NOR_
+       32   $_NOT_
+      280   $_ORNOT_
+      690   $_OR_
+
+3.26. Executing CHECK pass (checking for obvious problems).
+Checking module conv1_cache...
+Found and reported 0 problems.
+
+4. Printing statistics.
+
+=== conv1_cache ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     3680 wires
+     7437 wire bits
+      396 public wires
+     4153 public wire bits
+       13 ports
+      944 port bits
+     5035 cells
+      160   $_ANDNOT_
+      764   $_AND_
+      200   $_DFFE_PN0P_
+     1200   $_DFFE_PP_
+      804   $_MUX_
+      687   $_NAND_
+      218   $_NOR_
+       32   $_NOT_
+      280   $_ORNOT_
+      690   $_OR_
+
+5. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+
+6. Executing OPT_EXPR pass (perform const folding).
+Optimizing module conv1_cache.
+
+7. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\conv1_cache'.
+Computing hashes of 5035 cells of `\conv1_cache'.
+Finding duplicate cells in `\conv1_cache'.
+Removed a total of 0 cells.
+
+8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \conv1_cache..
+
+9. Printing statistics.
+
+=== conv1_cache ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     3680 wires
+     7437 wire bits
+      396 public wires
+     4153 public wire bits
+       13 ports
+      944 port bits
+     5035 cells
+      160   $_ANDNOT_
+      764   $_AND_
+      200   $_DFFE_PN0P_
+     1200   $_DFFE_PP_
+      804   $_MUX_
+      687   $_NAND_
+      218   $_NOR_
+       32   $_NOT_
+      280   $_ORNOT_
+      690   $_OR_
+
+10. Executing CLOCK_GATE pass (extract clock gating out of flip flops).
+Selected rising edge ICG \sky130_fd_sc_hd__dlclkp_1 from Liberty file
+Converted 1400 FFs.
+<suppressed ~1408 debug messages>
+
+11. Printing statistics.
+
+=== conv1_cache ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     3831 wires
+     7588 wire bits
+      396 public wires
+     4153 public wire bits
+       13 ports
+      944 port bits
+     5186 cells
+      160   $_ANDNOT_
+      764   $_AND_
+      200   $_DFF_PN0_
+     1200   $_DFF_P_
+      804   $_MUX_
+      687   $_NAND_
+      218   $_NOR_
+       32   $_NOT_
+      280   $_ORNOT_
+      690   $_OR_
+      151   sky130_fd_sc_hd__dlclkp_1
+
+12. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell sky130_fd_sc_hd__dfxtp_1 (noninv, pins=3, area=20.02) is a direct match for cell type $_DFF_P_.
+  cell sky130_fd_sc_hd__dfrtn_1 (noninv, pins=4, area=25.02) is a direct match for cell type $_DFF_NN0_.
+  cell sky130_fd_sc_hd__dfrtp_1 (noninv, pins=4, area=25.02) is a direct match for cell type $_DFF_PN0_.
+  cell sky130_fd_sc_hd__dfstp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN1_.
+  cell sky130_fd_sc_hd__edfxtp_1 (noninv, pins=4, area=30.03) is a direct match for cell type $_DFFE_PP_.
+  cell sky130_fd_sc_hd__dfbbn_1 (noninv, pins=6, area=32.53) is a direct match for cell type $_DFFSR_NNN_.
+  cell sky130_fd_sc_hd__dfbbp_1 (noninv, pins=6, area=32.53) is a direct match for cell type $_DFFSR_PNN_.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    \sky130_fd_sc_hd__dfxtp_1 _DFF_P_ (.CLK( C), .D( D), .Q( Q));
+    \sky130_fd_sc_hd__dfrtn_1 _DFF_NN0_ (.CLK_N( C), .D( D), .Q( Q), .RESET_B( R));
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \sky130_fd_sc_hd__dfrtp_1 _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .RESET_B( R));
+    \sky130_fd_sc_hd__dfstp_2 _DFF_PN1_ (.CLK( C), .D( D), .Q( Q), .SET_B( R));
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    unmapped dff cell: $_DFFE_NN_
+    unmapped dff cell: $_DFFE_NP_
+    unmapped dff cell: $_DFFE_PN_
+    \sky130_fd_sc_hd__edfxtp_1 _DFFE_PP_ (.CLK( C), .D( D), .DE( E), .Q( Q));
+    \sky130_fd_sc_hd__dfbbn_1 _DFFSR_NNN_ (.CLK_N( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    \sky130_fd_sc_hd__dfbbp_1 _DFFSR_PNN_ (.CLK( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+12.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+<suppressed ~24 debug messages>
+Mapping DFF cells in module `\conv1_cache':
+  mapped 200 $_DFF_PN0_ cells to \sky130_fd_sc_hd__dfrtp_1 cells.
+  mapped 1200 $_DFF_P_ cells to \sky130_fd_sc_hd__dfxtp_1 cells.
+
+13. Executing ABC pass (technology mapping using ABC).
+
+13.1. Extracting gate netlist of module `\conv1_cache' to `<abc-temp-dir>/input.blif'..
+
+13.1.1. Executed ABC.
+Extracted 3635 gates and 5628 wires to a netlist network with 1993 inputs and 501 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Aug  7 2026 03:35:51)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_scl /tmp/yosys-liberty-scl-cache/yosys_merged_3019c347.scl 
+ABC: Warning: Detected 9 multi-output cells (for example, "sky130_fd_sc_hd__fa_1").
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+ABC: 
+ABC: YOSYS_ABC_DONE 
+
+13.1.2. Re-integrating ABC results.
+ABC RESULTS:   sky130_fd_sc_hd__a2111oi_0 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a211o_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__a211oi_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a21boi_0 cells:        8
+ABC RESULTS:   sky130_fd_sc_hd__a21o_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a21oi_1 cells:      231
+ABC RESULTS:   sky130_fd_sc_hd__a221o_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a221oi_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a22o_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__a22oi_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__a2bb2oi_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a311oi_1 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__a31o_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a31oi_1 cells:       17
+ABC RESULTS:   sky130_fd_sc_hd__a41oi_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__and2_0 cells:       27
+ABC RESULTS:   sky130_fd_sc_hd__and3_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__and3b_1 cells:       25
+ABC RESULTS:   sky130_fd_sc_hd__clkinv_1 cells:      212
+ABC RESULTS:   sky130_fd_sc_hd__mux2i_1 cells:      200
+ABC RESULTS:   sky130_fd_sc_hd__nand2_1 cells:      664
+ABC RESULTS:   sky130_fd_sc_hd__nand2b_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__nand3_1 cells:       44
+ABC RESULTS:   sky130_fd_sc_hd__nand3b_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__nand4_1 cells:       17
+ABC RESULTS:   sky130_fd_sc_hd__nand4b_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__nor2_1 cells:      613
+ABC RESULTS:   sky130_fd_sc_hd__nor2b_1 cells:       42
+ABC RESULTS:   sky130_fd_sc_hd__nor3_1 cells:       51
+ABC RESULTS:   sky130_fd_sc_hd__nor3b_1 cells:       27
+ABC RESULTS:   sky130_fd_sc_hd__nor4_1 cells:       45
+ABC RESULTS:   sky130_fd_sc_hd__o2111ai_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__o211a_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o211ai_1 cells:      207
+ABC RESULTS:   sky130_fd_sc_hd__o21a_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o21ai_0 cells:      231
+ABC RESULTS:   sky130_fd_sc_hd__o21bai_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__o221ai_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o22ai_1 cells:      204
+ABC RESULTS:   sky130_fd_sc_hd__o2bb2ai_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o311a_1 cells:       20
+ABC RESULTS:   sky130_fd_sc_hd__o311ai_0 cells:       32
+ABC RESULTS:   sky130_fd_sc_hd__o31a_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o31ai_1 cells:        8
+ABC RESULTS:   sky130_fd_sc_hd__o32ai_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__o41ai_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__or2_0 cells:       31
+ABC RESULTS:   sky130_fd_sc_hd__or3_1 cells:       53
+ABC RESULTS:   sky130_fd_sc_hd__or3b_1 cells:       52
+ABC RESULTS:   sky130_fd_sc_hd__or4_1 cells:        7
+ABC RESULTS:        internal signals:     3134
+ABC RESULTS:           input signals:     1993
+ABC RESULTS:          output signals:      501
+Removing temp directory.
+Removing global temp directory.
+Removed 0 unused cells and 5628 unused wires.
+
+14. Printing statistics.
+
+=== conv1_cache ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+     3317        - wires
+     7074        - wire bits
+      396        - public wires
+     4153        - public wire bits
+       13        - ports
+      944        - port bits
+     4672 4.83E+04 cells
+        1    8.758   sky130_fd_sc_hd__a2111oi_0
+        3   26.275   sky130_fd_sc_hd__a211o_1
+        2   15.014   sky130_fd_sc_hd__a211oi_1
+        8   60.058   sky130_fd_sc_hd__a21boi_0
+        2   15.014   sky130_fd_sc_hd__a21o_1
+      231 1.16E+03   sky130_fd_sc_hd__a21oi_1
+        2   20.019   sky130_fd_sc_hd__a221o_1
+        2   17.517   sky130_fd_sc_hd__a221oi_1
+        3   26.275   sky130_fd_sc_hd__a22o_1
+        3   22.522   sky130_fd_sc_hd__a22oi_1
+        1    8.758   sky130_fd_sc_hd__a2bb2oi_1
+        4   35.034   sky130_fd_sc_hd__a311oi_1
+        1    8.758   sky130_fd_sc_hd__a31o_1
+       17  106.352   sky130_fd_sc_hd__a31oi_1
+        2   17.517   sky130_fd_sc_hd__a41oi_1
+       27  168.912   sky130_fd_sc_hd__and2_0
+        3   18.768   sky130_fd_sc_hd__and3_1
+       25   218.96   sky130_fd_sc_hd__and3b_1
+      212  795.763   sky130_fd_sc_hd__clkinv_1
+      200   5004.8   sky130_fd_sc_hd__dfrtp_1
+     1200  2.4E+04   sky130_fd_sc_hd__dfxtp_1
+      151 2.65E+03   sky130_fd_sc_hd__dlclkp_1
+      200  2001.92   sky130_fd_sc_hd__mux2i_1
+      664  2492.39   sky130_fd_sc_hd__nand2_1
+        3   18.768   sky130_fd_sc_hd__nand2b_1
+       44  220.211   sky130_fd_sc_hd__nand3_1
+        3   22.522   sky130_fd_sc_hd__nand3b_1
+       17  106.352   sky130_fd_sc_hd__nand4_1
+        3   26.275   sky130_fd_sc_hd__nand4b_1
+      613  2.3E+03   sky130_fd_sc_hd__nor2_1
+       42  262.752   sky130_fd_sc_hd__nor2b_1
+       51  255.245   sky130_fd_sc_hd__nor3_1
+       27  202.694   sky130_fd_sc_hd__nor3b_1
+       45   281.52   sky130_fd_sc_hd__nor4_1
+        3   26.275   sky130_fd_sc_hd__o2111ai_1
+        1    10.01   sky130_fd_sc_hd__o211a_1
+      207  1553.99   sky130_fd_sc_hd__o211ai_1
+        1    7.507   sky130_fd_sc_hd__o21a_1
+      231 1.16E+03   sky130_fd_sc_hd__o21ai_0
+        2   15.014   sky130_fd_sc_hd__o21bai_1
+        1    8.758   sky130_fd_sc_hd__o221ai_1
+      204 1.28E+03   sky130_fd_sc_hd__o22ai_1
+        1    8.758   sky130_fd_sc_hd__o2bb2ai_1
+       20  200.192   sky130_fd_sc_hd__o311a_1
+       32  280.269   sky130_fd_sc_hd__o311ai_0
+        1    8.758   sky130_fd_sc_hd__o31a_1
+        8   60.058   sky130_fd_sc_hd__o31ai_1
+        2   17.517   sky130_fd_sc_hd__o32ai_1
+        3   26.275   sky130_fd_sc_hd__o41ai_1
+       31  193.936   sky130_fd_sc_hd__or2_0
+       53  331.568   sky130_fd_sc_hd__or3_1
+       52  455.437   sky130_fd_sc_hd__or3b_1
+        7    52.55   sky130_fd_sc_hd__or4_1
+
+   Chip area for module '\conv1_cache': 48300.073600
+     of which used for sequential elements: 29027.840000 (60.10%)
+
+15. Executing Verilog backend.
+
+15.1. Executing BMUXMAP pass.
+
+15.2. Executing DEMUXMAP pass.
+Dumping module `\conv1_cache'.
+
+16. Executing Verilog backend.
+
+16.1. Executing BMUXMAP pass.
+
+16.2. Executing DEMUXMAP pass.
+Dumping module `\conv1_cache'.
+
+End of script. Logfile hash: 8ae127a8b8, time: 2.41s, user: 1.26s, system: 0.23s, MEM: 99.72 MB peak
+Yosys 0.68+36 (git sha1 17d51a330-dirty, Release, Clang /usr/bin/clang++ 21.1.8)
+Time spent: 39% 2x abc (0 sec), 13% 23x opt_clean (0 sec), ...

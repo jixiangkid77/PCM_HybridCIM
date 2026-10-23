@@ -1,0 +1,43 @@
+P2R-E8.2 lookup-trace summary, Model B
+trace : /home/kid/p2r_e8/trace/trace_B.txt
+tables: /mnt/d/Project/hybrid_memory/paper2/data/rtl_inputs_B_v3
+
+done line in trace       : # done_cycle 617573 mac_operations 16684
+MAC operations recorded  : 16684
+
+layer   ops   expected   lookups(valid lanes)   lanes without lookup   gap min/median/max (cycles)
+conv1    4704      4704                 117600                      0   41/41/41
+conv2    9600      9600                 240000                      0   38/38/41
+fc1      1920      1920                  48000                      0   14/14/17
+fc2       420       420                  10080                    420   14/14/17
+fc3        40        40                    840                    160   14/14/17
+total   16684     16684                 416520                    580
+
+lookups per decoder side           : 416520  (the SRAM-side and PCM-side decoder of a lane both look up)
+ROM reads, 16-bit organisation     : 833040  (2 sides x 1 read per lookup)
+ROM reads, 8-bit 2-byte burst      : 1666080  (2 sides x 2 reads per lookup)
+analytical figure in the manuscript: 833040
+
+recorded SRAM hits : 205664   testbench sram_reads_mac: 205664
+recorded PCM hits  : 210856
+replica mismatches : SRAM 0, PCM 0
+lookups with both or no side hitting : 0
+hits on lanes without a lookup       : 0
+entries rejected by size or pool range: 0
+operations after done                : 0
+
+partition base/size per layer seen in the trace (sram base, size, pcm base, size):
+   conv1: 0 150 0 0
+   conv2: 150 860 0 1540
+   fc1  : 1010 479 1540 47521
+   fc2  : 1489 745 49061 9335
+   fc3  : 2234 840 58396 0
+
+distinct ROM entries read per lane (of 2482): min 2388, max 2482
+
+GATES
+  PASS  G2 every lookup agrees with the RTL hit bits
+  PASS  G3 recorded SRAM hits equal the testbench sram_reads_mac
+  PASS  G4 exactly one side hits on every lookup, none on non-lookups
+  PASS  G5 no operation recorded after done
+RESULT: ALL GATES PASS

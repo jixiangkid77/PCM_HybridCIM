@@ -1,0 +1,37 @@
+P2R-E8.5 full-inference checks, model A   2026-10-15 03:20:52
+   script      c5030c3a43bf4c0041ffb0fe0ae1bebb
+   E8.2 trace  4e89089f8b3bf85c81658d4a26c3cec4  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/trace/trace_A.txt
+   base log    baf171c7c75b4df561d90ebad8ef7cd0  base_A.log
+   base trace  4e89089f8b3bf85c81658d4a26c3cec4  base_trace_A.txt
+   E8.5 log    2d95e36bd945ad5175c45692bed58190  full_e8_A.log
+   E8.5 ext    4e89089f8b3bf85c81658d4a26c3cec4  e8_trace_A.txt
+   E8.5 go     f4b03894b6cb840f3de0bd5b807caed5  e85_trace_A.txt
+   events      0a4ee0258b239eb239c888559ef753b7  e85_events_A.txt
+  PASS  F1 baseline: RESULT: ALL TESTS PASSED
+  PASS  F1 baseline: inference complete at cycle 617573
+  PASS  F1 baseline: SRAM protected-weight reads (per MAC op): 267143
+  PASS  F1 E8.5 unit: RESULT: ALL TESTS PASSED
+  PASS  F1 E8.5 unit: inference complete at cycle 617573
+  PASS  F1 E8.5 unit: SRAM protected-weight reads (per MAC op): 267143
+   E8.2 trace: 16684 operations; # done_cycle 617573 mac_operations 16684
+  PASS  F2 baseline, E8.2 monitor: 16684 operations against 16684, all lines identical; done line identical
+  PASS  F3 E8.5 unit, E8.2 monitor (engine start): 16684 operations against 16684, all lines identical; done line identical
+  PASS  F4 E8.5 unit, E8.5 monitor (datapath start): 16684 operations against 16684, all lines identical
+  PASS  F5 lookup pulses reading another word than their entry's: 0
+  info  lookups of an entry no operation uses: 0
+  PASS  F6 unit errors 000 (000), parking rule violations 0 (0), macros left unparked at the end 0 (0)
+  PASS  F6 macro reads counted by the models 125865: equal to the pulses
+  PASS  F6 ROM protocol (0.0, 0.0, 0.0) (0, 0, 0); shortest low 50.0 ns
+  info  unit counters: stall cycles 0, lookup pulses 2484, parking pulses 113
+  info  raw SRAM lane-cycles (not a gate; the E8.5 hits appear when the entry is in the buffer): baseline 10569613, E8.5 8747455
+
+   layer   operations  entry changes  lookup pulses
+   conv1        4704              6              7
+   conv2        9600           9600             96
+   fc1          1920           1920           1920
+   fc2           420            420            420
+   fc3            40             40             40
+   total       16684          11986           2483
+   lookup pulses before the start 1, after done 0; parking pulses before 1, during 112, after 0
+   macro reads: lookup SRAM 61520, PCM 61520; parking SRAM 1732, PCM 1093; total 125865
+   model A: ALL CHECKS PASS

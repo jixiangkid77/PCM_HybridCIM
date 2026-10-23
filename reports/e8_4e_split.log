@@ -1,0 +1,27 @@
+P2R-E8.4e split of D_ROM  2026-10-19 23:18:26
+   script     : f11055be08bc0565d590f10d74401a32  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_4e_split.py
+   E8.6a-3    : 1e216cf0983787bb4fe4cab0d816fdb6  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_6a3_rom_energy.py
+   E8.6a-2    : a4f7fb7aca7f7c672b74e24882c51050  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_6a2_rom_energy.py
+   E8.4b model: fd281561e7bf1865040ffcd75a7217a3  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4b_rel5/model.json
+   D_ROM      : bfdf7fe6ce88b3cd2c2be64445e3dc32  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_6a3_rel5/d_rom.json
+   pcm: parked power 1.173 uW (mean of 23 macros)
+   sram: parked power 1.053 uW (mean of 24 macros)
+
+==== model A ====
+   events : 0a4ee0258b239eb239c888559ef753b7  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/e85_events_A.txt
+   pcm: D 8.3490 uJ = reads 4.0452 + parks 0.0373 + static above the parked level 1.2962 + parked: leakage level 0.6999, words with zero bits 2.2705
+      parked on a word with zero bits: e8rom_A_pcm_l04_16x2496 k1: row 4 word 37ef, model static 327.2 uW
+      parked on a word with zero bits: e8rom_A_pcm_l18_16x2496 k1: row 9 word 3eff, model static 45.8 uW
+   sram: D 1.9817 uJ = reads 1.2291 + parks 0.0315 + static above the parked level 0.0775 + parked: leakage level 0.6437, words with zero bits 0.0000
+  PASS  S2 model A: totals = d_rom.json (D 10.3308 / 10.3308 uJ; largest relative difference 1.1e-15)
+
+==== model B ====
+   events : 397e3540050a9a99dcfce86d6323a4cd  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/e85_events_B.txt
+   pcm: D 6.5630 uJ = reads 4.0457 + parks 0.0614 + static above the parked level 1.2748 + parked: leakage level 0.7070, words with zero bits 0.4740
+      parked on a word with zero bits: e8rom_B_pcm_l00_16x2496 k1: row 7 word 3bff, model static 77.9 uW
+   sram: D 2.0058 uJ = reads 1.2347 + parks 0.0201 + static above the parked level 0.1073 + parked: leakage level 0.6437, words with zero bits 0.0000
+  PASS  S2 model B: totals = d_rom.json (D 8.5688 / 8.5688 uJ; largest relative difference 1.1e-15)
+  PASS  S1 replay copy = E8.6a-3's replay, every table of both models (largest relative difference 1.2e-15)
+
+written: /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4e_split.json  md5 b8ab8a4507fa8095e4ea66b23160d45e  (9 s)
+ALL CHECKS PASS

@@ -1,0 +1,479 @@
+
+25. Printing statistics.
+
+=== $paramod\argmax10\WIDTH=s32'00000000000000000000000000010000 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      980 wires
+     1136 wire bits
+       12 public wires
+      168 public wire bits
+       11 ports
+      164 port bits
+      972 cells
+      105   $_ANDNOT_
+      213   $_AND_
+      148   $_MUX_
+      235   $_NAND_
+       32   $_NOR_
+       52   $_NOT_
+       92   $_ORNOT_
+       43   $_OR_
+       52   $_XNOR_
+
+=== $paramod\maxpool2x2\WIDTH=s32'00000000000000000000000000001000 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      109 wires
+      144 wire bits
+        5 public wires
+       40 public wire bits
+        5 ports
+       40 port bits
+      112 cells
+       21   $_AND_
+       21   $_MUX_
+       25   $_NAND_
+       45   $_ORNOT_
+
+=== lenet5_top ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       33 wires
+      845 wire bits
+       33 public wires
+      845 public wire bits
+       11 ports
+       69 port bits
+       24 cells
+       21   $_MUX_
+        1   $_OR_
+        1   bias_storage
+        1   feature_buffer
+        3 submodules
+        1   $paramod$3b65060a38cb4be287be3923b5f1e6dc3f9c953d\pcm_imc_unit
+        1   $paramod$70c66c73d0e5a1bad33746eeead1477df5d1f65e\logit_rf
+        1   $paramod$fc4532a37c322ae5c487876053dec9bc8e5fc9c6\top_fsm
+
+=== $paramod$3b65060a38cb4be287be3923b5f1e6dc3f9c953d\pcm_imc_unit ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      112 wires
+     3245 wire bits
+      112 public wires
+     3245 public wire bits
+       18 ports
+      788 port bits
+       53 cells
+        1   $_AND_
+       25   pcm_addr_decoder
+        1   pcm_crossbar
+       25   sram_addr_decoder
+        1   sram_pool_25lane
+        3 submodules
+        1   $paramod$534b01576957f8d2e1613d8f859f6f4ddc3b0b47\sram_mac
+        1   $paramod$8245a66715e60f5425fff0630393653749598107\combiner
+        1   $paramod$f36575e7673831d881269e43490ec1816e926d2c\layer_config_regfile
+
+=== $paramod$70c66c73d0e5a1bad33746eeead1477df5d1f65e\logit_rf ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      341 wires
+      527 wire bits
+       17 public wires
+      203 public wire bits
+        7 ports
+       43 port bits
+      500 cells
+        9   $_ANDNOT_
+      152   $_AND_
+      160   $_DFFE_PN0P_
+      176   $_NAND_
+        3   $_NOR_
+
+=== $paramod$f36575e7673831d881269e43490ec1816e926d2c\layer_desc_rom ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       18 wires
+      136 wire bits
+       17 public wires
+      135 public wire bits
+       16 ports
+      103 port bits
+       24 cells
+        7   $_ANDNOT_
+        8   $_AND_
+        2   $_MUX_
+        2   $_NOR_
+        5   $_OR_
+
+=== $paramod$2a68484f9bd955c30818656b03a10e270148b2e6\conv_engine ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     2643 wires
+     3511 wire bits
+       35 public wires
+      903 public wire bits
+       19 ports
+      722 port bits
+     3423 cells
+      176   $_ANDNOT_
+      489   $_AND_
+        9   $_DFF_P_
+      120   $_MUX_
+      996   $_NAND_
+      101   $_NOR_
+       10   $_NOT_
+       69   $_ORNOT_
+      203   $_OR_
+      761   $_SDFFE_PN0P_
+        4   $_SDFF_PN0_
+      224   $_XNOR_
+      261   $_XOR_
+
+=== $paramod$a07b2ba51f0a9bd358657ce64727dae8fcde9543\conv_engine ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     2623 wires
+     3491 wire bits
+       35 public wires
+      903 public wire bits
+       19 ports
+      722 port bits
+     3404 cells
+      176   $_ANDNOT_
+      509   $_AND_
+        9   $_DFF_P_
+      119   $_MUX_
+      979   $_NAND_
+      113   $_NOR_
+        9   $_NOT_
+       58   $_ORNOT_
+      174   $_OR_
+      761   $_SDFFE_PN0P_
+        4   $_SDFF_PN0_
+      209   $_XNOR_
+      284   $_XOR_
+
+=== $paramod$325e1fef842d6b5202ac2212ec99a6bc261d8d20\pool_wrapper ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      604 wires
+      816 wire bits
+       22 public wires
+      196 public wire bits
+        9 ports
+       47 port bits
+      746 cells
+       55   $_ANDNOT_
+      132   $_AND_
+       95   $_DFFE_PN0P_
+        7   $_DFF_PN0_
+        1   $_DFF_PN1_
+        6   $_MUX_
+      156   $_NAND_
+       20   $_NOR_
+        3   $_NOT_
+       25   $_ORNOT_
+       67   $_OR_
+       87   $_XNOR_
+       92   $_XOR_
+        1 submodules
+        1   $paramod\maxpool2x2\WIDTH=s32'00000000000000000000000000001000
+
+=== $paramod$1f4b9066a144f2614135b3bb1933b8b8ff41c408\pool_wrapper ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      616 wires
+      828 wire bits
+       22 public wires
+      196 public wire bits
+        9 ports
+       47 port bits
+      760 cells
+       67   $_ANDNOT_
+      149   $_AND_
+       95   $_DFFE_PN0P_
+        7   $_DFF_PN0_
+        1   $_DFF_PN1_
+        3   $_MUX_
+      158   $_NAND_
+       24   $_NOR_
+        2   $_NOT_
+       11   $_ORNOT_
+       53   $_OR_
+       76   $_XNOR_
+      114   $_XOR_
+        1 submodules
+        1   $paramod\maxpool2x2\WIDTH=s32'00000000000000000000000000001000
+
+=== $paramod$b6764ecc74c4b67956c89d1fcf0e4c472b5d0646\fc_engine ===
+
+        +----------Local Count, excluding submodules.
+        | 
+    40470 wires
+    44487 wire bits
+       29 public wires
+     4046 public wire bits
+       19 ports
+      722 port bits
+    44401 cells
+     1551   $_ANDNOT_
+     5392   $_AND_
+       11   $_DFF_P_
+    14593   $_MUX_
+    16286   $_NAND_
+      350   $_NOR_
+       49   $_NOT_
+      542   $_ORNOT_
+      808   $_OR_
+     3932   $_SDFFE_PN0P_
+        4   $_SDFF_PN0_
+      426   $_XNOR_
+      457   $_XOR_
+
+=== $paramod$5ba38d0da4ce1542ae4b32965caebbe9e6d9d9d2\fc_engine ===
+
+        +----------Local Count, excluding submodules.
+        | 
+    39597 wires
+    43614 wire bits
+       29 public wires
+     4046 public wire bits
+       19 ports
+      722 port bits
+    43528 cells
+     1996   $_ANDNOT_
+     4618   $_AND_
+       11   $_DFF_P_
+    15696   $_MUX_
+    14636   $_NAND_
+      323   $_NOR_
+       22   $_NOT_
+      483   $_ORNOT_
+      943   $_OR_
+     3932   $_SDFFE_PN0P_
+        4   $_SDFF_PN0_
+      412   $_XNOR_
+      452   $_XOR_
+
+=== $paramod$f59ad7b168f73be7cf60ca3cbc8a9b12988510e2\fc_engine ===
+
+        +----------Local Count, excluding submodules.
+        | 
+    38744 wires
+    42777 wire bits
+       29 public wires
+     4062 public wire bits
+       19 ports
+      730 port bits
+    42693 cells
+     1604   $_ANDNOT_
+     4578   $_AND_
+       11   $_DFF_P_
+    15635   $_MUX_
+    14188   $_NAND_
+      317   $_NOR_
+       23   $_NOT_
+      480   $_ORNOT_
+      984   $_OR_
+     3950   $_SDFFE_PN0P_
+        4   $_SDFF_PN0_
+      419   $_XNOR_
+      500   $_XOR_
+
+=== $paramod\argmax_wrapper\LOGIT_W=s32'00000000000000000000000000010000 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       54 wires
+      237 wire bits
+       20 public wires
+      200 public wire bits
+        7 ports
+       28 port bits
+      210 cells
+        6   $_ANDNOT_
+       19   $_AND_
+      168   $_DFFE_PN0P_
+        4   $_DFF_PN0_
+        1   $_DFF_PN1_
+        5   $_NAND_
+        3   $_NOR_
+        1   $_NOT_
+        2   $_OR_
+        1   $_XNOR_
+        1 submodules
+        1   $paramod\argmax10\WIDTH=s32'00000000000000000000000000010000
+
+=== $paramod$f36575e7673831d881269e43490ec1816e926d2c\layer_config_regfile ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     1412 wires
+     1979 wire bits
+       31 public wires
+      598 public wire bits
+       15 ports
+      164 port bits
+     1815 cells
+       17   $_ANDNOT_
+      599   $_AND_
+       18   $_DFFE_PN0P_
+      320   $_DFFE_PP_
+      852   $_NAND_
+        6   $_NOR_
+        1   $_ORNOT_
+        2   $_OR_
+
+=== $paramod$fc4532a37c322ae5c487876053dec9bc8e5fc9c6\top_fsm ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     5332 wires
+     9421 wire bits
+      112 public wires
+     4198 public wire bits
+       24 ports
+      762 port bits
+     5915 cells
+        8   $_ANDNOT_
+     1303   $_AND_
+        8   $_DFFE_PN0P_
+        6   $_DFF_PN0_
+        1   $_DFF_PN1_
+      503   $_MUX_
+     3719   $_NAND_
+        4   $_NOR_
+        1   $_NOT_
+      179   $_ORNOT_
+      181   $_OR_
+        1   $_XNOR_
+        1   $_XOR_
+        9 submodules
+        1   $paramod$1f4b9066a144f2614135b3bb1933b8b8ff41c408\pool_wrapper
+        1   $paramod$2a68484f9bd955c30818656b03a10e270148b2e6\conv_engine
+        1   $paramod$325e1fef842d6b5202ac2212ec99a6bc261d8d20\pool_wrapper
+        1   $paramod$5ba38d0da4ce1542ae4b32965caebbe9e6d9d9d2\fc_engine
+        1   $paramod$a07b2ba51f0a9bd358657ce64727dae8fcde9543\conv_engine
+        1   $paramod$b6764ecc74c4b67956c89d1fcf0e4c472b5d0646\fc_engine
+        1   $paramod$f36575e7673831d881269e43490ec1816e926d2c\layer_desc_rom
+        1   $paramod$f59ad7b168f73be7cf60ca3cbc8a9b12988510e2\fc_engine
+        1   $paramod\argmax_wrapper\LOGIT_W=s32'00000000000000000000000000010000
+
+=== $paramod$534b01576957f8d2e1613d8f859f6f4ddc3b0b47\sram_mac ===
+
+        +----------Local Count, excluding submodules.
+        | 
+    15759 wires
+    16258 wire bits
+        8 public wires
+      507 public wire bits
+        6 ports
+      451 port bits
+    15791 cells
+      375   $_ANDNOT_
+     2376   $_AND_
+      348   $_MUX_
+     6457   $_NAND_
+       19   $_NOR_
+       21   $_NOT_
+      552   $_ORNOT_
+      677   $_OR_
+       20   $_SDFF_PN0_
+     1130   $_XNOR_
+     3816   $_XOR_
+
+=== $paramod$8245a66715e60f5425fff0630393653749598107\combiner ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      113 wires
+      366 wire bits
+       14 public wires
+      221 public wire bits
+        8 ports
+       77 port bits
+      290 cells
+        4   $_AND_
+       70   $_NAND_
+        7   $_OR_
+       24   $_SDFFE_PN0P_
+      145   $_SDFF_PN0_
+        9   $_XNOR_
+       31   $_XOR_
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        | 
+   164773 lenet5_top
+       53 $paramod$3b65060a38cb4be287be3923b5f1e6dc3f9c953d\pcm_imc_unit
+    15791   $paramod$534b01576957f8d2e1613d8f859f6f4ddc3b0b47\sram_mac
+      290   $paramod$8245a66715e60f5425fff0630393653749598107\combiner
+     1815   $paramod$f36575e7673831d881269e43490ec1816e926d2c\layer_config_regfile
+      500 $paramod$70c66c73d0e5a1bad33746eeead1477df5d1f65e\logit_rf
+     5915 $paramod$fc4532a37c322ae5c487876053dec9bc8e5fc9c6\top_fsm
+      760   $paramod$1f4b9066a144f2614135b3bb1933b8b8ff41c408\pool_wrapper
+      112     $paramod\maxpool2x2\WIDTH=s32'00000000000000000000000000001000
+     3423   $paramod$2a68484f9bd955c30818656b03a10e270148b2e6\conv_engine
+      746   $paramod$325e1fef842d6b5202ac2212ec99a6bc261d8d20\pool_wrapper
+      112     $paramod\maxpool2x2\WIDTH=s32'00000000000000000000000000001000
+    43528   $paramod$5ba38d0da4ce1542ae4b32965caebbe9e6d9d9d2\fc_engine
+     3404   $paramod$a07b2ba51f0a9bd358657ce64727dae8fcde9543\conv_engine
+    44401   $paramod$b6764ecc74c4b67956c89d1fcf0e4c472b5d0646\fc_engine
+       24   $paramod$f36575e7673831d881269e43490ec1816e926d2c\layer_desc_rom
+    42693   $paramod$f59ad7b168f73be7cf60ca3cbc8a9b12988510e2\fc_engine
+      210   $paramod\argmax_wrapper\LOGIT_W=s32'00000000000000000000000000010000
+      972     $paramod\argmax10\WIDTH=s32'00000000000000000000000000010000
+
+        +----------Count including submodules.
+        | 
+   149669 wires
+   173962 wire bits
+      587 public wires
+    24752 public wire bits
+      246 ports
+     6441 port bits
+        - memories
+        - memory bits
+        - processes
+   164773 cells
+     6152   $_ANDNOT_
+    20584   $_AND_
+      544   $_DFFE_PN0P_
+      320   $_DFFE_PP_
+       24   $_DFF_PN0_
+        4   $_DFF_PN1_
+       51   $_DFF_P_
+    47236   $_MUX_
+    58963   $_NAND_
+     1317   $_NOR_
+      193   $_NOT_
+     2582   $_ORNOT_
+     4150   $_OR_
+    13360   $_SDFFE_PN0P_
+      185   $_SDFF_PN0_
+     3046   $_XNOR_
+     6008   $_XOR_
+        1   bias_storage
+        1   feature_buffer
+       25   pcm_addr_decoder
+        1   pcm_crossbar
+       25   sram_addr_decoder
+        1   sram_pool_25lane
+        3 submodules
+        1   $paramod$3b65060a38cb4be287be3923b5f1e6dc3f9c953d\pcm_imc_unit
+        1   $paramod$70c66c73d0e5a1bad33746eeead1477df5d1f65e\logit_rf
+        1   $paramod$fc4532a37c322ae5c487876053dec9bc8e5fc9c6\top_fsm
+

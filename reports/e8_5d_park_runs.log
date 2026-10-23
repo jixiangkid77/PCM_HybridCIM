@@ -1,0 +1,226 @@
+==============================================================
+P2R-E8.5d parked current of the macros without a word of 0xFFFF, started 2026-10-20 13:22:10
+==============================================================
+   736a248a1d6c9927563fa08127c25b29  scripts/e8_5d_park_runs.sh
+   464d276cd13dd994b67646473c75901e  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_5d_tools.py
+   08da44d24c091cf7945e95674b905e5b  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_5d_rom_macros.sh
+   d120197ca2914ba7720e2718f7ba51b4  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_4_rom_bench.py
+   1e216cf0983787bb4fe4cab0d816fdb6  scripts/e8_6a3_rom_energy.py
+   a4f7fb7aca7f7c672b74e24882c51050  scripts/e8_6a2_rom_energy.py
+   fd281561e7bf1865040ffcd75a7217a3  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4b_rel5/model.json
+   bfdf7fe6ce88b3cd2c2be64445e3dc32  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_6a3_rel5/d_rom.json
+   32c1b2b4d11c72140a1ff6cb18275585  rtl/e8/amu_park_A.vh
+   7459db54f5787fcf8b3d0ab9d95dca5d  rtl/e8/amu_park_B.vh
+ngspice  : /nix/store/4ssrcgdvyb8car0yxay8cwfa5wc89f1w-ngspice-45/bin/ngspice
+models   : /home/kid/gf/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice
+runs     : idle, Z, word, 3000000 ns clock low; reltol 1e-5, maximum time step 500 ns, checkpoints every 500000 ns; CS 10 ns after the edge
+conds    : tt:25:1.80 for every word; for e8rom_A_pcm_l04_16x2496_r48k1 (current word) also: tt:-40:1.80:ttm40 tt:85:1.80:tt85 ff:25:1.80:ff25 ss:25:1.80:ss25 ff:85:1.80:ff85
+jobs     : at most 7 simulations at a time (5 beside step 2)
+machine  : 8 cores, 23 GiB memory, 22 GiB available, 180G free on the disk
+
+########## 0. the macros, words and data files (scripts/e8_5d_tools.py prep) ##########
+P2R-E8.5d prep  2026-10-20 13:22:10
+   script     : 464d276cd13dd994b67646473c75901e  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_5d_tools.py
+   E8.4b model: fd281561e7bf1865040ffcd75a7217a3  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4b_rel5/model.json
+   export     : e4f5776110929e93ddc35916fe0aed6a  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a8/export_cells_tables.json.gz
+   parking words model A: 32c1b2b4d11c72140a1ff6cb18275585  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_park_A.vh (200 macros)
+   model A: macros without a word of 0xFFFF: pcm_l04 k1, pcm_l18 k1 (as E8.6a-3)
+      e8rom_A_pcm_l04_16x2496_r48k1 (macro from e8_5d): Z 4004 (row 10 word 7, 14 zero bits)
+         current      addr   66 row  4 word  2 = 37ef  4 zero bits, 108 zero cells in the row, model   327.2 uW
+         candidate 1  addr  363 row 22 word 11 = 4f7d  5 zero bits, 97 zero cells in the row, model    42.5 uW
+         candidate 2  addr  130 row  8 word  2 = 3cfd  5 zero bits, 87 zero cells in the row, model    45.8 uW
+         candidate 3  addr  326 row 20 word  6 = 4c7f  6 zero bits, 114 zero cells in the row, model    63.3 uW
+      e8rom_A_pcm_l18_16x2496_r48k1 (macro from e8_5d): Z 6000 (row 35 word 12, 14 zero bits)
+         current      addr  153 row  9 word  9 = 3eff  3 zero bits, 88 zero cells in the row, model    45.8 uW
+         candidate 1  addr  535 row 33 word  7 = 5cfd  5 zero bits, 98 zero cells in the row, model    19.9 uW
+         candidate 2  addr  485 row 30 word  5 = 58ff  5 zero bits, 106 zero cells in the row, model    72.8 uW
+         candidate 3  addr  280 row 17 word  8 = 48fd  7 zero bits, 123 zero cells in the row, model    79.6 uW
+   parking words model B: 7459db54f5787fcf8b3d0ab9d95dca5d  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_park_B.vh (200 macros)
+   model B: macros without a word of 0xFFFF: pcm_l00 k1 (as E8.6a-3)
+      e8rom_B_pcm_l00_16x2496_r48k1 (macro from e8_4a7): Z 6000 (row 36 word 3, 14 zero bits)
+         current      addr  120 row  7 word  8 = 3bff  3 zero bits, 92 zero cells in the row, model    77.9 uW
+         candidate 1  addr  374 row 23 word  6 = 4ffd  4 zero bits, 110 zero cells in the row, model     5.9 uW
+         candidate 2  addr  502 row 31 word  6 = 59ff  4 zero bits, 96 zero cells in the row, model    52.0 uW
+         candidate 3  addr  324 row 20 word  4 = 4bff  4 zero bits, 106 zero cells in the row, model    58.8 uW
+   written /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5d/tables/e8rom_A_pcm_l04_16x2496.bin  md5 486ecdff1d40c2d038bdee08d84b4736
+   written /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5d/tables/e8rom_A_pcm_l18_16x2496.bin  md5 c8169c4e2a8e5c08e5861e85a609b1b8
+   written /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5d/tables/selected.txt (2 tables), selected_macros.txt (2 macros)
+   written /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5d/candidates.json  md5 426d99ccd82992ff29fd0e52bed66aa8
+   17 runs in /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5d_park/specs.txt
+
+########## 1. runs of the macros already extracted (started now, at most 5 at a time beside step 2) ##########
+   P2R-E8.5d verify  2026-10-20 13:22:13   candidates.json 426d99ccd82992ff29fd0e52bed66aa8
+     PASS  e8rom_B_pcm_l00_16x2496_r48k1 (from e8_4a7): data = table, extracted, LVS matched, 5 words as candidates.json
+   ALL CHECKS PASS
+   4 runs written
+   started B_pcm_l00_r48k1__current__tt25 at 2026-10-20 13:22:19
+   started B_pcm_l00_r48k1__candidate1__tt25 at 2026-10-20 13:22:19
+   started B_pcm_l00_r48k1__candidate2__tt25 at 2026-10-20 13:22:19
+   started B_pcm_l00_r48k1__candidate3__tt25 at 2026-10-20 13:22:19
+
+########## 2. generation, extraction, LVS and screening of the other macros (scripts/e8_5d_rom_macros.sh) ##########
+   started 2026-10-20 13:22:19; log reports/e8_5d_rom_macros.log
+   exit 0 at 2026-10-20 14:33:14; log reports/e8_5d_rom_macros.log (1104 lines)
+         e8rom_A_pcm_l04_16x2496_r48k1: 624 words, 13 words per row, 48 rows x 208 columns; cells 10192 (expected 10192), bit errors 0, dummy row ok -> STORES THE DATA EXACTLY
+         e8rom_A_pcm_l18_16x2496_r48k1: 624 words, 13 words per row, 48 rows x 208 columns; cells 10192 (expected 10192), bit errors 0, dummy row ok -> STORES THE DATA EXACTLY
+      extraction errors: 0
+      extraction errors: 0
+      Circuits match uniquely.
+      Circuits match uniquely.
+      (*: area of some macros missing; a valid layout needs bits exact, LVS match and 0 extraction errors)
+      A_pcm04      |         +0.395 (0/94) | PASS
+      A_pcm18      |         +0.380 (0/94) | PASS
+      tables: 2 PASS, 0 FAIL, 0 INCOMPLETE   (X: the cell breaks the rule; ...: a run is missing, unfinished or failed; a FAIL is final, an INCOMPLETE table needs its missing runs)
+
+########## 3. the other runs (at most 7 at a time) ##########
+   P2R-E8.5d verify  2026-10-20 14:33:14   candidates.json 426d99ccd82992ff29fd0e52bed66aa8
+     PASS  e8rom_A_pcm_l04_16x2496_r48k1 (from e8_5d): data = table, extracted, LVS matched, 5 words as candidates.json
+   ALL CHECKS PASS
+   P2R-E8.5d verify  2026-10-20 14:33:27   candidates.json 426d99ccd82992ff29fd0e52bed66aa8
+     PASS  e8rom_A_pcm_l18_16x2496_r48k1 (from e8_5d): data = table, extracted, LVS matched, 5 words as candidates.json
+   ALL CHECKS PASS
+   17 runs written of 17
+   started A_pcm_l04_r48k1__current__tt25 at 2026-10-20 14:33:32
+   started A_pcm_l04_r48k1__current__ttm40 at 2026-10-20 14:33:32
+   started A_pcm_l04_r48k1__current__tt85 at 2026-10-20 14:33:32
+   started A_pcm_l04_r48k1__current__ff25 at 2026-10-20 14:33:32
+   started A_pcm_l04_r48k1__current__ss25 at 2026-10-20 14:33:32
+   started A_pcm_l04_r48k1__current__ff85 at 2026-10-20 14:33:32
+   started A_pcm_l04_r48k1__candidate1__tt25 at 2026-10-20 14:33:33
+   started A_pcm_l04_r48k1__candidate2__tt25 at 2026-10-20 14:55:43
+   started A_pcm_l04_r48k1__candidate3__tt25 at 2026-10-20 14:55:44
+   started A_pcm_l18_r48k1__current__tt25 at 2026-10-20 14:56:12
+   started A_pcm_l18_r48k1__candidate1__tt25 at 2026-10-20 14:56:40
+   started A_pcm_l18_r48k1__candidate2__tt25 at 2026-10-20 14:57:08
+   started A_pcm_l18_r48k1__candidate3__tt25 at 2026-10-20 14:57:36
+   progress at 2026-10-20 15:03:43:
+      B_pcm_l00_r48k1__current__tt25           finished
+      B_pcm_l00_r48k1__candidate1__tt25        finished
+      B_pcm_l00_r48k1__candidate2__tt25        finished
+      B_pcm_l00_r48k1__candidate3__tt25        finished
+      A_pcm_l04_r48k1__current__tt25           finished
+      A_pcm_l04_r48k1__current__ttm40          finished
+      A_pcm_l04_r48k1__current__tt85           finished
+      A_pcm_l04_r48k1__current__ff25           finished
+      A_pcm_l04_r48k1__current__ss25           finished
+      A_pcm_l04_r48k1__current__ff85           finished
+      A_pcm_l04_r48k1__candidate1__tt25        finished
+      A_pcm_l04_r48k1__candidate2__tt25        running, 0.00 ms simulated
+      A_pcm_l04_r48k1__candidate3__tt25        running, 0.00 ms simulated
+      A_pcm_l18_r48k1__current__tt25           running, 0.00 ms simulated
+      A_pcm_l18_r48k1__candidate1__tt25        running, 0.00 ms simulated
+      A_pcm_l18_r48k1__candidate2__tt25        running, 0.00 ms simulated
+      A_pcm_l18_r48k1__candidate3__tt25        running, 0.00 ms simulated
+   B_pcm_l00_r48k1__current__tt25: finished, 21 min; simulated to 3000350.0 of 3000350.2 ns, 4 of 4 cycles complete (complete)
+   B_pcm_l00_r48k1__candidate1__tt25: finished, 21 min; simulated to 3000350.0 of 3000350.2 ns, 4 of 4 cycles complete (complete)
+   B_pcm_l00_r48k1__candidate2__tt25: finished, 20 min; simulated to 3000350.0 of 3000350.2 ns, 4 of 4 cycles complete (complete)
+   B_pcm_l00_r48k1__candidate3__tt25: finished, 21 min; simulated to 3000350.0 of 3000350.2 ns, 4 of 4 cycles complete (complete)
+   A_pcm_l04_r48k1__current__tt25: finished, 23 min; simulated to 3000350.0 of 3000350.2 ns, 4 of 4 cycles complete (complete)
+   A_pcm_l04_r48k1__current__ttm40: finished, 22 min; simulated to 3000350.0 of 3000350.2 ns, 4 of 4 cycles complete (complete)
+   A_pcm_l04_r48k1__current__tt85: finished, 22 min; simulated to 3000350.0 of 3000350.2 ns, 4 of 4 cycles complete (complete)
+   A_pcm_l04_r48k1__current__ff25: finished, 22 min; simulated to 3000350.0 of 3000350.2 ns, 4 of 4 cycles complete (complete)
+   A_pcm_l04_r48k1__current__ss25: finished, 23 min; simulated to 3000350.0 of 3000350.2 ns, 4 of 4 cycles complete (complete)
+   A_pcm_l04_r48k1__current__ff85: finished, 22 min; simulated to 3000350.0 of 3000350.2 ns, 4 of 4 cycles complete (complete)
+   A_pcm_l04_r48k1__candidate1__tt25: finished, 24 min; simulated to 3000350.0 of 3000350.2 ns, 4 of 4 cycles complete (complete)
+   A_pcm_l04_r48k1__candidate2__tt25: finished, 21 min; simulated to 3000350.0 of 3000350.2 ns, 4 of 4 cycles complete (complete)
+   A_pcm_l04_r48k1__candidate3__tt25: finished, 21 min; simulated to 3000350.0 of 3000350.2 ns, 4 of 4 cycles complete (complete)
+   A_pcm_l18_r48k1__current__tt25: finished, 20 min; simulated to 3000350.0 of 3000350.2 ns, 4 of 4 cycles complete (complete)
+   A_pcm_l18_r48k1__candidate1__tt25: finished, 20 min; simulated to 3000350.0 of 3000350.2 ns, 4 of 4 cycles complete (complete)
+   A_pcm_l18_r48k1__candidate2__tt25: finished, 19 min; simulated to 3000350.0 of 3000350.2 ns, 4 of 4 cycles complete (complete)
+   A_pcm_l18_r48k1__candidate3__tt25: finished, 19 min; simulated to 3000350.0 of 3000350.2 ns, 4 of 4 cycles complete (complete)
+
+########## 4. analysis (scripts/e8_5d_tools.py analyze) ##########
+P2R-E8.5d parked current  2026-10-20 15:18:06   script 464d276cd13dd994b67646473c75901e
+   references per condition:
+      tt:25:1.80   switching level 0.876 V (/mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5d/vm/vm.txt); leakage reference 1.173 uW (mean of 23 PCM part A macros, /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4b_rel5/model.json)
+      tt:-40:1.80  switching level 0.835 V (/mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4b_c_ttm40/vm/vm.txt); leakage reference 0.807 uW (mean of 4 PCM part A macros, /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4b_c_ttm40/model.json)
+      tt:85:1.80   switching level 0.915 V (/mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4b_c_tt85/vm/vm.txt); leakage reference 8.409 uW (mean of 4 PCM part A macros, /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4b_c_tt85/model.json)
+      ff:25:1.80   switching level 0.876 V (/mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4b_c_ff25/vm/vm.txt); leakage reference 5.303 uW (mean of 4 PCM part A macros, /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4b_c_ff25/model.json)
+      ss:25:1.80   switching level 0.876 V (/mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4b_c_ss25/vm/vm.txt); leakage reference 1.110 uW (mean of 4 PCM part A macros, /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4b_c_ss25/model.json)
+      ff:85:1.80   switching level 0.914 V (/mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4b_c_ff85/vm/vm.txt); leakage reference 60.586 uW (mean of 4 PCM part A macros, /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4b_c_ff85/model.json)
+
+   run                                       word  z   P1    margin 1/0 V  P start  P 0.5ms   P 1ms   P end |  E 1 ms  E wait E 6.08ms | beyond the wait
+                                                                                uW       uW      uW      uW |      nJ      nJ       nJ |
+   B_pcm_l00_r48k1 current tt:25:1.80        3bff  3 PASS   +0.677/+0.876    85.35   194.44   65.81   0.287 |  147.58  163.44   164.32 | settled
+   B_pcm_l00_r48k1 candidate1 tt:25:1.80     4ffd  4 PASS   +0.480/+0.876    84.62   114.03   48.55   0.289 |   87.77  100.21   101.10 | settled
+   B_pcm_l00_r48k1 candidate2 tt:25:1.80     59ff  4 PASS   +0.389/+0.876    73.24   106.97   47.40   0.288 |   81.48   93.59    94.48 | settled
+   B_pcm_l00_r48k1 candidate3 tt:25:1.80     4bff  4 PASS   +0.533/+0.876    52.75   105.12   47.14   0.284 |   76.34   88.38    89.26 | settled
+   A_pcm_l04_r48k1 current tt:25:1.80        37ef  4 PASS   +0.773/+0.876   309.94   241.08   69.01   0.292 |  215.57  232.42   233.32 | settled
+   A_pcm_l04_r48k1 current tt:-40:1.80       37ef  4 PASS   +0.813/+0.835    95.87   189.96  148.66   0.449 |  159.13  229.41   230.79 | settled
+   A_pcm_l04_r48k1 current tt:85:1.80        37ef  4 PASS   +0.737/+0.915   371.58     7.34    7.41   7.411 |   25.25   40.07    62.90 | settled
+   A_pcm_l04_r48k1 current ff:25:1.80        37ef  4 PASS   +0.759/+0.876   492.87   116.19    5.87   4.549 |  173.75  183.02   197.03 | settled
+   A_pcm_l04_r48k1 current ss:25:1.80        37ef  4 PASS   +0.782/+0.875   127.87   177.38   97.74   0.226 |  149.82  185.17   185.86 | settled
+   A_pcm_l04_r48k1 current ff:85:1.80        37ef  4 PASS   +0.740/+0.913   481.75    59.75   59.44  59.444 |   67.78  186.67   369.76 | settled
+   A_pcm_l04_r48k1 candidate1 tt:25:1.80     4f7d  5 PASS   +0.490/+0.876   201.98   155.53   55.74   0.295 |  139.67  153.92   154.83 | settled
+   A_pcm_l04_r48k1 candidate2 tt:25:1.80     3cfd  5 PASS   +0.714/+0.876   113.73   192.72   62.06   0.285 |  151.04  165.98   166.86 | settled
+   A_pcm_l04_r48k1 candidate3 tt:25:1.80     4c7f  6 PASS   +0.517/+0.876   154.75   125.28   48.94   0.286 |  109.39  121.82   122.70 | settled
+   A_pcm_l18_r48k1 current tt:25:1.80        3eff  3 PASS   +0.670/+0.876   156.69   181.42   63.03   0.288 |  144.02  159.70   160.58 | settled
+   A_pcm_l18_r48k1 candidate1 tt:25:1.80     5cfd  5 PASS   +0.383/+0.876   201.09   139.99   55.72   0.294 |  126.68  141.31   142.22 | settled
+   A_pcm_l18_r48k1 candidate2 tt:25:1.80     58ff  5 PASS   +0.406/+0.876    85.62   107.43   50.61   0.289 |   82.44   95.74    96.63 | settled
+   A_pcm_l18_r48k1 candidate3 tt:25:1.80     48fd  7 PASS   +0.535/+0.876   323.10   161.32   57.43   0.292 |  161.79  176.70   177.60 | settled
+
+   A1 (information): integral of the wait against the bench's energy of the wait: largest difference +0.088 % (within 1 %)
+   P1: 17 of 17 runs pass (complete, both reads correct with the right selection, margins >= 0.10 V where the switching level is known)
+   written /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5d_park/park.json  md5 a58182f65f31ddca465db4a521b4dc32
+
+########## 5. D_ROM with the measured parked current (scripts/e8_5d_tools.py drom) ##########
+P2R-E8.5d D_ROM with the measured parked current  2026-10-20 15:18:10
+   script      : 464d276cd13dd994b67646473c75901e  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_5d_tools.py
+   E8.6a-3     : 1e216cf0983787bb4fe4cab0d816fdb6  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_6a3_rom_energy.py
+   E8.6a-2     : a4f7fb7aca7f7c672b74e24882c51050  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_6a2_rom_energy.py
+   E8.4b model : fd281561e7bf1865040ffcd75a7217a3  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4b_rel5/model.json
+   D_ROM rel5  : bfdf7fe6ce88b3cd2c2be64445e3dc32  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_6a3_rel5/d_rom.json
+   candidates  : 426d99ccd82992ff29fd0e52bed66aa8  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5d/candidates.json
+   parked runs : a58182f65f31ddca465db4a521b4dc32  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5d_park/park.json
+   runs: 17 pass P1 and are used
+  PASS  D3 macros parked on a word with zero bits (E8.6a-3's tables): e8rom_A_pcm_l04_16x2496_r48k1, e8rom_A_pcm_l18_16x2496_r48k1, e8rom_B_pcm_l00_16x2496_r48k1; = candidates.json, parking words (row, value) the same
+
+==== model A ====
+   events: 0a4ee0258b239eb239c888559ef753b7  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/e85_events_A.txt
+  PASS  D2 e8rom_A_pcm_l04_16x2496_r48k1: measured curve of its current parking word at tt 25 C (used)
+   e8rom_A_pcm_l04_16x2496_r48k1: parking word 37ef (row 4); 2 parked intervals, longest 5.908 ms, in all 6.087 ms; constant model 327.2 uW -> 1991.7 nJ; measured 233.32 nJ
+  PASS  D2 e8rom_A_pcm_l18_16x2496_r48k1: measured curve of its current parking word at tt 25 C (used)
+   e8rom_A_pcm_l18_16x2496_r48k1: parking word 3eff (row 9); 2 parked intervals, longest 5.908 ms, in all 6.087 ms; constant model 45.8 uW -> 278.8 nJ; measured 160.59 nJ
+  PASS  D1 model A: the copy of the replay with the constant power = E8.6a-3 (largest relative difference 0.0e+00); D 10.330793 uJ, d_rom.json 10.330793
+  PASS  D1b model A: corrected value recomputed as E8.6a-3 10.078239 uJ, d_rom.json 10.078239
+   model A: parked on words with zero bits: constant model 2.2705 uJ -> measured 0.3939 uJ
+   model A: D_ROM 10.331 -> 8.454 uJ (-18.2 %); corrected 10.078 -> 8.274 uJ (the measured parked part not divided by 1 + mean error)
+   P3 e8rom_A_pcm_l04_16x2496_r48k1: current 37ef (addr 66): 233.32 nJ over 6.08 ms
+      candidate 1  4f7d (addr 363):   154.83 nJ =   66.4 % of the current word; D_ROM of model A -0.0785 uJ
+      candidate 2  3cfd (addr 130):   166.86 nJ =   71.5 % of the current word; D_ROM of model A -0.0665 uJ
+      candidate 3  4c7f (addr 326):   122.70 nJ =   52.6 % of the current word; D_ROM of model A -0.1106 uJ
+      -> keep the parking word (rule: the best candidate <= 50 % of the current word's parked energy and D_ROM -0.05 uJ or more)
+   P3 e8rom_A_pcm_l18_16x2496_r48k1: current 3eff (addr 153): 160.58 nJ over 6.08 ms
+      candidate 1  5cfd (addr 535):   142.22 nJ =   88.6 % of the current word; D_ROM of model A -0.0184 uJ
+      candidate 2  58ff (addr 485):    96.63 nJ =   60.2 % of the current word; D_ROM of model A -0.0640 uJ
+      candidate 3  48fd (addr 280):   177.60 nJ =  110.6 % of the current word; D_ROM of model A +0.0170 uJ
+      -> keep the parking word (rule: the best candidate <= 50 % of the current word's parked energy and D_ROM -0.05 uJ or more)
+
+==== model B ====
+   events: 397e3540050a9a99dcfce86d6323a4cd  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/e85_events_B.txt
+  PASS  D2 e8rom_B_pcm_l00_16x2496_r48k1: measured curve of its current parking word at tt 25 C (used)
+   e8rom_B_pcm_l00_16x2496_r48k1: parking word 3bff (row 7); 2 parked intervals, longest 5.908 ms, in all 6.087 ms; constant model 77.9 uW -> 474.0 nJ; measured 164.32 nJ
+  PASS  D1 model B: the copy of the replay with the constant power = E8.6a-3 (largest relative difference 0.0e+00); D 8.568771 uJ, d_rom.json 8.568771
+  PASS  D1b model B: corrected value recomputed as E8.6a-3 8.328852 uJ, d_rom.json 8.328852
+   model B: parked on words with zero bits: constant model 0.4740 uJ -> measured 0.1643 uJ
+   model B: D_ROM 8.569 -> 8.259 uJ (-3.6 %); corrected 8.329 -> 8.037 uJ (the measured parked part not divided by 1 + mean error)
+   P3 e8rom_B_pcm_l00_16x2496_r48k1: current 3bff (addr 120): 164.32 nJ over 6.08 ms
+      candidate 1  4ffd (addr 374):   101.10 nJ =   61.5 % of the current word; D_ROM of model B -0.0632 uJ
+      candidate 2  59ff (addr 502):    94.48 nJ =   57.5 % of the current word; D_ROM of model B -0.0698 uJ
+      candidate 3  4bff (addr 324):    89.26 nJ =   54.3 % of the current word; D_ROM of model B -0.0751 uJ
+      -> keep the parking word (rule: the best candidate <= 50 % of the current word's parked energy and D_ROM -0.05 uJ or more)
+
+==== conditions (e8rom_A_pcm_l04_16x2496_r48k1, current word 37ef) ====
+   ff:25:1.80  :   197.03 nJ over 6.08 ms (settled); 0.844 x tt 25 C; zero-parked energy A 0.3326 uJ, B 0.1388 uJ
+   ff:85:1.80  :   369.76 nJ over 6.08 ms (settled); 1.585 x tt 25 C; zero-parked energy A 0.6242 uJ, B 0.2604 uJ
+   ss:25:1.80  :   185.86 nJ over 6.08 ms (settled); 0.797 x tt 25 C; zero-parked energy A 0.3138 uJ, B 0.1309 uJ
+   tt:-40:1.80 :   230.79 nJ over 6.08 ms (settled); 0.989 x tt 25 C; zero-parked energy A 0.3896 uJ, B 0.1625 uJ
+   tt:85:1.80  :    62.90 nJ over 6.08 ms (settled); 0.270 x tt 25 C; zero-parked energy A 0.1062 uJ, B 0.0443 uJ
+
+   written /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5d_park/d_rom_e85d.json  md5 52e3edb5d90fe43c4f70e61f7a915ed5
+ALL CHECKS PASS
+
+==============================================================
+Finished 2026-10-20 15:18:20. Pack for Claude:
+  tar czf reports/e8_5d_results.tar.gz reports/e8_5d_park_runs.log reports/e8_5d_rom_macros.log reports/e8_rom/e8_5d/candidates.json reports/e8_rom/e8_5d_park/park.json reports/e8_rom/e8_5d_park/d_rom_e85d.json reports/e8_rom/e8_5d_park/*/analyze.txt reports/e8_rom/e8_5d_park/*/info.json
+==============================================================

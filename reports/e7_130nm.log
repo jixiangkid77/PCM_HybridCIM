@@ -1,0 +1,149 @@
+==============================================================
+P2R-E7 v2, started 2026-08-14 21:03:30
+==============================================================
+
+---- 1. the configuration as found, which belongs to the other paper ----
+61:	memcelltype = 2;        	// 1: cell.memCellType = Type::SRAM
+97:	SARADC = true;              // false: MLSA
+130:	technode = 130;                      // Technology
+132:	wireWidth = 175;                     // wireWidth of the cell for Accuracy calculation
+140:	numRowSubArray = 256;               // # of rows in single subArray
+141:	numColSubArray = 256;               // # of columns in single subArray
+147:	numColMuxed = 8;                    // How many columns share 1 ADC (for eNVM and FeFET) or parallel SRAM
+148:	levelOutput = 1024;                   // # of levels of the multilevelSenseAmp output, should be in 2^N forms; e.g. 32 levels --> 5-bit ADC
+149:	cellBit = 2;                        // precision of memory device 
+197:		cellBit = 1;             // force cellBit = 1 for all SRAM cases
+
+---- 2. saving it ----
+saved to /home/kid/NeuroSim/Inference_pytorch/NeuroSIM/Param.cpp.paper3backup
+
+---- 3. installing this paper's baseline from the archived configuration ----
+61:	memcelltype = 2;        	// 1: cell.memCellType = Type::SRAM
+97:	SARADC = false;              // false: MLSA
+130:	technode = 22;                      // Technology
+132:	wireWidth = 40;                     // wireWidth of the cell for Accuracy calculation
+140:	numRowSubArray = 64;               // # of rows in single subArray
+141:	numColSubArray = 64;               // # of columns in single subArray
+147:	numColMuxed = 8;                    // How many columns share 1 ADC (for eNVM and FeFET) or parallel SRAM
+148:	levelOutput = 32;                   // # of levels of the multilevelSenseAmp output, should be in 2^N forms; e.g. 32 levels --> 5-bit ADC
+149:	cellBit = 2;                        // precision of memory device 
+197:		cellBit = 1;             // force cellBit = 1 for all SRAM cases
+expected: SARADC false, technode 22, wireWidth 40, 64 by 64, levelOutput 32, cellBit 2
+
+---- 4. rebuild ----
+make exit status: 0
+g++ -c -fopenmp -O3 -std=c++0x -w	 Param.cpp -o Param.o
+g++ -fopenmp -O3 -std=c++0x -w	 Adder.o AdderTree.o BitShifter.o Buffer.o Bus.o Chip.o Comparator.o CurrentSenseAmp.o DFF.o DeMux.o DecoderDriver.o FunctionUnit.o HTree.o LevelShifter.o MaxPooling.o MultilevelSAEncoder.o MultilevelSenseAmp.o Mux.o NewMux.o NewSwitchMatrix.o Param.o Precharger.o ProcessingUnit.o ReadCircuit.o RowDecoder.o SRAMWriteDriver.o SarADC.o SenseAmp.o ShiftAdd.o Sigmoid.o SramNewSA.o SubArray.o SwitchMatrix.o Technology.o Tile.o VoltageSenseAmp.o WLDecoderOutput.o WLNewDecoderDriver.o formula.o main.o -o main
+-rwxr-xr-x 1 kid kid 566480 Aug 14 21:03 /home/kid/NeuroSim/Inference_pytorch/NeuroSIM/main
+
+---- 5. run at 22 nm, started 2026-08-14 21:03:31 ----
+exit status: 0   finished 2026-08-14 21:03:31
+---- RAW ----
+Total Chip Area: 2.52208e+06 um^2
+Total Chip Area: 2.52208 mm^2
+Chip total CIM array : 60901.3um^2
+Chip clock period is: 2.03939ns
+Chip layer-by-layer readLatency (per image) is: 52522.3ns
+Chip total readDynamicEnergy is: 131429pJ
+Chip total leakage Energy is: 1302.27pJ
+Chip total leakage Power is: 30.9933uW
+Energy Efficiency TOPS/W (Layer-by-Layer Process): 5.14439
+Throughput TOPS (Layer-by-Layer Process): 0.0158607
+Throughput FPS (Layer-by-Layer Process): 19039.5
+Compute efficiency TOPS/mm^2 (Layer-by-Layer Process): 0.00628873
+
+==============================================================
+GATE: does this reproduce the 5 June run
+  area line matching 2.52208 mm^2      : 1
+  energy line matching 131429 pJ       : 1
+  RESULT: PASS
+==============================================================
+
+---- 6. moving the node, and nothing else ----
+61:	memcelltype = 2;        	// 1: cell.memCellType = Type::SRAM
+97:	SARADC = false;              // false: MLSA
+130:	technode = 130;                      // Technology
+132:	wireWidth = 175;                     // wireWidth of the cell for Accuracy calculation
+140:	numRowSubArray = 64;               // # of rows in single subArray
+141:	numColSubArray = 64;               // # of columns in single subArray
+147:	numColMuxed = 8;                    // How many columns share 1 ADC (for eNVM and FeFET) or parallel SRAM
+148:	levelOutput = 32;                   // # of levels of the multilevelSenseAmp output, should be in 2^N forms; e.g. 32 levels --> 5-bit ADC
+149:	cellBit = 2;                        // precision of memory device 
+197:		cellBit = 1;             // force cellBit = 1 for all SRAM cases
+expected: only the node and the wire width have moved
+
+---- 7. rebuild ----
+make exit status: 0
+-rwxr-xr-x 1 kid kid 566480 Aug 14 21:03 /home/kid/NeuroSim/Inference_pytorch/NeuroSIM/main
+
+---- 8. run at 130 nm, started 2026-08-14 21:03:33 ----
+exit status: 0   finished 2026-08-14 21:03:33
+---- RAW ----
+Total Chip Area: 9.61634e+07 um^2
+Total Chip Area: 96.1634 mm^2
+Chip total CIM array : 2.12651e+06um^2
+Chip clock period is: 11.9741ns
+Chip layer-by-layer readLatency (per image) is: 341068ns
+Chip total readDynamicEnergy is: 2.32708e+06pJ
+Chip total leakage Energy is: 82265.7pJ
+Chip total leakage Power is: 301.501uW
+Energy Efficiency TOPS/W (Layer-by-Layer Process): 0.283404
+Throughput TOPS (Layer-by-Layer Process): 0.00244245
+Throughput FPS (Layer-by-Layer Process): 2931.97
+Compute efficiency TOPS/mm^2 (Layer-by-Layer Process): 2.53989e-05
+
+---- 9. the area and energy split, both nodes ----
+== result_22nm_repro.log
+Total Chip Area: 2.52208e+06 um^2
+Total Chip Area: 2.52208 mm^2
+ADC Area: 1.07291 mm^2
+Accumulation Area: 0.207578 mm^2
+----------- ADC (or S/As and precharger for SRAM) readLatency is : 1174.69ns
+----------- Accumulation Circuits (subarray level: adders, shiftAdds; PE/Tile/Global level: accumulation units) readLatency is : 1468.36ns
+----------- Other Peripheries (e.g. decoders, mux, switchmatrix, buffers, IC, pooling and activation units) readLatency is : 35590ns
+----------- ADC (or S/As and precharger for SRAM) readDynamicEnergy is : 36314.4pJ
+----------- Accumulation Circuits (subarray level: adders, shiftAdds; PE/Tile/Global level: accumulation units) readDynamicEnergy is : 12272.6pJ
+----------- Other Peripheries (e.g. decoders, mux, switchmatrix, buffers, IC, pooling and activation units) readDynamicEnergy is : 43477pJ
+----------- ADC (or S/As and precharger for SRAM) readLatency is : 293.672ns
+----------- Accumulation Circuits (subarray level: adders, shiftAdds; PE/Tile/Global level: accumulation units) readLatency is : 403.799ns
+----------- Other Peripheries (e.g. decoders, mux, switchmatrix, buffers, IC, pooling and activation units) readLatency is : 11382.4ns
+----------- ADC (or S/As and precharger for SRAM) readDynamicEnergy is : 11013.7pJ
+== result_130nm.log
+Total Chip Area: 9.61634e+07 um^2
+Total Chip Area: 96.1634 mm^2
+ADC Area: 37.463 mm^2
+Accumulation Area: 7.24809 mm^2
+----------- ADC (or S/As and precharger for SRAM) readLatency is : 6897.07ns
+----------- Accumulation Circuits (subarray level: adders, shiftAdds; PE/Tile/Global level: accumulation units) readLatency is : 8621.34ns
+----------- Other Peripheries (e.g. decoders, mux, switchmatrix, buffers, IC, pooling and activation units) readLatency is : 231654ns
+----------- ADC (or S/As and precharger for SRAM) readDynamicEnergy is : 454007pJ
+----------- Accumulation Circuits (subarray level: adders, shiftAdds; PE/Tile/Global level: accumulation units) readDynamicEnergy is : 346456pJ
+----------- Other Peripheries (e.g. decoders, mux, switchmatrix, buffers, IC, pooling and activation units) readDynamicEnergy is : 859977pJ
+----------- ADC (or S/As and precharger for SRAM) readLatency is : 1724.27ns
+----------- Accumulation Circuits (subarray level: adders, shiftAdds; PE/Tile/Global level: accumulation units) readLatency is : 3340.77ns
+----------- Other Peripheries (e.g. decoders, mux, switchmatrix, buffers, IC, pooling and activation units) readLatency is : 73895.6ns
+----------- ADC (or S/As and precharger for SRAM) readDynamicEnergy is : 152433pJ
+
+---- putting the other paper's configuration back ----
+rebuild exit status: 0
+difference against the saved copy, which should be empty:
+  identical
+61:	memcelltype = 2;        	// 1: cell.memCellType = Type::SRAM
+97:	SARADC = true;              // false: MLSA
+130:	technode = 130;                      // Technology
+132:	wireWidth = 175;                     // wireWidth of the cell for Accuracy calculation
+140:	numRowSubArray = 256;               // # of rows in single subArray
+141:	numColSubArray = 256;               // # of columns in single subArray
+147:	numColMuxed = 8;                    // How many columns share 1 ADC (for eNVM and FeFET) or parallel SRAM
+148:	levelOutput = 1024;                   // # of levels of the multilevelSenseAmp output, should be in 2^N forms; e.g. 32 levels --> 5-bit ADC
+149:	cellBit = 2;                        // precision of memory device 
+197:		cellBit = 1;             // force cellBit = 1 for all SRAM cases
+
+==============================================================
+Reference, 5 June, 22 nm, cellBit 2:
+  Total Chip Area 2.52208 mm2, CIM array 60901.3 um2
+  Chip total readDynamicEnergy 131429 pJ
+  readLatency per image 52522.3 ns, Energy Efficiency 5.14439 TOPS/W
+The paper reports the array and its converters after the scheme
+conversion, 2.1542 mm2 for the two-bit differential scheme.
+Finished 2026-08-14 21:03:34

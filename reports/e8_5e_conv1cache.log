@@ -1,0 +1,377 @@
+==============================================================
+P2R-E8.5e conv1 register cache (RTL), started 2026-10-20 12:44:26
+==============================================================
+---- delivered files against the manifest ----
+rtl/e8/conv1_cache.v: OK
+rtl/e8/pcm_imc_unit_e8c.v: OK
+rtl/e8/tb/e8_5e_monitor.v: OK
+rtl/e8/tb/tb_conv1_cache.v: OK
+scripts/e8_5e_conv1cache.sh: OK
+scripts/e8_5e_check.py: OK
+scripts/e8_5e_cache_hex.py: OK
+---- unchanged inputs (E8.5, E8.5c) against their checksums ----
+   rtl/e8/sram_pool_25lane_2c.v: OK
+   rtl/e8/pcm_imc_unit_e8s.v: OK
+   rtl/e8/e8_5c_inputs.md5: OK
+   rtl/e8/tb/e8_5c_monitor.v: OK
+   rtl/e8/tb/tb_sram_pool_2c.v: OK
+   scripts/e8_5c_sram2c.sh: OK
+   scripts/e8_5c_check.py: OK
+   rtl/src/argmax10.v: OK
+   rtl/src/argmax_wrapper.v: OK
+   rtl/src/bias_storage.v: OK
+   rtl/src/combiner.v: OK
+   rtl/src/conv_engine.v: OK
+   rtl/src/fc_engine.v: OK
+   rtl/src/feature_buffer.v: OK
+   rtl/src/layer_config_regfile.v: OK
+   rtl/src/layer_desc_rom.v: OK
+   rtl/src/lenet5_top.v: OK
+   rtl/src/logit_rf.v: OK
+   rtl/src/maxpool2x2.v: OK
+   rtl/src/pcm_crossbar.v: OK
+   rtl/src/pool_wrapper.v: OK
+   rtl/src/sram_mac.v: OK
+   rtl/src/sram_pool_25lane.v: OK
+   rtl/src/top_fsm.v: OK
+   rtl/src/pcm_imc_unit.v: OK
+   rtl/src/sram_addr_decoder.v: OK
+   rtl/src/pcm_addr_decoder.v: OK
+   rtl/tb/tb_lenet5_full_inference_v3.v: OK
+   rtl/tb/e8_lookup_monitor.v: OK
+   rtl/e8/amu_park_A.vh: OK
+   rtl/e8/amu_park_B.vh: OK
+   reports/e8_rom/trace/trace_A.txt: OK
+   reports/e8_rom/trace/trace_B.txt: OK
+   rtl/e8/amu_buf.v: OK
+   rtl/e8/amu_core.v: OK
+   rtl/e8/amu_entry.v: OK
+   rtl/e8/amu_lanes.v: OK
+   rtl/e8/amu_pflags.v: OK
+   rtl/e8/amu_table.v: OK
+   rtl/e8/amu_top.v: OK
+   rtl/e8/e8_rom_r48.v: OK
+   rtl/e8/e8_rom_r48_stub.v: OK
+   rtl/e8/pcm_imc_unit_e8.v: OK
+   rtl/e8/tb/e8_5_amu_monitor.v: OK
+   rtl/e8/tb/tb_amu_engines.v: OK
+   rtl/e8/tb/tb_amu_entry_exh.v: OK
+   rtl/e8/tb/tb_amu_lanes.v: OK
+   scripts/e8_5_amu.sh: OK
+   scripts/e8_5_check.py: OK
+   scripts/e8_5_park_words.py: OK
+---- E8.5c results used as the reference ----
+   4de64a6eef99f1ada89d95735dc47fc6  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5c/res_new_A.txt
+   6eaa6eac67488fb715f955ba58eb04d0  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5c/res_new_B.txt
+   4de64a6eef99f1ada89d95735dc47fc6  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5c/res_once_A.txt
+   6eaa6eac67488fb715f955ba58eb04d0  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5c/res_once_B.txt
+iverilog : /usr/bin/iverilog  Icarus Verilog version 12.0 (stable) ()
+python3  : /usr/bin/python3  Python 3.12.3
+yosys    : /home/kid/oss-cad-suite/bin/yosys  Yosys 0.68+36 (git sha1 17d51a330-dirty, Release, Clang /usr/bin/clang++ 21.1.8)
+liberty  : 12a1d61fcd2982fc8ba63993919c8ff8  /home/kid/sky130/orfs/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+jobs     : at most 1 simulations at a time (E8_JOBS)
+disk     : 850 GB free for /home/kid/p2r_e8/e8_5e
+
+==== 0. cache contents ====
+   P2R-E8.5e conv1 cache contents from /mnt/d/Project/hybrid_memory/paper2/data/rtl_inputs_A_v3
+      layer_config.hex : 9516d30fc7b80fd16543ffa7971ca62b  conv1 SRAM base 0, size 150
+      sram_pool.hex    : 3b576637f5ad9383fa0b6a7eb59ac4d1  3074 words
+      conv1 slots: 150 hits, 150 distinct, 0..149
+      written /home/kid/p2r_e8/e8_5e/conv1_cache_A.hex: 150 entries (lane*6 + oc)  md5 8afd762887ab169559cad8c55ba99f2c
+  PASS  C0 cache contents, model A
+   P2R-E8.5e conv1 cache contents from /mnt/d/Project/hybrid_memory/paper2/data/rtl_inputs_B_v3
+      layer_config.hex : 30c36de02d354c06de31370828c45e8d  conv1 SRAM base 0, size 150
+      sram_pool.hex    : 7666b65dce105e5d4827173d0f9c1792  3074 words
+      conv1 slots: 150 hits, 150 distinct, 0..149
+      written /home/kid/p2r_e8/e8_5e/conv1_cache_B.hex: 150 entries (lane*6 + oc)  md5 aa9662eb64108e07294a682cba42dfe5
+  PASS  C0 cache contents, model B
+   [12:44:28, 2 s since the start]
+
+==== 1. unit test U1 ====
+   [E8.5e] conv1 cache: no contents given (INIT_FILE or +e85e_cache=)
+   U1 cycles 200000, lane checks 5000000, conv1 cycles 119751, cached lane outputs 1497036, cache writes 17663, ignored writes 7454, errors 0
+   U1 PASS
+P2R-E8.5e unit test: u1.log  (md5 a9bc2bf380b567f56c7a429a0151e0af)
+  PASS  U1 conv1_cache = reference: cycles 200000, lane checks 5000000, cached lane outputs 1497036 (>= 100000), cache writes 17663 (>= 1000), ignored writes 7454, errors 0 (0)
+  PASS  U1 unit test
+   [12:45:02, 36 s since the start]
+
+==== 2. full inference: cache, conce (strict mode); models A and B ====
+model A, cache: iverilog exit 0
+model A, conce: iverilog exit 0
+model B, cache: iverilog exit 0
+model B, conce: iverilog exit 0
+---- source files of the cache compile (model A), with checksums ----
+   f052198c7a66  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_buf.v
+   8ade1b5409b0  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_core.v
+   3dad9932b80d  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_entry.v
+   6b6743793e40  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_lanes.v
+   32c1b2b4d11c  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_park_A.vh
+   45ad881c2714  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_pflags.v
+   ffb346bd2da4  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_table.v
+   70c844246dfe  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_top.v
+   cb7304514925  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v
+   d033df35e492  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/e8_rom_r48.v
+   eaefcd95ae41  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/pcm_imc_unit_e8c.v
+   ea0f0f37286f  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/sram_pool_25lane_2c.v
+   90fb91ebd736  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/tb/e8_5_amu_monitor.v
+   74fcf0537638  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/tb/e8_5c_monitor.v
+   784665afbff2  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/tb/e8_5e_monitor.v
+   73169f323366  /mnt/d/Project/hybrid_memory/paper2/rtl/src/argmax10.v
+   a13c5bfdc98e  /mnt/d/Project/hybrid_memory/paper2/rtl/src/argmax_wrapper.v
+   c895003667bd  /mnt/d/Project/hybrid_memory/paper2/rtl/src/bias_storage.v
+   d5ddf2ae7f80  /mnt/d/Project/hybrid_memory/paper2/rtl/src/combiner.v
+   f8323afb4162  /mnt/d/Project/hybrid_memory/paper2/rtl/src/conv_engine.v
+   94103f230f87  /mnt/d/Project/hybrid_memory/paper2/rtl/src/fc_engine.v
+   456811ccb911  /mnt/d/Project/hybrid_memory/paper2/rtl/src/feature_buffer.v
+   f0fb32c3ce0c  /mnt/d/Project/hybrid_memory/paper2/rtl/src/layer_config_regfile.v
+   063b1d55977f  /mnt/d/Project/hybrid_memory/paper2/rtl/src/layer_desc_rom.v
+   f251ef0a8dfe  /mnt/d/Project/hybrid_memory/paper2/rtl/src/lenet5_top.v
+   dfcfbd26d555  /mnt/d/Project/hybrid_memory/paper2/rtl/src/logit_rf.v
+   7a78d30f2af1  /mnt/d/Project/hybrid_memory/paper2/rtl/src/maxpool2x2.v
+   9ccbf846a598  /mnt/d/Project/hybrid_memory/paper2/rtl/src/pcm_crossbar.v
+   f12aa505d3db  /mnt/d/Project/hybrid_memory/paper2/rtl/src/pool_wrapper.v
+   5c1a15878147  /mnt/d/Project/hybrid_memory/paper2/rtl/src/sram_mac.v
+   ef9ddd99302e  /mnt/d/Project/hybrid_memory/paper2/rtl/src/top_fsm.v
+   fe997fbee582  /mnt/d/Project/hybrid_memory/paper2/rtl/tb/e8_lookup_monitor.v
+   23ff16d1cb27  /mnt/d/Project/hybrid_memory/paper2/rtl/tb/tb_lenet5_full_inference_v3.v
+---- simulate, started 2026-10-20 12:45:04 ----
+---- model A, cache: vvp exit 0, 122.02 s wall, 56192 kB peak 122 s 
+   cache  [E8.5e] conv1 cache loaded from /home/kid/p2r_e8/e8_5e/conv1_cache_A.hex
+   cache    [PASS] inference complete at cycle 617573
+   cache  SRAM protected-weight reads (per MAC op): 267143
+   cache  RESULT: ALL TESTS PASSED
+   cache  [E8.5c MONITOR] SRAM_LATENCY 2, ALIGN_DELAY 6
+   cache  [E8.5c MONITOR] results 16684 -> /home/kid/p2r_e8/e8_5e/res_cache_A.txt
+   cache  [E8.5c MONITOR] datapath starts 16684, SRAM reads 267143
+   cache  [E8.5c MONITOR] shortest interval between two SRAM reads of one lane 14 cycles (lane 1); intervals below 2: 0
+   cache  [E8.5c MONITOR] cycles with a pool hit while the datapath start is low: 351936
+   cache  [E8.5e MONITOR] datapath starts 16684; SRAM macro reads 149543 (conv1 0, conv2 148100, fc1 335, fc2 314, fc3 794); conv1 cache reads 117600
+   cache  [E8.5e MONITOR] cache reads per lane: min 4704 max 4704
+   cache  [E8.5e MONITOR] cache entries different from the pool word: 0; cache reads outside conv1: 0; cycles with a pool hit in conv1: 0
+---- model A, conce: vvp exit 0, 116.23 s wall, 55936 kB peak 116 s 
+   conce  [E8.5e] conv1 cache loaded from /home/kid/p2r_e8/e8_5e/conv1_cache_A.hex
+   conce    [PASS] inference complete at cycle 617573
+   conce  SRAM protected-weight reads (per MAC op): 267143
+   conce  RESULT: ALL TESTS PASSED
+   conce  [E8.5c MONITOR] SRAM_LATENCY 2, ALIGN_DELAY 6
+   conce  [E8.5c MONITOR] results 16684 -> /home/kid/p2r_e8/e8_5e/res_conce_A.txt
+   conce  [E8.5c MONITOR] datapath starts 16684, SRAM reads 267143
+   conce  [E8.5c MONITOR] shortest interval between two SRAM reads of one lane 14 cycles (lane 1); intervals below 2: 0
+   conce  [E8.5c MONITOR] cycles with a pool hit while the datapath start is low: 0
+   conce  [E8.5e MONITOR] datapath starts 16684; SRAM macro reads 149543 (conv1 0, conv2 148100, fc1 335, fc2 314, fc3 794); conv1 cache reads 117600
+   conce  [E8.5e MONITOR] cache reads per lane: min 4704 max 4704
+   conce  [E8.5e MONITOR] cache entries different from the pool word: 0; cache reads outside conv1: 0; cycles with a pool hit in conv1: 0
+---- model B, cache: vvp exit 0, 117.48 s wall, 56064 kB peak 118 s 
+   cache  [E8.5e] conv1 cache loaded from /home/kid/p2r_e8/e8_5e/conv1_cache_B.hex
+   cache    [PASS] inference complete at cycle 617573
+   cache  SRAM protected-weight reads (per MAC op): 205664
+   cache  RESULT: ALL TESTS PASSED
+   cache  [E8.5c MONITOR] SRAM_LATENCY 2, ALIGN_DELAY 6
+   cache  [E8.5c MONITOR] results 16684 -> /home/kid/p2r_e8/e8_5e/res_cache_B.txt
+   cache  [E8.5c MONITOR] datapath starts 16684, SRAM reads 205664
+   cache  [E8.5c MONITOR] shortest interval between two SRAM reads of one lane 14 cycles (lane 11); intervals below 2: 0
+   cache  [E8.5c MONITOR] cycles with a pool hit while the datapath start is low: 345906
+   cache  [E8.5e MONITOR] datapath starts 16684; SRAM macro reads 88064 (conv1 0, conv2 86000, fc1 479, fc2 745, fc3 840); conv1 cache reads 117600
+   cache  [E8.5e MONITOR] cache reads per lane: min 4704 max 4704
+   cache  [E8.5e MONITOR] cache entries different from the pool word: 0; cache reads outside conv1: 0; cycles with a pool hit in conv1: 0
+---- model B, conce: vvp exit 0, 123.73 s wall, 56064 kB peak 123 s 
+   conce  [E8.5e] conv1 cache loaded from /home/kid/p2r_e8/e8_5e/conv1_cache_B.hex
+   conce    [PASS] inference complete at cycle 617573
+   conce  SRAM protected-weight reads (per MAC op): 205664
+   conce  RESULT: ALL TESTS PASSED
+   conce  [E8.5c MONITOR] SRAM_LATENCY 2, ALIGN_DELAY 6
+   conce  [E8.5c MONITOR] results 16684 -> /home/kid/p2r_e8/e8_5e/res_conce_B.txt
+   conce  [E8.5c MONITOR] datapath starts 16684, SRAM reads 205664
+   conce  [E8.5c MONITOR] shortest interval between two SRAM reads of one lane 14 cycles (lane 11); intervals below 2: 0
+   conce  [E8.5c MONITOR] cycles with a pool hit while the datapath start is low: 0
+   conce  [E8.5e MONITOR] datapath starts 16684; SRAM macro reads 88064 (conv1 0, conv2 86000, fc1 479, fc2 745, fc3 840); conv1 cache reads 117600
+   conce  [E8.5e MONITOR] cache reads per lane: min 4704 max 4704
+   conce  [E8.5e MONITOR] cache entries different from the pool word: 0; cache reads outside conv1: 0; cycles with a pool hit in conv1: 0
+   [12:53:03, 517 s since the start]
+
+==== 3. checks ====
+---- model A ----
+P2R-E8.5e full-inference checks, model A   2026-10-20 12:53:03
+   script     fb6a3f5444245f85e0a1c38b0e9d1532
+   cache log   a2a094137da53d8da7998b530ab1a410  /home/kid/p2r_e8/e8_5e/sim_cache_A.log
+   cache e8t   4e89089f8b3bf85c81658d4a26c3cec4  /home/kid/p2r_e8/e8_5e/e8t_cache_A.txt
+   cache e85t  f4b03894b6cb840f3de0bd5b807caed5  /home/kid/p2r_e8/e8_5e/e85t_cache_A.txt
+   cache e85e  0a4ee0258b239eb239c888559ef753b7  /home/kid/p2r_e8/e8_5e/e85e_cache_A.txt
+   cache res   4de64a6eef99f1ada89d95735dc47fc6  /home/kid/p2r_e8/e8_5e/res_cache_A.txt
+   conce log   9a3474e7fb10d0afb8237289f27d271e  /home/kid/p2r_e8/e8_5e/sim_conce_A.log
+   conce e8t   4e89089f8b3bf85c81658d4a26c3cec4  /home/kid/p2r_e8/e8_5e/e8t_conce_A.txt
+   conce e85t  f4b03894b6cb840f3de0bd5b807caed5  /home/kid/p2r_e8/e8_5e/e85t_conce_A.txt
+   conce e85e  0a4ee0258b239eb239c888559ef753b7  /home/kid/p2r_e8/e8_5e/e85e_conce_A.txt
+   conce res   4de64a6eef99f1ada89d95735dc47fc6  /home/kid/p2r_e8/e8_5e/res_conce_A.txt
+   new   log   1d65cea7e400a48c905a3542796adb02  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5c/sim_new_A.log
+   new   e8t   4e89089f8b3bf85c81658d4a26c3cec4  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5c/e8t_new_A.txt
+   new   e85t  f4b03894b6cb840f3de0bd5b807caed5  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5c/e85t_new_A.txt
+   new   e85e  0a4ee0258b239eb239c888559ef753b7  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5c/e85e_new_A.txt
+   new   res   4de64a6eef99f1ada89d95735dc47fc6  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5c/res_new_A.txt
+   once  log   c059ae7df58d47fca19c640c435f3545  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5c/sim_once_A.log
+   once  e8t   4e89089f8b3bf85c81658d4a26c3cec4  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5c/e8t_once_A.txt
+   once  e85t  f4b03894b6cb840f3de0bd5b807caed5  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5c/e85t_once_A.txt
+   once  e85e  0a4ee0258b239eb239c888559ef753b7  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5c/e85e_once_A.txt
+   once  res   4de64a6eef99f1ada89d95735dc47fc6  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5c/res_once_A.txt
+  PASS  G0 cache compile: rtl/e8/pcm_imc_unit_e8c.v, rtl/e8/conv1_cache.v, rtl/e8/sram_pool_25lane_2c.v, rtl/e8/tb/e8_5e_monitor.v and rtl/src/lenet5_top.v; none of rtl/e8/pcm_imc_unit_e8s.v, rtl/e8/pcm_imc_unit_e8.v, rtl/src/pcm_imc_unit.v, rtl/src/sram_pool_25lane.v; other files = E8.5c new
+  PASS  G0 conce compile: rtl/e8/pcm_imc_unit_e8c.v, rtl/e8/conv1_cache.v, rtl/e8/sram_pool_25lane_2c.v, rtl/e8/tb/e8_5e_monitor.v and rtl/src/lenet5_top.v; none of rtl/e8/pcm_imc_unit_e8s.v, rtl/e8/pcm_imc_unit_e8.v, rtl/src/pcm_imc_unit.v, rtl/src/sram_pool_25lane.v; other files = E8.5c new
+  PASS  G1 cache: RESULT: ALL TESTS PASSED
+  PASS  G1 cache: inference complete at cycle 617573
+  PASS  G1 cache: testbench SRAM lookups 267143 = E8.5c 267143
+  PASS  G1 cache: testbench SRAM lookups 267143 (267143)
+  PASS  G1 conce: RESULT: ALL TESTS PASSED
+  PASS  G1 conce: inference complete at cycle 617573
+  PASS  G1 conce: testbench SRAM lookups 267143 = E8.5c 267143
+  PASS  G1 conce: testbench SRAM lookups 267143 (267143)
+  PASS  G2 cache, E8.2 monitor trace = E8.5c new: 16684 lines against 16684, all identical
+  PASS  G2 cache, E8.5 trace = E8.5c new: 16684 lines against 16684, all identical
+  PASS  G2 cache, ROM events = E8.5c new: 2597 lines against 2597, all identical
+  PASS  G2 conce, E8.2 monitor trace = E8.5c new: 16684 lines against 16684, all identical
+  PASS  G2 conce, E8.5 trace = E8.5c new: 16684 lines against 16684, all identical
+  PASS  G2 conce, ROM events = E8.5c new: 2597 lines against 2597, all identical
+  PASS  G2 cache, E8.2 monitor trace = E8.2 trace /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/trace/trace_A.txt: 16684 lines against 16684, all identical
+  PASS  G3 cache, results (cycle and value) = E8.5c new: 16684 lines against 16684, all identical; 16684 results (16684)
+  PASS  G3 cache: every result 10 cycles after its datapath start: offsets [10]
+  PASS  G3 conce, results (cycle and value) = E8.5c once: 16684 lines against 16684, all identical; 16684 results (16684)
+  PASS  G3 conce: every result 10 cycles after its datapath start: offsets [10]
+  PASS  G4 cache: starts 16684 (16684); macro reads 149543 + cache reads 117600 = lookups 267143; conv1 macro reads 0 (0); conv2 148100, fc1 335, fc2 314, fc3 794
+  PASS  G4 cache: macro reads 149543 (149543), cache reads 117600 (117600), per lane 4704-4704 (4704)
+  PASS  G4 cache: cache entries different from the pool word 0 (0); cache reads outside conv1 0 (0); cycles with a pool hit in conv1 0 (0)
+  PASS  G4 conce: starts 16684 (16684); macro reads 149543 + cache reads 117600 = lookups 267143; conv1 macro reads 0 (0); conv2 148100, fc1 335, fc2 314, fc3 794
+  PASS  G4 conce: macro reads 149543 (149543), cache reads 117600 (117600), per lane 4704-4704 (4704)
+  PASS  G4 conce: cache entries different from the pool word 0 (0); cache reads outside conv1 0 (0); cycles with a pool hit in conv1 0 (0)
+  PASS  G5 cache: cycles with a pool hit while the datapath start is low 351936 < E8.5c new 560568 (no pool hits in conv1)
+  PASS  G5 cache, [E8.5c MONITOR] summary = E8.5c new: 3 lines against 3, all identical
+  PASS  G5 cache, [E8.5 MONITOR] summary = E8.5c new: 8 lines against 8, all identical
+  PASS  G5 conce: cycles with a pool hit while the datapath start is low 0 (0; E8.5c once 0)
+  PASS  G5 conce, [E8.5c MONITOR] summary = E8.5c once: 3 lines against 3, all identical
+  PASS  G5 conce, [E8.5 MONITOR] summary = E8.5c once: 8 lines against 8, all identical
+   model A: ALL CHECKS PASS
+  PASS  G0-G5 model A
+---- model B ----
+P2R-E8.5e full-inference checks, model B   2026-10-20 12:53:04
+   script     fb6a3f5444245f85e0a1c38b0e9d1532
+   cache log   39f67fcc092ba9b9d0140df05b964c9b  /home/kid/p2r_e8/e8_5e/sim_cache_B.log
+   cache e8t   3269174c62831481ec5851fe749c9e4b  /home/kid/p2r_e8/e8_5e/e8t_cache_B.txt
+   cache e85t  eea87bea3f0b6c61bab4ff84d1085563  /home/kid/p2r_e8/e8_5e/e85t_cache_B.txt
+   cache e85e  397e3540050a9a99dcfce86d6323a4cd  /home/kid/p2r_e8/e8_5e/e85e_cache_B.txt
+   cache res   6eaa6eac67488fb715f955ba58eb04d0  /home/kid/p2r_e8/e8_5e/res_cache_B.txt
+   conce log   d0f1589732cced235814a2069b7284d6  /home/kid/p2r_e8/e8_5e/sim_conce_B.log
+   conce e8t   3269174c62831481ec5851fe749c9e4b  /home/kid/p2r_e8/e8_5e/e8t_conce_B.txt
+   conce e85t  eea87bea3f0b6c61bab4ff84d1085563  /home/kid/p2r_e8/e8_5e/e85t_conce_B.txt
+   conce e85e  397e3540050a9a99dcfce86d6323a4cd  /home/kid/p2r_e8/e8_5e/e85e_conce_B.txt
+   conce res   6eaa6eac67488fb715f955ba58eb04d0  /home/kid/p2r_e8/e8_5e/res_conce_B.txt
+   new   log   200abd9b870822766e4481e6580405df  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5c/sim_new_B.log
+   new   e8t   3269174c62831481ec5851fe749c9e4b  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5c/e8t_new_B.txt
+   new   e85t  eea87bea3f0b6c61bab4ff84d1085563  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5c/e85t_new_B.txt
+   new   e85e  397e3540050a9a99dcfce86d6323a4cd  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5c/e85e_new_B.txt
+   new   res   6eaa6eac67488fb715f955ba58eb04d0  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5c/res_new_B.txt
+   once  log   b152eac9d5ec6b65ab06286b8c4b63bd  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5c/sim_once_B.log
+   once  e8t   3269174c62831481ec5851fe749c9e4b  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5c/e8t_once_B.txt
+   once  e85t  eea87bea3f0b6c61bab4ff84d1085563  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5c/e85t_once_B.txt
+   once  e85e  397e3540050a9a99dcfce86d6323a4cd  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5c/e85e_once_B.txt
+   once  res   6eaa6eac67488fb715f955ba58eb04d0  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5c/res_once_B.txt
+  PASS  G0 cache compile: rtl/e8/pcm_imc_unit_e8c.v, rtl/e8/conv1_cache.v, rtl/e8/sram_pool_25lane_2c.v, rtl/e8/tb/e8_5e_monitor.v and rtl/src/lenet5_top.v; none of rtl/e8/pcm_imc_unit_e8s.v, rtl/e8/pcm_imc_unit_e8.v, rtl/src/pcm_imc_unit.v, rtl/src/sram_pool_25lane.v; other files = E8.5c new
+  PASS  G0 conce compile: rtl/e8/pcm_imc_unit_e8c.v, rtl/e8/conv1_cache.v, rtl/e8/sram_pool_25lane_2c.v, rtl/e8/tb/e8_5e_monitor.v and rtl/src/lenet5_top.v; none of rtl/e8/pcm_imc_unit_e8s.v, rtl/e8/pcm_imc_unit_e8.v, rtl/src/pcm_imc_unit.v, rtl/src/sram_pool_25lane.v; other files = E8.5c new
+  PASS  G1 cache: RESULT: ALL TESTS PASSED
+  PASS  G1 cache: inference complete at cycle 617573
+  PASS  G1 cache: testbench SRAM lookups 205664 = E8.5c 205664
+  PASS  G1 cache: testbench SRAM lookups 205664 (205664)
+  PASS  G1 conce: RESULT: ALL TESTS PASSED
+  PASS  G1 conce: inference complete at cycle 617573
+  PASS  G1 conce: testbench SRAM lookups 205664 = E8.5c 205664
+  PASS  G1 conce: testbench SRAM lookups 205664 (205664)
+  PASS  G2 cache, E8.2 monitor trace = E8.5c new: 16684 lines against 16684, all identical
+  PASS  G2 cache, E8.5 trace = E8.5c new: 16684 lines against 16684, all identical
+  PASS  G2 cache, ROM events = E8.5c new: 2597 lines against 2597, all identical
+  PASS  G2 conce, E8.2 monitor trace = E8.5c new: 16684 lines against 16684, all identical
+  PASS  G2 conce, E8.5 trace = E8.5c new: 16684 lines against 16684, all identical
+  PASS  G2 conce, ROM events = E8.5c new: 2597 lines against 2597, all identical
+  PASS  G2 cache, E8.2 monitor trace = E8.2 trace /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/trace/trace_B.txt: 16684 lines against 16684, all identical
+  PASS  G3 cache, results (cycle and value) = E8.5c new: 16684 lines against 16684, all identical; 16684 results (16684)
+  PASS  G3 cache: every result 10 cycles after its datapath start: offsets [10]
+  PASS  G3 conce, results (cycle and value) = E8.5c once: 16684 lines against 16684, all identical; 16684 results (16684)
+  PASS  G3 conce: every result 10 cycles after its datapath start: offsets [10]
+  PASS  G4 cache: starts 16684 (16684); macro reads 88064 + cache reads 117600 = lookups 205664; conv1 macro reads 0 (0); conv2 86000, fc1 479, fc2 745, fc3 840
+  PASS  G4 cache: macro reads 88064 (88064), cache reads 117600 (117600), per lane 4704-4704 (4704)
+  PASS  G4 cache: cache entries different from the pool word 0 (0); cache reads outside conv1 0 (0); cycles with a pool hit in conv1 0 (0)
+  PASS  G4 conce: starts 16684 (16684); macro reads 88064 + cache reads 117600 = lookups 205664; conv1 macro reads 0 (0); conv2 86000, fc1 479, fc2 745, fc3 840
+  PASS  G4 conce: macro reads 88064 (88064), cache reads 117600 (117600), per lane 4704-4704 (4704)
+  PASS  G4 conce: cache entries different from the pool word 0 (0); cache reads outside conv1 0 (0); cycles with a pool hit in conv1 0 (0)
+  PASS  G5 cache: cycles with a pool hit while the datapath start is low 345906 < E8.5c new 554538 (no pool hits in conv1)
+  PASS  G5 cache, [E8.5c MONITOR] summary = E8.5c new: 3 lines against 3, all identical
+  PASS  G5 cache, [E8.5 MONITOR] summary = E8.5c new: 8 lines against 8, all identical
+  PASS  G5 conce: cycles with a pool hit while the datapath start is low 0 (0; E8.5c once 0)
+  PASS  G5 conce, [E8.5c MONITOR] summary = E8.5c once: 3 lines against 3, all identical
+  PASS  G5 conce, [E8.5 MONITOR] summary = E8.5c once: 8 lines against 8, all identical
+   model B: ALL CHECKS PASS
+  PASS  G0-G5 model B
+   [12:53:05, 519 s since the start]
+
+==== 4. Yosys, flow B of E3 as E8.5: conv1_cache alone ====
+---- yosys exit 0
+         2 ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+         1 ABC: Warning: Detected 9 multi-output cells (for example, "sky130_fd_sc_hd__fa_1").
+   RAW: final area
+      Chip area for module '\conv1_cache': 48300.073600
+        of which used for sequential elements: 29027.840000 (60.10%)
+   RAW: sequential and clock-gating cells in the netlist
+      1200 sky130_fd_sc_hd__dfxtp_1
+       200 sky130_fd_sc_hd__dfrtp_1
+       151 sky130_fd_sc_hd__dlclkp_1
+   cell lines: netlist 4672, sta 4672; lpflow / probe cells 0
+  PASS  S1 synthesis of conv1_cache
+   [12:53:08, 522 s since the start]
+
+---- files written to /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5e ----
+total 32356
+drwxrwxrwx 1 kid kid    4096 Oct 20 12:53 .
+drwxrwxrwx 1 kid kid    4096 Oct 20 12:44 ..
+-rwxrwxrwx 1 kid kid     491 Oct 20 12:53 c1cache_stat_after_clockgate.txt
+-rwxrwxrwx 1 kid kid     456 Oct 20 12:53 c1cache_stat_after_synth.txt
+-rwxrwxrwx 1 kid kid     456 Oct 20 12:53 c1cache_stat_after_transform.txt
+-rwxrwxrwx 1 kid kid    2939 Oct 20 12:53 c1cache_stat_final.txt
+-rwxrwxrwx 1 kid kid  190314 Oct 20 12:53 c1cache_syn.log
+-rwxrwxrwx 1 kid kid    1593 Oct 20 12:53 c1cache_syn.ys
+-rwxrwxrwx 1 kid kid     408 Oct 20 12:44 cache_hex_A.log
+-rwxrwxrwx 1 kid kid     408 Oct 20 12:44 cache_hex_B.log
+-rwxrwxrwx 1 kid kid       0 Oct 20 12:53 comp_cache_A.log
+-rwxrwxrwx 1 kid kid       0 Oct 20 12:53 comp_cache_B.log
+-rwxrwxrwx 1 kid kid       0 Oct 20 12:53 comp_conce_A.log
+-rwxrwxrwx 1 kid kid       0 Oct 20 12:53 comp_conce_B.log
+-rwxrwxrwx 1 kid kid     450 Oct 20 12:44 conv1_cache_A.hex
+-rwxrwxrwx 1 kid kid     450 Oct 20 12:44 conv1_cache_B.hex
+-rwxrwxrwx 1 kid kid  598424 Oct 20 12:53 conv1_cache_netlist.v
+-rwxrwxrwx 1 kid kid  559930 Oct 20 12:53 conv1_cache_sta.v
+-rwxrwxrwx 1 kid kid    3298 Oct 20 12:53 deps_cache_A.txt
+-rwxrwxrwx 1 kid kid    3298 Oct 20 12:53 deps_cache_B.txt
+-rwxrwxrwx 1 kid kid    3298 Oct 20 12:53 deps_conce_A.txt
+-rwxrwxrwx 1 kid kid    3298 Oct 20 12:53 deps_conce_B.txt
+-rwxrwxrwx 1 kid kid   81919 Oct 20 12:53 e85e_cache_A.txt
+-rwxrwxrwx 1 kid kid   81919 Oct 20 12:53 e85e_cache_B.txt
+-rwxrwxrwx 1 kid kid   81919 Oct 20 12:53 e85e_conce_A.txt
+-rwxrwxrwx 1 kid kid   81919 Oct 20 12:53 e85e_conce_B.txt
+-rwxrwxrwx 1 kid kid 3818134 Oct 20 12:53 e85t_cache_A.txt
+-rwxrwxrwx 1 kid kid 3818134 Oct 20 12:53 e85t_cache_B.txt
+-rwxrwxrwx 1 kid kid 3818134 Oct 20 12:53 e85t_conce_A.txt
+-rwxrwxrwx 1 kid kid 3818134 Oct 20 12:53 e85t_conce_B.txt
+-rwxrwxrwx 1 kid kid 3818115 Oct 20 12:53 e8t_cache_A.txt
+-rwxrwxrwx 1 kid kid 3818115 Oct 20 12:53 e8t_cache_B.txt
+-rwxrwxrwx 1 kid kid 3818115 Oct 20 12:53 e8t_conce_A.txt
+-rwxrwxrwx 1 kid kid 3818115 Oct 20 12:53 e8t_conce_B.txt
+-rwxrwxrwx 1 kid kid  200919 Oct 20 12:53 res_cache_A.txt
+-rwxrwxrwx 1 kid kid  204336 Oct 20 12:53 res_cache_B.txt
+-rwxrwxrwx 1 kid kid  200919 Oct 20 12:53 res_conce_A.txt
+-rwxrwxrwx 1 kid kid  204336 Oct 20 12:53 res_conce_B.txt
+-rwxrwxrwx 1 kid kid    4652 Oct 20 12:53 sim_cache_A.log
+-rwxrwxrwx 1 kid kid    4649 Oct 20 12:53 sim_cache_B.log
+-rwxrwxrwx 1 kid kid    4646 Oct 20 12:53 sim_conce_A.log
+-rwxrwxrwx 1 kid kid    4642 Oct 20 12:53 sim_conce_B.log
+-rwxrwxrwx 1 kid kid     317 Oct 20 12:45 u1.log
+-rwxrwxrwx 1 kid kid       0 Oct 20 12:45 u1_compile.log
+
+==============================================================
+Finished 2026-10-20 12:53:08, 8 min.
+All gates pass.
+==============================================================

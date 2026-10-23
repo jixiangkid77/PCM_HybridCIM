@@ -1,0 +1,15 @@
+P2R-E8.4 analysis: e8rom_B_pcm_l07_16x2496_r48k1  period 100.0 ns  vdd 1.6 V  load 10.0 fF per output  points 2454
+data: simulated to 995.2 of 390.2 ns, 4 of 4 cycles complete (complete)
+E_vdd: energy from the supply from this cycle's rising edge to the next one; P_after: supply power just before the next rising edge (static state after the cycle)
+  k kind   addr  row   w precharge ns z_row z_word expected     read  ok  E_vdd pJ  E_in pJ P_after uW t_acc ns  dout min/max V
+  0 idle                                                                    1.974    0.017       0.49
+  1 read      6    0   6       150.0    95     10     3311     3311 yes    41.823    0.001     244.91    17.43  0.00/1.61  bitline below VDD/2 after 10.84 ns
+      selection: rows [0] (expected [0]); words [6] (expected [6]); lowest unselected row-decoder output 1.31 V (row 1)
+      timing after the clock edge: internal clock 0.340 ns, array footers on 10.569 ns, wordline 0 low 1.522 ns; footers on before the row is selected by -9.047 ns
+      bitlines of row 0: 113 one cells, lowest while evaluating 1.534 V (column 68 = bit 5 of word 3); 95 zero cells, highest at sampling 0.000 V (column 15 = bit 1 of word 2); word read: lowest one bit 1.536 V (bit 15)
+  2 wait                       40 ns                                        9.536    0.045     237.88
+  3 read    499   31   3        90.0    96      0     ffff     ffff yes    22.987    0.001      10.92    11.47  0.01/1.61
+      selection: rows [31] (expected [31]); words [3] (expected [3]); lowest unselected row-decoder output 1.24 V (row 30)
+      timing after the clock edge: internal clock 0.340 ns, array footers on 10.569 ns, wordline 31 low 1.296 ns; footers on before the row is selected by -9.272 ns
+      bitlines of row 31: 112 one cells, lowest while evaluating 1.031 V (column 3 = bit 0 of word 3); 96 zero cells, highest at sampling 0.000 V (column 196 = bit 15 of word 1); word read: lowest one bit 1.031 V (bit 0)
+summary: {"cycles_complete": 4, "cycles_total": 4, "simulated_ns": 995.2, "tstop_ns": 390.20000000000005, "failed": false, "reads": 2, "reads_ok": 2, "reads_selection_ok": 2, "E_read_pJ_mean": 32.405196624447704, "E_read_pJ_min": 22.987219873550245, "E_read_pJ_max": 41.82317337534516, "t_access_ns_max": 17.427185999999974, "bl1_min_V": 1.03064677, "bl0_max_V": 4.594587579331233e-05}

@@ -1,0 +1,15 @@
+P2R-E8.4 analysis: e8rom_A_pcm_l04_16x2496_r48k1  period 100.0 ns  vdd 1.8 V  load 10.0 fF per output  points 7979
+data: simulated to 3000350.0 of 3000350.2 ns, 4 of 4 cycles complete (complete)
+E_vdd: energy from the supply from this cycle's rising edge to the next one; P_after: supply power just before the next rising edge (static state after the cycle)
+  k kind   addr  row   w precharge ns z_row z_word expected     read  ok  E_vdd pJ  E_in pJ P_after uW t_acc ns  dout min/max V
+  0 idle                                                                    2.484    0.058      -0.67
+  1 read    167   10   7       150.0   111     14     4004     4004 yes    42.760   -0.020     175.25    13.48  -0.00/1.82  bitline below VDD/2 after 10.67 ns
+      selection: rows [10] (expected [10]); words [7] (expected [7]); lowest unselected row-decoder output 1.25 V (row 11)
+      timing after the clock edge: internal clock 0.276 ns, array footers on 10.443 ns, wordline 10 low 1.083 ns; footers on before the row is selected by -9.360 ns
+      bitlines of row 10: 97 one cells, lowest while evaluating 1.652 V (column 141 = bit 10 of word 11); 111 zero cells, highest at sampling 0.000 V (column 200 = bit 15 of word 5); word read: lowest one bit 1.727 V (bit 1)
+  2 read     66    4   2        50.0   108      4     37ef     37ef yes    38.889    0.001      27.18    14.54  -0.00/1.81  bitline below VDD/2 after 10.66 ns
+      selection: rows [4] (expected [4]); words [2] (expected [2]); lowest unselected row-decoder output 1.26 V (row 5)
+      timing after the clock edge: internal clock 0.276 ns, array footers on 10.443 ns, wordline 4 low 1.117 ns; footers on before the row is selected by -9.325 ns
+      bitlines of row 4: 100 one cells, lowest while evaluating 1.648 V (column 140 = bit 10 of word 10); 108 zero cells, highest at sampling 0.000 V (column 162 = bit 12 of word 6); word read: lowest one bit 1.649 V (bit 10)
+  3 wait                  3000000 ns                                    229392.640   -0.008       0.70
+summary: {"cycles_complete": 4, "cycles_total": 4, "simulated_ns": 3000350.0, "tstop_ns": 3000350.2, "failed": false, "reads": 2, "reads_ok": 2, "reads_selection_ok": 2, "E_read_pJ_mean": 40.82446478521322, "E_read_pJ_min": 38.88871842706501, "E_read_pJ_max": 42.760211143361445, "t_access_ns_max": 14.542470999999933, "bl1_min_V": 1.64775628, "bl0_max_V": 6.863706112660913e-06}

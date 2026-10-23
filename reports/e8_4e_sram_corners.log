@@ -1,0 +1,373 @@
+==============================================================
+P2R-E8.4e SRAM macro at other corners and temperatures, started 2026-10-21 19:59:19
+==============================================================
+
+########## 0. files, tools and E8.4f (P0) ##########
+   809a65edb8f70f687163f5b0355e3a3b  scripts/e8_4e_sram_corners.sh
+   4f1589dc2c30ce4ef95d0bc7ac1cef1f  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_4e_sram_tools.py
+   4f4d3530c6e1c06a2971e33aa6fc8b49  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_4c_sram_bench.py
+   44ee0d67a8c4b92fb59aac8dccb4271c  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_4c_sram_tools.py
+   d120197ca2914ba7720e2718f7ba51b4  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_4_rom_bench.py
+   66732626bd3e729e7af24853168353c6  /home/kid/gf/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice
+   46b0b5cbcdc48a98a9f9cae7131eaeb0  /home/kid/p2r_e8/e8_4f/e8_4c_summary.json
+ngspice  : /nix/store/4ssrcgdvyb8car0yxay8cwfa5wc89f1w-ngspice-45/bin/ngspice (ngspice-45)
+E8.4f    : /home/kid/p2r_e8/e8_4f
+   P0 E8.4f valid (G0, G1t, G1, G1b, G2, G3, F2b; sense precharge in the layout, none in the netlist): PASS
+machine  : 8 cores, 23 GiB memory, 22 GiB available, 845G free for the work folder
+
+########## 1. bench options and sequence of E8.4f; its r10 deck written again (P2) ##########
+   substrate node VSUBS (VSUBS 69952, SUB 0); ngspice threads 1; maximum time step 0.05 ns; pfet_pass alias no
+   bench options: --sanitize --tie-cell-sub --substrate VSUBS --tie-float-gates --plain-nfet --uic --ic-cells --threads 1 --tmax 0.05
+   r10 of E8.4f   : i i w:0:00 w:4095:ff w:2055:00 w:1032:ff w:19:55 w:3084:aa w:513:0f w:3598:f0 i r:0 s:10 r:4095 s:10 r:2055 s:10 r:1032 s:10 r:19 s:10 r:3084 s:10 r:513 s:10 r:3598 s:10 r:0 r:4095 r:2055 r:1032 r:19 r:3084 r:513 r:3598 i i i s:60 r:4095 s:60
+   E8.4e sequence : i i w:0:00 w:4095:ff w:2055:00 w:1032:ff w:19:55 i r:0 s:10 r:4095 s:10 r:2055 s:10 r:1032 s:10 r:19 s:60   (period 10 ns)
+   P2 E8.4f's r10 deck written again with these options: DECK IDENTICAL (tb.sp 4387 lines, only the folder of the netlist copy differs; netlist.sp md5 e8224da9547ded14c0ed0404e309419a; .spiceinit; tb_meta.json)
+
+########## 2. decks of the conditions (P1 model check at the corner, P3 deck) ##########
+   tt:25: P1 PASS, deck written (18 cycles, period 10.0 ns, stop 242.5 ns, 13 address bits, 9 data bits of which 8 compared), netlist copy identical to E8.4f's
+   ss:25: P1 PASS, deck written (18 cycles, period 10.0 ns, stop 242.5 ns, 13 address bits, 9 data bits of which 8 compared), netlist copy identical to E8.4f's
+   ff:85: P1 PASS, deck written (18 cycles, period 10.0 ns, stop 242.5 ns, 13 address bits, 9 data bits of which 8 compared), netlist copy identical to E8.4f's
+   tt:85: P1 PASS, deck written (18 cycles, period 10.0 ns, stop 242.5 ns, 13 address bits, 9 data bits of which 8 compared), netlist copy identical to E8.4f's
+   tt:-40: P1 PASS, deck written (18 cycles, period 10.0 ns, stop 242.5 ns, 13 address bits, 9 data bits of which 8 compared), netlist copy identical to E8.4f's
+   ff:25: P1 PASS, deck written (18 cycles, period 10.0 ns, stop 242.5 ns, 13 address bits, 9 data bits of which 8 compared), netlist copy identical to E8.4f's
+
+########## 3. runs (in the order of E8_CONDS) ##########
+   available memory 22 GiB: at most 3 simulation(s) at a time (about 7 GB each for the 4-KB macro)
+   started c_tt_25 at 2026-10-21 20:02:37
+   started c_ss_25 at 2026-10-21 20:02:37
+   started c_ff_85 at 2026-10-21 20:02:37
+   progress at 2026-10-21 20:32:53, 8 GiB available:
+      c_tt_25    running                              0h30m   4846 MB   
+      c_ss_25    running                              0h30m   4849 MB   
+      c_ff_85    running                              0h30m   4847 MB   
+      c_tt_85    written                              -       -         
+      c_tt_m40   written                              -       -         
+      c_ff_25    written                              -       -         
+   progress at 2026-10-21 21:03:10, 8 GiB available:
+      c_tt_25    running                              1h00m   4940 MB   
+      c_ss_25    running                              1h00m   4946 MB   
+      c_ff_85    running                              1h00m   4941 MB   
+      c_tt_85    written                              -       -         
+      c_tt_m40   written                              -       -         
+      c_ff_25    written                              -       -         
+   progress at 2026-10-21 21:33:25, 8 GiB available:
+      c_tt_25    running                              1h30m   5035 MB   
+      c_ss_25    running                              1h30m   5043 MB   
+      c_ff_85    running                              1h30m   5036 MB   
+      c_tt_85    written                              -       -         
+      c_tt_m40   written                              -       -         
+      c_ff_25    written                              -       -         
+   progress at 2026-10-21 22:03:41, 7 GiB available:
+      c_tt_25    running                              2h01m   5131 MB   
+      c_ss_25    running                              2h01m   5142 MB   
+      c_ff_85    running                              2h01m   5132 MB   
+      c_tt_85    written                              -       -         
+      c_tt_m40   written                              -       -         
+      c_ff_25    written                              -       -         
+   progress at 2026-10-21 22:34:00, 7 GiB available:
+      c_tt_25    running                              2h31m   5230 MB   
+      c_ss_25    running                              2h31m   5243 MB   
+      c_ff_85    running                              2h31m   5231 MB   
+      c_tt_85    written                              -       -         
+      c_tt_m40   written                              -       -         
+      c_ff_25    written                              -       -         
+   progress at 2026-10-21 23:04:01, 7 GiB available:
+      c_tt_25    running                              3h01m   5329 MB   
+      c_ss_25    running                              3h01m   5344 MB   
+      c_ff_85    running                              3h01m   5330 MB   
+      c_tt_85    written                              -       -         
+      c_tt_m40   written                              -       -         
+      c_ff_25    written                              -       -         
+   progress at 2026-10-21 23:34:20, 6 GiB available:
+      c_tt_25    running                              3h31m   5436 MB   
+      c_ss_25    running                              3h31m   5454 MB   
+      c_ff_85    running                              3h31m   5437 MB   
+      c_tt_85    written                              -       -         
+      c_tt_m40   written                              -       -         
+      c_ff_25    written                              -       -         
+   progress at 2026-10-22 00:04:22, 6 GiB available:
+      c_tt_25    running                              4h01m   5547 MB   
+      c_ss_25    running                              4h01m   5570 MB   
+      c_ff_85    running                              4h01m   5548 MB   
+      c_tt_85    written                              -       -         
+      c_tt_m40   written                              -       -         
+      c_ff_25    written                              -       -         
+   progress at 2026-10-22 00:34:24, 6 GiB available:
+      c_tt_25    running                              4h31m   5666 MB   
+      c_ss_25    running                              4h31m   5694 MB   
+      c_ff_85    running                              4h31m   5667 MB   
+      c_tt_85    written                              -       -         
+      c_tt_m40   written                              -       -         
+      c_ff_25    written                              -       -         
+   progress at 2026-10-22 01:04:26, 5 GiB available:
+      c_tt_25    running                              5h01m   5793 MB   
+      c_ss_25    running                              5h01m   5828 MB   
+      c_ff_85    running                              5h01m   5795 MB   
+      c_tt_85    written                              -       -         
+      c_tt_m40   written                              -       -         
+      c_ff_25    written                              -       -         
+   progress at 2026-10-22 01:34:27, 5 GiB available:
+      c_tt_25    running                              5h31m   5919 MB   
+      c_ss_25    running                              5h31m   5961 MB   
+      c_ff_85    running                              5h31m   5921 MB   
+      c_tt_85    written                              -       -         
+      c_tt_m40   written                              -       -         
+      c_ff_25    written                              -       -         
+   progress at 2026-10-22 02:04:30, 5 GiB available:
+      c_tt_25    running                              6h01m   6049 MB   
+      c_ss_25    running                              6h01m   6097 MB   
+      c_ff_85    running                              6h01m   6050 MB   
+      c_tt_85    written                              -       -         
+      c_tt_m40   written                              -       -         
+      c_ff_25    written                              -       -         
+   progress at 2026-10-22 02:34:35, 1 GiB available:
+      c_tt_25    running                              6h31m   7125 MB   
+      c_ss_25    running                              6h31m   7128 MB   
+      c_ff_85    running                              6h31m   7125 MB   
+      c_tt_85    written                              -       -         
+      c_tt_m40   written                              -       -         
+      c_ff_25    written                              -       -         
+   progress at 2026-10-22 03:04:43, 2 GiB available:
+      c_tt_25    running                              7h02m   7125 MB   
+      c_ss_25    running                              7h02m   7128 MB   
+      c_ff_85    running                              7h02m   7125 MB   
+      c_tt_85    written                              -       -         
+      c_tt_m40   written                              -       -         
+      c_ff_25    written                              -       -         
+   progress at 2026-10-22 03:34:52, 1 GiB available:
+      c_tt_25    running                              7h32m   7125 MB   
+      c_ss_25    running                              7h32m   7128 MB   reached 100.0 ns of 242.5 ns
+      c_ff_85    running                              7h32m   7125 MB   
+      c_tt_85    written                              -       -         
+      c_tt_m40   written                              -       -         
+      c_ff_25    written                              -       -         
+   progress at 2026-10-22 04:04:59, 1 GiB available:
+      c_tt_25    running                              8h02m   7125 MB   reached 100.0 ns of 242.5 ns
+      c_ss_25    running                              8h02m   7128 MB   reached 100.0 ns of 242.5 ns
+      c_ff_85    running                              8h02m   7125 MB   reached 100.0 ns of 242.5 ns
+      c_tt_85    written                              -       -         
+      c_tt_m40   written                              -       -         
+      c_ff_25    written                              -       -         
+   progress at 2026-10-22 04:35:08, 1 GiB available:
+      c_tt_25    running                              8h32m   7125 MB   reached 150.0 ns of 242.5 ns
+      c_ss_25    running                              8h32m   7128 MB   reached 150.0 ns of 242.5 ns
+      c_ff_85    running                              8h32m   7125 MB   reached 100.0 ns of 242.5 ns
+      c_tt_85    written                              -       -         
+      c_tt_m40   written                              -       -         
+      c_ff_25    written                              -       -         
+   progress at 2026-10-22 05:05:21, 1 GiB available:
+      c_tt_25    running                              9h02m   7125 MB   reached 150.0 ns of 242.5 ns
+      c_ss_25    running                              9h02m   7128 MB   reached 200.0 ns of 242.5 ns
+      c_ff_85    running                              9h02m   7125 MB   reached 150.0 ns of 242.5 ns
+      c_tt_85    written                              -       -         
+      c_tt_m40   written                              -       -         
+      c_ff_25    written                              -       -         
+   started c_tt_85 at 2026-10-22 05:06:45
+   c_ss_25 finished at 2026-10-22 05:06:45 (9h03m, peak 7128 MB): 5 read lines analysed
+   started c_tt_m40 at 2026-10-22 05:25:00
+   c_tt_25 finished at 2026-10-22 05:25:01 (9h22m, peak 7126 MB): 5 read lines analysed
+   started c_ff_25 at 2026-10-22 05:31:12
+   c_ff_85 finished at 2026-10-22 05:31:13 (9h28m, peak 7126 MB): 5 read lines analysed
+   progress at 2026-10-22 05:35:21, 8 GiB available:
+      c_tt_25    finished                             9h22m   7126 MB   complete
+      c_ss_25    finished                             9h03m   7128 MB   complete
+      c_ff_85    finished                             9h28m   7126 MB   complete
+      c_tt_85    running                              0h28m   4816 MB   
+      c_tt_m40   running                              0h10m   4770 MB   
+      c_ff_25    running                              0h04m   4744 MB   
+   progress at 2026-10-22 06:05:27, 8 GiB available:
+      c_tt_25    finished                             9h22m   7126 MB   complete
+      c_ss_25    finished                             9h03m   7128 MB   complete
+      c_ff_85    finished                             9h28m   7126 MB   complete
+      c_tt_85    running                              0h58m   4890 MB   
+      c_tt_m40   running                              0h40m   4849 MB   
+      c_ff_25    running                              0h34m   4835 MB   
+   progress at 2026-10-22 06:35:35, 8 GiB available:
+      c_tt_25    finished                             9h22m   7126 MB   complete
+      c_ss_25    finished                             9h03m   7128 MB   complete
+      c_ff_85    finished                             9h28m   7126 MB   complete
+      c_tt_85    running                              1h28m   4968 MB   
+      c_tt_m40   running                              1h10m   4926 MB   
+      c_ff_25    running                              1h04m   4911 MB   
+   progress at 2026-10-22 07:05:45, 8 GiB available:
+      c_tt_25    finished                             9h22m   7126 MB   complete
+      c_ss_25    finished                             9h03m   7128 MB   complete
+      c_ff_85    finished                             9h28m   7126 MB   complete
+      c_tt_85    running                              1h59m   5054 MB   
+      c_tt_m40   running                              1h40m   5008 MB   
+      c_ff_25    running                              1h34m   4994 MB   
+   progress at 2026-10-22 07:35:55, 7 GiB available:
+      c_tt_25    finished                             9h22m   7126 MB   complete
+      c_ss_25    finished                             9h03m   7128 MB   complete
+      c_ff_85    finished                             9h28m   7126 MB   complete
+      c_tt_85    running                              2h29m   5144 MB   
+      c_tt_m40   running                              2h10m   5094 MB   
+      c_ff_25    running                              2h04m   5080 MB   
+   progress at 2026-10-22 08:05:57, 7 GiB available:
+      c_tt_25    finished                             9h22m   7126 MB   complete
+      c_ss_25    finished                             9h03m   7128 MB   complete
+      c_ff_85    finished                             9h28m   7126 MB   complete
+      c_tt_85    running                              2h59m   5236 MB   
+      c_tt_m40   running                              2h40m   5182 MB   
+      c_ff_25    running                              2h34m   5167 MB   
+   progress at 2026-10-22 08:36:12, 7 GiB available:
+      c_tt_25    finished                             9h22m   7126 MB   complete
+      c_ss_25    finished                             9h03m   7128 MB   complete
+      c_ff_85    finished                             9h28m   7126 MB   complete
+      c_tt_85    running                              3h29m   5330 MB   
+      c_tt_m40   running                              3h11m   5271 MB   
+      c_ff_25    running                              3h05m   5257 MB   
+   progress at 2026-10-22 09:06:30, 7 GiB available:
+      c_tt_25    finished                             9h22m   7126 MB   complete
+      c_ss_25    finished                             9h03m   7128 MB   complete
+      c_ff_85    finished                             9h28m   7126 MB   complete
+      c_tt_85    running                              3h59m   5430 MB   
+      c_tt_m40   running                              3h41m   5365 MB   
+      c_ff_25    running                              3h35m   5350 MB   
+   progress at 2026-10-22 09:36:50, 6 GiB available:
+      c_tt_25    finished                             9h22m   7126 MB   complete
+      c_ss_25    finished                             9h03m   7128 MB   complete
+      c_ff_85    finished                             9h28m   7126 MB   complete
+      c_tt_85    running                              4h30m   5534 MB   
+      c_tt_m40   running                              4h11m   5462 MB   
+      c_ff_25    running                              4h05m   5447 MB   
+   progress at 2026-10-22 10:07:11, 6 GiB available:
+      c_tt_25    finished                             9h22m   7126 MB   complete
+      c_ss_25    finished                             9h03m   7128 MB   complete
+      c_ff_85    finished                             9h28m   7126 MB   complete
+      c_tt_85    running                              5h00m   5645 MB   
+      c_tt_m40   running                              4h42m   5564 MB   
+      c_ff_25    running                              4h35m   5549 MB   
+   progress at 2026-10-22 10:37:13, 6 GiB available:
+      c_tt_25    finished                             9h22m   7126 MB   complete
+      c_ss_25    finished                             9h03m   7128 MB   complete
+      c_ff_85    finished                             9h28m   7126 MB   complete
+      c_tt_85    running                              5h30m   5761 MB   
+      c_tt_m40   running                              5h12m   5672 MB   
+      c_ff_25    running                              5h06m   5656 MB   
+   progress at 2026-10-22 11:07:13, 5 GiB available:
+      c_tt_25    finished                             9h22m   7126 MB   complete
+      c_ss_25    finished                             9h03m   7128 MB   complete
+      c_ff_85    finished                             9h28m   7126 MB   complete
+      c_tt_85    running                              6h00m   5886 MB   
+      c_tt_m40   running                              5h42m   5785 MB   
+      c_ff_25    running                              5h36m   5769 MB   
+   progress at 2026-10-22 11:37:19, 5 GiB available:
+      c_tt_25    finished                             9h22m   7126 MB   complete
+      c_ss_25    finished                             9h03m   7128 MB   complete
+      c_ff_85    finished                             9h28m   7126 MB   complete
+      c_tt_85    running                              6h30m   6021 MB   
+      c_tt_m40   running                              6h12m   5908 MB   
+      c_ff_25    running                              6h06m   5891 MB   
+   progress at 2026-10-22 12:07:23, 4 GiB available:
+      c_tt_25    finished                             9h22m   7126 MB   complete
+      c_ss_25    finished                             9h03m   7128 MB   complete
+      c_ff_85    finished                             9h28m   7126 MB   complete
+      c_tt_85    running                              7h00m   6810 MB   
+      c_tt_m40   running                              6h42m   6041 MB   
+      c_ff_25    running                              6h36m   6023 MB   
+   progress at 2026-10-22 12:37:30, 3 GiB available:
+      c_tt_25    finished                             9h22m   7126 MB   complete
+      c_ss_25    finished                             9h03m   7128 MB   complete
+      c_ff_85    finished                             9h28m   7126 MB   complete
+      c_tt_85    running                              7h30m   7128 MB   
+      c_tt_m40   running                              7h12m   6163 MB   
+      c_ff_25    running                              7h06m   6144 MB   
+   progress at 2026-10-22 13:07:39, 1 GiB available:
+      c_tt_25    finished                             9h22m   7126 MB   complete
+      c_ss_25    finished                             9h03m   7128 MB   complete
+      c_ff_85    finished                             9h28m   7126 MB   complete
+      c_tt_85    running                              8h00m   7129 MB   
+      c_tt_m40   running                              7h42m   7128 MB   
+      c_ff_25    running                              7h36m   7128 MB   
+   progress at 2026-10-22 13:37:48, 1 GiB available:
+      c_tt_25    finished                             9h22m   7126 MB   complete
+      c_ss_25    finished                             9h03m   7128 MB   complete
+      c_ff_85    finished                             9h28m   7126 MB   complete
+      c_tt_85    running                              8h31m   7129 MB   reached 100.0 ns of 242.5 ns
+      c_tt_m40   running                              8h12m   7128 MB   
+      c_ff_25    running                              8h06m   7128 MB   
+   progress at 2026-10-22 14:07:56, 1 GiB available:
+      c_tt_25    finished                             9h22m   7126 MB   complete
+      c_ss_25    finished                             9h03m   7128 MB   complete
+      c_ff_85    finished                             9h28m   7126 MB   complete
+      c_tt_85    running                              9h01m   7129 MB   reached 150.0 ns of 242.5 ns
+      c_tt_m40   running                              8h42m   7128 MB   reached 100.0 ns of 242.5 ns
+      c_ff_25    running                              8h36m   7128 MB   
+   progress at 2026-10-22 14:38:10, 1 GiB available:
+      c_tt_25    finished                             9h22m   7126 MB   complete
+      c_ss_25    finished                             9h03m   7128 MB   complete
+      c_ff_85    finished                             9h28m   7126 MB   complete
+      c_tt_85    running                              9h31m   7130 MB   reached 200.0 ns of 242.5 ns
+      c_tt_m40   running                              9h13m   7128 MB   reached 100.0 ns of 242.5 ns
+      c_ff_25    running                              9h06m   7128 MB   reached 100.0 ns of 242.5 ns
+   c_tt_85 finished at 2026-10-22 14:44:52 (9h38m, peak 7130 MB): 5 read lines analysed
+   progress at 2026-10-22 15:08:30, 8 GiB available:
+      c_tt_25    finished                             9h22m   7126 MB   complete
+      c_ss_25    finished                             9h03m   7128 MB   complete
+      c_ff_85    finished                             9h28m   7126 MB   complete
+      c_tt_85    finished                             9h38m   7130 MB   complete
+      c_tt_m40   running                              9h43m   7128 MB   reached 150.0 ns of 242.5 ns
+      c_ff_25    running                              9h37m   7128 MB   reached 150.0 ns of 242.5 ns
+   c_tt_m40 finished at 2026-10-22 15:25:26 (10h00m, peak 7129 MB): 5 read lines analysed
+   c_ff_25 finished at 2026-10-22 15:34:13 (10h03m, peak 7129 MB): 5 read lines analysed
+   c_tt_25    finished                                 9h22m   peak 7126 MB
+   c_ss_25    finished                                 9h03m   peak 7128 MB
+   c_ff_85    finished                                 9h28m   peak 7126 MB
+   c_tt_85    finished                                 9h38m   peak 7130 MB
+   c_tt_m40   finished                                 10h00m  peak 7129 MB
+   c_ff_25    finished                                 10h03m  peak 7129 MB
+
+########## 4. gates and results (scripts/e8_4e_sram_tools.py compare) ##########
+P2R-E8.4e SRAM: gates and results (rules: claude/p2r-e8-4e-sram-sandbox.md, section 3)
+   sequence: 2 cycles without access, 5 writes of E8.4f's r10, 1 without access, 4 gated reads (10 ns stop), 1 read with a 60 ns stop; system reads = reads 2-4
+
+condition  state       P1    P3    reads ok  E_sys pJ  r_read  P_static uW  r_static settled t_acc ns  E_write  E_idle
+tt:25      finished    PASS  PASS  5/5         87.429  1.0000       1.2737     1.000     yes   10.609   74.661   7.348
+ss:25      finished    PASS  PASS  5/5         84.902  0.9711       0.6740     0.529     yes   13.475   65.213   8.118
+ff:85      finished    PASS  PASS  5/5         90.351  1.0334     148.8424   116.860     yes    9.361   79.364   8.163
+tt:85      finished    PASS  PASS  5/5         87.865  1.0050      16.2348    12.746     yes   10.774   71.869   7.414
+tt:-40     finished    PASS  PASS  5/5         87.015  0.9953       0.6571     0.516     yes   10.444   78.084   7.332
+ff:25      finished    PASS  PASS  5/5         88.153  1.0083      17.5210    13.756     yes    9.140   80.833   6.535
+
+   tt:25: P1 verdict OK, pfet_pass alias False; P3 netlist copy identical to E8.4f r10; .lib tt yes; .temp 25 yes; period, supply, load, notes, probes and model library as r10: yes
+      reads: 0 exp 00 got 00 ok 68.916 pJ t_acc 2.235 ns; 4095 exp ff got ff ok 90.150 pJ t_acc 10.609 ns; 2055 exp 00 got 00 ok 85.608 pJ t_acc 2.049 ns; 1032 exp ff got ff ok 86.530 pJ t_acc 10.609 ns; 19 exp 55 got 55 ok 85.666 pJ t_acc 10.609 ns
+      static power over the last stop: 10-20 ns 6.7722 uW, 30-40 ns 1.3013 uW, 48-60 ns 1.2737 uW
+      ratio per system read: 1.0000, 1.0000, 1.0000
+   ss:25: P1 verdict OK, pfet_pass alias False; P3 netlist copy identical to E8.4f r10; .lib ss yes; .temp 25 yes; period, supply, load, notes, probes and model library as r10: yes
+      reads: 0 exp 00 got 00 ok 57.650 pJ t_acc 3.298 ns; 4095 exp ff got ff ok 87.578 pJ t_acc 13.475 ns; 2055 exp 00 got 00 ok 83.360 pJ t_acc 2.996 ns; 1032 exp ff got ff ok 83.768 pJ t_acc 13.475 ns; 19 exp 55 got 55 ok 85.289 pJ t_acc 13.427 ns
+      static power over the last stop: 10-20 ns 35.2664 uW, 30-40 ns 0.7216 uW, 48-60 ns 0.6740 uW
+      ratio per system read: 0.9715, 0.9737, 0.9681
+   ff:85: P1 verdict OK, pfet_pass alias False; P3 netlist copy identical to E8.4f r10; .lib ff yes; .temp 85 yes; period, supply, load, notes, probes and model library as r10: yes
+      reads: 0 exp 00 got 00 ok 73.333 pJ t_acc 1.642 ns; 4095 exp ff got ff ok 93.044 pJ t_acc 9.361 ns; 2055 exp 00 got 00 ok 88.564 pJ t_acc 1.483 ns; 1032 exp ff got ff ok 89.444 pJ t_acc 9.360 ns; 19 exp 55 got 55 ok 88.821 pJ t_acc 9.360 ns
+      static power over the last stop: 10-20 ns 159.3437 uW, 30-40 ns 150.6952 uW, 48-60 ns 148.8424 uW
+      ratio per system read: 1.0321, 1.0345, 1.0337
+   tt:85: P1 verdict OK, pfet_pass alias False; P3 netlist copy identical to E8.4f r10; .lib tt yes; .temp 85 yes; period, supply, load, notes, probes and model library as r10: yes
+      reads: 0 exp 00 got 00 ok 65.960 pJ t_acc 2.236 ns; 4095 exp ff got ff ok 90.564 pJ t_acc 10.774 ns; 2055 exp 00 got 00 ok 86.112 pJ t_acc 1.984 ns; 1032 exp ff got ff ok 86.918 pJ t_acc 10.774 ns; 19 exp 55 got 55 ok 86.735 pJ t_acc 10.774 ns
+      static power over the last stop: 10-20 ns 29.9779 uW, 30-40 ns 16.2797 uW, 48-60 ns 16.2348 uW
+      ratio per system read: 1.0046, 1.0059, 1.0045
+   tt:-40: P1 verdict OK, pfet_pass alias False; P3 netlist copy identical to E8.4f r10; .lib tt yes; .temp -40 yes; period, supply, load, notes, probes and model library as r10: yes
+      reads: 0 exp 00 got 00 ok 72.552 pJ t_acc 2.129 ns; 4095 exp ff got ff ok 89.781 pJ t_acc 10.444 ns; 2055 exp 00 got 00 ok 85.105 pJ t_acc 2.098 ns; 1032 exp ff got ff ok 86.159 pJ t_acc 10.444 ns; 19 exp 55 got 55 ok 84.958 pJ t_acc 10.444 ns
+      static power over the last stop: 10-20 ns 2.1546 uW, 30-40 ns 0.6798 uW, 48-60 ns 0.6571 uW
+      ratio per system read: 0.9959, 0.9941, 0.9957
+   ff:25: P1 verdict OK, pfet_pass alias False; P3 netlist copy identical to E8.4f r10; .lib ff yes; .temp 25 yes; period, supply, load, notes, probes and model library as r10: yes
+      reads: 0 exp 00 got 00 ok 74.717 pJ t_acc 1.634 ns; 4095 exp ff got ff ok 90.936 pJ t_acc 9.140 ns; 2055 exp 00 got 00 ok 86.202 pJ t_acc 1.496 ns; 1032 exp ff got ff ok 87.322 pJ t_acc 9.140 ns; 19 exp 55 got 55 ok 86.114 pJ t_acc 9.140 ns
+      static power over the last stop: 10-20 ns 20.9275 uW, 30-40 ns 18.2152 uW, 48-60 ns 17.5210 uW
+      ratio per system read: 1.0087, 1.0069, 1.0091
+
+   R reference (tt 25 C of this experiment against E8.4f r10, the 6 cycles before the last write): PASS; largest difference +0.0000 pJ (cycle 0, idle)
+      system reads against r10 (other words written before, not a gate): read 2 +0.07 %, read 3 +0.01 %, read 4 -0.03 %
+
+conclusions:
+   tt:25 (reference): energy per system read 87.43 pJ; static power after a read 1.274 uW; data within 10.61 ns of the rising edge.
+   ss:25: energy per system read 84.90 pJ, 0.971 times tt 25 C; static power after a read 0.674 uW, 0.529 times; data within 13.48 ns of the rising edge.
+   ff:85: energy per system read 90.35 pJ, 1.033 times tt 25 C; static power after a read 148.8 uW, 117 times; data within 9.36 ns of the rising edge.
+   tt:85: energy per system read 87.86 pJ, 1.005 times tt 25 C; static power after a read 16.23 uW, 12.7 times; data within 10.77 ns of the rising edge.
+   tt:-40: energy per system read 87.01 pJ, 0.995 times tt 25 C; static power after a read 0.6571 uW, 0.516 times; data within 10.44 ns of the rising edge.
+   ff:25: energy per system read 88.15 pJ, 1.008 times tt 25 C; static power after a read 17.52 uW, 13.8 times; data within 9.14 ns of the rising edge.
+
+summary written: /home/kid/p2r_e8/e8_4e_sram/e8_4e_sram_summary.json
+
+==============================================================
+Finished 2026-10-22 15:34:32, 1171 min of runs. Results in /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4e_sram. Pack for Claude:
+  tar czf reports/e8_4e_sram_results.tar.gz reports/e8_4e_sram_corners.log reports/e8_rom/e8_4e_sram/e8_4e_sram_summary.json reports/e8_rom/e8_4e_sram/modelcheck_*.json reports/e8_rom/e8_4e_sram/deckcheck reports/e8_rom/e8_4e_sram/c_*/analyze.txt reports/e8_rom/e8_4e_sram/c_*/result.json reports/e8_rom/e8_4e_sram/c_*/tb_meta.json reports/e8_rom/e8_4e_sram/c_*/bench.txt
+==============================================================

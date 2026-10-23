@@ -1,0 +1,12 @@
+# P2R-E8.5b: the E8.5 netlist of model A flattened for the gate-level simulation and OpenSTA:
+# one module, every internal net a single bit, assignments bit by bit; the cells and their
+# connections are not changed (checked by scripts/e8_5b_check.py netlists)
+read_liberty -lib /home/kid/sky130/orfs/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog -sv /mnt/d/Project/hybrid_memory/paper2/rtl/e8/e8_rom_r48_stub.v
+read_verilog /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/amu_top_A_sta.v
+hierarchy -top amu_top
+tee -o /home/kid/p2r_e8/e8_5b/amu_A_stat_hier.txt stat
+flatten -noscopeinfo
+splitnets
+tee -o /home/kid/p2r_e8/e8_5b/amu_A_stat_flat.txt stat
+write_verilog -noattr -simple-lhs /home/kid/p2r_e8/e8_5b/amu_top_A_flat.v

@@ -1,0 +1,118 @@
+P2R-E8.4 analysis: e8rom_A_pcm_l00_16x2496_r48k2  period 100.0 ns  vdd 1.8 V  load 10.0 fF per output  points 5830
+data: simulated to 3990.2 of 3990.2 ns, 49 of 49 cycles complete (complete)
+E_vdd: energy from the supply from this cycle's rising edge to the next one; P_after: supply power just before the next rising edge (static state after the cycle)
+  k kind   addr  row   w precharge ns z_row z_word expected     read  ok  E_vdd pJ  E_in pJ P_after uW t_acc ns  dout min/max V
+  0 idle                                                                    2.589    0.033       0.64
+  1 read      9    0   9       150.0    91     11     7006     7006 yes    67.820   -0.007     492.33     5.41  -0.07/1.81  bitline below VDD/2 after 4.68 ns
+      selection: rows [0] (expected [0]); words [9] (expected [9]); lowest unselected row-decoder output 1.46 V (row 1)
+      bitlines of row 0: 117 one cells, lowest while evaluating 1.699 V (column 173 = bit 13 of word 4); 91 zero cells, highest at sampling 0.001 V (column 101 = bit 7 of word 10); word read: lowest one bit 1.761 V (bit 14)
+  2 wait                       40 ns                                       19.494    0.060     479.99
+  3 read    756   47   4        90.0    87      0     ffff     aaef  NO   430.029   -0.028      10.96    32.55  -0.00/1.84
+      selection: rows [47] (expected [47]); words [4] (expected [4]); lowest unselected row-decoder output 1.38 V (row 46)
+      bitlines of row 47: 121 one cells, lowest while evaluating 0.666 V (column 17 = bit 1 of word 4); 87 zero cells, highest at sampling 0.000 V (column 184 = bit 14 of word 2); word read: lowest one bit 0.666 V (bit 1)
+  4 read      9    0   9        50.0    91     11     7006     7006 yes    69.212   -0.006     541.85     4.91  -0.07/1.81  bitline below VDD/2 after 4.17 ns
+      selection: rows [0] (expected [0]); words [9] (expected [9]); lowest unselected row-decoder output 1.28 V (row 1)
+      bitlines of row 0: 117 one cells, lowest while evaluating 1.697 V (column 164 = bit 12 of word 8); 91 zero cells, highest at sampling 0.000 V (column 41 = bit 3 of word 2); word read: lowest one bit 1.760 V (bit 14)
+  5 wait                       40 ns                                       21.477    0.062     529.43
+  6 read    742   46   6        90.0   107      5     a9bf     a9bd  NO   369.653   -0.028     304.97    17.71  0.00/1.83
+      selection: rows [46] (expected [46]); words [6] (expected [6]); lowest unselected row-decoder output 1.30 V (row 47)
+      bitlines of row 46: 101 one cells, lowest while evaluating 0.828 V (column 206 = bit 15 of word 11); 107 zero cells, highest at sampling 0.001 V (column 179 = bit 13 of word 10); word read: lowest one bit 0.862 V (bit 14)
+  7 read      9    0   9        50.0    91     11     7006     7006 yes    76.636   -0.005     661.85     4.97  -0.07/1.81  bitline below VDD/2 after 4.22 ns
+      selection: rows [0] (expected [0]); words [9] (expected [9]); lowest unselected row-decoder output 1.28 V (row 1)
+      bitlines of row 0: 117 one cells, lowest while evaluating 1.697 V (column 164 = bit 12 of word 8); 91 zero cells, highest at sampling 0.000 V (column 45 = bit 3 of word 6); word read: lowest one bit 1.760 V (bit 14)
+  8 wait                       40 ns                                       26.276    0.043     650.88
+  9 read    720   45   0        90.0   115      5     a7e7     a4c3  NO   310.739   -0.015     312.47    28.36  -0.00/1.84
+      selection: rows [45] (expected [45]); words [0] (expected [0]); lowest unselected row-decoder output 1.41 V (row 44)
+      bitlines of row 45: 93 one cells, lowest while evaluating 0.857 V (column 169 = bit 13 of word 0); 115 zero cells, highest at sampling 0.000 V (column 156 = bit 12 of word 0); word read: lowest one bit 0.857 V (bit 13)
+ 10 read      9    0   9        50.0    91     11     7006     7006 yes    70.401   -0.006     557.75     4.90  -0.07/1.82  bitline below VDD/2 after 4.24 ns
+      selection: rows [0] (expected [0]); words [9] (expected [9]); lowest unselected row-decoder output 1.28 V (row 1)
+      bitlines of row 0: 117 one cells, lowest while evaluating 1.697 V (column 166 = bit 12 of word 10); 91 zero cells, highest at sampling 0.000 V (column 199 = bit 15 of word 4); word read: lowest one bit 1.759 V (bit 14)
+ 11 wait                       40 ns                                       22.092    0.039     549.87
+ 12 read    705   44   1        90.0    94      6     a6bb     a6b8  NO   414.582   -0.017     384.99    12.66  -0.01/1.83
+      selection: rows [44] (expected [44]); words [1] (expected [1]); lowest unselected row-decoder output 1.30 V (row 45)
+      bitlines of row 44: 114 one cells, lowest while evaluating 0.819 V (column 166 = bit 12 of word 10); 94 zero cells, highest at sampling 0.001 V (column 118 = bit 9 of word 1); word read: lowest one bit 0.847 V (bit 14)
+ 13 read      9    0   9        50.0    91     11     7006     7006 yes    75.396   -0.006     640.47     5.02  -0.07/1.81  bitline below VDD/2 after 4.10 ns
+      selection: rows [0] (expected [0]); words [9] (expected [9]); lowest unselected row-decoder output 1.28 V (row 1)
+      bitlines of row 0: 117 one cells, lowest while evaluating 1.697 V (column 203 = bit 15 of word 8); 91 zero cells, highest at sampling 0.000 V (column 199 = bit 15 of word 4); word read: lowest one bit 1.760 V (bit 14)
+ 14 wait                       40 ns                                       25.422    0.060     628.04
+ 15 read    694   43   6        90.0   108      6     a5f3     a5f3 yes   257.989   -0.027     355.34     4.25  0.00/1.83
+      selection: rows [43] (expected [43]); words [6] (expected [6]); lowest unselected row-decoder output 1.39 V (row 42)
+      bitlines of row 43: 100 one cells, lowest while evaluating 0.887 V (column 159 = bit 12 of word 3); 108 zero cells, highest at sampling 0.001 V (column 55 = bit 4 of word 3); word read: lowest one bit 0.919 V (bit 14)
+ 16 read      9    0   9        50.0    91     11     7006     7006 yes    74.009   -0.007     603.43     4.98  -0.08/1.81  bitline below VDD/2 after 4.13 ns
+      selection: rows [0] (expected [0]); words [9] (expected [9]); lowest unselected row-decoder output 1.28 V (row 1)
+      bitlines of row 0: 117 one cells, lowest while evaluating 1.697 V (column 164 = bit 12 of word 8); 91 zero cells, highest at sampling 0.001 V (column 101 = bit 7 of word 10); word read: lowest one bit 1.760 V (bit 14)
+ 17 wait                       40 ns                                       23.942    0.042     592.32
+ 18 read    676   42   4        90.0   111      6     a47f     a47f yes   258.852   -0.014     178.39     3.87  -0.02/1.83  bitline below VDD/2 after 3.32 ns
+      selection: rows [42] (expected [42]); words [4] (expected [4]); lowest unselected row-decoder output 1.28 V (row 43)
+      bitlines of row 42: 97 one cells, lowest while evaluating 0.879 V (column 129 = bit 9 of word 12); 111 zero cells, highest at sampling 0.000 V (column 95 = bit 7 of word 4); word read: lowest one bit 0.925 V (bit 15)
+ 19 read      9    0   9        50.0    91     11     7006     7006 yes    76.033   -0.006     658.53     5.00  -0.07/1.81  bitline below VDD/2 after 4.09 ns
+      selection: rows [0] (expected [0]); words [9] (expected [9]); lowest unselected row-decoder output 1.28 V (row 1)
+      bitlines of row 0: 117 one cells, lowest while evaluating 1.697 V (column 164 = bit 12 of word 8); 91 zero cells, highest at sampling 0.000 V (column 196 = bit 15 of word 1); word read: lowest one bit 1.759 V (bit 14)
+ 20 wait                       40 ns                                       26.144    0.050     646.75
+ 21 read    662   41   6        90.0   111      7     a36e     a36e yes   225.836   -0.018     426.59     4.25  0.00/1.83  bitline below VDD/2 after 3.17 ns
+      selection: rows [41] (expected [41]); words [6] (expected [6]); lowest unselected row-decoder output 1.42 V (row 40)
+      bitlines of row 41: 97 one cells, lowest while evaluating 0.819 V (column 184 = bit 14 of word 2); 111 zero cells, highest at sampling 0.001 V (column 110 = bit 8 of word 6); word read: lowest one bit 0.925 V (bit 14)
+ 22 read      9    0   9        50.0    91     11     7006     7006 yes    77.032   -0.005     663.11     4.94  -0.07/1.82  bitline below VDD/2 after 4.19 ns
+      selection: rows [0] (expected [0]); words [9] (expected [9]); lowest unselected row-decoder output 1.27 V (row 1)
+      bitlines of row 0: 117 one cells, lowest while evaluating 1.697 V (column 164 = bit 12 of word 8); 91 zero cells, highest at sampling 0.000 V (column 140 = bit 10 of word 10); word read: lowest one bit 1.759 V (bit 14)
+ 23 wait                       40 ns                                       26.327    0.029     652.69
+ 24 read    644   40   4        90.0   114      6     a1f7     a1f7 yes   240.316   -0.003     255.53     3.98  -0.01/1.83
+      selection: rows [40] (expected [40]); words [4] (expected [4]); lowest unselected row-decoder output 1.31 V (row 41)
+      bitlines of row 40: 94 one cells, lowest while evaluating 0.865 V (column 166 = bit 12 of word 10); 114 zero cells, highest at sampling 0.000 V (column 43 = bit 3 of word 4); word read: lowest one bit 0.934 V (bit 15)
+ 25 read      9    0   9        50.0    91     11     7006     7006 yes    75.708   -0.006     650.43     4.88  -0.07/1.81  bitline below VDD/2 after 4.18 ns
+      selection: rows [0] (expected [0]); words [9] (expected [9]); lowest unselected row-decoder output 1.28 V (row 1)
+      bitlines of row 0: 117 one cells, lowest while evaluating 1.697 V (column 133 = bit 10 of word 3); 91 zero cells, highest at sampling 0.000 V (column 196 = bit 15 of word 1); word read: lowest one bit 1.759 V (bit 14)
+ 26 wait                       40 ns                                       25.802    0.066     642.57
+ 27 read    631   39   7        90.0   125      7     a0fe     a0fe yes   125.702   -0.038     379.57     3.88  -0.06/1.83  bitline below VDD/2 after 2.86 ns
+      selection: rows [39] (expected [39]); words [7] (expected [7]); lowest unselected row-decoder output 1.38 V (row 38)
+      bitlines of row 39: 83 one cells, lowest while evaluating 0.913 V (column 166 = bit 12 of word 10); 125 zero cells, highest at sampling 0.001 V (column 206 = bit 15 of word 11); word read: lowest one bit 0.967 V (bit 12)
+ 28 read      9    0   9        50.0    91     11     7006     7006 yes    77.466   -0.006     667.37     4.87  -0.04/1.81  bitline below VDD/2 after 4.12 ns
+      selection: rows [0] (expected [0]); words [9] (expected [9]); lowest unselected row-decoder output 1.28 V (row 1)
+      bitlines of row 0: 117 one cells, lowest while evaluating 1.697 V (column 164 = bit 12 of word 8); 91 zero cells, highest at sampling 0.001 V (column 45 = bit 3 of word 6); word read: lowest one bit 1.759 V (bit 14)
+ 29 wait                       40 ns                                       26.497    0.043     656.29
+ 30 read    612   38   4        90.0    92      4     9f6f     9f6f yes   152.408   -0.015      54.64     4.00  0.00/1.83  bitline below VDD/2 after 3.27 ns
+      selection: rows [38] (expected [38]); words [4] (expected [4]); lowest unselected row-decoder output 1.27 V (row 39)
+      bitlines of row 38: 116 one cells, lowest while evaluating 0.908 V (column 48 = bit 3 of word 9); 92 zero cells, highest at sampling 0.001 V (column 108 = bit 8 of word 4); word read: lowest one bit 1.001 V (bit 15)
+ 31 read      9    0   9        50.0    91     11     7006     7006 yes    67.421   -0.007     510.11     5.00  -0.07/1.81  bitline below VDD/2 after 4.26 ns
+      selection: rows [0] (expected [0]); words [9] (expected [9]); lowest unselected row-decoder output 1.28 V (row 1)
+      bitlines of row 0: 117 one cells, lowest while evaluating 1.697 V (column 164 = bit 12 of word 8); 91 zero cells, highest at sampling 0.001 V (column 199 = bit 15 of word 4); word read: lowest one bit 1.759 V (bit 14)
+ 32 wait                       40 ns                                       20.209    0.046     499.03
+ 33 read    594   37   2        90.0    89      5     9df9     9df9 yes   108.763   -0.017     106.47     3.83  -0.00/1.83
+      selection: rows [37] (expected [37]); words [2] (expected [2]); lowest unselected row-decoder output 1.41 V (row 36)
+      bitlines of row 37: 119 one cells, lowest while evaluating 0.945 V (column 39 = bit 3 of word 0); 89 zero cells, highest at sampling 0.000 V (column 153 = bit 11 of word 10); word read: lowest one bit 0.982 V (bit 15)
+ 34 read      9    0   9        50.0    91     11     7006     7006 yes    70.891   -0.006     576.93     4.94  -0.07/1.81  bitline below VDD/2 after 4.19 ns
+      selection: rows [0] (expected [0]); words [9] (expected [9]); lowest unselected row-decoder output 1.28 V (row 1)
+      bitlines of row 0: 117 one cells, lowest while evaluating 1.697 V (column 166 = bit 12 of word 10); 91 zero cells, highest at sampling 0.000 V (column 143 = bit 11 of word 0); word read: lowest one bit 1.759 V (bit 14)
+ 35 wait                       40 ns                                       22.859    0.042     566.69
+ 36 read    581   36   5        90.0    93      4     9cff     9cff yes   136.548   -0.021      32.44     3.89  -0.00/1.82
+      selection: rows [36] (expected [36]); words [5] (expected [5]); lowest unselected row-decoder output 1.30 V (row 37)
+      bitlines of row 36: 115 one cells, lowest while evaluating 0.920 V (column 132 = bit 10 of word 2); 93 zero cells, highest at sampling 0.001 V (column 34 = bit 2 of word 8); word read: lowest one bit 0.952 V (bit 15)
+ 37 read      9    0   9        50.0    91     11     7006     7006 yes    71.352   -0.005     584.25     5.01  -0.07/1.81  bitline below VDD/2 after 4.18 ns
+      selection: rows [0] (expected [0]); words [9] (expected [9]); lowest unselected row-decoder output 1.28 V (row 1)
+      bitlines of row 0: 117 one cells, lowest while evaluating 1.697 V (column 133 = bit 10 of word 3); 91 zero cells, highest at sampling 0.001 V (column 199 = bit 15 of word 4); word read: lowest one bit 1.759 V (bit 14)
+ 38 wait                       40 ns                                       23.153    0.050     573.40
+ 39 read    565   35   5        90.0    96      5     9bbb     9bbb yes    89.222   -0.023     211.13     4.13  -0.01/1.83
+      selection: rows [35] (expected [35]); words [5] (expected [5]); lowest unselected row-decoder output 1.39 V (row 34)
+      bitlines of row 35: 112 one cells, lowest while evaluating 0.972 V (column 132 = bit 10 of word 2); 96 zero cells, highest at sampling 0.000 V (column 174 = bit 13 of word 5); word read: lowest one bit 0.993 V (bit 15)
+ 40 read      9    0   9        50.0    91     11     7006     7006 yes    74.955   -0.006     642.47     4.92  -0.07/1.82  bitline below VDD/2 after 4.21 ns
+      selection: rows [0] (expected [0]); words [9] (expected [9]); lowest unselected row-decoder output 1.28 V (row 1)
+      bitlines of row 0: 117 one cells, lowest while evaluating 1.697 V (column 164 = bit 12 of word 8); 91 zero cells, highest at sampling 0.000 V (column 196 = bit 15 of word 1); word read: lowest one bit 1.759 V (bit 14)
+ 41 wait                       40 ns                                       25.501    0.020     634.60
+ 42 read    544   34   0        90.0   103      6     99f9     99f9 yes    82.522    0.002      94.35     4.12  -0.01/1.83
+      selection: rows [34] (expected [34]); words [0] (expected [0]); lowest unselected row-decoder output 1.29 V (row 35)
+      bitlines of row 34: 105 one cells, lowest while evaluating 0.903 V (column 184 = bit 14 of word 2); 103 zero cells, highest at sampling 0.001 V (column 71 = bit 5 of word 6); word read: lowest one bit 0.995 V (bit 3)
+ 43 read      9    0   9        50.0    91     11     7006     7006 yes    75.569   -0.006     653.46     4.92  -0.07/1.81  bitline below VDD/2 after 4.05 ns
+      selection: rows [0] (expected [0]); words [9] (expected [9]); lowest unselected row-decoder output 1.28 V (row 1)
+      bitlines of row 0: 117 one cells, lowest while evaluating 1.697 V (column 164 = bit 12 of word 8); 91 zero cells, highest at sampling 0.001 V (column 196 = bit 15 of word 1); word read: lowest one bit 1.759 V (bit 14)
+ 44 wait                       40 ns                                       25.940    0.031     643.07
+ 45 read    530   33   2        90.0   100      0     ffff     bfff  NO    60.114   -0.005      13.11     3.39  0.00/1.84
+      selection: rows [33] (expected [33]); words [2] (expected [2]); lowest unselected row-decoder output 1.42 V (row 32)
+      bitlines of row 33: 108 one cells, lowest while evaluating 0.643 V (column 15 = bit 1 of word 2); 100 zero cells, highest at sampling 0.002 V (column 32 = bit 2 of word 6); word read: lowest one bit 0.643 V (bit 1)
+ 46 read      9    0   9        50.0    91     11     7006     7006 yes    66.580   -0.007     488.91     4.85  -0.07/1.81  bitline below VDD/2 after 4.21 ns
+      selection: rows [0] (expected [0]); words [9] (expected [9]); lowest unselected row-decoder output 1.28 V (row 1)
+      bitlines of row 0: 117 one cells, lowest while evaluating 1.697 V (column 133 = bit 10 of word 3); 91 zero cells, highest at sampling 0.001 V (column 207 = bit 15 of word 12); word read: lowest one bit 1.759 V (bit 14)
+ 47 wait                       40 ns                                       19.340    0.028     479.36
+ 48 read    517   32   5        90.0   105      4     97ef     97ef yes    70.291   -0.000     122.85     3.84  0.00/1.81
+      selection: rows [32] (expected [32]); words [5] (expected [5]); lowest unselected row-decoder output 1.31 V (row 33)
+      bitlines of row 32: 103 one cells, lowest while evaluating 0.969 V (column 51 = bit 3 of word 12); 105 zero cells, highest at sampling 0.000 V (column 97 = bit 7 of word 6); word read: lowest one bit 1.023 V (bit 15)
+summary: {"cycles_complete": 49, "cycles_total": 49, "simulated_ns": 3990.2000000000003, "tstop_ns": 3990.1999999999994, "failed": false, "reads": 32, "reads_ok": 27, "reads_selection_ok": 32, "E_read_pJ_mean": 140.626481388839, "E_read_pJ_min": 60.11442648060328, "E_read_pJ_max": 430.0293237763423, "t_access_ns_max": 32.55259599999995, "bl1_min_V": 0.643380979, "bl0_max_V": 0.00245300356594625}

@@ -1,0 +1,48 @@
+P2R-E8.6 summary (tt, 25 C, 1.80 V, 10 ns clock; uJ per inference)
+
+part                                              model A      model B
+A digital periphery                                21.096       20.561
+B protected-weight storage                         17.568       12.202
+C PCM-CIM array                                     0.263        0.263
+D address map                                      17.157       16.769
+A-C                                                38.927       33.026
+A-D                                                56.085       49.795
+  B: SRAM reads                                   12.9322       7.6156
+  B: SRAM static (1 macro)                         0.0077       0.0077
+  B: conv1 cache                                   4.6280       4.5785
+  D: lookup reads                                  5.1539       5.1325
+  D: parking reads                                 0.0678       0.0793
+  D: static after lookup reads                     1.3327       1.3353
+  D: macros at rest on an all-ones word            0.3384       0.3401
+  D: macros parked on words with zero bits         0.3939       0.1643
+  D: AMU logic                                     9.8706       9.7174
+B range                                      17.404-18.108 12.105-12.520
+D range                                      16.977-17.349 16.359-17.246
+B / (A-C) %                                         45.13        36.95
+  range %                                     44.90-45.88  36.76-37.55
+(B+D) / (A-D) %                                     61.92        58.18
+  range %                                     61.68-62.41  57.75-58.84
+shares with 25 SRAM macros %                 45.39 / 62.04 37.30 / 58.34
+per MAC A-C / A-D pJ                         93.5 / 134.7 79.3 / 119.5
+
+Area (mm2, layout extent for memories, synthesis for logic)
+digital periphery                                  1.1288       1.1288
+AMU                                                0.3004       0.3014
+conv1 cache                                        0.0484       0.0484
+address map (ROM + AMU)                            6.8093       6.8103
+fixed blocks                                       8.6816       8.6826
+range (compact + 1 SRAM, baseline + 25)      9.642-17.970 9.643-17.971
+protection share %                            74.0 / 77.2  74.0 / 77.2
+
+Checks
+  PASS  E8.4f system read 86.48 pJ (85.38-90.09), all nine 82.80 pJ, static 1.2548 uW: 86.4781 (85.3840-90.0876), all nine 82.8033 pJ, 1.2548 uW
+  PASS  E8.7 A: module areas x instances = top area: 1477548.336 vs 1477548.336 um2
+  PASS  E8.7 B: module areas x instances = top area: 1478540.538 vs 1478540.538 um2
+  PASS  E8.5g model A: corrected D_ROM and range reproduced from the parts: 7.2868 (7.1060-7.4783) uJ
+  PASS  E8.7 A: instance sum within 0.05% of the report total: 35.5949 vs 35.6019 uJ
+  PASS  E8.5g model B: corrected D_ROM and range reproduced from the parts: 7.0515 (6.6415-7.5289) uJ
+  PASS  E8.7 B: instance sum within 0.05% of the report total: 34.8568 vs 34.8638 uJ
+  PASS  formulas reproduce v6 model A (12.9 %, 36.7 %): 0.1290, 0.3674
+  PASS  formulas reproduce v6 model B (10.4 %, 35.4 %): 0.1039, 0.3543
+  PASS  E8.4e-SRAM: model A at tt 25 C, reads 12.93 uJ, static 0.008 / 0.19 uJ: 12.9322, 0.00775, 0.1937 uJ
+  ALL PASS

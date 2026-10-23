@@ -1,0 +1,204 @@
+==============================================================
+P2R-E8.4d local-mismatch Monte Carlo of the ROM read margin, started 2026-10-21 11:24:33
+==============================================================
+   528a80e67b113e820f705f0ae20f1c6a  scripts/e8_4d_rom_mc.sh
+   595b7277ba4537b45a4c2bec3ac1b932  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_4d_rom_mc.py
+   d120197ca2914ba7720e2718f7ba51b4  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_4_rom_bench.py
+   66732626bd3e729e7af24853168353c6  /home/kid/gf/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice
+   1bdbee025e3a80634a2e524f37f9b117  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a10/vm/vm.txt
+ngspice  : /nix/store/4ssrcgdvyb8car0yxay8cwfa5wc89f1w-ngspice-45/bin/ngspice (ngspice-45)
+models   : /home/kid/gf/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice
+           section tt: .param mc_mm_switch=0; 4 include line(s): "corners/tt.spice", "r+c/res_typical__cap_typical.spice", "r+c/res_typical__cap_typical__lin.spice", "corners/tt/specialized_cells.spice"
+           section tt_mm: .param mc_mm_switch=1; 4 include line(s): "corners/tt.spice", "r+c/res_typical__cap_typical.spice", "r+c/res_typical__cap_typical__lin.spice", "corners/tt/specialized_cells.spice"
+           section fs: .param mc_mm_switch=0; 4 include line(s): "corners/fs.spice", "r+c/res_typical__cap_typical.spice", "r+c/res_typical__cap_typical__lin.spice", "corners/fs/specialized_cells.spice"
+           section fs_mm: .param mc_mm_switch=1; 4 include line(s): "corners/fs.spice", "r+c/res_typical__cap_typical.spice", "r+c/res_typical__cap_typical__lin.spice", "corners/fs/specialized_cells.spice"
+samples  : 30 per site with mismatch, 1 nominal, 1 repeat; at most 7 simulations at a time
+machine  : 8 cores, 23 GiB memory, 22 GiB available, 177G free on the disk
+
+########## 1. sites: the worst read of each macro at each condition (E8.4a-10) ##########
+E8.4d sites from /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a10 (switching levels /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a10/vm/vm.txt: tt:25:1.80 0.876, fs:25:1.80 0.990, tt:25:1.60 0.781, fs:-40:1.60 0.858)
+   site                          addr  row  col  bitline     VM  margin  sequence
+   B_pcm01_tt_25C_1v80            640   40   13    1.128 0.876   0.252  i,r6,w40,r640   (result.json of the run)
+   B_pcm01_fs_25C_1v80            640   40   13    1.198 0.990   0.208  i,r6,w40,r640   (result.json of the run)
+   B_pcm01_tt_25C_1v60            640   40   13    1.011 0.781   0.230  i,r6,w40,r640   (result.json of the run)
+   B_pcm01_fs_m40C_1v60           640   40   13    1.053 0.858   0.195  i,r6,w40,r640   (result.json of the run)
+   B_pcm07_tt_25C_1v80            499   31    3    1.154 0.876   0.278  i,r6,w40,r499   (result.json of the run)
+   B_pcm07_fs_25C_1v80            499   31    3    1.172 0.990   0.182  i,r6,w40,r499   (result.json of the run)
+   B_pcm07_tt_25C_1v60            499   31    3    1.015 0.781   0.234  i,r6,w40,r499   (result.json of the run)
+   B_pcm07_fs_m40C_1v60           499   31    3    1.006 0.858   0.148  i,r6,w40,r499   (result.json of the run)
+   sites: B_pcm01_tt_25C_1v80 B_pcm01_fs_25C_1v80 B_pcm01_tt_25C_1v60 B_pcm01_fs_m40C_1v60 B_pcm07_tt_25C_1v80 B_pcm07_fs_25C_1v80 B_pcm07_tt_25C_1v60 B_pcm07_fs_m40C_1v60
+
+########## 2. the deck of each site (scripts/e8_4d_rom_mc.py prepare) ##########
+   B_pcm01_tt_25C_1v80: deck written (390.2 ns, 4 cycles, sequence i,r6,w40,r640); 208 inverters found (PMOS 5.0/0.15, NMOS 1.68/0.15); then switches closed and the forcing node ramped 0.726 -> 1.026 -> 0.726 V at 1 mV/ns (to 995.2 ns)
+   B_pcm01_fs_25C_1v80: deck written (390.2 ns, 4 cycles, sequence i,r6,w40,r640); 208 inverters found (PMOS 5.0/0.15, NMOS 1.68/0.15); then switches closed and the forcing node ramped 0.840 -> 1.140 -> 0.840 V at 1 mV/ns (to 995.2 ns)
+   B_pcm01_tt_25C_1v60: deck written (390.2 ns, 4 cycles, sequence i,r6,w40,r640); 208 inverters found (PMOS 5.0/0.15, NMOS 1.68/0.15); then switches closed and the forcing node ramped 0.631 -> 0.931 -> 0.631 V at 1 mV/ns (to 995.2 ns)
+   B_pcm01_fs_m40C_1v60: deck written (390.2 ns, 4 cycles, sequence i,r6,w40,r640); 208 inverters found (PMOS 5.0/0.15, NMOS 1.68/0.15); then switches closed and the forcing node ramped 0.708 -> 1.008 -> 0.708 V at 1 mV/ns (to 995.2 ns)
+   B_pcm07_tt_25C_1v80: deck written (390.2 ns, 4 cycles, sequence i,r6,w40,r499); 208 inverters found (PMOS 5.0/0.15, NMOS 1.68/0.15); then switches closed and the forcing node ramped 0.726 -> 1.026 -> 0.726 V at 1 mV/ns (to 995.2 ns)
+   B_pcm07_fs_25C_1v80: deck written (390.2 ns, 4 cycles, sequence i,r6,w40,r499); 208 inverters found (PMOS 5.0/0.15, NMOS 1.68/0.15); then switches closed and the forcing node ramped 0.840 -> 1.140 -> 0.840 V at 1 mV/ns (to 995.2 ns)
+   B_pcm07_tt_25C_1v60: deck written (390.2 ns, 4 cycles, sequence i,r6,w40,r499); 208 inverters found (PMOS 5.0/0.15, NMOS 1.68/0.15); then switches closed and the forcing node ramped 0.631 -> 0.931 -> 0.631 V at 1 mV/ns (to 995.2 ns)
+   B_pcm07_fs_m40C_1v60: deck written (390.2 ns, 4 cycles, sequence i,r6,w40,r499); 208 inverters found (PMOS 5.0/0.15, NMOS 1.68/0.15); then switches closed and the forcing node ramped 0.708 -> 1.008 -> 0.708 V at 1 mV/ns (to 995.2 ns)
+
+########## 3. sample decks (scripts/e8_4d_rom_mc.py samples) ##########
+   B_pcm01_tt_25C_1v80: 30 mismatch samples (seeds 100001-100030), the nominal run, 1 repeat(s); 32 deck(s) written now
+   B_pcm01_fs_25C_1v80: 30 mismatch samples (seeds 200001-200030), the nominal run, 1 repeat(s); 32 deck(s) written now
+   B_pcm01_tt_25C_1v60: 30 mismatch samples (seeds 300001-300030), the nominal run, 1 repeat(s); 32 deck(s) written now
+   B_pcm01_fs_m40C_1v60: 30 mismatch samples (seeds 400001-400030), the nominal run, 1 repeat(s); 32 deck(s) written now
+   B_pcm07_tt_25C_1v80: 30 mismatch samples (seeds 500001-500030), the nominal run, 1 repeat(s); 32 deck(s) written now
+   B_pcm07_fs_25C_1v80: 30 mismatch samples (seeds 600001-600030), the nominal run, 1 repeat(s); 32 deck(s) written now
+   B_pcm07_tt_25C_1v60: 30 mismatch samples (seeds 700001-700030), the nominal run, 1 repeat(s); 32 deck(s) written now
+   B_pcm07_fs_m40C_1v60: 30 mismatch samples (seeds 800001-800030), the nominal run, 1 repeat(s); 32 deck(s) written now
+   256 runs
+
+########## 4. runs (at most 7 at a time) ##########
+   finished in earlier runs: 0
+   progress at 2026-10-21 11:55:15: 14 of 256 finished, 7 running, 177G free
+   progress at 2026-10-21 12:25:20: 35 of 256 finished, 7 running, 177G free
+   progress at 2026-10-21 12:55:35: 49 of 256 finished, 7 running, 177G free
+   progress at 2026-10-21 13:25:55: 70 of 256 finished, 7 running, 177G free
+   progress at 2026-10-21 13:56:06: 84 of 256 finished, 7 running, 177G free
+   progress at 2026-10-21 14:28:08: 105 of 256 finished, 7 running, 177G free
+   progress at 2026-10-21 14:58:38: 119 of 256 finished, 7 running, 177G free
+   progress at 2026-10-21 15:29:05: 133 of 256 finished, 7 running, 177G free
+   progress at 2026-10-21 15:59:10: 153 of 256 finished, 7 running, 177G free
+   progress at 2026-10-21 16:30:43: 168 of 256 finished, 7 running, 177G free
+   progress at 2026-10-21 17:00:46: 182 of 256 finished, 7 running, 177G free
+   progress at 2026-10-21 17:30:58: 202 of 256 finished, 7 running, 177G free
+   progress at 2026-10-21 18:01:26: 216 of 256 finished, 7 running, 177G free
+   progress at 2026-10-21 18:31:40: 230 of 256 finished, 7 running, 177G free
+   progress at 2026-10-21 19:01:43: 244 of 256 finished, 7 running, 177G free
+   256 finished, 0 not finished; started in this run: 256; 2026-10-21 19:16:46
+
+########## 5. analysis (scripts/e8_4d_rom_mc.py analyze) ##########
+P2R-E8.4d analysis (/mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4d)
+
+B_pcm01_tt_25C_1v80: e8rom_B_pcm_l01_16x2496_r48k0 at tt:25:1.80, address 640 (row 40, worst column 13 in E8.4a-10: bitline 1.128 V, margin 0.252 V)
+   G1 samples finished: 30/30 + nominal  -> PASS
+   G2 nominal: reads [True, True], selection [True, True], switching levels +0.01..+0.01 mV from E8.4a-10's 0.876 V  -> PASS
+   G3 nominal row minimum 1.1304 V (column 13), E8.4a-10 1.1275 V: +2.9 mV  -> within 15 mV
+      nominal margin of the row 0.2544 V (column 13)
+   G4 repeats [True], switching-level sd of the worst column 5.24 mV  -> PASS
+   margin (row minimum, own switching levels), 30 samples: mean 0.2567 V, sd 10.68 mV, min 0.2400 V, max 0.2779 V; shift of the mean from the nominal +2.25 mV
+      skew 0.51, excess kurtosis -0.72, Shapiro-Wilk p -
+   worst cell (column 13): bitline sd 11.09 mV, switching level sd 5.24 mV, margin sd 10.68 mV
+   every one cell of the row (96): margin sd 5.13-10.68 mV (median 7.29); largest at column 13
+   mean - 3 sd 0.2246 V; (mean - 0.10 V) / sd = 14.7; mean / sd = 24.0
+   samples below 0.10 V: 0; below 0: 0; zero side below the rule: 0; reads wrong: 0; wrong selection: 0
+   V1 (mean - 3 sd >= 0.10 V and no sample below it): YES
+
+B_pcm01_fs_25C_1v80: e8rom_B_pcm_l01_16x2496_r48k0 at fs:25:1.80, address 640 (row 40, worst column 13 in E8.4a-10: bitline 1.198 V, margin 0.208 V)
+   G1 samples finished: 30/30 + nominal  -> PASS
+   G2 nominal: reads [True, True], selection [True, True], switching levels -0.05..-0.05 mV from E8.4a-10's 0.990 V  -> PASS
+   G3 nominal row minimum 1.2062 V (column 13), E8.4a-10 1.1984 V: +7.8 mV  -> within 15 mV
+      nominal margin of the row 0.2162 V (column 13)
+   G4 repeats [True], switching-level sd of the worst column 5.67 mV  -> PASS
+   margin (row minimum, own switching levels), 30 samples: mean 0.2137 V, sd 12.12 mV, min 0.1859 V, max 0.2424 V; shift of the mean from the nominal -2.49 mV
+      skew -0.29, excess kurtosis 0.10, Shapiro-Wilk p -
+   worst cell (column 13): bitline sd 10.33 mV, switching level sd 5.67 mV, margin sd 12.12 mV
+   every one cell of the row (96): margin sd 4.97-12.12 mV (median 6.91); largest at column 13
+   mean - 3 sd 0.1774 V; (mean - 0.10 V) / sd = 9.4; mean / sd = 17.6
+   samples below 0.10 V: 0; below 0: 0; zero side below the rule: 0; reads wrong: 0; wrong selection: 0
+   V1 (mean - 3 sd >= 0.10 V and no sample below it): YES
+
+B_pcm01_tt_25C_1v60: e8rom_B_pcm_l01_16x2496_r48k0 at tt:25:1.60, address 640 (row 40, worst column 13 in E8.4a-10: bitline 1.011 V, margin 0.230 V)
+   G1 samples finished: 30/30 + nominal  -> PASS
+   G2 nominal: reads [True, True], selection [True, True], switching levels -0.21..-0.21 mV from E8.4a-10's 0.781 V  -> PASS
+   G3 nominal row minimum 1.0096 V (column 13), E8.4a-10 1.0107 V: -1.1 mV  -> within 15 mV
+      nominal margin of the row 0.2288 V (column 13)
+   G4 repeats [True], switching-level sd of the worst column 6.94 mV  -> PASS
+   margin (row minimum, own switching levels), 30 samples: mean 0.2298 V, sd 11.81 mV, min 0.2073 V, max 0.2563 V; shift of the mean from the nominal +0.96 mV
+      skew 0.53, excess kurtosis -0.27, Shapiro-Wilk p -
+   worst cell (column 13): bitline sd 9.63 mV, switching level sd 6.94 mV, margin sd 11.81 mV
+   every one cell of the row (96): margin sd 4.43-11.81 mV (median 7.36); largest at column 13
+   mean - 3 sd 0.1944 V; (mean - 0.10 V) / sd = 11.0; mean / sd = 19.5
+   samples below 0.10 V: 0; below 0: 0; zero side below the rule: 0; reads wrong: 0; wrong selection: 0
+   V1 (mean - 3 sd >= 0.10 V and no sample below it): YES
+
+B_pcm01_fs_m40C_1v60: e8rom_B_pcm_l01_16x2496_r48k0 at fs:-40:1.60, address 640 (row 40, worst column 13 in E8.4a-10: bitline 1.053 V, margin 0.195 V)
+   G1 samples finished: 30/30 + nominal  -> PASS
+   G2 nominal: reads [False, True], selection [True, True], switching levels +0.14..+0.14 mV from E8.4a-10's 0.858 V  -> PASS
+   G3 nominal row minimum 1.0497 V (column 13), E8.4a-10 1.0533 V: -3.7 mV  -> within 15 mV
+      nominal margin of the row 0.1915 V (column 13)
+   G4 repeats [True], switching-level sd of the worst column 5.60 mV  -> PASS
+   margin (row minimum, own switching levels), 30 samples: mean 0.1899 V, sd 10.90 mV, min 0.1631 V, max 0.2074 V; shift of the mean from the nominal -1.64 mV
+      skew -0.43, excess kurtosis -0.54, Shapiro-Wilk p -
+   worst cell (column 13): bitline sd 9.05 mV, switching level sd 5.60 mV, margin sd 10.90 mV
+   every one cell of the row (96): margin sd 4.60-10.90 mV (median 6.70); largest at column 13
+   mean - 3 sd 0.1572 V; (mean - 0.10 V) / sd = 8.2; mean / sd = 17.4
+   samples below 0.10 V: 0; below 0: 0; zero side below the rule: 0; reads wrong: 30 (output exempt at this condition); wrong selection: 0
+   V1 (mean - 3 sd >= 0.10 V and no sample below it): YES
+
+B_pcm07_tt_25C_1v80: e8rom_B_pcm_l07_16x2496_r48k1 at tt:25:1.80, address 499 (row 31, worst column 3 in E8.4a-10: bitline 1.154 V, margin 0.278 V)
+   G1 samples finished: 30/30 + nominal  -> PASS
+   G2 nominal: reads [True, True], selection [True, True], switching levels +0.01..+0.01 mV from E8.4a-10's 0.876 V  -> PASS
+   G3 nominal row minimum 1.1612 V (column 3), E8.4a-10 1.1540 V: +7.2 mV  -> within 15 mV
+      nominal margin of the row 0.2852 V (column 3)
+   G4 repeats [True], switching-level sd of the worst column 7.63 mV  -> PASS
+   margin (row minimum, own switching levels), 30 samples: mean 0.2867 V, sd 9.61 mV, min 0.2737 V, max 0.3189 V; shift of the mean from the nominal +1.49 mV
+      skew 1.21, excess kurtosis 1.96, Shapiro-Wilk p -
+   worst cell (column 3): bitline sd 7.95 mV, switching level sd 7.63 mV, margin sd 9.61 mV
+   every one cell of the row (112): margin sd 4.17-9.61 mV (median 7.03); largest at column 3
+   mean - 3 sd 0.2578 V; (mean - 0.10 V) / sd = 19.4; mean / sd = 29.8
+   samples below 0.10 V: 0; below 0: 0; zero side below the rule: 0; reads wrong: 0; wrong selection: 0
+   V1 (mean - 3 sd >= 0.10 V and no sample below it): YES
+
+B_pcm07_fs_25C_1v80: e8rom_B_pcm_l07_16x2496_r48k1 at fs:25:1.80, address 499 (row 31, worst column 3 in E8.4a-10: bitline 1.172 V, margin 0.182 V)
+   G1 samples finished: 30/30 + nominal  -> PASS
+   G2 nominal: reads [True, True], selection [True, True], switching levels -0.05..-0.05 mV from E8.4a-10's 0.990 V  -> PASS
+   G3 nominal row minimum 1.1733 V (column 3), E8.4a-10 1.1716 V: +1.6 mV  -> within 15 mV
+      nominal margin of the row 0.1833 V (column 3)
+   G4 repeats [True], switching-level sd of the worst column 5.16 mV  -> PASS
+   margin (row minimum, own switching levels), 30 samples: mean 0.1882 V, sd 12.61 mV, min 0.1736 V, max 0.2216 V; shift of the mean from the nominal +4.94 mV
+      skew 1.12, excess kurtosis 0.36, Shapiro-Wilk p -
+   worst cell (column 3): bitline sd 10.77 mV, switching level sd 5.16 mV, margin sd 12.61 mV
+   every one cell of the row (112): margin sd 4.18-12.61 mV (median 6.39); largest at column 3
+   mean - 3 sd 0.1504 V; (mean - 0.10 V) / sd = 7.0; mean / sd = 14.9
+   samples below 0.10 V: 0; below 0: 0; zero side below the rule: 0; reads wrong: 0; wrong selection: 0
+   V1 (mean - 3 sd >= 0.10 V and no sample below it): YES
+
+B_pcm07_tt_25C_1v60: e8rom_B_pcm_l07_16x2496_r48k1 at tt:25:1.60, address 499 (row 31, worst column 3 in E8.4a-10: bitline 1.015 V, margin 0.234 V)
+   G1 samples finished: 30/30 + nominal  -> PASS
+   G2 nominal: reads [True, True], selection [True, True], switching levels -0.22..-0.21 mV from E8.4a-10's 0.781 V  -> PASS
+   G3 nominal row minimum 1.0231 V (column 3), E8.4a-10 1.0154 V: +7.7 mV  -> within 15 mV
+      nominal margin of the row 0.2423 V (column 3)
+   G4 repeats [True], switching-level sd of the worst column 6.30 mV  -> PASS
+   margin (row minimum, own switching levels), 30 samples: mean 0.2395 V, sd 10.96 mV, min 0.2276 V, max 0.2660 V; shift of the mean from the nominal -2.82 mV
+      skew 1.11, excess kurtosis 0.20, Shapiro-Wilk p -
+   worst cell (column 3): bitline sd 9.16 mV, switching level sd 6.30 mV, margin sd 10.96 mV
+   every one cell of the row (112): margin sd 5.03-10.96 mV (median 7.23); largest at column 3
+   mean - 3 sd 0.2066 V; (mean - 0.10 V) / sd = 12.7; mean / sd = 21.8
+   samples below 0.10 V: 0; below 0: 0; zero side below the rule: 0; reads wrong: 0; wrong selection: 0
+   V1 (mean - 3 sd >= 0.10 V and no sample below it): YES
+
+B_pcm07_fs_m40C_1v60: e8rom_B_pcm_l07_16x2496_r48k1 at fs:-40:1.60, address 499 (row 31, worst column 3 in E8.4a-10: bitline 1.006 V, margin 0.148 V)
+   G1 samples finished: 30/30 + nominal  -> PASS
+   G2 nominal: reads [False, True], selection [True, True], switching levels +0.14..+0.14 mV from E8.4a-10's 0.858 V  -> PASS
+   G3 nominal row minimum 1.0022 V (column 3), E8.4a-10 1.0064 V: -4.2 mV  -> within 15 mV
+      nominal margin of the row 0.1441 V (column 3)
+   G4 repeats [True], switching-level sd of the worst column 5.15 mV  -> PASS
+   margin (row minimum, own switching levels), 30 samples: mean 0.1499 V, sd 11.42 mV, min 0.1267 V, max 0.1764 V; shift of the mean from the nominal +5.85 mV
+      skew 0.20, excess kurtosis -0.33, Shapiro-Wilk p -
+   worst cell (column 3): bitline sd 10.63 mV, switching level sd 5.15 mV, margin sd 11.42 mV
+   every one cell of the row (112): margin sd 4.36-11.42 mV (median 6.62); largest at column 3
+   mean - 3 sd 0.1156 V; (mean - 0.10 V) / sd = 4.4; mean / sd = 13.1
+   samples below 0.10 V: 0; below 0: 0; zero side below the rule: 0; reads wrong: 30 (output exempt at this condition); wrong selection: 0
+   V1 (mean - 3 sd >= 0.10 V and no sample below it): YES
+
+==== all sites ====
+   site                            n  nominal     mean shift mV  sd mV      min   mu-3sd (mu-0.1)/sd  mu/sd V1  G1 G2 G3 G4
+   B_pcm01_tt_25C_1v80            30   0.2544   0.2567     2.25  10.68   0.2400   0.2246        14.7   24.0  y  y  y  y  y
+   B_pcm01_fs_25C_1v80            30   0.2162   0.2137    -2.49  12.12   0.1859   0.1774         9.4   17.6  y  y  y  y  y
+   B_pcm01_tt_25C_1v60            30   0.2288   0.2298     0.96  11.81   0.2073   0.1944        11.0   19.5  y  y  y  y  y
+   B_pcm01_fs_m40C_1v60           30   0.1915   0.1899    -1.64  10.90   0.1631   0.1572         8.2   17.4  y  y  y  y  y
+   B_pcm07_tt_25C_1v80            30   0.2852   0.2867     1.49   9.61   0.2737   0.2578        19.4   29.8  y  y  y  y  y
+   B_pcm07_fs_25C_1v80            30   0.1833   0.1882     4.94  12.61   0.1736   0.1504         7.0   14.9  y  y  y  y  y
+   B_pcm07_tt_25C_1v60            30   0.2423   0.2395    -2.82  10.96   0.2276   0.2066        12.7   21.8  y  y  y  y  y
+   B_pcm07_fs_m40C_1v60           30   0.1441   0.1499     5.85  11.42   0.1267   0.1156         4.4   13.1  y  y  y  y  y
+   every site V1: YES; reads, selection and zero side right: YES; lowest sample 0.1267 V (B_pcm07_fs_m40C_1v60); sd 9.61-12.61 mV
+   CONCLUSION (rules of claude/p2r-e8-4d-sandbox.md): 1: every site V1, zero side and reads right: the rule holds at 3 sd of local mismatch
+
+written /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4d/e8_4d_summary.json
+
+==============================================================
+Finished 2026-10-21 19:16:47. Pack for Claude:
+  tar czf reports/e8_4d_results.tar.gz reports/e8_4d_rom_mc.log reports/e8_rom/e8_4d/sites.json reports/e8_rom/e8_4d/e8_4d_summary.json reports/e8_rom/e8_4d/*/base/prepare.json reports/e8_rom/e8_4d/*/base/bench.txt reports/e8_rom/e8_4d/*/s0000/analyze.txt reports/e8_rom/e8_4d/*/s0001/analyze.txt
+==============================================================

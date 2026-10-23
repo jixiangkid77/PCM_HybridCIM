@@ -1,0 +1,206 @@
+Step 12c Synthesis Summary
+==========================
+Date:     2026-05-12  (lane-sliced address-mapping update)
+Tool:     Yosys 0.33 (git sha1 2584903a060)
+Library:  sky130_fd_sc_hd, typical-typical corner, 25 C, 1.80 V
+          (ORFS-stripped, 12.8 MB Liberty)
+Target:   lenet5_top RTL (Paper 2 v3, post lane-sliced refactor)
+Source:   rtl/synth/*.v (sim-only stripped) + rtl/stub/*.v
+Flow:     synth -top lenet5_top + dfflibmap + abc -liberty + stat
+
+Runtime:  21 minutes (1236 s user CPU + 40 s system)
+Peak RAM: 23.55 GB / 24 GB ceiling (WSL2)
+
+================================================================
+Top-level result (digital RTL datapath and control)
+================================================================
+Mapped cells:           166,933   sky130 standard cells
+Sequential elements:     14,491   (13,928 dfxtp_1 + 563 dfrtp_1)
+Top-level area:       1,263,370.42  um^2  ~=  1.263 mm^2
+
+NOTE: This is the synthesized digital datapath and control area,
+EXCLUDING six categories of black-box memory and PCM CIM macros
+(totaling 54 black-box instances; see breakdown below).
+
+NOTE on lane-sliced refactor (verified 2026-05-12 21:12 JST):
+The address-mapping decoder modules (sram_addr_decoder, pcm_addr_decoder)
+gained a per-instance LANE_ID parameter, allowing each of the 25 SIMD
+lanes to load only its share of the layer protection maps. A full
+sky130 re-synthesis (Yosys 0.33, 19m42s wall, peak RAM 23.53 GB) of
+the post-refactor RTL produces a top-level area of
+  1,263,370.422399 um^2
+which is BIT-EXACT IDENTICAL (to six decimal places) to the pre-refactor
+baseline preserved at reports/baseline_pre_lanesliced/. Both runs report
+the same 241 benign warnings across 29 unique messages and the same
+sub-module area breakdown. This confirms that the lane-sliced refactor
+incurs ZERO digital-periphery hardware cost: the .LANE_ID(gi) parameter
+propagation is absorbed as a compile-time paramod variant on a
+black-box module boundary and generates no additional cells or wires.
+
+================================================================
+Per-module area breakdown (paramod-level, um^2)
+================================================================
+Module                                          Cells     Area    %
+-------------------------------------------------------------------
+fc_engine (paramod 1)                         43,082  322,922  25.6
+fc_engine (paramod 2)                         50,665  355,682  28.2
+fc_engine (paramod 3)                         44,353  327,905  26.0
+  fc_engine subtotal x3                                1,006,509  79.7
+
+sram_mac (25-lane SRAM-side MAC)              11,209  103,460   8.2
+conv_engine (paramod 1)                        4,735   40,421   3.2
+conv_engine (paramod 2)                        5,041   41,925   3.3
+  conv_engine subtotal x2                                82,346   6.5
+
+top_fsm                                         2,799   17,536   1.4
+layer_config_regfile                            1,209   14,539   1.2
+pool_wrapper x 2 (paramod 1 + 2)                          14,109   1.1
+argmax_wrapper                                    372    6,343   0.5
+logit_rf                                          459    6,749   0.5
+combiner                                          444    5,283   0.4
+argmax10                                          765    4,667   0.4
+maxpool2x2                                        101      701  0.06
+layer_desc_rom (40-bit ROM table)                  33      176  0.01
+pcm_imc_unit (glue only)                           27        6  0.0
+lenet5_top (top glue only)                         27      243  0.02
+                                              -------  --------  -----
+TOTAL                                         166,933 1,263,370 100.0
+
+================================================================
+Black-box macros (NOT in 1.263 mm^2; estimated separately in 12e)
+================================================================
+Macro                              Inst.   Capacity            Source
+-------------------------------------------------------------------
+pcm_crossbar                          1   TBD (LeNet-5 weights, mixed-precision)
+                                                                 NeuroSim PCM-only
+sram_pool_25lane (SRAM weights)       1   TBD (SRAM-resident weights per protection map)
+                                                                 OpenRAM SRAM compiler
+feature_buffer (activations)          1   ping-pong SRAM for inter-layer activations
+                                                                 OpenRAM SRAM compiler
+bias_storage (236x32 ROM)             1   7.5 Kbit (5 layers, 236 bias entries total)
+                                                                 OpenRAM ROM compiler
+sram_addr_decoder (per lane)         25   39.71 Kbit each (lane-sliced ROM, IMPLEMENTED)
+                                          ***  0.993 Mbit total across 25 SRAM-side lanes
+                                          ***  was 983 Kbit/lane (24.6 Mbit total) in
+                                               the naive per-lane full-table design
+                                                                 OpenRAM ROM compiler
+pcm_addr_decoder  (per lane)         25   39.71 Kbit each (lane-sliced ROM, IMPLEMENTED)
+                                          ***  0.993 Mbit total across 25 PCM-side lanes
+                                          ***  was 983 Kbit/lane (24.6 Mbit total) in
+                                               the naive per-lane full-table design
+                                                                 OpenRAM ROM compiler
+
+Total black-box instances: 54
+
+----------------------------------------------------------------
+Address-mapping ROM capacity (implemented vs. naive baseline)
+----------------------------------------------------------------
+  Naive per-lane full-table baseline:   49.176 Mbit
+    (61,470 entries x 16 bit x 50 decoders)
+
+  Implemented lane-sliced ROM:           1.9856 Mbit
+    (2,482 entries x 16 bit x 50 decoders;
+     per-lane depths conv1=6, conv2=96, fc1=1920, fc2=420, fc3=40)
+
+  Reduction:                             24.77x
+
+  Status:  IMPLEMENTED in RTL (rtl/src/{sram,pcm}_addr_decoder.v)
+           and verified bit-exact end-to-end across Step 9 single-image
+           (cycle=617573, RTL == golden, 14/14 PASS for Models A and B)
+           and Step 10b 10-image batch (10/10 RTL == golden,
+           cycle invariant 617573, 100% accuracy for Models A and B).
+
+  Evidence files:
+    - reports/addr_rom_capacity_report.txt
+        (capacity proof, derived from actual hex file row counts)
+    - reports/step9_A_lanesliced.log, reports/step9_B_lanesliced.log
+        (single-image bit-exact verification)
+    - reports/step10b_A_lanesliced.log, reports/step10b_B_lanesliced.log
+        (10-image batch bit-exact verification)
+    - scripts/verify_lane_equivalence.py output
+        (3,073,500 (lane, orig) tuples x 5 axes, 0 mismatches)
+
+================================================================
+Sky130 cell type distribution (top 15 by count)
+================================================================
+sky130_fd_sc_hd__nor2_1            20,170
+sky130_fd_sc_hd__nand2_1           20,170
+sky130_fd_sc_hd__a21oi_1           17,988
+sky130_fd_sc_hd__o21ai_0           15,481
+sky130_fd_sc_hd__dfxtp_1           13,928   <-- positive-edge DFF
+sky130_fd_sc_hd__lpflow_isobufsrc_1 12,635   <-- ABC drive buffer choice
+sky130_fd_sc_hd__mux2i_1            9,643
+sky130_fd_sc_hd__a22oi_1            6,096
+sky130_fd_sc_hd__o22ai_1            5,180
+sky130_fd_sc_hd__xnor2_1            4,105
+sky130_fd_sc_hd__mux2_1             3,977
+sky130_fd_sc_hd__nor3_1             3,024
+sky130_fd_sc_hd__nand3_1            2,945
+sky130_fd_sc_hd__maj3_1             2,237
+sky130_fd_sc_hd__a32oi_1            2,196
+
+================================================================
+Warning audit (29 unique, 241 total) - ALL BENIGN
+================================================================
+Category 1: ABC informational (2)
+  - 9 multi-output gates skipped (fa_1, etc.); ABC used single-
+    output cell combinations instead. Minor area cost (<5%).
+  - "network is combinational" suggestion for fraig pass.
+
+Category 2: Scan-DFF cells skipped (24, by cell variant)
+  - sky130 scan-DFF (sdfxx_*) cells have D&!SCE|SCD&SCE pin
+    function that Yosys cannot parse. dfflibmap falls back to
+    non-scan DFF variants. Design has no scan chain, so no impact.
+
+Category 3: Small-memory to register replacement (3)
+  - cfg_mem (layer_config_regfile.v): correctly inferred as FFs
+  - mem (logit_rf.v): correctly inferred as FFs
+  - sram_pipe (combiner.v): correctly inferred as FFs
+  All three are inherently register files, NOT SRAM macros.
+
+Severe warning check (latch inferred, unconnected port,
+unresolved module, undriven wire): NONE PRESENT.
+
+Lane-sliced refactor full re-synthesis verification (2026-05-12 21:12 JST):
+  Full sky130 mapping with new LANE_ID parameter propagated through
+  pcm_imc_unit.v to both decoder stubs:
+  PASS, top area 1,263,370.422399 um^2 (bit-exact identical to baseline),
+  241 warnings (identical to baseline), 19m42s wall, peak 23.53 GB.
+
+================================================================
+Reproducibility
+================================================================
+Environment:
+  - Ubuntu 24.04.4 LTS on WSL2 (Windows 11)
+  - 24 GB WSL2 memory + 8 GB swap (via .wslconfig)
+  - Yosys 0.33 from apt (universe pocket)
+  - sky130 Liberty from OpenROAD-flow-scripts (sparse-checkout)
+
+Scripts:
+  - scripts/preprocess_synth_rtl.py (rtl/src -> rtl/synth strip,
+                                     propagates .LANE_ID(gi) parameters)
+  - scripts/yosys_12c_sky130.ys     (synth + abc -liberty + stat)
+  - scripts/report_addr_rom_capacity.py (capacity proof from real hex
+                                          file row counts; lane-sliced
+                                          ROM = 1.9856 Mbit vs. naive
+                                          baseline 49.176 Mbit, 24.77x)
+
+Inputs:
+  - rtl/synth/  (17 files, auto-generated by preprocessor; includes
+                pcm_imc_unit.v with .LANE_ID(gi) parameter propagation
+                to both sram and pcm decoder instantiations)
+  - rtl/stub/   (8 stub files available; 6 used as active black-box
+                macros in 12c synthesis. The sram_addr_decoder_stub.v
+                and pcm_addr_decoder_stub.v stubs were updated with
+                parameter integer LANE_ID = 0 to match the lane-sliced
+                source modules. The 2 unused stubs are for
+                layer_config_regfile and layer_desc_rom, which were
+                stubbed in earlier 12b-1 diagnostic stages but are
+                superseded by their rtl/synth/ synthesizable
+                versions in 12c.)
+
+Outputs:
+  - reports/yosys_12c_full.log       (1.19 MB Yosys log)
+  - reports/lenet5_top_sky130_stat.txt (43 KB stat output)
+  - reports/lenet5_top_sky130_netlist.v (21 MB gate netlist)
+  - reports/addr_rom_capacity_report.txt (lane-sliced capacity proof)

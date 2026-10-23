@@ -1,0 +1,56 @@
+{
+  "model": "A",
+  "sram_total": 3074,
+  "pcm_total": 58396,
+  "slot_format": "layer_relative",
+  "invalid_sentinel": "ffff",
+  "pool_layout": "sram and pcm pools concatenated in canonical layer order: conv1, conv2, fc1, fc2, fc3",
+  "layer_config_layout": {
+    "word_format": "{size[15:0], base[15:0]}",
+    "lines_0_to_4": "SRAM partition base/size for conv1, conv2, fc1, fc2, fc3",
+    "lines_5_to_9": "PCM partition base/size for conv1, conv2, fc1, fc2, fc3"
+  },
+  "overall_protection_pct": 5.000813404912965,
+  "layers": {
+    "conv1": {
+      "n_total": 150,
+      "n_sram": 150,
+      "n_pcm": 0,
+      "sram_base": 0,
+      "pcm_base": 0,
+      "ratio": 1.0
+    },
+    "conv2": {
+      "n_total": 2400,
+      "n_sram": 1481,
+      "n_pcm": 919,
+      "sram_base": 150,
+      "pcm_base": 0,
+      "ratio": 0.6172872245913255
+    },
+    "fc1": {
+      "n_total": 48000,
+      "n_sram": 335,
+      "n_pcm": 47665,
+      "sram_base": 1631,
+      "pcm_base": 919,
+      "ratio": 0.006969371890546991
+    },
+    "fc2": {
+      "n_total": 10080,
+      "n_sram": 314,
+      "n_pcm": 9766,
+      "sram_base": 1966,
+      "pcm_base": 48584,
+      "ratio": 0.0311261507090387
+    },
+    "fc3": {
+      "n_total": 840,
+      "n_sram": 794,
+      "n_pcm": 46,
+      "sram_base": 2280,
+      "pcm_base": 58350,
+      "ratio": 0.9449157274850631
+    }
+  }
+}

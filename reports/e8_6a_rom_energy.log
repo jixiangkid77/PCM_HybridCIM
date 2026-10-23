@@ -1,0 +1,89 @@
+P2R-E8.6a  2026-10-14 04:02:42
+   script     : d84b0a47b41f2b0b06fbe15f152c0864  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_6a_rom_energy.py
+   tools      : 2426aee2f1e3078a9276fb2f77165a3b  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_4b_energy_tools.py
+   E8.4b model: f0cbdaef8fa31f29e937f5f2880a09c6  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4b/model.json
+   trace      : 4e89089f8b3bf85c81658d4a26c3cec4  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/trace/trace_A.txt
+   trace      : 3269174c62831481ec5851fe749c9e4b  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/trace/trace_B.txt
+   pcm: parked power 1.190 uW (mean of 23 macros), idle cycle when parked 2.742 pJ; model tables: 6
+   sram: parked power 0.945 uW (mean of 24 macros), idle cycle when parked 2.784 pJ; model tables: 6
+   formula check against e8_4b_energy_tools (read windows): largest difference 1.42e-14 pJ
+
+trace A: 16684 operations, done at cycle 617573 (6.176 ms); 416520 lookups per side over 25 lanes (833040 ROM lookups)
+
+trace B: 16684 operations, done at cycle 617573 (6.176 ms); 416520 lookups per side over 25 lanes (833040 ROM lookups)
+
+tables rebuilt from data/rtl_inputs_<model>_v3 (as E8.3), compared with reports/e8_rom/bins:
+   12 equal, 0 different
+
+model error of the parking trains per table (E8.4b, leave one table out; conv1, conv2, fc1 weighted by the lane's lookups x measured energy per lookup):
+   bits  pcm : -4.9 -1.1 -3.6 +6.1 +0.5 -1.8 %  -> mean -0.8 %, SE 1.6 % (6 tables)
+   bits  sram: -7.6 +6.8 -1.7 +17.2 -19.2 +1.1 %  -> mean -0.6 %, SE 5.1 % (6 tables)
+   count pcm : -6.8 -7.2 -10.3 +0.4 -3.1 -3.1 %  -> mean -5.0 %, SE 1.6 % (6 tables)
+   count sram: -4.0 +5.6 +0.1 +20.9 -15.2 +3.3 %  -> mean +1.8 %, SE 4.9 % (6 tables)
+
+==== model A: D_ROM per inference (25 lanes; 6.176 ms; 4 macros per table) ====
+   pJ/lookup: per ROM lookup (833040 = 416520 per side); static: clock low; idle: free-running cycles without a read
+   way of running                       form     D uJ x 9.85 |  reads  parks  static   idle uJ |   parks pJ/lookup
+   GPp gated, parking per macro         bits    53.09   5.39 |  41.22   7.15    4.72   0.00    |  358309      63.7
+   GPp gated, parking per macro         count   54.12   5.49 |  41.84   7.20    5.08   0.00    |  358309      65.0
+   GPs gated, parking in free slots     bits    57.92   5.88 |  41.22   7.15    9.55   0.00    |  358309      69.5
+   GPs gated, parking in free slots     count   58.31   5.92 |  41.84   7.20    9.27   0.00    |  358309      70.0
+   GN gated, no parking                 bits   130.60  13.26 |  44.90   0.00   85.70   0.00    |       0     156.8
+   GN gated, no parking                 count  132.98  13.50 |  45.98   0.00   87.00   0.00    |       0     159.6
+   FP free-running, parking per macro   bits    82.07   8.33 |  41.13   7.92    0.00  33.02    |  383014      98.5
+   FP free-running, parking per macro   count   83.00   8.43 |  41.68   7.98    0.00  33.34    |  383014      99.6
+   FN free-running, no parking          bits   161.20  16.37 |  44.90   0.00    0.00 116.30    |       0     193.5
+   FN free-running, no parking          count  163.58  16.61 |  45.98   0.00    0.00 117.60    |       0     196.4
+   GPp bits: D 53.09 uJ, range from the E8.4b trains (mean +- 2 SE per side) 50.11-57.40 uJ
+   GPp count: D 54.12 uJ, range from the E8.4b trains (mean +- 2 SE per side) 51.81-58.85 uJ
+   GPs bits: D 57.92 uJ, range from the E8.4b trains (mean +- 2 SE per side) 54.82-62.44 uJ
+   GPs count: D 58.31 uJ, range from the E8.4b trains (mean +- 2 SE per side) 56.07-63.41 uJ
+   GPp, bits: by side pcm 26.00 uJ, sram 27.09 uJ; reads and parks by layer conv1 13.92, conv2 29.61, fc1 3.93, fc2 0.84, fc3 0.07 uJ
+   macros without a word without zero bits (parked with the word of fewest zero bits): 2: e8rom_A_pcm_l04_16x2496 k1, e8rom_A_pcm_l18_16x2496 k1
+   GN, FN: the static current flows for milliseconds; its rise (measured to 20 us only) is not included
+   design options (estimates from the same models in the bits form, not simulated; the energy of added devices or logic not included):
+      O1 no static current after a read, no parking              30.14 uJ (0.57 x GPp; 3.06 x 9.85): reads 28.91, parks 0.00, static 1.23 uJ; 0 parks; 833040 ROM lookups, 36.2 pJ each
+      O2 merged tables, parking (GPp), PCM-side model            44.85 uJ (0.84 x GPp; 4.55 x 9.85): reads 31.53, parks 11.43, static 1.89 uJ; 358309 parks; 416520 ROM lookups, 107.7 pJ each
+      O2 merged tables, parking (GPp), SRAM-side model           41.57 uJ (0.78 x GPp; 4.22 x 9.85): reads 30.26, parks 9.54, static 1.77 uJ; 358309 parks; 416520 ROM lookups, 99.8 pJ each
+      O3 merged tables, no static current, PCM-side model        18.02 uJ (0.34 x GPp; 1.83 x 9.85): reads 17.34, parks 0.00, static 0.69 uJ; 0 parks; 416520 ROM lookups, 43.3 pJ each
+      O3 merged tables, no static current, SRAM-side model       19.88 uJ (0.37 x GPp; 2.02 x 9.85): reads 19.33, parks 0.00, static 0.54 uJ; 0 parks; 416520 ROM lookups, 47.7 pJ each
+      (merged tables: 75 macros have no word without zero bits; a parking word 0xFFFF was assumed added in their deepest row)
+
+==== model B: D_ROM per inference (25 lanes; 6.176 ms; 4 macros per table) ====
+   pJ/lookup: per ROM lookup (833040 = 416520 per side); static: clock low; idle: free-running cycles without a read
+   way of running                       form     D uJ x 9.85 |  reads  parks  static   idle uJ |   parks pJ/lookup
+   GPp gated, parking per macro         bits    52.85   5.37 |  41.30   8.64    2.91   0.00    |  358309      63.4
+   GPp gated, parking per macro         count   54.55   5.54 |  42.24   8.70    3.61   0.00    |  358309      65.5
+   GPs gated, parking in free slots     bits    57.00   5.79 |  41.30   8.64    7.06   0.00    |  358309      68.4
+   GPs gated, parking in free slots     count   58.59   5.95 |  42.24   8.70    7.65   0.00    |  358309      70.3
+   GN gated, no parking                 bits   126.36  12.83 |  44.50   0.00   81.86   0.00    |       0     151.7
+   GN gated, no parking                 count  132.14  13.41 |  46.18   0.00   85.96   0.00    |       0     158.6
+   FP free-running, parking per macro   bits    81.83   8.31 |  41.21   9.41    0.00  31.22    |  383013      98.2
+   FP free-running, parking per macro   count   83.42   8.47 |  42.07   9.49    0.00  31.86    |  383013     100.1
+   FN free-running, no parking          bits   156.97  15.94 |  44.50   0.00    0.00 112.47    |       0     188.4
+   FN free-running, no parking          count  162.74  16.52 |  46.18   0.00    0.00 116.56    |       0     195.4
+   GPp bits: D 52.85 uJ, range from the E8.4b trains (mean +- 2 SE per side) 50.15-56.83 uJ
+   GPp count: D 54.55 uJ, range from the E8.4b trains (mean +- 2 SE per side) 52.75-59.33 uJ
+   GPs bits: D 57.00 uJ, range from the E8.4b trains (mean +- 2 SE per side) 54.20-61.15 uJ
+   GPs count: D 58.59 uJ, range from the E8.4b trains (mean +- 2 SE per side) 56.87-63.73 uJ
+   GPp, bits: by side pcm 29.94 uJ, sram 22.91 uJ; reads and parks by layer conv1 13.82, conv2 31.28, fc1 3.93, fc2 0.84, fc3 0.07 uJ
+   macros without a word without zero bits (parked with the word of fewest zero bits): 1: e8rom_B_pcm_l00_16x2496 k1
+   GN, FN: the static current flows for milliseconds; its rise (measured to 20 us only) is not included
+   design options (estimates from the same models in the bits form, not simulated; the energy of added devices or logic not included):
+      O1 no static current after a read, no parking              29.64 uJ (0.56 x GPp; 3.01 x 9.85): reads 28.42, parks 0.00, static 1.23 uJ; 0 parks; 833040 ROM lookups, 35.6 pJ each
+      O2 merged tables, parking (GPp), PCM-side model            44.65 uJ (0.84 x GPp; 4.53 x 9.85): reads 31.36, parks 11.39, static 1.89 uJ; 358309 parks; 416520 ROM lookups, 107.2 pJ each
+      O2 merged tables, parking (GPp), SRAM-side model           41.43 uJ (0.78 x GPp; 4.21 x 9.85): reads 30.14, parks 9.52, static 1.77 uJ; 358309 parks; 416520 ROM lookups, 99.5 pJ each
+      O3 merged tables, no static current, PCM-side model        17.95 uJ (0.34 x GPp; 1.82 x 9.85): reads 17.26, parks 0.00, static 0.69 uJ; 0 parks; 416520 ROM lookups, 43.1 pJ each
+      O3 merged tables, no static current, SRAM-side model       19.77 uJ (0.37 x GPp; 2.01 x 9.85): reads 19.22, parks 0.00, static 0.54 uJ; 0 parks; 416520 ROM lookups, 47.5 pJ each
+      (merged tables: 75 macros have no word without zero bits; a parking word 0xFFFF was assumed added in their deepest row)
+
+check: E8.4b trains, segments 2 to the end, the all-table model applied two ways:
+   96 train x form: largest difference between the two 0.000 % (must be 0: the same model and sequence; a difference means the tables or plans differ from the records)
+   bits: against the measured trains (in-sample) median |error| 5.9 %, all together -2.33 %
+   count: against the measured trains (in-sample) median |error| 7.3 %, all together -4.65 %
+
+summary (D_ROM per inference, uJ; manuscript 9.85):
+   model A: GPp 53.09 (50.11-57.40) / count 54.12; GPs 57.92 (54.82-62.44) / count 58.31; GN 130.6; options O1 30.14, O2_pcm 44.85, O2_sram 41.57, O3_pcm 18.02, O3_sram 19.88
+   model B: GPp 52.85 (50.15-56.83) / count 54.55; GPs 57.00 (54.20-61.15) / count 58.59; GN 126.4; options O1 29.64, O2_pcm 44.65, O2_sram 41.43, O3_pcm 17.95, O3_sram 19.77
+
+written: /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_6a/d_rom.json  (57 s)

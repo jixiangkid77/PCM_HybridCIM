@@ -1,0 +1,53 @@
+==============================================================
+P2R-E8.4e ROM energy at five operating conditions, started 2026-10-19 23:18:27
+==============================================================
+script   : fe61bc5326ceb45b8ed496a9d3ecb628  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_4b_rom_energy.sh
+tools    : 2426aee2f1e3078a9276fb2f77165a3b  scripts/e8_4b_energy_tools.py
+bench    : d120197ca2914ba7720e2718f7ba51b4  scripts/e8_4_rom_bench.py
+parking  : fd281561e7bf1865040ffcd75a7217a3  reports/e8_rom/e8_4b_rel5/model.json
+tables   : e8rom_A_pcm_l00_16x2496 e8rom_A_sram_l00_16x2496
+trains   : conv2 (macro 0), fc1 (macro 1); part A of all 4 macros; no drift runs
+solver   : reltol 1e-5, maximum time step 2 ns
+
+---- split of rel5's D_ROM (2026-10-19 23:18:25) ----
+     PASS  S2 model A: totals = d_rom.json (D 10.3308 / 10.3308 uJ; largest relative difference 1.1e-15)
+     PASS  S2 model B: totals = d_rom.json (D 8.5688 / 8.5688 uJ; largest relative difference 1.1e-15)
+     PASS  S1 replay copy = E8.6a-3's replay, every table of both models (largest relative difference 1.2e-15)
+   written: /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4e_split.json  md5 b8ab8a4507fa8095e4ea66b23160d45e  (9 s)
+   ALL CHECKS PASS
+
+---- tt, -40 C, 1.80 V -> reports/e8_rom/e8_4b_c_ttm40 (2026-10-19 23:18:35) ----
+   exit 0 at 2026-10-20 01:30:48; log reports/e8_4e_rom_ttm40.log (1049 lines)
+         lookups of the trains                     52 reads, 0 wrong, 0 wrong selections, margin one cells +0.824 V, zero cells +0.835 V, access <= 14.72 ns   (lowest: A_sram_l00/conv2 cycle 29, row 4, precharge 230 ns)
+         parking reads (50 ns after a read)        30 reads, 0 wrong, 0 wrong selections, margin one cells +0.314 V, zero cells +0.835 V, access <= 11.17 ns   (lowest: A_pcm_l00/k2_parta cycle 9, row 47, precharge 50 ns)
+         part-A and drift reads (not parking)      48 reads, 0 wrong, 0 wrong selections, margin one cells +0.694 V, zero cells +0.835 V, access <= 15.17 ns   (lowest: A_pcm_l00/k1_parta cycle 3, row 42, precharge 1050 ns)
+   model.json: 71b3973d87ea9ffc1a5133ebe95aea7f
+---- tt, 85 C, 1.80 V -> reports/e8_rom/e8_4b_c_tt85 (2026-10-20 01:30:48) ----
+   exit 0 at 2026-10-20 03:24:34; log reports/e8_4e_rom_tt85.log (1037 lines)
+         lookups of the trains                     52 reads, 0 wrong, 0 wrong selections, margin one cells +0.747 V, zero cells +0.915 V, access <= 16.02 ns   (lowest: A_sram_l00/conv2 cycle 24, row 4, precharge 230 ns)
+         parking reads (50 ns after a read)        30 reads, 0 wrong, 0 wrong selections, margin one cells +0.256 V, zero cells +0.915 V, access <= 11.22 ns   (lowest: A_pcm_l00/k2_parta cycle 9, row 47, precharge 50 ns)
+         part-A and drift reads (not parking)      48 reads, 0 wrong, 0 wrong selections, margin one cells +0.630 V, zero cells +0.915 V, access <= 16.72 ns   (lowest: A_pcm_l00/k1_parta cycle 3, row 42, precharge 1050 ns)
+   model.json: 0c214ef4cef444823c94cd8f5e12c6dc
+---- ff, 25 C, 1.80 V -> reports/e8_rom/e8_4b_c_ff25 (2026-10-20 03:24:34) ----
+   exit 0 at 2026-10-20 05:18:06; log reports/e8_4e_rom_ff25.log (1037 lines)
+         lookups of the trains                     52 reads, 0 wrong, 0 wrong selections, margin one cells +0.770 V, zero cells +0.876 V, access <= 13.67 ns   (lowest: A_sram_l00/conv2 cycle 24, row 4, precharge 230 ns)
+         parking reads (50 ns after a read)        30 reads, 0 wrong, 0 wrong selections, margin one cells +0.260 V, zero cells +0.876 V, access <= 10.86 ns   (lowest: A_pcm_l00/k2_parta cycle 9, row 47, precharge 50 ns)
+         part-A and drift reads (not parking)      48 reads, 0 wrong, 0 wrong selections, margin one cells +0.636 V, zero cells +0.876 V, access <= 14.04 ns   (lowest: A_pcm_l00/k2_parta cycle 3, row 47, precharge 1050 ns)
+   model.json: 2451e698b26463e0dcd870b50fed1245
+---- ss, 25 C, 1.80 V -> reports/e8_rom/e8_4b_c_ss25 (2026-10-20 05:18:06) ----
+   exit 0 at 2026-10-20 07:20:47; log reports/e8_4e_rom_ss25.log (1049 lines)
+         lookups of the trains                     52 reads, 0 wrong, 0 wrong selections, margin one cells +0.792 V, zero cells +0.874 V, access <= 19.34 ns   (lowest: A_pcm_l00/conv2 cycle 7, row 3, precharge 230 ns)
+         parking reads (50 ns after a read)        30 reads, 0 wrong, 0 wrong selections, margin one cells +0.329 V, zero cells +0.875 V, access <= 11.82 ns   (lowest: A_pcm_l00/k2_parta cycle 9, row 47, precharge 50 ns)
+         part-A and drift reads (not parking)      48 reads, 0 wrong, 0 wrong selections, margin one cells +0.680 V, zero cells +0.874 V, access <= 20.50 ns   (lowest: A_pcm_l00/k1_parta cycle 3, row 42, precharge 1050 ns)
+   model.json: 8d540418d41cb86c2081fbf36fd0b221
+---- ff, 85 C, 1.80 V -> reports/e8_rom/e8_4b_c_ff85 (2026-10-20 07:20:47) ----
+   exit 0 at 2026-10-20 09:10:51; log reports/e8_4e_rom_ff85.log (1037 lines)
+         lookups of the trains                     52 reads, 0 wrong, 0 wrong selections, margin one cells +0.747 V, zero cells +0.913 V, access <= 14.17 ns   (lowest: A_sram_l00/conv2 cycle 21, row 4, precharge 230 ns)
+         parking reads (50 ns after a read)        30 reads, 0 wrong, 0 wrong selections, margin one cells +0.256 V, zero cells +0.913 V, access <= 10.89 ns   (lowest: A_pcm_l00/k2_parta cycle 9, row 47, precharge 50 ns)
+         part-A and drift reads (not parking)      48 reads, 0 wrong, 0 wrong selections, margin one cells +0.623 V, zero cells +0.913 V, access <= 14.60 ns   (lowest: A_pcm_l00/k1_parta cycle 3, row 42, precharge 1050 ns)
+   model.json: 4dab7c54f78a017e444ecd3ae4e8cd3d
+
+==============================================================
+Finished 2026-10-20 09:10:51. Pack for Claude:
+  tar czf reports/e8_4e_rom_compare.tar.gz reports/e8_rom/e8_4e_split.json reports/e8_4e_split.log reports/e8_rom/e8_4b_c_*/model.json reports/e8_rom/e8_4b_c_*/condition.txt reports/e8_rom/e8_4b_c_*/vm/vm.txt
+==============================================================

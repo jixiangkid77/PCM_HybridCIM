@@ -1,0 +1,36 @@
+[2026-10-22 02:50:14] P2R-E8.7 check, design chip, models A B
+[2026-10-22 02:50:14]   tool  /home/kid/oss-cad-suite/bin/yosys
+[2026-10-22 02:50:14]   tool  /home/kid/p2r_e8/openroad/bin/openroad
+[2026-10-22 02:50:14]   tool  /usr/bin/iverilog  Icarus Verilog version 12.0 (stable) ()
+        Yosys 0.68+36 (git sha1 17d51a330-dirty, Release, Clang /usr/bin/clang++ 21.1.8)
+        26Q2 
+[2026-10-22 02:50:15]   file  12a1d61fcd2982fc8ba63993919c8ff8  /home/kid/sky130/orfs/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+[2026-10-22 02:50:15]   file  b908dfa3628bbb99dd2db10840354073  /home/kid/sky130/orfs/flow/platforms/sky130hd/lef/sky130_fd_sc_hd.tlef
+[2026-10-22 02:50:15]   file  a21242df126982e6f782d2625b4435de  /home/kid/sky130/orfs/flow/platforms/sky130hd/lef/sky130_fd_sc_hd_merged.lef
+[2026-10-22 02:50:15]   file  914c51e56b19340264f0e3f2e69b5d0f  /home/kid/sky130/orfs/flow/platforms/sky130hd/setRC.tcl
+[2026-10-22 02:50:15]   file  ebe4ae272a88f365a8353446fefc2753  /home/kid/sky130/orfs/flow/platforms/sky130hd/make_tracks.tcl
+[2026-10-22 02:50:15]   file  c85bf07191b86c3778ec7e9db96e16da  /home/kid/sky130/orfs/flow/platforms/sky130hd/tapcell.tcl
+[2026-10-22 02:50:15]   file  a6f2282624c306945ec31ccdfba343b4  /home/kid/sky130/orfs/flow/platforms/sky130hd/pdn.tcl
+[2026-10-22 02:50:15]   file  933f7d652e56a0d70cd38089cc55f143  /home/kid/sky130/orfs/flow/platforms/sky130hd/fastroute.tcl
+[2026-10-22 02:50:15]   file  8acac7c69bd833c97fae7e2128861895  /home/kid/sky130/orfs/flow/platforms/sky130hd/rcx_patterns.rules
+[2026-10-22 02:50:15]   cells 89921fc96219fda3b0295ceff69077ec  /home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/primitives.v
+[2026-10-22 02:50:15]   cells 4d84ca8606b050c7df719680f0ae9ec9  /home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v
+[2026-10-22 02:50:15]   input b40b1d78ce6c7d9c5def9ccd1c69de7c  scripts/e8_7_digital_pnr.sh
+[2026-10-22 02:50:15]   input b6994d113087ca5d8a760d233a210422  scripts/e8_7_tools.py
+[2026-10-22 02:50:15]   input 10d6fa2ce779a710a7292816435c9e35  scripts/e8_7_flow.tcl
+[2026-10-22 02:50:15]   input f827c69ee7b7f67fb391d1bfcca69afe  scripts/e8_7_constraints.tcl
+[2026-10-22 02:50:15]   input 0f20396dc65f13ab13e33f9d17a6cc8a  scripts/e8_7_power.tcl
+[2026-10-22 02:50:15]   input 6817c7d049a9c5ee621f696409a3dfd0  rtl/e8/sram_pool_25lane_2c_stub.v
+[2026-10-22 02:50:15]   input bd3a032b3c1206588905d56be08e5f7a  rtl/e8/tb/tb_e87_chip.v
+[2026-10-22 02:50:15]   input 98ea1779715893c225a552ada8deb826  rtl/stub/bias_storage_stub.v
+[2026-10-22 02:50:15]   input dcae0b1b3c72f61b63a3970b5a82dde8  rtl/stub/feature_buffer_stub.v
+[2026-10-22 02:50:15]   input 15b644717fa3a2ff2432ad6a6e722e44  rtl/stub/pcm_crossbar_stub.v
+[2026-10-22 02:50:15]   input 5bd84c8df5df8a1a78d06c6e502e8b57  rtl/e8/e8_rom_r48_stub.v
+[2026-10-22 02:50:15]   input 6817c7d049a9c5ee621f696409a3dfd0  rtl/e8/sram_pool_25lane_2c_stub.v
+[2026-10-22 02:50:15]   input afa779c493462937621ebe63f108c3c0  scripts/e8_5e_cache_hex.py
+[2026-10-22 02:50:15]   input 9bf4a4a6e4b0400c1fd360a4ab3053bb  rtl/e8/e8_rom_r48_rec.v
+[2026-10-22 02:50:15]   input ea0f0f37286f32b61eae8ef8a5052899  rtl/e8/sram_pool_25lane_2c.v
+[2026-10-22 02:50:15]   input 32c1b2b4d11c72140a1ff6cb18275585  rtl/e8/amu_park_A.vh
+[2026-10-22 02:50:15]   input 7459db54f5787fcf8b3d0ab9d95dca5d  rtl/e8/amu_park_B.vh
+[2026-10-22 02:50:15]   threads 8; memory available 1 GiB (stage 1 needs 16); work folder /home/kid/p2r_e8/e87, free 841 GB (gate-level runs need 25)
+[2026-10-22 02:50:15] check: everything found

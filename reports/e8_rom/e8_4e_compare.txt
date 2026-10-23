@@ -1,0 +1,38 @@
+P2R-E8.4e (ROM): ratios to E8.4b-rel5 (tt, 25 C, 1.80 V); same runs and read numbers
+
+condition | runs complete | reads (bad) | side | r_read | r_static | r_park | leak uW (rel5) | r_leak | r_conv2 | r_fc1
+ttm40 | 12/12 | 130 (0) | pcm | 0.627 | 0.318 | 0.783 | 0.807 (1.160) | 0.70 | 0.686 | 0.548
+ttm40 | 12/12 | 130 (0) | sram | 0.596 | 0.340 | 0.586 | 0.750 (1.085) | 0.69 | 0.635 | 0.734
+tt85 | 12/12 | 130 (0) | pcm | 1.448 | 1.659 | 1.238 | 8.409 (1.160) | 7.25 | 1.372 | 1.384
+tt85 | 12/12 | 130 (0) | sram | 1.391 | 1.466 | 1.340 | 8.303 (1.085) | 7.65 | 1.386 | 1.231
+ff25 | 12/12 | 130 (0) | pcm | 1.578 | 2.041 | 1.361 | 5.303 (1.160) | 4.57 | 1.485 | 1.616
+ff25 | 12/12 | 130 (0) | sram | 1.574 | 1.876 | 1.592 | 5.214 (1.085) | 4.81 | 1.506 | 1.345
+ss25 | 12/12 | 130 (0) | pcm | 0.697 | 0.432 | 0.803 | 1.110 (1.160) | 0.96 | 0.737 | 0.636
+ss25 | 12/12 | 130 (0) | sram | 0.655 | 0.442 | 0.648 | 1.017 (1.085) | 0.94 | 0.701 | 0.751
+ff85 | 12/12 | 130 (0) | pcm | 2.232 | 2.883 | 1.867 | 60.586 (1.160) | 52.21 | 2.223 | 2.120
+ff85 | 12/12 | 130 (0) | sram | 2.097 | 2.345 | 2.315 | 60.336 (1.085) | 55.62 | 2.246 | 1.892
+
+ttm40: margins ok True; lookups of the trains: one +0.824 V, zero +0.835 V, wrong 0, wrong sel 0; parking reads (50 ns after a read): one +0.314 V, zero +0.835 V, wrong 0, wrong sel 0; part-A and drift reads (not parking): one +0.694 V, zero +0.835 V, wrong 0, wrong sel 0
+tt85: margins ok True; lookups of the trains: one +0.747 V, zero +0.915 V, wrong 0, wrong sel 0; parking reads (50 ns after a read): one +0.256 V, zero +0.915 V, wrong 0, wrong sel 0; part-A and drift reads (not parking): one +0.630 V, zero +0.915 V, wrong 0, wrong sel 0
+ff25: margins ok True; lookups of the trains: one +0.770 V, zero +0.876 V, wrong 0, wrong sel 0; parking reads (50 ns after a read): one +0.260 V, zero +0.876 V, wrong 0, wrong sel 0; part-A and drift reads (not parking): one +0.636 V, zero +0.876 V, wrong 0, wrong sel 0
+ss25: margins ok True; lookups of the trains: one +0.792 V, zero +0.874 V, wrong 0, wrong sel 0; parking reads (50 ns after a read): one +0.329 V, zero +0.875 V, wrong 0, wrong sel 0; part-A and drift reads (not parking): one +0.680 V, zero +0.874 V, wrong 0, wrong sel 0
+ff85: margins ok True; lookups of the trains: one +0.747 V, zero +0.913 V, wrong 0, wrong sel 0; parking reads (50 ns after a read): one +0.256 V, zero +0.913 V, wrong 0, wrong sel 0; part-A and drift reads (not parking): one +0.623 V, zero +0.913 V, wrong 0, wrong sel 0
+
+model A: rel5 D_ROM 10.331 uJ (corrected 10.078)
+   pcm: read 4.045, park 0.037, static_above 1.296, parked_leak 0.700, parked_zero 2.271 (sum 8.349)
+   sram: read 1.229, park 0.032, static_above 0.077, parked_leak 0.644, parked_zero 0.000 (sum 1.982)
+   ttm40: D_ROM 5.406 uJ (-47.7 %), corrected 5.274; cross-check by trains 5.579 uJ (-46.0 %)
+   tt85: D_ROM 23.681 uJ (+129.2 %), corrected 23.102; cross-check by trains 22.887 uJ (+121.5 %)
+   ff25: D_ROM 22.136 uJ (+114.3 %), corrected 21.595; cross-check by trains 21.432 uJ (+107.5 %)
+   ss25: D_ROM 6.523 uJ (-36.9 %), corrected 6.364; cross-check by trains 6.681 uJ (-35.3 %)
+   ff85: D_ROM 94.550 uJ (+815.2 %), corrected 92.239; cross-check by trains 92.910 uJ (+799.4 %)
+model B: rel5 D_ROM 8.569 uJ (corrected 8.329)
+   pcm: read 4.046, park 0.061, static_above 1.275, parked_leak 0.707, parked_zero 0.474 (sum 6.563)
+   sram: read 1.235, park 0.020, static_above 0.107, parked_leak 0.644, parked_zero 0.000 (sum 2.006)
+   ttm40: D_ROM 4.859 uJ (-43.3 %), corrected 4.723; cross-check by trains 5.046 uJ (-41.1 %)
+   tt85: D_ROM 20.784 uJ (+142.6 %), corrected 20.202; cross-check by trains 19.984 uJ (+133.2 %)
+   ff25: D_ROM 18.539 uJ (+116.4 %), corrected 18.020; cross-check by trains 17.820 uJ (+108.0 %)
+   ss25: D_ROM 5.775 uJ (-32.6 %), corrected 5.613; cross-check by trains 5.941 uJ (-30.7 %)
+   ff85: D_ROM 89.784 uJ (+947.8 %), corrected 87.270; cross-check by trains 88.143 uJ (+928.6 %)
+
+written reports/e8_rom/e8_4e_compare.json

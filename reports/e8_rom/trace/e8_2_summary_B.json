@@ -1,0 +1,47 @@
+{
+  "model": "B",
+  "mac_operations": 16684,
+  "ops_per_layer": [
+    4704,
+    9600,
+    1920,
+    420,
+    40
+  ],
+  "lookups_per_side": 416520,
+  "lookups_per_layer": [
+    117600,
+    240000,
+    48000,
+    10080,
+    840
+  ],
+  "lanes_without_lookup_per_layer": [
+    0,
+    0,
+    0,
+    420,
+    160
+  ],
+  "rom_reads_16bit": 833040,
+  "rom_reads_8bit_burst": 1666080,
+  "recorded_sram_hits": 205664,
+  "recorded_pcm_hits": 210856,
+  "tb_sram_reads": 205664,
+  "replica_mismatch_sram": 0,
+  "replica_mismatch_pcm": 0,
+  "gaps_min": {
+    "conv1": 41,
+    "conv2": 38,
+    "fc1": 14,
+    "fc2": 14,
+    "fc3": 14
+  },
+  "done_line": "# done_cycle 617573 mac_operations 16684",
+  "gates": {
+    "G2 every lookup agrees with the RTL hit bits": true,
+    "G3 recorded SRAM hits equal the testbench sram_reads_mac": true,
+    "G4 exactly one side hits on every lookup, none on non-lookups": true,
+    "G5 no operation recorded after done": true
+  }
+}

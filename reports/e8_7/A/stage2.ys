@@ -1,0 +1,8 @@
+# P2R-E8.7 stage 2, model A
+read_liberty -lib /home/kid/sky130/orfs/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_rtlil /home/kid/p2r_e8/e87/A/syn/s1.rtlil
+dfflibmap -liberty /home/kid/sky130/orfs/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib -dont_use sky130_fd_sc_hd__lpflow_* -dont_use sky130_fd_sc_hd__probe*
+abc -liberty /home/kid/sky130/orfs/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib -dont_use sky130_fd_sc_hd__lpflow_* -dont_use sky130_fd_sc_hd__probe*
+clean
+tee -o /home/kid/p2r_e8/e87/A/syn/stat_final.txt stat -liberty /home/kid/sky130/orfs/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+write_verilog -noattr /home/kid/p2r_e8/e87/A/syn/n0.v

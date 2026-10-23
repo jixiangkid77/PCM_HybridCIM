@@ -1,0 +1,42 @@
+==============================================================
+P2R-E8.4c-0b top-level short check of the SRAM macros (layouts copied to the Linux work folder), started 2026-10-16 14:26:18
+==============================================================
+macros : /mnt/d/Project/hybrid_memory/paper2/reports/12e_openram/macros
+magic  : /nix/store/1zcyq032zc3mzhmgs2j3q2rmfrjj5v6b-magic-vlsi-8.3.629/bin/magic
+rcfile : /home/kid/gf/pdk/sky130A/libs.tech/magic/sky130A.magicrc
+work   : /home/kid/p2r_e8/e8_4c0b   (magic time limit per macro: 7200 s)
+   89538ea739cddf7b1a1f08aabbe1a7a8  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_4c_sram_tools.py
+   5edefc0ebfbd6f2abb8dd18a5cda0149  scripts/e8_4c0b_sram_shortcheck.sh
+
+---- sky130_sram_5kbytes_1rw_8x5120_8 ----
+   layout: /mnt/d/Project/hybrid_memory/paper2/reports/12e_openram/macros/paper2_feature_buffer_8x5120/sky130_sram_5kbytes_1rw_8x5120_8.gds (39472462 bytes, md5 46bb5a5e450ab035b8d8f99d319579b4)
+   LEF size: 485.465 x 689.25 um
+   OpenRAM log sky130_sram_5kbytes_1rw_8x5120_8.log:
+      [2026-05-13 17:22:29.767098] Characterization is disabled (using analytical delay models) (analytical_delay=False to simulate).
+      [2026-05-13 17:22:29.767118] Words per row: None
+      first and last time stamps of the log: [2026-05-13 17:22:29.756252] [2026-05-13 18:39:11.586094]
+   also present: sky130_sram_5kbytes_1rw_8x5120_8.sp
+   also present: sky130_sram_5kbytes_1rw_8x5120_8.lvs.sp
+   also present: sky130_sram_5kbytes_1rw_8x5120_8.py
+   copied to /home/kid/p2r_e8/e8_4c0b/sky130_sram_5kbytes_1rw_8x5120_8/sky130_sram_5kbytes_1rw_8x5120_8.gds in 1 s, md5 46bb5a5e450ab035b8d8f99d319579b4 (the same)
+   magic exit 0, 1003 s
+   top-level check: {"ext": "/home/kid/p2r_e8/e8_4c0b/sky130_sram_5kbytes_1rw_8x5120_8/sky130_sram_5kbytes_1rw_8x5120_8.ext", "merge_lines": 88596, "control_signals_seen_at_top": ["p_en_bar", "s_en", "w_en", "wl_en"], "control_routes_found": ["p_en_bar", "s_en", "w_en", "wl_en"], "shorts": [{"select_lines": ["sel_7"], "control_signals": ["p_en_bar", "p_en_bar0"], "nodes": ["sky130_sram_5kbytes_1rw_8x5120_8_bank_0/p_en_bar0", "sky130_sram_5kbytes_1rw_8x5120_8_bank_0/sky130_sram_5kbytes_1rw_8x5120_8_port_data_0/sel_7", "sky130_sram_5kbytes_1rw_8x5120_8_control_logic_rw_0/p_en_bar"]}], "verdict": "SHORT"}
+
+---- sky130_sram_4kbytes_1rw_8x4096_8 ----
+   layout: /mnt/d/Project/hybrid_memory/paper2/reports/12e_openram/macros/paper2_sram_pool_8x4096/sky130_sram_4kbytes_1rw_8x4096_8.gds (32045710 bytes, md5 d861ae46769595458e05c652cb3aa2ba)
+   LEF size: 477.365 x 588.13 um
+   OpenRAM log sky130_sram_4kbytes_1rw_8x4096_8.log:
+      [2026-05-13 15:32:55.245202] Characterization is disabled (using analytical delay models) (analytical_delay=False to simulate).
+      [2026-05-13 15:32:55.245222] Words per row: None
+      first and last time stamps of the log: [2026-05-13 15:32:55.244838] [2026-05-13 16:22:46.452147]
+   also present: sky130_sram_4kbytes_1rw_8x4096_8.sp
+   also present: sky130_sram_4kbytes_1rw_8x4096_8.lvs.sp
+   also present: sky130_sram_4kbytes_1rw_8x4096_8.py
+   copied to /home/kid/p2r_e8/e8_4c0b/sky130_sram_4kbytes_1rw_8x4096_8/sky130_sram_4kbytes_1rw_8x4096_8.gds in 1 s, md5 d861ae46769595458e05c652cb3aa2ba (the same)
+   magic exit 0, 506 s
+   top-level check: {"ext": "/home/kid/p2r_e8/e8_4c0b/sky130_sram_4kbytes_1rw_8x4096_8/sky130_sram_4kbytes_1rw_8x4096_8.ext", "merge_lines": 71262, "control_signals_seen_at_top": ["p_en_bar", "s_en", "w_en", "wl_en"], "control_routes_found": ["p_en_bar", "s_en", "w_en", "wl_en"], "shorts": [{"select_lines": ["sel_7"], "control_signals": ["p_en_bar", "p_en_bar0"], "nodes": ["sky130_sram_4kbytes_1rw_8x4096_8_bank_0/p_en_bar0", "sky130_sram_4kbytes_1rw_8x4096_8_bank_0/sky130_sram_4kbytes_1rw_8x4096_8_port_data_0/sel_7", "sky130_sram_4kbytes_1rw_8x4096_8_control_logic_rw_0/p_en_bar"]}], "verdict": "SHORT"}
+
+P2R-E8.4c-0b summary
+   sky130_sram_4kbytes_1rw_8x4096_8: SHORT
+   sky130_sram_5kbytes_1rw_8x5120_8: SHORT
+finished 2026-10-16 14:51:30; send reports/e8_4c0b_sram_shortcheck.log

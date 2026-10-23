@@ -1,0 +1,152 @@
+==============================================================
+P2R-E8.4c-5K the 5 KB SRAM macro generated again with the corrected route: G0 and top-level check, started 2026-10-16 15:28:08
+==============================================================
+macro    : sky130_sram_5kbytes_1rw_8x5120_8; submitted folder /mnt/d/Project/hybrid_memory/paper2/reports/12e_openram/macros/paper2_feature_buffer_8x5120
+OpenRAM  : /home/kid/openram/OpenRAM  1.2.49  e16d9eb0 2026-05-04
+magic    : /nix/store/1zcyq032zc3mzhmgs2j3q2rmfrjj5v6b-magic-vlsi-8.3.629/bin/magic
+work     : /home/kid/p2r_e8/e8_4c5k (copies of the results: /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4c5k)
+machine  : 8 cores, 23 GiB memory, 21 GiB available, 853G free for the work folder
+
+########## a. tools and files ##########
+   89538ea739cddf7b1a1f08aabbe1a7a8  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_4c_sram_tools.py
+   50e73d7a1e5c1ec0ec0b19ddeecd4ca5  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_4c_openram_fix.py
+   9d93e7b38abf9d83807a0031a128a320  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_4c5k_sram_fixcheck.sh
+   OpenRAM route correction (E8_OPENRAM_FIX): on, scripts/e8_4c_openram_fix.py
+
+########## b. the macro ##########
+   submitted folder: /mnt/d/Project/hybrid_memory/paper2/reports/12e_openram/macros/paper2_feature_buffer_8x5120
+      datasheet.info                                         2306 bytes  md5 21f4fb34da567695dc9148d3c0f39708
+      delay_meas.sp                                         17627 bytes  md5 c70ec10f61959c51800a8fc7575ad205
+      delay_stim.sp                                         10614 bytes  md5 dedb2913039108ffff169b3fe8ef2562
+      functional_meas.sp                                    46026 bytes  md5 2cc8df41e7571cb932d74d2fdc30cbd0
+      functional_stim.sp                                   258784 bytes  md5 eba903cd59f1f0b6929a63e5d5ce7008
+      sky130_sram_5kbytes_1rw_8x5120_8.gds               39472462 bytes  md5 46bb5a5e450ab035b8d8f99d319579b4
+      sky130_sram_5kbytes_1rw_8x5120_8.html                 89692 bytes  md5 ee4099114f889f9c893bf9e7c9c4b70f
+      sky130_sram_5kbytes_1rw_8x5120_8.lef                   8778 bytes  md5 a624ba744d5ff13876a4cd09b91b8d5b
+      sky130_sram_5kbytes_1rw_8x5120_8.log                   5175 bytes  md5 9bd6e4fa80f0159eb8c75ff92d6c46f0
+      sky130_sram_5kbytes_1rw_8x5120_8.lvs.sp             7777980 bytes  md5 446cbf178b67bf1a7134f9b19326b010
+      sky130_sram_5kbytes_1rw_8x5120_8.py                     548 bytes  md5 842a0ddc22adcc31def4d0084db77a7d
+      sky130_sram_5kbytes_1rw_8x5120_8.sp                 7779614 bytes  md5 46c3469ec04cd4c37168975a5f50a0f7
+      sky130_sram_5kbytes_1rw_8x5120_8.v                     2016 bytes  md5 50948cdbe3c63a08060763fdff7de126
+      sky130_sram_5kbytes_1rw_8x5120_8_TT_1p8V_25C.lib      10005 bytes  md5 14db1228223a3c47bbca618ceb906cc5
+      sram.sp                                             7779614 bytes  md5 46c3469ec04cd4c37168975a5f50a0f7
+      trimmed.sp                                          7779613 bytes  md5 9a56267ec9003467557c2df6989daa62
+   generating the macro again (E8_OPENRAM_FIX=1: with the corrected route)
+   OpenRAM Python: /home/kid/openram-venv/bin/python3 3.11.15
+   configuration: the submitted sky130_sram_5kbytes_1rw_8x5120_8.py with output_path, netlist_only = False and check_lvsdrc = False
+   OpenRAM log of the submitted macro: OpenRAM v1.2.49; configuration not named
+   the configuration reads sky130_sram_common.py from its own folder; copies:
+      /mnt/d/Project/hybrid_memory/paper2/reports/12e_openram/macros/paper2_feature_buffer_8x5120/sky130_sram_common.py  (not there)
+      /home/kid/openram/OpenRAM/macros/sram_configs/sky130_sram_common.py  md5 ae83f95463817caf7f4fe67edb8a84de
+      used: /home/kid/openram/OpenRAM/macros/sram_configs/sky130_sram_common.py
+         | # Include with
+         | #   import os
+         | #   exec(open(os.path.join(os.path.dirname(__file__), 'sky130_sram_common.py')).read())
+         | 
+         | 
+         | tech_name = "sky130"
+         | nominal_corner_only = True
+         | 
+         | # Local wordlines have issues with met3 power routing for now
+         | #local_array_size = 16
+         | 
+         | route_supplies = "ring"
+         | #route_supplies = "left"
+         | check_lvsdrc = True
+         | uniquify = True
+         | #perimeter_pins = False
+         | netlist_only = True
+         | analytical_delay = True
+         | trim_netlist = True
+         | 
+         | output_name = "{tech_name}_sram_{human_byte_size}_{ports_human}_{word_size}x{num_words}_{write_size}".format(**locals())
+         | output_path = "macro/{output_name}".format(**locals())
+         | use_nix = False
+         | spice_name = "ngspice"
+         | use_specified_load_slew = [(6.89, 0.005)]
+      # Paper 2 macro: feature_buffer (single bank)
+      # RTL logical per bank: 8 bit x 4704 words = 37.632 Kbit
+      # Physical macro: 8 bit x 5120 words = 40.960 Kbit (8.8% padding)
+      # Total feature_buffer = 2 banks × this area (ping-pong)
+      
+      word_size = 8
+      num_words = 5120
+      human_byte_size = "{:.0f}kbytes".format((word_size * num_words)/1024/8)
+      write_size = 8
+      num_rw_ports = 1
+      num_r_ports = 0
+      num_w_ports = 0
+      ports_human = '1rw'
+      num_spare_cols = 1
+      num_spare_rows = 1
+      
+      import os
+      exec(open(os.path.join(os.path.dirname(__file__), 'sky130_sram_common.py')).read())
+      output_name = "sky130_sram_5kbytes_1rw_8x5120_8"
+      output_path = "/home/kid/p2r_e8/e8_4c5k/macro/"
+      netlist_only = False
+      check_lvsdrc = False
+   generation started at 2026-10-16 15:28:09 (KID's machine: the 4 KB macro 3,844 s in E8.4c, the 5 KB macro 77 min on 2026-05-13)
+   OpenRAM exit 0, 4767 s
+      ** Start: 10/16/2026 15:28:10
+      ** Submodules: 2537.4 seconds
+      ** Placement: 0.0 seconds
+      ** Routing: 2216.0 seconds
+      ** Verification: 0.0 seconds
+      ** SRAM creation: 4753.4 seconds
+      ** Spice writing: 0.4 seconds
+      ** DELAY: 1.9 seconds
+      ** GDS: 1.3 seconds
+      ** LEF: 0.0 seconds
+      ** LVS writing: 0.4 seconds
+      ** Characterization: 4.2 seconds
+      ** Config: 0.0 seconds
+      ** Datasheet: 0.0 seconds
+      ** Verilog: 0.0 seconds
+      ** End: 4762.1 seconds
+      E8FIX sram_1bank.route_control_logic replaced (OpenRAM ?)
+      E8FIX {"port": 0, "signal": "s_en", "pin_y_um": 89.935, "select_lines": 16, "band_um": [99.74, 109.34], "moved": false}
+      E8FIX {"port": 0, "signal": "w_en", "pin_y_um": 97.005, "select_lines": 16, "band_um": [99.74, 109.34], "moved": false}
+      E8FIX {"port": 0, "signal": "p_en_bar", "pin_y_um": 104.075, "select_lines": 16, "band_um": [99.74, 109.34], "moved": true, "new_y_um": 98.5, "jog_x_um": 1.64, "conflict_free_of_other_pins": true}
+      E8FIX {"port": 0, "signal": "wl_en", "pin_y_um": 118.215, "select_lines": 16, "band_um": [99.74, 109.34], "moved": false}
+   files used (generated with the corrected route):
+      datasheet.info                                   md5 77811e232b77950d7a2f64ac77acfd80
+      delay_meas.sp                                    md5 c70ec10f61959c51800a8fc7575ad205
+      delay_stim.sp                                    md5 c90f4a7789f4065cde6b06930458113e
+      functional_meas.sp                               md5 7a7bcba5499b278277d641fde7ffb3d3
+      functional_stim.sp                               md5 b88c2dbd517acc4632d449d0afc59cae
+      gen_finished                                     md5 2446f8f69ae0f17b88c4ac1dc9b0d190
+      gen_started                                      md5 ebbf393b891f317953deb53748b4a4ec
+      sky130_sram_5kbytes_1rw_8x5120_8.e8fix.json      md5 ca19bd661737b551f990cdd0d41a1f3b
+      sky130_sram_5kbytes_1rw_8x5120_8.gds             md5 4badb9b5e4856b5471e529af32089d66
+      sky130_sram_5kbytes_1rw_8x5120_8.html            md5 76a8ca5736e3c743f48c34e75bf3b9f5
+      sky130_sram_5kbytes_1rw_8x5120_8.lef             md5 f5b44205516edc672fb97d29ef72dda0
+      sky130_sram_5kbytes_1rw_8x5120_8.log             md5 3c4045ce69b639bc5ab4079617bf1d1d
+      sky130_sram_5kbytes_1rw_8x5120_8.lvs.sp          md5 c0462c5db093b972d70b1d8eb55eb61e
+      sky130_sram_5kbytes_1rw_8x5120_8.py              md5 6cd96b142808f4c40bbb381b5809ab9a
+      sky130_sram_5kbytes_1rw_8x5120_8.sp              md5 21d132a5cb5793b3b53e404b7bdb212b
+      sky130_sram_5kbytes_1rw_8x5120_8.v               md5 50948cdbe3c63a08060763fdff7de126
+      sky130_sram_5kbytes_1rw_8x5120_8_TT_1p8V_25C.lib md5 c21dffe9111b84c11c1ecfc300f2575b
+      sram.sp                                          md5 21d132a5cb5793b3b53e404b7bdb212b
+      trimmed.sp                                       md5 9ffd74d8a4f3120f20a5e1cacbdca750
+   LEF size: 485.465 689.25 um; the submitted macro (E8.1b): 485.465 689.25 um
+   netlists generated again, against the submitted ones:
+      sky130_sram_5kbytes_1rw_8x5120_8.sp: the same 94 subcircuits in another order (md5 generated 21d132a5cb5793b3b53e404b7bdb212b, submitted 46c3469ec04cd4c37168975a5f50a0f7)
+      sky130_sram_5kbytes_1rw_8x5120_8.lvs.sp: the same 94 subcircuits in another order (md5 generated c0462c5db093b972d70b1d8eb55eb61e, submitted 446cbf178b67bf1a7134f9b19326b010)
+   G0 (the macro of the manuscript): PASS (LEF size equal: PASS; netlists: SAME)
+   OpenRAM analytical values, liberty sky130_sram_5kbytes_1rw_8x5120_8_TT_1p8V_25C.lib: {"leakage": 0.042887, "leakage_unit": "1mW", "internal_power": [["!csb0 & !web0", "2.046091e+11"], ["csb0 & !web0", "2.046091e+11"], ["!csb0 & web0", "2.046091e+11"], ["csb0 & web0", "2.046091e+11"]]}
+
+########## b2. top-level check (magic, top cell only): a column-select line joined to a control signal ##########
+   magic exit 0, 759 s
+   top-level check: {"ext": "/home/kid/p2r_e8/e8_4c5k/topcheck/sky130_sram_5kbytes_1rw_8x5120_8.ext", "merge_lines": 88594, "control_signals_seen_at_top": ["p_en_bar", "s_en", "w_en", "wl_en"], "control_routes_found": ["p_en_bar", "s_en", "w_en", "wl_en"], "shorts": [], "verdict": "NO SHORT OF THIS KIND"}
+   G1t (no column-select line joined to a control signal at the top level): NO SHORT OF THIS KIND
+
+########## results ##########
+
+P2R-E8.4c-5K summary
+   G0 the macro of the manuscript: PASS (LEF size 485.465 689.25 um against 485.465 689.25 um: PASS; netlists: SAME)
+   G1t top-level check of the corrected macro: NO SHORT OF THIS KIND
+   route correction (e8fix.json): {"routes": [{"port": 0, "signal": "s_en", "pin_y_um": 89.935, "select_lines": 16, "band_um": [99.74, 109.34], "moved": false}, {"port": 0, "signal": "w_en", "pin_y_um": 97.005, "select_lines": 16, "band_um": [99.74, 109.34], "moved": false}, {"port": 0, "signal": "p_en_bar", "pin_y_um": 104.075, "select_lines": 16, "band_um": [99.74, 109.34], "moved": true, "new_y_um": 98.5, "jog_x_um": 1.64, "conflict_free_of_other_pins": true}, {"port": 0, "signal": "wl_en", "pin_y_um": 118.215, "select_lines": 16, "band_um": [99.74, 109.34], "moved": false}], "openram_commit_expected": "e16d9eb"}
+
+copied the logs and results to /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4c5k (128K); work folder /home/kid/p2r_e8/e8_4c5k (116M)
+finished 2026-10-16 17:00:16, 92 min; send reports/e8_4c5k_sram_fixcheck.log

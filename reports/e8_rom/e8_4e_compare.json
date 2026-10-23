@@ -1,0 +1,506 @@
+{
+ "ref": "reports/e8_rom/e8_4b_rel5/model.json",
+ "split": "reports/e8_rom/e8_4e_split.json",
+ "conditions": {
+  "ttm40": {
+   "valid": true,
+   "bad_reads": 0,
+   "sides": {
+    "pcm": {
+     "n_reads": 67,
+     "missing_reads": 0,
+     "r_read": 0.6265511792157743,
+     "n_static": 36,
+     "r_static": 0.3176773203665682,
+     "n_park_reads": 9,
+     "r_park": 0.7832443765501147,
+     "n_leak_macros": 4,
+     "leak_ref_uW": 1.1604556389939062,
+     "leak_uW": 0.8071267396877518,
+     "r_leak": 0.6955257164224872,
+     "r_conv2": 0.6857881876913919,
+     "r_fc1": 0.5475149991379562
+    },
+    "sram": {
+     "n_reads": 63,
+     "missing_reads": 0,
+     "r_read": 0.5960244561634379,
+     "n_static": 22,
+     "r_static": 0.3403131818329098,
+     "n_park_reads": 5,
+     "r_park": 0.5861109816762082,
+     "n_leak_macros": 4,
+     "leak_ref_uW": 1.0848839115982394,
+     "leak_uW": 0.7498159492608957,
+     "r_leak": 0.6911485563061533,
+     "r_conv2": 0.6345381400459339,
+     "r_fc1": 0.7341740500343007
+    }
+   },
+   "margins": {
+    "lookups of the trains": {
+     "reads": 52,
+     "wrong": 0,
+     "wrong_selection": 0,
+     "min_margin_one_V": 0.8239595,
+     "min_margin_zero_V": 0.8349893999905347,
+     "t_access_max_ns": 14.724050000000254
+    },
+    "parking reads (50 ns after a read)": {
+     "reads": 30,
+     "wrong": 0,
+     "wrong_selection": 0,
+     "min_margin_one_V": 0.31424541000000006,
+     "min_margin_zero_V": 0.8349885434219013,
+     "t_access_max_ns": 11.170429999999879
+    },
+    "part-A and drift reads (not parking)": {
+     "reads": 48,
+     "wrong": 0,
+     "wrong_selection": 0,
+     "min_margin_one_V": 0.69415085,
+     "min_margin_zero_V": 0.8349838219048021,
+     "t_access_max_ns": 15.168231999999989
+    }
+   },
+   "models": {
+    "A": {
+     "D_uJ": 5.4058473260343005,
+     "corrected_uJ": 5.273691744139945,
+     "D_trains_uJ": 5.579306405412082,
+     "parts_uJ": {
+      "pcm_read": 2.5345310733077575,
+      "pcm_park": 0.02920106173211399,
+      "pcm_static_above": 0.4117580704247095,
+      "pcm_parked_leak": 0.48679437952824656,
+      "pcm_parked_zero": 0.7212895445655737,
+      "sram_read": 0.7325589325820865,
+      "sram_park": 0.018471236067623648,
+      "sram_static_above": 0.026366963264591335,
+      "sram_parked_leak": 0.44487606456159773,
+      "sram_parked_zero": 0.0
+     },
+     "notes": []
+    },
+    "B": {
+     "D_uJ": 4.859348532032238,
+     "corrected_uJ": 4.723290151181716,
+     "D_trains_uJ": 5.0462686373177785,
+     "parts_uJ": {
+      "pcm_read": 2.534853391534814,
+      "pcm_park": 0.04809769834556667,
+      "pcm_static_above": 0.4049829315354867,
+      "pcm_parked_leak": 0.49173977080686626,
+      "pcm_parked_zero": 0.1505917994555955,
+      "sram_read": 0.7358895801010092,
+      "sram_park": 0.011784020503364299,
+      "sram_static_above": 0.03651438581427748,
+      "sram_parked_leak": 0.44489495393525746,
+      "sram_parked_zero": 0.0
+     },
+     "notes": []
+    }
+   }
+  },
+  "tt85": {
+   "valid": true,
+   "bad_reads": 0,
+   "sides": {
+    "pcm": {
+     "n_reads": 67,
+     "missing_reads": 0,
+     "r_read": 1.4475377747124702,
+     "n_static": 60,
+     "r_static": 1.6586836734175079,
+     "n_park_reads": 9,
+     "r_park": 1.2377597410783325,
+     "n_leak_macros": 4,
+     "leak_ref_uW": 1.1604556389939062,
+     "leak_uW": 8.409395673971442,
+     "r_leak": 7.2466326082591435,
+     "r_conv2": 1.3716236265453632,
+     "r_fc1": 1.38406661295557
+    },
+    "sram": {
+     "n_reads": 63,
+     "missing_reads": 0,
+     "r_read": 1.3905901019576576,
+     "n_static": 50,
+     "r_static": 1.4662221297775562,
+     "n_park_reads": 5,
+     "r_park": 1.3403333410842746,
+     "n_leak_macros": 4,
+     "leak_ref_uW": 1.0848839115982394,
+     "leak_uW": 8.303046795050351,
+     "r_leak": 7.653396558179567,
+     "r_conv2": 1.3855944522314345,
+     "r_fc1": 1.2310517046276404
+    }
+   },
+   "margins": {
+    "lookups of the trains": {
+     "reads": 52,
+     "wrong": 0,
+     "wrong_selection": 0,
+     "min_margin_one_V": 0.7468124299999999,
+     "min_margin_zero_V": 0.9148165162167167,
+     "t_access_max_ns": 16.02302000000043
+    },
+    "parking reads (50 ns after a read)": {
+     "reads": 30,
+     "wrong": 0,
+     "wrong_selection": 0,
+     "min_margin_one_V": 0.25556950999999994,
+     "min_margin_zero_V": 0.9148560621908285,
+     "t_access_max_ns": 11.216509999999957
+    },
+    "part-A and drift reads (not parking)": {
+     "reads": 48,
+     "wrong": 0,
+     "wrong_selection": 0,
+     "min_margin_one_V": 0.6304528999999999,
+     "min_margin_zero_V": 0.9148185819297767,
+     "t_access_max_ns": 16.719976999999975
+    }
+   },
+   "models": {
+    "A": {
+     "D_uJ": 23.68087279609653,
+     "corrected_uJ": 23.101951614016055,
+     "D_trains_uJ": 22.88730599533487,
+     "parts_uJ": {
+      "pcm_read": 5.855594229967978,
+      "pcm_park": 0.04614638762930359,
+      "pcm_static_above": 2.1499060368026113,
+      "pcm_parked_leak": 5.0718757637767435,
+      "pcm_parked_zero": 3.7660579294648735,
+      "sram_read": 1.7091399358115906,
+      "sram_park": 0.04224048742726252,
+      "sram_static_above": 0.11360072749858176,
+      "sram_parked_leak": 4.926311297717588,
+      "sram_parked_zero": 0.0
+     },
+     "notes": []
+    },
+    "B": {
+     "D_uJ": 20.784262328009497,
+     "corrected_uJ": 20.202317431305655,
+     "D_trains_uJ": 19.98413172049349,
+     "parts_uJ": {
+      "pcm_read": 5.856338890299997,
+      "pcm_park": 0.07600870996724378,
+      "pcm_static_above": 2.114531109037159,
+      "pcm_parked_leak": 5.123401441194654,
+      "pcm_parked_zero": 0.7862826304985626,
+      "sram_read": 1.7169106999556274,
+      "sram_park": 0.026947994605918176,
+      "sram_static_above": 0.1573203842642099,
+      "sram_parked_leak": 4.926520468186127,
+      "sram_parked_zero": 0.0
+     },
+     "notes": []
+    }
+   }
+  },
+  "ff25": {
+   "valid": true,
+   "bad_reads": 0,
+   "sides": {
+    "pcm": {
+     "n_reads": 67,
+     "missing_reads": 0,
+     "r_read": 1.5783254807674332,
+     "n_static": 36,
+     "r_static": 2.040657096999066,
+     "n_park_reads": 9,
+     "r_park": 1.3607858419803558,
+     "n_leak_macros": 4,
+     "leak_ref_uW": 1.1604556389939062,
+     "leak_uW": 5.303440981874022,
+     "r_leak": 4.570136766685892,
+     "r_conv2": 1.4846722797134673,
+     "r_fc1": 1.6158399290105199
+    },
+    "sram": {
+     "n_reads": 63,
+     "missing_reads": 0,
+     "r_read": 1.573754843474268,
+     "n_static": 22,
+     "r_static": 1.876163555267086,
+     "n_park_reads": 5,
+     "r_park": 1.592472337363134,
+     "n_leak_macros": 4,
+     "leak_ref_uW": 1.0848839115982394,
+     "leak_uW": 5.214357508249805,
+     "r_leak": 4.806373707365674,
+     "r_conv2": 1.505577208508265,
+     "r_fc1": 1.3451848866363056
+    }
+   },
+   "margins": {
+    "lookups of the trains": {
+     "reads": 52,
+     "wrong": 0,
+     "wrong_selection": 0,
+     "min_margin_one_V": 0.7700408500000001,
+     "min_margin_zero_V": 0.8759158496370424,
+     "t_access_max_ns": 13.67139000000016
+    },
+    "parking reads (50 ns after a read)": {
+     "reads": 30,
+     "wrong": 0,
+     "wrong_selection": 0,
+     "min_margin_one_V": 0.26007616,
+     "min_margin_zero_V": 0.8759245797747327,
+     "t_access_max_ns": 10.856956000000002
+    },
+    "part-A and drift reads (not parking)": {
+     "reads": 48,
+     "wrong": 0,
+     "wrong_selection": 0,
+     "min_margin_one_V": 0.63611623,
+     "min_margin_zero_V": 0.875910358884963,
+     "t_access_max_ns": 14.040527999999968
+    }
+   },
+   "models": {
+    "A": {
+     "D_uJ": 22.135898938722136,
+     "corrected_uJ": 21.5947473988122,
+     "D_trains_uJ": 21.431726121433755,
+     "parts_uJ": {
+      "pcm_read": 6.384657961709493,
+      "pcm_park": 0.05073306948066241,
+      "pcm_static_above": 2.645001625200223,
+      "pcm_parked_leak": 3.198611983955333,
+      "pcm_parked_zero": 4.633332421749623,
+      "sram_read": 1.9342631940009964,
+      "sram_park": 0.050186625731651745,
+      "sram_static_above": 0.14536238435918405,
+      "sram_parked_leak": 3.0937496725349676,
+      "sram_parked_zero": 0.0
+     },
+     "notes": []
+    },
+    "B": {
+     "D_uJ": 18.53923562763023,
+     "corrected_uJ": 18.020149917874242,
+     "D_trains_uJ": 17.8197742839039,
+     "parts_uJ": {
+      "pcm_read": 6.385469903475073,
+      "pcm_park": 0.08356353253217559,
+      "pcm_static_above": 2.601480308533697,
+      "pcm_parked_leak": 3.2311069930893144,
+      "pcm_parked_zero": 0.96735336332578,
+      "sram_read": 1.943057502037533,
+      "sram_park": 0.03201736063852596,
+      "sram_static_above": 0.2013056312974238,
+      "sram_parked_leak": 3.0938810327007067,
+      "sram_parked_zero": 0.0
+     },
+     "notes": []
+    }
+   }
+  },
+  "ss25": {
+   "valid": true,
+   "bad_reads": 0,
+   "sides": {
+    "pcm": {
+     "n_reads": 67,
+     "missing_reads": 0,
+     "r_read": 0.6974519675508729,
+     "n_static": 36,
+     "r_static": 0.4315764040656653,
+     "n_park_reads": 9,
+     "r_park": 0.8026654327077879,
+     "n_leak_macros": 4,
+     "leak_ref_uW": 1.1604556389939062,
+     "leak_uW": 1.110187013868078,
+     "r_leak": 0.956681993316513,
+     "r_conv2": 0.7366339770298432,
+     "r_fc1": 0.6355898965251896
+    },
+    "sram": {
+     "n_reads": 63,
+     "missing_reads": 0,
+     "r_read": 0.6548777590331388,
+     "n_static": 50,
+     "r_static": 0.44209910101765965,
+     "n_park_reads": 5,
+     "r_park": 0.6481062838757843,
+     "n_leak_macros": 4,
+     "leak_ref_uW": 1.0848839115982394,
+     "leak_uW": 1.017273217197561,
+     "r_leak": 0.9376793280111647,
+     "r_conv2": 0.7007327190132285,
+     "r_fc1": 0.7510694677421864
+    }
+   },
+   "margins": {
+    "lookups of the trains": {
+     "reads": 52,
+     "wrong": 0,
+     "wrong_selection": 0,
+     "min_margin_one_V": 0.7920203600000001,
+     "min_margin_zero_V": 0.8740372854630666,
+     "t_access_max_ns": 19.338740000000314
+    },
+    "parking reads (50 ns after a read)": {
+     "reads": 30,
+     "wrong": 0,
+     "wrong_selection": 0,
+     "min_margin_one_V": 0.32919620000000005,
+     "min_margin_zero_V": 0.8745702373020179,
+     "t_access_max_ns": 11.816699999999631
+    },
+    "part-A and drift reads (not parking)": {
+     "reads": 48,
+     "wrong": 0,
+     "wrong_selection": 0,
+     "min_margin_one_V": 0.6803418200000001,
+     "min_margin_zero_V": 0.874039285282124,
+     "t_access_max_ns": 20.497648999999974
+    }
+   },
+   "models": {
+    "A": {
+     "D_uJ": 6.523262437754268,
+     "corrected_uJ": 6.363789649989943,
+     "D_trains_uJ": 6.680799708038108,
+     "parts_uJ": {
+      "pcm_read": 2.8213396487576454,
+      "pcm_park": 0.029925121140316816,
+      "pcm_static_above": 0.5593885870538665,
+      "pcm_parked_leak": 0.6695761297479772,
+      "pcm_parked_zero": 0.9798985573618288,
+      "sram_read": 0.8048940730001098,
+      "sram_park": 0.02042501256697724,
+      "sram_static_above": 0.03425318611832338,
+      "sram_parked_leak": 0.6035621220072229,
+      "sram_parked_zero": 0.0
+     },
+     "notes": []
+    },
+    "B": {
+     "D_uJ": 5.774743479792253,
+     "corrected_uJ": 5.613054676754482,
+     "D_trains_uJ": 5.940889997428963,
+     "parts_uJ": {
+      "pcm_read": 2.8216984406474306,
+      "pcm_park": 0.04929031220733284,
+      "pcm_static_above": 0.5501843099733301,
+      "pcm_parked_leak": 0.6763784185411152,
+      "pcm_parked_zero": 0.20458453633337606,
+      "sram_read": 0.8085535989822508,
+      "sram_park": 0.013030463472480443,
+      "sram_static_above": 0.047435650466898724,
+      "sram_parked_leak": 0.6035877491680384,
+      "sram_parked_zero": 0.0
+     },
+     "notes": []
+    }
+   }
+  },
+  "ff85": {
+   "valid": true,
+   "bad_reads": 0,
+   "sides": {
+    "pcm": {
+     "n_reads": 67,
+     "missing_reads": 0,
+     "r_read": 2.2318379655481153,
+     "n_static": 67,
+     "r_static": 2.882799941487281,
+     "n_park_reads": 9,
+     "r_park": 1.8672449026380151,
+     "n_leak_macros": 4,
+     "leak_ref_uW": 1.1604556389939062,
+     "leak_uW": 60.585702450978516,
+     "r_leak": 52.20854672523735,
+     "r_conv2": 2.2232192981064745,
+     "r_fc1": 2.1201360663540694
+    },
+    "sram": {
+     "n_reads": 63,
+     "missing_reads": 0,
+     "r_read": 2.0968973043583614,
+     "n_static": 63,
+     "r_static": 2.3450842861642847,
+     "n_park_reads": 5,
+     "r_park": 2.314806103981536,
+     "n_leak_macros": 4,
+     "leak_ref_uW": 1.0848839115982394,
+     "leak_uW": 60.33586108161823,
+     "r_leak": 55.615039025449356,
+     "r_conv2": 2.2463620306785264,
+     "r_fc1": 1.8915671898071589
+    }
+   },
+   "margins": {
+    "lookups of the trains": {
+     "reads": 52,
+     "wrong": 0,
+     "wrong_selection": 0,
+     "min_margin_one_V": 0.7471932099999999,
+     "min_margin_zero_V": 0.9130350982233386,
+     "t_access_max_ns": 14.17001000000091
+    },
+    "parking reads (50 ns after a read)": {
+     "reads": 30,
+     "wrong": 0,
+     "wrong_selection": 0,
+     "min_margin_one_V": 0.2560743099999999,
+     "min_margin_zero_V": 0.9130628631357973,
+     "t_access_max_ns": 10.887875999999933
+    },
+    "part-A and drift reads (not parking)": {
+     "reads": 48,
+     "wrong": 0,
+     "wrong_selection": 0,
+     "min_margin_one_V": 0.6229153499999999,
+     "min_margin_zero_V": 0.9130299242794995,
+     "t_access_max_ns": 14.604078999999984
+    }
+   },
+   "models": {
+    "A": {
+     "D_uJ": 94.55027881021198,
+     "corrected_uJ": 92.23882856738693,
+     "D_trains_uJ": 92.91018158532667,
+     "parts_uJ": {
+      "pcm_read": 9.02825317693896,
+      "pcm_park": 0.06961496986556293,
+      "pcm_static_above": 3.7365466944809564,
+      "pcm_parked_leak": 36.54045639017826,
+      "pcm_parked_zero": 6.545426203134924,
+      "sram_read": 2.5772446669433244,
+      "sram_park": 0.07295091089257229,
+      "sram_static_above": 0.18169367079064047,
+      "sram_parked_leak": 35.79809212698678,
+      "sram_parked_zero": 0.0
+     },
+     "notes": []
+    },
+    "B": {
+     "D_uJ": 89.78410163395067,
+     "corrected_uJ": 87.27020920291626,
+     "D_trains_uJ": 88.14258321318943,
+     "parts_uJ": {
+      "pcm_read": 9.029401306700734,
+      "pcm_park": 0.11466431774455757,
+      "pcm_static_above": 3.6750649054414293,
+      "pcm_parked_leak": 36.91167442791299,
+      "pcm_parked_zero": 1.366562870015765,
+      "sram_read": 2.588962350222888,
+      "sram_park": 0.04654020047981389,
+      "sram_static_above": 0.25161914660727214,
+      "sram_parked_leak": 35.79961210882522,
+      "sram_parked_zero": 0.0
+     },
+     "notes": []
+    }
+   }
+  }
+ }
+}

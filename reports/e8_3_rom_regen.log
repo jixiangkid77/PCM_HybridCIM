@@ -1,0 +1,147 @@
+==============================================================
+P2R-E8.3 ROM regeneration, started 2026-10-08 19:52:36
+==============================================================
+OpenRAM  : 1.2.49  e16d9eb0 2026-05-04
+nix      : /nix/var/nix/profiles/default/bin/nix
+venv     : /home/kid/openram/OpenRAM/compiler/.venv
+E8_INSTALL=1
+
+---- 1. build the binary files and the configurations ----
+P2R-E8.3 build
+macro                              org   words w/row  cols  rows not stored zero frac
+e8rom_A_sram_l00_16x2496           16     2496    13   208   192          0    0.0456
+e8rom_A_sram_l12_16x2496           16     2496    13   208   192          0    0.0340
+e8rom_A_sram_l24_16x2496           16     2496    13   208   192          0    0.0355
+e8rom_A_pcm_l00_16x2496            16     2496    13   208   192          0    0.5031
+e8rom_A_pcm_l12_16x2496            16     2496    13   208   192          0    0.5084
+e8rom_A_pcm_l24_16x2496            16     2496    13   208   192          0    0.4890
+e8rom_B_sram_l00_16x2496           16     2496    13   208   192          0    0.0315
+e8rom_B_sram_l12_16x2496           16     2496    13   208   192          0    0.0367
+e8rom_B_sram_l24_16x2496           16     2496    13   208   192          0    0.0259
+e8rom_B_pcm_l00_16x2496            16     2496    13   208   192          0    0.5142
+e8rom_B_pcm_l12_16x2496            16     2496    13   208   192          0    0.5084
+e8rom_B_pcm_l24_16x2496            16     2496    13   208   192          0    0.4972
+e8rom_A_sram_l00_8x5120            8      5120    36   288   142          8    0.0446
+
+zero fraction of the 16-bit array, all 25 lanes (sampled lanes in brackets)
+  Model A sram: mean 0.0349  min 0.0270  max 0.0456   [0.0456, 0.0340, 0.0355]
+  Model A pcm : mean 0.5056  min 0.4890  max 0.5154   [0.5031, 0.5084, 0.4890]
+  Model B sram: mean 0.0352  min 0.0253  max 0.0467   [0.0315, 0.0367, 0.0259]
+  Model B pcm : mean 0.5064  min 0.4879  max 0.5161   [0.5142, 0.5084, 0.4972]
+
+BUILD OK: every 16-bit macro stores all 2,496 words (the 8-bit macro drops 8 padding words, as the submitted one does)
+
+---- 2. choose how to run the memory compiler ----
+   needs numpy, scipy, scikit-learn (sklearn.linear_model, sklearn.neural_network)
+
+   2a. OpenRAM's virtual environment, as found
+      pyvenv.cfg: home = /nix/store/0r6k8xa2kgqyp3r4v2w7yrb80ma2iawm-python3-3.13.12/bin
+      pyvenv.cfg: include-system-site-packages = false
+      pyvenv.cfg: version = 3.13.12
+      pyvenv.cfg: executable = /nix/store/0r6k8xa2kgqyp3r4v2w7yrb80ma2iawm-python3-3.13.12/bin/python3.13
+      pyvenv.cfg: command = /nix/store/0r6k8xa2kgqyp3r4v2w7yrb80ma2iawm-python3-3.13.12/bin/python3 -m venv /home/kid/openram/OpenRAM/compiler/.venv
+      pyvenv.cfg written: 2026-05-13 14:54:38
+      python3.13/site-packages: pip 
+      system python3 (/usr/bin/python3): numpy from /home/kid/.local/lib/python3.12/site-packages/numpy/__init__.py
+
+   2b. interpreters tried
+      nix develop (offline)      /home/kid/openram/OpenRAM/compiler/.venv/bin/python3 python=3.13.12 numpy=MISSING(ModuleNotFoundError: No module named 'numpy') scipy=MISSING(ModuleNotFoundError: No module named 'scipy') sklearn=MISSING(ModuleNotFoundError: No module named 'sklearn') INCOMPLETE
+      venv, directly             /home/kid/openram/OpenRAM/compiler/.venv/bin/python3 python=3.13.12 numpy=MISSING(ModuleNotFoundError: No module named 'numpy') scipy=MISSING(ModuleNotFoundError: No module named 'scipy') sklearn=MISSING(ModuleNotFoundError: No module named 'sklearn') INCOMPLETE
+      other python3 found under $HOME and in /nix/store: 1
+      ~/openram-venv/bin/python3 /home/kid/openram-venv/bin/python3 python=3.11.15 numpy=2.4.4 scipy=1.17.1 sklearn=1.8.0 OK
+
+   runner: py /home/kid/openram-venv/bin/python3
+
+---- 3. the 8-bit macro first, as a single test of the whole path ----
+   e8rom_A_sram_l00_8x5120: exit 0, 259 s
+   [openram.rom_config/compute_sizes]: Read rom data file: length 5120.0 bytes, 5120 words, set number of cols to 288, rows to 142, with 36 words per row
+
+---- 4. the twelve 16-bit macros, 3 at a time, started 2026-10-08 19:57:05 ----
+   e8rom_A_pcm_l00_16x2496: exit 0, 392 s
+   e8rom_A_pcm_l12_16x2496: exit 0, 394 s
+   e8rom_A_pcm_l24_16x2496: exit 0, 398 s
+   e8rom_A_sram_l00_16x2496: exit 0, 364 s
+   e8rom_A_sram_l24_16x2496: exit 0, 362 s
+   e8rom_A_sram_l12_16x2496: exit 0, 371 s
+   e8rom_B_pcm_l00_16x2496: exit 0, 359 s
+   e8rom_B_pcm_l12_16x2496: exit 0, 362 s
+   e8rom_B_pcm_l24_16x2496: exit 0, 358 s
+   e8rom_B_sram_l00_16x2496: exit 0, 380 s
+   e8rom_B_sram_l12_16x2496: exit 0, 380 s
+   e8rom_B_sram_l24_16x2496: exit 0, 381 s
+   organisation reported by the compiler:
+   e8rom_A_pcm_l00_16x2496            length 4992.0 bytes, 2496 words, set number of cols to 208, rows to 192, with 13 words per row
+   e8rom_A_pcm_l12_16x2496            length 4992.0 bytes, 2496 words, set number of cols to 208, rows to 192, with 13 words per row
+   e8rom_A_pcm_l24_16x2496            length 4992.0 bytes, 2496 words, set number of cols to 208, rows to 192, with 13 words per row
+   e8rom_A_sram_l00_16x2496           length 4992.0 bytes, 2496 words, set number of cols to 208, rows to 192, with 13 words per row
+   e8rom_A_sram_l12_16x2496           length 4992.0 bytes, 2496 words, set number of cols to 208, rows to 192, with 13 words per row
+   e8rom_A_sram_l24_16x2496           length 4992.0 bytes, 2496 words, set number of cols to 208, rows to 192, with 13 words per row
+   e8rom_B_pcm_l00_16x2496            length 4992.0 bytes, 2496 words, set number of cols to 208, rows to 192, with 13 words per row
+   e8rom_B_pcm_l12_16x2496            length 4992.0 bytes, 2496 words, set number of cols to 208, rows to 192, with 13 words per row
+   e8rom_B_pcm_l24_16x2496            length 4992.0 bytes, 2496 words, set number of cols to 208, rows to 192, with 13 words per row
+   e8rom_B_sram_l00_16x2496           length 4992.0 bytes, 2496 words, set number of cols to 208, rows to 192, with 13 words per row
+   e8rom_B_sram_l12_16x2496           length 4992.0 bytes, 2496 words, set number of cols to 208, rows to 192, with 13 words per row
+   e8rom_B_sram_l24_16x2496           length 4992.0 bytes, 2496 words, set number of cols to 208, rows to 192, with 13 words per row
+
+---- 5. gate G6: every output present ----
+   PASS  all 13 macros have sp, gds, lef and v
+
+---- 6. gates G7 and G8: stored bits and footprint ----
+P2R-E8.3 check
+macro                                    LEF W x H (um)  area mm2  x50 mm2   cells bit errors dummy row
+e8rom_A_sram_l00_16x2496                264.13 x 259.62   0.06857    3.429   40144          0        ok
+e8rom_A_sram_l12_16x2496                264.13 x 259.62   0.06857    3.429   40144          0        ok
+e8rom_A_sram_l24_16x2496                264.13 x 259.62   0.06857    3.429   40144          0        ok
+e8rom_A_pcm_l00_16x2496                 264.13 x 259.62   0.06857    3.429   40144          0        ok
+e8rom_A_pcm_l12_16x2496                 264.13 x 259.62   0.06857    3.429   40144          0        ok
+e8rom_A_pcm_l24_16x2496                 264.13 x 259.62   0.06857    3.429   40144          0        ok
+e8rom_B_sram_l00_16x2496                264.13 x 259.62   0.06857    3.429   40144          0        ok
+e8rom_B_sram_l12_16x2496                264.13 x 259.62   0.06857    3.429   40144          0        ok
+e8rom_B_sram_l24_16x2496                264.13 x 259.62   0.06857    3.429   40144          0        ok
+e8rom_B_pcm_l00_16x2496                 264.13 x 259.62   0.06857    3.429   40144          0        ok
+e8rom_B_pcm_l12_16x2496                 264.13 x 259.62   0.06857    3.429   40144          0        ok
+e8rom_B_pcm_l24_16x2496                 264.13 x 259.62   0.06857    3.429   40144          0        ok
+e8rom_A_sram_l00_8x5120                347.73 x 229.125   0.07967    3.984   41184          0        ok
+
+reference, submitted macro paper2_addr_decoder_8x5120 (all-zero data): LEF 347.73 x 229.125 um = 0.07967 mm2, x50 = 3.984 mm2
+the ROM generator's LEF leaves out the supply ring it draws; the drawn extent of the submitted macro is 362.690 x 244.085 um (E8.1) and is measured for every macro by e8_1b_macro_footprints.sh
+RESULT: ALL MACROS STORE THE MAP EXACTLY
+
+   8-bit macro LEF:    SIZE 347.73 BY 229.125 ;
+   G8 expects SIZE 347.73 BY 229.125 (the submitted, all-zero macro)
+
+---- 7. gate G8, second half: drawn layout extent of every generated macro ----
+==============================================================
+P2R-E8.1b macro footprints, started 2026-10-08 20:22:11
+==============================================================
+magic   : /nix/store/1zcyq032zc3mzhmgs2j3q2rmfrjj5v6b-magic-vlsi-8.3.629/bin/magic
+magicrc : /home/kid/gf/pdk/sky130A/libs.tech/magic/sky130A.magicrc
+
+macro                                    LEF W x H (um)       layout W x H (um)    layout extent (llx,lly)-(urx,ury)           LEF um2 layout um2   ratio
+-- /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/macros
+e8rom_A_pcm_l00_16x2496                  264.13 x 259.62      279.090 x 274.580    (-7.480,-7.480)-(271.610,267.100)           68573.4    76632.5  1.1175
+e8rom_A_pcm_l12_16x2496                  264.13 x 259.62      279.090 x 274.580    (-7.480,-7.480)-(271.610,267.100)           68573.4    76632.5  1.1175
+e8rom_A_pcm_l24_16x2496                  264.13 x 259.62      279.090 x 274.580    (-7.480,-7.480)-(271.610,267.100)           68573.4    76632.5  1.1175
+e8rom_A_sram_l00_16x2496                 264.13 x 259.62      279.090 x 274.580    (-7.480,-7.480)-(271.610,267.100)           68573.4    76632.5  1.1175
+e8rom_A_sram_l00_8x5120                  347.73 x 229.125     362.690 x 244.085    (-7.480,-7.480)-(355.210,236.605)           79673.6    88527.2  1.1111
+e8rom_A_sram_l12_16x2496                 264.13 x 259.62      279.090 x 274.580    (-7.480,-7.480)-(271.610,267.100)           68573.4    76632.5  1.1175
+e8rom_A_sram_l24_16x2496                 264.13 x 259.62      279.090 x 274.580    (-7.480,-7.480)-(271.610,267.100)           68573.4    76632.5  1.1175
+e8rom_B_pcm_l00_16x2496                  264.13 x 259.62      279.090 x 274.580    (-7.480,-7.480)-(271.610,267.100)           68573.4    76632.5  1.1175
+e8rom_B_pcm_l12_16x2496                  264.13 x 259.62      279.090 x 274.580    (-7.480,-7.480)-(271.610,267.100)           68573.4    76632.5  1.1175
+e8rom_B_pcm_l24_16x2496                  264.13 x 259.62      279.090 x 274.580    (-7.480,-7.480)-(271.610,267.100)           68573.4    76632.5  1.1175
+e8rom_B_sram_l00_16x2496                 264.13 x 259.62      279.090 x 274.580    (-7.480,-7.480)-(271.610,267.100)           68573.4    76632.5  1.1175
+e8rom_B_sram_l12_16x2496                 264.13 x 259.62      279.090 x 274.580    (-7.480,-7.480)-(271.610,267.100)           68573.4    76632.5  1.1175
+e8rom_B_sram_l24_16x2496                 264.13 x 259.62      279.090 x 274.580    (-7.480,-7.480)-(271.610,267.100)           68573.4    76632.5  1.1175
+
+ratio = layout area / LEF area. A ratio of 1.0000 means the LEF encloses the
+whole drawn layout; above 1 means the layout extends past the declared footprint.
+magic logs: /home/kid/p2r_e8/footprints
+
+==============================================================
+Finished 2026-10-08 20:22:21. Nothing in the project was changed.
+==============================================================
+   G8 expects the 8-bit macro at 362.690 x 244.085 um, as the submitted one
+
+==============================================================
+Finished 2026-10-08 20:22:21. runner py /home/kid/openram-venv/bin/python3. check exit 0.
+==============================================================

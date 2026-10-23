@@ -1,0 +1,67 @@
+==============================================================
+P2R-E8.1 tool smoke test, started 2026-10-07 22:40:51
+==============================================================
+
+########## 1. tools used by this experiment (full paths are the record) ##########
+   ngspice  /nix/store/4ssrcgdvyb8car0yxay8cwfa5wc89f1w-ngspice-45/bin/ngspice
+   Xyce     /nix/store/v6w5i0xq3x8ak7k6w8h12wcpm3wmivsd-xyce-7.10.0/bin/Xyce
+   magic    /nix/store/1zcyq032zc3mzhmgs2j3q2rmfrjj5v6b-magic-vlsi-8.3.629/bin/magic
+   netgen   /nix/store/h3crgmx1w7h86qjpr131igi7p576mp3x-netgen-1.5.318/bin/netgen
+   all Xyce builds present:
+     /nix/store/f8smn5798kihss4k35a6f9cwb55rx7j5-xyce-7.10.0/bin/Xyce
+     /nix/store/v6w5i0xq3x8ak7k6w8h12wcpm3wmivsd-xyce-7.10.0/bin/Xyce
+---- versions ----
+******
+** ngspice-45 : Circuit level simulation program
+** Compiled with KLU Direct Linear Solver
+Xyce Release 7.10.0-opensource
+8.3.629
+---- model and technology files ----
+-rw-r--r-- 1 kid kid    3503 May 13 15:22 /home/kid/gf/pdk/sky130A/libs.tech/magic/sky130A.magicrc
+-rw-r--r-- 1 kid kid    6349 May 13 15:22 /home/kid/gf/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice
+-rwxrwxrwx 1 kid kid 9661408 May 13 19:44 /mnt/d/Project/hybrid_memory/paper2/reports/12e_openram/macros/paper2_addr_decoder_8x5120/paper2_addr_decoder_8x5120.gds
+
+########## 2. ngspice with the sky130 TT models: one inverter ##########
+exit status: 0   wall time: 23 s
+---- measurements ----
+iavg                =  -1.043898e-06 from=  1.100000e-08 to=  4.100000e-08
+tpd_hl              =  4.160336e-11 targ=  1.106660e-08 trig=  1.102500e-08
+tpd_lh              =  4.807923e-11 targ=  1.607308e-08 trig=  1.602500e-08
+---- errors or warnings, if any ----
+Warning: m=xx on .subckt line will override multiplier m hierarchy!
+   (energy per 10 ns cycle = 1.8 V x |iavg| x 10 ns; only a sanity check)
+
+########## 3. magic: sky130A technology and the ROM layout ##########
+exit status: 0   wall time: 2 s
+---- technology and bounding box ----
+TECH sky130A
+BOX_LAMBDA -1496 -1496 71042 47321
+           width x height  (   llx,  lly  ), (   urx,  ury  )  area (units^2)
+microns:  362.690 x 244.085  (-7.480, -7.480), ( 355.210,  236.605)  88527.188 
+lambda:   36269.00 x 24408.50  (-748.00, -748.00), ( 35521.00,  23660.50)  885271872.00
+---- errors, if any ----
+Error while reading cell "paper2_addr_decoder_8x5120" (byte position 226532): Warning: cell "paper2_addr_decoder_8x5120_contact_28" placed on top of itself.  Ignoring the extra one.
+Error while reading cell "paper2_addr_decoder_8x5120" (byte position 226804): Warning: cell "paper2_addr_decoder_8x5120_contact_28" placed on top of itself.  Ignoring the extra one.
+Error while reading cell "paper2_addr_decoder_8x5120" (byte position 226940): Warning: cell "paper2_addr_decoder_8x5120_contact_28" placed on top of itself.  Ignoring the extra one.
+Error while reading cell "paper2_addr_decoder_8x5120" (byte position 227416): Warning: cell "paper2_addr_decoder_8x5120_contact_28" placed on top of itself.  Ignoring the extra one.
+Error while reading cell "paper2_addr_decoder_8x5120" (byte position 227824): Warning: cell "paper2_addr_decoder_8x5120_contact_28" placed on top of itself.  Ignoring the extra one.
+Error while reading cell "paper2_addr_decoder_8x5120" (byte position 227960): Warning: cell "paper2_addr_decoder_8x5120_contact_28" placed on top of itself.  Ignoring the extra one.
+Error while reading cell "paper2_addr_decoder_8x5120" (byte position 228980): Warning: cell "paper2_addr_decoder_8x5120_contact_28" placed on top of itself.  Ignoring the extra one.
+Error while reading cell "paper2_addr_decoder_8x5120" (byte position 229048): Warning: cell "paper2_addr_decoder_8x5120_contact_28" placed on top of itself.  Ignoring the extra one.
+Error while reading cell "paper2_addr_decoder_8x5120" (byte position 229252): Warning: cell "paper2_addr_decoder_8x5120_contact_28" placed on top of itself.  Ignoring the extra one.
+Error while reading cell "paper2_addr_decoder_8x5120" (byte position 229456): Warning: cell "paper2_addr_decoder_8x5120_contact_28" placed on top of itself.  Ignoring the extra one.
+   expected footprint from the LEF: 347.73 x 229.125 um
+
+---- files written, all new, all in /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/smoke ----
+total 28
+drwxrwxrwx 1 kid kid  4096 Oct  7 22:41 .
+drwxrwxrwx 1 kid kid  4096 Oct  7 22:40 ..
+-rwxrwxrwx 1 kid kid   124 Oct  7 22:40 .spiceinit
+-rwxrwxrwx 1 kid kid  1403 Oct  7 22:41 inv_tt.log
+-rwxrwxrwx 1 kid kid   528 Oct  7 22:40 inv_tt.sp
+-rwxrwxrwx 1 kid kid 23071 Oct  7 22:41 magic_read_rom.log
+-rwxrwxrwx 1 kid kid   252 Oct  7 22:41 read_rom.tcl
+
+==============================================================
+Finished 2026-10-07 22:41:18.
+==============================================================

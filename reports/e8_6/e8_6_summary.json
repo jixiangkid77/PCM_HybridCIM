@@ -1,0 +1,1066 @@
+{
+ "inputs": {
+  "power_A": {
+   "path": "reports/e8_7/A/power.json",
+   "md5": "7f995e189ac1cd24513b657283cf3264"
+  },
+  "power_B": {
+   "path": "reports/e8_7/B/power.json",
+   "md5": "0f1376115ed52cc20d094cceb1bc788a"
+  },
+  "stat_A": {
+   "path": "reports/e8_7/A/stat_final.txt",
+   "md5": "cd9923edb1fc40f42af66c32aa94da72"
+  },
+  "stat_B": {
+   "path": "reports/e8_7/B/stat_final.txt",
+   "md5": "b8cf44e6b6f1bbbab2630b52d6919242"
+  },
+  "e84f_log": {
+   "path": "reports/e8_4f_sram_char.log",
+   "md5": "3301a50c122e3705433712f5b18f706a"
+  },
+  "e84e_sram": {
+   "path": "reports/e8_rom/e8_4e_sram/e8_4e_sram_summary.json",
+   "md5": "2f93c7d2f59d52b355e6627c6f1c907a"
+  },
+  "e85g": {
+   "path": "reports/e8_rom/e8_5g/e8_5g_drom.json",
+   "md5": "92ddfb9a3f0f7ccf50635ad570858c6d"
+  }
+ },
+ "constants": {
+  "cycles": [
+   617573,
+   "E8.5c, E8.5e: inference cycles, both models"
+  ],
+  "t_clk_ns": [
+   10.0,
+   "clock period of all simulations"
+  ],
+  "macs": [
+   416520,
+   "v6 Section V-F; E8.2: weight lookups per lane side and inference"
+  ],
+  "sram_reads": [
+   {
+    "A": 149543,
+    "B": 88064
+   },
+   "E8.5e G4: SRAM macro reads per inference"
+  ],
+  "protected_reads": [
+   {
+    "A": 267143,
+    "B": 205664
+   },
+   "E8.5c F1: protected-weight lookups per inference"
+  ],
+  "cache_reads": [
+   117600,
+   "E8.5e G4: conv1 cache reads per inference"
+  ],
+  "e_array_uJ": [
+   0.263,
+   "v6 Table III: PCM-CIM array, NeuroSim 22 nm"
+  ],
+  "crossbar_mm2": [
+   [
+    0.68,
+    2.27
+   ],
+   "v6 Section V-D: crossbar with converters, most compact and baseline scheme"
+  ],
+  "rom_macro_um": [
+   [
+    275.01,
+    118.34
+   ],
+   "E8.4a-7: r48 macro, drawn layout extent"
+  ],
+  "rom_macro_lef_um": [
+   [
+    260.05,
+    103.38
+   ],
+   "E8.4a-7: r48 macro, LEF"
+  ],
+  "rom_macros": [
+   200,
+   "50 tables x 4 macros of 48 rows"
+  ],
+  "rom_bits": [
+   1996800,
+   "50 tables x 2,496 words x 16 bit"
+  ],
+  "sram_macro_um": [
+   [
+    477.365,
+    588.13
+   ],
+   "E8.1b (LEF = layout); E8.4f: unchanged with the precharge drawn in"
+  ],
+  "sram_macro_bits": [
+   32768,
+   "4-KB macro"
+  ],
+  "act_buffer_mm2": [
+   0.669,
+   "v6 Section V-D (OpenRAM SRAM: LEF = layout, E8.1b)"
+  ],
+  "bias_table_um": [
+   [
+    190.09,
+    137.51
+   ],
+   "E8.1b: test_rom_1kbyte_abspath, drawn layout extent (v6 0.021 mm2 is its LEF)"
+  ],
+  "weights": [
+   61470,
+   "v6 Table II"
+  ],
+  "protected": [
+   3074,
+   "v6 Table II, 5% budget, both models"
+  ],
+  "copies": [
+   25,
+   "SRAM replicated once per lane (upper bound)"
+  ],
+  "resnet50_weights": [
+   25502912,
+   "v6 Section VI-C"
+  ],
+  "bits_per_weight": [
+   8,
+   "v6"
+  ],
+  "map_bits_per_weight": [
+   32,
+   "one 16-bit entry per weight in each partition (v6 Section VI-C scaling)"
+  ],
+  "e_analytical_pJ": [
+   11.81819,
+   "v6: OpenRAM analytical energy per access (E8.4f log)"
+  ],
+  "node_scale": [
+   [
+    130.0,
+    22.0
+   ],
+   "v6 Section VI-C: ideal area scaling 130 nm -> 22 nm"
+  ]
+ },
+ "e84f": {
+  "gated_all_pJ": [
+   70.2366,
+   90.0876,
+   85.597,
+   86.5594,
+   85.6056,
+   86.2828,
+   85.8302,
+   85.384,
+   69.6462
+  ],
+  "system_pJ": [
+   90.0876,
+   85.597,
+   86.5594,
+   85.6056,
+   86.2828,
+   85.8302,
+   85.384
+  ],
+  "e_read_pJ": 86.47808571428571,
+  "e_read_min_pJ": 85.384,
+  "e_read_max_pJ": 90.0876,
+  "e_read_all9_pJ": 82.80326666666667,
+  "p_static_uW": 1.2548,
+  "t_acc_gated_ns_max": 10.625
+ },
+ "energy": {
+  "A": {
+   "A_uJ": 21.096320224150602,
+   "B_uJ": 17.567914597492823,
+   "B_parts_uJ": {
+    "SRAM reads": 12.932192371971428,
+    "SRAM static (1 macro)": 0.007749306003999999,
+    "conv1 cache": 4.627972919517397
+   },
+   "B_range_uJ": [
+    17.404301737521394,
+    18.107692192321394
+   ],
+   "B_25_macros_uJ": 17.753897941588825,
+   "B_all_nine_reads_uJ": 17.01837113265473,
+   "C_uJ": 0.263,
+   "D_uJ": 17.15738826859459,
+   "D_parts_uJ": {
+    "lookup reads": 5.153947821300543,
+    "parking reads": 0.0678402886591793,
+    "static after lookup reads": 1.3326863109640001,
+    "macros at rest on an all-ones word": 0.3384423055823393,
+    "macros parked on words with zero bits": 0.39390817164894876,
+    "AMU logic": 9.87056337043958
+   },
+   "D_range_uJ": [
+    16.976565218288627,
+    17.348845769622265
+   ],
+   "D_rom_uJ": 7.28682489815501,
+   "D_rom_main_uJ": 7.449063280776388,
+   "D_rom_range_uJ": [
+    7.106001847849048,
+    7.4782823991826834
+   ],
+   "amu_uJ": 9.87056337043958,
+   "total_AC_uJ": 38.927234821643424,
+   "total_AD_uJ": 56.08462309023801,
+   "share_B_of_AC": 0.45130137493673494,
+   "share_BD_of_AD": 0.6191590662955109,
+   "share_B_of_AC_range": [
+    0.44898543677704084,
+    0.4588057489946705
+   ],
+   "share_BD_of_AD_range": [
+    0.6168057320082058,
+    0.6240605896651172
+   ],
+   "share_25_macros": [
+    0.45391043678272575,
+    0.620417806424812
+   ],
+   "share_all_nine_reads": [
+    0.4434443691370441,
+    0.6153904816878746
+   ],
+   "share_cache_in_A_reference": [
+    0.3324135849171814,
+    0.5366413873931999
+   ],
+   "per_mac_pJ": {
+    "A-C": 93.45826087977389,
+    "A-D": 134.65049238989246,
+    "C": 0.6314222606357438
+   },
+   "digital_logic_uJ": 35.601924490695005,
+   "digital_groups_mW": {
+    "Sequential": 2.4063779999999997,
+    "Combinational": 1.548268,
+    "Clock": 1.808238,
+    "Total": 5.764789
+   },
+   "sram_static_window_ms": 6.17573
+  },
+  "B": {
+   "A_uJ": 20.560929700457145,
+   "B_uJ": 12.201842595191831,
+   "B_parts_uJ": {
+    "SRAM reads": 7.615606140342856,
+    "SRAM static (1 macro)": 0.007749306003999999,
+    "conv1 cache": 4.578487148844975
+   },
+   "B_range_uJ": [
+    12.105493030848976,
+    12.519710861248974
+   ],
+   "B_25_macros_uJ": 12.387825939287831,
+   "B_all_nine_reads_uJ": 11.878223330582308,
+   "C_uJ": 0.263,
+   "D_uJ": 16.7689549202265,
+   "D_parts_uJ": {
+    "lookup reads": 5.132489492239799,
+    "parking reads": 0.07926979969699566,
+    "static after lookup reads": 1.3353216158594705,
+    "macros at rest on an all-ones word": 0.3401299818887178,
+    "macros parked on words with zero bits": 0.1643220274561601,
+    "AMU logic": 9.717422003085355
+   },
+   "D_range_uJ": [
+    16.358944022602124,
+    17.246370384124617
+   ],
+   "D_rom_uJ": 7.0515329171411425,
+   "D_rom_main_uJ": 7.248474771944254,
+   "D_rom_range_uJ": [
+    6.641522019516769,
+    7.528948381039262
+   ],
+   "amu_uJ": 9.717422003085355,
+   "total_AC_uJ": 33.02577229564897,
+   "total_AD_uJ": 49.79472721587547,
+   "share_B_of_AC": 0.3694642622119508,
+   "share_BD_of_AD": 0.5818045229933886,
+   "share_B_of_AC_range": [
+    0.3676193515333095,
+    0.3754752225714483
+   ],
+   "share_BD_of_AD_range": [
+    0.5775082220835418,
+    0.5883786282878182
+   ],
+   "share_25_macros": [
+    0.37299521511784056,
+    0.5833606712039304
+   ],
+   "share_all_nine_reads": [
+    0.363224504493879,
+    0.5790688633662536
+   ],
+   "share_cache_in_A_reference": [
+    0.2308304974097822,
+    0.4898572947457907
+   ],
+   "per_mac_pJ": {
+    "A-C": 79.28976350631176,
+    "A-D": 119.54942671630526,
+    "C": 0.6314222606357438
+   },
+   "digital_logic_uJ": 34.863847659135,
+   "digital_groups_mW": {
+    "Sequential": 2.3775519999999997,
+    "Combinational": 1.457785,
+    "Clock": 1.808263,
+    "Total": 5.645277
+   },
+   "sram_static_window_ms": 6.17573
+  }
+ },
+ "conditions": {
+  "tt:25": {
+   "r_read": 1.0,
+   "r_static": 1.0,
+   "read_time_ns": 10.608733000000024,
+   "A": {
+    "sram_1_uJ": 12.939941677975428,
+    "sram_25_uJ": 13.125925022071428,
+    "sram_reads_uJ": 12.932192371971428,
+    "sram_static_1_uJ": 0.007749306003999999,
+    "d_rom_uJ": 7.28682489815501,
+    "d_rom_x_tt": 1.0,
+    "sram_1_x_tt": 1.0,
+    "sram_25_x_tt": 1.0
+   },
+   "B": {
+    "sram_1_uJ": 7.6233554463468565,
+    "sram_25_uJ": 7.809338790442856,
+    "sram_reads_uJ": 7.615606140342856,
+    "sram_static_1_uJ": 0.007749306003999999,
+    "d_rom_uJ": 7.051532917141143,
+    "d_rom_x_tt": 1.0,
+    "sram_1_x_tt": 1.0,
+    "sram_25_x_tt": 1.0
+   }
+  },
+  "ss:25": {
+   "r_read": 0.9710899227587018,
+   "r_static": 0.5291994606810708,
+   "read_time_ns": 13.475000000000033,
+   "A": {
+    "sram_1_uJ": 12.562422620156376,
+    "sram_25_uJ": 12.660844905547641,
+    "sram_reads_uJ": 12.558321691598406,
+    "sram_static_1_uJ": 0.0041009285579693844,
+    "d_rom_uJ": 4.540892031818518,
+    "d_rom_x_tt": 0.623164697283758,
+    "sram_1_x_tt": 0.9708252890767187,
+    "sram_25_x_tt": 0.9645678216398655
+   },
+   "B": {
+    "sram_1_uJ": 7.399539307144209,
+    "sram_25_uJ": 7.497961592535474,
+    "sram_reads_uJ": 7.395438378586239,
+    "sram_static_1_uJ": 0.0041009285579693844,
+    "d_rom_uJ": 4.355859886374931,
+    "d_rom_x_tt": 0.6177181525716963,
+    "sram_1_x_tt": 0.9706407315285421,
+    "sram_25_x_tt": 0.9601275849002161
+   }
+  },
+  "ff:85": {
+   "r_read": 1.0334110489371013,
+   "r_static": 116.85970395664395,
+   "read_time_ns": 9.360616000000011,
+   "A": {
+    "sram_1_uJ": 14.269852089672257,
+    "sram_25_uJ": 36.00381062159746,
+    "sram_reads_uJ": 13.364270484175375,
+    "sram_static_1_uJ": 0.9055816054968834,
+    "d_rom_uJ": 87.02416763190456,
+    "d_rom_x_tt": 11.942673091257987,
+    "sram_1_x_tt": 1.1027756109566103,
+    "sram_25_x_tt": 2.7429541583588617
+   },
+   "B": {
+    "sram_1_uJ": 8.775633135280424,
+    "sram_25_uJ": 30.509591667205626,
+    "sram_reads_uJ": 7.870051529783541,
+    "sram_static_1_uJ": 0.9055816054968834,
+    "d_rom_uJ": 86.98649895928928,
+    "d_rom_x_tt": 12.335828249179562,
+    "sram_1_x_tt": 1.1511509855526603,
+    "sram_25_x_tt": 3.9068085641954164
+   }
+  },
+  "tt:85": {
+   "r_read": 1.004976921423794,
+   "r_static": 12.746320575565246,
+   "read_time_ns": 10.773885000000021,
+   "A": {
+    "sram_1_uJ": 13.095330015809255,
+    "sram_25_uJ": 15.465933341372532,
+    "sram_reads_uJ": 12.996554877244119,
+    "sram_static_1_uJ": 0.09877513856513649,
+    "d_rom_uJ": 18.648559949330156,
+    "d_rom_x_tt": 2.5592161483188494,
+    "sram_1_x_tt": 1.0120084264443252,
+    "sram_25_x_tt": 1.1782737837802932
+   },
+   "B": {
+    "sram_1_uJ": 7.752283552263042,
+    "sram_25_uJ": 10.122886877826318,
+    "sram_reads_uJ": 7.653508413697906,
+    "sram_static_1_uJ": 0.09877513856513649,
+    "d_rom_uJ": 18.613040595842463,
+    "d_rom_x_tt": 2.639573666400557,
+    "sram_1_x_tt": 1.0169122516749456,
+    "sram_25_x_tt": 1.2962540298821206
+   }
+  },
+  "tt:-40": {
+   "r_read": 0.9952598565351419,
+   "r_static": 0.515914621834178,
+   "read_time_ns": 10.44395399999995,
+   "A": {
+    "sram_1_uJ": 12.87488990508967,
+    "sram_25_uJ": 12.970841431726415,
+    "sram_reads_uJ": 12.87089192481314,
+    "sram_static_1_uJ": 0.003997980276530985,
+    "d_rom_uJ": 4.112473296497142,
+    "d_rom_x_tt": 0.564371088090562,
+    "sram_1_x_tt": 0.9949727924201947,
+    "sram_25_x_tt": 0.9881849401025651
+   },
+   "B": {
+    "sram_1_uJ": 7.583505054942308,
+    "sram_25_uJ": 7.679456581579052,
+    "sram_reads_uJ": 7.579507074665777,
+    "sram_static_1_uJ": 0.003997980276530985,
+    "d_rom_uJ": 3.885047509132703,
+    "d_rom_x_tt": 0.5509507726594847,
+    "sram_1_x_tt": 0.994772591716992,
+    "sram_25_x_tt": 0.9833683475196702
+   }
+  },
+  "ff:25": {
+   "r_read": 1.0082785226646078,
+   "r_static": 13.756179737814216,
+   "read_time_ns": 9.140047000000026,
+   "A": {
+    "sram_1_uJ": 13.14585266586021,
+    "sram_25_uJ": 15.704272975484534,
+    "sram_reads_uJ": 13.039251819625862,
+    "sram_static_1_uJ": 0.10660084623434683,
+    "d_rom_uJ": 16.71257771678821,
+    "d_rom_x_tt": 2.293533596645057,
+    "sram_1_x_tt": 1.0159128219438,
+    "sram_25_x_tt": 1.196431714266048
+   },
+   "B": {
+    "sram_1_uJ": 7.785252954614758,
+    "sram_25_uJ": 10.343673264239081,
+    "sram_reads_uJ": 7.678652108380411,
+    "sram_static_1_uJ": 0.10660084623434683,
+    "d_rom_uJ": 16.52624191282652,
+    "d_rom_x_tt": 2.3436381999513727,
+    "sram_1_x_tt": 1.0212370404879236,
+    "sram_25_x_tt": 1.3245261272180646
+   }
+  }
+ },
+ "area": {
+  "rom_mm2": 6.508936680000001,
+  "rom_lef_mm2": 5.3767938,
+  "sram_macro_mm2": 0.28075267745,
+  "sram_um2_per_bit": 8.567891767883301,
+  "rom_um2_per_bit": 3.2596838341346155,
+  "rom_lef_um2_per_bit": 2.6927052283653845,
+  "bias_table_mm2": 0.026139275899999998,
+  "act_buffer_mm2": 0.669,
+  "crossbar_mm2": [
+   0.68,
+   2.27
+  ],
+  "A": {
+   "digital_periphery_mm2": 1.1287800895999998,
+   "amu_mm2": 0.30041186880000004,
+   "conv1_cache_mm2": 0.0483563776,
+   "address_map_mm2": 6.809348548800001,
+   "synthesis_total_mm2": 1.477548336,
+   "amu_entry_buffer_share": 0.4269572134827716,
+   "fc_engines_mm2": 0.9069185567999999,
+   "fixed_mm2": 8.6816242919,
+   "range_mm2": [
+    9.64237696935,
+    17.97044122815
+   ],
+   "protection_mm2": [
+    7.138457603850001,
+    13.876521862650002
+   ],
+   "protection_share": [
+    0.7403213571239592,
+    0.7721859294647127
+   ],
+   "other_mm2": [
+    2.503919365499999,
+    4.0939193655
+   ],
+   "non_crossbar_share": [
+    0.9294779697826066,
+    0.8736814543849857
+   ]
+  },
+  "B": {
+   "digital_periphery_mm2": 1.1287788383999997,
+   "amu_mm2": 0.30140532160000005,
+   "conv1_cache_mm2": 0.0483563776,
+   "address_map_mm2": 6.8103420016000005,
+   "synthesis_total_mm2": 1.4785405375999998,
+   "amu_entry_buffer_share": 0.4255499329577861,
+   "fc_engines_mm2": 0.9069185567999999,
+   "fixed_mm2": 8.6826164935,
+   "range_mm2": [
+    9.643369170949999,
+    17.97143342975
+   ],
+   "protection_mm2": [
+    7.1394510566500005,
+    13.877515315450001
+   ],
+   "protection_share": [
+    0.7403482050813855,
+    0.7721985766854353
+   ],
+   "other_mm2": [
+    2.5039181142999984,
+    4.093918114299999
+   ],
+   "non_crossbar_share": [
+    0.9294852257602608,
+    0.8736884284231757
+   ]
+  }
+ },
+ "fig7": {
+  "model": "A",
+  "blocks_mm2": {
+   "above the line (exist because weights are protected)": {
+    "address map: ROM macros": 6.508936680000001,
+    "address map: AMU logic": 0.30041186880000004,
+    "conv1 register cache": 0.0483563776,
+    "protected-weight SRAM": "per-bit curve; as built 1 macro"
+   },
+   "below the line (present anyway)": {
+    "PCM crossbar (baseline converter scheme)": 2.27,
+    "activation buffer": 0.669,
+    "bias table": 0.026139275899999998,
+    "digital periphery": 1.1287800895999998
+   }
+  },
+  "curve": [
+   {
+    "budget_pct": 0,
+    "sram_single_mm2": 0.0,
+    "sram_replicated_mm2": 0.0,
+    "total_single_mm2": 10.9516242919,
+    "total_replicated_mm2": 10.9516242919
+   },
+   {
+    "budget_pct": 1,
+    "sram_single_mm2": 0.042133464557742924,
+    "sram_replicated_mm2": 1.0533366139435731,
+    "total_single_mm2": 10.993757756457743,
+    "total_replicated_mm2": 12.004960905843573
+   },
+   {
+    "budget_pct": 2,
+    "sram_single_mm2": 0.08426692911548585,
+    "sram_replicated_mm2": 2.1066732278871463,
+    "total_single_mm2": 11.035891221015486,
+    "total_replicated_mm2": 13.058297519787146
+   },
+   {
+    "budget_pct": 3,
+    "sram_single_mm2": 0.12640039367322875,
+    "sram_replicated_mm2": 3.1600098418307185,
+    "total_single_mm2": 11.07802468557323,
+    "total_replicated_mm2": 14.111634133730718
+   },
+   {
+    "budget_pct": 4,
+    "sram_single_mm2": 0.1685338582309717,
+    "sram_replicated_mm2": 4.213346455774293,
+    "total_single_mm2": 11.120158150130973,
+    "total_replicated_mm2": 15.164970747674293
+   },
+   {
+    "budget_pct": 5,
+    "sram_single_mm2": 0.21066732278871458,
+    "sram_replicated_mm2": 5.266683069717865,
+    "total_single_mm2": 11.162291614688714,
+    "total_replicated_mm2": 16.218307361617864
+   },
+   {
+    "budget_pct": 6,
+    "sram_single_mm2": 0.2528007873464575,
+    "sram_replicated_mm2": 6.320019683661437,
+    "total_single_mm2": 11.204425079246457,
+    "total_replicated_mm2": 17.27164397556144
+   },
+   {
+    "budget_pct": 7,
+    "sram_single_mm2": 0.2949342519042005,
+    "sram_replicated_mm2": 7.373356297605012,
+    "total_single_mm2": 11.2465585438042,
+    "total_replicated_mm2": 18.32498058950501
+   },
+   {
+    "budget_pct": 8,
+    "sram_single_mm2": 0.3370677164619434,
+    "sram_replicated_mm2": 8.426692911548585,
+    "total_single_mm2": 11.288692008361943,
+    "total_replicated_mm2": 19.378317203448585
+   },
+   {
+    "budget_pct": 9,
+    "sram_single_mm2": 0.3792011810196863,
+    "sram_replicated_mm2": 9.480029525492158,
+    "total_single_mm2": 11.330825472919686,
+    "total_replicated_mm2": 20.43165381739216
+   },
+   {
+    "budget_pct": 10,
+    "sram_single_mm2": 0.42133464557742917,
+    "sram_replicated_mm2": 10.53336613943573,
+    "total_single_mm2": 11.37295893747743,
+    "total_replicated_mm2": 21.48499043133573
+   },
+   {
+    "budget_pct": 11,
+    "sram_single_mm2": 0.46346811013517214,
+    "sram_replicated_mm2": 11.586702753379303,
+    "total_single_mm2": 11.415092402035173,
+    "total_replicated_mm2": 22.538327045279303
+   },
+   {
+    "budget_pct": 12,
+    "sram_single_mm2": 0.505601574692915,
+    "sram_replicated_mm2": 12.640039367322874,
+    "total_single_mm2": 11.457225866592914,
+    "total_replicated_mm2": 23.591663659222874
+   },
+   {
+    "budget_pct": 13,
+    "sram_single_mm2": 0.547735039250658,
+    "sram_replicated_mm2": 13.69337598126645,
+    "total_single_mm2": 11.499359331150657,
+    "total_replicated_mm2": 24.645000273166453
+   },
+   {
+    "budget_pct": 14,
+    "sram_single_mm2": 0.589868503808401,
+    "sram_replicated_mm2": 14.746712595210024,
+    "total_single_mm2": 11.5414927957084,
+    "total_replicated_mm2": 25.698336887110024
+   },
+   {
+    "budget_pct": 15,
+    "sram_single_mm2": 0.6320019683661439,
+    "sram_replicated_mm2": 15.800049209153597,
+    "total_single_mm2": 11.583626260266144,
+    "total_replicated_mm2": 26.751673501053595
+   },
+   {
+    "budget_pct": 16,
+    "sram_single_mm2": 0.6741354329238868,
+    "sram_replicated_mm2": 16.85338582309717,
+    "total_single_mm2": 11.625759724823887,
+    "total_replicated_mm2": 27.80501011499717
+   },
+   {
+    "budget_pct": 17,
+    "sram_single_mm2": 0.7162688974816297,
+    "sram_replicated_mm2": 17.90672243704074,
+    "total_single_mm2": 11.66789318938163,
+    "total_replicated_mm2": 28.85834672894074
+   },
+   {
+    "budget_pct": 18,
+    "sram_single_mm2": 0.7584023620393726,
+    "sram_replicated_mm2": 18.960059050984317,
+    "total_single_mm2": 11.710026653939373,
+    "total_replicated_mm2": 29.911683342884317
+   },
+   {
+    "budget_pct": 19,
+    "sram_single_mm2": 0.8005358265971154,
+    "sram_replicated_mm2": 20.013395664927884,
+    "total_single_mm2": 11.752160118497116,
+    "total_replicated_mm2": 30.965019956827884
+   },
+   {
+    "budget_pct": 20,
+    "sram_single_mm2": 0.8426692911548583,
+    "sram_replicated_mm2": 21.06673227887146,
+    "total_single_mm2": 11.79429358305486,
+    "total_replicated_mm2": 32.01835657077146
+   },
+   {
+    "budget_pct": 21,
+    "sram_single_mm2": 0.8848027557126014,
+    "sram_replicated_mm2": 22.120068892815034,
+    "total_single_mm2": 11.8364270476126,
+    "total_replicated_mm2": 33.07169318471503
+   },
+   {
+    "budget_pct": 22,
+    "sram_single_mm2": 0.9269362202703443,
+    "sram_replicated_mm2": 23.173405506758606,
+    "total_single_mm2": 11.878560512170344,
+    "total_replicated_mm2": 34.1250297986586
+   },
+   {
+    "budget_pct": 23,
+    "sram_single_mm2": 0.9690696848280872,
+    "sram_replicated_mm2": 24.22674212070218,
+    "total_single_mm2": 11.920693976728087,
+    "total_replicated_mm2": 35.17836641260218
+   },
+   {
+    "budget_pct": 24,
+    "sram_single_mm2": 1.01120314938583,
+    "sram_replicated_mm2": 25.28007873464575,
+    "total_single_mm2": 11.96282744128583,
+    "total_replicated_mm2": 36.231703026545745
+   },
+   {
+    "budget_pct": 25,
+    "sram_single_mm2": 1.0533366139435731,
+    "sram_replicated_mm2": 26.333415348589327,
+    "total_single_mm2": 12.004960905843573,
+    "total_replicated_mm2": 37.28503964048933
+   },
+   {
+    "budget_pct": 26,
+    "sram_single_mm2": 1.095470078501316,
+    "sram_replicated_mm2": 27.3867519625329,
+    "total_single_mm2": 12.047094370401316,
+    "total_replicated_mm2": 38.3383762544329
+   },
+   {
+    "budget_pct": 27,
+    "sram_single_mm2": 1.137603543059059,
+    "sram_replicated_mm2": 28.440088576476473,
+    "total_single_mm2": 12.08922783495906,
+    "total_replicated_mm2": 39.39171286837647
+   },
+   {
+    "budget_pct": 28,
+    "sram_single_mm2": 1.179737007616802,
+    "sram_replicated_mm2": 29.493425190420048,
+    "total_single_mm2": 12.131361299516803,
+    "total_replicated_mm2": 40.445049482320044
+   },
+   {
+    "budget_pct": 29,
+    "sram_single_mm2": 1.2218704721745448,
+    "sram_replicated_mm2": 30.54676180436362,
+    "total_single_mm2": 12.173494764074544,
+    "total_replicated_mm2": 41.498386096263616
+   },
+   {
+    "budget_pct": 30,
+    "sram_single_mm2": 1.2640039367322877,
+    "sram_replicated_mm2": 31.600098418307194,
+    "total_single_mm2": 12.215628228632287,
+    "total_replicated_mm2": 42.551722710207194
+   },
+   {
+    "budget_pct": 31,
+    "sram_single_mm2": 1.3061374012900306,
+    "sram_replicated_mm2": 32.65343503225077,
+    "total_single_mm2": 12.25776169319003,
+    "total_replicated_mm2": 43.60505932415077
+   },
+   {
+    "budget_pct": 32,
+    "sram_single_mm2": 1.3482708658477736,
+    "sram_replicated_mm2": 33.70677164619434,
+    "total_single_mm2": 12.299895157747773,
+    "total_replicated_mm2": 44.658395938094344
+   },
+   {
+    "budget_pct": 33,
+    "sram_single_mm2": 1.3904043304055165,
+    "sram_replicated_mm2": 34.76010826013791,
+    "total_single_mm2": 12.342028622305516,
+    "total_replicated_mm2": 45.711732552037915
+   },
+   {
+    "budget_pct": 34,
+    "sram_single_mm2": 1.4325377949632594,
+    "sram_replicated_mm2": 35.81344487408148,
+    "total_single_mm2": 12.38416208686326,
+    "total_replicated_mm2": 46.76506916598149
+   },
+   {
+    "budget_pct": 35,
+    "sram_single_mm2": 1.474671259521002,
+    "sram_replicated_mm2": 36.866781488025055,
+    "total_single_mm2": 12.426295551421003,
+    "total_replicated_mm2": 47.81840577992506
+   },
+   {
+    "budget_pct": 36,
+    "sram_single_mm2": 1.5168047240787452,
+    "sram_replicated_mm2": 37.92011810196863,
+    "total_single_mm2": 12.468429015978746,
+    "total_replicated_mm2": 48.87174239386863
+   },
+   {
+    "budget_pct": 37,
+    "sram_single_mm2": 1.5589381886364881,
+    "sram_replicated_mm2": 38.973454715912204,
+    "total_single_mm2": 12.510562480536489,
+    "total_replicated_mm2": 49.9250790078122
+   },
+   {
+    "budget_pct": 38,
+    "sram_single_mm2": 1.6010716531942308,
+    "sram_replicated_mm2": 40.02679132985577,
+    "total_single_mm2": 12.55269594509423,
+    "total_replicated_mm2": 50.97841562175577
+   },
+   {
+    "budget_pct": 39,
+    "sram_single_mm2": 1.6432051177519738,
+    "sram_replicated_mm2": 41.08012794379935,
+    "total_single_mm2": 12.594829409651974,
+    "total_replicated_mm2": 52.031752235699344
+   },
+   {
+    "budget_pct": 40,
+    "sram_single_mm2": 1.6853385823097167,
+    "sram_replicated_mm2": 42.13346455774292,
+    "total_single_mm2": 12.636962874209717,
+    "total_replicated_mm2": 53.085088849642915
+   },
+   {
+    "budget_pct": 41,
+    "sram_single_mm2": 1.7274720468674594,
+    "sram_replicated_mm2": 43.18680117168648,
+    "total_single_mm2": 12.67909633876746,
+    "total_replicated_mm2": 54.138425463586486
+   },
+   {
+    "budget_pct": 42,
+    "sram_single_mm2": 1.7696055114252027,
+    "sram_replicated_mm2": 44.24013778563007,
+    "total_single_mm2": 12.721229803325203,
+    "total_replicated_mm2": 55.19176207753007
+   },
+   {
+    "budget_pct": 43,
+    "sram_single_mm2": 1.8117389759829456,
+    "sram_replicated_mm2": 45.29347439957364,
+    "total_single_mm2": 12.763363267882946,
+    "total_replicated_mm2": 56.24509869147364
+   },
+   {
+    "budget_pct": 44,
+    "sram_single_mm2": 1.8538724405406886,
+    "sram_replicated_mm2": 46.34681101351721,
+    "total_single_mm2": 12.80549673244069,
+    "total_replicated_mm2": 57.298435305417215
+   },
+   {
+    "budget_pct": 45,
+    "sram_single_mm2": 1.8960059050984315,
+    "sram_replicated_mm2": 47.40014762746079,
+    "total_single_mm2": 12.84763019699843,
+    "total_replicated_mm2": 58.351771919360786
+   },
+   {
+    "budget_pct": 46,
+    "sram_single_mm2": 1.9381393696561744,
+    "sram_replicated_mm2": 48.45348424140436,
+    "total_single_mm2": 12.889763661556174,
+    "total_replicated_mm2": 59.40510853330436
+   },
+   {
+    "budget_pct": 47,
+    "sram_single_mm2": 1.980272834213917,
+    "sram_replicated_mm2": 49.506820855347925,
+    "total_single_mm2": 12.931897126113917,
+    "total_replicated_mm2": 60.45844514724793
+   },
+   {
+    "budget_pct": 48,
+    "sram_single_mm2": 2.02240629877166,
+    "sram_replicated_mm2": 50.5601574692915,
+    "total_single_mm2": 12.97403059067166,
+    "total_replicated_mm2": 61.5117817611915
+   },
+   {
+    "budget_pct": 49,
+    "sram_single_mm2": 2.064539763329403,
+    "sram_replicated_mm2": 51.61349408323508,
+    "total_single_mm2": 13.016164055229403,
+    "total_replicated_mm2": 62.565118375135086
+   },
+   {
+    "budget_pct": 50,
+    "sram_single_mm2": 2.1066732278871463,
+    "sram_replicated_mm2": 52.66683069717865,
+    "total_single_mm2": 13.058297519787146,
+    "total_replicated_mm2": 63.61845498907866
+   }
+  ],
+  "as_built": {
+   "budget_pct": 5.000813404912965,
+   "sram_single_mm2": 0.28075267745,
+   "sram_replicated_mm2": 7.0188169362499995,
+   "total_single_mm2": 11.23237696935,
+   "total_replicated_mm2": 17.97044122815
+  },
+  "map_over_sram_at_50pct": 3.2322756366108694,
+  "total_single_0_and_50pct": [
+   10.9516242919,
+   13.058297519787146
+  ],
+  "protection_at_5pct_single": [
+   7.138457603850001,
+   11.23237696935
+  ]
+ },
+ "fig8": {
+  "A": {
+   "A digital periphery": 21.096320224150602,
+   "B": {
+    "SRAM reads": 12.932192371971428,
+    "SRAM static (1 macro)": 0.007749306003999999,
+    "conv1 cache": 4.627972919517397
+   },
+   "C PCM-CIM array": 0.263,
+   "D": {
+    "lookup reads": 5.153947821300543,
+    "parking reads": 0.0678402886591793,
+    "static after lookup reads": 1.3326863109640001,
+    "macros at rest on an all-ones word": 0.3384423055823393,
+    "macros parked on words with zero bits": 0.39390817164894876,
+    "AMU logic": 9.87056337043958
+   },
+   "B range": [
+    17.404301737521394,
+    18.107692192321394
+   ],
+   "D range": [
+    16.976565218288627,
+    17.348845769622265
+   ]
+  },
+  "B": {
+   "A digital periphery": 20.560929700457145,
+   "B": {
+    "SRAM reads": 7.615606140342856,
+    "SRAM static (1 macro)": 0.007749306003999999,
+    "conv1 cache": 4.578487148844975
+   },
+   "C PCM-CIM array": 0.263,
+   "D": {
+    "lookup reads": 5.132489492239799,
+    "parking reads": 0.07926979969699566,
+    "static after lookup reads": 1.3353216158594705,
+    "macros at rest on an all-ones word": 0.3401299818887178,
+    "macros parked on words with zero bits": 0.1643220274561601,
+    "AMU logic": 9.717422003085355
+   },
+   "B range": [
+    12.105493030848976,
+    12.519710861248974
+   ],
+   "D range": [
+    16.358944022602124,
+    17.246370384124617
+   ]
+  }
+ },
+ "vi_c": {
+  "protected_weights_50pct": 12751456,
+  "sram_bits_50pct": 102011648,
+  "sram_mm2_50pct": 874.024759127409,
+  "sram_mm2_50pct_22nm": 25.0312416223471,
+  "sram_mm2_5pct": 87.40247591274091,
+  "sram_over_lenet_upper": 48.63680017818834,
+  "map_bits": 816093184,
+  "map_mm2": 2660.205759032246,
+  "map_mm2_lef_basis": 2197.498383390154,
+  "sram_energy_floor_uJ": 1102.7215049499428,
+  "floor_over_lenet_AD": 19.66174406085793,
+  "floor_over_lenet_AC": 28.327763582550514
+ },
+ "checks": [
+  {
+   "check": "E8.4f system read 86.48 pJ (85.38-90.09), all nine 82.80 pJ, static 1.2548 uW",
+   "ok": true,
+   "detail": "86.4781 (85.3840-90.0876), all nine 82.8033 pJ, 1.2548 uW"
+  },
+  {
+   "check": "E8.7 A: module areas x instances = top area",
+   "ok": true,
+   "detail": "1477548.336 vs 1477548.336 um2"
+  },
+  {
+   "check": "E8.7 B: module areas x instances = top area",
+   "ok": true,
+   "detail": "1478540.538 vs 1478540.538 um2"
+  },
+  {
+   "check": "E8.5g model A: corrected D_ROM and range reproduced from the parts",
+   "ok": true,
+   "detail": "7.2868 (7.1060-7.4783) uJ"
+  },
+  {
+   "check": "E8.7 A: instance sum within 0.05% of the report total",
+   "ok": true,
+   "detail": "35.5949 vs 35.6019 uJ"
+  },
+  {
+   "check": "E8.5g model B: corrected D_ROM and range reproduced from the parts",
+   "ok": true,
+   "detail": "7.0515 (6.6415-7.5289) uJ"
+  },
+  {
+   "check": "E8.7 B: instance sum within 0.05% of the report total",
+   "ok": true,
+   "detail": "34.8568 vs 34.8638 uJ"
+  },
+  {
+   "check": "formulas reproduce v6 model A (12.9 %, 36.7 %)",
+   "ok": true,
+   "detail": "0.1290, 0.3674"
+  },
+  {
+   "check": "formulas reproduce v6 model B (10.4 %, 35.4 %)",
+   "ok": true,
+   "detail": "0.1039, 0.3543"
+  },
+  {
+   "check": "E8.4e-SRAM: model A at tt 25 C, reads 12.93 uJ, static 0.008 / 0.19 uJ",
+   "ok": true,
+   "detail": "12.9322, 0.00775, 0.1937 uJ"
+  }
+ ]
+}

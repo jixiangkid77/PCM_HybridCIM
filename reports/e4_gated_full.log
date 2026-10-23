@@ -1,0 +1,54 @@
+nohup: ignoring input
+==============================================================
+P2R-E4, variant gated, mode window
+  netlist     : /mnt/d/Project/hybrid_memory/paper2/reports/lenet5_top_gated_netlist.v
+  netlist md5 : 2de5cfd2457782141142f830686210b4
+  cell models : /home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog
+  run dir     : /home/kid/p2r_e4/gated
+  data link   : /mnt/d/Project/hybrid_memory/paper2/data
+  plusargs    : +dump_from=8160 +dump_to=1000000000
+  free space  : /dev/sdd       1007G   77G  879G   9% /
+==============================================================
+
+---- data paths baked into the netlist, which the symlink has to satisfy ----
+
+---- compile, started 2026-08-14 11:44:44 ----
+iverilog exit status: 0
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:15.45
+	Maximum resident set size (kbytes): 1680052
+---- compile messages other than the harmless delay-macro warnings ----
+-rwxr-xr-x 1 kid kid 147564010 Aug 14 11:44 sim_gated.vvp
+
+---- simulate, started 2026-08-14 11:44:59 ----
+vvp exit status: 0
+     finished 2026-08-14 13:30:45
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:45:45
+	Maximum resident set size (kbytes): 562628
+
+---- RAW: the whole simulation log. It is short. ----
+VCD info: dumpfile gate.vcd opened for output.
+==== gate-level power TB (Model A, img_001) ====
+  max_cycles=2000000  dump_from=8160  dump_to=1000000000  VCD=gate.vcd
+  DONE at post-start cycle 617575, predicted_class=7 (expect 7)
+  [PASS] gate netlist functional: predicted_class matches
+/mnt/d/Project/hybrid_memory/paper2/rtl/tb/tb_lenet5_gate.v:162: $finish called at 6183910000 (1ps)
+
+---- RAW: the lines gate G1 is judged on ----
+3:  max_cycles=2000000  dump_from=8160  dump_to=1000000000  VCD=gate.vcd
+4:  DONE at post-start cycle 617575, predicted_class=7 (expect 7)
+5:  [PASS] gate netlist functional: predicted_class matches
+     expected: DONE at post-start cycle 617573, predicted_class=7, PASS
+
+---- waveform ----
+-rw-r--r-- 1 kid kid 10142277212 Aug 14 13:30 gate.vcd
+-rw-r--r-- 1 kid kid 10142277212 Aug 14 13:30 gate_gated_8160_1000000000.vcd
+
+---- clean the waveform for the timing tool, gate G5 ----
+read 1757352795 written 1757352793 removed $dumpon 1 removed closing $end 1 truncated at line None
+     expected: removed dump-on 1, removed closing end 1, truncated at line None
+-rw-r--r-- 1 kid kid 10142277199 Aug 14 13:36 gate_gated_8160_1000000000_clean.vcd
+
+==============================================================
+Reference: the submitted version reports 617,573 cycles and class 7.
+Its own gate-level run stopped at 2,000 cycles and never reached done,
+so this is the first end-to-end check of the gate netlist.

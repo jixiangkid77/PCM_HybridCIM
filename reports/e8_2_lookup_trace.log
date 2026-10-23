@@ -1,0 +1,179 @@
+==============================================================
+P2R-E8.2 lookup trace, started 2026-10-08 16:25:17
+==============================================================
+iverilog : /usr/bin/iverilog   Icarus Verilog version 12.0 (stable) ()
+python3  : /usr/bin/python3   Python 3.12.3
+md5 testbench : 23ff16d1cb27dcad218dd56097866545
+md5 monitor   : fe997fbee582d9cc4a3230376cded618
+
+---- how this testbench was compiled before, for the record ----
+/mnt/d/Project/hybrid_memory/paper2/scripts/o49_rtl_layers.sh:46:TBMOD=tb_lenet5_full_inference_v3
+/mnt/d/Project/hybrid_memory/paper2/scripts/o49_rtl_layers.sh:113:if [ -f "$PAPER2/tb_lenet5_full_inference_v3.vcd" ] || ls "$PAPER2"/*.vcd >/dev/null 2>&1; then
+1756:grep -n "cycle_after_start\|done_cycle\|started_flag\|conv1_first\|conv1_last\|Total inference cycles" rtl/tb/tb_lenet5_full_inference_v3.v | head -40
+1758:sed -n '575,615p' rtl/tb/tb_lenet5_full_inference_v3.v
+1896:grep -oE "DUT\.[A-Za-z_0-9.]+" rtl/tb/tb_lenet5_full_inference_v3.v | sort -u
+1901:grep -nE "^module|\`ifdef|\`ifndef|\`define|LOAD_REAL_DATA" rtl/tb/tb_lenet5_full_inference_v3.v | head -20
+1903:grep -nE "readmemh|\.hex|DATA_DIR|COMMON_DIR" rtl/tb/tb_lenet5_full_inference_v3.v | head -20
+   (end)
+
+---- compile ----
+Model A: iverilog exit 0
+Model B: iverilog exit 0
+---- source files actually compiled (Model A), with checksums ----
+   73169f323366  /mnt/d/Project/hybrid_memory/paper2/rtl/src/argmax10.v
+   a13c5bfdc98e  /mnt/d/Project/hybrid_memory/paper2/rtl/src/argmax_wrapper.v
+   c895003667bd  /mnt/d/Project/hybrid_memory/paper2/rtl/src/bias_storage.v
+   d5ddf2ae7f80  /mnt/d/Project/hybrid_memory/paper2/rtl/src/combiner.v
+   f8323afb4162  /mnt/d/Project/hybrid_memory/paper2/rtl/src/conv_engine.v
+   94103f230f87  /mnt/d/Project/hybrid_memory/paper2/rtl/src/fc_engine.v
+   456811ccb911  /mnt/d/Project/hybrid_memory/paper2/rtl/src/feature_buffer.v
+   f0fb32c3ce0c  /mnt/d/Project/hybrid_memory/paper2/rtl/src/layer_config_regfile.v
+   063b1d55977f  /mnt/d/Project/hybrid_memory/paper2/rtl/src/layer_desc_rom.v
+   f251ef0a8dfe  /mnt/d/Project/hybrid_memory/paper2/rtl/src/lenet5_top.v
+   dfcfbd26d555  /mnt/d/Project/hybrid_memory/paper2/rtl/src/logit_rf.v
+   7a78d30f2af1  /mnt/d/Project/hybrid_memory/paper2/rtl/src/maxpool2x2.v
+   8ff28e551659  /mnt/d/Project/hybrid_memory/paper2/rtl/src/pcm_addr_decoder.v
+   9ccbf846a598  /mnt/d/Project/hybrid_memory/paper2/rtl/src/pcm_crossbar.v
+   cf2ff298f33a  /mnt/d/Project/hybrid_memory/paper2/rtl/src/pcm_imc_unit.v
+   f12aa505d3db  /mnt/d/Project/hybrid_memory/paper2/rtl/src/pool_wrapper.v
+   8793052228b4  /mnt/d/Project/hybrid_memory/paper2/rtl/src/sram_addr_decoder.v
+   5c1a15878147  /mnt/d/Project/hybrid_memory/paper2/rtl/src/sram_mac.v
+   9b40cb4a5169  /mnt/d/Project/hybrid_memory/paper2/rtl/src/sram_pool_25lane.v
+   ef9ddd99302e  /mnt/d/Project/hybrid_memory/paper2/rtl/src/top_fsm.v
+   fe997fbee582  /mnt/d/Project/hybrid_memory/paper2/rtl/tb/e8_lookup_monitor.v
+   23ff16d1cb27  /mnt/d/Project/hybrid_memory/paper2/rtl/tb/tb_lenet5_full_inference_v3.v
+
+---- simulate, both models in parallel, started 2026-10-08 16:27:18 ----
+Model A: vvp exit 0, 89.70 s wall, 23936 kB peak
+Model B: vvp exit 0, 88.45 s wall, 24064 kB peak
+
+---- gate G1: reproduction of the locked figures ----
+  PASS  Model A: RESULT: ALL TESTS PASSED
+  PASS  Model A: inference complete at cycle 617573
+  PASS  Model A: SRAM protected-weight reads (per MAC op): 267143
+        [E8 MONITOR] 16684 MAC operations recorded to /home/kid/p2r_e8/trace/trace_A.txt
+          [PASS] inference complete at cycle 617573
+        SRAM protected-weight reads (per MAC op): 267143
+        RESULT: ALL TESTS PASSED
+  PASS  Model B: RESULT: ALL TESTS PASSED
+  PASS  Model B: inference complete at cycle 617573
+  PASS  Model B: SRAM protected-weight reads (per MAC op): 205664
+        [E8 MONITOR] 16684 MAC operations recorded to /home/kid/p2r_e8/trace/trace_B.txt
+          [PASS] inference complete at cycle 617573
+        SRAM protected-weight reads (per MAC op): 205664
+        RESULT: ALL TESTS PASSED
+
+---- gates G2-G5 and the counts ----
+
+P2R-E8.2 lookup-trace summary, Model A
+trace : /home/kid/p2r_e8/trace/trace_A.txt
+tables: /mnt/d/Project/hybrid_memory/paper2/data/rtl_inputs_A_v3
+
+done line in trace       : # done_cycle 617573 mac_operations 16684
+MAC operations recorded  : 16684
+
+layer   ops   expected   lookups(valid lanes)   lanes without lookup   gap min/median/max (cycles)
+conv1    4704      4704                 117600                      0   41/41/41
+conv2    9600      9600                 240000                      0   38/38/41
+fc1      1920      1920                  48000                      0   14/14/17
+fc2       420       420                  10080                    420   14/14/17
+fc3        40        40                    840                    160   14/14/17
+total   16684     16684                 416520                    580
+
+lookups per decoder side           : 416520  (the SRAM-side and PCM-side decoder of a lane both look up)
+ROM reads, 16-bit organisation     : 833040  (2 sides x 1 read per lookup)
+ROM reads, 8-bit 2-byte burst      : 1666080  (2 sides x 2 reads per lookup)
+analytical figure in the manuscript: 833040
+
+recorded SRAM hits : 267143   testbench sram_reads_mac: 267143
+recorded PCM hits  : 149377
+replica mismatches : SRAM 0, PCM 0
+lookups with both or no side hitting : 0
+hits on lanes without a lookup       : 0
+entries rejected by size or pool range: 0
+operations after done                : 0
+
+partition base/size per layer seen in the trace (sram base, size, pcm base, size):
+   conv1: 0 150 0 0
+   conv2: 150 1481 0 919
+   fc1  : 1631 335 919 47665
+   fc2  : 1966 314 48584 9766
+   fc3  : 2280 794 58350 46
+
+distinct ROM entries read per lane (of 2482): min 2388, max 2482
+
+GATES
+  PASS  G2 every lookup agrees with the RTL hit bits
+  PASS  G3 recorded SRAM hits equal the testbench sram_reads_mac
+  PASS  G4 exactly one side hits on every lookup, none on non-lookups
+  PASS  G5 no operation recorded after done
+RESULT: ALL GATES PASS
+
+P2R-E8.2 lookup-trace summary, Model B
+trace : /home/kid/p2r_e8/trace/trace_B.txt
+tables: /mnt/d/Project/hybrid_memory/paper2/data/rtl_inputs_B_v3
+
+done line in trace       : # done_cycle 617573 mac_operations 16684
+MAC operations recorded  : 16684
+
+layer   ops   expected   lookups(valid lanes)   lanes without lookup   gap min/median/max (cycles)
+conv1    4704      4704                 117600                      0   41/41/41
+conv2    9600      9600                 240000                      0   38/38/41
+fc1      1920      1920                  48000                      0   14/14/17
+fc2       420       420                  10080                    420   14/14/17
+fc3        40        40                    840                    160   14/14/17
+total   16684     16684                 416520                    580
+
+lookups per decoder side           : 416520  (the SRAM-side and PCM-side decoder of a lane both look up)
+ROM reads, 16-bit organisation     : 833040  (2 sides x 1 read per lookup)
+ROM reads, 8-bit 2-byte burst      : 1666080  (2 sides x 2 reads per lookup)
+analytical figure in the manuscript: 833040
+
+recorded SRAM hits : 205664   testbench sram_reads_mac: 205664
+recorded PCM hits  : 210856
+replica mismatches : SRAM 0, PCM 0
+lookups with both or no side hitting : 0
+hits on lanes without a lookup       : 0
+entries rejected by size or pool range: 0
+operations after done                : 0
+
+partition base/size per layer seen in the trace (sram base, size, pcm base, size):
+   conv1: 0 150 0 0
+   conv2: 150 860 0 1540
+   fc1  : 1010 479 1540 47521
+   fc2  : 1489 745 49061 9335
+   fc3  : 2234 840 58396 0
+
+distinct ROM entries read per lane (of 2482): min 2388, max 2482
+
+GATES
+  PASS  G2 every lookup agrees with the RTL hit bits
+  PASS  G3 recorded SRAM hits equal the testbench sram_reads_mac
+  PASS  G4 exactly one side hits on every lookup, none on non-lookups
+  PASS  G5 no operation recorded after done
+RESULT: ALL GATES PASS
+
+---- files written to /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/trace ----
+total 9504
+drwxrwxrwx 1 kid kid    4096 Oct  8  2026 .
+drwxrwxrwx 1 kid kid    4096 Oct  8 16:27 ..
+-rwxrwxrwx 1 kid kid       0 Oct  8 16:28 compile_A.log
+-rwxrwxrwx 1 kid kid       0 Oct  8 16:28 compile_B.log
+-rwxrwxrwx 1 kid kid    2492 Oct  8 16:28 deps_A.txt
+-rwxrwxrwx 1 kid kid    2492 Oct  8 16:28 deps_B.txt
+-rwxrwxrwx 1 kid kid  826353 Oct  8 16:28 e8_2_entry_counts_A.csv
+-rwxrwxrwx 1 kid kid  826353 Oct  8  2026 e8_2_entry_counts_B.csv
+-rwxrwxrwx 1 kid kid  197513 Oct  8 16:28 e8_2_ops_A.csv
+-rwxrwxrwx 1 kid kid  197513 Oct  8  2026 e8_2_ops_B.csv
+-rwxrwxrwx 1 kid kid     952 Oct  8 16:28 e8_2_summary_A.json
+-rwxrwxrwx 1 kid kid    1962 Oct  8 16:28 e8_2_summary_A.txt
+-rwxrwxrwx 1 kid kid     952 Oct  8  2026 e8_2_summary_B.json
+-rwxrwxrwx 1 kid kid    1962 Oct  8  2026 e8_2_summary_B.txt
+-rwxrwxrwx 1 kid kid    3022 Oct  8 16:28 sim_A.log
+-rwxrwxrwx 1 kid kid    3019 Oct  8 16:28 sim_B.log
+-rwxrwxrwx 1 kid kid 3818115 Oct  8 16:28 trace_A.txt
+-rwxrwxrwx 1 kid kid 3818115 Oct  8 16:28 trace_B.txt
+
+==============================================================
+Finished 2026-10-08 16:29:00. All gates pass.
+==============================================================

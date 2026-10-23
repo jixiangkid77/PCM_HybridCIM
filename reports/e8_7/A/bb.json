@@ -1,0 +1,6158 @@
+{
+ "top": "lenet5_top",
+ "n0": "/home/kid/p2r_e8/e87/A/syn/n0.v",
+ "n0_md5": "3f2d3fbca45e2d528457e5703772e491",
+ "top_ports": [
+  {
+   "name": "clk",
+   "dir": "input",
+   "width": 1,
+   "msb": 0,
+   "lsb": 0,
+   "scalar": true
+  },
+  {
+   "name": "rst_n",
+   "dir": "input",
+   "width": 1,
+   "msb": 0,
+   "lsb": 0,
+   "scalar": true
+  },
+  {
+   "name": "start",
+   "dir": "input",
+   "width": 1,
+   "msb": 0,
+   "lsb": 0,
+   "scalar": true
+  },
+  {
+   "name": "done",
+   "dir": "output",
+   "width": 1,
+   "msb": 0,
+   "lsb": 0,
+   "scalar": true
+  },
+  {
+   "name": "predicted_class",
+   "dir": "output",
+   "width": 4,
+   "msb": 3,
+   "lsb": 0,
+   "scalar": false
+  },
+  {
+   "name": "image_we",
+   "dir": "input",
+   "width": 1,
+   "msb": 0,
+   "lsb": 0,
+   "scalar": true
+  },
+  {
+   "name": "image_addr",
+   "dir": "input",
+   "width": 13,
+   "msb": 12,
+   "lsb": 0,
+   "scalar": false
+  },
+  {
+   "name": "image_data",
+   "dir": "input",
+   "width": 8,
+   "msb": 7,
+   "lsb": 0,
+   "scalar": false
+  },
+  {
+   "name": "cfg_wr_en",
+   "dir": "input",
+   "width": 1,
+   "msb": 0,
+   "lsb": 0,
+   "scalar": true
+  },
+  {
+   "name": "cfg_wr_addr",
+   "dir": "input",
+   "width": 6,
+   "msb": 5,
+   "lsb": 0,
+   "scalar": false
+  },
+  {
+   "name": "cfg_wr_data",
+   "dir": "input",
+   "width": 32,
+   "msb": 31,
+   "lsb": 0,
+   "scalar": false
+  }
+ ],
+ "black_boxes": [
+  {
+   "k": 0,
+   "flat": "u_bias",
+   "type": "bias_storage",
+   "params": "#(\n    .ACC_W(32'sd32),\n    .BADDR_W(32'sd8),\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .NUM_LAYERS(32'sd5)\n  )",
+   "inst": "u_bias",
+   "ports": [
+    {
+     "name": "layer_id",
+     "dir": "input",
+     "width": 3
+    },
+    {
+     "name": "channel",
+     "dir": "input",
+     "width": 8
+    },
+    {
+     "name": "bias_out",
+     "dir": "output",
+     "width": 32
+    }
+   ]
+  },
+  {
+   "k": 1,
+   "flat": "u_fbuf",
+   "type": "feature_buffer",
+   "params": "#(\n    .ADDR_WIDTH(32'sd13),\n    .DATA_WIDTH(32'sd8),\n    .DEPTH(32'sd4704)\n  )",
+   "inst": "u_fbuf",
+   "ports": [
+    {
+     "name": "clk",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "rst_n",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "write_addr",
+     "dir": "input",
+     "width": 13
+    },
+    {
+     "name": "write_data",
+     "dir": "input",
+     "width": 8
+    },
+    {
+     "name": "write_en",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "read_addr",
+     "dir": "input",
+     "width": 13
+    },
+    {
+     "name": "read_data",
+     "dir": "output",
+     "width": 8
+    },
+    {
+     "name": "swap",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "which_is_write",
+     "dir": "output",
+     "width": 1
+    }
+   ]
+  },
+  {
+   "k": 2,
+   "flat": "u_imc.U_AMU.tab[0].U_PTAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd0),\n    .MACRO(32'sd0),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0002",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 3,
+   "flat": "u_imc.U_AMU.tab[0].U_PTAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd0),\n    .MACRO(32'sd1),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0003",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 4,
+   "flat": "u_imc.U_AMU.tab[0].U_PTAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd0),\n    .MACRO(32'sd2),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0004",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 5,
+   "flat": "u_imc.U_AMU.tab[0].U_PTAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd0),\n    .MACRO(32'sd3),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0005",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 6,
+   "flat": "u_imc.U_AMU.tab[0].U_STAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd0),\n    .MACRO(32'sd0),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0006",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 7,
+   "flat": "u_imc.U_AMU.tab[0].U_STAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd0),\n    .MACRO(32'sd1),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0007",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 8,
+   "flat": "u_imc.U_AMU.tab[0].U_STAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd0),\n    .MACRO(32'sd2),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0008",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 9,
+   "flat": "u_imc.U_AMU.tab[0].U_STAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd0),\n    .MACRO(32'sd3),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0009",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 10,
+   "flat": "u_imc.U_AMU.tab[10].U_PTAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd10),\n    .MACRO(32'sd0),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0010",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 11,
+   "flat": "u_imc.U_AMU.tab[10].U_PTAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd10),\n    .MACRO(32'sd1),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0011",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 12,
+   "flat": "u_imc.U_AMU.tab[10].U_PTAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd10),\n    .MACRO(32'sd2),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0012",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 13,
+   "flat": "u_imc.U_AMU.tab[10].U_PTAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd10),\n    .MACRO(32'sd3),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0013",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 14,
+   "flat": "u_imc.U_AMU.tab[10].U_STAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd10),\n    .MACRO(32'sd0),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0014",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 15,
+   "flat": "u_imc.U_AMU.tab[10].U_STAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd10),\n    .MACRO(32'sd1),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0015",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 16,
+   "flat": "u_imc.U_AMU.tab[10].U_STAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd10),\n    .MACRO(32'sd2),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0016",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 17,
+   "flat": "u_imc.U_AMU.tab[10].U_STAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd10),\n    .MACRO(32'sd3),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0017",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 18,
+   "flat": "u_imc.U_AMU.tab[11].U_PTAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd11),\n    .MACRO(32'sd0),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0018",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 19,
+   "flat": "u_imc.U_AMU.tab[11].U_PTAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd11),\n    .MACRO(32'sd1),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0019",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 20,
+   "flat": "u_imc.U_AMU.tab[11].U_PTAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd11),\n    .MACRO(32'sd2),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0020",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 21,
+   "flat": "u_imc.U_AMU.tab[11].U_PTAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd11),\n    .MACRO(32'sd3),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0021",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 22,
+   "flat": "u_imc.U_AMU.tab[11].U_STAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd11),\n    .MACRO(32'sd0),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0022",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 23,
+   "flat": "u_imc.U_AMU.tab[11].U_STAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd11),\n    .MACRO(32'sd1),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0023",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 24,
+   "flat": "u_imc.U_AMU.tab[11].U_STAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd11),\n    .MACRO(32'sd2),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0024",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 25,
+   "flat": "u_imc.U_AMU.tab[11].U_STAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd11),\n    .MACRO(32'sd3),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0025",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 26,
+   "flat": "u_imc.U_AMU.tab[12].U_PTAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd12),\n    .MACRO(32'sd0),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0026",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 27,
+   "flat": "u_imc.U_AMU.tab[12].U_PTAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd12),\n    .MACRO(32'sd1),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0027",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 28,
+   "flat": "u_imc.U_AMU.tab[12].U_PTAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd12),\n    .MACRO(32'sd2),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0028",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 29,
+   "flat": "u_imc.U_AMU.tab[12].U_PTAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd12),\n    .MACRO(32'sd3),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0029",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 30,
+   "flat": "u_imc.U_AMU.tab[12].U_STAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd12),\n    .MACRO(32'sd0),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0030",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 31,
+   "flat": "u_imc.U_AMU.tab[12].U_STAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd12),\n    .MACRO(32'sd1),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0031",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 32,
+   "flat": "u_imc.U_AMU.tab[12].U_STAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd12),\n    .MACRO(32'sd2),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0032",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 33,
+   "flat": "u_imc.U_AMU.tab[12].U_STAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd12),\n    .MACRO(32'sd3),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0033",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 34,
+   "flat": "u_imc.U_AMU.tab[13].U_PTAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd13),\n    .MACRO(32'sd0),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0034",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 35,
+   "flat": "u_imc.U_AMU.tab[13].U_PTAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd13),\n    .MACRO(32'sd1),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0035",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 36,
+   "flat": "u_imc.U_AMU.tab[13].U_PTAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd13),\n    .MACRO(32'sd2),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0036",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 37,
+   "flat": "u_imc.U_AMU.tab[13].U_PTAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd13),\n    .MACRO(32'sd3),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0037",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 38,
+   "flat": "u_imc.U_AMU.tab[13].U_STAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd13),\n    .MACRO(32'sd0),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0038",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 39,
+   "flat": "u_imc.U_AMU.tab[13].U_STAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd13),\n    .MACRO(32'sd1),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0039",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 40,
+   "flat": "u_imc.U_AMU.tab[13].U_STAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd13),\n    .MACRO(32'sd2),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0040",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 41,
+   "flat": "u_imc.U_AMU.tab[13].U_STAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd13),\n    .MACRO(32'sd3),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0041",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 42,
+   "flat": "u_imc.U_AMU.tab[14].U_PTAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd14),\n    .MACRO(32'sd0),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0042",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 43,
+   "flat": "u_imc.U_AMU.tab[14].U_PTAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd14),\n    .MACRO(32'sd1),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0043",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 44,
+   "flat": "u_imc.U_AMU.tab[14].U_PTAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd14),\n    .MACRO(32'sd2),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0044",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 45,
+   "flat": "u_imc.U_AMU.tab[14].U_PTAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd14),\n    .MACRO(32'sd3),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0045",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 46,
+   "flat": "u_imc.U_AMU.tab[14].U_STAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd14),\n    .MACRO(32'sd0),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0046",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 47,
+   "flat": "u_imc.U_AMU.tab[14].U_STAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd14),\n    .MACRO(32'sd1),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0047",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 48,
+   "flat": "u_imc.U_AMU.tab[14].U_STAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd14),\n    .MACRO(32'sd2),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0048",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 49,
+   "flat": "u_imc.U_AMU.tab[14].U_STAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd14),\n    .MACRO(32'sd3),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0049",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 50,
+   "flat": "u_imc.U_AMU.tab[15].U_PTAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd15),\n    .MACRO(32'sd0),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0050",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 51,
+   "flat": "u_imc.U_AMU.tab[15].U_PTAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd15),\n    .MACRO(32'sd1),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0051",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 52,
+   "flat": "u_imc.U_AMU.tab[15].U_PTAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd15),\n    .MACRO(32'sd2),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0052",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 53,
+   "flat": "u_imc.U_AMU.tab[15].U_PTAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd15),\n    .MACRO(32'sd3),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0053",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 54,
+   "flat": "u_imc.U_AMU.tab[15].U_STAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd15),\n    .MACRO(32'sd0),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0054",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 55,
+   "flat": "u_imc.U_AMU.tab[15].U_STAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd15),\n    .MACRO(32'sd1),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0055",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 56,
+   "flat": "u_imc.U_AMU.tab[15].U_STAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd15),\n    .MACRO(32'sd2),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0056",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 57,
+   "flat": "u_imc.U_AMU.tab[15].U_STAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd15),\n    .MACRO(32'sd3),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0057",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 58,
+   "flat": "u_imc.U_AMU.tab[16].U_PTAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd16),\n    .MACRO(32'sd0),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0058",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 59,
+   "flat": "u_imc.U_AMU.tab[16].U_PTAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd16),\n    .MACRO(32'sd1),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0059",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 60,
+   "flat": "u_imc.U_AMU.tab[16].U_PTAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd16),\n    .MACRO(32'sd2),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0060",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 61,
+   "flat": "u_imc.U_AMU.tab[16].U_PTAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd16),\n    .MACRO(32'sd3),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0061",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 62,
+   "flat": "u_imc.U_AMU.tab[16].U_STAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd16),\n    .MACRO(32'sd0),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0062",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 63,
+   "flat": "u_imc.U_AMU.tab[16].U_STAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd16),\n    .MACRO(32'sd1),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0063",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 64,
+   "flat": "u_imc.U_AMU.tab[16].U_STAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd16),\n    .MACRO(32'sd2),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0064",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 65,
+   "flat": "u_imc.U_AMU.tab[16].U_STAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd16),\n    .MACRO(32'sd3),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0065",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 66,
+   "flat": "u_imc.U_AMU.tab[17].U_PTAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd17),\n    .MACRO(32'sd0),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0066",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 67,
+   "flat": "u_imc.U_AMU.tab[17].U_PTAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd17),\n    .MACRO(32'sd1),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0067",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 68,
+   "flat": "u_imc.U_AMU.tab[17].U_PTAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd17),\n    .MACRO(32'sd2),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0068",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 69,
+   "flat": "u_imc.U_AMU.tab[17].U_PTAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd17),\n    .MACRO(32'sd3),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0069",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 70,
+   "flat": "u_imc.U_AMU.tab[17].U_STAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd17),\n    .MACRO(32'sd0),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0070",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 71,
+   "flat": "u_imc.U_AMU.tab[17].U_STAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd17),\n    .MACRO(32'sd1),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0071",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 72,
+   "flat": "u_imc.U_AMU.tab[17].U_STAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd17),\n    .MACRO(32'sd2),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0072",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 73,
+   "flat": "u_imc.U_AMU.tab[17].U_STAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd17),\n    .MACRO(32'sd3),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0073",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 74,
+   "flat": "u_imc.U_AMU.tab[18].U_PTAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd18),\n    .MACRO(32'sd0),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0074",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 75,
+   "flat": "u_imc.U_AMU.tab[18].U_PTAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd18),\n    .MACRO(32'sd1),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0075",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 76,
+   "flat": "u_imc.U_AMU.tab[18].U_PTAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd18),\n    .MACRO(32'sd2),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0076",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 77,
+   "flat": "u_imc.U_AMU.tab[18].U_PTAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd18),\n    .MACRO(32'sd3),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0077",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 78,
+   "flat": "u_imc.U_AMU.tab[18].U_STAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd18),\n    .MACRO(32'sd0),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0078",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 79,
+   "flat": "u_imc.U_AMU.tab[18].U_STAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd18),\n    .MACRO(32'sd1),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0079",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 80,
+   "flat": "u_imc.U_AMU.tab[18].U_STAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd18),\n    .MACRO(32'sd2),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0080",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 81,
+   "flat": "u_imc.U_AMU.tab[18].U_STAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd18),\n    .MACRO(32'sd3),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0081",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 82,
+   "flat": "u_imc.U_AMU.tab[19].U_PTAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd19),\n    .MACRO(32'sd0),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0082",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 83,
+   "flat": "u_imc.U_AMU.tab[19].U_PTAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd19),\n    .MACRO(32'sd1),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0083",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 84,
+   "flat": "u_imc.U_AMU.tab[19].U_PTAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd19),\n    .MACRO(32'sd2),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0084",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 85,
+   "flat": "u_imc.U_AMU.tab[19].U_PTAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd19),\n    .MACRO(32'sd3),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0085",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 86,
+   "flat": "u_imc.U_AMU.tab[19].U_STAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd19),\n    .MACRO(32'sd0),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0086",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 87,
+   "flat": "u_imc.U_AMU.tab[19].U_STAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd19),\n    .MACRO(32'sd1),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0087",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 88,
+   "flat": "u_imc.U_AMU.tab[19].U_STAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd19),\n    .MACRO(32'sd2),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0088",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 89,
+   "flat": "u_imc.U_AMU.tab[19].U_STAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd19),\n    .MACRO(32'sd3),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0089",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 90,
+   "flat": "u_imc.U_AMU.tab[1].U_PTAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd1),\n    .MACRO(32'sd0),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0090",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 91,
+   "flat": "u_imc.U_AMU.tab[1].U_PTAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd1),\n    .MACRO(32'sd1),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0091",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 92,
+   "flat": "u_imc.U_AMU.tab[1].U_PTAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd1),\n    .MACRO(32'sd2),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0092",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 93,
+   "flat": "u_imc.U_AMU.tab[1].U_PTAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd1),\n    .MACRO(32'sd3),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0093",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 94,
+   "flat": "u_imc.U_AMU.tab[1].U_STAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd1),\n    .MACRO(32'sd0),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0094",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 95,
+   "flat": "u_imc.U_AMU.tab[1].U_STAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd1),\n    .MACRO(32'sd1),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0095",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 96,
+   "flat": "u_imc.U_AMU.tab[1].U_STAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd1),\n    .MACRO(32'sd2),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0096",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 97,
+   "flat": "u_imc.U_AMU.tab[1].U_STAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd1),\n    .MACRO(32'sd3),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0097",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 98,
+   "flat": "u_imc.U_AMU.tab[20].U_PTAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd20),\n    .MACRO(32'sd0),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0098",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 99,
+   "flat": "u_imc.U_AMU.tab[20].U_PTAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd20),\n    .MACRO(32'sd1),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0099",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 100,
+   "flat": "u_imc.U_AMU.tab[20].U_PTAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd20),\n    .MACRO(32'sd2),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0100",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 101,
+   "flat": "u_imc.U_AMU.tab[20].U_PTAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd20),\n    .MACRO(32'sd3),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0101",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 102,
+   "flat": "u_imc.U_AMU.tab[20].U_STAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd20),\n    .MACRO(32'sd0),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0102",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 103,
+   "flat": "u_imc.U_AMU.tab[20].U_STAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd20),\n    .MACRO(32'sd1),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0103",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 104,
+   "flat": "u_imc.U_AMU.tab[20].U_STAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd20),\n    .MACRO(32'sd2),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0104",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 105,
+   "flat": "u_imc.U_AMU.tab[20].U_STAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd20),\n    .MACRO(32'sd3),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0105",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 106,
+   "flat": "u_imc.U_AMU.tab[21].U_PTAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd21),\n    .MACRO(32'sd0),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0106",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 107,
+   "flat": "u_imc.U_AMU.tab[21].U_PTAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd21),\n    .MACRO(32'sd1),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0107",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 108,
+   "flat": "u_imc.U_AMU.tab[21].U_PTAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd21),\n    .MACRO(32'sd2),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0108",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 109,
+   "flat": "u_imc.U_AMU.tab[21].U_PTAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd21),\n    .MACRO(32'sd3),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0109",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 110,
+   "flat": "u_imc.U_AMU.tab[21].U_STAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd21),\n    .MACRO(32'sd0),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0110",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 111,
+   "flat": "u_imc.U_AMU.tab[21].U_STAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd21),\n    .MACRO(32'sd1),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0111",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 112,
+   "flat": "u_imc.U_AMU.tab[21].U_STAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd21),\n    .MACRO(32'sd2),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0112",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 113,
+   "flat": "u_imc.U_AMU.tab[21].U_STAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd21),\n    .MACRO(32'sd3),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0113",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 114,
+   "flat": "u_imc.U_AMU.tab[22].U_PTAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd22),\n    .MACRO(32'sd0),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0114",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 115,
+   "flat": "u_imc.U_AMU.tab[22].U_PTAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd22),\n    .MACRO(32'sd1),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0115",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 116,
+   "flat": "u_imc.U_AMU.tab[22].U_PTAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd22),\n    .MACRO(32'sd2),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0116",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 117,
+   "flat": "u_imc.U_AMU.tab[22].U_PTAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd22),\n    .MACRO(32'sd3),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0117",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 118,
+   "flat": "u_imc.U_AMU.tab[22].U_STAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd22),\n    .MACRO(32'sd0),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0118",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 119,
+   "flat": "u_imc.U_AMU.tab[22].U_STAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd22),\n    .MACRO(32'sd1),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0119",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 120,
+   "flat": "u_imc.U_AMU.tab[22].U_STAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd22),\n    .MACRO(32'sd2),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0120",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 121,
+   "flat": "u_imc.U_AMU.tab[22].U_STAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd22),\n    .MACRO(32'sd3),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0121",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 122,
+   "flat": "u_imc.U_AMU.tab[23].U_PTAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd23),\n    .MACRO(32'sd0),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0122",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 123,
+   "flat": "u_imc.U_AMU.tab[23].U_PTAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd23),\n    .MACRO(32'sd1),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0123",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 124,
+   "flat": "u_imc.U_AMU.tab[23].U_PTAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd23),\n    .MACRO(32'sd2),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0124",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 125,
+   "flat": "u_imc.U_AMU.tab[23].U_PTAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd23),\n    .MACRO(32'sd3),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0125",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 126,
+   "flat": "u_imc.U_AMU.tab[23].U_STAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd23),\n    .MACRO(32'sd0),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0126",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 127,
+   "flat": "u_imc.U_AMU.tab[23].U_STAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd23),\n    .MACRO(32'sd1),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0127",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 128,
+   "flat": "u_imc.U_AMU.tab[23].U_STAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd23),\n    .MACRO(32'sd2),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0128",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 129,
+   "flat": "u_imc.U_AMU.tab[23].U_STAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd23),\n    .MACRO(32'sd3),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0129",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 130,
+   "flat": "u_imc.U_AMU.tab[24].U_PTAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd24),\n    .MACRO(32'sd0),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0130",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 131,
+   "flat": "u_imc.U_AMU.tab[24].U_PTAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd24),\n    .MACRO(32'sd1),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0131",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 132,
+   "flat": "u_imc.U_AMU.tab[24].U_PTAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd24),\n    .MACRO(32'sd2),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0132",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 133,
+   "flat": "u_imc.U_AMU.tab[24].U_PTAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd24),\n    .MACRO(32'sd3),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0133",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 134,
+   "flat": "u_imc.U_AMU.tab[24].U_STAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd24),\n    .MACRO(32'sd0),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0134",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 135,
+   "flat": "u_imc.U_AMU.tab[24].U_STAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd24),\n    .MACRO(32'sd1),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0135",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 136,
+   "flat": "u_imc.U_AMU.tab[24].U_STAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd24),\n    .MACRO(32'sd2),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0136",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 137,
+   "flat": "u_imc.U_AMU.tab[24].U_STAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd24),\n    .MACRO(32'sd3),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0137",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 138,
+   "flat": "u_imc.U_AMU.tab[2].U_PTAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd2),\n    .MACRO(32'sd0),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0138",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 139,
+   "flat": "u_imc.U_AMU.tab[2].U_PTAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd2),\n    .MACRO(32'sd1),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0139",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 140,
+   "flat": "u_imc.U_AMU.tab[2].U_PTAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd2),\n    .MACRO(32'sd2),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0140",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 141,
+   "flat": "u_imc.U_AMU.tab[2].U_PTAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd2),\n    .MACRO(32'sd3),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0141",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 142,
+   "flat": "u_imc.U_AMU.tab[2].U_STAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd2),\n    .MACRO(32'sd0),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0142",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 143,
+   "flat": "u_imc.U_AMU.tab[2].U_STAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd2),\n    .MACRO(32'sd1),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0143",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 144,
+   "flat": "u_imc.U_AMU.tab[2].U_STAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd2),\n    .MACRO(32'sd2),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0144",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 145,
+   "flat": "u_imc.U_AMU.tab[2].U_STAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd2),\n    .MACRO(32'sd3),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0145",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 146,
+   "flat": "u_imc.U_AMU.tab[3].U_PTAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd3),\n    .MACRO(32'sd0),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0146",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 147,
+   "flat": "u_imc.U_AMU.tab[3].U_PTAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd3),\n    .MACRO(32'sd1),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0147",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 148,
+   "flat": "u_imc.U_AMU.tab[3].U_PTAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd3),\n    .MACRO(32'sd2),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0148",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 149,
+   "flat": "u_imc.U_AMU.tab[3].U_PTAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd3),\n    .MACRO(32'sd3),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0149",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 150,
+   "flat": "u_imc.U_AMU.tab[3].U_STAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd3),\n    .MACRO(32'sd0),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0150",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 151,
+   "flat": "u_imc.U_AMU.tab[3].U_STAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd3),\n    .MACRO(32'sd1),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0151",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 152,
+   "flat": "u_imc.U_AMU.tab[3].U_STAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd3),\n    .MACRO(32'sd2),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0152",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 153,
+   "flat": "u_imc.U_AMU.tab[3].U_STAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd3),\n    .MACRO(32'sd3),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0153",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 154,
+   "flat": "u_imc.U_AMU.tab[4].U_PTAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd4),\n    .MACRO(32'sd0),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0154",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 155,
+   "flat": "u_imc.U_AMU.tab[4].U_PTAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd4),\n    .MACRO(32'sd1),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0155",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 156,
+   "flat": "u_imc.U_AMU.tab[4].U_PTAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd4),\n    .MACRO(32'sd2),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0156",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 157,
+   "flat": "u_imc.U_AMU.tab[4].U_PTAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd4),\n    .MACRO(32'sd3),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0157",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 158,
+   "flat": "u_imc.U_AMU.tab[4].U_STAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd4),\n    .MACRO(32'sd0),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0158",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 159,
+   "flat": "u_imc.U_AMU.tab[4].U_STAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd4),\n    .MACRO(32'sd1),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0159",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 160,
+   "flat": "u_imc.U_AMU.tab[4].U_STAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd4),\n    .MACRO(32'sd2),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0160",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 161,
+   "flat": "u_imc.U_AMU.tab[4].U_STAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd4),\n    .MACRO(32'sd3),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0161",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 162,
+   "flat": "u_imc.U_AMU.tab[5].U_PTAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd5),\n    .MACRO(32'sd0),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0162",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 163,
+   "flat": "u_imc.U_AMU.tab[5].U_PTAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd5),\n    .MACRO(32'sd1),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0163",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 164,
+   "flat": "u_imc.U_AMU.tab[5].U_PTAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd5),\n    .MACRO(32'sd2),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0164",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 165,
+   "flat": "u_imc.U_AMU.tab[5].U_PTAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd5),\n    .MACRO(32'sd3),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0165",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 166,
+   "flat": "u_imc.U_AMU.tab[5].U_STAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd5),\n    .MACRO(32'sd0),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0166",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 167,
+   "flat": "u_imc.U_AMU.tab[5].U_STAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd5),\n    .MACRO(32'sd1),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0167",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 168,
+   "flat": "u_imc.U_AMU.tab[5].U_STAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd5),\n    .MACRO(32'sd2),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0168",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 169,
+   "flat": "u_imc.U_AMU.tab[5].U_STAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd5),\n    .MACRO(32'sd3),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0169",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 170,
+   "flat": "u_imc.U_AMU.tab[6].U_PTAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd6),\n    .MACRO(32'sd0),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0170",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 171,
+   "flat": "u_imc.U_AMU.tab[6].U_PTAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd6),\n    .MACRO(32'sd1),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0171",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 172,
+   "flat": "u_imc.U_AMU.tab[6].U_PTAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd6),\n    .MACRO(32'sd2),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0172",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 173,
+   "flat": "u_imc.U_AMU.tab[6].U_PTAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd6),\n    .MACRO(32'sd3),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0173",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 174,
+   "flat": "u_imc.U_AMU.tab[6].U_STAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd6),\n    .MACRO(32'sd0),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0174",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 175,
+   "flat": "u_imc.U_AMU.tab[6].U_STAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd6),\n    .MACRO(32'sd1),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0175",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 176,
+   "flat": "u_imc.U_AMU.tab[6].U_STAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd6),\n    .MACRO(32'sd2),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0176",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 177,
+   "flat": "u_imc.U_AMU.tab[6].U_STAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd6),\n    .MACRO(32'sd3),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0177",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 178,
+   "flat": "u_imc.U_AMU.tab[7].U_PTAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd7),\n    .MACRO(32'sd0),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0178",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 179,
+   "flat": "u_imc.U_AMU.tab[7].U_PTAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd7),\n    .MACRO(32'sd1),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0179",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 180,
+   "flat": "u_imc.U_AMU.tab[7].U_PTAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd7),\n    .MACRO(32'sd2),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0180",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 181,
+   "flat": "u_imc.U_AMU.tab[7].U_PTAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd7),\n    .MACRO(32'sd3),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0181",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 182,
+   "flat": "u_imc.U_AMU.tab[7].U_STAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd7),\n    .MACRO(32'sd0),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0182",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 183,
+   "flat": "u_imc.U_AMU.tab[7].U_STAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd7),\n    .MACRO(32'sd1),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0183",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 184,
+   "flat": "u_imc.U_AMU.tab[7].U_STAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd7),\n    .MACRO(32'sd2),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0184",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 185,
+   "flat": "u_imc.U_AMU.tab[7].U_STAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd7),\n    .MACRO(32'sd3),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0185",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 186,
+   "flat": "u_imc.U_AMU.tab[8].U_PTAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd8),\n    .MACRO(32'sd0),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0186",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 187,
+   "flat": "u_imc.U_AMU.tab[8].U_PTAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd8),\n    .MACRO(32'sd1),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0187",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 188,
+   "flat": "u_imc.U_AMU.tab[8].U_PTAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd8),\n    .MACRO(32'sd2),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0188",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 189,
+   "flat": "u_imc.U_AMU.tab[8].U_PTAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd8),\n    .MACRO(32'sd3),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0189",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 190,
+   "flat": "u_imc.U_AMU.tab[8].U_STAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd8),\n    .MACRO(32'sd0),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0190",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 191,
+   "flat": "u_imc.U_AMU.tab[8].U_STAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd8),\n    .MACRO(32'sd1),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0191",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 192,
+   "flat": "u_imc.U_AMU.tab[8].U_STAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd8),\n    .MACRO(32'sd2),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0192",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 193,
+   "flat": "u_imc.U_AMU.tab[8].U_STAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd8),\n    .MACRO(32'sd3),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0193",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 194,
+   "flat": "u_imc.U_AMU.tab[9].U_PTAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd9),\n    .MACRO(32'sd0),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0194",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 195,
+   "flat": "u_imc.U_AMU.tab[9].U_PTAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd9),\n    .MACRO(32'sd1),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0195",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 196,
+   "flat": "u_imc.U_AMU.tab[9].U_PTAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd9),\n    .MACRO(32'sd2),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0196",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 197,
+   "flat": "u_imc.U_AMU.tab[9].U_PTAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd9),\n    .MACRO(32'sd3),\n    .SIDE(32'sd1)\n  )",
+   "inst": "bb0197",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 198,
+   "flat": "u_imc.U_AMU.tab[9].U_STAB.mac[0].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd9),\n    .MACRO(32'sd0),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0198",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 199,
+   "flat": "u_imc.U_AMU.tab[9].U_STAB.mac[1].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd9),\n    .MACRO(32'sd1),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0199",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 200,
+   "flat": "u_imc.U_AMU.tab[9].U_STAB.mac[2].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd9),\n    .MACRO(32'sd2),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0200",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 201,
+   "flat": "u_imc.U_AMU.tab[9].U_STAB.mac[3].U_ROM",
+   "type": "e8_rom_r48",
+   "params": "#(\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .LANE(32'sd9),\n    .MACRO(32'sd3),\n    .SIDE(32'sd0)\n  )",
+   "inst": "bb0201",
+   "ports": [
+    {
+     "name": "clk0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "cs0",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr0",
+     "dir": "input",
+     "width": 10
+    },
+    {
+     "name": "dout0",
+     "dir": "output",
+     "width": 16
+    }
+   ]
+  },
+  {
+   "k": 202,
+   "flat": "u_imc.U_PCB",
+   "type": "pcm_crossbar",
+   "params": "#(\n    .ACC_WIDTH(32'sd24),\n    .ADDR_WIDTH(32'sd16),\n    .COMMON_DIR(\"../data/rtl_inputs_common\"),\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .DATA_WIDTH(32'sd8),\n    .K(32'sd25),\n    .MULTI_CYCLE_LATENCY(32'sd8),\n    .PCM_TOTAL(32'sd58396)\n  )",
+   "inst": "u_pcb",
+   "ports": [
+    {
+     "name": "clk",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "rst_n",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "start",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "v_bus",
+     "dir": "input",
+     "width": 200
+    },
+    {
+     "name": "pcm_pool_addr_bus",
+     "dir": "input",
+     "width": 400
+    },
+    {
+     "name": "pcm_hit_bus",
+     "dir": "input",
+     "width": 25
+    },
+    {
+     "name": "enable_drift",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "drift_t",
+     "dir": "input",
+     "width": 16
+    },
+    {
+     "name": "mac_result",
+     "dir": "output",
+     "width": 24
+    },
+    {
+     "name": "result_valid",
+     "dir": "output",
+     "width": 1
+    }
+   ]
+  },
+  {
+   "k": 203,
+   "flat": "u_imc.U_SPOOL",
+   "type": "sram_pool_25lane_2c",
+   "params": "#(\n    .ADDR_WIDTH(32'sd16),\n    .DATA_DIR(\"../data/rtl_inputs_A_v3\"),\n    .DATA_WIDTH(32'sd8),\n    .K(32'sd25),\n    .SRAM_TOTAL(32'sd3074)\n  )",
+   "inst": "u_spool",
+   "ports": [
+    {
+     "name": "clk",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "rst_n",
+     "dir": "input",
+     "width": 1
+    },
+    {
+     "name": "addr_bus",
+     "dir": "input",
+     "width": 400
+    },
+    {
+     "name": "hit_bus",
+     "dir": "input",
+     "width": 25
+    },
+    {
+     "name": "weight_bus",
+     "dir": "output",
+     "width": 200
+    },
+    {
+     "name": "hit_reg_bus",
+     "dir": "output",
+     "width": 25
+    }
+   ]
+  }
+ ],
+ "std_cells": 185650,
+ "std_cells_by_type": {
+  "sky130_fd_sc_hd__mux2_1": 4158,
+  "sky130_fd_sc_hd__or2_0": 894,
+  "sky130_fd_sc_hd__clkinv_1": 2527,
+  "sky130_fd_sc_hd__nand4bb_1": 6,
+  "sky130_fd_sc_hd__nand2b_1": 746,
+  "sky130_fd_sc_hd__nor2_1": 29373,
+  "sky130_fd_sc_hd__nor4_1": 1206,
+  "sky130_fd_sc_hd__or4_1": 315,
+  "sky130_fd_sc_hd__o21a_1": 909,
+  "sky130_fd_sc_hd__o21ai_0": 18229,
+  "sky130_fd_sc_hd__nor3_1": 3370,
+  "sky130_fd_sc_hd__a222oi_1": 1759,
+  "sky130_fd_sc_hd__nand2_1": 23456,
+  "sky130_fd_sc_hd__mux2i_1": 10685,
+  "sky130_fd_sc_hd__a22oi_1": 3573,
+  "sky130_fd_sc_hd__nand3_1": 5857,
+  "sky130_fd_sc_hd__nor4b_1": 38,
+  "sky130_fd_sc_hd__or4b_1": 13,
+  "sky130_fd_sc_hd__nor2b_1": 2548,
+  "sky130_fd_sc_hd__o22a_1": 191,
+  "sky130_fd_sc_hd__and2_0": 1871,
+  "sky130_fd_sc_hd__o22ai_1": 2127,
+  "sky130_fd_sc_hd__and3_1": 754,
+  "sky130_fd_sc_hd__a21oi_1": 18618,
+  "sky130_fd_sc_hd__a211oi_1": 1478,
+  "sky130_fd_sc_hd__and3b_1": 55,
+  "sky130_fd_sc_hd__a21o_1": 317,
+  "sky130_fd_sc_hd__o31ai_1": 329,
+  "sky130_fd_sc_hd__o21bai_1": 201,
+  "sky130_fd_sc_hd__a31oi_1": 1277,
+  "sky130_fd_sc_hd__xnor2_1": 6347,
+  "sky130_fd_sc_hd__a41o_1": 16,
+  "sky130_fd_sc_hd__dlclkp_1": 635,
+  "sky130_fd_sc_hd__dfrtp_1": 768,
+  "sky130_fd_sc_hd__dfstp_2": 4,
+  "sky130_fd_sc_hd__and4_1": 67,
+  "sky130_fd_sc_hd__nand3b_1": 36,
+  "sky130_fd_sc_hd__or3b_1": 66,
+  "sky130_fd_sc_hd__nand4_1": 1164,
+  "sky130_fd_sc_hd__xor2_1": 2690,
+  "sky130_fd_sc_hd__o21ba_1": 25,
+  "sky130_fd_sc_hd__maj3_1": 2070,
+  "sky130_fd_sc_hd__a22o_1": 195,
+  "sky130_fd_sc_hd__nor3b_1": 171,
+  "sky130_fd_sc_hd__a211o_1": 105,
+  "sky130_fd_sc_hd__o211ai_1": 1771,
+  "sky130_fd_sc_hd__a221oi_1": 1907,
+  "sky130_fd_sc_hd__o2111ai_1": 114,
+  "sky130_fd_sc_hd__nand4b_1": 33,
+  "sky130_fd_sc_hd__or3_1": 387,
+  "sky130_fd_sc_hd__o211a_1": 73,
+  "sky130_fd_sc_hd__a311oi_1": 337,
+  "sky130_fd_sc_hd__o41ai_1": 51,
+  "sky130_fd_sc_hd__a32o_1": 950,
+  "sky130_fd_sc_hd__nor4bb_1": 13,
+  "sky130_fd_sc_hd__o2111a_1": 6,
+  "sky130_fd_sc_hd__a221o_1": 90,
+  "sky130_fd_sc_hd__a21boi_0": 242,
+  "sky130_fd_sc_hd__o31a_1": 79,
+  "sky130_fd_sc_hd__o311a_1": 57,
+  "sky130_fd_sc_hd__o311ai_0": 340,
+  "sky130_fd_sc_hd__o221ai_1": 498,
+  "sky130_fd_sc_hd__a2bb2oi_1": 94,
+  "sky130_fd_sc_hd__o32ai_1": 108,
+  "sky130_fd_sc_hd__a311o_1": 31,
+  "sky130_fd_sc_hd__o2bb2ai_1": 52,
+  "sky130_fd_sc_hd__a41oi_1": 44,
+  "sky130_fd_sc_hd__a31o_1": 64,
+  "sky130_fd_sc_hd__a2111oi_0": 123,
+  "sky130_fd_sc_hd__xnor3_1": 880,
+  "sky130_fd_sc_hd__xor3_1": 212,
+  "sky130_fd_sc_hd__o32a_1": 16,
+  "sky130_fd_sc_hd__buf_1": 8,
+  "sky130_fd_sc_hd__dfxtp_1": 21733,
+  "sky130_fd_sc_hd__edfxtp_1": 242,
+  "sky130_fd_sc_hd__a32oi_1": 1453,
+  "sky130_fd_sc_hd__and4b_1": 26,
+  "sky130_fd_sc_hd__o221a_1": 26,
+  "sky130_fd_sc_hd__mux4_2": 2333,
+  "sky130_fd_sc_hd__a21bo_1": 12,
+  "sky130_fd_sc_hd__a2111o_1": 2,
+  "sky130_fd_sc_hd__o41a_1": 4
+ }
+}

@@ -1,0 +1,221 @@
+VERSION 5.4 ;
+NAMESCASESENSITIVE ON ;
+BUSBITCHARS "[]" ;
+DIVIDERCHAR "/" ;
+UNITS
+  DATABASE MICRONS 2000 ;
+END UNITS
+MACRO paper2_addr_decoder_8x5120
+   CLASS BLOCK ;
+   SIZE 347.73 BY 229.125 ;
+   SYMMETRY X Y R90 ;
+   PIN clk0
+      DIRECTION INPUT ;
+      PORT
+         LAYER met3 ;
+         RECT  -7.48 13.855 -7.1 14.235 ;
+      END
+   END clk0
+   PIN cs0
+      DIRECTION INPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  15.725 -7.48 16.105 -7.1 ;
+      END
+   END cs0
+   PIN addr0[0]
+      DIRECTION INPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  30.15 -7.48 30.53 -7.1 ;
+      END
+   END addr0[0]
+   PIN addr0[1]
+      DIRECTION INPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  32.19 -7.48 32.57 -7.1 ;
+      END
+   END addr0[1]
+   PIN addr0[2]
+      DIRECTION INPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  34.23 -7.48 34.61 -7.1 ;
+      END
+   END addr0[2]
+   PIN addr0[3]
+      DIRECTION INPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  36.27 -7.48 36.65 -7.1 ;
+      END
+   END addr0[3]
+   PIN addr0[4]
+      DIRECTION INPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  38.31 -7.48 38.69 -7.1 ;
+      END
+   END addr0[4]
+   PIN addr0[5]
+      DIRECTION INPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  40.35 -7.48 40.73 -7.1 ;
+      END
+   END addr0[5]
+   PIN addr0[6]
+      DIRECTION INPUT ;
+      PORT
+         LAYER met3 ;
+         RECT  -7.48 57.515 -7.1 57.895 ;
+      END
+   END addr0[6]
+   PIN addr0[7]
+      DIRECTION INPUT ;
+      PORT
+         LAYER met3 ;
+         RECT  -7.48 58.26 -7.1 58.64 ;
+      END
+   END addr0[7]
+   PIN addr0[8]
+      DIRECTION INPUT ;
+      PORT
+         LAYER met3 ;
+         RECT  -7.48 58.95 -7.1 59.33 ;
+      END
+   END addr0[8]
+   PIN addr0[9]
+      DIRECTION INPUT ;
+      PORT
+         LAYER met3 ;
+         RECT  -7.48 56.045 -7.1 56.425 ;
+      END
+   END addr0[9]
+   PIN addr0[10]
+      DIRECTION INPUT ;
+      PORT
+         LAYER met3 ;
+         RECT  -7.48 59.64 -7.1 60.02 ;
+      END
+   END addr0[10]
+   PIN addr0[11]
+      DIRECTION INPUT ;
+      PORT
+         LAYER met3 ;
+         RECT  -7.48 55.355 -7.1 55.735 ;
+      END
+   END addr0[11]
+   PIN addr0[12]
+      DIRECTION INPUT ;
+      PORT
+         LAYER met3 ;
+         RECT  -7.48 60.33 -7.1 60.71 ;
+      END
+   END addr0[12]
+   PIN addr0[13]
+      DIRECTION INPUT ;
+      PORT
+         LAYER met3 ;
+         RECT  -7.48 54.665 -7.1 55.045 ;
+      END
+   END addr0[13]
+   PIN dout0[0]
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  61.075 -7.48 61.455 -7.1 ;
+      END
+   END dout0[0]
+   PIN dout0[1]
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  62.615 -7.48 62.995 -7.1 ;
+      END
+   END dout0[1]
+   PIN dout0[2]
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  64.155 -7.48 64.535 -7.1 ;
+      END
+   END dout0[2]
+   PIN dout0[3]
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  64.95 -7.48 65.33 -7.1 ;
+      END
+   END dout0[3]
+   PIN dout0[4]
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  67.195 -7.48 67.575 -7.1 ;
+      END
+   END dout0[4]
+   PIN dout0[5]
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  68.775 -7.48 69.155 -7.1 ;
+      END
+   END dout0[5]
+   PIN dout0[6]
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  70.315 -7.48 70.695 -7.1 ;
+      END
+   END dout0[6]
+   PIN dout0[7]
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  71.855 -7.48 72.235 -7.1 ;
+      END
+   END dout0[7]
+   PIN vccd1
+      DIRECTION INOUT ;
+      USE POWER ; 
+      SHAPE ABUTMENT ; 
+      PORT
+         LAYER met3 ;
+         RECT  -7.48 234.865 355.21 236.605 ;
+         LAYER met3 ;
+         RECT  -7.48 -7.48 355.21 -5.74 ;
+         LAYER met4 ;
+         RECT  -7.48 -7.48 -5.74 236.605 ;
+         LAYER met4 ;
+         RECT  353.47 -7.48 355.21 236.605 ;
+      END
+   END vccd1
+   PIN vssd1
+      DIRECTION INOUT ;
+      USE GROUND ; 
+      SHAPE ABUTMENT ; 
+      PORT
+         LAYER met3 ;
+         RECT  -4.0 -4.0 351.73 -2.26 ;
+         LAYER met4 ;
+         RECT  -4.0 -4.0 -2.26 233.125 ;
+         LAYER met4 ;
+         RECT  349.99 -4.0 351.73 233.125 ;
+         LAYER met3 ;
+         RECT  -4.0 231.385 351.73 233.125 ;
+      END
+   END vssd1
+   OBS
+   LAYER  met1 ;
+      RECT  0.62 0.62 347.11 228.505 ;
+   LAYER  met2 ;
+      RECT  0.62 0.62 347.11 228.505 ;
+   LAYER  met3 ;
+      RECT  0.62 0.62 347.11 228.505 ;
+   LAYER  met4 ;
+      RECT  0.62 0.62 347.11 228.505 ;
+   END
+END    paper2_addr_decoder_8x5120
+END    LIBRARY

@@ -1,0 +1,72 @@
+P2R-E8.4a-11 selection  2026-10-15 21:25:21
+   script : d0f1844cafe8d0df23499d64897646b4  /mnt/d/Project/hybrid_memory/paper2/scripts/e8_4a11_select.py
+   features and model of scripts/e8_4a10_select.py (a9b54a357a0cc62790491293a2afc1e8)
+   python 3.11.15 (/home/kid/openram-venv/bin/python3), numpy 2.4.4, scikit-learn 1.8.0
+   export E8.4a-8 : e4f5776110929e93ddc35916fe0aed6a  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a8/export_cells_tables.json.gz  (the file the sandbox used)
+   export E8.4a-10: 991eb94e841b20bbf6003766c66c19e0  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a10/export_cells_e8_4a10.json.gz  (the file the sandbox used)
+   E8.4a-9 log    : 11bb1cc1b7183e178eaa7d63f6f7539c  /mnt/d/Project/hybrid_memory/paper2/reports/e8_4a9_rom_tables.log  (the file the sandbox used)
+   synthetic      : bce563c0a16026f6a95dc51a80872df9  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a9/tables/e8rom_X_syn_l00_16x2496.bin  (the file the sandbox used)
+   design         : ae774bbb7eeeb0294882bd59029e389b  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a9/tables/e8rom_X_syn_l00_16x2496.bin.json
+   rule: T_COV 1.151 V = 0.976 + 0.13 + 0.045; LOW 1.35 V; H pattern zmax >= 30; sparse group < 10 measured cells; 12 macros
+   training: 533188 + 57799 = 590987 one cells of 30 tables (sandbox 590987, 30); synthetic 784 (sandbox 784; 188 of 188 log entries, 0 designs without one)
+
+   leave one table out (30 tables x 3 weights); held-out cells in a sparse group 66, with the H pattern 255:
+      weight    5: E_HS  +77.8 mV (53 cells; A_pcm_l06_r48k3 row 26 col 21)  E_M  +35.4 mV (4646 cells; A_pcm_l01_r48k3 row 46 col 61)  E_A  +82.1 mV (590987 cells); every cell: mean -0.01 SD 2.76 mV   (261 s)
+      weight   20: E_HS  +81.1 mV (54 cells; B_pcm_l01_r48k0 row 40 col 13)  E_M  +32.4 mV (4682 cells; A_pcm_l01_r48k3 row 46 col 61)  E_A  +91.6 mV (590987 cells); every cell: mean -0.01 SD 2.85 mV   (546 s)
+      weight   50: E_HS  +80.7 mV (55 cells; B_pcm_l01_r48k0 row 40 col 13)  E_M  +33.6 mV (4674 cells; B_pcm_l24_r48k1 row 45 col 131)  E_A  +80.7 mV (590987 cells); every cell: mean -0.01 SD 2.90 mV   (775 s)
+      E THE SAME AS the sandbox ({5.0: (77.8, 35.4, 82.1), 20.0: (81.1, 32.4, 91.6), 50.0: (80.7, 33.6, 80.7)})
+      macro minimum, leave one table out (mV, + = predicted higher than measured), the 10 largest at weight 20:
+         B_pcm_l01_r48k0        measured 1.128  w5 1.162 ( +34.3)  w20 1.209 ( +81.1)  w50 1.208 ( +80.7)
+         B_pcm_l10_r48k3        measured 1.152  w5 1.165 ( +13.2)  w20 1.179 ( +26.9)  w50 1.177 ( +25.0)
+         A_pcm_l04_r48k3        measured 1.138  w5 1.154 ( +15.8)  w20 1.163 ( +24.9)  w50 1.180 ( +41.5)
+         B_pcm_l24_r48k1        measured 1.208  w5 1.230 ( +22.4)  w20 1.232 ( +24.3)  w50 1.225 ( +17.5)
+         A_pcm_l22_r48k2        measured 1.233  w5 1.256 ( +23.1)  w20 1.254 ( +21.5)  w50 1.258 ( +24.9)
+         B_pcm_l00_r48k1        measured 1.212  w5 1.226 ( +14.8)  w20 1.230 ( +18.2)  w50 1.223 ( +11.0)
+         A_pcm_l00_r48k3        measured 1.136  w5 1.163 ( +26.4)  w20 1.154 ( +18.0)  w50 1.160 ( +23.9)
+         B_pcm_l07_r48k1        measured 1.154  w5 1.191 ( +36.6)  w20 1.171 ( +16.8)  w50 1.177 ( +23.1)
+         B_pcm_l24_r48k0        measured 1.270  w5 1.276 (  +6.6)  w20 1.285 ( +15.8)  w50 1.287 ( +16.9)
+         A_pcm_l02_r48k3        measured 1.199  w5 1.191 (  -8.4)  w20 1.214 ( +14.7)  w50 1.199 (  -0.4)
+
+   three models fitted on all data (801 s)
+   predicted: 2852968 one cells of 400 macros (sandbox 2852968); 827 s
+
+   macros not simulated: 316; R1 (LB < 1.151 V): 13; with R2: 13
+   macro                        LB      w5    w20    w50  LB at: weight row col pred   E  H S group
+   A_pcm_l03_r48k3           1.109   1.187  1.246  1.240     5  29  26 1.187   78 - S Z<=2 L10-19 zmax20-29      R1
+   A_pcm_l16_r48k3           1.116   1.194  1.245  1.236     5  29  26 1.194   78 - S Z<=2 L10-19 zmax20-29      R1
+   B_pcm_l14_r48k3           1.122   1.230  1.203  1.233    20  42  12 1.203   81 - S Z<=2 L30-47 zmax10-19      R1
+   A_pcm_l09_r48k3           1.122   1.229  1.203  1.229    20  40  12 1.203   81 - S Z<=2 L20-29 zmax10-19      R1
+   B_pcm_l08_r48k3           1.133   1.236  1.214  1.224    20  37  12 1.214   81 - S Z<=2 L0-9 zmax20-29        R1
+   B_pcm_l15_r48k3           1.133   1.272  1.214  1.243    20  37  12 1.214   81 - S Z<=2 L20-29 zmax10-19      R1
+   B_pcm_l15_r48k2           1.135   1.212  1.232  1.235     5  44 138 1.212   78 - S Z<=2 L0-9 zmax20-29        R1
+   B_pcm_l13_r48k3           1.136   1.214  1.231  1.255     5  35  12 1.214   78 - S Z<=2 L0-9 zmax20-29        R1
+   A_pcm_l13_r48k3           1.140   1.218  1.253  1.251     5  28  12 1.218   78 - S Z<=2 L10-19 zmax20-29      R1
+   B_pcm_l07_r48k3           1.144   1.222  1.235  1.251     5  26  26 1.222   78 - S Z<=2 L0-9 zmax20-29        R1
+   B_pcm_l17_r48k2           1.145   1.223  1.234  1.238     5  46 138 1.223   78 - S Z<=2 L0-9 zmax20-29        R1
+   B_pcm_l18_r48k3           1.147   1.264  1.237  1.228    50  42  12 1.228   81 - S Z<=2 L10-19 zmax10-19      R1
+   B_pcm_l13_r48k2           1.148   1.226  1.234  1.237     5  47 133 1.226   78 - S Z<=2 L0-9 zmax20-29        R1
+   B_pcm_l14_r48k2           1.152   1.237  1.233  1.238    20  46 133 1.233   81 - S Z<=2 L0-9 zmax20-29        
+   B_pcm_l11_r48k3           1.153   1.230  1.276  1.250     5  26  26 1.230   78 - S Z<=2 L10-19 zmax20-29      
+   B_pcm_l01_r48k2           1.154   1.226  1.232  1.235     5  47 136 1.231   78 - S Z<=2 L0-9 zmax20-29        
+   B_pcm_l23_r48k2           1.155   1.242  1.236  1.239    20  47 130 1.236   81 - S Z<=2 L0-9 zmax20-29        
+   B_pcm_l05_r48k3           1.161   1.253  1.242  1.255    20  34  12 1.242   81 - S Z<=2 L10-19 zmax20-29      
+   B_pcm_l02_r48k2           1.163   1.240  1.236  1.235     5  47 136 1.240   78 - S Z<=2 L0-9 zmax20-29        
+   B_pcm_l03_r48k2           1.166   1.244  1.248  1.252     5  46 136 1.244   78 - S Z<=2 L0-9 zmax20-29        
+   B_pcm_l05_r48k2           1.169   1.247  1.250  1.255     5  47 141 1.247   78 - S Z<=2 L0-9 zmax20-29        
+   macros neither simulated nor selected: 303; their lowest LB 1.152 V (T_COV 1.151)
+   recomputed selection: 13 macros, THE SAME AS the sandbox selection (13 macros)
+
+   data files of the 11 tables (from data/rtl_inputs_<model>_v3, equal to the export):
+   e8rom_A_pcm_l03_16x2496: b619828770004eb96dfc276efefd0aab  macro k3
+   e8rom_A_pcm_l09_16x2496: be3844c0d579fdc63f1ef8e51c437027  macro k3
+   e8rom_A_pcm_l13_16x2496: 752579c0c68fdd81356ab1b0dfa402fb  macro k3
+   e8rom_A_pcm_l16_16x2496: df4e5e8c88dde5f2e8f3af2ce673f6de  macro k3
+   e8rom_B_pcm_l07_16x2496: c656bf1b2806f12cda77874be5b5465d  macro k3
+   e8rom_B_pcm_l08_16x2496: 5153f98def8f4540cf931768ecdfdec8  macro k3
+   e8rom_B_pcm_l13_16x2496: 915ed92cf7e3fc3ac62c2aeb2e5ab9a1  macro k2, k3
+   e8rom_B_pcm_l14_16x2496: 743c35cc37b3b3ded6b44a713255a615  macro k3
+   e8rom_B_pcm_l15_16x2496: e2c0d8f0a4790d06c3a2a978b02d4975  macro k2, k3
+   e8rom_B_pcm_l17_16x2496: 01de5a27b07d29d30d69d55d1fa0f4f3  macro k2
+   e8rom_B_pcm_l18_16x2496: 520798a1ab13a03b3a433691d786968a  macro k3
+   written to /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a11/tables: selected.txt (11 tables), selected_macros.txt (13 macros), predictions.json (e0f751cb533ff5958589b1cc1bc3bef6)
+done (830 s)

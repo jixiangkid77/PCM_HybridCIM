@@ -1,0 +1,35 @@
+P2R-E8.4 analysis: e8rom_A_sram_l00_16x2496_r48k0  period 100.0 ns  vdd 1.8 V  load 10.0 fF per output  points 12788
+data: simulated to 22350.2 of 22350.2 ns, 24 of 24 cycles complete (complete)
+E_vdd: energy from the supply from this cycle's rising edge to the next one; P_after: supply power just before the next rising edge (static state after the cycle)
+  k kind   addr  row   w precharge ns z_row z_word expected     read  ok  E_vdd pJ  E_in pJ P_after uW t_acc ns  dout min/max V
+  0 idle                                                                    2.596    0.002       0.64
+  1 read      0    0   0       150.0   113     16     0000     0000 yes    89.973    0.004     888.97    16.00  -0.04/1.81  bitline below VDD/2 after 15.23 ns
+      selection: rows [0] (expected [0]); words [0] (expected [0]); lowest unselected row-decoder output 1.46 V (row 1)
+      timing after the clock edge: internal clock 0.288 ns, array footers on 10.485 ns, wordline 0 low 1.192 ns; footers on before the row is selected by -9.294 ns
+      bitlines of row 0: 95 one cells, lowest while evaluating 1.721 V (column 61 = bit 4 of word 9); 113 zero cells, highest at sampling 0.001 V (column 199 = bit 15 of word 4); word read: lowest one bit - (no one bit)
+  2 idle                                                                   90.353    0.002     876.36
+  3 idle                                                                   90.067    0.002     874.77
+  4 idle                                                                   89.997    0.002     874.25
+  5 idle                                                                   89.972    0.002     874.05
+  6 idle                                                                   89.956    0.001     873.98
+  7 wait                     2000 ns                                     1748.673    0.000     875.34
+  8 wait                     2000 ns                                     1753.550    0.000     877.91
+  9 wait                     2000 ns                                     1758.711    0.000     880.49
+ 10 wait                     2000 ns                                     1763.864    0.000     883.06
+ 11 wait                     2000 ns                                     1768.985    0.000     885.61
+ 12 wait                     2000 ns                                     1774.069    0.000     888.15
+ 13 wait                     2000 ns                                     1779.114    0.000     890.66
+ 14 wait                     2000 ns                                     1784.120    0.000     893.16
+ 15 wait                     2000 ns                                     1789.090    0.000     895.63
+ 16 wait                     2000 ns                                     1794.022    0.023     898.09
+ 17 read      6    0   6     20550.0   113      0     ffff     ffff yes    53.504    0.004      16.21    11.23  -0.00/1.86
+      selection: rows [0] (expected [0]); words [6] (expected [6]); lowest unselected row-decoder output 1.42 V (row 1)
+      timing after the clock edge: internal clock 0.288 ns, array footers on 10.485 ns, wordline 0 low 1.232 ns; footers on before the row is selected by -9.253 ns
+      bitlines of row 0: 95 one cells, lowest while evaluating 1.721 V (column 61 = bit 4 of word 9); 113 zero cells, highest at sampling 0.002 V (column 28 = bit 2 of word 2); word read: lowest one bit 1.783 V (bit 1)
+ 18 idle                                                                    3.166    0.002       4.43
+ 19 idle                                                                    2.867    0.002       2.71
+ 20 idle                                                                    2.783    0.002       2.06
+ 21 idle                                                                    2.745    0.002       1.72
+ 22 idle                                                                    2.716    0.001       1.52
+ 23 wait                     1000 ns                                        0.670   -0.000       0.48
+summary: {"cycles_complete": 24, "cycles_total": 24, "simulated_ns": 22350.2, "tstop_ns": 22350.200000000004, "failed": false, "reads": 2, "reads_ok": 2, "reads_selection_ok": 2, "E_read_pJ_mean": 71.73847979985555, "E_read_pJ_min": 53.50442421272771, "E_read_pJ_max": 89.97253538698338, "t_access_ns_max": 15.99569399999998, "bl1_min_V": 1.7206709, "bl0_max_V": 0.0015687876522231282, "E_idle_clocked_pJ_mean": 46.46222590849582}

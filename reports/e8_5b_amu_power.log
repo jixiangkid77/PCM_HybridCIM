@@ -1,0 +1,480 @@
+==============================================================
+P2R-E8.5b gate-level power of the address-map unit, started 2026-10-15 13:49:04
+==============================================================
+---- delivered files against the manifests ----
+rtl/e8/e8_rom_r48_rec.v: OK
+rtl/e8/tb/e8_5b_monitor.v: OK
+rtl/e8/tb/amu_top_gl_wrap.v: OK
+scripts/e8_5b_amu_power.sh: OK
+scripts/e8_5b_check.py: OK
+   E8.5 files: all OK against rtl/e8/e8_5_manifest.md5
+---- inputs (md5) ----
+   23ff16d1cb27dcad218dd56097866545  /mnt/d/Project/hybrid_memory/paper2/rtl/tb/tb_lenet5_full_inference_v3.v
+   fe997fbee582d9cc4a3230376cded618  /mnt/d/Project/hybrid_memory/paper2/rtl/tb/e8_lookup_monitor.v
+   32c1b2b4d11c72140a1ff6cb18275585  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_park_A.vh
+   7459db54f5787fcf8b3d0ab9d95dca5d  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_park_B.vh
+   5bd84c8df5df8a1a78d06c6e502e8b57  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/e8_rom_r48_stub.v
+   4e89089f8b3bf85c81658d4a26c3cec4  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/trace/trace_A.txt
+   3269174c62831481ec5851fe749c9e4b  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/trace/trace_B.txt
+   12a1d61fcd2982fc8ba63993919c8ff8  /home/kid/sky130/orfs/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+   4bc73dc9f89a08988f8ccfccf87c7105  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/amu_top_A_sta.v
+   f4b03894b6cb840f3de0bd5b807caed5  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/e85_trace_A.txt
+   e236f689dc44b32286666fc74dae57b8  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/e8_5_summary_A.json
+   rtl/e8/amu_park_A.vh = the copy in reports/e8_rom/e8_5 (the one the netlist was synthesised with)
+   176d0b7c14c3f03b30ef6493f5f54834  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/amu_top_B_sta.v
+   eea87bea3f0b6c61bab4ff84d1085563  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/e85_trace_B.txt
+   39706a942ab471802fe1850ed05e3fe5  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/e8_5_summary_B.json
+   rtl/e8/amu_park_B.vh = the copy in reports/e8_rom/e8_5 (the one the netlist was synthesised with)
+cell models: /home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/primitives.v /home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v
+   89921fc96219fda3b0295ceff69077ec  /home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/primitives.v
+   4d84ca8606b050c7df719680f0ae9ec9  /home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v
+yosys    : /home/kid/oss-cad-suite/bin/yosys  Yosys 0.68+36 (git sha1 17d51a330-dirty, Release, Clang /usr/bin/clang++ 21.1.8)
+iverilog : /usr/bin/iverilog  Icarus Verilog version 12.0 (stable) ()
+python3  : /usr/bin/python3  Python 3.12.3
+OpenSTA  : /usr/local/bin/sta  3.1.0
+machine  : 8 cores, 23 GiB memory, 22 GiB available, 860G free for the work folder
+
+==== 1. netlist copies (flattened by Yosys; simulation, OpenSTA) ====
+---- model A ----
+   yosys exit 0 (2.33 s wall, 308436 kB peak)
+   E8.5 netlist     : 4bc73dc9f89a08988f8ccfccf87c7105  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/amu_top_A_sta.v
+   flattened (Yosys): b033f12820e0c987b4fb2842e97bdb1b  /home/kid/p2r_e8/e8_5b/amu_top_A_flat.v
+   hierarchy: 56 modules, 27956 leaf cells (200 ROM black boxes); flattened: 1 module(s) ['amu_top'], 27956 cells; names and types the same: yes
+   connections: 109958 pin bits (cell pins and top-level ports) in 31428 nets in the hierarchy, 109958 in 31428 nets flattened; every pin on the same net as before: yes
+   Yosys stat, cells per type: 79 types, 27956 cells before flattening, 27956 after; equal to each other and to the netlist: yes
+   ports 22; internal multi-bit nets 0 (0 expected); assign statements 34729
+   plain names: 65537 nets, 27676 cells; renaming undone exactly and no escaped name left: yes
+   name list -> 89006906cfd1dfe7edc3cba29e2218f8  /home/kid/p2r_e8/e8_5b/amu_names_A.txt
+   simulation copy: top module renamed 1 (1 expected); DATA_DIR "data/rtl_inputs_A_v3" in 200 ROM black boxes (200 expected) -> 1bf02acdbba4f19fd8638f4d40ec2c97  /home/kid/p2r_e8/e8_5b/amu_top_gl_A.v
+   OpenSTA copy   : ROM parameter lists removed 200 (200 expected); 'signed' removed from 0 declarations -> 4d6a6910751bd1b09f05f5daffdb1684  /home/kid/p2r_e8/e8_5b/amu_top_A_sta_ok.v
+   cell instances: 27956 in each copy, same names and types: yes
+   counts -> /home/kid/p2r_e8/e8_5b/amu_names_A.txt.json (OpenSTA should annotate 109958 pin bits: every cell pin and port bit)
+  PASS  N1 netlist copies, model A
+---- model B ----
+   yosys exit 0 (0.06 s wall, 307880 kB peak)
+   E8.5 netlist     : 176d0b7c14c3f03b30ef6493f5f54834  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5/amu_top_B_sta.v
+   flattened (Yosys): 75c0bd96a9abcb06be2f494f680c512c  /home/kid/p2r_e8/e8_5b/amu_top_B_flat.v
+   hierarchy: 56 modules, 27853 leaf cells (200 ROM black boxes); flattened: 1 module(s) ['amu_top'], 27853 cells; names and types the same: yes
+   connections: 109639 pin bits (cell pins and top-level ports) in 31325 nets in the hierarchy, 109639 in 31325 nets flattened; every pin on the same net as before: yes
+   Yosys stat, cells per type: 78 types, 27853 cells before flattening, 27853 after; equal to each other and to the netlist: yes
+   ports 22; internal multi-bit nets 0 (0 expected); assign statements 34729
+   plain names: 65434 nets, 27573 cells; renaming undone exactly and no escaped name left: yes
+   name list -> 3aa9710b87c9330edd0c240614599889  /home/kid/p2r_e8/e8_5b/amu_names_B.txt
+   simulation copy: top module renamed 1 (1 expected); DATA_DIR "data/rtl_inputs_B_v3" in 200 ROM black boxes (200 expected) -> 357ab9aedfb58cc0c1f014d165770bad  /home/kid/p2r_e8/e8_5b/amu_top_gl_B.v
+   OpenSTA copy   : ROM parameter lists removed 200 (200 expected); 'signed' removed from 0 declarations -> 05d575d154ce44d5a39f8588241843cb  /home/kid/p2r_e8/e8_5b/amu_top_B_sta_ok.v
+   cell instances: 27853 in each copy, same names and types: yes
+   counts -> /home/kid/p2r_e8/e8_5b/amu_names_B.txt.json (OpenSTA should annotate 109639 pin bits: every cell pin and port bit)
+  PASS  N1 netlist copies, model B
+   [13:49:14, 10 s since the start]
+
+==== 2. compile: RTL run and gate-level run, A and B ====
+Model A: iverilog exit RTL 0, gate 0 (gate compile 1.65 s wall, 391664 kB peak)
+   gate compile: 58 warnings about the delay macro of the cell models (as E4 / E5)
+  PASS  F0 model A: the gate-level compile reads the netlist and the wrapper and no rtl/e8/amu_*.v; the RTL compile reads rtl/e8/amu_top.v
+Model B: iverilog exit RTL 0, gate 0 (gate compile 1.54 s wall, 390644 kB peak)
+   gate compile: 58 warnings about the delay macro of the cell models (as E4 / E5)
+  PASS  F0 model B: the gate-level compile reads the netlist and the wrapper and no rtl/e8/amu_*.v; the RTL compile reads rtl/e8/amu_top.v
+---- source files of the gate-level compile (model A), with checksums ----
+   89921fc96219  /home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/primitives.v
+   4d84ca8606b0  /home/kid/gf/pdk/ciel/sky130/versions/1e931c9417df0478df9ee6b7289202f3e87440ab/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v
+   1bf02acdbba4  /home/kid/p2r_e8/e8_5b/amu_top_gl_A.v
+   9bf4a4a6e4b0  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/e8_rom_r48_rec.v
+   a730fb7c8e23  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/pcm_imc_unit_e8.v
+   eb91690ab77f  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/tb/amu_top_gl_wrap.v
+   6828b68f83f3  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/tb/e8_5b_monitor.v
+   73169f323366  /mnt/d/Project/hybrid_memory/paper2/rtl/src/argmax10.v
+   a13c5bfdc98e  /mnt/d/Project/hybrid_memory/paper2/rtl/src/argmax_wrapper.v
+   c895003667bd  /mnt/d/Project/hybrid_memory/paper2/rtl/src/bias_storage.v
+   d5ddf2ae7f80  /mnt/d/Project/hybrid_memory/paper2/rtl/src/combiner.v
+   f8323afb4162  /mnt/d/Project/hybrid_memory/paper2/rtl/src/conv_engine.v
+   94103f230f87  /mnt/d/Project/hybrid_memory/paper2/rtl/src/fc_engine.v
+   456811ccb911  /mnt/d/Project/hybrid_memory/paper2/rtl/src/feature_buffer.v
+   f0fb32c3ce0c  /mnt/d/Project/hybrid_memory/paper2/rtl/src/layer_config_regfile.v
+   063b1d55977f  /mnt/d/Project/hybrid_memory/paper2/rtl/src/layer_desc_rom.v
+   f251ef0a8dfe  /mnt/d/Project/hybrid_memory/paper2/rtl/src/lenet5_top.v
+   dfcfbd26d555  /mnt/d/Project/hybrid_memory/paper2/rtl/src/logit_rf.v
+   7a78d30f2af1  /mnt/d/Project/hybrid_memory/paper2/rtl/src/maxpool2x2.v
+   9ccbf846a598  /mnt/d/Project/hybrid_memory/paper2/rtl/src/pcm_crossbar.v
+   f12aa505d3db  /mnt/d/Project/hybrid_memory/paper2/rtl/src/pool_wrapper.v
+   5c1a15878147  /mnt/d/Project/hybrid_memory/paper2/rtl/src/sram_mac.v
+   9b40cb4a5169  /mnt/d/Project/hybrid_memory/paper2/rtl/src/sram_pool_25lane.v
+   ef9ddd99302e  /mnt/d/Project/hybrid_memory/paper2/rtl/src/top_fsm.v
+   fe997fbee582  /mnt/d/Project/hybrid_memory/paper2/rtl/tb/e8_lookup_monitor.v
+   23ff16d1cb27  /mnt/d/Project/hybrid_memory/paper2/rtl/tb/tb_lenet5_full_inference_v3.v
+   [13:49:19, 15 s since the start]
+
+==== 3. simulate (RTL and gate-level runs in parallel), started 2026-10-15 13:49:19 ====
+   [13:58:33, 569 s since the start]
+
+==== 4. equivalence ====
+---- model A: RTL vvp exit 0, 213.56 s wall, 54656 kB peak; gate vvp exit 0, 538.82 s wall, 158240 kB peak
+   rtl   [E8 MONITOR] 16684 MAC operations recorded to /home/kid/p2r_e8/e8_5b/rtl_e8trace_A.txt
+   rtl     [PASS] inference complete at cycle 617573
+   rtl   SRAM protected-weight reads (per MAC op): 267143
+   rtl   RESULT: ALL TESTS PASSED
+   rtl   [E8.5b MONITOR] ==== address-map unit (E8.5b) ====
+   rtl   [E8.5b MONITOR] operations at the datapath start 16684 -> trace /home/kid/p2r_e8/e8_5b/rtl_trace_A.txt
+   rtl   [E8.5b MONITOR] unit port counters: starts 16684, stall cycles 0, lookup pulses 2484, parking pulses 113; error flags {queue,lane0,mismatch} 000
+   rtl   [E8.5b MONITOR] ROM macro reads: before start 75, during inference 125790, after done 0 (SRAM side 63252, PCM side 62613) -> /home/kid/p2r_e8/e8_5b/rtl_reads_A.txt
+   rtl   [E8.5b MONITOR] ROM protocol errors: CS at the clock edge 0, address changed while high 0, invalid word 0; models without data 0; shortest clock low before a read 50000 ps
+   rtl   [E8.5b MONITOR] no waveform
+   gate   [E8 MONITOR] 16684 MAC operations recorded to /home/kid/p2r_e8/e8_5b/gate_e8trace_A.txt
+   gate     [PASS] inference complete at cycle 617573
+   gate   SRAM protected-weight reads (per MAC op): 267143
+   gate   RESULT: ALL TESTS PASSED
+   gate   [E8.5b MONITOR] ==== address-map unit (E8.5b) ====
+   gate   [E8.5b MONITOR] operations at the datapath start 16684 -> trace /home/kid/p2r_e8/e8_5b/gate_trace_A.txt
+   gate   [E8.5b MONITOR] unit port counters: starts 0, stall cycles 0, lookup pulses 0, parking pulses 0; error flags {queue,lane0,mismatch} 000
+   gate   [E8.5b MONITOR] ROM macro reads: before start 75, during inference 125790, after done 0 (SRAM side 63252, PCM side 62613) -> /home/kid/p2r_e8/e8_5b/gate_reads_A.txt
+   gate   [E8.5b MONITOR] ROM protocol errors: CS at the clock edge 0, address changed while high 0, invalid word 0; models without data 0; shortest clock low before a read 50000 ps
+   gate   [E8.5b MONITOR] waveform /home/kid/p2r_e8/e8_5b/amu_gate_A.vcd: from 8170.0 ns to 6183910.0 ns (6175740.0 ns)
+   RTL run : result ALL TESTS PASSED, 617573 cycles, SRAM reads 267143, counters ('16684', '0', '2484', '113', '000')
+   gate run: result ALL TESTS PASSED, 617573 cycles, SRAM reads 267143, counters ('0', '0', '0', '0', '000')
+   E8.5 run: result ALL TESTS PASSED, 617573 cycles, SRAM reads 267143
+  PASS  F1 model A: both runs ALL TESTS PASSED
+  PASS  F1 model A: cycles and SRAM reads equal in the RTL run, the gate run and E8.5
+  PASS  F2 E8.2 monitor trace of the RTL run = E8.2 trace (4e89089f8b3bf85c81658d4a26c3cec4 / 4e89089f8b3bf85c81658d4a26c3cec4)
+  PASS  F2 E8.2 monitor trace of the gate run = E8.2 trace (4e89089f8b3bf85c81658d4a26c3cec4 / 4e89089f8b3bf85c81658d4a26c3cec4)
+  PASS  F3 trace at the datapath start of the RTL run = E8.5 trace (f4b03894b6cb840f3de0bd5b807caed5 / f4b03894b6cb840f3de0bd5b807caed5)
+  PASS  F3 trace at the datapath start of the gate run = E8.5 trace (f4b03894b6cb840f3de0bd5b807caed5 / f4b03894b6cb840f3de0bd5b807caed5)
+   ROM macro reads: RTL 125865 {'B': 75, 'I': 125790, 'A': 0} sides [63252, 62613]; gate 125865 {'B': 75, 'I': 125790, 'A': 0} sides [63252, 62613]
+  PASS  F4 every ROM macro read (time, side, lane, macro, address, clock-low time) the same in both runs
+   cycle number written with a read, gate minus RTL (the same time; only the order of events within the time step differs): {-1: 125790, 0: 75}
+  PASS  F4 reads per side = E8.5 summary (lookup + parking) [63252, 62613]
+  PASS  F4 RTL run 0 stall cycles; error flags 000 in both runs; the gate run's counters 0 (they count only in simulation, `ifndef SYNTHESIS in rtl/e8/amu_core.v, so the netlist has them tied to 0)
+   shortest clock low before a read: RTL 50.0 ns, gate 50.0 ns
+  PASS  F4 RTL run: ROM protocol errors 0 / 0 / 0, every model has its data, clock low >= 50 ns ((0, 0, 0, 0, 50000))
+  PASS  F4 gate run: ROM protocol errors 0 / 0 / 0, every model has its data, clock low >= 50 ns ((0, 0, 0, 0, 50000))
+   all checks pass (model A)
+  PASS  F1-F4 model A
+---- model B: RTL vvp exit 0, 214.39 s wall, 54656 kB peak; gate vvp exit 0, 554.84 s wall, 158048 kB peak
+   rtl   [E8 MONITOR] 16684 MAC operations recorded to /home/kid/p2r_e8/e8_5b/rtl_e8trace_B.txt
+   rtl     [PASS] inference complete at cycle 617573
+   rtl   SRAM protected-weight reads (per MAC op): 205664
+   rtl   RESULT: ALL TESTS PASSED
+   rtl   [E8.5b MONITOR] ==== address-map unit (E8.5b) ====
+   rtl   [E8.5b MONITOR] operations at the datapath start 16684 -> trace /home/kid/p2r_e8/e8_5b/rtl_trace_B.txt
+   rtl   [E8.5b MONITOR] unit port counters: starts 16684, stall cycles 0, lookup pulses 2484, parking pulses 113; error flags {queue,lane0,mismatch} 000
+   rtl   [E8.5b MONITOR] ROM macro reads: before start 75, during inference 125790, after done 0 (SRAM side 62633, PCM side 63232) -> /home/kid/p2r_e8/e8_5b/rtl_reads_B.txt
+   rtl   [E8.5b MONITOR] ROM protocol errors: CS at the clock edge 0, address changed while high 0, invalid word 0; models without data 0; shortest clock low before a read 50000 ps
+   rtl   [E8.5b MONITOR] no waveform
+   gate   [E8 MONITOR] 16684 MAC operations recorded to /home/kid/p2r_e8/e8_5b/gate_e8trace_B.txt
+   gate     [PASS] inference complete at cycle 617573
+   gate   SRAM protected-weight reads (per MAC op): 205664
+   gate   RESULT: ALL TESTS PASSED
+   gate   [E8.5b MONITOR] ==== address-map unit (E8.5b) ====
+   gate   [E8.5b MONITOR] operations at the datapath start 16684 -> trace /home/kid/p2r_e8/e8_5b/gate_trace_B.txt
+   gate   [E8.5b MONITOR] unit port counters: starts 0, stall cycles 0, lookup pulses 0, parking pulses 0; error flags {queue,lane0,mismatch} 000
+   gate   [E8.5b MONITOR] ROM macro reads: before start 75, during inference 125790, after done 0 (SRAM side 62633, PCM side 63232) -> /home/kid/p2r_e8/e8_5b/gate_reads_B.txt
+   gate   [E8.5b MONITOR] ROM protocol errors: CS at the clock edge 0, address changed while high 0, invalid word 0; models without data 0; shortest clock low before a read 50000 ps
+   gate   [E8.5b MONITOR] waveform /home/kid/p2r_e8/e8_5b/amu_gate_B.vcd: from 8170.0 ns to 6183910.0 ns (6175740.0 ns)
+   RTL run : result ALL TESTS PASSED, 617573 cycles, SRAM reads 205664, counters ('16684', '0', '2484', '113', '000')
+   gate run: result ALL TESTS PASSED, 617573 cycles, SRAM reads 205664, counters ('0', '0', '0', '0', '000')
+   E8.5 run: result ALL TESTS PASSED, 617573 cycles, SRAM reads 205664
+  PASS  F1 model B: both runs ALL TESTS PASSED
+  PASS  F1 model B: cycles and SRAM reads equal in the RTL run, the gate run and E8.5
+  PASS  F2 E8.2 monitor trace of the RTL run = E8.2 trace (3269174c62831481ec5851fe749c9e4b / 3269174c62831481ec5851fe749c9e4b)
+  PASS  F2 E8.2 monitor trace of the gate run = E8.2 trace (3269174c62831481ec5851fe749c9e4b / 3269174c62831481ec5851fe749c9e4b)
+  PASS  F3 trace at the datapath start of the RTL run = E8.5 trace (eea87bea3f0b6c61bab4ff84d1085563 / eea87bea3f0b6c61bab4ff84d1085563)
+  PASS  F3 trace at the datapath start of the gate run = E8.5 trace (eea87bea3f0b6c61bab4ff84d1085563 / eea87bea3f0b6c61bab4ff84d1085563)
+   ROM macro reads: RTL 125865 {'B': 75, 'I': 125790, 'A': 0} sides [62633, 63232]; gate 125865 {'B': 75, 'I': 125790, 'A': 0} sides [62633, 63232]
+  PASS  F4 every ROM macro read (time, side, lane, macro, address, clock-low time) the same in both runs
+   cycle number written with a read, gate minus RTL (the same time; only the order of events within the time step differs): {-1: 125790, 0: 75}
+  PASS  F4 reads per side = E8.5 summary (lookup + parking) [62633, 63232]
+  PASS  F4 RTL run 0 stall cycles; error flags 000 in both runs; the gate run's counters 0 (they count only in simulation, `ifndef SYNTHESIS in rtl/e8/amu_core.v, so the netlist has them tied to 0)
+   shortest clock low before a read: RTL 50.0 ns, gate 50.0 ns
+  PASS  F4 RTL run: ROM protocol errors 0 / 0 / 0, every model has its data, clock low >= 50 ns ((0, 0, 0, 0, 50000))
+  PASS  F4 gate run: ROM protocol errors 0 / 0 / 0, every model has its data, clock low >= 50 ns ((0, 0, 0, 0, 50000))
+   all checks pass (model B)
+  PASS  F1-F4 model B
+   [13:58:35, 571 s since the start]
+
+==== 5. waveform for OpenSTA (wire and reg values, time from 0) ====
+---- model A ----
+   waveform: /home/kid/p2r_e8/e8_5b/amu_gate_A.vcd (1695414877 bytes, 291764581 lines)
+   variables by type: {'wire': 206781, 'parameter': 1000, 'reg': 1600}; kept 105203 identifiers (wire, reg), dropped 1000 (other types) and their 1000 value changes; 290257924 value changes kept
+   window: first time 8170000, last time 6183910000 (file time unit), 6175740000 long; shifted to 0
+   written: /home/kid/p2r_e8/e8_5b/amu_gate_A_sta.vcd (1695333690 bytes)
+   (60.77 s wall, 28260 kB peak)
+  PASS  waveform written, model A
+---- model B ----
+   waveform: /home/kid/p2r_e8/e8_5b/amu_gate_B.vcd (1686107165 bytes, 289900217 lines)
+   variables by type: {'wire': 206158, 'parameter': 1000, 'reg': 1600}; kept 104899 identifiers (wire, reg), dropped 1000 (other types) and their 1000 value changes; 288394389 value changes kept
+   window: first time 8170000, last time 6183910000 (file time unit), 6175740000 long; shifted to 0
+   written: /home/kid/p2r_e8/e8_5b/amu_gate_B_sta.vcd (1686025978 bytes)
+   (60.60 s wall, 28240 kB peak)
+  PASS  waveform written, model B
+   [14:00:36, 692 s since the start]
+
+==== 6. OpenSTA power (tt, 10 ns clock, no clock tree, as E5) ====
+---- model A: /home/kid/p2r_e8/e8_5b/amu_power_A.tcl ----
+   sta exit 0, 28.34 s wall, 185532 kB peak
+   FLIPFLOP_COUNT 6859
+   Annotated 109958 pin activities.
+   vcd         109958
+   unannotated     0
+   Group                    Internal    Switching      Leakage        Total
+                               Power        Power        Power        Power (Watts)
+   ------------------------------------------------------------------------
+   Sequential           3.999421e-04 4.024166e-05 5.670311e-08 4.402405e-04  38.4%
+   Combinational        4.907977e-04 1.140111e-04 5.151946e-08 6.048604e-04  52.8%
+   Clock                9.879694e-05 2.528888e-06 4.126012e-10 1.013262e-04   8.8%
+   Macro                0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00   0.0%
+   Pad                  0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00   0.0%
+   ------------------------------------------------------------------------
+   Total                9.895469e-04 1.567794e-04 1.086359e-07 1.146435e-03 100.0%
+                               86.3%        13.7%         0.0%
+        Internal    Switching      Leakage        Total
+           Power        Power        Power        Power (Watts)
+   ----------------------------------------------------
+    3.001984e-08 7.718393e-07 1.631185e-12 8.018608e-07 _477_
+    3.051256e-08 6.764969e-07 1.655811e-12 7.070111e-07 _474_
+    3.050022e-08 6.680014e-07 1.639394e-12 6.985032e-07 _476_
+    2.791560e-08 6.552073e-07 1.604908e-12 6.831244e-07 _478_
+    3.111009e-08 6.307953e-07 1.779086e-12 6.619071e-07 _459_
+    3.101469e-08 6.307953e-07 1.754460e-12 6.618117e-07 _462_
+    3.034777e-08 6.263709e-07 1.788515e-12 6.567204e-07 _458_
+    2.818423e-08 6.263709e-07 1.812393e-12 6.545569e-07 _455_
+    3.089387e-08 5.998556e-07 1.672228e-12 6.307511e-07 _472_
+    3.116028e-08 5.964963e-07 1.738043e-12 6.276583e-07 _464_
+    3.112543e-08 5.964963e-07 1.746251e-12 6.276235e-07 _463_
+    3.103984e-08 5.964963e-07 1.721626e-12 6.275379e-07 _466_
+    3.098556e-08 5.964963e-07 1.705208e-12 6.274836e-07 _468_
+    3.095923e-08 5.965152e-07 1.697000e-12 6.274761e-07 _469_
+    3.036338e-08 5.969944e-07 1.664020e-12 6.273594e-07 _473_
+    3.107405e-08 5.949947e-07 1.729834e-12 6.260705e-07 _465_
+    3.122160e-08 5.923125e-07 1.821349e-12 6.235359e-07 _480_
+    3.124829e-08 5.810653e-07 1.762668e-12 6.123153e-07 _461_
+    3.094646e-08 5.712566e-07 1.647602e-12 6.022047e-07 _475_
+    3.132055e-08 5.707800e-07 1.770877e-12 6.021023e-07 _460_
+    3.112056e-08 5.707800e-07 1.713417e-12 6.019023e-07 _467_
+    3.121968e-08 5.667765e-07 1.796724e-12 5.979980e-07 _457_
+    3.136536e-08 5.567631e-07 1.804933e-12 5.881303e-07 _456_
+    3.053036e-08 5.354262e-07 1.688645e-12 5.659583e-07 _470_
+    3.048207e-08 5.354262e-07 1.680437e-12 5.659099e-07 _471_
+    5.331895e-09 5.295518e-10 2.392743e-12 5.863840e-09 _454_
+    4.081516e-09 1.592394e-09 7.293523e-12 5.681204e-09 _240_
+    4.078323e-09 1.591148e-09 7.293212e-12 5.676764e-09 _220_
+    4.068414e-09 1.596755e-09 7.292903e-12 5.672461e-09 _330_
+    4.066827e-09 1.596132e-09 7.292718e-12 5.670252e-09 _270_
+    4.068003e-09 1.593640e-09 7.291005e-12 5.668934e-09 _400_
+    4.065239e-09 1.595509e-09 7.292065e-12 5.668040e-09 _310_
+    4.063653e-09 1.594886e-09 7.292220e-12 5.665830e-09 _320_
+    4.070338e-09 1.588033e-09 7.293523e-12 5.665664e-09 _230_
+    4.062064e-09 1.594263e-09 7.293835e-12 5.663621e-09 _280_
+    4.062354e-09 1.584918e-09 7.292593e-12 5.654564e-09 _210_
+    4.056872e-09 1.589279e-09 7.288210e-12 5.653439e-09 _450_
+    4.053691e-09 1.588033e-09 7.291970e-12 5.649015e-09 _380_
+    4.052101e-09 1.587410e-09 7.291286e-12 5.646802e-09 _390_
+    4.049366e-09 1.589279e-09 7.293617e-12 5.645938e-09 _340_
+    4.049365e-09 1.589279e-09 7.292375e-12 5.645936e-09 _290_
+    4.055967e-09 1.582426e-09 7.296106e-12 5.645689e-09 _250_
+    4.050511e-09 1.586787e-09 7.292843e-12 5.644591e-09 _370_
+    4.050511e-09 1.586787e-09 7.291972e-12 5.644590e-09 _420_
+    4.046190e-09 1.588033e-09 7.291908e-12 5.641515e-09 _360_
+    4.046190e-09 1.588033e-09 7.291939e-12 5.641515e-09 _350_
+    4.047330e-09 1.585541e-09 7.292124e-12 5.640162e-09 _440_
+    4.049568e-09 1.579934e-09 7.039865e-12 5.636541e-09 _245_
+    4.041429e-09 1.586164e-09 7.293649e-12 5.634886e-09 _260_
+    4.042559e-09 1.583672e-09 7.292218e-12 5.633523e-09 _430_
+    4.039841e-09 1.585541e-09 7.293429e-12 5.632675e-09 _300_
+    4.040968e-09 1.583049e-09 7.294489e-12 5.631311e-09 _410_
+    4.043178e-09 1.577442e-09 7.043223e-12 5.627663e-09 _205_
+    4.034593e-09 1.580557e-09 7.029992e-12 5.622180e-09 _405_
+    4.033006e-09 1.579934e-09 7.032422e-12 5.619972e-09 _425_
+    4.035198e-09 1.574327e-09 7.042398e-12 5.616567e-09 _225_
+    4.028232e-09 1.578065e-09 7.032290e-12 5.613329e-09 _435_
+    4.025056e-09 1.576819e-09 7.033069e-12 5.608908e-09 _415_
+    4.025054e-09 1.576819e-09 7.032101e-12 5.608904e-09 _365_
+    4.023464e-09 1.576196e-09 7.033703e-12 5.606693e-09 _385_
+    4.027213e-09 1.571212e-09 7.042704e-12 5.605468e-09 _215_
+    4.021871e-09 1.575573e-09 7.032740e-12 5.604476e-09 _375_
+   (1 warning(s) 'module e8_rom_r48 not found. Creating black box' (the ROM macros: no power model, as intended); 27956 lines of cell power, in the log)
+---- model B: /home/kid/p2r_e8/e8_5b/amu_power_B.tcl ----
+   sta exit 0, 27.51 s wall, 185344 kB peak
+   FLIPFLOP_COUNT 6859
+   Annotated 109639 pin activities.
+   vcd         109639
+   unannotated     0
+   Group                    Internal    Switching      Leakage        Total
+                               Power        Power        Power        Power (Watts)
+   ------------------------------------------------------------------------
+   Sequential           3.999907e-04 4.062259e-05 5.670054e-08 4.406700e-04  38.3%
+   Combinational        4.947223e-04 1.148289e-04 5.144253e-08 6.096027e-04  52.9%
+   Clock                9.879689e-05 2.528888e-06 4.126012e-10 1.013262e-04   8.8%
+   Macro                0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00   0.0%
+   Pad                  0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00   0.0%
+   ------------------------------------------------------------------------
+   Total                9.935233e-04 1.579797e-04 1.085564e-07 1.151611e-03 100.0%
+                               86.3%        13.7%         0.0%
+        Internal    Switching      Leakage        Total
+           Power        Power        Power        Power (Watts)
+   ----------------------------------------------------
+    3.035769e-08 7.059761e-07 1.647602e-12 7.363354e-07 _475_
+    3.096308e-08 6.499585e-07 1.762668e-12 6.809233e-07 _461_
+    3.015851e-08 6.505011e-07 1.664020e-12 6.806613e-07 _473_
+    3.091932e-08 6.408577e-07 1.796724e-12 6.717788e-07 _457_
+    3.110525e-08 6.307953e-07 1.779086e-12 6.619023e-07 _459_
+    3.107335e-08 6.307953e-07 1.770877e-12 6.618704e-07 _460_
+    3.008428e-08 6.313220e-07 1.680437e-12 6.614080e-07 _471_
+    3.107696e-08 6.194921e-07 1.738043e-12 6.505709e-07 _464_
+    3.102872e-08 6.194921e-07 1.746251e-12 6.505226e-07 _463_
+    3.087257e-08 6.055653e-07 1.672228e-12 6.364395e-07 _472_
+    3.115383e-08 5.964963e-07 1.754460e-12 6.276519e-07 _462_
+    3.104067e-08 5.964963e-07 1.721626e-12 6.275387e-07 _466_
+    3.101377e-08 5.964963e-07 1.713417e-12 6.275118e-07 _467_
+    3.121511e-08 5.923313e-07 1.821349e-12 6.235482e-07 _480_
+    3.123360e-08 5.923125e-07 1.804933e-12 6.235479e-07 _456_
+    2.836918e-08 5.916538e-07 1.604908e-12 6.200245e-07 _478_
+    3.106020e-08 5.810653e-07 1.697000e-12 6.121272e-07 _469_
+    3.097573e-08 5.712566e-07 1.655811e-12 6.022340e-07 _474_
+    3.117657e-08 5.707800e-07 1.729834e-12 6.019583e-07 _465_
+    3.109751e-08 5.707800e-07 1.705208e-12 6.018792e-07 _468_
+    3.061210e-08 5.667765e-07 1.788515e-12 5.973904e-07 _458_
+    3.095280e-08 5.663140e-07 1.639394e-12 5.972684e-07 _476_
+    3.093107e-08 5.663140e-07 1.631185e-12 5.972467e-07 _477_
+    3.043283e-08 5.663140e-07 1.688645e-12 5.967485e-07 _470_
+    2.871466e-08 5.667765e-07 1.812393e-12 5.954930e-07 _455_
+    5.331895e-09 5.295518e-10 2.392743e-12 5.863840e-09 _454_
+    4.086290e-09 1.594263e-09 7.039338e-12 5.687592e-09 _205_
+    4.081506e-09 1.592394e-09 7.043764e-12 5.680944e-09 _235_
+    4.081507e-09 1.592394e-09 7.041154e-12 5.680941e-09 _215_
+    4.079904e-09 1.591771e-09 7.039369e-12 5.678713e-09 _245_
+    4.069581e-09 1.594263e-09 7.034026e-12 5.670878e-09 _365_
+    4.073519e-09 1.589279e-09 7.043354e-12 5.669841e-09 _225_
+    4.067996e-09 1.593640e-09 7.032051e-12 5.668668e-09 _385_
+    4.064810e-09 1.592394e-09 7.030128e-12 5.664234e-09 _405_
+    4.064806e-09 1.592394e-09 7.032735e-12 5.664232e-09 _415_
+    4.061633e-09 1.591148e-09 7.032480e-12 5.659814e-09 _435_
+    4.058874e-09 1.593017e-09 7.033850e-12 5.658924e-09 _295_
+    4.058447e-09 1.589902e-09 7.033123e-12 5.655381e-09 _395_
+    4.056858e-09 1.589279e-09 7.036590e-12 5.653173e-09 _425_
+    4.054117e-09 1.591148e-09 7.031953e-12 5.652297e-09 _255_
+    4.055268e-09 1.588656e-09 7.030778e-12 5.650954e-09 _445_
+    4.052525e-09 1.590525e-09 7.031026e-12 5.650080e-09 _285_
+    4.053673e-09 1.588033e-09 7.033688e-12 5.648739e-09 _375_
+    4.043000e-09 1.586787e-09 7.033466e-12 5.636820e-09 _325_
+    4.041417e-09 1.586164e-09 7.033975e-12 5.634615e-09 _275_
+    4.041414e-09 1.586164e-09 7.033980e-12 5.634611e-09 _335_
+    4.039830e-09 1.585541e-09 7.032542e-12 5.632403e-09 _355_
+    4.039828e-09 1.585541e-09 7.031648e-12 5.632401e-09 _305_
+    4.038246e-09 1.584918e-09 7.034207e-12 5.630198e-09 _345_
+    4.035070e-09 1.583672e-09 7.037116e-12 5.625779e-09 _315_
+    4.033481e-09 1.583049e-09 7.034153e-12 5.623564e-09 _265_
+    4.025555e-09 1.579934e-09 7.291939e-12 5.612780e-09 _270_
+    4.032015e-09 1.573081e-09 7.292779e-12 5.612388e-09 _230_
+    4.023967e-09 1.579311e-09 7.288768e-12 5.610567e-09 _320_
+    4.020793e-09 1.578065e-09 7.291814e-12 5.606149e-09 _350_
+    4.021885e-09 1.575573e-09 7.290292e-12 5.604748e-09 _380_
+    4.019205e-09 1.577442e-09 7.294333e-12 5.603941e-09 _310_
+    4.019205e-09 1.577442e-09 7.293210e-12 5.603940e-09 _360_
+    4.025627e-09 1.570589e-09 7.296790e-12 5.603512e-09 _250_
+    4.020295e-09 1.574950e-09 7.294147e-12 5.602539e-09 _450_
+    4.017619e-09 1.576819e-09 7.292128e-12 5.601729e-09 _340_
+    4.017618e-09 1.576819e-09 7.292157e-12 5.601729e-09 _280_
+   (1 warning(s) 'module e8_rom_r48 not found. Creating black box' (the ROM macros: no power model, as intended); 27853 lines of cell power, in the log)
+   [14:01:32, 748 s since the start]
+
+==== 7. energy per inference ====
+---- model A ----
+   window 6175740000 x 1ps = 6.175740 ms; flip-flops 6859; annotated pins 109958, unannotated 0
+   group            internal W  switching W    leakage W      total W  energy uJ
+   Sequential     3.999421e-04 4.024166e-05 5.670311e-08 4.402405e-04     2.7188
+   Combinational  4.907977e-04 1.140111e-04 5.151946e-08 6.048604e-04     3.7355
+   Clock          9.879694e-05 2.528888e-06 4.126012e-10 1.013262e-04     0.6258
+   Macro          0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00     0.0000
+   Pad            0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00     0.0000
+   Total          9.895469e-04 1.567794e-04 1.086359e-07 1.146435e-03     7.0801
+   cells reported 27956; their total 1.146430e-03 W (100.00 % of the Total line); by top-level instance of the unit:
+      instance                                cells   internal W  switching W    leakage W      total W energy uJ
+      U_CORE                                   2830 4.486318e-04 4.552309e-05 8.915583e-09 4.941638e-04    3.0518
+      tab[*].U_PTAB (25 PCM-side tables)       7617 2.367360e-04 4.145693e-05 1.940786e-08 2.782123e-04    1.7182
+      tab[*].U_STAB (25 SRAM-side tables)      6592 2.290716e-04 3.622255e-05 1.714829e-08 2.653113e-04    1.6385
+      U_BUF                                    6408 4.376231e-05 2.140812e-06 5.282134e-08 4.595594e-05    0.2838
+      U_LANES                                  1922 1.008466e-05 7.067686e-06 3.809514e-09 1.715616e-05    0.1060
+      (top)                                     280 1.672298e-06 1.543760e-05 4.241895e-10 1.711032e-05    0.1057
+      U_ENTRY                                  1645 7.259847e-06 8.235487e-06 4.077652e-09 1.549941e-05    0.0957
+      U_PF                                      662 1.232182e-05 6.971197e-07 2.030577e-09 1.302097e-05    0.0804
+   ENERGY of the address-map unit logic per inference (the ROM macros not included): 7.0801 uJ
+   annotated pins 109958 of 109958 pin bits of the netlist (every cell pin and port bit): all
+  PASS  P1 OpenSTA annotation and power, model A
+---- model B ----
+   window 6175740000 x 1ps = 6.175740 ms; flip-flops 6859; annotated pins 109639, unannotated 0
+   group            internal W  switching W    leakage W      total W  energy uJ
+   Sequential     3.999907e-04 4.062259e-05 5.670054e-08 4.406700e-04     2.7215
+   Combinational  4.947223e-04 1.148289e-04 5.144253e-08 6.096027e-04     3.7647
+   Clock          9.879689e-05 2.528888e-06 4.126012e-10 1.013262e-04     0.6258
+   Macro          0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00     0.0000
+   Pad            0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00     0.0000
+   Total          9.935233e-04 1.579797e-04 1.085564e-07 1.151611e-03     7.1121
+   cells reported 27853; their total 1.151602e-03 W (100.00 % of the Total line); by top-level instance of the unit:
+      instance                                cells   internal W  switching W    leakage W      total W energy uJ
+      U_CORE                                   2830 4.486465e-04 4.589420e-05 8.915583e-09 4.945496e-04    3.0542
+      tab[*].U_PTAB (25 PCM-side tables)       7621 2.601824e-04 5.478186e-05 1.933132e-08 3.149836e-04    1.9453
+      tab[*].U_STAB (25 SRAM-side tables)      6525 2.096244e-04 2.390561e-05 1.726361e-08 2.335472e-04    1.4423
+      U_BUF                                    6408 4.380895e-05 2.148307e-06 5.281867e-08 4.601007e-05    0.2841
+      U_LANES                                  1922 1.007770e-05 7.067686e-06 3.809514e-09 1.714919e-05    0.1059
+      (top)                                     280 1.673265e-06 1.537371e-05 4.241887e-10 1.704740e-05    0.1053
+      U_ENTRY                                  1605 7.172784e-06 8.109392e-06 3.962013e-09 1.528614e-05    0.0944
+      U_PF                                      662 1.232734e-05 6.994398e-07 2.030577e-09 1.302881e-05    0.0805
+   ENERGY of the address-map unit logic per inference (the ROM macros not included): 7.1121 uJ
+   annotated pins 109639 of 109639 pin bits of the netlist (every cell pin and port bit): all
+  PASS  P1 OpenSTA annotation and power, model B
+   [14:01:32, 748 s since the start]
+
+---- files written to /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5b ----
+total 60128
+drwxrwxrwx 1 kid kid    4096 Oct 15  2026 .
+drwxrwxrwx 1 kid kid    4096 Oct 15 13:49 ..
+-rwxrwxrwx 1 kid kid    3154 Oct 15 13:49 amu_A_stat_flat.txt
+-rwxrwxrwx 1 kid kid  107139 Oct 15 13:49 amu_A_stat_hier.txt
+-rwxrwxrwx 1 kid kid    3116 Oct 15 13:49 amu_B_stat_flat.txt
+-rwxrwxrwx 1 kid kid  108410 Oct 15 13:49 amu_B_stat_hier.txt
+-rwxrwxrwx 1 kid kid  131492 Oct 15 13:49 amu_flat_A.log
+-rwxrwxrwx 1 kid kid     763 Oct 15 13:49 amu_flat_A.ys
+-rwxrwxrwx 1 kid kid  132725 Oct 15 13:49 amu_flat_B.log
+-rwxrwxrwx 1 kid kid     763 Oct 15 13:49 amu_flat_B.ys
+-rwxrwxrwx 1 kid kid     228 Oct 15 13:59 amu_gate_A_sta.vcd.json
+-rwxrwxrwx 1 kid kid     228 Oct 15 14:00 amu_gate_B_sta.vcd.json
+-rwxrwxrwx 1 kid kid 3653724 Oct 15 13:49 amu_names_A.txt
+-rwxrwxrwx 1 kid kid     335 Oct 15 13:49 amu_names_A.txt.json
+-rwxrwxrwx 1 kid kid 3645152 Oct 15 13:49 amu_names_B.txt
+-rwxrwxrwx 1 kid kid     335 Oct 15 13:49 amu_names_B.txt.json
+-rwxrwxrwx 1 kid kid 1805693 Oct 15 14:01 amu_power_A.log
+-rwxrwxrwx 1 kid kid     772 Oct 15 14:00 amu_power_A.tcl
+-rwxrwxrwx 1 kid kid 1799039 Oct 15  2026 amu_power_B.log
+-rwxrwxrwx 1 kid kid     772 Oct 15 14:01 amu_power_B.tcl
+-rwxrwxrwx 1 kid kid    1751 Oct 15  2026 e8_5b_power_A.json
+-rwxrwxrwx 1 kid kid    1763 Oct 15  2026 e8_5b_power_B.json
+-rwxrwxrwx 1 kid kid    3843 Oct 15 13:58 gate_A.log
+-rwxrwxrwx 1 kid kid    3841 Oct 15 13:58 gate_B.log
+-rwxrwxrwx 1 kid kid    2676 Oct 15 13:49 gate_deps_A.txt
+-rwxrwxrwx 1 kid kid    2676 Oct 15 13:49 gate_deps_B.txt
+-rwxrwxrwx 1 kid kid 3818115 Oct 15 13:58 gate_e8trace_A.txt
+-rwxrwxrwx 1 kid kid 3818115 Oct 15 13:58 gate_e8trace_B.txt
+-rwxrwxrwx 1 kid kid 4878352 Oct 15 13:58 gate_reads_A.txt
+-rwxrwxrwx 1 kid kid 4878352 Oct 15 13:58 gate_reads_B.txt
+-rwxrwxrwx 1 kid kid 3818134 Oct 15 13:58 gate_trace_A.txt
+-rwxrwxrwx 1 kid kid 3818134 Oct 15 13:58 gate_trace_B.txt
+-rwxrwxrwx 1 kid kid    3691 Oct 15 13:58 rtl_A.log
+-rwxrwxrwx 1 kid kid    3689 Oct 15 13:58 rtl_B.log
+-rwxrwxrwx 1 kid kid       0 Oct 15 13:49 rtl_compile_A.log
+-rwxrwxrwx 1 kid kid       0 Oct 15 13:49 rtl_compile_B.log
+-rwxrwxrwx 1 kid kid    3122 Oct 15 13:49 rtl_deps_A.txt
+-rwxrwxrwx 1 kid kid    3122 Oct 15 13:49 rtl_deps_B.txt
+-rwxrwxrwx 1 kid kid 3818115 Oct 15 13:58 rtl_e8trace_A.txt
+-rwxrwxrwx 1 kid kid 3818115 Oct 15 13:58 rtl_e8trace_B.txt
+-rwxrwxrwx 1 kid kid 4878352 Oct 15 13:58 rtl_reads_A.txt
+-rwxrwxrwx 1 kid kid 4878352 Oct 15 13:58 rtl_reads_B.txt
+-rwxrwxrwx 1 kid kid 3818134 Oct 15 13:58 rtl_trace_A.txt
+-rwxrwxrwx 1 kid kid 3818134 Oct 15 13:58 rtl_trace_B.txt
+---- waveforms in /home/kid/p2r_e8/e8_5b ----
+-rw-r--r-- 1 kid kid 1695414877 Oct 15 13:58 /home/kid/p2r_e8/e8_5b/amu_gate_A.vcd
+-rw-r--r-- 1 kid kid 1695333690 Oct 15 13:59 /home/kid/p2r_e8/e8_5b/amu_gate_A_sta.vcd
+-rw-r--r-- 1 kid kid 1686107165 Oct 15 13:58 /home/kid/p2r_e8/e8_5b/amu_gate_B.vcd
+-rw-r--r-- 1 kid kid 1686025978 Oct 15 14:00 /home/kid/p2r_e8/e8_5b/amu_gate_B_sta.vcd
+
+==============================================================
+Finished 2026-10-15 14:01:33, 12 min.
+All gates pass.
+==============================================================

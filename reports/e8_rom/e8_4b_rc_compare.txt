@@ -1,0 +1,15 @@
+runs in REF: 8: B_sram_l00/conv1, B_sram_l00/conv2, B_sram_l00/conv2_nopark, B_sram_l00/fc1, B_sram_l00/k0_parta, B_sram_l00/k1_parta, B_sram_l00/k2_parta, B_sram_l00/k3_parta
+reads: 101 in REF, 101 in TEST, unmatched 0
+   reads correct in REF: True; outcome differs: 0
+   read E (> 0.0): n=101, TEST - REF median +0.029 %, worst +2.990 % at ('B_sram_l00/k1_parta', 9) -> OUTSIDE +-2.0 %
+   read P_after (> 20.0): n=34, TEST - REF median +0.001 %, worst -5.311 % at ('B_sram_l00/conv2', 25) -> OUTSIDE +-2.0 %
+waits: 76 in REF, unmatched 0; P_after (> 20 uW) n=10, median -0.475 %, worst -1.844 % at ('B_sram_l00/conv2_nopark', 12) -> within +-2 %
+   train B_sram_l00/conv1: REF 1875.0 pJ, TEST 1875.5 pJ (+0.026 %) -> within +-1 %
+   train B_sram_l00/conv2: REF 535.7 pJ, TEST 536.0 pJ (+0.063 %) -> within +-1 %
+   train B_sram_l00/conv2_nopark: REF 997.7 pJ, TEST 995.6 pJ (-0.204 %) -> within +-1 %
+   train B_sram_l00/fc1: REF 310.5 pJ, TEST 310.8 pJ (+0.094 %) -> within +-1 %
+   part A e8rom_B_sram_l00_16x2496_r48k0: P_Z 1646.4 / 1646.5 uW, P_H 353.5 / 350.5 uW, parked 1.026 / 1.024 uW (REF / TEST)
+   part A e8rom_B_sram_l00_16x2496_r48k1: P_Z 1.6 / 1.6 uW, P_H 1.8 / 1.6 uW, parked 1.124 / 1.048 uW (REF / TEST)
+   part A e8rom_B_sram_l00_16x2496_r48k2: P_Z 1345.6 / 1342.9 uW, P_H 579.7 / 576.4 uW, parked 1.064 / 1.056 uW (REF / TEST)
+   part A e8rom_B_sram_l00_16x2496_r48k3: P_Z 941.8 / 948.1 uW, P_H 121.1 / 119.3 uW, parked 1.038 / 1.027 uW (REF / TEST)
+CRITERION NOT MET

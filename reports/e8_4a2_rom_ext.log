@@ -1,0 +1,398 @@
+==============================================================
+P2R-E8.4a-2 layout check and post-layout simulation, started 2026-10-10 21:10:01
+==============================================================
+macro    : e8rom_A_pcm_l00_16x2496  (word bytes 2)
+ngspice  : /nix/store/4ssrcgdvyb8car0yxay8cwfa5wc89f1w-ngspice-45/bin/ngspice
+magic    : /nix/store/1zcyq032zc3mzhmgs2j3q2rmfrjj5v6b-magic-vlsi-8.3.629/bin/magic
+netgen   : /nix/store/h3crgmx1w7h86qjpr131igi7p576mp3x-netgen-1.5.318/bin/netgen
+models   : /home/kid/gf/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice (tt)
+LVS setup: /home/kid/gf/pdk/sky130A/libs.tech/netgen/sky130A_setup.tcl
+period   : 100 ns   time limit per simulation: none   threads per simulation: 2
+machine  : 8 cores, 23 GiB memory, 22 GiB available
+   ** ngspice-45 : Circuit level simulation program
+
+########## a. the generator's netlist ##########
+netlist   : /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/macros/e8rom_A_pcm_l00_16x2496/e8rom_A_pcm_l00_16x2496.sp
+top       : e8rom_A_pcm_l00_16x2496, 32 ports, 42 subcircuits
+address bits 12, data bits 16
+devices (flattened): 45620
+capacitors (flattened): 0, total 0.000 pF
+
+########## b. read sequences (the same as E8.4a) ##########
+rows 192, words per row 13, zero bits per row: min 0, max 155 (row 8), mean 104.6 of 208; words with no zero bit: 173
+   main     : i,r3056,r6,r128,r6,r3068,i,s3
+   recovery : i,r128,s2,r3056,r128,s5,r3056,r128,s15,r3056
+   main     : same as the E8.4a sequence
+   recovery : same as the E8.4a sequence
+
+########## c. the generator's netlist with corrected junction areas (no wire capacitance) ##########
+bench written: /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a2/e8rom_A_pcm_l00_16x2496/asad_main/tb.sp  (10 cycles, period 100.0 ns, stop 1050.2 ns, 12 address bits, 16 data bits)
+   note: junction areas corrected (as/ad '<x>u' -> '<x>' um2) in 76 places
+   note: probes (generator names): 192 of 192 wordlines, 24 row-decoder outputs (rows 0..191, 24 wanted), 13 of 13 column selects, 9 bitlines, clk_int yes, precharge yes
+   started asad_main at 2026-10-10 21:10:04
+bench written: /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a2/e8rom_A_pcm_l00_16x2496/asad_recovery/tb.sp  (29 cycles, period 100.0 ns, stop 2950.2 ns, 12 address bits, 16 data bits)
+   note: junction areas corrected (as/ad '<x>u' -> '<x>' um2) in 76 places
+   note: probes (generator names): 192 of 192 wordlines, 17 row-decoder outputs (rows 0..191, 17 wanted), 13 of 13 column selects, 3 bitlines, clk_int yes, precharge yes
+   started asad_recovery at 2026-10-10 21:10:05
+
+########## d. magic: flat extraction for LVS and with parasitic capacitance, meanwhile ##########
+   magic exit 0, wall time 3955 s
+   log:       9 Warning:  Ports "precharge_r" and "gate" are electrically shorted.
+   log:       3 Warning:  Ports "D" and "S" are electrically shorted.
+   log:       1 Warning:  Ports "vdd" and "VDD" are electrically shorted.
+   log:       1 Warning:  Ports "gnd" and "GND" are electrically shorted.
+   -rwxrwxrwx 1 kid kid 14100686 Oct 10 22:15 /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a2/e8rom_A_pcm_l00_16x2496/extract/e8rom_A_pcm_l00_16x2496.flat_lvs.spice
+   -rwxrwxrwx 1 kid kid 42662584 Oct 10 22:16 /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a2/e8rom_A_pcm_l00_16x2496/extract/e8rom_A_pcm_l00_16x2496.flat_pex.spice
+
+########## e. layout checks ##########
+   signal nodes merged into a supply net by the top cell:
+   top-level merges in /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a2/e8rom_A_pcm_l00_16x2496/extract/e8rom_A_pcm_l00_16x2496.ext: 3182 named nodes, 699 nets
+   no signal node is merged into a supply net at the top level
+
+   netlist for LVS (no parasitics):
+   top       : e8rom_A_pcm_l00_16x2496, 32 ports, 1 subcircuits
+   devices (flattened): 45620
+        43530  sky130_fd_pr__nfet_01v8  w=0.36  l=0.15
+          413  sky130_fd_pr__pfet_01v8  w=0.42  l=0.15
+          386  sky130_fd_pr__pfet_01v8  w=7  l=0.15
+          267  sky130_fd_pr__pfet_01v8  w=5  l=0.15
+          224  sky130_fd_pr__nfet_01v8  w=1.68  l=0.15
+          208  sky130_fd_pr__nfet_01v8  w=2.88  l=0.15
+          197  sky130_fd_pr__nfet_01v8  w=7  l=0.15
+          192  sky130_fd_pr__nfet_01v8  w=3  l=0.15
+           77  sky130_fd_pr__nfet_01v8  w=0.74  l=0.15
+           55  sky130_fd_pr__pfet_01v8  w=1.12  l=0.15
+           36  sky130_fd_pr__nfet_01v8  w=5  l=0.15
+           25  sky130_fd_pr__pfet_01v8  w=3  l=0.15
+            4  sky130_fd_pr__nfet_01v8  w=1.26  l=0.15
+            2  sky130_fd_pr__pfet_01v8  w=2  l=0.15
+            2  sky130_fd_pr__nfet_01v8  w=2  l=0.15
+            2  sky130_fd_pr__pfet_01v8  w=1.26  l=0.15
+   capacitors (flattened): 0, total 0.000 pF
+   netlist for simulation (with parasitic capacitance):
+   top       : e8rom_A_pcm_l00_16x2496, 32 ports, 1 subcircuits
+   devices (flattened): 45620
+   capacitors (flattened): 168203, total 16.571 pF
+   negative capacitors (flattened): 0, sum 0.000 pF, most negative 0.000 fF
+   started LVS at 2026-10-10 22:16:03
+   start the post-layout simulations
+bench written: /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a2/e8rom_A_pcm_l00_16x2496/ext_main/tb.sp  (10 cycles, period 100.0 ns, stop 1050.2 ns, 12 address bits, 16 data bits)
+   note: hierarchical node names rewritten ('/' -> '__', '#' -> 'h') in 445261 places
+   note: sky130_fd_pr__special_nfet_01v8 written as sky130_fd_pr__nfet_01v8 in 0 places
+   note: probes (extracted names): 192 of 192 wordlines, 24 row-decoder outputs (rows 0..191, 24 wanted), 13 of 13 column selects, 9 bitlines, clk_int yes, precharge yes
+   started ext_main at 2026-10-10 22:16:08
+bench written: /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a2/e8rom_A_pcm_l00_16x2496/ext_recovery/tb.sp  (29 cycles, period 100.0 ns, stop 2950.2 ns, 12 address bits, 16 data bits)
+   note: hierarchical node names rewritten ('/' -> '__', '#' -> 'h') in 445261 places
+   note: sky130_fd_pr__special_nfet_01v8 written as sky130_fd_pr__nfet_01v8 in 0 places
+   note: probes (extracted names): 192 of 192 wordlines, 17 row-decoder outputs (rows 0..191, 17 wanted), 13 of 13 column selects, 3 bitlines, clk_int yes, precharge yes
+   started ext_recovery at 2026-10-10 22:16:14
+
+########## f. waiting (progress every 1800 s) ##########
+   progress at 2026-10-10 22:16:14:
+      asad_main      finished                                 0h13m      1050.2 of   1050.2 ns (100.0 %)
+      asad_recovery  finished                                 0h16m      2950.2 of   2950.2 ns (100.0 %)
+      ext_main       running                                  0h00m    no data yet
+      ext_recovery   running                                  0h00m    no data yet
+      lvs            running
+   progress at 2026-10-10 22:46:17:
+      asad_main      finished                                 0h13m      1050.2 of   1050.2 ns (100.0 %)
+      asad_recovery  finished                                 0h16m      2950.2 of   2950.2 ns (100.0 %)
+      ext_main       finished                                 0h26m      1050.2 of   1050.2 ns (100.0 %)
+      ext_recovery   running                                  0h30m      2400.2 of   2950.2 ns ( 81.4 %)
+      lvs            finished
+   progress at 2026-10-10 22:49:48:
+      asad_main      finished                                 0h13m      1050.2 of   1050.2 ns (100.0 %)
+      asad_recovery  finished                                 0h16m      2950.2 of   2950.2 ns (100.0 %)
+      ext_main       finished                                 0h26m      1050.2 of   1050.2 ns (100.0 %)
+      ext_recovery   finished                                 0h33m      2950.2 of   2950.2 ns (100.0 %)
+      lvs            finished
+
+########## g. results ##########
+
+---- LVS (netgen h3crgmx1w7h86qjpr131igi7p576mp3x-netgen-1.5.318, finished, wall time 12 s ----
+   Circuit 1 contains 45538 devices, Circuit 2 contains 45538 devices.
+   Circuit 1 contains 22575 nets,    Circuit 2 contains 22575 nets.
+   Final result: 
+   Circuits match uniquely.
+   mismatch fragments in the report (top-level comparison, first 60 lines of each kind):
+
+---- asad_main: finished, wall time 0h13m, ngspice exit 0 ----
+   Total analysis time (seconds) = 493.395
+P2R-E8.4 analysis: e8rom_A_pcm_l00_16x2496  period 100.0 ns  vdd 1.8 V  load 10.0 fF per output  points 1175
+data: simulated to 1050.2 of 1050.2 ns, 10 of 10 cycles complete (complete)
+E_vdd: energy from the supply from this cycle's rising edge to the next one; P_after: supply power just before the next rising edge (static state after the cycle)
+  k kind   addr  row   w precharge ns z_row z_word expected     read  ok  E_vdd pJ  E_in pJ P_after uW t_acc ns  dout min/max V
+  0 idle                                                                    5.244    0.056       1.88
+  1 read   3056  191   0       150.0     0      0     ffff     ffff yes    12.062   -0.024       2.77     0.00  1.80/1.80
+      selection: rows [191] (expected [191]); words [0] (expected [0]); lowest unselected row-decoder output 1.35 V (row 190)
+  2 read      6    0   6        50.0    53     16     0000     0000 yes    89.223   -0.003     270.37    26.84  -0.03/1.80  bitline below VDD/2 after 12.22 ns
+      selection: rows [0] (expected [0]); words [6] (expected [6]); lowest unselected row-decoder output 1.44 V (row 1)
+  3 read    128    8   0        50.0   155     13     0031     0031 yes   131.368    0.010     186.43    12.15  -0.01/1.87  bitline below VDD/2 after 9.28 ns
+      selection: rows [8] (expected [8]); words [0] (expected [0]); lowest unselected row-decoder output 1.45 V (row 9)
+  4 read      6    0   6        50.0    53     16     0000     0000 yes    96.101    0.054     327.42    12.05  -0.03/1.88  bitline below VDD/2 after 8.57 ns
+      selection: rows [0] (expected [0]); words [6] (expected [6]); lowest unselected row-decoder output 1.45 V (row 1)
+  5 read   3068  191  12        50.0     0      0     ffff     0000  NO   382.368   -0.002    1369.60    15.23  -0.01/1.88
+      selection: rows [191] (expected [191]); words [12] (expected [12]); lowest unselected row-decoder output 1.35 V (row 190)
+  6 idle                                                                  140.030    0.001    1332.87
+  7 stop                                                                  132.552   -0.001    1322.20
+  8 stop                                                                  131.985   -0.000    1318.44
+  9 stop                                                                  131.724   -0.000    1316.45
+summary: {"cycles_complete": 10, "cycles_total": 10, "simulated_ns": 1050.1999999999998, "tstop_ns": 1050.2, "failed": false, "reads": 5, "reads_ok": 4, "reads_selection_ok": 5, "E_read_pJ_mean": 142.22417125399835, "E_read_pJ_min": 12.06167590994242, "E_read_pJ_max": 382.36834284837863, "t_access_ns_max": 26.835798999999948, "E_idle_clocked_pJ_mean": 140.0299351633039, "P_stopped_uW": 1319.1358795463998}
+
+---- asad_recovery: finished, wall time 0h16m, ngspice exit 0 ----
+   Total analysis time (seconds) = 662.115
+P2R-E8.4 analysis: e8rom_A_pcm_l00_16x2496  period 100.0 ns  vdd 1.8 V  load 10.0 fF per output  points 2248
+data: simulated to 2950.2 of 2950.2 ns, 29 of 29 cycles complete (complete)
+E_vdd: energy from the supply from this cycle's rising edge to the next one; P_after: supply power just before the next rising edge (static state after the cycle)
+  k kind   addr  row   w precharge ns z_row z_word expected     read  ok  E_vdd pJ  E_in pJ P_after uW t_acc ns  dout min/max V
+  0 idle                                                                    5.241    0.012       1.89
+  1 read    128    8   0       150.0   155     13     0031     0031 yes   128.628   -0.003     425.17    26.73  -0.04/1.80  bitline below VDD/2 after 16.22 ns
+      selection: rows [8] (expected [8]); words [0] (expected [0]); lowest unselected row-decoder output 1.47 V (row 10)
+  2 stop                                                                   31.197   -0.000     278.24
+  3 stop                                                                   26.690    0.049     261.39
+  4 read   3056  191   0       250.0     0      0     ffff     bfff  NO    83.514   -0.034      24.54    46.83  -0.00/1.85
+      selection: rows [191] (expected [191]); words [0] (expected [0]); lowest unselected row-decoder output 1.42 V (row 190)
+  5 read    128    8   0        50.0   155     13     0031     0031 yes   128.389   -0.003     347.00    18.85  -0.04/1.80  bitline below VDD/2 after 11.47 ns
+      selection: rows [8] (expected [8]); words [0] (expected [0]); lowest unselected row-decoder output 1.44 V (row 9)
+  6 stop                                                                   23.030   -0.000     195.82
+  7 stop                                                                   18.432   -0.000     178.71
+  8 stop                                                                   17.534   -0.000     173.40
+  9 stop                                                                   17.195   -0.000     171.04
+ 10 stop                                                                   17.026    0.049     169.78
+ 11 read   3056  191   0       550.0     0      0     ffff     ffff yes    17.115   -0.034      18.47     1.11  -0.00/1.88
+      selection: rows [191] (expected [191]); words [0] (expected [0]); lowest unselected row-decoder output 1.44 V (row 190)
+ 12 read    128    8   0        50.0   155     13     0031     0031 yes   128.270   -0.003     357.92    19.73  -0.03/1.80  bitline below VDD/2 after 11.47 ns
+      selection: rows [8] (expected [8]); words [0] (expected [0]); lowest unselected row-decoder output 1.44 V (row 9)
+ 13 stop                                                                   24.150   -0.000     207.08
+ 14 stop                                                                   19.560   -0.000     190.00
+ 15 stop                                                                   18.664   -0.000     184.70
+ 16 stop                                                                   18.325   -0.000     182.35
+ 17 stop                                                                   18.160   -0.000     181.11
+ 18 stop                                                                   18.068   -0.000     180.40
+ 19 stop                                                                   18.014   -0.000     179.96
+ 20 stop                                                                   17.981   -0.000     179.70
+ 21 stop                                                                   17.960   -0.000     179.54
+ 22 stop                                                                   17.949   -0.000     179.46
+ 23 stop                                                                   17.944   -0.000     179.43
+ 24 stop                                                                   17.943   -0.000     179.43
+ 25 stop                                                                   17.945   -0.000     179.47
+ 26 stop                                                                   17.950   -0.000     179.52
+ 27 stop                                                                   17.954    0.049     179.59
+ 28 read   3056  191   0      1550.0     0      0     ffff     ffff yes    12.681    0.001       9.47     1.12  -0.00/1.90
+      selection: rows [191] (expected [191]); words [0] (expected [0]); lowest unselected row-decoder output 1.47 V (row 190)
+summary: {"cycles_complete": 29, "cycles_total": 29, "simulated_ns": 2950.2000000000003, "tstop_ns": 2950.2000000000003, "failed": false, "reads": 6, "reads_ok": 5, "reads_selection_ok": 6, "E_read_pJ_mean": 83.09963622312536, "E_read_pJ_min": 12.681457777284868, "E_read_pJ_max": 128.62763122921584, "t_access_ns_max": 46.829537000000016}
+
+---- ext_main: finished, wall time 0h26m, ngspice exit 0 ----
+   Total analysis time (seconds) = 1260.97
+P2R-E8.4 analysis: e8rom_A_pcm_l00_16x2496  period 100.0 ns  vdd 1.8 V  load 10.0 fF per output  points 1268
+data: simulated to 1050.2 of 1050.2 ns, 10 of 10 cycles complete (complete)
+E_vdd: energy from the supply from this cycle's rising edge to the next one; P_after: supply power just before the next rising edge (static state after the cycle)
+  k kind   addr  row   w precharge ns z_row z_word expected     read  ok  E_vdd pJ  E_in pJ P_after uW t_acc ns  dout min/max V
+  0 idle                                                                    8.349    0.082       2.82
+  1 read   3056  191   0       150.0     0      0     ffff     ffff yes    19.984   -0.031       3.41     0.00  1.80/1.80
+      selection: rows [191] (expected [191]); words [0] (expected [0]); lowest unselected row-decoder output 1.08 V (row 190)
+  2 read      6    0   6        50.0    53     16     0000     0000 yes   144.719    0.001    1158.18    28.41  -0.03/1.80  bitline below VDD/2 after 13.14 ns
+      selection: rows [0] (expected [0]); words [6] (expected [6]); lowest unselected row-decoder output 1.06 V (row 1)
+  3 read    128    8   0        50.0   155     13     0031     0031 yes   167.139    0.011     463.97    12.00  -0.02/1.85  bitline below VDD/2 after 9.29 ns
+      selection: rows [8] (expected [8]); words [0] (expected [0]); lowest unselected row-decoder output 1.04 V (row 9)
+  4 read      6    0   6        50.0    53     16     0000     0000 yes   161.839    0.075    1435.45    13.62  -0.02/1.88  bitline below VDD/2 after 9.56 ns
+      selection: rows [0] (expected [0]); words [6] (expected [6]); lowest unselected row-decoder output 1.06 V (row 1)
+  5 read   3068  191  12        50.0     0      0     ffff     0000  NO   306.696   -0.005      65.85    15.52  -0.01/1.86
+      selection: rows [191] (expected [191]); words [12] (expected [12]); lowest unselected row-decoder output 1.08 V (row 190)
+  6 idle                                                                   13.444    0.001      24.26
+  7 stop                                                                    1.952   -0.000      13.18
+  8 stop                                                                    1.071    0.000       9.21
+  9 stop                                                                    0.799   -0.000       7.20
+summary: {"cycles_complete": 10, "cycles_total": 10, "simulated_ns": 1050.1999999999998, "tstop_ns": 1050.2, "failed": false, "reads": 5, "reads_ok": 4, "reads_selection_ok": 5, "E_read_pJ_mean": 160.07529689555818, "E_read_pJ_min": 19.983584117481136, "E_read_pJ_max": 306.6960077655763, "t_access_ns_max": 28.411991999999948, "E_idle_clocked_pJ_mean": 13.443894523909098, "P_stopped_uW": 9.962230003475995}
+
+---- ext_recovery: finished, wall time 0h33m, ngspice exit 0 ----
+   Total analysis time (seconds) = 1658.36
+P2R-E8.4 analysis: e8rom_A_pcm_l00_16x2496  period 100.0 ns  vdd 1.8 V  load 10.0 fF per output  points 2333
+data: simulated to 2950.2 of 2950.2 ns, 29 of 29 cycles complete (complete)
+E_vdd: energy from the supply from this cycle's rising edge to the next one; P_after: supply power just before the next rising edge (static state after the cycle)
+  k kind   addr  row   w precharge ns z_row z_word expected     read  ok  E_vdd pJ  E_in pJ P_after uW t_acc ns  dout min/max V
+  0 idle                                                                    8.346    0.026       2.80
+  1 read    128    8   0       150.0   155     13     0031     0031 yes   138.532   -0.007     328.65    29.58  -0.04/1.80  bitline below VDD/2 after 17.57 ns
+      selection: rows [8] (expected [8]); words [0] (expected [0]); lowest unselected row-decoder output 1.04 V (row 9)
+  2 stop                                                                   21.338    0.000     178.21
+  3 stop                                                                   16.599    0.067     160.03
+  4 read   3056  191   0       250.0     0      0     ffff     3fff  NO   127.021   -0.039      29.25    48.54  0.00/1.87
+      selection: rows [191] (expected [191]); words [0] (expected [0]); lowest unselected row-decoder output 1.14 V (row 190)
+  5 read    128    8   0        50.0   155     13     0031     0031 yes   147.794   -0.007     462.37    20.73  -0.03/1.80  bitline below VDD/2 after 11.80 ns
+      selection: rows [8] (expected [8]); words [0] (expected [0]); lowest unselected row-decoder output 1.04 V (row 9)
+  6 stop                                                                   34.251    0.000     306.27
+  7 stop                                                                   29.386    0.000     287.76
+  8 stop                                                                   28.402    0.000     281.85
+  9 stop                                                                   28.017    0.000     279.11
+ 10 stop                                                                   27.815    0.067     277.57
+ 11 read   3056  191   0       550.0     0      0     ffff     ffff yes    32.172   -0.039      22.39     1.56  0.04/1.87
+      selection: rows [191] (expected [191]); words [0] (expected [0]); lowest unselected row-decoder output 1.16 V (row 190)
+ 12 read    128    8   0        50.0   155     13     0031     0031 yes   146.102   -0.007     417.93    21.28  -0.03/1.80  bitline below VDD/2 after 11.77 ns
+      selection: rows [8] (expected [8]); words [0] (expected [0]); lowest unselected row-decoder output 1.04 V (row 9)
+ 13 stop                                                                   29.839    0.000     262.22
+ 14 stop                                                                   24.982    0.000     243.72
+ 15 stop                                                                   23.998    0.000     237.81
+ 16 stop                                                                   23.613    0.000     235.06
+ 17 stop                                                                   23.413   -0.000     233.51
+ 18 stop                                                                   23.293   -0.000     232.53
+ 19 stop                                                                   23.213   -0.000     231.85
+ 20 stop                                                                   23.156   -0.000     231.35
+ 21 stop                                                                   23.113   -0.000     230.96
+ 22 stop                                                                   23.079   -0.000     230.66
+ 23 stop                                                                   23.052   -0.000     230.41
+ 24 stop                                                                   23.029   -0.000     230.20
+ 25 stop                                                                   23.010   -0.000     230.02
+ 26 stop                                                                   22.993   -0.000     229.87
+ 27 stop                                                                   22.975    0.067     229.73
+ 28 read   3056  191   0      1550.0     0      0     ffff     ffff yes    17.852    0.002      14.23     1.56  0.00/1.84
+      selection: rows [191] (expected [191]); words [0] (expected [0]); lowest unselected row-decoder output 1.19 V (row 190)
+summary: {"cycles_complete": 29, "cycles_total": 29, "simulated_ns": 2950.2000000000003, "tstop_ns": 2950.2000000000003, "failed": false, "reads": 6, "reads_ok": 5, "reads_selection_ok": 6, "E_read_pJ_mean": 101.57879179592966, "E_read_pJ_min": 17.85209164824482, "E_read_pJ_max": 147.79370389832027, "t_access_ns_max": 48.53952999999997}
+
+---- main: per-cycle comparison (E8.4a generator netlist | corrected junction areas | post-layout) ----
+  k kind   addr  row   w expect |      E8.4a sch: read    E pJ  P_after  t_acc |           asad: read    E pJ  P_after  t_acc |    post-layout: read    E pJ  P_after  t_acc
+  0 idle                        |                          4.60     0.99        |                          5.24     1.88        |                          8.35     2.82       
+  1 read   3056  191   0   ffff |                  ffff   11.47     2.05   0.00 |                  ffff   12.06     2.77   0.00 |                  ffff   19.98     3.41   0.00
+  2 read      6    0   6   0000 |                  0000   79.49   220.35  19.85 |                  0000   89.22   270.37  26.84 |                  0000  144.72  1158.18  28.41
+  3 read    128    8   0   0031 |                  0031   99.19   112.19  11.81 |                  0031  131.37   186.43  12.15 |                  0031  167.14   463.97  12.00
+  4 read      6    0   6   0000 |                  0000   80.67   258.57  11.77 |                  0000   96.10   327.42  12.05 |                  0000  161.84  1435.45  13.62
+  5 read   3068  191  12   ffff |                 0000!  452.30   636.53  18.44 |                 0000!  382.37  1369.60  15.23 |                 0000!  306.70    65.85  15.52
+  6 idle                        |                         67.68   622.62        |                        140.03  1332.87        |                         13.44    24.26       
+  7 stop                        |                         61.75   618.25        |                        132.55  1322.20        |                          1.95    13.18       
+  8 stop                        |                         61.75   617.21        |                        131.98  1318.44        |                          1.07     9.21       
+  9 stop                        |                         61.70   616.87        |                        131.72  1316.45        |                          0.80     7.20       
+('!' after a read value: differs from the stored word; P_after in uW; t_acc in ns)
+
+---- recovery: per-cycle comparison (E8.4a generator netlist | corrected junction areas | post-layout) ----
+  k kind   addr  row   w expect |      E8.4a sch: read    E pJ  P_after  t_acc |           asad: read    E pJ  P_after  t_acc |    post-layout: read    E pJ  P_after  t_acc
+  0 idle                        |                          4.61     1.00        |                          5.24     1.89        |                          8.35     2.80       
+  1 read    128    8   0   0031 |                  0031  107.56   240.57  20.01 |                  0031  128.63   425.17  26.73 |                  0031  138.53   328.65  29.58
+  2 stop                        |                         18.87   174.77        |                         31.20   278.24        |                         21.34   178.21       
+  3 stop                        |                         17.02   168.27        |                         26.69   261.39        |                         16.60   160.03       
+  4 read   3056  191   0   ffff |                 bfff!   85.30    11.90  37.20 |                 bfff!   83.51    24.54  46.83 |                 3fff!  127.02    29.25  48.54
+  5 read    128    8   0   0031 |                  0031  105.04   221.97  15.35 |                  0031  128.39   347.00  18.85 |                  0031  147.79   462.37  20.73
+  6 stop                        |                         16.97   155.63        |                         23.03   195.82        |                         34.25   306.27       
+  7 stop                        |                         15.12   149.11        |                         18.43   178.71        |                         29.39   287.76       
+  8 stop                        |                         14.79   147.18        |                         17.53   173.40        |                         28.40   281.85       
+  9 stop                        |                         14.67   146.40        |                         17.19   171.04        |                         28.02   279.11       
+ 10 stop                        |                         14.60   146.04        |                         17.03   169.78        |                         27.81   277.57       
+ 11 read   3056  191   0   ffff |                  ffff   33.94     9.71   1.01 |                  ffff   17.12    18.47   1.11 |                  ffff   32.17    22.39   1.56
+ 12 read    128    8   0   0031 |                  0031  105.81   225.50  15.84 |                  0031  128.27   357.92  19.73 |                  0031  146.10   417.93  21.28
+ 13 stop                        |                         17.32   159.20        |                         24.15   207.08        |                         29.84   262.22       
+ 14 stop                        |                         15.48   152.68        |                         19.56   190.00        |                         24.98   243.72       
+ 15 stop                        |                         15.15   150.76        |                         18.66   184.70        |                         24.00   237.81       
+ 16 stop                        |                         15.03   149.98        |                         18.33   182.35        |                         23.61   235.06       
+ 17 stop                        |                         14.98   149.64        |                         18.16   181.11        |                         23.41   233.51       
+ 18 stop                        |                         14.95   149.50        |                         18.07   180.40        |                         23.29   232.53       
+ 19 stop                        |                         14.95   149.47        |                         18.01   179.96        |                         23.21   231.85       
+ 20 stop                        |                         14.95   149.51        |                         17.98   179.70        |                         23.16   231.35       
+ 21 stop                        |                         14.96   149.60        |                         17.96   179.54        |                         23.11   230.96       
+ 22 stop                        |                         14.97   149.71        |                         17.95   179.46        |                         23.08   230.66       
+ 23 stop                        |                         14.98   149.85        |                         17.94   179.43        |                         23.05   230.41       
+ 24 stop                        |                         14.99   150.00        |                         17.94   179.43        |                         23.03   230.20       
+ 25 stop                        |                         15.01   150.16        |                         17.95   179.47        |                         23.01   230.02       
+ 26 stop                        |                         15.03   150.33        |                         17.95   179.52        |                         22.99   229.87       
+ 27 stop                        |                         15.03   150.50        |                         17.95   179.59        |                         22.98   229.73       
+ 28 read   3056  191   0   ffff |                  ffff   14.24     5.87   1.01 |                  ffff   12.68     9.47   1.12 |                  ffff   17.85    14.23   1.56
+('!' after a read value: differs from the stored word; P_after in uW; t_acc in ns)
+
+---- files, all in the folder /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a2/e8rom_A_pcm_l00_16x2496 ----
+   /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a2/e8rom_A_pcm_l00_16x2496/asad_main:
+   total 10764
+   drwxrwxrwx 1 kid kid    4096 Oct 10 22:49 .
+   drwxrwxrwx 1 kid kid    4096 Oct 10 22:16 ..
+   -rwxrwxrwx 1 kid kid     124 Oct 10 21:10 .spiceinit
+   -rwxrwxrwx 1 kid kid       2 Oct 10 21:23 exit_code
+   -rwxrwxrwx 1 kid kid      11 Oct 10 21:23 finished
+   -rwxrwxrwx 1 kid kid 4240683 Oct 10 21:10 netlist.sp
+   -rwxrwxrwx 1 kid kid 1200679 Oct 10 21:23 ngspice.log
+   -rwxrwxrwx 1 kid kid       4 Oct 10 21:10 pid
+   -rwxrwxrwx 1 kid kid   19733 Oct 10 22:49 result.json
+   -rwxrwxrwx 1 kid kid      11 Oct 10 21:10 started
+   -rwxrwxrwx 1 kid kid  109212 Oct 10 21:10 tb.sp
+   -rwxrwxrwx 1 kid kid       0 Oct 10 21:23 tb_done
+   -rwxrwxrwx 1 kid kid  923639 Oct 10 21:23 tb_int.txt
+   -rwxrwxrwx 1 kid kid   12548 Oct 10 21:10 tb_meta.json
+   -rwxrwxrwx 1 kid kid  866712 Oct 10 21:23 tb_out.txt
+   -rwxrwxrwx 1 kid kid 3632664 Oct 10 21:23 tb_wl.txt
+   
+   /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a2/e8rom_A_pcm_l00_16x2496/asad_recovery:
+   total 15324
+   drwxrwxrwx 1 kid kid    4096 Oct 10 22:49 .
+   drwxrwxrwx 1 kid kid    4096 Oct 10 22:16 ..
+   -rwxrwxrwx 1 kid kid     124 Oct 10 21:10 .spiceinit
+   -rwxrwxrwx 1 kid kid       2 Oct 10 21:26 exit_code
+   -rwxrwxrwx 1 kid kid      11 Oct 10 21:26 finished
+   -rwxrwxrwx 1 kid kid 4240683 Oct 10 21:10 netlist.sp
+   -rwxrwxrwx 1 kid kid 1223884 Oct 10 21:26 ngspice.log
+   -rwxrwxrwx 1 kid kid       4 Oct 10 21:10 pid
+   -rwxrwxrwx 1 kid kid   29216 Oct 10 22:49 result.json
+   -rwxrwxrwx 1 kid kid      11 Oct 10 21:10 started
+   -rwxrwxrwx 1 kid kid  265839 Oct 10 21:10 tb.sp
+   -rwxrwxrwx 1 kid kid       0 Oct 10 21:26 tb_done
+   -rwxrwxrwx 1 kid kid 1298028 Oct 10 21:26 tb_int.txt
+   -rwxrwxrwx 1 kid kid   15941 Oct 10 21:10 tb_meta.json
+   -rwxrwxrwx 1 kid kid 1657513 Oct 10 21:26 tb_out.txt
+   -rwxrwxrwx 1 kid kid 6947161 Oct 10 21:26 tb_wl.txt
+   
+   /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a2/e8rom_A_pcm_l00_16x2496/ext_main:
+   total 51200
+   drwxrwxrwx 1 kid kid     4096 Oct 10 22:49 .
+   drwxrwxrwx 1 kid kid     4096 Oct 10 22:16 ..
+   -rwxrwxrwx 1 kid kid      124 Oct 10 22:16 .spiceinit
+   -rwxrwxrwx 1 kid kid        2 Oct 10 22:42 exit_code
+   -rwxrwxrwx 1 kid kid       11 Oct 10 22:42 finished
+   -rwxrwxrwx 1 kid kid 43461850 Oct 10 22:16 netlist.sp
+   -rwxrwxrwx 1 kid kid  2672821 Oct 10 22:42 ngspice.log
+   -rwxrwxrwx 1 kid kid        5 Oct 10 22:16 pid
+   -rwxrwxrwx 1 kid kid    33334 Oct 10 22:49 result.json
+   -rwxrwxrwx 1 kid kid       11 Oct 10 22:16 started
+   -rwxrwxrwx 1 kid kid   356967 Oct 10 22:16 tb.sp
+   -rwxrwxrwx 1 kid kid        0 Oct 10 22:42 tb_done
+   -rwxrwxrwx 1 kid kid   999338 Oct 10 22:42 tb_int.txt
+   -rwxrwxrwx 1 kid kid    26143 Oct 10 22:16 tb_meta.json
+   -rwxrwxrwx 1 kid kid   935253 Oct 10 22:42 tb_out.txt
+   -rwxrwxrwx 1 kid kid  3927703 Oct 10 22:42 tb_wl.txt
+   
+   /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a2/e8rom_A_pcm_l00_16x2496/ext_recovery:
+   total 56072
+   drwxrwxrwx 1 kid kid     4096 Oct 10 22:49 .
+   drwxrwxrwx 1 kid kid     4096 Oct 10 22:16 ..
+   -rwxrwxrwx 1 kid kid      124 Oct 10 22:16 .spiceinit
+   -rwxrwxrwx 1 kid kid        2 Oct 10 22:49 exit_code
+   -rwxrwxrwx 1 kid kid       11 Oct 10 22:49 finished
+   -rwxrwxrwx 1 kid kid 43461850 Oct 10 22:16 netlist.sp
+   -rwxrwxrwx 1 kid kid  2710490 Oct 10 22:49 ngspice.log
+   -rwxrwxrwx 1 kid kid        5 Oct 10 22:16 pid
+   -rwxrwxrwx 1 kid kid    41257 Oct 10 22:49 result.json
+   -rwxrwxrwx 1 kid kid       11 Oct 10 22:16 started
+   -rwxrwxrwx 1 kid kid   876082 Oct 10 22:16 tb.sp
+   -rwxrwxrwx 1 kid kid        0 Oct 10 22:49 tb_done
+   -rwxrwxrwx 1 kid kid  1349008 Oct 10 22:49 tb_int.txt
+   -rwxrwxrwx 1 kid kid    28000 Oct 10 22:16 tb_meta.json
+   -rwxrwxrwx 1 kid kid  1720158 Oct 10 22:49 tb_out.txt
+   -rwxrwxrwx 1 kid kid  7217488 Oct 10 22:49 tb_wl.txt
+   
+   /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a2/e8rom_A_pcm_l00_16x2496/extract:
+   total 146724
+   drwxrwxrwx 1 kid kid     4096 Oct 10 22:16 .
+   drwxrwxrwx 1 kid kid     4096 Oct 10 22:16 ..
+   -rwxrwxrwx 1 kid kid 14100686 Oct 10 22:15 e8rom_A_pcm_l00_16x2496.flat_lvs.spice
+   -rwxrwxrwx 1 kid kid 42662584 Oct 10 22:16 e8rom_A_pcm_l00_16x2496.flat_pex.spice
+   -rwxrwxrwx 1 kid kid      898 Oct 10 21:10 extract.tcl
+   -rwxrwxrwx 1 kid kid       11 Oct 10 22:16 finished
+   -rwxrwxrwx 1 kid kid   370011 Oct 10 22:16 magic_extract.log
+   -rwxrwxrwx 1 kid kid       11 Oct 10 21:10 started
+   
+   /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a2/e8rom_A_pcm_l00_16x2496/lvs:
+   total 13792
+   drwxrwxrwx 1 kid kid     4096 Oct 10 22:16 .
+   drwxrwxrwx 1 kid kid     4096 Oct 10 22:16 ..
+   -rwxrwxrwx 1 kid kid       11 Oct 10 22:16 finished
+   -rwxrwxrwx 1 kid kid 14100686 Oct 10 22:16 layout.spice
+   -rwxrwxrwx 1 kid kid    12232 Oct 10 22:16 lvs_report.txt
+   -rwxrwxrwx 1 kid kid     4982 Oct 10 22:16 netgen.log
+   -rwxrwxrwx 1 kid kid       11 Oct 10 22:16 started
+
+==============================================================
+Finished 2026-10-10 22:49:50.
+==============================================================

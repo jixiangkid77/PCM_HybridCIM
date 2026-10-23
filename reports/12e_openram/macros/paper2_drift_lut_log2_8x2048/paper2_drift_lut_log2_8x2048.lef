@@ -1,0 +1,207 @@
+VERSION 5.4 ;
+NAMESCASESENSITIVE ON ;
+BUSBITCHARS "[]" ;
+DIVIDERCHAR "/" ;
+UNITS
+  DATABASE MICRONS 2000 ;
+END UNITS
+MACRO paper2_drift_lut_log2_8x2048
+   CLASS BLOCK ;
+   SIZE 236.61 BY 157.645 ;
+   SYMMETRY X Y R90 ;
+   PIN clk0
+      DIRECTION INPUT ;
+      PORT
+         LAYER met3 ;
+         RECT  -7.48 10.275 -7.1 10.655 ;
+      END
+   END clk0
+   PIN cs0
+      DIRECTION INPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  17.045 -7.48 17.425 -7.1 ;
+      END
+   END cs0
+   PIN addr0[0]
+      DIRECTION INPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  27.15 -7.48 27.53 -7.1 ;
+      END
+   END addr0[0]
+   PIN addr0[1]
+      DIRECTION INPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  29.19 -7.48 29.57 -7.1 ;
+      END
+   END addr0[1]
+   PIN addr0[2]
+      DIRECTION INPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  31.23 -7.48 31.61 -7.1 ;
+      END
+   END addr0[2]
+   PIN addr0[3]
+      DIRECTION INPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  33.27 -7.48 33.65 -7.1 ;
+      END
+   END addr0[3]
+   PIN addr0[4]
+      DIRECTION INPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  35.31 -7.48 35.69 -7.1 ;
+      END
+   END addr0[4]
+   PIN addr0[5]
+      DIRECTION INPUT ;
+      PORT
+         LAYER met3 ;
+         RECT  -7.48 43.215 -7.1 43.595 ;
+      END
+   END addr0[5]
+   PIN addr0[6]
+      DIRECTION INPUT ;
+      PORT
+         LAYER met3 ;
+         RECT  -7.48 43.96 -7.1 44.34 ;
+      END
+   END addr0[6]
+   PIN addr0[7]
+      DIRECTION INPUT ;
+      PORT
+         LAYER met3 ;
+         RECT  -7.48 44.65 -7.1 45.03 ;
+      END
+   END addr0[7]
+   PIN addr0[8]
+      DIRECTION INPUT ;
+      PORT
+         LAYER met3 ;
+         RECT  -7.48 41.745 -7.1 42.125 ;
+      END
+   END addr0[8]
+   PIN addr0[9]
+      DIRECTION INPUT ;
+      PORT
+         LAYER met3 ;
+         RECT  -7.48 45.34 -7.1 45.72 ;
+      END
+   END addr0[9]
+   PIN addr0[10]
+      DIRECTION INPUT ;
+      PORT
+         LAYER met3 ;
+         RECT  -7.48 41.055 -7.1 41.435 ;
+      END
+   END addr0[10]
+   PIN addr0[11]
+      DIRECTION INPUT ;
+      PORT
+         LAYER met3 ;
+         RECT  -7.48 46.03 -7.1 46.41 ;
+      END
+   END addr0[11]
+   PIN dout0[0]
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  56.035 -7.48 56.415 -7.1 ;
+      END
+   END dout0[0]
+   PIN dout0[1]
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  57.575 -7.48 57.955 -7.1 ;
+      END
+   END dout0[1]
+   PIN dout0[2]
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  59.115 -7.48 59.495 -7.1 ;
+      END
+   END dout0[2]
+   PIN dout0[3]
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  60.655 -7.48 61.035 -7.1 ;
+      END
+   END dout0[3]
+   PIN dout0[4]
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  62.195 -7.48 62.575 -7.1 ;
+      END
+   END dout0[4]
+   PIN dout0[5]
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  63.735 -7.48 64.115 -7.1 ;
+      END
+   END dout0[5]
+   PIN dout0[6]
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  65.275 -7.48 65.655 -7.1 ;
+      END
+   END dout0[6]
+   PIN dout0[7]
+      DIRECTION OUTPUT ;
+      PORT
+         LAYER met4 ;
+         RECT  66.725 -7.48 67.105 -7.1 ;
+      END
+   END dout0[7]
+   PIN vccd1
+      DIRECTION INOUT ;
+      USE POWER ; 
+      SHAPE ABUTMENT ; 
+      PORT
+         LAYER met3 ;
+         RECT  -7.48 163.385 244.09 165.125 ;
+         LAYER met4 ;
+         RECT  -7.48 -7.48 -5.74 165.125 ;
+         LAYER met3 ;
+         RECT  -7.48 -7.48 244.09 -5.74 ;
+         LAYER met4 ;
+         RECT  242.35 -7.48 244.09 165.125 ;
+      END
+   END vccd1
+   PIN vssd1
+      DIRECTION INOUT ;
+      USE GROUND ; 
+      SHAPE ABUTMENT ; 
+      PORT
+         LAYER met3 ;
+         RECT  -4.0 159.905 240.61 161.645 ;
+         LAYER met4 ;
+         RECT  -4.0 -4.0 -2.26 161.645 ;
+         LAYER met3 ;
+         RECT  -4.0 -4.0 240.61 -2.26 ;
+         LAYER met4 ;
+         RECT  238.87 -4.0 240.61 161.645 ;
+      END
+   END vssd1
+   OBS
+   LAYER  met1 ;
+      RECT  0.62 0.62 235.99 157.025 ;
+   LAYER  met2 ;
+      RECT  0.62 0.62 235.99 157.025 ;
+   LAYER  met3 ;
+      RECT  0.62 0.62 235.99 157.025 ;
+   LAYER  met4 ;
+      RECT  0.62 0.62 235.99 157.025 ;
+   END
+END    paper2_drift_lut_log2_8x2048
+END    LIBRARY

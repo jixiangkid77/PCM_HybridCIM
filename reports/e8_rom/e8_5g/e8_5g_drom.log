@@ -1,0 +1,68 @@
+P2R-E8.5g D_ROM with the measured parked floor (sandbox, KID's files)
+  PASS  G3 inputs = the md5s recorded on KID's machine (11 files)
+   E8.4e compare : 98c6ede8d38fa2a55bc3870f889b8aa8  reports/e8_rom/e8_4e_compare.json
+   E8.4e split   : b8ab8a4507fa8095e4ea66b23160d45e  reports/e8_rom/e8_4e_split.json
+   rule C        : df52f46439ec61a25622c382419a5d2a  reports/e8_rom/e8_4e_rule_c.json
+   L_s (rel5 parked level): pcm 1.1731 uW, sram 1.0532 uW
+   P_f (E8.5f tt 25 C floors): pcm 0.2773 uW (mean of 4: 0.274, 0.278, 0.278, 0.278); sram 0.2764 uW (mean of 2: 0.277, 0.276)
+   floors of A_pcm_l00 k0 at the other conditions: tt:-40:1.80 0.047 uW, tt:85:1.80 7.410 uW, ff:25:1.80 4.548 uW, ss:25:1.80 0.046 uW, ff:85:1.80 59.442 uW
+
+==== model A ====
+  PASS  G0 model A: the 50 tables = the E8.4a-8 export
+   macros whose last read ends after t_end (state starts after t = 0): 25; macros without any read: 0
+  PASS  G1 model A: the copy with G(t) = t = E8.6a-3 (largest relative difference 3.6e-15); D 10.330793 uJ, d_rom.json 10.330793
+  PASS  G1 model A: parts = e8_4e_split.json (largest relative difference 6.9e-16)
+  PASS  G2 model A: with E8.5d's curves D 8.454192 uJ, d_rom_e85d.json 8.454192
+   SE: pcm 1.405 %, sram 1.634 %
+   all-ones static: constant 1.3436 uJ -> main 0.3384, lower 0.3344, upper 0.3487, curve 0.3227 uJ
+   main  : D_ROM 7.4491 uJ, corrected 7.2868, range 7.1060-7.4783
+   lower : D_ROM 7.4450 uJ, corrected 7.2828, range 7.1020-7.4742
+   upper : D_ROM 7.4593 uJ, corrected 7.2971, range 7.1163-7.4885
+   curve : D_ROM 7.4334 uJ, corrected 7.2711, range 7.0903-7.4626
+   (information: if the new all-ones energy were divided as in E8.5d, corrected 7.2828 uJ)
+   main vs curve: 0.21 % of D_ROM
+   pcm: read 4.0452, park 0.0373, above 1.2962, all-ones 0.1666 (constant 0.6999), zero-parked 0.3939 uJ
+   sram: read 1.2291, park 0.0315, above 0.0775, all-ones 0.1718 (constant 0.6437), zero-parked 0.0000 uJ
+   energy by interval length (uJ): < 10 us | 10-100 us | 0.1-1 ms | > 1 ms
+      pcm all-ones (constant)            0.0008 | 0.0042 | 0.1812 | 0.5137
+      pcm all-ones (main)                0.0008 | 0.0010 | 0.0434 | 0.1215
+      pcm after a lookup (constant)      1.2962 | 0.0000 | 0.0000 | 0.0000
+      sram all-ones (constant)           0.0033 | 0.0038 | 0.1630 | 0.4736
+      sram all-ones (main)               0.0032 | 0.0010 | 0.0432 | 0.1243
+      sram after a lookup (constant)     0.0775 | 0.0000 | 0.0000 | 0.0000
+
+==== model B ====
+  PASS  G0 model B: the 50 tables = the E8.4a-8 export
+   macros whose last read ends after t_end (state starts after t = 0): 25; macros without any read: 0
+  PASS  G1 model B: the copy with G(t) = t = E8.6a-3 (largest relative difference 4.8e-15); D 8.568771 uJ, d_rom.json 8.568771
+  PASS  G1 model B: parts = e8_4e_split.json (largest relative difference 8.7e-16)
+  PASS  G2 model B: with E8.5d's curves D 8.259053 uJ, d_rom_e85d.json 8.259053
+   SE: pcm 4.136 %, sram 1.025 %
+   all-ones static: constant 1.3507 uJ -> main 0.3401, lower 0.3361, upper 0.3504, curve 0.3243 uJ
+   main  : D_ROM 7.2485 uJ, corrected 7.0515, range 6.6415-7.5289
+   lower : D_ROM 7.2444 uJ, corrected 7.0475, range 6.6375-7.5249
+   upper : D_ROM 7.2587 uJ, corrected 7.0618, range 6.6518-7.5392
+   curve : D_ROM 7.2326 uJ, corrected 7.0357, range 6.6257-7.5131
+   (information: if the new all-ones energy were divided as in E8.5d, corrected 7.0455 uJ)
+   main vs curve: 0.22 % of D_ROM
+   pcm: read 4.0457, park 0.0614, above 1.2748, all-ones 0.1683 (constant 0.7070), zero-parked 0.1643 uJ
+   sram: read 1.2347, park 0.0201, above 0.1073, all-ones 0.1718 (constant 0.6437), zero-parked 0.0000 uJ
+   energy by interval length (uJ): < 10 us | 10-100 us | 0.1-1 ms | > 1 ms
+      pcm all-ones (constant)            0.0008 | 0.0042 | 0.1814 | 0.5206
+      pcm all-ones (main)                0.0008 | 0.0010 | 0.0434 | 0.1231
+      pcm after a lookup (constant)      1.2748 | 0.0000 | 0.0000 | 0.0000
+      sram all-ones (constant)           0.0033 | 0.0038 | 0.1630 | 0.4736
+      sram all-ones (main)               0.0032 | 0.0010 | 0.0433 | 0.1243
+      sram after a lookup (constant)     0.1073 | 0.0000 | 0.0000 | 0.0000
+
+==== conditions (E8.4e after rule C; all-ones static x f_s(c)) ====
+   tt:-40:1.80  A: f pcm 0.060 sram 0.068, parked level 0.932 -> 0.059, D_ROM 5.074 -> 4.202 (corrected 4.112), share 1.4 %; B: f pcm 0.060 sram 0.068, parked level 0.937 -> 0.060, D_ROM 4.871 -> 3.994 (corrected 3.885), share 1.5 %
+   tt:85:1.80   A: f pcm 0.881 sram 0.893, parked level 9.998 -> 8.870, D_ROM 20.021 -> 18.892 (corrected 18.649), share 46.9 %; B: f pcm 0.881 sram 0.893, parked level 10.050 -> 8.915, D_ROM 20.042 -> 18.908 (corrected 18.613), share 47.2 %
+   ff:25:1.80   A: f pcm 0.858 sram 0.873, parked level 6.292 -> 5.445, D_ROM 17.835 -> 16.987 (corrected 16.713), share 32.1 %; B: f pcm 0.858 sram 0.873, parked level 6.325 -> 5.473, D_ROM 17.711 -> 16.858 (corrected 16.526), share 32.5 %
+   ss:25:1.80   A: f pcm 0.043 sram 0.051, parked level 1.273 -> 0.060, D_ROM 5.857 -> 4.644 (corrected 4.541), share 1.3 %; B: f pcm 0.043 sram 0.051, parked level 1.280 -> 0.060, D_ROM 5.701 -> 4.481 (corrected 4.356), share 1.3 %
+   ff:85:1.80   A: f pcm 0.981 sram 0.985, parked level 72.339 -> 71.123, D_ROM 88.629 -> 87.414 (corrected 87.024), share 81.4 %; B: f pcm 0.981 sram 0.985, parked level 72.711 -> 71.489, D_ROM 88.678 -> 87.456 (corrected 86.986), share 81.7 %
+   ratios to tt 25 C, model A: tt:-40:1.80 0.56, tt:85:1.80 2.54, ff:25:1.80 2.28, ss:25:1.80 0.62, ff:85:1.80 11.73
+   ratios to tt 25 C, model B: tt:-40:1.80 0.55, tt:85:1.80 2.61, ff:25:1.80 2.33, ss:25:1.80 0.62, ff:85:1.80 12.07
+
+   written reports/e8_rom/e8_5g/e8_5g_drom.json  md5 92ddfb9a3f0f7ccf50635ad570858c6d
+ALL CHECKS PASS

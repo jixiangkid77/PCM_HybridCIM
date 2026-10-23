@@ -1,0 +1,615 @@
+==============================================================
+P2R-E8.4a-3 ROM organisations (version 2026-10-11 (2)), started 2026-10-11 04:20:47
+==============================================================
+macro    : e8rom_A_pcm_l00_16x2496  (word bytes 2)   organisations: w13 (E8.3), w16 w24 + w13np (area)
+OpenRAM  : /home/kid/openram/OpenRAM  1.2.49  e16d9eb0 2026-05-04
+ngspice  : /nix/store/4ssrcgdvyb8car0yxay8cwfa5wc89f1w-ngspice-45/bin/ngspice
+magic    : /nix/store/1zcyq032zc3mzhmgs2j3q2rmfrjj5v6b-magic-vlsi-8.3.629/bin/magic
+netgen   : /nix/store/h3crgmx1w7h86qjpr131igi7p576mp3x-netgen-1.5.318/bin/netgen
+models   : /home/kid/gf/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice (tt)
+period   : 100 ns   at most 4 simulations at a time, 2 threads each   time limit: none
+machine  : 8 cores, 23 GiB memory, 22 GiB available
+   ** ngspice-45 : Circuit level simulation program
+
+########## a. the Python that runs OpenRAM ##########
+   /home/kid/openram-venv/bin/python3 3.11.15 2.4.4 1.17.1
+   using /home/kid/openram-venv/bin/python3
+
+########## b. generate the organisations (three at a time) ##########
+   e8rom_A_pcm_l00_16x2496_w24: exit 0, 367 s; length 4992.0 bytes, 2496 words, set number of cols to 384, rows to 104, with 24 words per row
+   e8rom_A_pcm_l00_16x2496_w16: exit 0, 369 s; length 4992.0 bytes, 2496 words, set number of cols to 256, rows to 156, with 16 words per row
+   e8rom_A_pcm_l00_16x2496_w13np: exit 0, 371 s; length 4992.0 bytes, 2496 words, set number of cols to 208, rows to 192, with 13 words per row
+   stored bits:
+      e8rom_A_pcm_l00_16x2496_w13np: 2496 words, 13 words per row, 192 rows x 208 columns; cells 40144 (expected 40144), bit errors 0, dummy row ok -> STORES THE DATA EXACTLY
+      e8rom_A_pcm_l00_16x2496_w16: 2496 words, 16 words per row, 156 rows x 256 columns; cells 40192 (expected 40192), bit errors 0, dummy row ok -> STORES THE DATA EXACTLY
+      e8rom_A_pcm_l00_16x2496_w24: 2496 words, 24 words per row, 104 rows x 384 columns; cells 40320 (expected 40320), bit errors 0, dummy row ok -> STORES THE DATA EXACTLY
+   drawn layout extent (magic) and LEF:
+      e8rom_A_pcm_l00_16x2496              layout 279.090 x 274.580   LEF 264.13 x 259.62
+      e8rom_A_pcm_l00_16x2496_w13np        layout 279.090 x 274.580   LEF 264.13 x 259.62
+      e8rom_A_pcm_l00_16x2496_w16          layout 328.050 x 238.840   LEF 313.09 x 223.88
+      e8rom_A_pcm_l00_16x2496_w24          layout 461.080 x 190.320   LEF 443.61 x 175.36
+
+########## c. the E8.3 macro (w13): sweep and idle sequences on the E8.4a-2 extraction ##########
+   w13 sweep: M = 128 (row 8, word 0), 155 zero bits in its row; L = 3056 (row 191, word 0), 0 zero bits in its row
+      i,r128,r3056,r128,w25,r3056,r128,w50,r3056,r128,w100,r3056,r128,w200,r3056,r128,w300,r3056,r128,w400,r3056,r128,w500,r3056
+         note: probes (extracted names): 192 of 192 wordlines, 17 row-decoder outputs (rows 0..191, 17 wanted), 13 of 13 column selects, 3 bitlines, clk_int yes, precharge yes
+   w13 idle: M = 128 (row 8, word 0), 155 zero bits in its row; L = 3056 (row 191, word 0), 0 zero bits in its row; P = 0 (row 0, word 0), no zero bit
+      i,r128,r0,i,i,i,i,i,i,i,i,i,i,r128,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,r0,i,i,i,i,i
+         note: probes (extracted names): 192 of 192 wordlines, 16 row-decoder outputs (rows 0..136, 16 wanted), 13 of 13 column selects, 3 bitlines, clk_int yes, precharge yes
+   started w13/ext_sweep at 2026-10-11 04:27:10
+   started w13/ext_idle at 2026-10-11 04:27:10
+
+########## d. magic, w16 w24 at the same time (flat extraction for LVS and with parasitic capacitance) ##########
+   started the extraction of w16 at 2026-10-11 04:27:10
+   started the extraction of w24 at 2026-10-11 04:27:10
+
+########## e. waiting (progress every 1800 s; at most 4 simulations at a time) ##########
+   progress at 2026-10-11 04:27:10:
+      w13  ext_sweep  running                                  0h00m    no data yet
+      w13  ext_idle   running                                  0h00m    no data yet
+      w16  extraction running (1 s)          LVS -
+      w16  ext_main   not started                              -        
+      w16  ext_sweep  not started                              -        
+      w16  ext_idle   not started                              -        
+      w24  extraction running (1 s)          LVS -
+      w24  ext_main   not started                              -        
+      w24  ext_sweep  not started                              -        
+      w24  ext_idle   not started                              -        
+   progress at 2026-10-11 04:57:12:
+      w13  ext_sweep  running                                  0h30m       800.0 of   3325.2 ns ( 24.1 %)
+      w13  ext_idle   running                                  0h30m       900.0 of   4050.2 ns ( 22.2 %)
+      w16  extraction running (1802 s)       LVS -
+      w16  ext_main   not started                              -        
+      w16  ext_sweep  not started                              -        
+      w16  ext_idle   not started                              -        
+      w24  extraction running (1802 s)       LVS -
+      w24  ext_main   not started                              -        
+      w24  ext_sweep  not started                              -        
+      w24  ext_idle   not started                              -        
+   progress at 2026-10-11 05:27:14:
+      w13  ext_sweep  running                                  1h00m      2500.0 of   3325.2 ns ( 75.2 %)
+      w13  ext_idle   running                                  1h00m      2200.0 of   4050.2 ns ( 54.3 %)
+      w16  extraction running (3604 s)       LVS -
+      w16  ext_main   not started                              -        
+      w16  ext_sweep  not started                              -        
+      w16  ext_idle   not started                              -        
+      w24  extraction running (3604 s)       LVS -
+      w24  ext_main   not started                              -        
+      w24  ext_sweep  not started                              -        
+      w24  ext_idle   not started                              -        
+
+   ---- w24: magic exit 0, 4040 s ----
+   log:       9 Warning:  Ports "precharge_r" and "gate" are electrically shorted.
+   log:       3 Warning:  Ports "D" and "S" are electrically shorted.
+   log:       1 Warning:  Ports "vdd" and "VDD" are electrically shorted.
+   log:       1 Warning:  Ports "gnd" and "GND" are electrically shorted.
+   extraction errors: 0
+   top-level merges in /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a3/e8rom_A_pcm_l00_16x2496/w24/extract/e8rom_A_pcm_l00_16x2496_w24.ext: 4316 named nodes, 1000 nets
+   no signal node is merged into a supply net at the top level
+   LVS netlist: devices (flattened): 44564
+   LVS netlist: capacitors (flattened): 0, total 0.000 pF
+   simulation netlist: devices (flattened): 44564
+   simulation netlist: capacitors (flattened): 167261, total 17.446 pF
+   simulation netlist: negative capacitors (flattened): 0, sum 0.000 pF, most negative 0.000 fF
+   started LVS of w24 at 2026-10-11 05:34:49
+   w24 main: rows 104, words per row 24, zero bits per row: min 0, max 250 (row 5), mean 193.2 of 384; words with no zero bit: 173
+      i,r3296,r6,r163,r6,r3319,i,s3
+         note: probes (extracted names): 104 of 104 wordlines, 20 row-decoder outputs (rows 0..103, 20 wanted), 24 of 24 column selects, 12 bitlines, clk_int yes, precharge yes
+   w24 sweep: M = 163 (row 5, word 3), 250 zero bits in its row; L = 3296 (row 103, word 0), 0 zero bits in its row
+      i,r163,r3296,r163,w25,r3296,r163,w50,r3296,r163,w100,r3296,r163,w200,r3296,r163,w300,r3296,r163,w400,r3296,r163,w500,r3296
+         note: probes (extracted names): 104 of 104 wordlines, 14 row-decoder outputs (rows 1..103, 14 wanted), 24 of 24 column selects, 6 bitlines, clk_int yes, precharge yes
+   w24 idle: M = 163 (row 5, word 3), 250 zero bits in its row; L = 3296 (row 103, word 0), 0 zero bits in its row; P = 0 (row 0, word 0), no zero bit
+      i,r163,r0,i,i,i,i,i,i,i,i,i,i,r163,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,r0,i,i,i,i,i
+         note: probes (extracted names): 104 of 104 wordlines, 14 row-decoder outputs (rows 0..69, 14 wanted), 24 of 24 column selects, 6 bitlines, clk_int yes, precharge yes
+   started w24/ext_main at 2026-10-11 05:35:13
+   started w24/ext_sweep at 2026-10-11 05:35:13
+
+   ---- w16: magic exit 0, 4093 s ----
+   log:       9 Warning:  Ports "precharge_r" and "gate" are electrically shorted.
+   log:       3 Warning:  Ports "D" and "S" are electrically shorted.
+   log:       1 Warning:  Ports "vdd" and "VDD" are electrically shorted.
+   log:       1 Warning:  Ports "gnd" and "GND" are electrically shorted.
+   extraction errors: 0
+   top-level merges in /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a3/e8rom_A_pcm_l00_16x2496/w16/extract/e8rom_A_pcm_l00_16x2496_w16.ext: 3457 named nodes, 769 nets
+   no signal node is merged into a supply net at the top level
+   LVS netlist: devices (flattened): 45112
+   LVS netlist: capacitors (flattened): 0, total 0.000 pF
+   simulation netlist: devices (flattened): 45112
+   simulation netlist: capacitors (flattened): 166002, total 16.617 pF
+   simulation netlist: negative capacitors (flattened): 0, sum 0.000 pF, most negative 0.000 fF
+   started LVS of w16 at 2026-10-11 05:35:49
+   w16 main: rows 156, words per row 16, zero bits per row: min 0, max 181 (row 7), mean 128.8 of 256; words with no zero bit: 173
+      i,r2480,r6,r123,r6,r2495,i,s3
+         note: probes (extracted names): 156 of 156 wordlines, 24 row-decoder outputs (rows 0..155, 24 wanted), 16 of 16 column selects, 12 bitlines, clk_int yes, precharge yes
+   w16 sweep: M = 123 (row 7, word 11), 181 zero bits in its row; L = 2480 (row 155, word 0), 0 zero bits in its row
+      i,r123,r2480,r123,w25,r2480,r123,w50,r2480,r123,w100,r2480,r123,w200,r2480,r123,w300,r2480,r123,w400,r2480,r123,w500,r2480
+         note: probes (extracted names): 156 of 156 wordlines, 15 row-decoder outputs (rows 3..155, 15 wanted), 16 of 16 column selects, 6 bitlines, clk_int yes, precharge yes
+   w16 idle: M = 123 (row 7, word 11), 181 zero bits in its row; L = 2480 (row 155, word 0), 0 zero bits in its row; P = 0 (row 0, word 0), no zero bit
+      i,r123,r0,i,i,i,i,i,i,i,i,i,i,r123,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,r0,i,i,i,i,i
+         note: probes (extracted names): 156 of 156 wordlines, 18 row-decoder outputs (rows 0..135, 18 wanted), 16 of 16 column selects, 6 bitlines, clk_int yes, precharge yes
+   started w24/ext_idle at 2026-10-11 05:36:16
+   progress at 2026-10-11 05:57:20:
+      w13  ext_sweep  finished                                 1h09m      3325.2 of   3325.2 ns (100.0 %)
+      w13  ext_idle   running                                  1h30m      3500.0 of   4050.2 ns ( 86.4 %)
+      w16  extraction finished (4093 s)      LVS finished
+      w16  ext_main   queued                                   -        no data yet
+      w16  ext_sweep  queued                                   -        no data yet
+      w16  ext_idle   queued                                   -        no data yet
+      w24  extraction finished (4040 s)      LVS finished
+      w24  ext_main   running                                  0h22m       500.0 of   1050.2 ns ( 47.6 %)
+      w24  ext_sweep  running                                  0h22m       500.1 of   3325.2 ns ( 15.0 %)
+      w24  ext_idle   running                                  0h21m       500.0 of   4050.2 ns ( 12.3 %)
+   started w16/ext_main at 2026-10-11 06:05:23
+   started w16/ext_sweep at 2026-10-11 06:10:55
+   progress at 2026-10-11 06:27:30:
+      w13  ext_sweep  finished                                 1h09m      3325.2 of   3325.2 ns (100.0 %)
+      w13  ext_idle   finished                                 1h43m      4050.2 of   4050.2 ns (100.0 %)
+      w16  extraction finished (4093 s)      LVS finished
+      w16  ext_main   running                                  0h22m       300.0 of   1050.2 ns ( 28.6 %)
+      w16  ext_sweep  running                                  0h16m       200.0 of   3325.2 ns (  6.0 %)
+      w16  ext_idle   queued                                   -        no data yet
+      w24  extraction finished (4040 s)      LVS finished
+      w24  ext_main   finished                                 0h30m      1050.2 of   1050.2 ns (100.0 %)
+      w24  ext_sweep  running                                  0h52m      2000.0 of   3325.2 ns ( 60.1 %)
+      w24  ext_idle   running                                  0h51m      1900.0 of   4050.2 ns ( 46.9 %)
+   started w16/ext_idle at 2026-10-11 06:42:06
+   progress at 2026-10-11 06:57:38:
+      w13  ext_sweep  finished                                 1h09m      3325.2 of   3325.2 ns (100.0 %)
+      w13  ext_idle   finished                                 1h43m      4050.2 of   4050.2 ns (100.0 %)
+      w16  extraction finished (4093 s)      LVS finished
+      w16  ext_main   finished                                 0h36m      1050.2 of   1050.2 ns (100.0 %)
+      w16  ext_sweep  running                                  0h46m      1400.0 of   3325.2 ns ( 42.1 %)
+      w16  ext_idle   running                                  0h15m       200.0 of   4050.2 ns (  4.9 %)
+      w24  extraction finished (4040 s)      LVS finished
+      w24  ext_main   finished                                 0h30m      1050.2 of   1050.2 ns (100.0 %)
+      w24  ext_sweep  finished                                 1h08m      3325.2 of   3325.2 ns (100.0 %)
+      w24  ext_idle   running                                  1h21m      3500.0 of   4050.2 ns ( 86.4 %)
+   progress at 2026-10-11 07:27:44:
+      w13  ext_sweep  finished                                 1h09m      3325.2 of   3325.2 ns (100.0 %)
+      w13  ext_idle   finished                                 1h43m      4050.2 of   4050.2 ns (100.0 %)
+      w16  extraction finished (4093 s)      LVS finished
+      w16  ext_main   finished                                 0h36m      1050.2 of   1050.2 ns (100.0 %)
+      w16  ext_sweep  finished                                 1h09m      3325.2 of   3325.2 ns (100.0 %)
+      w16  ext_idle   running                                  0h45m      1700.0 of   4050.2 ns ( 42.0 %)
+      w24  extraction finished (4040 s)      LVS finished
+      w24  ext_main   finished                                 0h30m      1050.2 of   1050.2 ns (100.0 %)
+      w24  ext_sweep  finished                                 1h08m      3325.2 of   3325.2 ns (100.0 %)
+      w24  ext_idle   finished                                 1h31m      4050.2 of   4050.2 ns (100.0 %)
+   progress at 2026-10-11 07:57:49:
+      w13  ext_sweep  finished                                 1h09m      3325.2 of   3325.2 ns (100.0 %)
+      w13  ext_idle   finished                                 1h43m      4050.2 of   4050.2 ns (100.0 %)
+      w16  extraction finished (4093 s)      LVS finished
+      w16  ext_main   finished                                 0h36m      1050.2 of   1050.2 ns (100.0 %)
+      w16  ext_sweep  finished                                 1h09m      3325.2 of   3325.2 ns (100.0 %)
+      w16  ext_idle   running                                  1h15m      3800.0 of   4050.2 ns ( 93.8 %)
+      w24  extraction finished (4040 s)      LVS finished
+      w24  ext_main   finished                                 0h30m      1050.2 of   1050.2 ns (100.0 %)
+      w24  ext_sweep  finished                                 1h08m      3325.2 of   3325.2 ns (100.0 %)
+      w24  ext_idle   finished                                 1h31m      4050.2 of   4050.2 ns (100.0 %)
+   progress at 2026-10-11 08:00:20:
+      w13  ext_sweep  finished                                 1h09m      3325.2 of   3325.2 ns (100.0 %)
+      w13  ext_idle   finished                                 1h43m      4050.2 of   4050.2 ns (100.0 %)
+      w16  extraction finished (4093 s)      LVS finished
+      w16  ext_main   finished                                 0h36m      1050.2 of   1050.2 ns (100.0 %)
+      w16  ext_sweep  finished                                 1h09m      3325.2 of   3325.2 ns (100.0 %)
+      w16  ext_idle   finished                                 1h18m      4050.2 of   4050.2 ns (100.0 %)
+      w24  extraction finished (4040 s)      LVS finished
+      w24  ext_main   finished                                 0h30m      1050.2 of   1050.2 ns (100.0 %)
+      w24  ext_sweep  finished                                 1h08m      3325.2 of   3325.2 ns (100.0 %)
+      w24  ext_idle   finished                                 1h31m      4050.2 of   4050.2 ns (100.0 %)
+
+########## f. results ##########
+
+---- w13 ext_sweep: finished, wall time 1h09m, ngspice exit 0 ----
+   Total analysis time (seconds) = 3782.24
+P2R-E8.4 analysis: e8rom_A_pcm_l00_16x2496  period 100.0 ns  vdd 1.8 V  load 10.0 fF per output  points 3720
+data: simulated to 3325.2 of 3325.2 ns, 24 of 24 cycles complete (complete)
+E_vdd: energy from the supply from this cycle's rising edge to the next one; P_after: supply power just before the next rising edge (static state after the cycle)
+  k kind   addr  row   w precharge ns z_row z_word expected     read  ok  E_vdd pJ  E_in pJ P_after uW t_acc ns  dout min/max V
+  0 idle                                                                    8.346    0.026       2.80
+  1 read    128    8   0       150.0   155     13     0031     0031 yes   138.528    0.059     328.65    29.58  -0.04/1.80  bitline below VDD/2 after 17.57 ns
+      selection: rows [8] (expected [8]); words [0] (expected [0]); lowest unselected row-decoder output 1.04 V (row 9)
+  2 read   3056  191   0        50.0     0      0     ffff     0000  NO   315.046   -0.039      63.30    14.10  -0.02/1.87
+      selection: rows [191] (expected [191]); words [0] (expected [0]); lowest unselected row-decoder output 1.08 V (row 190)
+  3 read    128    8   0        50.0   155     13     0031     0031 yes   150.439    0.007     398.89    17.32  -0.04/1.80  bitline below VDD/2 after 11.92 ns
+      selection: rows [8] (expected [8]); words [0] (expected [0]); lowest unselected row-decoder output 1.04 V (row 9)
+  4 wait                       25 ns                                        8.254    0.054     292.52
+  5 read   3056  191   0        75.0     0      0     ffff     0000  NO   458.632   -0.039      50.32    21.02  -0.01/1.85
+      selection: rows [191] (expected [191]); words [0] (expected [0]); lowest unselected row-decoder output 1.09 V (row 190)
+  6 read    128    8   0        50.0   155     13     0031     0031 yes   155.242   -0.006     537.18    18.44  -0.04/1.80  bitline below VDD/2 after 11.56 ns
+      selection: rows [8] (expected [8]); words [0] (expected [0]); lowest unselected row-decoder output 1.04 V (row 9)
+  7 wait                       50 ns                                       22.182    0.067     408.65
+  8 read   3056  191   0       100.0     0      0     ffff     0000  NO   536.855   -0.042      42.67    28.76  -0.01/1.85
+      selection: rows [191] (expected [191]); words [0] (expected [0]); lowest unselected row-decoder output 1.10 V (row 190)
+  9 read    128    8   0        50.0   155     13     0031     0031 yes   146.609   -0.007     376.18    19.05  -0.03/1.80  bitline below VDD/2 after 11.16 ns
+      selection: rows [8] (expected [8]); words [0] (expected [0]); lowest unselected row-decoder output 1.04 V (row 9)
+ 10 wait                      100 ns                                       25.595    0.067     219.72
+ 11 read   3056  191   0       150.0     0      0     ffff     0000  NO   464.803   -0.041      34.92    45.53  -0.00/1.84
+      selection: rows [191] (expected [191]); words [0] (expected [0]); lowest unselected row-decoder output 1.12 V (row 190)
+ 12 read    128    8   0        50.0   155     13     0031     0031 yes   153.414   -0.007     541.86    19.80  -0.03/1.80  bitline below VDD/2 after 11.65 ns
+      selection: rows [8] (expected [8]); words [0] (expected [0]); lowest unselected row-decoder output 1.04 V (row 9)
+ 13 wait                      200 ns                                       79.519    0.067     367.78
+ 14 read   3056  191   0       250.0     0      0     ffff     3fff  NO   123.418   -0.041      28.76    49.19  0.01/1.85
+      selection: rows [191] (expected [191]); words [0] (expected [0]); lowest unselected row-decoder output 1.13 V (row 190)
+ 15 read    128    8   0        50.0   155     13     0031     0031 yes   147.304   -0.007     451.87    20.77  -0.03/1.80  bitline below VDD/2 after 11.80 ns
+      selection: rows [8] (expected [8]); words [0] (expected [0]); lowest unselected row-decoder output 1.04 V (row 9)
+ 16 wait                      300 ns                                       88.961    0.067     271.59
+ 17 read   3056  191   0       350.0     0      0     ffff     bfff  NO    58.855   -0.041      25.97    44.92  0.02/1.87
+      selection: rows [191] (expected [191]); words [0] (expected [0]); lowest unselected row-decoder output 1.15 V (row 190)
+ 18 read    128    8   0        50.0   155     13     0031     0031 yes   146.191   -0.007     450.01    21.07  -0.03/1.80  bitline below VDD/2 after 11.78 ns
+      selection: rows [8] (expected [8]); words [0] (expected [0]); lowest unselected row-decoder output 1.04 V (row 9)
+ 19 wait                      400 ns                                      115.263    0.067     267.67
+ 20 read   3056  191   0       450.0     0      0     ffff     ffff yes    43.261   -0.041      23.94     1.57  0.00/1.87
+      selection: rows [191] (expected [191]); words [0] (expected [0]); lowest unselected row-decoder output 1.15 V (row 190)
+ 21 read    128    8   0        50.0   155     13     0031     0031 yes   147.674   -0.007     462.35    21.12  -0.03/1.80  bitline below VDD/2 after 11.77 ns
+      selection: rows [8] (expected [8]); words [0] (expected [0]); lowest unselected row-decoder output 1.04 V (row 9)
+ 22 wait                      500 ns                                      148.126    0.067     278.09
+ 23 read   3056  191   0       550.0     0      0     ffff     ffff yes    29.485    0.000      21.78     1.63  0.00/1.85
+      selection: rows [191] (expected [191]); words [0] (expected [0]); lowest unselected row-decoder output 1.16 V (row 190)
+summary: {"cycles_complete": 24, "cycles_total": 24, "simulated_ns": 3325.2, "tstop_ns": 3325.2, "failed": false, "reads": 16, "reads_ok": 10, "reads_selection_ok": 16, "E_read_pJ_mean": 200.98485898417437, "E_read_pJ_min": 29.485432740085834, "E_read_pJ_max": 536.8554357596498, "t_access_ns_max": 49.19262999999962}
+
+---- w13 ext_idle: finished, wall time 1h43m, ngspice exit 0 ----
+   Total analysis time (seconds) = 5815.35
+P2R-E8.4 analysis: e8rom_A_pcm_l00_16x2496  period 100.0 ns  vdd 1.8 V  load 10.0 fF per output  points 5162
+data: simulated to 4050.2 of 4050.2 ns, 40 of 40 cycles complete (complete)
+E_vdd: energy from the supply from this cycle's rising edge to the next one; P_after: supply power just before the next rising edge (static state after the cycle)
+  k kind   addr  row   w precharge ns z_row z_word expected     read  ok  E_vdd pJ  E_in pJ P_after uW t_acc ns  dout min/max V
+  0 idle                                                                    8.346    0.026       2.80
+  1 read    128    8   0       150.0   155     13     0031     0031 yes   138.544   -0.009     328.65    29.58  -0.04/1.80  bitline below VDD/2 after 17.57 ns
+      selection: rows [8] (expected [8]); words [0] (expected [0]); lowest unselected row-decoder output 1.04 V (row 9)
+  2 read      0    0   0        50.0    53      0     ffff     ffff yes    92.903   -0.005     194.44     1.57  0.00/1.87
+      selection: rows [0] (expected [0]); words [0] (expected [0]); lowest unselected row-decoder output 1.06 V (row 1)
+  3 idle                                                                   14.456    0.002      51.96
+  4 idle                                                                   10.781    0.002      25.88
+  5 idle                                                                    9.788    0.002      16.88
+  6 idle                                                                    9.360    0.002      12.59
+  7 idle                                                                    9.134    0.002      10.17
+  8 idle                                                                    8.998    0.002       8.65
+  9 idle                                                                    8.908    0.002       7.62
+ 10 idle                                                                    8.846    0.002       6.89
+ 11 idle                                                                    8.800    0.002       6.34
+ 12 idle                                                                    8.754    0.026       5.91
+ 13 read    128    8   0      1050.0   155     13     0031     0031 yes   146.384   -0.005     489.82    25.23  -0.03/1.80  bitline below VDD/2 after 14.53 ns
+      selection: rows [8] (expected [8]); words [0] (expected [0]); lowest unselected row-decoder output 1.04 V (row 9)
+ 14 idle                                                                   45.429    0.002     344.51
+ 15 idle                                                                   40.972    0.002     323.39
+ 16 idle                                                                   40.008    0.002     316.28
+ 17 idle                                                                   39.615    0.002     312.90
+ 18 idle                                                                   39.409    0.002     310.96
+ 19 idle                                                                   39.284    0.002     309.71
+ 20 idle                                                                   39.202    0.002     308.84
+ 21 idle                                                                   39.143    0.002     308.20
+ 22 idle                                                                   39.100    0.002     307.71
+ 23 idle                                                                   39.066    0.002     307.33
+ 24 idle                                                                   39.039    0.002     307.03
+ 25 idle                                                                   39.017    0.002     306.78
+ 26 idle                                                                   38.998    0.002     306.58
+ 27 idle                                                                   38.982    0.002     306.42
+ 28 idle                                                                   38.969    0.002     306.27
+ 29 idle                                                                   38.957    0.002     306.15
+ 30 idle                                                                   38.946    0.002     306.04
+ 31 idle                                                                   38.936    0.002     305.94
+ 32 idle                                                                   38.927    0.002     305.86
+ 33 idle                                                                   38.926   -0.000     305.77
+ 34 read      0    0   0      2050.0    53      0     ffff     ffff yes    93.155   -0.005     187.49     1.54  0.13/1.86
+      selection: rows [0] (expected [0]); words [0] (expected [0]); lowest unselected row-decoder output 1.06 V (row 1)
+ 35 idle                                                                   14.312    0.002      50.99
+ 36 idle                                                                   10.750    0.002      25.60
+ 37 idle                                                                    9.775    0.002      16.76
+ 38 idle                                                                    9.354    0.002      12.53
+ 39 idle                                                                    9.011    0.000      10.13
+summary: {"cycles_complete": 40, "cycles_total": 40, "simulated_ns": 4050.2, "tstop_ns": 4050.199999999999, "failed": false, "reads": 4, "reads_ok": 4, "reads_selection_ok": 4, "E_read_pJ_mean": 117.74691775663636, "E_read_pJ_min": 92.90342110494481, "E_read_pJ_max": 146.38440001367806, "t_access_ns_max": 29.58180699999997, "E_idle_clocked_pJ_mean": 26.912931338943128}
+
+---- w16: LVS finished, 19 s ----
+   Circuit 1 contains 45022 devices, Circuit 2 contains 45022 devices.
+   Circuit 1 contains 22293 nets,    Circuit 2 contains 22293 nets.
+   Final result: 
+   Circuits match uniquely.
+
+---- w16 ext_main: finished, wall time 0h36m, ngspice exit 0 ----
+   Total analysis time (seconds) = 1623.62
+P2R-E8.4 analysis: e8rom_A_pcm_l00_16x2496_w16  period 100.0 ns  vdd 1.8 V  load 10.0 fF per output  points 1258
+data: simulated to 1050.2 of 1050.2 ns, 10 of 10 cycles complete (complete)
+E_vdd: energy from the supply from this cycle's rising edge to the next one; P_after: supply power just before the next rising edge (static state after the cycle)
+  k kind   addr  row   w precharge ns z_row z_word expected     read  ok  E_vdd pJ  E_in pJ P_after uW t_acc ns  dout min/max V
+  0 idle                                                                    6.959    0.052       2.37
+  1 read   2480  155   0       150.0     0      0     ffff     ffff yes    18.258   -0.013       4.68     0.00  1.80/1.80
+      selection: rows [155] (expected [155]); words [0] (expected [0]); lowest unselected row-decoder output 1.13 V (row 154)
+  2 read      6    0   6        50.0    77     16     0000     0000 yes   165.744    0.039    1287.22    19.74  -0.03/1.80  bitline below VDD/2 after 9.15 ns
+      selection: rows [0] (expected [0]); words [6] (expected [6]); lowest unselected row-decoder output 1.07 V (row 1)
+  3 read    123    7  11        50.0   181     14     0202     0202 yes   202.012   -0.021    1368.69    12.07  -0.04/1.86  bitline below VDD/2 after 8.28 ns
+      selection: rows [7] (expected [7]); words [11] (expected [11]); lowest unselected row-decoder output 1.10 V (row 6)
+  4 read      6    0   6        50.0    77     16     0000     0000 yes   171.366    0.062    1348.80    12.33  -0.02/1.84  bitline below VDD/2 after 7.68 ns
+      selection: rows [0] (expected [0]); words [6] (expected [6]); lowest unselected row-decoder output 1.07 V (row 1)
+  5 read   2495  155  15        50.0     0      0     ffff     0000  NO   453.702   -0.003      60.15    18.73  -0.00/1.86
+      selection: rows [155] (expected [155]); words [15] (expected [15]); lowest unselected row-decoder output 1.13 V (row 154)
+  6 idle                                                                   10.586    0.000      22.00
+  7 stop                                                                    1.357    0.000      12.66
+  8 stop                                                                    1.060   -0.000       9.34
+  9 stop                                                                    0.832    0.000       7.65
+summary: {"cycles_complete": 10, "cycles_total": 10, "simulated_ns": 1050.1999999999998, "tstop_ns": 1050.2, "failed": false, "reads": 5, "reads_ok": 4, "reads_selection_ok": 5, "E_read_pJ_mean": 202.21623582821417, "E_read_pJ_min": 18.257594364229647, "E_read_pJ_max": 453.70162093219665, "t_access_ns_max": 19.744041999999936, "E_idle_clocked_pJ_mean": 10.58631914616724, "P_stopped_uW": 9.972206788152002}
+
+---- w16 ext_sweep: finished, wall time 1h09m, ngspice exit 0 ----
+   Total analysis time (seconds) = 3664.69
+P2R-E8.4 analysis: e8rom_A_pcm_l00_16x2496_w16  period 100.0 ns  vdd 1.8 V  load 10.0 fF per output  points 3579
+data: simulated to 3325.2 of 3325.2 ns, 24 of 24 cycles complete (complete)
+E_vdd: energy from the supply from this cycle's rising edge to the next one; P_after: supply power just before the next rising edge (static state after the cycle)
+  k kind   addr  row   w precharge ns z_row z_word expected     read  ok  E_vdd pJ  E_in pJ P_after uW t_acc ns  dout min/max V
+  0 idle                                                                    6.960    0.060       2.37
+  1 read    123    7  11       150.0   181     14     0202     0202 yes   185.290    0.002    1181.85    22.33  -0.04/1.80  bitline below VDD/2 after 11.48 ns
+      selection: rows [7] (expected [7]); words [11] (expected [11]); lowest unselected row-decoder output 1.10 V (row 6)
+  2 read   2480  155   0        50.0     0      0     ffff     0000  NO   450.037    0.017      57.82    15.74  -0.01/1.86
+      selection: rows [155] (expected [155]); words [0] (expected [0]); lowest unselected row-decoder output 1.13 V (row 154)
+  3 read    123    7  11        50.0   181     14     0202     0202 yes   193.245   -0.014    1329.38    15.08  -0.03/1.80  bitline below VDD/2 after 9.24 ns
+      selection: rows [7] (expected [7]); words [11] (expected [11]); lowest unselected row-decoder output 1.10 V (row 6)
+  4 wait                       25 ns                                       31.595    0.017    1233.31
+  5 read   2480  155   0        75.0     0      0     ffff     0000  NO   623.288    0.017      47.43    23.45  -0.01/1.85
+      selection: rows [155] (expected [155]); words [0] (expected [0]); lowest unselected row-decoder output 1.15 V (row 154)
+  6 read    123    7  11        50.0   181     14     0202     0202 yes   188.675   -0.005    1263.36    15.60  -0.05/1.80  bitline below VDD/2 after 9.06 ns
+      selection: rows [7] (expected [7]); words [11] (expected [11]); lowest unselected row-decoder output 1.10 V (row 6)
+  7 wait                       50 ns                                       58.749    0.007    1142.38
+  8 read   2480  155   0       100.0     0      0     ffff     0000  NO   681.696    0.017      41.39    30.90  -0.00/1.87
+      selection: rows [155] (expected [155]); words [0] (expected [0]); lowest unselected row-decoder output 1.16 V (row 154)
+  9 read    123    7  11        50.0   181     14     0202     0202 yes   191.056   -0.005    1301.49    15.91  -0.04/1.80  bitline below VDD/2 after 9.16 ns
+      selection: rows [7] (expected [7]); words [11] (expected [11]); lowest unselected row-decoder output 1.10 V (row 6)
+ 10 wait                      100 ns                                      118.919    0.007    1157.76
+ 11 read   2480  155   0       150.0     0      0     ffff     0000  NO   584.992    0.017      35.29    46.74  -0.01/1.87
+      selection: rows [155] (expected [155]); words [0] (expected [0]); lowest unselected row-decoder output 1.17 V (row 154)
+ 12 read    123    7  11        50.0   181     14     0202     0202 yes   183.989   -0.005    1185.91    16.23  -0.04/1.80  bitline below VDD/2 after 9.53 ns
+      selection: rows [7] (expected [7]); words [11] (expected [11]); lowest unselected row-decoder output 1.10 V (row 6)
+ 13 wait                      200 ns                                      210.597    0.007    1028.02
+ 14 read   2480  155   0       250.0     0      0     ffff     3fff  NO   249.200    0.017      30.56    39.42  -0.00/1.88
+      selection: rows [155] (expected [155]); words [0] (expected [0]); lowest unselected row-decoder output 1.19 V (row 154)
+ 15 read    123    7  11        50.0   181     14     0202     0202 yes   187.085   -0.005    1246.75    16.44  -0.04/1.80  bitline below VDD/2 after 9.52 ns
+      selection: rows [7] (expected [7]); words [11] (expected [11]); lowest unselected row-decoder output 1.10 V (row 6)
+ 16 wait                      300 ns                                      331.342    0.007    1087.22
+ 17 read   2480  155   0       350.0     0      0     ffff     bfff  NO   124.287    0.017      28.50    43.47  -0.00/1.88
+      selection: rows [155] (expected [155]); words [0] (expected [0]); lowest unselected row-decoder output 1.20 V (row 154)
+ 18 read    123    7  11        50.0   181     14     0202     0202 yes   188.392   -0.005    1269.23    16.56  -0.03/1.80  bitline below VDD/2 after 9.51 ns
+      selection: rows [7] (expected [7]); words [11] (expected [11]); lowest unselected row-decoder output 1.10 V (row 6)
+ 19 wait                      400 ns                                      448.599    0.007    1107.07
+ 20 read   2480  155   0       450.0     0      0     ffff     bfff  NO   100.504    0.017      27.11    49.41  -0.00/1.88
+      selection: rows [155] (expected [155]); words [0] (expected [0]); lowest unselected row-decoder output 1.21 V (row 154)
+ 21 read    123    7  11        50.0   181     14     0202     0202 yes   187.432   -0.005    1251.44    16.70  -0.03/1.80  bitline below VDD/2 after 9.51 ns
+      selection: rows [7] (expected [7]); words [11] (expected [11]); lowest unselected row-decoder output 1.10 V (row 6)
+ 22 wait                      500 ns                                      550.062    0.007    1087.27
+ 23 read   2480  155   0       550.0     0      0     ffff     ffff yes    90.957   -0.001      26.32     1.73  -0.00/1.88
+      selection: rows [155] (expected [155]); words [0] (expected [0]); lowest unselected row-decoder output 1.22 V (row 154)
+summary: {"cycles_complete": 24, "cycles_total": 24, "simulated_ns": 3325.2, "tstop_ns": 3325.2, "failed": false, "reads": 16, "reads_ok": 9, "reads_selection_ok": 16, "E_read_pJ_mean": 275.6327863154878, "E_read_pJ_min": 90.95675343660204, "E_read_pJ_max": 681.6962973258534, "t_access_ns_max": 49.41107999999944}
+
+---- w16 ext_idle: finished, wall time 1h18m, ngspice exit 0 ----
+   Total analysis time (seconds) = 4155.9
+P2R-E8.4 analysis: e8rom_A_pcm_l00_16x2496_w16  period 100.0 ns  vdd 1.8 V  load 10.0 fF per output  points 5075
+data: simulated to 4050.2 of 4050.2 ns, 40 of 40 cycles complete (complete)
+E_vdd: energy from the supply from this cycle's rising edge to the next one; P_after: supply power just before the next rising edge (static state after the cycle)
+  k kind   addr  row   w precharge ns z_row z_word expected     read  ok  E_vdd pJ  E_in pJ P_after uW t_acc ns  dout min/max V
+  0 idle                                                                    6.960    0.060       2.37
+  1 read    123    7  11       150.0   181     14     0202     0202 yes   185.325   -0.036    1181.83    22.33  -0.04/1.80  bitline below VDD/2 after 11.48 ns
+      selection: rows [7] (expected [7]); words [11] (expected [11]); lowest unselected row-decoder output 1.10 V (row 6)
+  2 read      0    0   0        50.0    77      0     ffff     ffff yes   102.362   -0.003     171.95     1.71  -0.00/1.85
+      selection: rows [0] (expected [0]); words [0] (expected [0]); lowest unselected row-decoder output 1.07 V (row 1)
+  3 idle                                                                   11.971    0.002      41.23
+  4 idle                                                                    8.916    0.002      20.71
+  5 idle                                                                    8.132    0.002      13.77
+  6 idle                                                                    7.794    0.002      10.44
+  7 idle                                                                    7.614    0.002       8.53
+  8 idle                                                                    7.504    0.002       7.32
+  9 idle                                                                    7.431    0.002       6.50
+ 10 idle                                                                    7.380    0.002       5.90
+ 11 idle                                                                    7.342    0.002       5.46
+ 12 idle                                                                    7.315    0.060       5.13
+ 13 read    123    7  11      1050.0   181     14     0202     0202 yes   186.822   -0.003    1244.35    19.98  -0.04/1.80  bitline below VDD/2 after 10.44 ns
+      selection: rows [7] (expected [7]); words [11] (expected [11]); lowest unselected row-decoder output 1.10 V (row 6)
+ 14 idle                                                                  120.403    0.002    1108.71
+ 15 idle                                                                  116.838    0.002    1091.30
+ 16 idle                                                                  116.074    0.002    1085.47
+ 17 idle                                                                  115.760    0.002    1082.67
+ 18 idle                                                                  115.595    0.002    1081.05
+ 19 idle                                                                  115.495    0.002    1080.00
+ 20 idle                                                                  115.430    0.002    1079.27
+ 21 idle                                                                  115.384    0.002    1078.75
+ 22 idle                                                                  115.351    0.002    1078.36
+ 23 idle                                                                  115.326    0.002    1078.08
+ 24 idle                                                                  115.306    0.002    1077.86
+ 25 idle                                                                  115.291    0.002    1077.68
+ 26 idle                                                                  115.279    0.002    1077.55
+ 27 idle                                                                  115.269    0.002    1077.43
+ 28 idle                                                                  115.261    0.002    1077.35
+ 29 idle                                                                  115.254    0.002    1077.28
+ 30 idle                                                                  115.249    0.002    1077.24
+ 31 idle                                                                  115.245    0.002    1077.21
+ 32 idle                                                                  115.241    0.002    1077.20
+ 33 idle                                                                  115.341   -0.030    1077.19
+ 34 read      0    0   0      2050.0    77      0     ffff     ffff yes   105.807   -0.003     170.62     1.73  -0.00/1.85
+      selection: rows [0] (expected [0]); words [0] (expected [0]); lowest unselected row-decoder output 1.07 V (row 1)
+ 35 idle                                                                   11.947    0.002      41.09
+ 36 idle                                                                    8.912    0.002      20.67
+ 37 idle                                                                    8.131    0.002      13.76
+ 38 idle                                                                    7.794    0.002      10.43
+ 39 idle                                                                    7.745    0.001       8.53
+summary: {"cycles_complete": 40, "cycles_total": 40, "simulated_ns": 4050.2, "tstop_ns": 4050.199999999999, "failed": false, "reads": 4, "reads_ok": 4, "reads_selection_ok": 4, "E_read_pJ_mean": 145.0786295470537, "E_read_pJ_min": 102.3615884451645, "E_read_pJ_max": 186.82161744609715, "t_access_ns_max": 22.33136499999999, "E_idle_clocked_pJ_mean": 69.72342408196879}
+
+---- w24: LVS finished, 17 s ----
+   Circuit 1 contains 44454 devices, Circuit 2 contains 44454 devices.
+   Circuit 1 contains 21945 nets,    Circuit 2 contains 21945 nets.
+   Final result: 
+   Circuits match uniquely.
+
+---- w24 ext_main: finished, wall time 0h30m, ngspice exit 0 ----
+   Total analysis time (seconds) = 1395.82
+P2R-E8.4 analysis: e8rom_A_pcm_l00_16x2496_w24  period 100.0 ns  vdd 1.8 V  load 10.0 fF per output  points 1272
+data: simulated to 1050.2 of 1050.2 ns, 10 of 10 cycles complete (complete)
+E_vdd: energy from the supply from this cycle's rising edge to the next one; P_after: supply power just before the next rising edge (static state after the cycle)
+  k kind   addr  row   w precharge ns z_row z_word expected     read  ok  E_vdd pJ  E_in pJ P_after uW t_acc ns  dout min/max V
+  0 idle                                                                    4.817    0.053       1.58
+  1 read   3296  103   0       150.0     0      0     ffff     ffff yes    92.218   -0.013      19.57     0.00  1.80/1.80
+      selection: rows [103] (expected [103]); words [0] (expected [0]); lowest unselected row-decoder output 1.34 V (row 102)
+  2 read      6    0   6        50.0   111     16     0000     0000 yes   185.252    0.022    1405.48    10.84  -0.04/1.80  bitline below VDD/2 after 5.83 ns
+      selection: rows [0] (expected [0]); words [6] (expected [6]); lowest unselected row-decoder output 1.27 V (row 1)
+  3 read    163    5   3        50.0   250     14     0202     0202 yes   175.902   -0.008     768.02     9.08  -0.05/1.81  bitline below VDD/2 after 5.16 ns
+      selection: rows [5] (expected [5]); words [3] (expected [3]); lowest unselected row-decoder output 1.35 V (row 4)
+  4 read      6    0   6        50.0   111     16     0000     0000 yes   185.703    0.063    1425.38     9.59  -0.04/1.84  bitline below VDD/2 after 5.55 ns
+      selection: rows [0] (expected [0]); words [6] (expected [6]); lowest unselected row-decoder output 1.27 V (row 1)
+  5 read   3319  103  23        50.0     0      0     ffff     0000  NO  1092.414   -0.004      47.07    29.23  0.00/1.82
+      selection: rows [103] (expected [103]); words [23] (expected [23]); lowest unselected row-decoder output 1.34 V (row 102)
+  6 idle                                                                    7.124    0.001      15.83
+  7 stop                                                                    1.192   -0.000       9.04
+  8 stop                                                                    0.752    0.000       6.59
+  9 stop                                                                    0.581    0.000       5.31
+summary: {"cycles_complete": 10, "cycles_total": 10, "simulated_ns": 1050.1999999999998, "tstop_ns": 1050.2, "failed": false, "reads": 5, "reads_ok": 4, "reads_selection_ok": 5, "E_read_pJ_mean": 346.297670924295, "E_read_pJ_min": 92.2179438634056, "E_read_pJ_max": 1092.414044486696, "t_access_ns_max": 29.23259099999982, "E_idle_clocked_pJ_mean": 7.124209749485464, "P_stopped_uW": 7.050881220725996}
+
+---- w24 ext_sweep: finished, wall time 1h08m, ngspice exit 0 ----
+   Total analysis time (seconds) = 3711.84
+P2R-E8.4 analysis: e8rom_A_pcm_l00_16x2496_w24  period 100.0 ns  vdd 1.8 V  load 10.0 fF per output  points 3702
+data: simulated to 3325.2 of 3325.2 ns, 24 of 24 cycles complete (complete)
+E_vdd: energy from the supply from this cycle's rising edge to the next one; P_after: supply power just before the next rising edge (static state after the cycle)
+  k kind   addr  row   w precharge ns z_row z_word expected     read  ok  E_vdd pJ  E_in pJ P_after uW t_acc ns  dout min/max V
+  0 idle                                                                    4.816    0.045       1.57
+  1 read    163    5   3       150.0   250     14     0202     0202 yes   174.591    0.015     743.60    12.65  -0.04/1.80  bitline below VDD/2 after 6.66 ns
+      selection: rows [5] (expected [5]); words [3] (expected [3]); lowest unselected row-decoder output 1.35 V (row 4)
+  2 read   3296  103   0        50.0     0      0     ffff     0000  NO  1085.365    0.000      46.20    19.14  -0.00/1.81
+      selection: rows [103] (expected [103]); words [0] (expected [0]); lowest unselected row-decoder output 1.34 V (row 102)
+  3 read    163    5   3        50.0   250     14     0202     0202 yes   173.139   -0.006     774.90     9.99  -0.05/1.80  bitline below VDD/2 after 5.30 ns
+      selection: rows [5] (expected [5]); words [3] (expected [3]); lowest unselected row-decoder output 1.35 V (row 4)
+  4 wait                       25 ns                                       18.268    0.022     710.92
+  5 read   3296  103   0        75.0     0      0     ffff     0000  NO  1183.246    0.001      39.57    27.83  -0.01/1.80
+      selection: rows [103] (expected [103]); words [0] (expected [0]); lowest unselected row-decoder output 1.35 V (row 102)
+  6 read    163    5   3        50.0   250     14     0202     0202 yes   174.747   -0.005     812.26    10.03  -0.04/1.80  bitline below VDD/2 after 5.32 ns
+      selection: rows [5] (expected [5]); words [3] (expected [3]); lowest unselected row-decoder output 1.35 V (row 4)
+  7 wait                       50 ns                                       37.688    0.021     733.86
+  8 read   3296  103   0       100.0     0      0     ffff     0000  NO  1160.385   -0.000      36.33    35.68  -0.00/1.81
+      selection: rows [103] (expected [103]); words [0] (expected [0]); lowest unselected row-decoder output 1.36 V (row 102)
+  9 read    163    5   3        50.0   250     14     0202     0202 yes   174.814   -0.005     813.85    10.08  -0.04/1.80  bitline below VDD/2 after 5.33 ns
+      selection: rows [5] (expected [5]); words [3] (expected [3]); lowest unselected row-decoder output 1.35 V (row 4)
+ 10 wait                      100 ns                                       74.079    0.021     721.57
+ 11 read   3296  103   0       150.0     0      0     ffff     0028  NO  1031.939   -0.000      32.75    49.95  0.00/1.82
+      selection: rows [103] (expected [103]); words [0] (expected [0]); lowest unselected row-decoder output 1.37 V (row 102)
+ 12 read    163    5   3        50.0   250     14     0202     0202 yes   175.084   -0.005     818.10    10.26  -0.05/1.80  bitline below VDD/2 after 5.34 ns
+      selection: rows [5] (expected [5]); words [3] (expected [3]); lowest unselected row-decoder output 1.35 V (row 4)
+ 13 wait                      200 ns                                      146.461    0.021     716.74
+ 14 read   3296  103   0       250.0     0      0     ffff     3ffb  NO   736.499   -0.000      29.60    47.39  -0.00/1.82
+      selection: rows [103] (expected [103]); words [0] (expected [0]); lowest unselected row-decoder output 1.39 V (row 102)
+ 15 read    163    5   3        50.0   250     14     0202     0202 yes   175.526   -0.005     823.04    10.33  -0.05/1.80  bitline below VDD/2 after 5.34 ns
+      selection: rows [5] (expected [5]); words [3] (expected [3]); lowest unselected row-decoder output 1.35 V (row 4)
+ 16 wait                      300 ns                                      219.377    0.021     719.69
+ 17 read   3296  103   0       350.0     0      0     ffff     3fff  NO   518.000   -0.000      28.19    36.58  -0.00/1.81
+      selection: rows [103] (expected [103]); words [0] (expected [0]); lowest unselected row-decoder output 1.39 V (row 102)
+ 18 read    163    5   3        50.0   250     14     0202     0202 yes   175.676   -0.005     824.41    10.38  -0.05/1.80  bitline below VDD/2 after 5.34 ns
+      selection: rows [5] (expected [5]); words [3] (expected [3]); lowest unselected row-decoder output 1.35 V (row 4)
+ 19 wait                      400 ns                                      291.631    0.021     719.30
+ 20 read   3296  103   0       450.0     0      0     ffff     bfff  NO   364.776   -0.000      27.22    18.89  0.00/1.81
+      selection: rows [103] (expected [103]); words [0] (expected [0]); lowest unselected row-decoder output 1.40 V (row 102)
+ 21 read    163    5   3        50.0   250     14     0202     0202 yes   175.743   -0.005     824.93    10.40  -0.05/1.80  bitline below VDD/2 after 5.34 ns
+      selection: rows [5] (expected [5]); words [3] (expected [3]); lowest unselected row-decoder output 1.35 V (row 4)
+ 22 wait                      500 ns                                      363.606    0.021     718.27
+ 23 read   3296  103   0       550.0     0      0     ffff     bfff  NO   297.356    0.000      26.67    19.82  0.01/1.82
+      selection: rows [103] (expected [103]); words [0] (expected [0]); lowest unselected row-decoder output 1.40 V (row 102)
+summary: {"cycles_complete": 24, "cycles_total": 24, "simulated_ns": 3325.2, "tstop_ns": 3325.2, "failed": false, "reads": 16, "reads_ok": 8, "reads_selection_ok": 16, "E_read_pJ_mean": 486.0554840550023, "E_read_pJ_min": 173.13853317070104, "E_read_pJ_max": 1183.2464133582462, "t_access_ns_max": 49.94999999999983}
+
+---- w24 ext_idle: finished, wall time 1h31m, ngspice exit 0 ----
+   Total analysis time (seconds) = 5012.04
+P2R-E8.4 analysis: e8rom_A_pcm_l00_16x2496_w24  period 100.0 ns  vdd 1.8 V  load 10.0 fF per output  points 4922
+data: simulated to 4050.2 of 4050.2 ns, 40 of 40 cycles complete (complete)
+E_vdd: energy from the supply from this cycle's rising edge to the next one; P_after: supply power just before the next rising edge (static state after the cycle)
+  k kind   addr  row   w precharge ns z_row z_word expected     read  ok  E_vdd pJ  E_in pJ P_after uW t_acc ns  dout min/max V
+  0 idle                                                                    4.816    0.045       1.57
+  1 read    163    5   3       150.0   250     14     0202     0202 yes   174.626   -0.023     743.59    12.65  -0.04/1.80  bitline below VDD/2 after 6.66 ns
+      selection: rows [5] (expected [5]); words [3] (expected [3]); lowest unselected row-decoder output 1.35 V (row 4)
+  2 read      0    0   0        50.0   111      0     ffff     ffff yes   106.639   -0.004     111.12     2.03  0.06/1.82
+      selection: rows [0] (expected [0]); words [0] (expected [0]); lowest unselected row-decoder output 1.27 V (row 1)
+  3 idle                                                                    8.054    0.003      27.42
+  4 idle                                                                    6.236    0.003      14.75
+  5 idle                                                                    5.736    0.003      10.22
+  6 idle                                                                    5.509    0.003       7.94
+  7 idle                                                                    5.384    0.003       6.60
+  8 idle                                                                    5.306    0.003       5.73
+  9 idle                                                                    5.252    0.003       5.12
+ 10 idle                                                                    5.214    0.003       4.67
+ 11 idle                                                                    5.186    0.003       4.33
+ 12 idle                                                                    5.162    0.045       4.04
+ 13 read    163    5   3      1050.0   250     14     0202     0202 yes   172.190   -0.004     723.29    11.47  -0.04/1.80  bitline below VDD/2 after 6.18 ns
+      selection: rows [5] (expected [5]); words [3] (expected [3]); lowest unselected row-decoder output 1.35 V (row 4)
+ 14 idle                                                                   69.453    0.003     636.04
+ 15 idle                                                                   67.316    0.003     624.54
+ 16 idle                                                                   66.810    0.003     620.31
+ 17 idle                                                                   66.584    0.003     618.05
+ 18 idle                                                                   66.455    0.003     616.64
+ 19 idle                                                                   66.370    0.003     615.72
+ 20 idle                                                                   66.309    0.003     615.08
+ 21 idle                                                                   66.262    0.003     614.59
+ 22 idle                                                                   66.224    0.003     614.17
+ 23 idle                                                                   66.192    0.003     613.81
+ 24 idle                                                                   66.165    0.003     613.51
+ 25 idle                                                                   66.141    0.003     613.28
+ 26 idle                                                                   66.119    0.003     613.10
+ 27 idle                                                                   66.099    0.003     612.96
+ 28 idle                                                                   66.081    0.003     612.83
+ 29 idle                                                                   66.063    0.003     612.71
+ 30 idle                                                                   66.047    0.003     612.60
+ 31 idle                                                                   66.031    0.003     612.49
+ 32 idle                                                                   66.016    0.003     612.39
+ 33 idle                                                                   66.072   -0.016     612.25
+ 34 read      0    0   0      2050.0   111      0     ffff     ffff yes   111.354   -0.004     111.11     1.99  0.04/1.80
+      selection: rows [0] (expected [0]); words [0] (expected [0]); lowest unselected row-decoder output 1.27 V (row 1)
+ 35 idle                                                                    8.054    0.003      27.42
+ 36 idle                                                                    6.236    0.003      14.75
+ 37 idle                                                                    5.736    0.003      10.22
+ 38 idle                                                                    5.509    0.003       7.94
+ 39 idle                                                                    5.353    0.001       6.60
+summary: {"cycles_complete": 40, "cycles_total": 40, "simulated_ns": 4050.2, "tstop_ns": 4050.199999999999, "failed": false, "reads": 4, "reads_ok": 4, "reads_selection_ok": 4, "E_read_pJ_mean": 141.20207884395984, "E_read_pJ_min": 106.63863269335019, "E_read_pJ_max": 174.62625868611366, "t_access_ns_max": 12.646427999999984, "E_idle_clocked_pJ_mean": 40.47827206489495}
+
+---- comparison of the organisations ----
+A. area (um; mm2 = layout extent; x50 = 50 macros)
+   organisation                       rows x cols           LEF W x H        layout W x H layout mm2  x50 mm2 vs first
+   13 words/row (E8.3, 192 rows)        192 x 208     264.13 x 259.62   279.090 x 274.580    0.07663    3.832    1.000
+   16 words/row, no perimeter pins      156 x 256     313.09 x 223.88   328.050 x 238.840    0.07835    3.918    1.022
+   24 words/row, no perimeter pins      104 x 384     443.61 x 175.36   461.080 x 190.320    0.08775    4.388    1.145
+   13 words/row, no perimeter pins      192 x 208     264.13 x 259.62   279.090 x 274.580    0.07663    3.832    1.000
+
+B. post-layout function and energy (main sequence; energy per 100 ns cycle)
+   organisation                            LVS ext err reads ok  sel ok     E row w/ 0s pJ   E row no 0 pJ E idle pJ t_acc max ns decoder min V
+   13 words/row (E8.3, 192 rows)         match       0      4/5     5/5        144.7-167.1       20.0-20.0      8.35        28.41          1.04
+   16 words/row, no perimeter pins       match       0      4/5     5/5        165.7-202.0       18.3-18.3      6.96        19.74          1.07
+   24 words/row, no perimeter pins       match       0      4/5     5/5        175.9-185.7       92.2-92.2      4.82        10.84          1.27
+   13 words/row, no perimeter pins     not run       -  no main result
+   ext err: magic extraction errors of the layout (must be 0; LVS can match while poly over diffusion
+   forms extra transistors on the mask); reads ok: read value = stored word; sel ok: only the right
+   row and word selected; E row w/ 0s:
+   correct reads of rows with zero bits (min-max); E row no 0: rows without zero bits; E idle: first
+   cycle, clock running, no read; t_acc: correct reads of words with zero bits; decoder min: lowest
+   unselected row-decoder output during the reads
+
+C. recovery: bottom-row read after the row with the most zero bits (precharge ns: ok, or number of wrong bits)
+   13 words/row (E8.3, 192 rows)      50: 16 wrong  75: 16 wrong  100: 16 wrong  150: 16 wrong  250: 2 wrong  350: 1 wrong  450: ok  550: ok
+                                      -> correct from 450 ns on
+   16 words/row, no perimeter pins    50: 16 wrong  75: 16 wrong  100: 16 wrong  150: 16 wrong  250: 2 wrong  350: 1 wrong  450: 1 wrong  550: ok
+                                      -> correct from 550 ns on
+   24 words/row, no perimeter pins    50: 16 wrong  75: 16 wrong  100: 16 wrong  150: 14 wrong  250: 3 wrong  350: 2 wrong  450: 1 wrong  550: 1 wrong
+                                      -> never correct in the sweep
+   13 words/row, no perimeter pins    no sweep result
+
+D. static current with the clock running (idle sequence: i, rM, rP, i x10, rM, i x20, rP, i x5)
+   organisation                       P after rM uW after rM,i20 uW E idle, no park pJ E park read pJ P after park uW E idle, parked pJ park reads ok
+   13 words/row (E8.3, 192 rows)             489.82          305.77             39.546         93.155          187.49             9.783           2/2
+   16 words/row, no perimeter pins          1244.35         1077.19            115.720        105.807          170.62             8.140           2/2
+   24 words/row, no perimeter pins           723.29          612.25             66.441        111.354          111.11             5.704           2/2
+   13 words/row, no perimeter pins    no idle result
+
+   P after rM: supply power at the end of the cycle that read rM (before the 20 idle cycles);
+   after rM,i20: at the end of the 20th idle cycle; E idle, no park: mean energy of those 20 idle cycles;
+   E park read / P after park: the parking read after them; E idle, parked: mean energy of the 10 idle
+   cycles that follow a parking read made right after rM.
+
+---- files: /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a3/e8rom_A_pcm_l00_16x2496 ----
+   96K	/mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a3/e8rom_A_pcm_l00_16x2496/area
+   12K	/mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a3/e8rom_A_pcm_l00_16x2496/configs
+   24K	/mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a3/e8rom_A_pcm_l00_16x2496/logs
+   53M	/mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a3/e8rom_A_pcm_l00_16x2496/macros
+   4.0K	/mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a3/e8rom_A_pcm_l00_16x2496/orgs.json
+   128M	/mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a3/e8rom_A_pcm_l00_16x2496/w13
+   344M	/mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a3/e8rom_A_pcm_l00_16x2496/w16
+   333M	/mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_4a3/e8rom_A_pcm_l00_16x2496/w24
+
+==============================================================
+Finished 2026-10-11 08:00:26.
+==============================================================

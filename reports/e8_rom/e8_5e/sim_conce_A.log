@@ -1,0 +1,82 @@
+[layer_desc_rom] Loading rshift table from data/rtl_inputs_A_v3
+[layer_desc_rom] rshift = 9 9 8 8 8
+[E8.5e] conv1 cache loaded from /home/kid/p2r_e8/e8_5e/conv1_cache_A.hex
+[bias_storage] Loading real biases from data/rtl_inputs_A_v3
+============================================================
+tb_lenet5_full_inference_v3   (Step 9 full LeNet inference)
+============================================================
+  Model A
+  DATA_DIR   = data/rtl_inputs_A_v3
+  IMG        = data/rtl_inputs_A/images/img_001.hex
+  GOLDEN_DIR = data/golden
+
+  Loaded all goldens (conv1=4704, pool1=1176, conv2=1600, pool2=400, fc1=120, fc2=84, fc3=10)
+
+T1  Boot protocol (full host wr_* sequence)
+  [PASS] T1.1 cfg_valid_dbg=0 after reset
+  [PASS] T1.2 after commit: cfg_valid=1, enable_drift=0
+  [PASS] T1.3 all 10 cfg_mem entries match
+
+T2  Image loading (28x28 = 784 pixels via image_we)
+  [PASS] T2.1 784 pixels written
+
+T3  Starting full inference + capturing 7 layer streams
+[E8 MONITOR] 16684 MAC operations recorded to /home/kid/p2r_e8/e8_5e/e8t_conce_A.txt
+  [PASS] inference complete at cycle 617573
+    captured counts: conv1=4704 pool1=1176 conv2=1600 pool2=400 fc1=120 fc2=84 fc3=10
+
+T3.c [PASS] all layer capture counts match expected N
+
+T3.x  Per-layer exact compare:
+  [PASS] conv1 all 4704 match golden (nonzero=1353)
+  [PASS] pool1 all 1176 match golden (nonzero=448)
+  [PASS] conv2 all 1600 match golden (nonzero=258)
+  [PASS] pool2 all 400 match golden (nonzero=134)
+  [PASS] fc1 all 120 match golden (nonzero=35)
+  [PASS] fc2 all 84 match golden (nonzero=31)
+  [PASS] fc3 all 10 INT16 logits match (nonzero=10)
+
+T4  [PASS] predicted_class = 7  (matches argmax of fc3 mirror)
+    fc3 mirror logits = [-94 -36 -41 -32 -16 -54 -113 114 -33 33]
+
+============================================================
+Per-layer writeback windows (NOT pure compute latency):
+  conv1 : first=43 last=192866  window=192824 cycles (4704 outputs)
+  pool1 : first=192884 last=208159  window=15276 cycles (1176 outputs)
+  conv2 : first=208395 last=577764  window=369370 cycles (1600 outputs)
+  pool2 : first=577782 last=582969  window=5188 cycles (400 outputs)
+  fc1   : first=583602 last=610615  window=27014 cycles (120 outputs)
+  fc2   : first=610814 last=616873  window=6060 cycles (84 outputs)
+  fc3   : first=617022 last=617553  window=532 cycles (10 outputs)
+  argmax/finish : fc3_last=617553 done=617573  window=20 cycles
+
+Total inference cycles (start -> done) : 617573
+------------------------------------------------------------
+SRAM protected-weight reads (per MAC op): 267143
+    x OpenRAM per-access energy = SRAM dynamic read energy
+    [raw lane-cycles, NOT the energy count: 149543]
+    (SRAM writes during inference = 0; pool loaded once at boot)
+============================================================
+
+============================================================
+Total: 14 passed, 0 failed
+RESULT: ALL TESTS PASSED
+============================================================
+/mnt/d/Project/hybrid_memory/paper2/rtl/tb/tb_lenet5_full_inference_v3.v:632: $finish called at 6183910000 (1ps)
+
+[E8.5 MONITOR] ==== address-map unit (E8.5) ====
+[E8.5 MONITOR] operations at the datapath start 16684, engine start pulses 16684 -> trace /home/kid/p2r_e8/e8_5e/e85t_conce_A.txt
+[E8.5 MONITOR] unit counters: starts 16684, stall cycles 0, lookup pulses 2484, parking pulses 113
+[E8.5 MONITOR] error flags {queue,lane0,mismatch} 000; parking rule violations 0; macros unparked at the end 0
+[E8.5 MONITOR] ROM pulses in the event list: lookup 2484, parking 113 (before start 2, after done 0) -> /home/kid/p2r_e8/e8_5e/e85e_conce_A.txt
+[E8.5 MONITOR] macro reads implied by the events: lookup 123040 + parking 2825 = 125865
+[E8.5 MONITOR] macro reads counted by the 200 models: 125865 (equal); models never read 0
+[E8.5 MONITOR] ROM protocol at the models: CS at the clock edge 0, address changed while high 0, invalid word 0, shortest clock low before a read 50.0 ns
+[E8.5c MONITOR] SRAM_LATENCY 2, ALIGN_DELAY 6
+[E8.5c MONITOR] results 16684 -> /home/kid/p2r_e8/e8_5e/res_conce_A.txt
+[E8.5c MONITOR] datapath starts 16684, SRAM reads 267143
+[E8.5c MONITOR] shortest interval between two SRAM reads of one lane 14 cycles (lane 1); intervals below 2: 0
+[E8.5c MONITOR] cycles with a pool hit while the datapath start is low: 0
+[E8.5e MONITOR] datapath starts 16684; SRAM macro reads 149543 (conv1 0, conv2 148100, fc1 335, fc2 314, fc3 794); conv1 cache reads 117600
+[E8.5e MONITOR] cache reads per lane: min 4704 max 4704
+[E8.5e MONITOR] cache entries different from the pool word: 0; cache reads outside conv1: 0; cycles with a pool hit in conv1: 0

@@ -1,0 +1,49 @@
+P2R-E8.4 analysis: e8rom_A_pcm_l12_16x2496_r48k1  period 100.0 ns  vdd 1.8 V  load 10.0 fF per output  points 7202
+data: simulated to 7450.2 of 7450.2 ns, 20 of 20 cycles complete (complete)
+E_vdd: energy from the supply from this cycle's rising edge to the next one; P_after: supply power just before the next rising edge (static state after the cycle)
+  k kind   addr  row   w precharge ns z_row z_word expected     read  ok  E_vdd pJ  E_in pJ P_after uW t_acc ns  dout min/max V
+  0 idle                                                                    2.596    0.064       0.66
+  1 read    371   23   3       150.0   123     14     5000     5000 yes    90.220    0.002     946.63    14.23  0.00/1.81  bitline below VDD/2 after 10.72 ns
+      selection: rows [23] (expected [23]); words [3] (expected [3]); lowest unselected row-decoder output 1.34 V (row 22)
+      timing after the clock edge: internal clock 0.284 ns, array footers on 10.452 ns, wordline 23 low 1.068 ns; footers on before the row is selected by -9.384 ns
+      bitlines of row 23: 85 one cells, lowest while evaluating 1.664 V (column 132 = bit 10 of word 2); 123 zero cells, highest at sampling 0.000 V (column 167 = bit 12 of word 11); word read: lowest one bit 1.794 V (bit 3)
+  2 wait                     1000 ns                                      936.699   -0.021     937.39
+  3 read    352   22   0      1050.0    88      0     ffff     ffff yes    41.459    0.002      12.52    11.21  0.01/1.81
+      selection: rows [22] (expected [22]); words [0] (expected [0]); lowest unselected row-decoder output 1.31 V (row 23)
+      timing after the clock edge: internal clock 0.284 ns, array footers on 10.452 ns, wordline 22 low 1.139 ns; footers on before the row is selected by -9.312 ns
+      bitlines of row 22: 120 one cells, lowest while evaluating 1.566 V (column 140 = bit 10 of word 10); 88 zero cells, highest at sampling 0.000 V (column 163 = bit 12 of word 7); word read: lowest one bit 1.578 V (bit 10)
+  4 wait                     1000 ns                                        1.438    0.031       0.56
+  5 read    371   23   3      1050.0   123     14     5000     5000 yes    90.310   -0.019     948.88    14.05  0.00/1.81  bitline below VDD/2 after 10.69 ns
+      selection: rows [23] (expected [23]); words [3] (expected [3]); lowest unselected row-decoder output 1.41 V (row 22)
+      timing after the clock edge: internal clock 0.284 ns, array footers on 10.452 ns, wordline 23 low 1.105 ns; footers on before the row is selected by -9.346 ns
+      bitlines of row 23: 85 one cells, lowest while evaluating 1.558 V (column 132 = bit 10 of word 2); 123 zero cells, highest at sampling 0.000 V (column 194 = bit 14 of word 12); word read: lowest one bit 1.750 V (bit 3)
+  6 read    352   22   0        50.0    88      0     ffff     ffff yes    42.075    0.002      12.52    11.21  0.01/1.81
+      selection: rows [22] (expected [22]); words [0] (expected [0]); lowest unselected row-decoder output 1.22 V (row 23)
+      timing after the clock edge: internal clock 0.284 ns, array footers on 10.452 ns, wordline 22 low 1.143 ns; footers on before the row is selected by -9.309 ns
+      bitlines of row 22: 120 one cells, lowest while evaluating 1.359 V (column 140 = bit 10 of word 10); 88 zero cells, highest at sampling 0.000 V (column 125 = bit 9 of word 8); word read: lowest one bit 1.375 V (bit 10)
+  7 wait                     1000 ns                                        1.422    0.031       0.56
+  8 read    371   23   3      1050.0   123     14     5000     5000 yes    90.312   -0.019     948.92    14.05  0.00/1.81  bitline below VDD/2 after 10.69 ns
+      selection: rows [23] (expected [23]); words [3] (expected [3]); lowest unselected row-decoder output 1.41 V (row 22)
+      timing after the clock edge: internal clock 0.284 ns, array footers on 10.452 ns, wordline 23 low 1.106 ns; footers on before the row is selected by -9.346 ns
+      bitlines of row 23: 85 one cells, lowest while evaluating 1.558 V (column 132 = bit 10 of word 2); 123 zero cells, highest at sampling 0.000 V (column 194 = bit 14 of word 12); word read: lowest one bit 1.750 V (bit 3)
+  9 read    352   22   0        50.0    88      0     ffff     ffff yes    42.076    0.002      12.52    11.21  0.01/1.81
+      selection: rows [22] (expected [22]); words [0] (expected [0]); lowest unselected row-decoder output 1.22 V (row 23)
+      timing after the clock edge: internal clock 0.284 ns, array footers on 10.452 ns, wordline 22 low 1.143 ns; footers on before the row is selected by -9.309 ns
+      bitlines of row 22: 120 one cells, lowest while evaluating 1.359 V (column 140 = bit 10 of word 10); 88 zero cells, highest at sampling 0.000 V (column 125 = bit 9 of word 8); word read: lowest one bit 1.375 V (bit 10)
+ 10 wait                     1000 ns                                        1.463    0.013       1.08
+ 11 read    193   12   1      1050.0   127      7     41fb     41fb yes    53.381    0.002     228.37    13.69  0.00/1.81  bitline below VDD/2 after 10.73 ns
+      selection: rows [12] (expected [12]); words [1] (expected [1]); lowest unselected row-decoder output 1.34 V (row 13)
+      timing after the clock edge: internal clock 0.284 ns, array footers on 10.452 ns, wordline 12 low 1.181 ns; footers on before the row is selected by -9.271 ns
+      bitlines of row 12: 81 one cells, lowest while evaluating 1.593 V (column 202 = bit 15 of word 7); 127 zero cells, highest at sampling 0.000 V (column 129 = bit 9 of word 12); word read: lowest one bit 1.624 V (bit 15)
+ 12 wait                     1000 ns                                      217.101    0.000     216.65
+ 13 read    352   22   0      1050.0    88      0     ffff     ffff yes    32.972    0.004      12.52    11.21  0.01/1.81
+      selection: rows [22] (expected [22]); words [0] (expected [0]); lowest unselected row-decoder output 1.32 V (row 23)
+      timing after the clock edge: internal clock 0.284 ns, array footers on 10.452 ns, wordline 22 low 1.136 ns; footers on before the row is selected by -9.316 ns
+      bitlines of row 22: 120 one cells, lowest while evaluating 1.568 V (column 140 = bit 10 of word 10); 88 zero cells, highest at sampling 0.000 V (column 163 = bit 12 of word 7); word read: lowest one bit 1.580 V (bit 10)
+ 14 idle                                                                    3.014    0.002       3.35
+ 15 idle                                                                    2.766    0.002       1.84
+ 16 idle                                                                    2.689    0.002       1.46
+ 17 idle                                                                    2.652    0.002       1.30
+ 18 idle                                                                    2.632    0.000       1.20
+ 19 wait                     1000 ns                                        0.585    0.000       0.45
+summary: {"cycles_complete": 20, "cycles_total": 20, "simulated_ns": 7450.2, "tstop_ns": 7450.2, "failed": false, "reads": 8, "reads_ok": 8, "reads_selection_ok": 8, "E_read_pJ_mean": 60.350407207867185, "E_read_pJ_min": 32.971529207849606, "E_read_pJ_max": 90.31164855219538, "t_access_ns_max": 14.228014999999989, "bl1_min_V": 1.35920092, "bl0_max_V": 2.7230555654925638e-05, "E_idle_clocked_pJ_mean": 2.750633946785864}

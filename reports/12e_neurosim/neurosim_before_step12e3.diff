@@ -1,0 +1,238 @@
+diff --git a/Inference_pytorch/NeuroSIM/Param.cpp b/Inference_pytorch/NeuroSIM/Param.cpp
+index 8ef9baf..68ab720 100644
+--- a/Inference_pytorch/NeuroSIM/Param.cpp
++++ b/Inference_pytorch/NeuroSIM/Param.cpp
+@@ -146,7 +146,7 @@ Param::Param() {
+ 	
+ 	numColMuxed = 8;                    // How many columns share 1 ADC (for eNVM and FeFET) or parallel SRAM
+ 	levelOutput = 32;                   // # of levels of the multilevelSenseAmp output, should be in 2^N forms; e.g. 32 levels --> 5-bit ADC
+-	cellBit = 2;                        // precision of memory device 
++	cellBit = 4;                        // precision of memory device 
+ 	
+ 	/*** parameters for SRAM ***/
+ 	// due the scaling, suggested SRAM cell size above 22nm: 160F^2
+@@ -162,12 +162,12 @@ Param::Param() {
+ 	
+ 	/*** parameters for analog synaptic devices ***/
+ 	heightInFeatureSize1T1R = 4;        // 1T1R Cell height in feature size
+-	widthInFeatureSize1T1R = 12;         // 1T1R Cell width in feature size
++	widthInFeatureSize1T1R = 24;         // 1T1R Cell width in feature size
+ 	heightInFeatureSizeCrossbar = 2;    // Crossbar Cell height in feature size
+ 	widthInFeatureSizeCrossbar = 2;     // Crossbar Cell width in feature size
+ 	
+-	resistanceOn = 6e3;               // Ron resistance at Vr in the reported measurement data (need to recalculate below if considering the nonlinearity)
+-	resistanceOff = 6e3*150;           // Roff resistance at Vr in the reported measurement dat (need to recalculate below if considering the nonlinearity)
++	resistanceOn = 3e3;               // Ron resistance at Vr in the reported measurement data (need to recalculate below if considering the nonlinearity)
++	resistanceOff = 3e6;           // Roff resistance at Vr in the reported measurement dat (need to recalculate below if considering the nonlinearity)
+ 	maxConductance = (double) 1/resistanceOn;
+ 	minConductance = (double) 1/resistanceOff;
+ 	
+@@ -175,7 +175,7 @@ Param::Param() {
+ 	readPulseWidth = 10e-9;             // read pulse width in sec
+ 	accessVoltage = 1.1;                // Gate voltage for the transistor in 1T1R
+ 	resistanceAccess = resistanceOn*IR_DROP_TOLERANCE;            // resistance of access CMOS in 1T1R
+-	writeVoltage = 2;					// Enable level shifer if writeVoltage > 1.5V
++	writeVoltage = 3;					// Enable level shifer if writeVoltage > 1.5V
+ 	
+ 	/*** Calibration parameters ***/
+ 	if(validated){
+diff --git a/Inference_pytorch/NeuroSIM/main.cpp b/Inference_pytorch/NeuroSIM/main.cpp
+index 805d647..8e99164 100644
+--- a/Inference_pytorch/NeuroSIM/main.cpp
++++ b/Inference_pytorch/NeuroSIM/main.cpp
+@@ -203,6 +203,18 @@ int main(int argc, char * argv[]) {
+ 	chipAreaOther = chipAreaResults[4];
+ 	chipAreaArray = chipAreaResults[5];
+ 
++	cout << "========================= AREA RESULTS =========================" << endl;
++	cout << "Total Chip Area: " << chipArea*1e12 << " um^2" << endl;
++	cout << "Total Chip Area: " << chipArea*1e6 << " mm^2" << endl;
++	cout << "Array Area: " << chipAreaArray*1e6 << " mm^2" << endl;
++	cout << "ADC Area: " << chipAreaADC*1e6 << " mm^2" << endl;
++	cout << "Accumulation Area: " << chipAreaAccum*1e6 << " mm^2" << endl;
++	cout << "Interconnect Area: " << chipAreaIC*1e6 << " mm^2" << endl;
++	cout << "Other Area: " << chipAreaOther*1e6 << " mm^2" << endl;
++	cout << "Array Area Percentage: " << chipAreaArray/chipArea*100 << " %" << endl;
++	cout << "================================================================" << endl;
++	return 0;
++
+ 	double clkPeriod = 0;
+ 	double layerclkPeriod = 0;
+ 	
+diff --git a/Inference_pytorch/models/DenseNet.py b/Inference_pytorch/models/DenseNet.py
+index 81fd3c3..d9ca82f 100644
+--- a/Inference_pytorch/models/DenseNet.py
++++ b/Inference_pytorch/models/DenseNet.py
+@@ -129,7 +129,7 @@ def make_layers(cfg, args, logger):
+ def densenet40(args, logger, pretrained=None):
+     model = DenseNet(args, logger, depth=40, growth_rate=12, reduction=0.5, num_classes=10)
+     if pretrained is not None:
+-        model.load_state_dict(torch.load(pretrained))
++        model.load_state_dict(torch.load(pretrained, map_location='cpu'))
+     return model
+     
+     
+\ No newline at end of file
+diff --git a/Inference_pytorch/models/ResNet.py b/Inference_pytorch/models/ResNet.py
+index f39eb71..021645b 100644
+--- a/Inference_pytorch/models/ResNet.py
++++ b/Inference_pytorch/models/ResNet.py
+@@ -281,7 +281,7 @@ def _resnet(arch, block, layers, pretrained=None, progress=True, args=None, logg
+                                               progress=progress)
+         model.load_state_dict(state_dict, strict=False)
+     elif pretrained is not None:
+-        model.load_state_dict(torch.load(pretrained))
++        model.load_state_dict(torch.load(pretrained, map_location='cpu'))
+     return model
+ 
+ 
+diff --git a/Inference_pytorch/models/VGG.py b/Inference_pytorch/models/VGG.py
+index c42d134..640eb6b 100644
+--- a/Inference_pytorch/models/VGG.py
++++ b/Inference_pytorch/models/VGG.py
+@@ -88,7 +88,7 @@ def vgg8( args, logger, pretrained=None):
+     layers = make_layers(cfg, args, logger)
+     model = VGG(args,layers, num_classes=10,logger = logger)
+     if pretrained is not None:
+-        model.load_state_dict(torch.load(pretrained))
++        model.load_state_dict(torch.load(pretrained, map_location='cpu'))
+     return model
+ 
+ 
+diff --git a/Inference_pytorch/modules/__pycache__/floatrange_cpu_np_infer.cpython-35.pyc b/Inference_pytorch/modules/__pycache__/floatrange_cpu_np_infer.cpython-35.pyc
+deleted file mode 100644
+index ee294d9..0000000
+Binary files a/Inference_pytorch/modules/__pycache__/floatrange_cpu_np_infer.cpython-35.pyc and /dev/null differ
+diff --git a/Inference_pytorch/modules/__pycache__/quantization_cpu_np_infer.cpython-35.pyc b/Inference_pytorch/modules/__pycache__/quantization_cpu_np_infer.cpython-35.pyc
+deleted file mode 100644
+index 6d6801d..0000000
+Binary files a/Inference_pytorch/modules/__pycache__/quantization_cpu_np_infer.cpython-35.pyc and /dev/null differ
+diff --git a/Inference_pytorch/modules/__pycache__/quantization_cpu_np_infer.cpython-37.pyc b/Inference_pytorch/modules/__pycache__/quantization_cpu_np_infer.cpython-37.pyc
+deleted file mode 100644
+index 3bf2b22..0000000
+Binary files a/Inference_pytorch/modules/__pycache__/quantization_cpu_np_infer.cpython-37.pyc and /dev/null differ
+diff --git a/Inference_pytorch/modules/floatrange_cpu_np_infer.py b/Inference_pytorch/modules/floatrange_cpu_np_infer.py
+index b38860d..991b305 100644
+--- a/Inference_pytorch/modules/floatrange_cpu_np_infer.py
++++ b/Inference_pytorch/modules/floatrange_cpu_np_infer.py
+@@ -2,7 +2,7 @@ import torch
+ import torch.nn as nn
+ import torch.nn.functional as F
+ from utee import wage_initializer,wage_quantizer,float_quantizer
+-from torch._jit_internal import weak_script_method
++def weak_script_method(fn): return fn
+ import numpy as np
+ 
+ class FConv2d(nn.Conv2d):
+diff --git a/Inference_pytorch/modules/quantization_cpu_np_infer.py b/Inference_pytorch/modules/quantization_cpu_np_infer.py
+index 0e571a0..79ae8b6 100644
+--- a/Inference_pytorch/modules/quantization_cpu_np_infer.py
++++ b/Inference_pytorch/modules/quantization_cpu_np_infer.py
+@@ -2,7 +2,7 @@ import torch
+ import torch.nn as nn
+ import torch.nn.functional as F
+ from utee import wage_initializer,wage_quantizer
+-from torch._jit_internal import weak_script_method
++def weak_script_method(fn): return fn
+ import numpy as np
+ 
+ class QConv2d(nn.Conv2d):
+@@ -82,7 +82,7 @@ class QConv2d(nn.Conv2d):
+                                 # Here remainder is the weight mapped to Hardware, so we introduce on/off ratio in this value
+                                 # the range of remainder is [0, cellRange-1], we truncate it to [lower, upper]
+                                 remainderQ = (upper-lower)*(remainder-0)+(cellRange-1)*lower   # weight cannot map to 0, but to Gmin
+-                                remainderQ = remainderQ + remainderQ*torch.normal(0., torch.full(remainderQ.size(),self.vari, device='cuda'))
++                                remainderQ = remainderQ + remainderQ*torch.normal(0., torch.full(remainderQ.size(),self.vari, device='cpu'))
+                                 outputPartial= F.conv2d(input, remainderQ*mask, self.bias, self.stride, self.padding, self.dilation, self.groups)
+                                 outputDummyPartial= F.conv2d(input, dummyP*mask, self.bias, self.stride, self.padding, self.dilation, self.groups)
+                                 scaler = cellRange**k
+@@ -110,7 +110,7 @@ class QConv2d(nn.Conv2d):
+                                     # Here remainder is the weight mapped to Hardware, so we introduce on/off ratio in this value
+                                     # the range of remainder is [0, cellRange-1], we truncate it to [lower, upper]
+                                     remainderQ = (upper-lower)*(remainder-0)+(cellRange-1)*lower   # weight cannot map to 0, but to Gmin
+-                                    remainderQ = remainderQ + remainderQ*torch.normal(0., torch.full(remainderQ.size(),self.vari, device='cuda'))
++                                    remainderQ = remainderQ + remainderQ*torch.normal(0., torch.full(remainderQ.size(),self.vari, device='cpu'))
+                                     outputPartial= F.conv2d(inputB, remainderQ*mask, self.bias, self.stride, self.padding, self.dilation, self.groups)
+                                     outputDummyPartial= F.conv2d(inputB, dummyP*mask, self.bias, self.stride, self.padding, self.dilation, self.groups)
+                                     # Add ADC quanization effects here !!!
+@@ -146,7 +146,7 @@ class QConv2d(nn.Conv2d):
+                                     # Here remainder is the weight mapped to Hardware, so we introduce on/off ratio in this value
+                                     # the range of remainder is [0, cellRange-1], we truncate it to [lower, upper]*(cellRange-1)
+                                     remainderQ = (upper-lower)*(remainder-0)+(cellRange-1)*lower   # weight cannot map to 0, but to Gmin
+-                                    remainderQ = remainderQ + remainderQ*torch.normal(0., torch.full(remainderQ.size(),self.vari, device='cuda'))
++                                    remainderQ = remainderQ + remainderQ*torch.normal(0., torch.full(remainderQ.size(),self.vari, device='cpu'))
+                                     outputPartial= F.conv2d(inputB, remainderQ*mask, self.bias, self.stride, self.padding, self.dilation, self.groups)
+                                     outputDummyPartial= F.conv2d(inputB, dummyP*mask, self.bias, self.stride, self.padding, self.dilation, self.groups)
+                                     # Add ADC quanization effects here !!!
+@@ -257,7 +257,7 @@ class QLinear(nn.Linear):
+                         # Here remainder is the weight mapped to Hardware, so we introduce on/off ratio in this value
+                         # the range of remainder is [0, cellRange-1], we truncate it to [lower, upper]
+                         remainderQ = (upper-lower)*(remainder-0)+(cellRange-1)*lower   # weight cannot map to 0, but to Gmin
+-                        remainderQ = remainderQ + remainderQ*torch.normal(0., torch.full(remainderQ.size(),self.vari, device='cuda'))
++                        remainderQ = remainderQ + remainderQ*torch.normal(0., torch.full(remainderQ.size(),self.vari, device='cpu'))
+                         outputPartial= F.linear(inputB, remainderQ*mask, self.bias)
+                         outputDummyPartial= F.linear(inputB, dummyP*mask, self.bias)
+                         # Add ADC quanization effects here !!!
+@@ -292,7 +292,7 @@ class QLinear(nn.Linear):
+                             # Here remainder is the weight mapped to Hardware, so we introduce on/off ratio in this value
+                             # the range of remainder is [0, cellRange-1], we truncate it to [lower, upper]*(cellRange-1)
+                             remainderQ = (upper-lower)*(remainder-0)+(cellRange-1)*lower   # weight cannot map to 0, but to Gmin
+-                            remainderQ = remainderQ + remainderQ*torch.normal(0., torch.full(remainderQ.size(),self.vari, device='cuda'))
++                            remainderQ = remainderQ + remainderQ*torch.normal(0., torch.full(remainderQ.size(),self.vari, device='cpu'))
+                             outputPartial= F.linear(inputB, remainderQ*mask, self.bias)
+                             outputDummyPartial= F.linear(inputB, dummyP*mask, self.bias)
+                             # Add ADC quanization effects here !!!
+diff --git a/Inference_pytorch/utee/__pycache__/QSGD.cpython-35.pyc b/Inference_pytorch/utee/__pycache__/QSGD.cpython-35.pyc
+deleted file mode 100644
+index 88853c7..0000000
+Binary files a/Inference_pytorch/utee/__pycache__/QSGD.cpython-35.pyc and /dev/null differ
+diff --git a/Inference_pytorch/utee/__pycache__/float_quantizer.cpython-35.pyc b/Inference_pytorch/utee/__pycache__/float_quantizer.cpython-35.pyc
+deleted file mode 100644
+index 013382d..0000000
+Binary files a/Inference_pytorch/utee/__pycache__/float_quantizer.cpython-35.pyc and /dev/null differ
+diff --git a/Inference_pytorch/utee/__pycache__/hook.cpython-35.pyc b/Inference_pytorch/utee/__pycache__/hook.cpython-35.pyc
+deleted file mode 100644
+index 46215c2..0000000
+Binary files a/Inference_pytorch/utee/__pycache__/hook.cpython-35.pyc and /dev/null differ
+diff --git a/Inference_pytorch/utee/__pycache__/make_path.cpython-35.pyc b/Inference_pytorch/utee/__pycache__/make_path.cpython-35.pyc
+deleted file mode 100644
+index bdcf061..0000000
+Binary files a/Inference_pytorch/utee/__pycache__/make_path.cpython-35.pyc and /dev/null differ
+diff --git a/Inference_pytorch/utee/__pycache__/misc.cpython-35.pyc b/Inference_pytorch/utee/__pycache__/misc.cpython-35.pyc
+deleted file mode 100644
+index 47df07b..0000000
+Binary files a/Inference_pytorch/utee/__pycache__/misc.cpython-35.pyc and /dev/null differ
+diff --git a/Inference_pytorch/utee/__pycache__/wage_initializer.cpython-35.pyc b/Inference_pytorch/utee/__pycache__/wage_initializer.cpython-35.pyc
+deleted file mode 100644
+index dedd728..0000000
+Binary files a/Inference_pytorch/utee/__pycache__/wage_initializer.cpython-35.pyc and /dev/null differ
+diff --git a/Inference_pytorch/utee/__pycache__/wage_quantizer.cpython-35.pyc b/Inference_pytorch/utee/__pycache__/wage_quantizer.cpython-35.pyc
+deleted file mode 100644
+index 41fcc7a..0000000
+Binary files a/Inference_pytorch/utee/__pycache__/wage_quantizer.cpython-35.pyc and /dev/null differ
+diff --git a/Inference_pytorch/utee/__pycache__/wage_util.cpython-35.pyc b/Inference_pytorch/utee/__pycache__/wage_util.cpython-35.pyc
+deleted file mode 100644
+index 2dccb45..0000000
+Binary files a/Inference_pytorch/utee/__pycache__/wage_util.cpython-35.pyc and /dev/null differ
+diff --git a/Inference_pytorch/utee/hook.py b/Inference_pytorch/utee/hook.py
+index 9a69b8c..a490cd6 100644
+--- a/Inference_pytorch/utee/hook.py
++++ b/Inference_pytorch/utee/hook.py
+@@ -37,7 +37,7 @@ def write_matrix_weight(input_matrix,filename):
+ 
+ 
+ def write_matrix_activation_conv(input_matrix,fill_dimension,length,filename):
+-    filled_matrix_b = np.zeros([input_matrix.shape[2],input_matrix.shape[1]*length],dtype=np.str)
++    filled_matrix_b = np.zeros([input_matrix.shape[2],input_matrix.shape[1]*length],dtype=str)
+     filled_matrix_bin,scale = dec2bin(input_matrix[0,:],length)
+     for i,b in enumerate(filled_matrix_bin):
+         filled_matrix_b[:,i::length] =  b.transpose()
+@@ -46,7 +46,7 @@ def write_matrix_activation_conv(input_matrix,fill_dimension,length,filename):
+ 
+ def write_matrix_activation_fc(input_matrix,fill_dimension,length,filename):
+ 
+-    filled_matrix_b = np.zeros([input_matrix.shape[1],length],dtype=np.str)
++    filled_matrix_b = np.zeros([input_matrix.shape[1],length],dtype=str)
+     filled_matrix_bin,scale = dec2bin(input_matrix[0,:],length)
+     for i,b in enumerate(filled_matrix_bin):
+         filled_matrix_b[:,i] =  b
