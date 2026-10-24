@@ -56,7 +56,7 @@ CONST = {
     "resnet50_weights": [25502912, "v6 Section VI-C"],
     "bits_per_weight": [8, "v6"],
     "map_bits_per_weight": [32, "one 16-bit entry per weight in each partition (v6 Section VI-C scaling)"],
-    "e_analytical_pJ": [11.81819, "v6: OpenRAM analytical energy per access (E8.4f log)"],
+    "e_analytical_pJ": [11.81819, "clk0 internal_power entry of the OpenRAM timing library, per clock transition (23.64 pJ per read; scripts/sram_lib_energy.py)"],
     "node_scale": [[130.0, 22.0], "v6 Section VI-C: ideal area scaling 130 nm -> 22 nm"],
 }
 

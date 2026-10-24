@@ -9,16 +9,20 @@
     reports/e8_6/e8_6_summary.json 'e84f') and at most 13.5 ns at ss, 25 C
     (E8.4e-SRAM, reports/e8_rom/e8_4e_sram/e8_4e_sram_summary.json), and are
     taken at the second edge (rtl/e8/sram_pool_25lane_2c.v).
-(b) Energy per access: the compiler's analytical figure used before (11.82 pJ,
-    the timing library of the macro) against post-layout simulation: an
-    address-map ROM lookup read, its read window only (Model A lookup-read
-    energy over its 122,990 lookup reads, e8_6_summary 'D_parts_uJ'), and an
-    SRAM read after cycles without access and in the system's two-cycle read
-    (e8_6_summary 'e84f'); the note gives the SRAM static power with the clock
-    stopped after a read against the analytical leakage (34.375 uW, the same
-    library).
+(b) Energy per access: the energy that a gate-level power analysis takes from
+    the compiler's timing library for an SRAM read (11.81819 pJ for each of the
+    two clock transitions of a read, 23.64 pJ; reports/12e_openram/lib_20260608/,
+    scripts/sram_lib_energy.py, scripts/sram_lib_opensta.tcl) against
+    post-layout simulation: an address-map ROM lookup read, its read window only
+    (Model A lookup-read energy over its 122,990 lookup reads, e8_6_summary
+    'D_parts_uJ'), and an SRAM read after cycles without access and in the
+    system's two-cycle read (e8_6_summary 'e84f'); the note gives the SRAM
+    static power with the clock stopped after a read against the leakage of the
+    same library (34.375 uW). Printed as well: the library figure read as the
+    compiler's analytical model computes it, a power of 11.818 mW at its 100-MHz
+    event frequency, 118.2 pJ per cycle.
 Colors: teal the SRAM (light: read after cycles without access), rust the
-address-map ROM, gray the analytical model and the one-cycle read that is not
+address-map ROM, gray the timing library and the one-cycle read that is not
 used.
 
 Usage: python3 scripts/fig12_sram.py --paper2 . --out figures
@@ -31,7 +35,10 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-ANALYTIC_PJ = 11.82        # clk0 internal_power of the OpenRAM timing library generated 2026-06-08 (scripts/sram_lib_energy.py)
+LIB_ENTRY_PJ = 11.81819   # clk0 internal_power entry of the OpenRAM timing library generated 2026-06-08, per transition
+LIB_READ_PJ = 2 * LIB_ENTRY_PJ   # a read: one rising and one falling transition of the macro clock
+MODEL_MW = 11.818194269111972    # the same number as the analytical model reports it (mW, OpenRAM log)
+MODEL_EVENT_MHZ = 100.0          # the model's default event frequency (sky130 tech.py)
 ANALYTIC_LEAK_UW = 34.375  # same library, leakage
 LOOKUP_READS = 122990      # Model A lookup reads per inference (E8.5)
 G, GL, R, RL, N = "#2a6f7d", "#9cc3cb", "#b5643b", "#e8c3ad", "#888888"
@@ -63,7 +70,13 @@ def main():
     print(f"data valid {t_tt:.3f} ns (tt 25 C), slowest {t_slow:.2f} ns at {slow_c}")
     print(f"ROM lookup read window {lookup_pj:.2f} pJ; SRAM read after idle {min(idle):.2f}-{max(idle):.2f} pJ; "
           f"system read {f['e_read_pJ']:.2f} pJ ({f['e_read_min_pJ']:.2f}-{f['e_read_max_pJ']:.2f}); "
-          f"ratio {f['e_read_pJ'] / ANALYTIC_PJ:.2f}; static {f['p_static_uW']:.3f} uW, 1/{ANALYTIC_LEAK_UW / f['p_static_uW']:.1f}")
+          f"static {f['p_static_uW']:.3f} uW, 1/{ANALYTIC_LEAK_UW / f['p_static_uW']:.1f} of the library's {ANALYTIC_LEAK_UW} uW")
+    model_pj = MODEL_MW / MODEL_EVENT_MHZ * 1e3
+    print(f"timing library, per read: 2 x {LIB_ENTRY_PJ} = {LIB_READ_PJ:.2f} pJ; system read / library {f['e_read_pJ'] / LIB_READ_PJ:.2f}, "
+          f"read after cycles without access / library {sum(idle) / len(idle) / LIB_READ_PJ:.2f}, "
+          f"ROM read window / library {lookup_pj / LIB_READ_PJ:.2f}")
+    print(f"analytical model as it computes the number: {MODEL_MW:.3f} mW at {MODEL_EVENT_MHZ:.0f} MHz = {model_pj:.2f} pJ per cycle; "
+          f"system read / model {f['e_read_pJ'] / model_pj:.2f}, model / system read {model_pj / f['e_read_pJ']:.2f}")
 
     fig = plt.figure(figsize=(6.5, 9.6))
     ax = fig.add_axes([0.24, 0.56, 0.73, 0.38])
@@ -77,8 +90,9 @@ def main():
         xs += [t, t, t + 5, t + 5]
         ys += [5.0, 5.6, 5.6, 5.0]
     ax.plot(xs, ys, color="#555555", lw=1.4)
-    ax.plot([-5, 0, 0, 5, 5, 10, 10, 15, 15, 25], [3.6, 3.6, 4.2, 4.2, 3.6, 3.6, 4.2, 4.2, 3.6, 3.6], color=GR, lw=2.2,
-            ls=(0, (4, 2)))
+    one = ([-5, 0, 0, 5, 5, 10, 10, 15, 15, 25], [3.6, 3.6, 4.2, 4.2, 3.6, 3.6, 4.2, 4.2, 3.6, 3.6])
+    ax.plot(*one, color="white", lw=4.4, zorder=1.5)
+    ax.plot(*one, color=GR, lw=2.2, ls=(0, (4, 2)), zorder=2)
     ax.plot([-5, 0, 0, 5, 5, 25], [2.2, 2.2, 2.8, 2.8, 2.2, 2.2], color=G, lw=2.2)
     ax.text(15, 2.95, "held low", ha="center", va="bottom", fontsize=13, color=G)
     ax.plot([-5, t_tt], [1.1, 1.1], color="#aaaaaa", lw=1.4)
@@ -86,10 +100,11 @@ def main():
     ax.fill_between([t_tt, t_slow], 0.8, 1.4, color="white", ec=G, lw=1.0, hatch="///")
     ax.text(19.5, 1.1, "word", ha="center", va="center", fontsize=13)
     for t in (0, 10, 20):
-        ax.plot([t, t], [0.4, 5.75], color="#999999", lw=1.0, ls=(0, (3, 2)), zorder=0)
+        ax.plot([t, t], [0.55, 5.75], color="#999999", lw=1.0, ls=(0, (3, 2)), zorder=0)
     ax.annotate("", xy=(t_tt, 0.55), xytext=(0, 0.55), arrowprops=dict(arrowstyle="<->", color="#333333", lw=1.1))
     ax.text(t_tt / 2, 0.42, f"{t_tt:.1f} ns at tt, 25 °C", ha="center", va="top", fontsize=13)
-    ax.text(t_slow + 0.3, 1.45, f"≤ {t_slow:.1f} ns\n(ss, 25 °C)", ha="left", va="bottom", fontsize=12.5, color=G)
+    ax.text(25, 1.47, f"≤ {t_slow:.1f} ns at ss, 25 °C", ha="right", va="bottom", fontsize=12.5, color=G,
+            bbox=dict(facecolor="white", edgecolor="none", pad=1.0))
     ax.text(10, 6.05, "one-cycle read:\n4 of 17 correct", ha="center", va="bottom", fontsize=13, color="#555555")
     ax.text(20, 6.05, "two-cycle read:\nall correct", ha="center", va="bottom", fontsize=13, color=G)
     ax.set_xlim(-5, 25)
@@ -102,9 +117,9 @@ def main():
     fig.text(0.01, 0.955, "(a) Read timing at a 10-ns clock", fontsize=15, fontweight="bold")
 
     bx = fig.add_axes([0.40, 0.08, 0.57, 0.33])
-    labels = ["analytical model\n(compiler), per access", "ROM lookup read\n(read window)",
+    labels = ["timing library\n(compiler), per read", "ROM lookup read\n(read window)",
               "SRAM read after\ncycles without access", "SRAM read in the\ntwo-cycle sequence"]
-    vals = [ANALYTIC_PJ, lookup_pj, sum(idle) / len(idle), f["e_read_pJ"]]
+    vals = [LIB_READ_PJ, lookup_pj, sum(idle) / len(idle), f["e_read_pJ"]]
     cols = [N, R, GL, G]
     y = list(range(len(vals)))[::-1]
     bx.barh(y, vals, color=cols, height=0.62)
@@ -112,16 +127,16 @@ def main():
                 color="#333333", capsize=4, lw=1.2)
     for i_, (yy, v) in enumerate(zip(y, vals)):
         xt = (f["e_read_max_pJ"] if i_ == 3 else v) + 2.0
-        bx.text(xt, yy, f"{v:.1f} pJ", va="center", fontsize=13)
+        bx.text(xt, yy, f"{v:.1f} pJ", va="center", fontsize=13, bbox=dict(facecolor="white", edgecolor="none", pad=1.0))
     bx.set_yticks(y)
     bx.set_yticklabels(labels, fontsize=13)
     bx.set_xlim(0, 112)
     bx.set_xlabel("Energy per access (pJ)", fontsize=14)
     bx.grid(True, axis="x", color="#e3e3e3", lw=0.7)
     bx.set_axisbelow(True)
-    fig.text(0.01, 0.455, "(b) Energy per access: analytical and post-layout", fontsize=15, fontweight="bold")
-    bx.text(110, y[0], f"SRAM static power\nafter a read: {f['p_static_uW']:.2f} µW\n(analytical: {ANALYTIC_LEAK_UW:.1f} µW)",
-            ha="right", va="center", fontsize=12.5, color="#333333")
+    fig.text(0.01, 0.455, "(b) Energy per access: timing library and post-layout", fontsize=15, fontweight="bold")
+    bx.text(110, y[0], f"SRAM static power\nafter a read: {f['p_static_uW']:.2f} µW\n(library: {ANALYTIC_LEAK_UW:.1f} µW)",
+            ha="right", va="center", fontsize=12.5, color="#333333", bbox=dict(facecolor="white", edgecolor="none", pad=1.0))
     for ext in ("png", "pdf"):
         fig.savefig(os.path.join(a.out, "fig12_sram." + ext), dpi=300)
     plt.close(fig)

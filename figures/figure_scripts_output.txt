@@ -84,5 +84,7 @@ tt:85  D_ROM A  18.65 (2.56x, at rest 48%)  B  18.61 (2.64x)  SRAM read 1.005x s
 ff:85  D_ROM A  87.02 (11.94x, at rest 82%)  B  86.99 (12.34x)  SRAM read 1.033x static 116.86x  A: 1 macro 14.27, 25 copies 36.00 uJ
 == python3 scripts/fig12_sram.py --paper2 . --out figures
 data valid 10.625 ns (tt 25 C), slowest 13.48 ns at ss:25
-ROM lookup read window 41.91 pJ; SRAM read after idle 69.65-70.24 pJ; system read 86.48 pJ (85.38-90.09); ratio 7.32; static 1.255 uW, 1/27.4
+ROM lookup read window 41.91 pJ; SRAM read after idle 69.65-70.24 pJ; system read 86.48 pJ (85.38-90.09); static 1.255 uW, 1/27.4 of the library's 34.375 uW
+timing library, per read: 2 x 11.81819 = 23.64 pJ; system read / library 3.66, read after cycles without access / library 2.96, ROM read window / library 1.77
+analytical model as it computes the number: 11.818 mW at 100 MHz = 118.18 pJ per cycle; system read / model 0.73, model / system read 1.37
 == python3 scripts/e8_6_figures.py --out figures

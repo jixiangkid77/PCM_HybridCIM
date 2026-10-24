@@ -1,0 +1,13 @@
+tech_name = "sky130"
+nominal_corner_only = True
+route_supplies = "ring"
+check_lvsdrc = False
+uniquify = True
+netlist_only = True
+analytical_delay = True
+trim_netlist = True
+output_name = "{tech_name}_sram_{human_byte_size}_{ports_human}_{word_size}x{num_words}_{write_size}".format(**locals())
+output_path = "<work>/out_nl_orig"
+use_nix = False
+spice_name = "ngspice"
+use_specified_load_slew = [(6.89, 0.005)]

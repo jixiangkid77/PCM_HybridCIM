@@ -1,0 +1,11 @@
+--- a/OpenRAM/compiler/base/wire_spice_model.py	2026-10-07 22:48:06.894285846 +0900
++++ b/OpenRAM/compiler/base/wire_spice_model.py	2026-10-24 06:03:42.785162182 +0900
+@@ -19,7 +19,7 @@
+         from openram.tech import spice
+         # Convert the F/um^2 to fF/um^2 then multiple by width and length
+         # FIXME: shouldn't it be 1e15?
+-        total_c = (spice["wire_unit_c"]*1e12) * wire_length * wire_width
++        total_c = spice["wire_unit_c"] * wire_length * wire_width  # PATCHED: wire_unit_c is already fF/um^2
+         wire_c = total_c / self.lump_num
+         return wire_c
+ 

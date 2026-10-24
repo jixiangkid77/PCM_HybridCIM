@@ -1,14 +1,55 @@
-generated 2026-06-08: reports/12e_openram/lib_20260608/sky130_sram_4kbytes_1rw_8x4096_8_TT_1p8V_25C.lib
-   clk0 internal_power, 4 access conditions (energy unit of the library: pF x V^2 = pJ; OpenRAM's analytical model writes its dynamic power in mW here):
+generated 2026-06-08, netlist only, output load 6.89 fF: reports/12e_openram/lib_20260608/sky130_sram_4kbytes_1rw_8x4096_8_TT_1p8V_25C.lib
+   clk0 internal_power, 4 access conditions (energy unit of the library: pF x V^2 = pJ per transition; OpenRAM's analytical model writes its dynamic power in mW here):
       when !csb0 & !web0  (write): rise_power 1.181819e+01, fall_power 1.181819e+01
-      when csb0 & !web0   (write, port disabled): rise_power 1.181819e+01, fall_power 1.181819e+01
+      when csb0 & !web0   (write, port deselected): rise_power 1.181819e+01, fall_power 1.181819e+01
       when !csb0 & web0   (read): rise_power 1.181819e+01, fall_power 1.181819e+01
-      when csb0 & web0    (read, port disabled): rise_power 1.181819e+01, fall_power 1.181819e+01
+      when csb0 & web0    (read, port deselected): rise_power 1.181819e+01, fall_power 1.181819e+01
    cell_leakage_power 0.034375 mW = 34.375 uW
-written with the macro, 2026-05-13: reports/12e_openram/macros/paper2_sram_pool_8x4096/sky130_sram_4kbytes_1rw_8x4096_8_TT_1p8V_25C.lib
-   clk0 internal_power, 4 access conditions (energy unit of the library: pF x V^2 = pJ; OpenRAM's analytical model writes its dynamic power in mW here):
+   minimum_period of clk0 1.339 ns; dout0 from clk0 (falling_edge): cell_rise 0.362 ns
+written with the layout of the simulated macro, output load 6.89 fF (E8.4c): reports/e8_rom/e8_4c/sky130_sram_4kbytes_1rw_8x4096_8_TT_1p8V_25C.lib
+   clk0 internal_power, 4 access conditions (energy unit of the library: pF x V^2 = pJ per transition; OpenRAM's analytical model writes its dynamic power in mW here):
       when !csb0 & !web0  (write): rise_power 1.649653e+11, fall_power 1.649653e+11
-      when csb0 & !web0   (write, port disabled): rise_power 1.649653e+11, fall_power 1.649653e+11
+      when csb0 & !web0   (write, port deselected): rise_power 1.649653e+11, fall_power 1.649653e+11
       when !csb0 & web0   (read): rise_power 1.649653e+11, fall_power 1.649653e+11
-      when csb0 & web0    (read, port disabled): rise_power 1.649653e+11, fall_power 1.649653e+11
+      when csb0 & web0    (read, port deselected): rise_power 1.649653e+11, fall_power 1.649653e+11
    cell_leakage_power 0.034375 mW = 34.375 uW
+   minimum_period of clk0 1.339 ns; dout0 from clk0 (falling_edge): cell_rise 0.362 ns
+written with the layout of the simulated macro, output load 6.89 fF (E8.4f): reports/e8_rom/e8_4f/sky130_sram_4kbytes_1rw_8x4096_8_TT_1p8V_25C.lib
+   clk0 internal_power, 4 access conditions (energy unit of the library: pF x V^2 = pJ per transition; OpenRAM's analytical model writes its dynamic power in mW here):
+      when !csb0 & !web0  (write): rise_power 1.649653e+11, fall_power 1.649653e+11
+      when csb0 & !web0   (write, port deselected): rise_power 1.649653e+11, fall_power 1.649653e+11
+      when !csb0 & web0   (read): rise_power 1.649653e+11, fall_power 1.649653e+11
+      when csb0 & web0    (read, port deselected): rise_power 1.649653e+11, fall_power 1.649653e+11
+   cell_leakage_power 0.034375 mW = 34.375 uW
+   minimum_period of clk0 1.535 ns; dout0 from clk0 (falling_edge): cell_rise 0.415 ns
+written with the macro and its layout, 2026-05-13, the compiler's default loads: reports/12e_openram/macros/paper2_sram_pool_8x4096/sky130_sram_4kbytes_1rw_8x4096_8_TT_1p8V_25C.lib
+   clk0 internal_power, 4 access conditions (energy unit of the library: pF x V^2 = pJ per transition; OpenRAM's analytical model writes its dynamic power in mW here):
+      when !csb0 & !web0  (write): rise_power 1.649653e+11, fall_power 1.649653e+11
+      when csb0 & !web0   (write, port deselected): rise_power 1.649653e+11, fall_power 1.649653e+11
+      when !csb0 & web0   (read): rise_power 1.649653e+11, fall_power 1.649653e+11
+      when csb0 & web0    (read, port deselected): rise_power 1.649653e+11, fall_power 1.649653e+11
+   cell_leakage_power 0.034375 mW = 34.375 uW
+   minimum_period of clk0 1.769 ns; dout0 from clk0 (falling_edge): cell_rise 0.333 to 0.478 ns
+generated 2026-10-24, netlist only, the compiler's default loads: reports/12e_openram/lib_default_loads/sky130_sram_4kbytes_1rw_8x4096_8_TT_1p8V_25C.lib
+   clk0 internal_power, 4 access conditions (energy unit of the library: pF x V^2 = pJ per transition; OpenRAM's analytical model writes its dynamic power in mW here):
+      when !csb0 & !web0  (write): rise_power 1.472871e+01, fall_power 1.472871e+01
+      when csb0 & !web0   (write, port deselected): rise_power 1.472871e+01, fall_power 1.472871e+01
+      when !csb0 & web0   (read): rise_power 1.472871e+01, fall_power 1.472871e+01
+      when csb0 & web0    (read, port deselected): rise_power 1.472871e+01, fall_power 1.472871e+01
+   cell_leakage_power 0.034375 mW = 34.375 uW
+   minimum_period of clk0 1.769 ns; dout0 from clk0 (falling_edge): cell_rise 0.333 to 0.478 ns
+
+per read, library of 2026-06-08 (read condition, output load 6.89 fF):
+   as a gate-level power analysis takes it: rise 11.8182 + fall 11.8182 = 23.6364 pJ; post-layout read in the system 86.48 pJ = 3.66 x
+   as the analytical model computes it (reports/12e_openram/lib_20260608/netlist_only_regeneration/sky130_sram_4kbytes_1rw_8x4096_8.log: 11.818194269111972 mW) at 100 MHz: 118.18 pJ per cycle; post-layout read = 0.73 x
+   static power after a read 1.2548 uW = 1/27.4 of the library's 34.375 uW
+per read, library with the compiler's default loads (reports/12e_openram/lib_default_loads/sky130_sram_4kbytes_1rw_8x4096_8_TT_1p8V_25C.lib; reports/12e_openram/lib_20260608/netlist_only_regeneration/power_breakdown.txt: loads [1.7225, 6.89, 27.56] fF, the model takes 27.56 fF and gives 14.728706394 mW):
+   as a gate-level power analysis takes it: rise 14.7287 + fall 14.7287 = 29.4574 pJ; post-layout read = 2.94 x
+   as the analytical model computes it at 100 MHz: 147.29 pJ per cycle; model / post-layout read = 1.70 x
+with the layout (reports/e8_rom/e8_4c/gen_sky130_sram_4kbytes_1rw_8x4096_8.log): 164965317866.21823 mW; the wire term scaled by 1e12 is (that - 11.818194) / 1e12 = 0.164965 mW = 1.40% of the netlist-only figure
+
+per inference (617573 cycles of 10.0 ns = 6.17573 ms), priced with the library of 2026-06-08:
+   model A: SRAM 149543 reads x 23.6364 pJ + 34.375 uW x 6.17573 ms = 3.747 uJ; post-layout 12.940 uJ (3.45 x)
+            ROM 125790 reads (122990 lookups + 2800 parking reads) as SRAM reads of the library = 2.973 uJ; post-layout reads alone 5.222 uJ; D_ROM 7.287 uJ (2.45 x)
+   model B: SRAM 88064 reads x 23.6364 pJ + 34.375 uW x 6.17573 ms = 2.294 uJ; post-layout 7.623 uJ (3.32 x)
+            ROM 125790 reads (122990 lookups + 2800 parking reads) as SRAM reads of the library = 2.973 uJ; post-layout reads alone 5.212 uJ; D_ROM 7.052 uJ (2.37 x)
