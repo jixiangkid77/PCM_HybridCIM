@@ -31,6 +31,7 @@ RTL_TOTAL = 617573
 NS_PER_CYCLE = 10.0
 
 CURVE, PICK, MINC, PTS = "#3a3a3a", "#1f7a4a", "#111111", "#3a3a3a"
+WHITE = dict(boxstyle="square,pad=0.12", fc="white", ec="none")   # text over the gridlines
 
 plt.rcParams.update({
     "mathtext.fontset": "custom", "mathtext.rm": "Liberation Sans", "mathtext.it": "Liberation Sans:italic",
@@ -100,10 +101,10 @@ def main():
     ax1.plot(marked_k, [total(k, 8) / m for k in marked_k], "o", color=PTS, ms=7, mfc="white", mew=1.8, zorder=4)
     ax1.plot([25], [total(25, 8) / m], "o", color=PICK, ms=12, zorder=5)
     ax1.plot([kmin], [total(kmin, 8) / m], "D", color=MINC, ms=8, zorder=5)
-    ax1.text(23.4, total(25, 8) / m, "operating point, 25\n617,573 cycles", ha="right", va="center",
-             fontsize=13, color=PICK)
+    ax1.text(23.4, 0.665, "operating point, 25\n617,573 cycles", ha="right", va="center",
+             fontsize=13, color=PICK, bbox=WHITE)
     ax1.annotate(f"model minimum, {kmin}\n{total(kmin, 8):,} cycles", xy=(kmin, total(kmin, 8) / m),
-                 xytext=(33.5, 0.86), fontsize=13, color=MINC,
+                 xytext=(33.5, 0.86), fontsize=13, color=MINC, bbox=WHITE,
                  arrowprops=dict(arrowstyle="->", color=MINC, lw=1.3))
     ax1.set_xlabel("Operations per pass")
     ax1.set_ylabel("Latency (10$^6$ cycles)")
@@ -118,9 +119,9 @@ def main():
     ax2.plot(marked_l, [total(25, L) / m for L in marked_l], "o", color=PTS, ms=7, mfc="white", mew=1.8)
     ax2.plot([8], [total(25, 8) / m], "o", color=PICK, ms=12, zorder=5)
     ax2.annotate("operating point, 8", xy=(8, total(25, 8) / m), xytext=(9.3, 0.57), fontsize=13, color=PICK,
-                 arrowprops=dict(arrowstyle="->", color=PICK, lw=1.3))
+                 bbox=WHITE, arrowprops=dict(arrowstyle="->", color=PICK, lw=1.3))
     ax2.text(2.4, 0.735, f"+{steps(25):,} cycles per cycle\nof read latency", fontsize=13, color="#333333",
-             va="top")
+             va="top", bbox=WHITE)
     ax2.set_xlabel("PCM array read latency (cycles)")
     ax2.set_ylabel("Latency (10$^6$ cycles)")
     ax2.set_xlim(1.5, 16.5)
@@ -131,9 +132,13 @@ def main():
     ax2.set_title("(b) Array read latency, 25 operations per pass", loc="left", fontsize=15, fontweight="bold")
 
     for ax in (ax1, ax2):
-        sec = ax.secondary_yaxis("right", functions=(lambda c: c * NS_PER_CYCLE, lambda t: t / NS_PER_CYCLE))
-        sec.set_ylabel("Time at a 10-ns clock (ms)")
+        ax.secondary_yaxis("right", functions=(lambda c: c * NS_PER_CYCLE, lambda t: t / NS_PER_CYCLE))
     fig.subplots_adjust(left=0.13, right=0.86, top=0.95, bottom=0.07)
+    fig.align_ylabels([ax1, ax2])
+    for ax in (ax1, ax2):   # right-hand labels at one x, although their tick labels differ in width
+        pos = ax.get_position()
+        fig.text(0.95, (pos.y0 + pos.y1) / 2, "Time at a 10-ns clock (ms)", rotation=90, ha="center", va="center",
+                 fontsize=15)
     for ext in ("png", "pdf"):
         fig.savefig(os.path.join(a.out, "fig07_latency." + ext), dpi=300)
     plt.close(fig)

@@ -91,7 +91,8 @@ def fig3(out):
     fig, ax = plt.subplots(figsize=(6.5, 3.6))
     ax.bar(layers, vals, 0.62, color=R_FILL, edgecolor=R_EDGE, lw=2.0)
     for i, v in enumerate(vals):
-        ax.text(i, v + 35, f"{v:,}", ha="center", va="bottom", fontsize=14)
+        ax.text(i, v + 35, f"{v:,}", ha="center", va="bottom", fontsize=14,
+                bbox=dict(boxstyle="square,pad=0.1", fc="white", ec="none"))
     ax.text(-0.3, 1960, "2,482 entries per\ntable in total\n(61,470 for a\nflat table)", ha="left", va="top",
             fontsize=13, bbox=dict(boxstyle="round,pad=0.35", fc="white", ec="#999999"))
     ax.set_ylabel("Entries per table")
@@ -112,7 +113,8 @@ def fig4(out):
     ax.set_xlim(0, 10)
     ax.set_ylim(0, 10)
     ax.axis("off")
-    ax.text(0.05, 9.85, "(a) Address-map unit", fontsize=15, fontweight="bold", va="top")
+    # both panel titles start at the same x (fig.text, figure coordinates)
+    fig.text(0.015, 0.40 + 0.59 * 0.985, "(a) Address-map unit", fontsize=15, fontweight="bold", va="top")
     # datapath side
     box(ax, 1.55, 7.6, 2.8, 1.25, "datapath:\nlayer, lane-0 index,\n25 lane indices", N_EDGE, N_FILL, fs=13)
     box(ax, 5.0, 7.6, 3.2, 1.25, "1 shared entry\ncomputation", R_EDGE, R_FILL, fs=13)
@@ -146,7 +148,7 @@ def fig4(out):
 
     # (b) ROM read timing, T1
     bx = fig.add_axes([0.235, 0.055, 0.74, 0.30])
-    fig.text(0.01, 0.375, "(b) ROM read timing", fontsize=15, fontweight="bold", va="bottom")
+    fig.text(0.015, 0.375, "(b) ROM read timing", fontsize=15, fontweight="bold", va="bottom")
     t0, t1 = -100, 60
     rows = [("system clock", 6.0), ("macro clock", 4.5), ("address", 3.0), ("chip select", 1.5), ("data", 0.0)]
     for name, y in rows:
@@ -168,15 +170,20 @@ def fig4(out):
     bx.text(20, 3.35, "address valid", ha="center", va="center", fontsize=13)
     # chip select: rises 10 ns after the edge
     bx.plot([t0, 10, 10, 50, 50, t1], [1.5, 1.5, 2.2, 2.2, 1.5, 1.5], color=R_EDGE, lw=2.2)
-    bx.annotate("", xy=(0, 2.45), xytext=(10, 2.45), arrowprops=dict(arrowstyle="<->", color="#444444", lw=1.2))
-    bx.text(-1.5, 2.45, "10 ns", ha="right", va="center", fontsize=13)
+    # guide at the rising edge of the macro clock (t = 0); both delays below are measured from it
+    bx.plot([0, 0], [-0.75, 5.2], color="#777777", lw=1.0, ls=(0, (1, 2)), zorder=0.5)
+    bx.annotate("", xy=(0, 1.02), xytext=(10, 1.02), arrowprops=dict(arrowstyle="<->", color="#444444", lw=1.2,
+                                                                    shrinkA=0, shrinkB=0))
+    bx.text(-1.5, 1.02, "10 ns", ha="right", va="center", fontsize=13)
     # data: valid at most 21.4 ns after the edge (slowest read at fs, 25 C, 1.80 V), sampled at 40 ns
     bx.plot([t0, 21.4], [0.35, 0.35], color="#999999", lw=1.4)
     bx.fill_between([21.4, 50], 0.0, 0.7, color=RM_FILL, ec=RM_EDGE, lw=1.6)
     bx.text(30.0, 0.35, "word", ha="center", va="center", fontsize=13)
     bx.plot([40, 40], [-0.35, 7.05], color="#555555", lw=1.2, ls=(0, (3, 2)))
     bx.text(40, 7.15, "sample, 40 ns", ha="center", va="bottom", fontsize=13)
-    bx.text(18.5, -0.45, "≤ 21.4 ns", ha="center", va="top", fontsize=13)
+    bx.annotate("", xy=(0, -0.45), xytext=(21.4, -0.45), arrowprops=dict(arrowstyle="<->", color="#444444", lw=1.2,
+                                                                       shrinkA=0, shrinkB=0))
+    bx.text(-1.5, -0.45, "≤ 21.4 ns", ha="right", va="center", fontsize=13)
     bx.set_xlim(t0, t1)
     bx.set_ylim(-1.4, 8.0)
     bx.set_yticks([])

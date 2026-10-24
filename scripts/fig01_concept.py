@@ -24,6 +24,8 @@ add(f'<rect width="{W}" height="{H}" fill="#FFFFFF"/>')
 add('<defs>')
 for nm,col in [("ink",INK),("ana",P_ANA_D),("dig",G_DIG_D),("amb",AMB_D),("tea",TEA_D),("rus",RUS_D)]:
     add(f'<marker id="ar_{nm}" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="{col}"/></marker>')
+# smaller head for the thick gold arrow, so that it does not cover the last cell of its column
+add(f'<marker id="ar_amb_s" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="4.2" markerHeight="4.2" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="{AMB_D}"/></marker>')
 add('</defs>')
 def box(x,y,w,h,fill,stroke,sw=2.0,rx=6): add(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{rx}" fill="{fill}" stroke="{stroke}" stroke-width="{sw}"/>')
 def line(x1,y1,x2,y2,col=INK,sw=1.8,dash=None,marker=None):
@@ -57,19 +59,19 @@ DIV=562  # vertical divider x
 # ===================== PANEL (a) — LEFT (top region) =====================
 txt(30,58,"(a)",27,INK,anchor="start",weight="bold"); txt(86,58,"Constraint: a fixed PCM crossbar",27,INK,anchor="start",weight="bold")
 gx,gy,gp=95,138,44; xs,ys,bot=crossbar(gx,gy,gp,prot,False)
-txt(gx+2*gp,gy-36,"PCM crossbar",21,INK,style="italic")
-txt(40,gy-12,"activations",21,P_ANA_D,anchor="start"); txt(40,gy+13,f"x{SUB_I}",21,P_ANA_D,anchor="start",style="italic")
+txt(gx+2*gp,gy-46,"PCM crossbar",21,INK,style="italic")
+txt(30,gy-20,"activations",21,P_ANA_D,anchor="start"); txt(30,gy+13,f"x{SUB_I}",21,P_ANA_D,anchor="start",style="italic")
 busy=bot+8; line(xs[0]-8,busy,xs[-1]+13,busy,col=P_ANA_D,sw=3.2)
-abx=xs[3]; aby=ys[1]; line(abx,aby,abx,busy,col=AMB_D,sw=4.4,marker="amb")
-txt(gx+2*gp,busy+28,f"{SIG} column current = {SIG}{SUB_I} G{SUB_I} x{SUB_I}",21,P_ANA_D)
+abx=xs[3]; aby=ys[1]; line(abx,aby+gp*0.28,abx,busy,col=AMB_D,sw=4.4,marker="amb_s")
+txt(gx+2*gp+12,busy+30,f"{SIG} column current = {SIG}{SUB_I} G{SUB_I} x{SUB_I}",20,P_ANA_D,anchor="start")
 adcy=busy+50; acx=gx+2*gp; box(acx-76,adcy,152,52,P_ANA_L,P_ANA_D,2.1); txt(acx,adcy+33,"5-bit ADC",25,P_ANA_D,weight="bold")
 line(acx,busy,acx,adcy,col=P_ANA_D,sw=2.1,marker="ana")
 rax=295
-line(abx+13,aby,rax-9,184,col=AMB_D,sw=1.5,dash="3 3")
-txt(rax,178,"drift-sensitive weights",22,AMB_D,anchor="start",weight="bold")
-txt(rax,206,"(largest |w| in each layer)",21,AMB_D,anchor="start")
-txt(rax,246,"They drift in place; their",19,INK,anchor="start")
-txt(rax,272,f"currents merge into one {SIG}.",19,INK,anchor="start")
+add(f'<polyline points="{rax-8},{gy+gp/2} {abx+25},{gy+gp/2} {abx+7},{aby-7}" fill="none" stroke="{AMB_D}" stroke-width="1.5" stroke-dasharray="3 3"/>')
+txt(rax,gy+gp/2+7,"drift-sensitive weights",22,AMB_D,anchor="start",weight="bold")
+txt(rax,gy+gp/2+35,"(largest |w| in each layer)",21,AMB_D,anchor="start")
+txt(rax,gy+gp/2+75,"They drift in place; their",19,INK,anchor="start")
+txt(rax,gy+gp/2+101,f"currents merge into one {SIG}.",19,INK,anchor="start")
 
 # ===================== PANEL (b) — RIGHT (top region) =====================
 txt(588,58,"(b)",27,INK,anchor="start",weight="bold"); txt(644,58,"Realization without changing the crossbar",27,INK,anchor="start",weight="bold")

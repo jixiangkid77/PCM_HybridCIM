@@ -24,6 +24,7 @@ C_BUF = "#e4d9b8"    # activation buffer and bias table (beige)
 C_DIG = "#a9cdb9"    # digital periphery (green)
 C_MARK = "#1f7a4a"   # as-built marker (dark green)
 C_TEXT = "#333333"
+WHITE = dict(boxstyle="square,pad=0.12", fc="white", ec="none")   # text over the gridlines
 
 plt.rcParams.update({
     "mathtext.fontset": "custom", "mathtext.rm": "Liberation Sans", "mathtext.it": "Liberation Sans:italic",
@@ -72,7 +73,7 @@ def fig7(d, out):
     ax1.axhline(floor, color="#555555", lw=1.4, ls=(0, (4, 3)))
     ax1.plot([built["budget_pct"]], [built["total_single_mm2"]], "o", color=C_MARK, ms=10, zorder=5)
     ax1.annotate("as built, 5%", xy=(built["budget_pct"], built["total_single_mm2"]),
-                 xytext=(9.5, built["total_single_mm2"] + 1.55), color=C_MARK, fontsize=14,
+                 xytext=(9.5, built["total_single_mm2"] + 1.55), color=C_MARK, fontsize=14, bbox=WHITE,
                  arrowprops=dict(arrowstyle="->", color=C_MARK, lw=1.4))
     ax1.text(14, floor + amap * 0.62, "address map %.2f mm$^2$\nROM macros and AMU,\nset by the weight count,\nnot by the budget" % amap,
              color="white", fontsize=14, va="center")
@@ -97,15 +98,18 @@ def fig7(d, out):
     ax2.axhline(fl, color="#999999", lw=1.6, ls=(0, (1, 2)))
     ax2.plot([built["budget_pct"]] * 2, [built["total_single_mm2"], built["total_replicated_mm2"]], "o",
              color=C_MARK, ms=10, zorder=5)
+    # the two as-built points share one budget: a thin connector joins them and one label points at the upper one,
+    # so that no arrow has to cross a curve (the lower point lies between the curves, the upper one above both)
+    ax2.plot([built["budget_pct"]] * 2, [built["total_single_mm2"], built["total_replicated_mm2"]], color=C_MARK,
+             lw=1.2, ls=(0, (1, 1.5)), zorder=4)
     ax2.annotate("", xy=(built["budget_pct"] - 0.3, built["total_replicated_mm2"] + 1.0), xytext=(4.0, 35.0),
                  arrowprops=dict(arrowstyle="->", color=C_MARK, lw=1.4))
-    ax2.annotate("", xy=(built["budget_pct"] + 0.6, built["total_single_mm2"] + 0.8), xytext=(6.2, 35.0),
-                 arrowprops=dict(arrowstyle="->", color=C_MARK, lw=1.4, connectionstyle="arc3,rad=-0.25"))
-    ax2.text(1.0, 36.0, "as built, 5%", color=C_MARK, fontsize=14, ha="left", va="bottom")
+    ax2.text(1.0, 36.0, "as built, 5%", color=C_MARK, fontsize=14, ha="left", va="bottom", bbox=WHITE)
     ax2.annotate("25-read-port\nreplication", xy=(35, tot25[35]), xytext=(17, 52), color=C_MAP, fontsize=14,
-                 arrowprops=dict(arrowstyle="->", color=C_MAP, lw=1.4))
+                 bbox=WHITE, arrowprops=dict(arrowstyle="->", color=C_MAP, lw=1.4))
     ax2.text(49.3, tot1[-1] + 1.6, "single logical copy", color=C_SRAM, fontsize=14, ha="right", va="bottom")
-    ax2.text(49.3, fl - 1.2, "budget-independent floor", color="#808080", fontsize=13.5, ha="right", va="top")
+    ax2.text(49.3, fl - 1.2, "budget-independent floor", color="#808080", fontsize=13.5, ha="right", va="top",
+             bbox=WHITE)
     ax2.set_xlim(0, 50)
     ax2.set_ylim(0, 70)
     ax2.set_ylabel("Total area (mm$^2$)")
@@ -145,13 +149,14 @@ def fig8(d, out):
         lo = e["A_uJ"] + e["B_range_uJ"][0] + e["C_uJ"] + e["D_range_uJ"][0]
         hi = e["A_uJ"] + e["B_range_uJ"][1] + e["C_uJ"] + e["D_range_uJ"][1]
         ax1.errorbar(xs[i], b, yerr=[[b - lo], [hi - b]], color="#333333", capsize=6, lw=1.4)
-        ax1.text(xs[i], hi + 1.4, "%.1f" % b, ha="center", va="bottom", fontsize=14)
+        ax1.text(xs[i], hi + 1.4, "%.1f" % b, ha="center", va="bottom", fontsize=14, bbox=WHITE)
     eA = en["A"]
     ax1.annotate("C: %.2f" % eA["C_uJ"], xy=(0.27, eA["A_uJ"] + eA["B_uJ"] + 0.15),
                  xytext=(0.30, eA["A_uJ"] + eA["B_uJ"] - 10.0), color="#6a4c93", fontsize=14, ha="left",
-                 arrowprops=dict(arrowstyle="->", color="#6a4c93", lw=1.3))
+                 bbox=WHITE, arrowprops=dict(arrowstyle="->", color="#6a4c93", lw=1.3))
     ax1.text(1.45, 52, "B and D exist\nbecause weights\nare protected:\n%.1f%% and %.1f%%\nof the total" % (
-        100 * en["A"]["share_BD_of_AD"], 100 * en["B"]["share_BD_of_AD"]), color=C_MAP, fontsize=14, va="top")
+        100 * en["A"]["share_BD_of_AD"], 100 * en["B"]["share_BD_of_AD"]), color=C_MAP, fontsize=14, va="top",
+        bbox=WHITE)
     ax1.set_xticks(xs)
     ax1.set_xticklabels(["Model A", "Model B"])
     ax1.set_xlim(-0.5, 2.75)
@@ -175,14 +180,14 @@ def fig8(d, out):
             v = e["B_parts_uJ"][k]
             ax2.bar(pos[(m, "B")], v, wb, bottom=b, color=col, edgecolor="white", lw=0.6)
             b += v
-        ax2.text(pos[(m, "B")], b + 0.4, "%.1f" % b, ha="center", va="bottom", fontsize=13.5)
+        ax2.text(pos[(m, "B")], b + 0.4, "%.1f" % b, ha="center", va="bottom", fontsize=13.5, bbox=WHITE)
         b = 0.0
         for k, col in keysD:
             v = e["D_parts_uJ"][k]
             hatch = "//" if k == "AMU logic" else None
             ax2.bar(pos[(m, "D")], v, wb, bottom=b, color=col, edgecolor="white", lw=0.6, hatch=hatch)
             b += v
-        ax2.text(pos[(m, "D")], b + 0.4, "%.1f" % b, ha="center", va="bottom", fontsize=13.5)
+        ax2.text(pos[(m, "D")], b + 0.4, "%.1f" % b, ha="center", va="bottom", fontsize=13.5, bbox=WHITE)
     ax2.set_xticks([pos[("A", "B")], pos[("A", "D")], pos[("B", "B")], pos[("B", "D")]])
     ax2.set_xticklabels(["B", "D", "B", "D"])
     ax2.text(0.31, -3.4, "Model A", ha="center", va="top", fontsize=14, color="#555555")

@@ -31,6 +31,7 @@ VM_TT = 0.876          # switching level of the bit-line inverter, tt 25 C 1.80 
 RULE = 0.10
 COL = {32: "#d4895a", 48: "#b5643b", 64: "#6e3416", 192: "#222222"}
 MK = {64: "^", 48: "o", 32: "s", 192: "D"}
+WHITE = dict(boxstyle="square,pad=0.12", fc="white", ec="none")   # text over the gridlines
 
 plt.rcParams.update({
     "mathtext.fontset": "custom", "mathtext.rm": "Liberation Sans", "mathtext.it": "Liberation Sans:italic",
@@ -115,8 +116,8 @@ def main():
     ax1.set_ylim(0.2, 1.85)
     ax1.set_ylabel("Lowest bit line of a one cell (V)")
     fig.text(0.54, 0.035, "Footer turn-on after the selected cells turn off (ns)", ha="center", fontsize=15)
-    ax2.text(8.93, VM_TT - 0.012, "switching level", color="#c0392b", fontsize=13, va="top")
-    ax2.text(8.93, VM_TT + RULE / 2, "0.10-V rule", color="#c0392b", fontsize=13, va="center")
+    ax2.text(8.93, VM_TT - 0.012, "switching level", color="#c0392b", fontsize=13, va="top", bbox=WHITE)
+    ax2.text(8.93, VM_TT + RULE / 2, "0.10-V rule", color="#c0392b", fontsize=13, va="center", bbox=WHITE)
     handles = [Line2D([], [], ls="", marker=MK[r], mfc="white", mec=COL[r], mew=1.3, ms=8, label=f"{r} rows")
                for r in (32, 48, 64, 192)]
     handles.append(Line2D([], [], ls="", marker="o", mfc="white", mec="#777777", mew=1.3, ms=8, label="read correct"))

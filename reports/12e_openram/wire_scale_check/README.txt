@@ -22,4 +22,7 @@ reports/12e_openram/lib_20260608/ with netlist_only = False) gives 164965317866.
 (scripts/sram_lib_energy.py prints it). The 4-KB macro generated with its layout gets 1.649653e+11 in its
 library (reports/12e_openram/macros/paper2_sram_pool_8x4096/, reports/e8_rom/e8_4c/, reports/e8_rom/e8_4f/),
 against 11.81819 without the layout (reports/12e_openram/lib_20260608/).
+issue294/ applies the same check to the configuration reported in OpenRAM issue #294 (28 bits x 64 words, with the
+layout): as released the compiler writes exactly the 1.034875e+10 reported in the issue, and 2.399288e+00 (2.40 mW)
+without the factor.
 Paths of the work folder and of the two OpenRAM copies are written as <work>, <openram> and <openram-patched>.

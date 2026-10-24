@@ -6,8 +6,12 @@ reports/accuracy/lenet_imc_full_pre.json (key '<arm>|5b|<t>', arm 'algo_only'
 for no protection), ResNet-50 / ImageNet from reports/accuracy/
 final_imc_results.json (rows with readout 'adc_pre'); mean and population
 standard deviation over seeds. Only the canvas, the fonts, the file names, the
-lower limit of (a) (set from the data so that no error bar is cut) and the
-lower-case legend entries differ from figure5.py.
+lower limit of (a) (set from the data so that no error bar is cut), the
+lower-case legend entries and the horizontal offsets differ from figure5.py: the
+three schemes are drawn at t / 1.58, t and 1.58 t (DODGE decades apart on the
+logarithmic axis) so that error bars and markers at the same drift time do not
+cover each other (the time axis is widened to keep them inside); the values belong
+to the drift time t on the axis.
 
 Usage: python3 scripts/fig06_accuracy.py --paper2 . --out figures
 """
@@ -21,6 +25,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 C_NONE, C_UNI, C_LA = "#7f7f7f", "#2a6fb0", "#c0392b"
+DODGE = 0.20   # horizontal offset between the schemes, in decades of t (factor 10**0.2 = 1.58)
 ARMS = [("none", "no protection", C_NONE, "s", "-"),
         ("uniform", "uniform", C_UNI, "o", "--"),
         ("layer_aware", "layer-aware", C_LA, "^", "-")]
@@ -73,15 +78,16 @@ def main():
     fig, (axA, axB) = plt.subplots(2, 1, figsize=(6.5, 8.9), gridspec_kw={"hspace": 0.38})
     for ax, xs, fn, clean in ((axA, lt, lenet, lclean), (axB, rt, resnet, rclean)):
         ax.axhline(clean, color="0.45", lw=1.2, ls=":", zorder=1, label="INT8 software reference")
-        for arm, lab, col, mk, lsty in ARMS:
+        for k, (arm, lab, col, mk, lsty) in enumerate(ARMS):
             m, s = fn(arm)
-            ax.errorbar(xs, m, yerr=s, color=col, marker=mk, ls=lsty, lw=2.0, ms=7, mfc=col, mec=col,
+            xd = [x * 10 ** (DODGE * (k - 1)) for x in xs]
+            ax.errorbar(xd, m, yerr=s, color=col, marker=mk, ls=lsty, lw=2.0, ms=7, mfc=col, mec=col,
                         capsize=3, elinewidth=1.1, label=lab, zorder=3)
         ax.set_xscale("log")
         ax.set_ylabel("Top-1 accuracy (%)")
         ax.grid(True, which="major", color="0.85", lw=0.8, ls=":", zorder=0)
         ax.set_xticks([1, 1e2, 1e4, 1e6])
-        ax.set_xlim(0.55, 1.8e6)
+        ax.set_xlim(0.40, 2.5e6)   # 0.2 decade beyond the outermost offset points
         ax.set_xlabel("Drift time $t$ (s)")
     axA.set_title("(a) LeNet-5 / MNIST", loc="left", fontsize=15, fontweight="bold")
     axB.set_title("(b) ResNet-50 / ImageNet", loc="left", fontsize=15, fontweight="bold")

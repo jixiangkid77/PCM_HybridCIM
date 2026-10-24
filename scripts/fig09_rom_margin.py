@@ -35,6 +35,7 @@ CONDS = ["tt:25:1.80", "fs:25:1.80", "tt:25:1.60", "fs:-40:1.60"]
 CLAB = {"tt:25:1.80": "tt\n25 °C\n1.80 V", "fs:25:1.80": "fs\n25 °C\n1.80 V",
         "tt:25:1.60": "tt\n25 °C\n1.60 V", "fs:-40:1.60": "fs\n−40 °C\n1.60 V"}
 C_SIM, C_LB, C_MC, C_RED = "#6e3416", "#dc9a6c", "#777777", "#c0392b"
+WHITE = dict(boxstyle="square,pad=0.12", fc="white", ec="none")   # text over the gridlines
 
 plt.rcParams.update({
     "mathtext.fontset": "custom", "mathtext.rm": "Liberation Sans", "mathtext.it": "Liberation Sans:italic",
@@ -116,9 +117,10 @@ def main():
     ax1.axhline(t_cov, color="#444444", lw=1.3, ls="-.")
     ax1.axhline(v_rule, color=C_RED, lw=1.2, ls=":")
     ax1.axhline(vm["tt:25:1.80"], color=C_RED, lw=1.4, ls="--")
-    ax1.text(395, t_cov - 0.012, "coverage level", ha="right", va="top", fontsize=13, color="#444444")
-    ax1.text(395, v_rule + 0.012, "0.10-V margin rule", ha="right", va="bottom", fontsize=13, color=C_RED)
-    ax1.text(395, vm["tt:25:1.80"] + 0.012, "switching level", ha="right", va="bottom", fontsize=13, color=C_RED)
+    ax1.text(395, t_cov - 0.012, "coverage level", ha="right", va="top", fontsize=13, color="#444444", bbox=WHITE)
+    ax1.text(395, v_rule + 0.012, "0.10-V margin rule", ha="right", va="bottom", fontsize=13, color=C_RED, bbox=WHITE)
+    ax1.text(395, vm["tt:25:1.80"] + 0.012, "switching level", ha="right", va="bottom", fontsize=13, color=C_RED,
+             bbox=WHITE)
     ax1.set_xlim(-5, 405)
     ax1.set_ylim(0.82, max(v for v, _, _ in allv) + 0.04)
     ax1.set_xlabel("Macro, in order of its value")
@@ -127,7 +129,8 @@ def main():
     h, l = ax1.get_legend_handles_labels()
     h.append(Line2D([], [], ls="", marker="o", mfc="white", mec=C_LB, mew=1.2, ms=6))
     l.append("lower bound of the 13 re-simulated macros")
-    ax1.legend(h, l, loc="upper left", fontsize=13, frameon=False, handletextpad=0.3)
+    ax1.legend(h, l, loc="upper left", fontsize=13, frameon=True, framealpha=1.0, facecolor="white", edgecolor="none",
+               handletextpad=0.3)
     ax1.grid(True, color="#e6e6e6", lw=0.7)
     ax1.set_axisbelow(True)
     # (b)
@@ -139,11 +142,12 @@ def main():
         for s_i, (short, smp) in enumerate(mcv[c]):
             x0 = i + 0.22 + 0.12 * s_i
             ax2.scatter([x0] * len(smp), smp, s=9, color=C_MC, alpha=0.75, zorder=3)
-        ax2.text(i - 0.15, min(vals) - 0.012, f"{min(vals):.3f}", ha="center", va="top", fontsize=13, color=C_SIM)
+        ax2.text(i - 0.15, min(vals) - 0.012, f"{min(vals):.3f}", ha="center", va="top", fontsize=13, color=C_SIM,
+                 bbox=WHITE)
     ax2.axhline(0.10, color=C_RED, lw=1.2, ls=":")
     ax2.axhline(0.0, color=C_RED, lw=1.4, ls="--")
-    ax2.text(-0.5, 0.10 + 0.008, "0.10-V rule", ha="left", va="bottom", fontsize=13, color=C_RED)
-    ax2.text(-0.5, 0.008, "read error", ha="left", va="bottom", fontsize=13, color=C_RED)
+    ax2.text(-0.5, 0.10 + 0.008, "0.10-V rule", ha="left", va="bottom", fontsize=13, color=C_RED, bbox=WHITE)
+    ax2.text(-0.5, 0.008, "read error", ha="left", va="bottom", fontsize=13, color=C_RED, bbox=WHITE)
     ax2.set_xticks(range(4))
     ax2.set_xticklabels([CLAB[c] for c in CONDS], fontsize=13)
     ax2.set_xlim(-0.55, 3.6)
@@ -152,7 +156,8 @@ def main():
     ax2.set_title("(b) Margin at the four verification conditions", loc="left", fontsize=15, fontweight="bold")
     ax2.legend(handles=[Line2D([], [], ls="", marker="o", color=C_SIM, ms=5, label="simulated macros (97 at tt 1.80 V, 41 elsewhere)"),
                         Line2D([], [], ls="", marker="o", color=C_MC, ms=5, label="Monte Carlo, worst cell, 2 sites × 30")],
-               loc="upper right", fontsize=13, frameon=False, handletextpad=0.3)
+               loc="upper right", fontsize=13, frameon=True, framealpha=1.0, facecolor="white", edgecolor="none",
+               handletextpad=0.3)
     ax2.grid(True, axis="y", color="#e6e6e6", lw=0.7)
     ax2.set_axisbelow(True)
     fig.subplots_adjust(left=0.14, right=0.97, top=0.96, bottom=0.1)

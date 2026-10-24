@@ -99,8 +99,8 @@ def main():
     ax.fill_between([t_tt, 25], 0.8, 1.4, color=GL, ec=G, lw=1.4)
     ax.fill_between([t_tt, t_slow], 0.8, 1.4, color="white", ec=G, lw=1.0, hatch="///")
     ax.text(19.5, 1.1, "word", ha="center", va="center", fontsize=13)
-    for t in (0, 10, 20):
-        ax.plot([t, t], [0.55, 5.75], color="#999999", lw=1.0, ls=(0, (3, 2)), zorder=0)
+    for t in (0, 10, 20):   # the guides at 10 and 20 ns stop above the 10.6-ns arrow, which starts at the 0-ns guide
+        ax.plot([t, t], [0.55 if t == 0 else 0.75, 5.75], color="#999999", lw=1.0, ls=(0, (3, 2)), zorder=0)
     ax.annotate("", xy=(t_tt, 0.55), xytext=(0, 0.55), arrowprops=dict(arrowstyle="<->", color="#333333", lw=1.1))
     ax.text(t_tt / 2, 0.42, f"{t_tt:.1f} ns at tt, 25 °C", ha="center", va="top", fontsize=13)
     ax.text(25, 1.47, f"≤ {t_slow:.1f} ns at ss, 25 °C", ha="right", va="bottom", fontsize=12.5, color=G,
@@ -127,7 +127,7 @@ def main():
                 color="#333333", capsize=4, lw=1.2)
     for i_, (yy, v) in enumerate(zip(y, vals)):
         xt = (f["e_read_max_pJ"] if i_ == 3 else v) + 2.0
-        bx.text(xt, yy, f"{v:.1f} pJ", va="center", fontsize=13, bbox=dict(facecolor="white", edgecolor="none", pad=1.0))
+        bx.text(xt, yy, f"{v:.1f} pJ", va="center", fontsize=13, bbox=dict(facecolor="white", edgecolor="none", pad=3.0))
     bx.set_yticks(y)
     bx.set_yticklabels(labels, fontsize=13)
     bx.set_xlim(0, 112)
@@ -136,7 +136,7 @@ def main():
     bx.set_axisbelow(True)
     fig.text(0.01, 0.455, "(b) Energy per access: timing library and post-layout", fontsize=15, fontweight="bold")
     bx.text(110, y[0], f"SRAM static power\nafter a read: {f['p_static_uW']:.2f} µW\n(library: {ANALYTIC_LEAK_UW:.1f} µW)",
-            ha="right", va="center", fontsize=12.5, color="#333333", bbox=dict(facecolor="white", edgecolor="none", pad=1.0))
+            ha="right", va="center", fontsize=12.5, color="#333333", bbox=dict(facecolor="white", edgecolor="none", pad=4.0))
     for ext in ("png", "pdf"):
         fig.savefig(os.path.join(a.out, "fig12_sram." + ext), dpi=300)
     plt.close(fig)

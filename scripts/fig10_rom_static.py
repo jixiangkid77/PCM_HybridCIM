@@ -85,10 +85,11 @@ def main():
     ax1.set_ylabel("Supply power (µW)")
     ax1.set_title("(a) All runs at tt, 25 °C, 1.80 V", loc="left", fontsize=15, fontweight="bold")
     ax1.legend(handles=[Line2D([], [], color=C_LOOK, lw=1.6, marker="o", ms=3,
-                               label=f"lookup word with 3 to 7 zero bits, no parking read ({len(look_tt)})"),
+                               label=f"lookup word with 3 to 7 zero bits,\nno parking read ({len(look_tt)})"),
                         Line2D([], [], color=C_PARK, lw=1.6, marker="o", ms=3, ls="--",
                                label=f"after a parking read of the all-ones word ({len(park_tt)})")],
-               loc="center left", bbox_to_anchor=(0.0, 0.40), frameon=False, handletextpad=0.4)
+               loc="center left", bbox_to_anchor=(0.0, 0.40), frameon=True, framealpha=1.0, facecolor="white",
+               edgecolor="none", handletextpad=0.4)
     ax1.grid(True, which="major", color="#e3e3e3", lw=0.7)
     ax1.set_axisbelow(True)
 
