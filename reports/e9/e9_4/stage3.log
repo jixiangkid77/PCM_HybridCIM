@@ -1,0 +1,580 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.68+36 (git sha1 17d51a330-dirty, Release, Clang /usr/bin/clang++ 21.1.8)
+
+-- Executing script file `/home/kid/p2r_e9/e9_4/syn/stage3.ys' --
+
+1. Executing Liberty frontend: /home/kid/sky130/orfs/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+Imported 428 cell types from liberty file.
+
+2. Executing Verilog-2005 frontend: /mnt/d/Project/hybrid_memory/paper2/rtl/e9/e9_rom_stub.v
+Parsing SystemVerilog input from `/mnt/d/Project/hybrid_memory/paper2/rtl/e9/e9_rom_stub.v' to AST representation.
+Generating RTLIL representation for module `\e9_rom'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: /home/kid/p2r_e9/e9_4/syn/n0.v
+Parsing Verilog input from `/home/kid/p2r_e9/e9_4/syn/n0.v' to AST representation.
+Generating RTLIL representation for module `\$paramod$42debd75856640bd46da4625828d706a290a2a80\amu9_core'.
+Generating RTLIL representation for module `\$paramod$84af00326713e05ecf0823ca21c8fe5234d5f3b4\amu_lanes'.
+Generating RTLIL representation for module `\$paramod$aceb4888672550812e0609dbc6a83ef25be17e74\amu9_decode'.
+Generating RTLIL representation for module `\amu9_top'.
+Generating RTLIL representation for module `\amu_entry'.
+Successfully finished Verilog frontend.
+
+4. Executing HIERARCHY pass (managing design hierarchy).
+
+4.1. Analyzing design hierarchy..
+Top module:  \amu9_top
+Used module:     \$paramod$84af00326713e05ecf0823ca21c8fe5234d5f3b4\amu_lanes
+Used module:     \amu_entry
+Used module:     \$paramod$aceb4888672550812e0609dbc6a83ef25be17e74\amu9_decode
+Used module:     \$paramod$42debd75856640bd46da4625828d706a290a2a80\amu9_core
+
+4.2. Analyzing design hierarchy..
+Top module:  \amu9_top
+Used module:     \$paramod$84af00326713e05ecf0823ca21c8fe5234d5f3b4\amu_lanes
+Used module:     \amu_entry
+Used module:     \$paramod$aceb4888672550812e0609dbc6a83ef25be17e74\amu9_decode
+Used module:     \$paramod$42debd75856640bd46da4625828d706a290a2a80\amu9_core
+Removed 0 unused modules.
+
+5. Executing FLATTEN pass (flatten design).
+Deleting now unused module amu_entry.
+Deleting now unused module \$paramod$aceb4888672550812e0609dbc6a83ef25be17e74\amu9_decode.
+Deleting now unused module \$paramod$84af00326713e05ecf0823ca21c8fe5234d5f3b4\amu_lanes.
+Deleting now unused module \$paramod$42debd75856640bd46da4625828d706a290a2a80\amu9_core.
+<suppressed ~4 debug messages>
+
+6. Executing EXPOSE pass (exposing internal signals as outputs).
+New module port: amu9_top/mac[6].U_ROM.dout0 (e9_rom)
+New module port: amu9_top/mac[6].U_ROM.addr0 (e9_rom)
+New module port: amu9_top/mac[6].U_ROM.cs0 (e9_rom)
+New module port: amu9_top/mac[6].U_ROM.clk0 (e9_rom)
+New module port: amu9_top/mac[5].U_ROM.dout0 (e9_rom)
+New module port: amu9_top/mac[5].U_ROM.addr0 (e9_rom)
+New module port: amu9_top/mac[5].U_ROM.cs0 (e9_rom)
+New module port: amu9_top/mac[5].U_ROM.clk0 (e9_rom)
+New module port: amu9_top/mac[4].U_ROM.dout0 (e9_rom)
+New module port: amu9_top/mac[4].U_ROM.addr0 (e9_rom)
+New module port: amu9_top/mac[4].U_ROM.cs0 (e9_rom)
+New module port: amu9_top/mac[4].U_ROM.clk0 (e9_rom)
+New module port: amu9_top/mac[3].U_ROM.dout0 (e9_rom)
+New module port: amu9_top/mac[3].U_ROM.addr0 (e9_rom)
+New module port: amu9_top/mac[3].U_ROM.cs0 (e9_rom)
+New module port: amu9_top/mac[3].U_ROM.clk0 (e9_rom)
+New module port: amu9_top/mac[2].U_ROM.dout0 (e9_rom)
+New module port: amu9_top/mac[2].U_ROM.addr0 (e9_rom)
+New module port: amu9_top/mac[2].U_ROM.cs0 (e9_rom)
+New module port: amu9_top/mac[2].U_ROM.clk0 (e9_rom)
+New module port: amu9_top/mac[1].U_ROM.dout0 (e9_rom)
+New module port: amu9_top/mac[1].U_ROM.addr0 (e9_rom)
+New module port: amu9_top/mac[1].U_ROM.cs0 (e9_rom)
+New module port: amu9_top/mac[1].U_ROM.clk0 (e9_rom)
+New module port: amu9_top/mac[0].U_ROM.dout0 (e9_rom)
+New module port: amu9_top/mac[0].U_ROM.addr0 (e9_rom)
+New module port: amu9_top/mac[0].U_ROM.cs0 (e9_rom)
+New module port: amu9_top/mac[0].U_ROM.clk0 (e9_rom)
+Removing cell: amu9_top/mac[6].U_ROM (e9_rom)
+Removing cell: amu9_top/mac[5].U_ROM (e9_rom)
+Removing cell: amu9_top/mac[4].U_ROM (e9_rom)
+Removing cell: amu9_top/mac[3].U_ROM (e9_rom)
+Removing cell: amu9_top/mac[2].U_ROM (e9_rom)
+Removing cell: amu9_top/mac[1].U_ROM (e9_rom)
+Removing cell: amu9_top/mac[0].U_ROM (e9_rom)
+Renaming wire mac[0].U_ROM.clk0 to bb0000_clk0 in module amu9_top.
+Renaming wire mac[0].U_ROM.cs0 to bb0000_cs0 in module amu9_top.
+Renaming wire mac[0].U_ROM.addr0 to bb0000_addr0 in module amu9_top.
+Renaming wire mac[0].U_ROM.dout0 to bb0000_dout0 in module amu9_top.
+Renaming wire mac[1].U_ROM.clk0 to bb0001_clk0 in module amu9_top.
+Renaming wire mac[1].U_ROM.cs0 to bb0001_cs0 in module amu9_top.
+Renaming wire mac[1].U_ROM.addr0 to bb0001_addr0 in module amu9_top.
+Renaming wire mac[1].U_ROM.dout0 to bb0001_dout0 in module amu9_top.
+Renaming wire mac[2].U_ROM.clk0 to bb0002_clk0 in module amu9_top.
+Renaming wire mac[2].U_ROM.cs0 to bb0002_cs0 in module amu9_top.
+Renaming wire mac[2].U_ROM.addr0 to bb0002_addr0 in module amu9_top.
+Renaming wire mac[2].U_ROM.dout0 to bb0002_dout0 in module amu9_top.
+Renaming wire mac[3].U_ROM.clk0 to bb0003_clk0 in module amu9_top.
+Renaming wire mac[3].U_ROM.cs0 to bb0003_cs0 in module amu9_top.
+Renaming wire mac[3].U_ROM.addr0 to bb0003_addr0 in module amu9_top.
+Renaming wire mac[3].U_ROM.dout0 to bb0003_dout0 in module amu9_top.
+Renaming wire mac[4].U_ROM.clk0 to bb0004_clk0 in module amu9_top.
+Renaming wire mac[4].U_ROM.cs0 to bb0004_cs0 in module amu9_top.
+Renaming wire mac[4].U_ROM.addr0 to bb0004_addr0 in module amu9_top.
+Renaming wire mac[4].U_ROM.dout0 to bb0004_dout0 in module amu9_top.
+Renaming wire mac[5].U_ROM.clk0 to bb0005_clk0 in module amu9_top.
+Renaming wire mac[5].U_ROM.cs0 to bb0005_cs0 in module amu9_top.
+Renaming wire mac[5].U_ROM.addr0 to bb0005_addr0 in module amu9_top.
+Renaming wire mac[5].U_ROM.dout0 to bb0005_dout0 in module amu9_top.
+Renaming wire mac[6].U_ROM.clk0 to bb0006_clk0 in module amu9_top.
+Renaming wire mac[6].U_ROM.cs0 to bb0006_cs0 in module amu9_top.
+Renaming wire mac[6].U_ROM.addr0 to bb0006_addr0 in module amu9_top.
+Renaming wire mac[6].U_ROM.dout0 to bb0006_dout0 in module amu9_top.
+
+7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \amu9_top..
+Removed 25 unused cells and 201 unused wires.
+<suppressed ~226 debug messages>
+
+8. Executing HILOMAP pass (mapping to constant drivers).
+
+9. Executing SPLITNETS pass (splitting up multi-bit signals).
+
+10. Executing INSBUF pass (insert buffer cells for connected wires).
+Add amu9_top/$auto$insbuf.cc:97:execute$9: $auto$hilomap.cc:47:hilomap_worker$5 -> \U_ENTRY.in_dim[0]
+Add amu9_top/$auto$insbuf.cc:97:execute$10: $auto$hilomap.cc:47:hilomap_worker$5 -> \U_ENTRY.in_dim[1]
+Add amu9_top/$auto$insbuf.cc:97:execute$11: \U_ENTRY.is_fc -> \U_ENTRY.in_dim[4]
+Add amu9_top/$auto$insbuf.cc:97:execute$12: \U_ENTRY.in_dim[3] -> \U_ENTRY.in_dim[5]
+Add amu9_top/$auto$insbuf.cc:97:execute$13: \U_ENTRY.in_dim[7] -> \U_ENTRY.in_dim[8]
+Add amu9_top/$auto$insbuf.cc:97:execute$14: $auto$hilomap.cc:47:hilomap_worker$5 -> \U_CORE.mismatch[0]
+Add amu9_top/$auto$insbuf.cc:97:execute$15: \U_CORE.v0 -> \U_LANES.valid[0]
+Add amu9_top/$auto$insbuf.cc:97:execute$16: \bb0000_addr0 [0] -> \bb0006_addr0 [0]
+Add amu9_top/$auto$insbuf.cc:97:execute$17: \bb0000_addr0 [1] -> \bb0006_addr0 [1]
+Add amu9_top/$auto$insbuf.cc:97:execute$18: \bb0000_addr0 [2] -> \bb0006_addr0 [2]
+Add amu9_top/$auto$insbuf.cc:97:execute$19: \bb0000_addr0 [3] -> \bb0006_addr0 [3]
+Add amu9_top/$auto$insbuf.cc:97:execute$20: \bb0000_addr0 [4] -> \bb0006_addr0 [4]
+Add amu9_top/$auto$insbuf.cc:97:execute$21: \bb0000_addr0 [5] -> \bb0006_addr0 [5]
+Add amu9_top/$auto$insbuf.cc:97:execute$22: \bb0000_addr0 [6] -> \bb0006_addr0 [6]
+Add amu9_top/$auto$insbuf.cc:97:execute$23: \bb0000_addr0 [7] -> \bb0006_addr0 [7]
+Add amu9_top/$auto$insbuf.cc:97:execute$24: \bb0000_addr0 [8] -> \bb0006_addr0 [8]
+Add amu9_top/$auto$insbuf.cc:97:execute$25: \bb0000_addr0 [0] -> \bb0005_addr0 [0]
+Add amu9_top/$auto$insbuf.cc:97:execute$26: \bb0000_addr0 [1] -> \bb0005_addr0 [1]
+Add amu9_top/$auto$insbuf.cc:97:execute$27: \bb0000_addr0 [2] -> \bb0005_addr0 [2]
+Add amu9_top/$auto$insbuf.cc:97:execute$28: \bb0000_addr0 [3] -> \bb0005_addr0 [3]
+Add amu9_top/$auto$insbuf.cc:97:execute$29: \bb0000_addr0 [4] -> \bb0005_addr0 [4]
+Add amu9_top/$auto$insbuf.cc:97:execute$30: \bb0000_addr0 [5] -> \bb0005_addr0 [5]
+Add amu9_top/$auto$insbuf.cc:97:execute$31: \bb0000_addr0 [6] -> \bb0005_addr0 [6]
+Add amu9_top/$auto$insbuf.cc:97:execute$32: \bb0000_addr0 [7] -> \bb0005_addr0 [7]
+Add amu9_top/$auto$insbuf.cc:97:execute$33: \bb0000_addr0 [8] -> \bb0005_addr0 [8]
+Add amu9_top/$auto$insbuf.cc:97:execute$34: \bb0000_addr0 [0] -> \bb0004_addr0 [0]
+Add amu9_top/$auto$insbuf.cc:97:execute$35: \bb0000_addr0 [1] -> \bb0004_addr0 [1]
+Add amu9_top/$auto$insbuf.cc:97:execute$36: \bb0000_addr0 [2] -> \bb0004_addr0 [2]
+Add amu9_top/$auto$insbuf.cc:97:execute$37: \bb0000_addr0 [3] -> \bb0004_addr0 [3]
+Add amu9_top/$auto$insbuf.cc:97:execute$38: \bb0000_addr0 [4] -> \bb0004_addr0 [4]
+Add amu9_top/$auto$insbuf.cc:97:execute$39: \bb0000_addr0 [5] -> \bb0004_addr0 [5]
+Add amu9_top/$auto$insbuf.cc:97:execute$40: \bb0000_addr0 [6] -> \bb0004_addr0 [6]
+Add amu9_top/$auto$insbuf.cc:97:execute$41: \bb0000_addr0 [7] -> \bb0004_addr0 [7]
+Add amu9_top/$auto$insbuf.cc:97:execute$42: \bb0000_addr0 [8] -> \bb0004_addr0 [8]
+Add amu9_top/$auto$insbuf.cc:97:execute$43: \bb0000_addr0 [0] -> \bb0003_addr0 [0]
+Add amu9_top/$auto$insbuf.cc:97:execute$44: \bb0000_addr0 [1] -> \bb0003_addr0 [1]
+Add amu9_top/$auto$insbuf.cc:97:execute$45: \bb0000_addr0 [2] -> \bb0003_addr0 [2]
+Add amu9_top/$auto$insbuf.cc:97:execute$46: \bb0000_addr0 [3] -> \bb0003_addr0 [3]
+Add amu9_top/$auto$insbuf.cc:97:execute$47: \bb0000_addr0 [4] -> \bb0003_addr0 [4]
+Add amu9_top/$auto$insbuf.cc:97:execute$48: \bb0000_addr0 [5] -> \bb0003_addr0 [5]
+Add amu9_top/$auto$insbuf.cc:97:execute$49: \bb0000_addr0 [6] -> \bb0003_addr0 [6]
+Add amu9_top/$auto$insbuf.cc:97:execute$50: \bb0000_addr0 [7] -> \bb0003_addr0 [7]
+Add amu9_top/$auto$insbuf.cc:97:execute$51: \bb0000_addr0 [8] -> \bb0003_addr0 [8]
+Add amu9_top/$auto$insbuf.cc:97:execute$52: \bb0000_addr0 [0] -> \bb0002_addr0 [0]
+Add amu9_top/$auto$insbuf.cc:97:execute$53: \bb0000_addr0 [1] -> \bb0002_addr0 [1]
+Add amu9_top/$auto$insbuf.cc:97:execute$54: \bb0000_addr0 [2] -> \bb0002_addr0 [2]
+Add amu9_top/$auto$insbuf.cc:97:execute$55: \bb0000_addr0 [3] -> \bb0002_addr0 [3]
+Add amu9_top/$auto$insbuf.cc:97:execute$56: \bb0000_addr0 [4] -> \bb0002_addr0 [4]
+Add amu9_top/$auto$insbuf.cc:97:execute$57: \bb0000_addr0 [5] -> \bb0002_addr0 [5]
+Add amu9_top/$auto$insbuf.cc:97:execute$58: \bb0000_addr0 [6] -> \bb0002_addr0 [6]
+Add amu9_top/$auto$insbuf.cc:97:execute$59: \bb0000_addr0 [7] -> \bb0002_addr0 [7]
+Add amu9_top/$auto$insbuf.cc:97:execute$60: \bb0000_addr0 [8] -> \bb0002_addr0 [8]
+Add amu9_top/$auto$insbuf.cc:97:execute$61: \bb0000_addr0 [0] -> \bb0001_addr0 [0]
+Add amu9_top/$auto$insbuf.cc:97:execute$62: \bb0000_addr0 [1] -> \bb0001_addr0 [1]
+Add amu9_top/$auto$insbuf.cc:97:execute$63: \bb0000_addr0 [2] -> \bb0001_addr0 [2]
+Add amu9_top/$auto$insbuf.cc:97:execute$64: \bb0000_addr0 [3] -> \bb0001_addr0 [3]
+Add amu9_top/$auto$insbuf.cc:97:execute$65: \bb0000_addr0 [4] -> \bb0001_addr0 [4]
+Add amu9_top/$auto$insbuf.cc:97:execute$66: \bb0000_addr0 [5] -> \bb0001_addr0 [5]
+Add amu9_top/$auto$insbuf.cc:97:execute$67: \bb0000_addr0 [6] -> \bb0001_addr0 [6]
+Add amu9_top/$auto$insbuf.cc:97:execute$68: \bb0000_addr0 [7] -> \bb0001_addr0 [7]
+Add amu9_top/$auto$insbuf.cc:97:execute$69: \bb0000_addr0 [8] -> \bb0001_addr0 [8]
+Add amu9_top/$auto$insbuf.cc:97:execute$70: \U_CORE.err_mismatch -> \errors [0]
+Add amu9_top/$auto$insbuf.cc:97:execute$71: \U_CORE.err_lane0 -> \errors [1]
+Add amu9_top/$auto$insbuf.cc:97:execute$72: \U_CORE.err_queue -> \errors [2]
+Add amu9_top/$auto$insbuf.cc:97:execute$73: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [0]
+Add amu9_top/$auto$insbuf.cc:97:execute$74: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [1]
+Add amu9_top/$auto$insbuf.cc:97:execute$75: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [2]
+Add amu9_top/$auto$insbuf.cc:97:execute$76: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [3]
+Add amu9_top/$auto$insbuf.cc:97:execute$77: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [4]
+Add amu9_top/$auto$insbuf.cc:97:execute$78: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [5]
+Add amu9_top/$auto$insbuf.cc:97:execute$79: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [6]
+Add amu9_top/$auto$insbuf.cc:97:execute$80: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [7]
+Add amu9_top/$auto$insbuf.cc:97:execute$81: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [8]
+Add amu9_top/$auto$insbuf.cc:97:execute$82: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [9]
+Add amu9_top/$auto$insbuf.cc:97:execute$83: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [10]
+Add amu9_top/$auto$insbuf.cc:97:execute$84: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [11]
+Add amu9_top/$auto$insbuf.cc:97:execute$85: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [12]
+Add amu9_top/$auto$insbuf.cc:97:execute$86: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [13]
+Add amu9_top/$auto$insbuf.cc:97:execute$87: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [14]
+Add amu9_top/$auto$insbuf.cc:97:execute$88: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [15]
+Add amu9_top/$auto$insbuf.cc:97:execute$89: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [16]
+Add amu9_top/$auto$insbuf.cc:97:execute$90: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [17]
+Add amu9_top/$auto$insbuf.cc:97:execute$91: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [18]
+Add amu9_top/$auto$insbuf.cc:97:execute$92: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [19]
+Add amu9_top/$auto$insbuf.cc:97:execute$93: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [20]
+Add amu9_top/$auto$insbuf.cc:97:execute$94: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [21]
+Add amu9_top/$auto$insbuf.cc:97:execute$95: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [22]
+Add amu9_top/$auto$insbuf.cc:97:execute$96: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [23]
+Add amu9_top/$auto$insbuf.cc:97:execute$97: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [24]
+Add amu9_top/$auto$insbuf.cc:97:execute$98: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [25]
+Add amu9_top/$auto$insbuf.cc:97:execute$99: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [26]
+Add amu9_top/$auto$insbuf.cc:97:execute$100: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [27]
+Add amu9_top/$auto$insbuf.cc:97:execute$101: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [28]
+Add amu9_top/$auto$insbuf.cc:97:execute$102: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [29]
+Add amu9_top/$auto$insbuf.cc:97:execute$103: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [30]
+Add amu9_top/$auto$insbuf.cc:97:execute$104: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_starts [31]
+Add amu9_top/$auto$insbuf.cc:97:execute$105: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [0]
+Add amu9_top/$auto$insbuf.cc:97:execute$106: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [1]
+Add amu9_top/$auto$insbuf.cc:97:execute$107: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [2]
+Add amu9_top/$auto$insbuf.cc:97:execute$108: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [3]
+Add amu9_top/$auto$insbuf.cc:97:execute$109: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [4]
+Add amu9_top/$auto$insbuf.cc:97:execute$110: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [5]
+Add amu9_top/$auto$insbuf.cc:97:execute$111: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [6]
+Add amu9_top/$auto$insbuf.cc:97:execute$112: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [7]
+Add amu9_top/$auto$insbuf.cc:97:execute$113: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [8]
+Add amu9_top/$auto$insbuf.cc:97:execute$114: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [9]
+Add amu9_top/$auto$insbuf.cc:97:execute$115: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [10]
+Add amu9_top/$auto$insbuf.cc:97:execute$116: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [11]
+Add amu9_top/$auto$insbuf.cc:97:execute$117: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [12]
+Add amu9_top/$auto$insbuf.cc:97:execute$118: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [13]
+Add amu9_top/$auto$insbuf.cc:97:execute$119: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [14]
+Add amu9_top/$auto$insbuf.cc:97:execute$120: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [15]
+Add amu9_top/$auto$insbuf.cc:97:execute$121: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [16]
+Add amu9_top/$auto$insbuf.cc:97:execute$122: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [17]
+Add amu9_top/$auto$insbuf.cc:97:execute$123: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [18]
+Add amu9_top/$auto$insbuf.cc:97:execute$124: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [19]
+Add amu9_top/$auto$insbuf.cc:97:execute$125: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [20]
+Add amu9_top/$auto$insbuf.cc:97:execute$126: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [21]
+Add amu9_top/$auto$insbuf.cc:97:execute$127: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [22]
+Add amu9_top/$auto$insbuf.cc:97:execute$128: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [23]
+Add amu9_top/$auto$insbuf.cc:97:execute$129: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [24]
+Add amu9_top/$auto$insbuf.cc:97:execute$130: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [25]
+Add amu9_top/$auto$insbuf.cc:97:execute$131: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [26]
+Add amu9_top/$auto$insbuf.cc:97:execute$132: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [27]
+Add amu9_top/$auto$insbuf.cc:97:execute$133: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [28]
+Add amu9_top/$auto$insbuf.cc:97:execute$134: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [29]
+Add amu9_top/$auto$insbuf.cc:97:execute$135: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [30]
+Add amu9_top/$auto$insbuf.cc:97:execute$136: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_stall_cycles [31]
+Add amu9_top/$auto$insbuf.cc:97:execute$137: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [0]
+Add amu9_top/$auto$insbuf.cc:97:execute$138: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [1]
+Add amu9_top/$auto$insbuf.cc:97:execute$139: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [2]
+Add amu9_top/$auto$insbuf.cc:97:execute$140: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [3]
+Add amu9_top/$auto$insbuf.cc:97:execute$141: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [4]
+Add amu9_top/$auto$insbuf.cc:97:execute$142: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [5]
+Add amu9_top/$auto$insbuf.cc:97:execute$143: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [6]
+Add amu9_top/$auto$insbuf.cc:97:execute$144: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [7]
+Add amu9_top/$auto$insbuf.cc:97:execute$145: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [8]
+Add amu9_top/$auto$insbuf.cc:97:execute$146: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [9]
+Add amu9_top/$auto$insbuf.cc:97:execute$147: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [10]
+Add amu9_top/$auto$insbuf.cc:97:execute$148: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [11]
+Add amu9_top/$auto$insbuf.cc:97:execute$149: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [12]
+Add amu9_top/$auto$insbuf.cc:97:execute$150: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [13]
+Add amu9_top/$auto$insbuf.cc:97:execute$151: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [14]
+Add amu9_top/$auto$insbuf.cc:97:execute$152: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [15]
+Add amu9_top/$auto$insbuf.cc:97:execute$153: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [16]
+Add amu9_top/$auto$insbuf.cc:97:execute$154: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [17]
+Add amu9_top/$auto$insbuf.cc:97:execute$155: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [18]
+Add amu9_top/$auto$insbuf.cc:97:execute$156: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [19]
+Add amu9_top/$auto$insbuf.cc:97:execute$157: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [20]
+Add amu9_top/$auto$insbuf.cc:97:execute$158: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [21]
+Add amu9_top/$auto$insbuf.cc:97:execute$159: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [22]
+Add amu9_top/$auto$insbuf.cc:97:execute$160: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [23]
+Add amu9_top/$auto$insbuf.cc:97:execute$161: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [24]
+Add amu9_top/$auto$insbuf.cc:97:execute$162: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [25]
+Add amu9_top/$auto$insbuf.cc:97:execute$163: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [26]
+Add amu9_top/$auto$insbuf.cc:97:execute$164: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [27]
+Add amu9_top/$auto$insbuf.cc:97:execute$165: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [28]
+Add amu9_top/$auto$insbuf.cc:97:execute$166: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [29]
+Add amu9_top/$auto$insbuf.cc:97:execute$167: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [30]
+Add amu9_top/$auto$insbuf.cc:97:execute$168: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_park_reads [31]
+Add amu9_top/$auto$insbuf.cc:97:execute$169: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [0]
+Add amu9_top/$auto$insbuf.cc:97:execute$170: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [1]
+Add amu9_top/$auto$insbuf.cc:97:execute$171: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [2]
+Add amu9_top/$auto$insbuf.cc:97:execute$172: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [3]
+Add amu9_top/$auto$insbuf.cc:97:execute$173: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [4]
+Add amu9_top/$auto$insbuf.cc:97:execute$174: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [5]
+Add amu9_top/$auto$insbuf.cc:97:execute$175: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [6]
+Add amu9_top/$auto$insbuf.cc:97:execute$176: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [7]
+Add amu9_top/$auto$insbuf.cc:97:execute$177: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [8]
+Add amu9_top/$auto$insbuf.cc:97:execute$178: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [9]
+Add amu9_top/$auto$insbuf.cc:97:execute$179: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [10]
+Add amu9_top/$auto$insbuf.cc:97:execute$180: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [11]
+Add amu9_top/$auto$insbuf.cc:97:execute$181: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [12]
+Add amu9_top/$auto$insbuf.cc:97:execute$182: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [13]
+Add amu9_top/$auto$insbuf.cc:97:execute$183: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [14]
+Add amu9_top/$auto$insbuf.cc:97:execute$184: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [15]
+Add amu9_top/$auto$insbuf.cc:97:execute$185: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [16]
+Add amu9_top/$auto$insbuf.cc:97:execute$186: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [17]
+Add amu9_top/$auto$insbuf.cc:97:execute$187: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [18]
+Add amu9_top/$auto$insbuf.cc:97:execute$188: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [19]
+Add amu9_top/$auto$insbuf.cc:97:execute$189: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [20]
+Add amu9_top/$auto$insbuf.cc:97:execute$190: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [21]
+Add amu9_top/$auto$insbuf.cc:97:execute$191: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [22]
+Add amu9_top/$auto$insbuf.cc:97:execute$192: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [23]
+Add amu9_top/$auto$insbuf.cc:97:execute$193: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [24]
+Add amu9_top/$auto$insbuf.cc:97:execute$194: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [25]
+Add amu9_top/$auto$insbuf.cc:97:execute$195: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [26]
+Add amu9_top/$auto$insbuf.cc:97:execute$196: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [27]
+Add amu9_top/$auto$insbuf.cc:97:execute$197: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [28]
+Add amu9_top/$auto$insbuf.cc:97:execute$198: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [29]
+Add amu9_top/$auto$insbuf.cc:97:execute$199: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [30]
+Add amu9_top/$auto$insbuf.cc:97:execute$200: $auto$hilomap.cc:47:hilomap_worker$5 -> \n_lookup_reads [31]
+Add amu9_top/$auto$insbuf.cc:97:execute$201: \U_DEC.lane[0].p_oor -> \pcm_oor [0]
+Add amu9_top/$auto$insbuf.cc:97:execute$202: \U_DEC.lane[1].p_oor -> \pcm_oor [1]
+Add amu9_top/$auto$insbuf.cc:97:execute$203: \U_DEC.lane[2].p_oor -> \pcm_oor [2]
+Add amu9_top/$auto$insbuf.cc:97:execute$204: \U_DEC.lane[3].p_oor -> \pcm_oor [3]
+Add amu9_top/$auto$insbuf.cc:97:execute$205: \U_DEC.lane[4].p_oor -> \pcm_oor [4]
+Add amu9_top/$auto$insbuf.cc:97:execute$206: \U_DEC.lane[5].p_oor -> \pcm_oor [5]
+Add amu9_top/$auto$insbuf.cc:97:execute$207: \U_DEC.lane[6].p_oor -> \pcm_oor [6]
+Add amu9_top/$auto$insbuf.cc:97:execute$208: \U_DEC.lane[7].p_oor -> \pcm_oor [7]
+Add amu9_top/$auto$insbuf.cc:97:execute$209: \U_DEC.lane[8].p_oor -> \pcm_oor [8]
+Add amu9_top/$auto$insbuf.cc:97:execute$210: \U_DEC.lane[9].p_oor -> \pcm_oor [9]
+Add amu9_top/$auto$insbuf.cc:97:execute$211: \U_DEC.lane[10].p_oor -> \pcm_oor [10]
+Add amu9_top/$auto$insbuf.cc:97:execute$212: \U_DEC.lane[11].p_oor -> \pcm_oor [11]
+Add amu9_top/$auto$insbuf.cc:97:execute$213: \U_DEC.lane[12].p_oor -> \pcm_oor [12]
+Add amu9_top/$auto$insbuf.cc:97:execute$214: \U_DEC.lane[13].p_oor -> \pcm_oor [13]
+Add amu9_top/$auto$insbuf.cc:97:execute$215: \U_DEC.lane[14].p_oor -> \pcm_oor [14]
+Add amu9_top/$auto$insbuf.cc:97:execute$216: \U_DEC.lane[15].p_oor -> \pcm_oor [15]
+Add amu9_top/$auto$insbuf.cc:97:execute$217: \U_DEC.lane[16].p_oor -> \pcm_oor [16]
+Add amu9_top/$auto$insbuf.cc:97:execute$218: \U_DEC.lane[17].p_oor -> \pcm_oor [17]
+Add amu9_top/$auto$insbuf.cc:97:execute$219: \U_DEC.lane[18].p_oor -> \pcm_oor [18]
+Add amu9_top/$auto$insbuf.cc:97:execute$220: \U_DEC.lane[19].p_oor -> \pcm_oor [19]
+Add amu9_top/$auto$insbuf.cc:97:execute$221: \U_DEC.lane[20].p_oor -> \pcm_oor [20]
+Add amu9_top/$auto$insbuf.cc:97:execute$222: \U_DEC.lane[21].p_oor -> \pcm_oor [21]
+Add amu9_top/$auto$insbuf.cc:97:execute$223: \U_DEC.lane[22].p_oor -> \pcm_oor [22]
+Add amu9_top/$auto$insbuf.cc:97:execute$224: \U_DEC.lane[23].p_oor -> \pcm_oor [23]
+Add amu9_top/$auto$insbuf.cc:97:execute$225: \U_DEC.lane[24].p_oor -> \pcm_oor [24]
+Add amu9_top/$auto$insbuf.cc:97:execute$226: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [12]
+Add amu9_top/$auto$insbuf.cc:97:execute$227: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [13]
+Add amu9_top/$auto$insbuf.cc:97:execute$228: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [14]
+Add amu9_top/$auto$insbuf.cc:97:execute$229: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [15]
+Add amu9_top/$auto$insbuf.cc:97:execute$230: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [28]
+Add amu9_top/$auto$insbuf.cc:97:execute$231: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [29]
+Add amu9_top/$auto$insbuf.cc:97:execute$232: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [30]
+Add amu9_top/$auto$insbuf.cc:97:execute$233: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [31]
+Add amu9_top/$auto$insbuf.cc:97:execute$234: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [44]
+Add amu9_top/$auto$insbuf.cc:97:execute$235: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [45]
+Add amu9_top/$auto$insbuf.cc:97:execute$236: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [46]
+Add amu9_top/$auto$insbuf.cc:97:execute$237: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [47]
+Add amu9_top/$auto$insbuf.cc:97:execute$238: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [60]
+Add amu9_top/$auto$insbuf.cc:97:execute$239: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [61]
+Add amu9_top/$auto$insbuf.cc:97:execute$240: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [62]
+Add amu9_top/$auto$insbuf.cc:97:execute$241: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [63]
+Add amu9_top/$auto$insbuf.cc:97:execute$242: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [76]
+Add amu9_top/$auto$insbuf.cc:97:execute$243: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [77]
+Add amu9_top/$auto$insbuf.cc:97:execute$244: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [78]
+Add amu9_top/$auto$insbuf.cc:97:execute$245: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [79]
+Add amu9_top/$auto$insbuf.cc:97:execute$246: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [92]
+Add amu9_top/$auto$insbuf.cc:97:execute$247: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [93]
+Add amu9_top/$auto$insbuf.cc:97:execute$248: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [94]
+Add amu9_top/$auto$insbuf.cc:97:execute$249: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [95]
+Add amu9_top/$auto$insbuf.cc:97:execute$250: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [108]
+Add amu9_top/$auto$insbuf.cc:97:execute$251: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [109]
+Add amu9_top/$auto$insbuf.cc:97:execute$252: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [110]
+Add amu9_top/$auto$insbuf.cc:97:execute$253: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [111]
+Add amu9_top/$auto$insbuf.cc:97:execute$254: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [124]
+Add amu9_top/$auto$insbuf.cc:97:execute$255: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [125]
+Add amu9_top/$auto$insbuf.cc:97:execute$256: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [126]
+Add amu9_top/$auto$insbuf.cc:97:execute$257: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [127]
+Add amu9_top/$auto$insbuf.cc:97:execute$258: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [140]
+Add amu9_top/$auto$insbuf.cc:97:execute$259: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [141]
+Add amu9_top/$auto$insbuf.cc:97:execute$260: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [142]
+Add amu9_top/$auto$insbuf.cc:97:execute$261: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [143]
+Add amu9_top/$auto$insbuf.cc:97:execute$262: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [156]
+Add amu9_top/$auto$insbuf.cc:97:execute$263: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [157]
+Add amu9_top/$auto$insbuf.cc:97:execute$264: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [158]
+Add amu9_top/$auto$insbuf.cc:97:execute$265: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [159]
+Add amu9_top/$auto$insbuf.cc:97:execute$266: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [172]
+Add amu9_top/$auto$insbuf.cc:97:execute$267: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [173]
+Add amu9_top/$auto$insbuf.cc:97:execute$268: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [174]
+Add amu9_top/$auto$insbuf.cc:97:execute$269: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [175]
+Add amu9_top/$auto$insbuf.cc:97:execute$270: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [188]
+Add amu9_top/$auto$insbuf.cc:97:execute$271: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [189]
+Add amu9_top/$auto$insbuf.cc:97:execute$272: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [190]
+Add amu9_top/$auto$insbuf.cc:97:execute$273: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [191]
+Add amu9_top/$auto$insbuf.cc:97:execute$274: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [204]
+Add amu9_top/$auto$insbuf.cc:97:execute$275: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [205]
+Add amu9_top/$auto$insbuf.cc:97:execute$276: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [206]
+Add amu9_top/$auto$insbuf.cc:97:execute$277: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [207]
+Add amu9_top/$auto$insbuf.cc:97:execute$278: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [220]
+Add amu9_top/$auto$insbuf.cc:97:execute$279: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [221]
+Add amu9_top/$auto$insbuf.cc:97:execute$280: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [222]
+Add amu9_top/$auto$insbuf.cc:97:execute$281: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [223]
+Add amu9_top/$auto$insbuf.cc:97:execute$282: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [236]
+Add amu9_top/$auto$insbuf.cc:97:execute$283: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [237]
+Add amu9_top/$auto$insbuf.cc:97:execute$284: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [238]
+Add amu9_top/$auto$insbuf.cc:97:execute$285: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [239]
+Add amu9_top/$auto$insbuf.cc:97:execute$286: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [252]
+Add amu9_top/$auto$insbuf.cc:97:execute$287: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [253]
+Add amu9_top/$auto$insbuf.cc:97:execute$288: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [254]
+Add amu9_top/$auto$insbuf.cc:97:execute$289: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [255]
+Add amu9_top/$auto$insbuf.cc:97:execute$290: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [268]
+Add amu9_top/$auto$insbuf.cc:97:execute$291: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [269]
+Add amu9_top/$auto$insbuf.cc:97:execute$292: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [270]
+Add amu9_top/$auto$insbuf.cc:97:execute$293: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [271]
+Add amu9_top/$auto$insbuf.cc:97:execute$294: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [284]
+Add amu9_top/$auto$insbuf.cc:97:execute$295: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [285]
+Add amu9_top/$auto$insbuf.cc:97:execute$296: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [286]
+Add amu9_top/$auto$insbuf.cc:97:execute$297: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [287]
+Add amu9_top/$auto$insbuf.cc:97:execute$298: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [300]
+Add amu9_top/$auto$insbuf.cc:97:execute$299: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [301]
+Add amu9_top/$auto$insbuf.cc:97:execute$300: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [302]
+Add amu9_top/$auto$insbuf.cc:97:execute$301: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [303]
+Add amu9_top/$auto$insbuf.cc:97:execute$302: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [316]
+Add amu9_top/$auto$insbuf.cc:97:execute$303: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [317]
+Add amu9_top/$auto$insbuf.cc:97:execute$304: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [318]
+Add amu9_top/$auto$insbuf.cc:97:execute$305: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [319]
+Add amu9_top/$auto$insbuf.cc:97:execute$306: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [332]
+Add amu9_top/$auto$insbuf.cc:97:execute$307: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [333]
+Add amu9_top/$auto$insbuf.cc:97:execute$308: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [334]
+Add amu9_top/$auto$insbuf.cc:97:execute$309: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [335]
+Add amu9_top/$auto$insbuf.cc:97:execute$310: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [348]
+Add amu9_top/$auto$insbuf.cc:97:execute$311: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [349]
+Add amu9_top/$auto$insbuf.cc:97:execute$312: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [350]
+Add amu9_top/$auto$insbuf.cc:97:execute$313: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [351]
+Add amu9_top/$auto$insbuf.cc:97:execute$314: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [364]
+Add amu9_top/$auto$insbuf.cc:97:execute$315: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [365]
+Add amu9_top/$auto$insbuf.cc:97:execute$316: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [366]
+Add amu9_top/$auto$insbuf.cc:97:execute$317: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [367]
+Add amu9_top/$auto$insbuf.cc:97:execute$318: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [380]
+Add amu9_top/$auto$insbuf.cc:97:execute$319: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [381]
+Add amu9_top/$auto$insbuf.cc:97:execute$320: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [382]
+Add amu9_top/$auto$insbuf.cc:97:execute$321: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [383]
+Add amu9_top/$auto$insbuf.cc:97:execute$322: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [396]
+Add amu9_top/$auto$insbuf.cc:97:execute$323: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [397]
+Add amu9_top/$auto$insbuf.cc:97:execute$324: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [398]
+Add amu9_top/$auto$insbuf.cc:97:execute$325: $auto$hilomap.cc:47:hilomap_worker$5 -> \sram_pool_addr_bus [399]
+Add amu9_top/$auto$insbuf.cc:97:execute$326: \U_DEC.lane[0].s_oor -> \sram_oor [0]
+Add amu9_top/$auto$insbuf.cc:97:execute$327: \U_DEC.lane[1].s_oor -> \sram_oor [1]
+Add amu9_top/$auto$insbuf.cc:97:execute$328: \U_DEC.lane[2].s_oor -> \sram_oor [2]
+Add amu9_top/$auto$insbuf.cc:97:execute$329: \U_DEC.lane[3].s_oor -> \sram_oor [3]
+Add amu9_top/$auto$insbuf.cc:97:execute$330: \U_DEC.lane[4].s_oor -> \sram_oor [4]
+Add amu9_top/$auto$insbuf.cc:97:execute$331: \U_DEC.lane[5].s_oor -> \sram_oor [5]
+Add amu9_top/$auto$insbuf.cc:97:execute$332: \U_DEC.lane[6].s_oor -> \sram_oor [6]
+Add amu9_top/$auto$insbuf.cc:97:execute$333: \U_DEC.lane[7].s_oor -> \sram_oor [7]
+Add amu9_top/$auto$insbuf.cc:97:execute$334: \U_DEC.lane[8].s_oor -> \sram_oor [8]
+Add amu9_top/$auto$insbuf.cc:97:execute$335: \U_DEC.lane[9].s_oor -> \sram_oor [9]
+Add amu9_top/$auto$insbuf.cc:97:execute$336: \U_DEC.lane[10].s_oor -> \sram_oor [10]
+Add amu9_top/$auto$insbuf.cc:97:execute$337: \U_DEC.lane[11].s_oor -> \sram_oor [11]
+Add amu9_top/$auto$insbuf.cc:97:execute$338: \U_DEC.lane[12].s_oor -> \sram_oor [12]
+Add amu9_top/$auto$insbuf.cc:97:execute$339: \U_DEC.lane[13].s_oor -> \sram_oor [13]
+Add amu9_top/$auto$insbuf.cc:97:execute$340: \U_DEC.lane[14].s_oor -> \sram_oor [14]
+Add amu9_top/$auto$insbuf.cc:97:execute$341: \U_DEC.lane[15].s_oor -> \sram_oor [15]
+Add amu9_top/$auto$insbuf.cc:97:execute$342: \U_DEC.lane[16].s_oor -> \sram_oor [16]
+Add amu9_top/$auto$insbuf.cc:97:execute$343: \U_DEC.lane[17].s_oor -> \sram_oor [17]
+Add amu9_top/$auto$insbuf.cc:97:execute$344: \U_DEC.lane[18].s_oor -> \sram_oor [18]
+Add amu9_top/$auto$insbuf.cc:97:execute$345: \U_DEC.lane[19].s_oor -> \sram_oor [19]
+Add amu9_top/$auto$insbuf.cc:97:execute$346: \U_DEC.lane[20].s_oor -> \sram_oor [20]
+Add amu9_top/$auto$insbuf.cc:97:execute$347: \U_DEC.lane[21].s_oor -> \sram_oor [21]
+Add amu9_top/$auto$insbuf.cc:97:execute$348: \U_DEC.lane[22].s_oor -> \sram_oor [22]
+Add amu9_top/$auto$insbuf.cc:97:execute$349: \U_DEC.lane[23].s_oor -> \sram_oor [23]
+Add amu9_top/$auto$insbuf.cc:97:execute$350: \U_DEC.lane[24].s_oor -> \sram_oor [24]
+Renaming module \amu9_top to \amu9_top_core.
+
+11. Printing statistics.
+
+=== amu9_top_core ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+    13050        - wires
+    14860        - wire bits
+    13048        - public wires
+    14858        - public wire bits
+       50        - ports
+     1860        - port bits
+    14107 1.02E+05 cells
+        4   45.043   sky130_fd_sc_hd__a2111o_1
+       39  341.578   sky130_fd_sc_hd__a2111oi_0
+       10   87.584   sky130_fd_sc_hd__a211o_1
+       61  457.939   sky130_fd_sc_hd__a211oi_1
+       10  100.096   sky130_fd_sc_hd__a21bo_1
+       30  225.216   sky130_fd_sc_hd__a21boi_0
+       76  570.547   sky130_fd_sc_hd__a21o_1
+      693 3.47E+03   sky130_fd_sc_hd__a21oi_1
+       15  150.144   sky130_fd_sc_hd__a221o_1
+       74  648.122   sky130_fd_sc_hd__a221oi_1
+      120  1.2E+03   sky130_fd_sc_hd__a222oi_1
+       15  131.376   sky130_fd_sc_hd__a22o_1
+      168  1261.21   sky130_fd_sc_hd__a22oi_1
+        8   70.067   sky130_fd_sc_hd__a2bb2oi_1
+       20  200.192   sky130_fd_sc_hd__a311o_1
+       26  227.718   sky130_fd_sc_hd__a311oi_1
+       10   87.584   sky130_fd_sc_hd__a31o_1
+       94  588.064   sky130_fd_sc_hd__a31oi_1
+        1    10.01   sky130_fd_sc_hd__a32o_1
+        7   61.309   sky130_fd_sc_hd__a32oi_1
+       22  220.211   sky130_fd_sc_hd__a41o_1
+       14  122.618   sky130_fd_sc_hd__a41oi_1
+      345  2158.32   sky130_fd_sc_hd__and2_0
+      100    625.6   sky130_fd_sc_hd__and3_1
+        7   61.309   sky130_fd_sc_hd__and3b_1
+       24  210.202   sky130_fd_sc_hd__and4_1
+       34  340.326   sky130_fd_sc_hd__and4b_1
+        2    7.507   sky130_fd_sc_hd__buf_1
+      342 2.57E+03   sky130_fd_sc_hd__buf_4
+      491 1.84E+03   sky130_fd_sc_hd__clkinv_1
+        2    7.507   sky130_fd_sc_hd__conb_1
+      503 1.01E+04   sky130_fd_sc_hd__dfxtp_1
+       36  630.605   sky130_fd_sc_hd__dlclkp_1
+       73 2.19E+03   sky130_fd_sc_hd__edfxtp_1
+      988 9.89E+03   sky130_fd_sc_hd__maj3_1
+        6   67.565   sky130_fd_sc_hd__mux2_1
+       26   260.25   sky130_fd_sc_hd__mux2i_1
+        3   67.565   sky130_fd_sc_hd__mux4_2
+     1476 5.54E+03   sky130_fd_sc_hd__nand2_1
+      191 1.19E+03   sky130_fd_sc_hd__nand2b_1
+      260  1.3E+03   sky130_fd_sc_hd__nand3_1
+       18   135.13   sky130_fd_sc_hd__nand3b_1
+      167 1.04E+03   sky130_fd_sc_hd__nand4_1
+        5   43.792   sky130_fd_sc_hd__nand4b_1
+        1   11.261   sky130_fd_sc_hd__nand4bb_1
+     1715 6.44E+03   sky130_fd_sc_hd__nor2_1
+      132  825.792   sky130_fd_sc_hd__nor2b_1
+      319  1.6E+03   sky130_fd_sc_hd__nor3_1
+       25   187.68   sky130_fd_sc_hd__nor3b_1
+      194 1.21E+03   sky130_fd_sc_hd__nor4_1
+       10   87.584   sky130_fd_sc_hd__nor4b_1
+        5   50.048   sky130_fd_sc_hd__nor4bb_1
+        2   22.522   sky130_fd_sc_hd__o2111a_1
+       44   385.37   sky130_fd_sc_hd__o2111ai_1
+       11  110.106   sky130_fd_sc_hd__o211a_1
+       46  345.331   sky130_fd_sc_hd__o211ai_1
+       95  713.184   sky130_fd_sc_hd__o21a_1
+     1034 5.17E+03   sky130_fd_sc_hd__o21ai_0
+        4   40.038   sky130_fd_sc_hd__o21ba_1
+       13   97.594   sky130_fd_sc_hd__o21bai_1
+        6   67.565   sky130_fd_sc_hd__o221a_1
+       41  359.094   sky130_fd_sc_hd__o221ai_1
+       17  148.893   sky130_fd_sc_hd__o22a_1
+      192  1.2E+03   sky130_fd_sc_hd__o22ai_1
+       12  105.101   sky130_fd_sc_hd__o2bb2ai_1
+       22  220.211   sky130_fd_sc_hd__o311a_1
+       17  148.893   sky130_fd_sc_hd__o311ai_0
+       19   166.41   sky130_fd_sc_hd__o31a_1
+       34  255.245   sky130_fd_sc_hd__o31ai_1
+        5   50.048   sky130_fd_sc_hd__o32a_1
+       16  140.134   sky130_fd_sc_hd__o32ai_1
+        3   33.782   sky130_fd_sc_hd__o41a_1
+        6    52.55   sky130_fd_sc_hd__o41ai_1
+       91  569.296   sky130_fd_sc_hd__or2_0
+       68  425.408   sky130_fd_sc_hd__or3_1
+        3   26.275   sky130_fd_sc_hd__or3b_1
+       29  217.709   sky130_fd_sc_hd__or4_1
+        1    10.01   sky130_fd_sc_hd__or4b_1
+     2376 2.08E+04   sky130_fd_sc_hd__xnor2_1
+       90 2.03E+03   sky130_fd_sc_hd__xnor3_1
+      782 6.85E+03   sky130_fd_sc_hd__xor2_1
+       11  261.501   sky130_fd_sc_hd__xor3_1
+
+   Chip area for module '\amu9_top_core': 101979.056000
+     of which used for sequential elements: 12261.760000 (12.02%)
+
+12. Executing Verilog backend.
+
+12.1. Executing BMUXMAP pass.
+
+12.2. Executing DEMUXMAP pass.
+Dumping module `\amu9_top_core'.
+
+End of script. Logfile hash: 5d44475523, time: 1.14s, user: 1.05s, system: 0.17s, MEM: 140.72 MB peak
+Yosys 0.68+36 (git sha1 17d51a330-dirty, Release, Clang /usr/bin/clang++ 21.1.8)
+Time spent: 77% 4x read_verilog (0 sec), 4% 1x opt_clean (0 sec), ...

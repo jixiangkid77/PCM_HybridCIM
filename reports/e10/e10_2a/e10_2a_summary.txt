@@ -1,0 +1,101 @@
+P2R-E10.2a gates and results (gate level; written before the run: protocol P2R-E10.2a of 2026-11-10)
+==== ng: E10.0 pool (no clock gating)
+   PASS  S1 netlist /mnt/d/Project/hybrid_memory/paper2/reports/e10/e10_0/bankpool_sta.v (byte for byte: True): 25 bank black boxes, 375 flip-flops, no lpflow or probe cells, no clock gate (25 black boxes, 375 flip-flops, 0 clock gates, 0 lpflow/probe; 8163 cells; logic area 70550.1632 um2)
+   PASS  E1 logic + wrapper = the synthesised netlist (e8_7_tools.py core)
+   PASS  C1 only buffers on the clock net removed for simulation (25 {'buf_4': 25}; clock gates on the clock net 0)
+   ---- ng, cache, model A
+      PASS  G0 compile: the synthesised pool (wrapper_sim.v, core_sim.v, cell models), not an RTL pool
+      PASS  G1 ALL TESTS PASSED, inference complete at cycle 617573
+      PASS  G2 results, E8.2 and E8.5 traces, E8.5e events byte for byte the files of E8.5e
+      PASS  G3 bank reads of the synthesised pool = those of its RTL run (total, per bank min, max)
+      PASS  W waveform from the edge that samples the start to the end of the run, the window of the power
+      PASS  A1 every pin annotated by the waveform except those of the cells removed for simulation
+         identical to E8.5e: {'res': True, 'e8t': True, 'e85t': True, 'e85e': True}; bank reads (total, per bank min, max): gate level [3907289, 144543, 164503], RTL [3907289, 144543, 164503]
+         window: run [8165.0, 6183910.0] ns, done edge 6183905.0 ns (done_cycle 617573), power [8165.0, 6183910.0]; annotation {'vcd': 34925, 'unannotated_pins': 50, 'unannotated_cells': 25, 'unannotated_ports': 0, 'unannotated_not_removed': []}
+         pool logic: 12.0930 uJ per inference over 6.175745 ms (1.9582 mW: sequential 1.6064, combinational 0.2334, clock 0.1183); of which 25 buffers to the bank clocks 0.7308 uJ, 0 clock gates 0.0000 uJ
+         not included (no clock tree, as E8.7): the clock net from the port to {'sky130_fd_sc_hd__buf_4/A': 25, 'sky130_fd_sc_hd__dfrtp_1/CLK': 375}, pin capacitance 0.7305 pF, C V^2 per cycle over the window 1.4617 uJ
+   ---- ng, conce, model A
+      PASS  G0 compile: the synthesised pool (wrapper_sim.v, core_sim.v, cell models), not an RTL pool
+      PASS  G1 ALL TESTS PASSED, inference complete at cycle 617573
+      PASS  G2 results, E8.2 and E8.5 traces, E8.5e events byte for byte the files of E8.5e
+      PASS  G3 bank reads of the synthesised pool = those of its RTL run (total, per bank min, max)
+      PASS  W waveform from the edge that samples the start to the end of the run, the window of the power
+      PASS  A1 every pin annotated by the waveform except those of the cells removed for simulation
+         identical to E8.5e: {'res': True, 'e8t': True, 'e85t': True, 'e85e': True}; bank reads (total, per bank min, max): gate level [149543, 5957, 6057], RTL [149543, 5957, 6057]
+         window: run [8165.0, 6183910.0] ns, done edge 6183905.0 ns (done_cycle 617573), power [8165.0, 6183910.0]; annotation {'vcd': 34925, 'unannotated_pins': 50, 'unannotated_cells': 25, 'unannotated_ports': 0, 'unannotated_not_removed': []}
+         pool logic: 12.3077 uJ per inference over 6.175745 ms (1.9929 mW: sequential 1.6175, combinational 0.2570, clock 0.1183); of which 25 buffers to the bank clocks 0.7308 uJ, 0 clock gates 0.0000 uJ
+         not included (no clock tree, as E8.7): the clock net from the port to {'sky130_fd_sc_hd__buf_4/A': 25, 'sky130_fd_sc_hd__dfrtp_1/CLK': 375}, pin capacitance 0.7305 pF, C V^2 per cycle over the window 1.4617 uJ
+   ---- ng, cache, model B
+      PASS  G0 compile: the synthesised pool (wrapper_sim.v, core_sim.v, cell models), not an RTL pool
+      PASS  G1 ALL TESTS PASSED, inference complete at cycle 617573
+      PASS  G2 results, E8.2 and E8.5 traces, E8.5e events byte for byte the files of E8.5e
+      PASS  G3 bank reads of the synthesised pool = those of its RTL run (total, per bank min, max)
+      PASS  W waveform from the edge that samples the start to the end of the run, the window of the power
+      PASS  A1 every pin annotated by the waveform except those of the cells removed for simulation
+         identical to E8.5e: {'res': True, 'e8t': True, 'e85t': True, 'e85e': True}; bank reads (total, per bank min, max): gate level [2303776, 85291, 97966], RTL [2303776, 85291, 97966]
+         window: run [8165.0, 6183910.0] ns, done edge 6183905.0 ns (done_cycle 617573), power [8165.0, 6183910.0]; annotation {'vcd': 34925, 'unannotated_pins': 50, 'unannotated_cells': 25, 'unannotated_ports': 0, 'unannotated_not_removed': []}
+         pool logic: 11.8497 uJ per inference over 6.175745 ms (1.9187 mW: sequential 1.5977, combinational 0.2027, clock 0.1183); of which 25 buffers to the bank clocks 0.7308 uJ, 0 clock gates 0.0000 uJ
+         not included (no clock tree, as E8.7): the clock net from the port to {'sky130_fd_sc_hd__buf_4/A': 25, 'sky130_fd_sc_hd__dfrtp_1/CLK': 375}, pin capacitance 0.7305 pF, C V^2 per cycle over the window 1.4617 uJ
+   ---- ng, conce, model B
+      PASS  G0 compile: the synthesised pool (wrapper_sim.v, core_sim.v, cell models), not an RTL pool
+      PASS  G1 ALL TESTS PASSED, inference complete at cycle 617573
+      PASS  G2 results, E8.2 and E8.5 traces, E8.5e events byte for byte the files of E8.5e
+      PASS  G3 bank reads of the synthesised pool = those of its RTL run (total, per bank min, max)
+      PASS  W waveform from the edge that samples the start to the end of the run, the window of the power
+      PASS  A1 every pin annotated by the waveform except those of the cells removed for simulation
+         identical to E8.5e: {'res': True, 'e8t': True, 'e85t': True, 'e85e': True}; bank reads (total, per bank min, max): gate level [88064, 3482, 3582], RTL [88064, 3482, 3582]
+         window: run [8165.0, 6183910.0] ns, done edge 6183905.0 ns (done_cycle 617573), power [8165.0, 6183910.0]; annotation {'vcd': 34925, 'unannotated_pins': 50, 'unannotated_cells': 25, 'unannotated_ports': 0, 'unannotated_not_removed': []}
+         pool logic: 12.0006 uJ per inference over 6.175745 ms (1.9432 mW: sequential 1.6053, combinational 0.2196, clock 0.1183); of which 25 buffers to the bank clocks 0.7308 uJ, 0 clock gates 0.0000 uJ
+         not included (no clock tree, as E8.7): the clock net from the port to {'sky130_fd_sc_hd__buf_4/A': 25, 'sky130_fd_sc_hd__dfrtp_1/CLK': 375}, pin capacitance 0.7305 pF, C V^2 per cycle over the window 1.4617 uJ
+==== cg: pool with clock gating
+   PASS  S1 netlist /mnt/d/Project/hybrid_memory/paper2/reports/e10/e10_2a/rtl_cg/bankpool_cg_sta.v (byte for byte: True): 25 bank black boxes, 375 flip-flops, no lpflow or probe cells, at least the 25 bank clock gates (25 black boxes, 375 flip-flops, 28 clock gates, 0 lpflow/probe; 8215 cells; logic area 72092.8928 um2)
+   PASS  E1 logic + wrapper = the synthesised netlist (e8_7_tools.py core)
+   PASS  C1 only buffers on the clock net removed for simulation (0 {}; clock gates on the clock net 28)
+   ---- cg, cache, model A
+      PASS  G0 compile: the synthesised pool (wrapper_sim.v, core_sim.v, cell models), not an RTL pool
+      PASS  G1 ALL TESTS PASSED, inference complete at cycle 617573
+      PASS  G2 results, E8.2 and E8.5 traces, E8.5e events byte for byte the files of E8.5e
+      PASS  G3 bank reads of the synthesised pool = those of its RTL run (total, per bank min, max)
+      PASS  W waveform from the edge that samples the start to the end of the run, the window of the power
+      PASS  A1 every pin annotated by the waveform except those of the cells removed for simulation
+         identical to E8.5e: {'res': True, 'e8t': True, 'e85t': True, 'e85e': True}; bank reads (total, per bank min, max): gate level [3907289, 144543, 164503], RTL [3907289, 144543, 164503]
+         window: run [8165.0, 6183910.0] ns, done edge 6183905.0 ns (done_cycle 617573), power [8165.0, 6183910.0]; annotation {'vcd': 35464, 'unannotated_pins': 0, 'unannotated_cells': 0, 'unannotated_ports': 0, 'unannotated_not_removed': []}
+         pool logic: 8.4764 uJ per inference over 6.175745 ms (1.3725 mW: sequential 0.9613, combinational 0.1859, clock 0.2253); of which 0 buffers to the bank clocks 0.0000 uJ, 28 clock gates 1.3916 uJ
+         not included (no clock tree, as E8.7): the clock net from the port to {'sky130_fd_sc_hd__dlclkp_1/CLK': 28}, pin capacitance 0.1162 pF, C V^2 per cycle over the window 0.2326 uJ
+   ---- cg, conce, model A
+      PASS  G0 compile: the synthesised pool (wrapper_sim.v, core_sim.v, cell models), not an RTL pool
+      PASS  G1 ALL TESTS PASSED, inference complete at cycle 617573
+      PASS  G2 results, E8.2 and E8.5 traces, E8.5e events byte for byte the files of E8.5e
+      PASS  G3 bank reads of the synthesised pool = those of its RTL run (total, per bank min, max)
+      PASS  W waveform from the edge that samples the start to the end of the run, the window of the power
+      PASS  A1 every pin annotated by the waveform except those of the cells removed for simulation
+         identical to E8.5e: {'res': True, 'e8t': True, 'e85t': True, 'e85e': True}; bank reads (total, per bank min, max): gate level [149543, 5957, 6057], RTL [149543, 5957, 6057]
+         window: run [8165.0, 6183910.0] ns, done edge 6183905.0 ns (done_cycle 617573), power [8165.0, 6183910.0]; annotation {'vcd': 35464, 'unannotated_pins': 0, 'unannotated_cells': 0, 'unannotated_ports': 0, 'unannotated_not_removed': []}
+         pool logic: 1.9679 uJ per inference over 6.175745 ms (0.3187 mW: sequential 0.0703, combinational 0.1663, clock 0.0820); of which 0 buffers to the bank clocks 0.0000 uJ, 28 clock gates 0.5065 uJ
+         not included (no clock tree, as E8.7): the clock net from the port to {'sky130_fd_sc_hd__dlclkp_1/CLK': 28}, pin capacitance 0.1162 pF, C V^2 per cycle over the window 0.2326 uJ
+   ---- cg, cache, model B
+      PASS  G0 compile: the synthesised pool (wrapper_sim.v, core_sim.v, cell models), not an RTL pool
+      PASS  G1 ALL TESTS PASSED, inference complete at cycle 617573
+      PASS  G2 results, E8.2 and E8.5 traces, E8.5e events byte for byte the files of E8.5e
+      PASS  G3 bank reads of the synthesised pool = those of its RTL run (total, per bank min, max)
+      PASS  W waveform from the edge that samples the start to the end of the run, the window of the power
+      PASS  A1 every pin annotated by the waveform except those of the cells removed for simulation
+         identical to E8.5e: {'res': True, 'e8t': True, 'e85t': True, 'e85e': True}; bank reads (total, per bank min, max): gate level [2303776, 85291, 97966], RTL [2303776, 85291, 97966]
+         window: run [8165.0, 6183910.0] ns, done edge 6183905.0 ns (done_cycle 617573), power [8165.0, 6183910.0]; annotation {'vcd': 35464, 'unannotated_pins': 0, 'unannotated_cells': 0, 'unannotated_ports': 0, 'unannotated_not_removed': []}
+         pool logic: 8.0457 uJ per inference over 6.175745 ms (1.3028 mW: sequential 0.9357, combinational 0.1490, clock 0.2181); of which 0 buffers to the bank clocks 0.0000 uJ, 28 clock gates 1.3469 uJ
+         not included (no clock tree, as E8.7): the clock net from the port to {'sky130_fd_sc_hd__dlclkp_1/CLK': 28}, pin capacitance 0.1162 pF, C V^2 per cycle over the window 0.2326 uJ
+   ---- cg, conce, model B
+      PASS  G0 compile: the synthesised pool (wrapper_sim.v, core_sim.v, cell models), not an RTL pool
+      PASS  G1 ALL TESTS PASSED, inference complete at cycle 617573
+      PASS  G2 results, E8.2 and E8.5 traces, E8.5e events byte for byte the files of E8.5e
+      PASS  G3 bank reads of the synthesised pool = those of its RTL run (total, per bank min, max)
+      PASS  W waveform from the edge that samples the start to the end of the run, the window of the power
+      PASS  A1 every pin annotated by the waveform except those of the cells removed for simulation
+         identical to E8.5e: {'res': True, 'e8t': True, 'e85t': True, 'e85e': True}; bank reads (total, per bank min, max): gate level [88064, 3482, 3582], RTL [88064, 3482, 3582]
+         window: run [8165.0, 6183910.0] ns, done edge 6183905.0 ns (done_cycle 617573), power [8165.0, 6183910.0]; annotation {'vcd': 35464, 'unannotated_pins': 0, 'unannotated_cells': 0, 'unannotated_ports': 0, 'unannotated_not_removed': []}
+         pool logic: 1.7829 uJ per inference over 6.175745 ms (0.2887 mW: sequential 0.0650, combinational 0.1421, clock 0.0816); of which 0 buffers to the bank clocks 0.0000 uJ, 28 clock gates 0.5040 uJ
+         not included (no clock tree, as E8.7): the clock net from the port to {'sky130_fd_sc_hd__dlclkp_1/CLK': 28}, pin capacitance 0.1162 pF, C V^2 per cycle over the window 0.2326 uJ
+==== for the paper (rule written before the run): cg, conce; ng and cache next to it
+   model A: pool logic 1.9679 uJ per inference (cg, conce); ng_conce 12.3077, ng_cache 12.0930, cg_cache 8.4764
+   model B: pool logic 1.7829 uJ per inference (cg, conce); ng_conce 12.0006, ng_cache 11.8497, cg_cache 8.0457
+   ALL PASS; written /mnt/d/Project/hybrid_memory/paper2/reports/e10/e10_2a/e10_2a_summary.json

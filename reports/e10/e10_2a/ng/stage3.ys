@@ -1,0 +1,116 @@
+# P2R-E8.7 stage 3 (written by scripts/e8_7_tools.py stage3)
+read_liberty -lib /home/kid/sky130/orfs/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog -sv /mnt/d/Project/hybrid_memory/paper2/rtl/e10/sram_bank_128x8_stub.v
+read_verilog /home/kid/p2r_e10/e10_2a/ng/syn/n0.v
+hierarchy -top sram_pool_25bank_2c
+flatten
+expose -evert t:sram_bank_128x8
+cd sram_pool_25bank_2c
+rename \BANK[0].U_BANK.clk bb0000_clk
+rename \BANK[0].U_BANK.csb bb0000_csb
+rename \BANK[0].U_BANK.addr bb0000_addr
+rename \BANK[0].U_BANK.dout bb0000_dout
+rename \BANK[10].U_BANK.clk bb0001_clk
+rename \BANK[10].U_BANK.csb bb0001_csb
+rename \BANK[10].U_BANK.addr bb0001_addr
+rename \BANK[10].U_BANK.dout bb0001_dout
+rename \BANK[11].U_BANK.clk bb0002_clk
+rename \BANK[11].U_BANK.csb bb0002_csb
+rename \BANK[11].U_BANK.addr bb0002_addr
+rename \BANK[11].U_BANK.dout bb0002_dout
+rename \BANK[12].U_BANK.clk bb0003_clk
+rename \BANK[12].U_BANK.csb bb0003_csb
+rename \BANK[12].U_BANK.addr bb0003_addr
+rename \BANK[12].U_BANK.dout bb0003_dout
+rename \BANK[13].U_BANK.clk bb0004_clk
+rename \BANK[13].U_BANK.csb bb0004_csb
+rename \BANK[13].U_BANK.addr bb0004_addr
+rename \BANK[13].U_BANK.dout bb0004_dout
+rename \BANK[14].U_BANK.clk bb0005_clk
+rename \BANK[14].U_BANK.csb bb0005_csb
+rename \BANK[14].U_BANK.addr bb0005_addr
+rename \BANK[14].U_BANK.dout bb0005_dout
+rename \BANK[15].U_BANK.clk bb0006_clk
+rename \BANK[15].U_BANK.csb bb0006_csb
+rename \BANK[15].U_BANK.addr bb0006_addr
+rename \BANK[15].U_BANK.dout bb0006_dout
+rename \BANK[16].U_BANK.clk bb0007_clk
+rename \BANK[16].U_BANK.csb bb0007_csb
+rename \BANK[16].U_BANK.addr bb0007_addr
+rename \BANK[16].U_BANK.dout bb0007_dout
+rename \BANK[17].U_BANK.clk bb0008_clk
+rename \BANK[17].U_BANK.csb bb0008_csb
+rename \BANK[17].U_BANK.addr bb0008_addr
+rename \BANK[17].U_BANK.dout bb0008_dout
+rename \BANK[18].U_BANK.clk bb0009_clk
+rename \BANK[18].U_BANK.csb bb0009_csb
+rename \BANK[18].U_BANK.addr bb0009_addr
+rename \BANK[18].U_BANK.dout bb0009_dout
+rename \BANK[19].U_BANK.clk bb0010_clk
+rename \BANK[19].U_BANK.csb bb0010_csb
+rename \BANK[19].U_BANK.addr bb0010_addr
+rename \BANK[19].U_BANK.dout bb0010_dout
+rename \BANK[1].U_BANK.clk bb0011_clk
+rename \BANK[1].U_BANK.csb bb0011_csb
+rename \BANK[1].U_BANK.addr bb0011_addr
+rename \BANK[1].U_BANK.dout bb0011_dout
+rename \BANK[20].U_BANK.clk bb0012_clk
+rename \BANK[20].U_BANK.csb bb0012_csb
+rename \BANK[20].U_BANK.addr bb0012_addr
+rename \BANK[20].U_BANK.dout bb0012_dout
+rename \BANK[21].U_BANK.clk bb0013_clk
+rename \BANK[21].U_BANK.csb bb0013_csb
+rename \BANK[21].U_BANK.addr bb0013_addr
+rename \BANK[21].U_BANK.dout bb0013_dout
+rename \BANK[22].U_BANK.clk bb0014_clk
+rename \BANK[22].U_BANK.csb bb0014_csb
+rename \BANK[22].U_BANK.addr bb0014_addr
+rename \BANK[22].U_BANK.dout bb0014_dout
+rename \BANK[23].U_BANK.clk bb0015_clk
+rename \BANK[23].U_BANK.csb bb0015_csb
+rename \BANK[23].U_BANK.addr bb0015_addr
+rename \BANK[23].U_BANK.dout bb0015_dout
+rename \BANK[24].U_BANK.clk bb0016_clk
+rename \BANK[24].U_BANK.csb bb0016_csb
+rename \BANK[24].U_BANK.addr bb0016_addr
+rename \BANK[24].U_BANK.dout bb0016_dout
+rename \BANK[2].U_BANK.clk bb0017_clk
+rename \BANK[2].U_BANK.csb bb0017_csb
+rename \BANK[2].U_BANK.addr bb0017_addr
+rename \BANK[2].U_BANK.dout bb0017_dout
+rename \BANK[3].U_BANK.clk bb0018_clk
+rename \BANK[3].U_BANK.csb bb0018_csb
+rename \BANK[3].U_BANK.addr bb0018_addr
+rename \BANK[3].U_BANK.dout bb0018_dout
+rename \BANK[4].U_BANK.clk bb0019_clk
+rename \BANK[4].U_BANK.csb bb0019_csb
+rename \BANK[4].U_BANK.addr bb0019_addr
+rename \BANK[4].U_BANK.dout bb0019_dout
+rename \BANK[5].U_BANK.clk bb0020_clk
+rename \BANK[5].U_BANK.csb bb0020_csb
+rename \BANK[5].U_BANK.addr bb0020_addr
+rename \BANK[5].U_BANK.dout bb0020_dout
+rename \BANK[6].U_BANK.clk bb0021_clk
+rename \BANK[6].U_BANK.csb bb0021_csb
+rename \BANK[6].U_BANK.addr bb0021_addr
+rename \BANK[6].U_BANK.dout bb0021_dout
+rename \BANK[7].U_BANK.clk bb0022_clk
+rename \BANK[7].U_BANK.csb bb0022_csb
+rename \BANK[7].U_BANK.addr bb0022_addr
+rename \BANK[7].U_BANK.dout bb0022_dout
+rename \BANK[8].U_BANK.clk bb0023_clk
+rename \BANK[8].U_BANK.csb bb0023_csb
+rename \BANK[8].U_BANK.addr bb0023_addr
+rename \BANK[8].U_BANK.dout bb0023_dout
+rename \BANK[9].U_BANK.clk bb0024_clk
+rename \BANK[9].U_BANK.csb bb0024_csb
+rename \BANK[9].U_BANK.addr bb0024_addr
+rename \BANK[9].U_BANK.dout bb0024_dout
+cd ..
+opt_clean -purge
+hilomap -singleton -hicell sky130_fd_sc_hd__conb_1 HI -locell sky130_fd_sc_hd__conb_1 LO
+splitnets
+insbuf -buf sky130_fd_sc_hd__buf_4 A X
+rename sram_pool_25bank_2c sram_pool_25bank_2c_core
+tee -o /home/kid/p2r_e10/e10_2a/ng/syn/stat_core.txt stat -liberty /home/kid/sky130/orfs/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+write_verilog -noattr -norename -simple-lhs /home/kid/p2r_e10/e10_2a/ng/syn/core_raw.v

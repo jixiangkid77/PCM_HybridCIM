@@ -1,0 +1,68 @@
+P2R-E9.4 gates and results (gate level; written before the run: protocol P2R-E9.4 of 2026-11-11)
+   PASS  S1 netlist /mnt/d/Project/hybrid_memory/paper2/reports/e9/e9_1/syn/amu9_sta.v (byte for byte the E9.1 netlist: True): 7 ROM black boxes with MACRO 0..6 [0, 1, 2, 3, 4, 5, 6], no lpflow or probe cells (0); 13784 cells, 584 flip-flops, 37 clock gates; area 99721.8912 um2 (E9.1)
+   PASS  E1 logic + wrapper = the synthesised netlist (e8_7_tools.py core)
+   PASS  C1 only buffers on the clock net removed for simulation (0 removed)
+   ---- the synthesised address-map unit of E9.1, normal, model A
+      PASS  G0 compile: the synthesised unit (wrapper_sim.v, core_sim.v, cell models) and the ROM, pool and bank models in the E9 unit; no RTL of the address map, no E8.5 address map, no conv1 cache
+      PASS  G1 ALL TESTS PASSED, inference complete at cycle 617573
+      PASS  G2 results, E8.2 and E8.5 traces byte for byte the files of E8.5c (new / once)
+      PASS  G3 every ROM read pulse (kind, phase, cycle, macro, address, clock-low cycles) = the E9.1 RTL event list; model reads = pulses; ROM protocol errors 0
+      PASS  G4 banked pool: its line (lane and bank reads, per bank, conflicts, address errors, deepest row) = that of the E9.1 RTL run; read-once: 267,143 / 205,664 reads (E8.5c)
+      PASS  W waveform from the edge that samples the start to the end of the run, the window of the power
+      PASS  A1 every pin annotated by the waveform except those of the cells removed for simulation
+         identical to E8.5c: {'res': True, 'e8t': True, 'e85t': True}; ROM: {'lookup': 2484, 'parking': 115, 'model_reads': 2599, 'model_parking_word': 115, 'err_cs': 0, 'err_addr': 0, 'err_word': 0, 'low_min_ns': 50.0}; events {'gate': 2599, 'rtl_E9.1': 2599, 'first_difference': None}
+         pool (lane reads, bank reads, per bank min, max, conflicts, address errors, deepest row): gate level [8748261, 8748261, 337359, 361658, 0, 0, 122], E9.1 RTL [8748261, 8748261, 337359, 361658, 0, 0, 122]
+         window: run [8165.0, 6183910.0] ns, done edge 6183905.0 ns (done_cycle 617573), power [8165.0, 6183910.0]; annotation {'vcd': 51271, 'unannotated_pins': 0, 'unannotated_not_removed': [], 'unannotated_ports': 0}
+         address-map logic: 3.9087 uJ per inference over 6.175745 ms (0.6329 mW: sequential 0.3603, combinational 0.1759, clock 0.0967)
+         by class (uJ): clock gates 0.5973, combinational 1.0853, flip-flops 2.2254, port buffers (stage 3) 0.0008
+         by part (uJ): U_CORE 2.7233, U_DEC 0.8036, U_ENTRY 0.0948, U_LANES 0.1068, top (entry buffer, ROM word select) 0.1803
+         not included (no clock tree, as E8.7): the clock net from the port to {'sky130_fd_sc_hd__dlclkp_1/CLK': 36, 'sky130_fd_sc_hd__edfxtp_1/CLK': 73, 'sky130_fd_sc_hd__dfxtp_1/CLK': 4}, pin capacitance 0.2849 pF, C V^2 per cycle over the window 0.5702 uJ
+   ---- the synthesised address-map unit of E9.1, once, model A
+      PASS  G0 compile: the synthesised unit (wrapper_sim.v, core_sim.v, cell models) and the ROM, pool and bank models in the E9 unit; no RTL of the address map, no E8.5 address map, no conv1 cache
+      PASS  G1 ALL TESTS PASSED, inference complete at cycle 617573
+      PASS  G2 results, E8.2 and E8.5 traces byte for byte the files of E8.5c (new / once)
+      PASS  G3 every ROM read pulse (kind, phase, cycle, macro, address, clock-low cycles) = the E9.1 RTL event list; model reads = pulses; ROM protocol errors 0
+      PASS  G4 banked pool: its line (lane and bank reads, per bank, conflicts, address errors, deepest row) = that of the E9.1 RTL run; read-once: 267,143 / 205,664 reads (E8.5c)
+      PASS  W waveform from the edge that samples the start to the end of the run, the window of the power
+      PASS  A1 every pin annotated by the waveform except those of the cells removed for simulation
+         identical to E8.5c: {'res': True, 'e8t': True, 'e85t': True}; ROM: {'lookup': 2484, 'parking': 115, 'model_reads': 2599, 'model_parking_word': 115, 'err_cs': 0, 'err_addr': 0, 'err_word': 0, 'low_min_ns': 50.0}; events {'gate': 2599, 'rtl_E9.1': 2599, 'first_difference': None}
+         pool (lane reads, bank reads, per bank min, max, conflicts, address errors, deepest row): gate level [267143, 267143, 10661, 10761, 0, 0, 122], E9.1 RTL [267143, 267143, 10661, 10761, 0, 0, 122]
+         window: run [8165.0, 6183910.0] ns, done edge 6183905.0 ns (done_cycle 617573), power [8165.0, 6183910.0]; annotation {'vcd': 51271, 'unannotated_pins': 0, 'unannotated_not_removed': [], 'unannotated_ports': 0}
+         address-map logic: 3.9087 uJ per inference over 6.175745 ms (0.6329 mW: sequential 0.3603, combinational 0.1759, clock 0.0967)
+         by class (uJ): clock gates 0.5973, combinational 1.0853, flip-flops 2.2254, port buffers (stage 3) 0.0008
+         by part (uJ): U_CORE 2.7233, U_DEC 0.8036, U_ENTRY 0.0948, U_LANES 0.1068, top (entry buffer, ROM word select) 0.1803
+         not included (no clock tree, as E8.7): the clock net from the port to {'sky130_fd_sc_hd__dlclkp_1/CLK': 36, 'sky130_fd_sc_hd__edfxtp_1/CLK': 73, 'sky130_fd_sc_hd__dfxtp_1/CLK': 4}, pin capacitance 0.2849 pF, C V^2 per cycle over the window 0.5702 uJ
+   ---- the synthesised address-map unit of E9.1, normal, model B
+      PASS  G0 compile: the synthesised unit (wrapper_sim.v, core_sim.v, cell models) and the ROM, pool and bank models in the E9 unit; no RTL of the address map, no E8.5 address map, no conv1 cache
+      PASS  G1 ALL TESTS PASSED, inference complete at cycle 617573
+      PASS  G2 results, E8.2 and E8.5 traces byte for byte the files of E8.5c (new / once)
+      PASS  G3 every ROM read pulse (kind, phase, cycle, macro, address, clock-low cycles) = the E9.1 RTL event list; model reads = pulses; ROM protocol errors 0
+      PASS  G4 banked pool: its line (lane and bank reads, per bank, conflicts, address errors, deepest row) = that of the E9.1 RTL run; read-once: 267,143 / 205,664 reads (E8.5c)
+      PASS  W waveform from the edge that samples the start to the end of the run, the window of the power
+      PASS  A1 every pin annotated by the waveform except those of the cells removed for simulation
+         identical to E8.5c: {'res': True, 'e8t': True, 'e85t': True}; ROM: {'lookup': 2484, 'parking': 115, 'model_reads': 2599, 'model_parking_word': 115, 'err_cs': 0, 'err_addr': 0, 'err_word': 0, 'low_min_ns': 50.0}; events {'gate': 2599, 'rtl_E9.1': 2599, 'first_difference': None}
+         pool (lane reads, bank reads, per bank min, max, conflicts, address errors, deepest row): gate level [7144748, 7144748, 278089, 312107, 0, 0, 122], E9.1 RTL [7144748, 7144748, 278089, 312107, 0, 0, 122]
+         window: run [8165.0, 6183910.0] ns, done edge 6183905.0 ns (done_cycle 617573), power [8165.0, 6183910.0]; annotation {'vcd': 51271, 'unannotated_pins': 0, 'unannotated_not_removed': [], 'unannotated_ports': 0}
+         address-map logic: 3.9307 uJ per inference over 6.175745 ms (0.6365 mW: sequential 0.3604, combinational 0.1794, clock 0.0967)
+         by class (uJ): clock gates 0.5973, combinational 1.1072, flip-flops 2.2254, port buffers (stage 3) 0.0008
+         by part (uJ): U_CORE 2.7233, U_DEC 0.8253, U_ENTRY 0.0948, U_LANES 0.1068, top (entry buffer, ROM word select) 0.1805
+         not included (no clock tree, as E8.7): the clock net from the port to {'sky130_fd_sc_hd__dlclkp_1/CLK': 36, 'sky130_fd_sc_hd__edfxtp_1/CLK': 73, 'sky130_fd_sc_hd__dfxtp_1/CLK': 4}, pin capacitance 0.2849 pF, C V^2 per cycle over the window 0.5702 uJ
+   ---- the synthesised address-map unit of E9.1, once, model B
+      PASS  G0 compile: the synthesised unit (wrapper_sim.v, core_sim.v, cell models) and the ROM, pool and bank models in the E9 unit; no RTL of the address map, no E8.5 address map, no conv1 cache
+      PASS  G1 ALL TESTS PASSED, inference complete at cycle 617573
+      PASS  G2 results, E8.2 and E8.5 traces byte for byte the files of E8.5c (new / once)
+      PASS  G3 every ROM read pulse (kind, phase, cycle, macro, address, clock-low cycles) = the E9.1 RTL event list; model reads = pulses; ROM protocol errors 0
+      PASS  G4 banked pool: its line (lane and bank reads, per bank, conflicts, address errors, deepest row) = that of the E9.1 RTL run; read-once: 267,143 / 205,664 reads (E8.5c)
+      PASS  W waveform from the edge that samples the start to the end of the run, the window of the power
+      PASS  A1 every pin annotated by the waveform except those of the cells removed for simulation
+         identical to E8.5c: {'res': True, 'e8t': True, 'e85t': True}; ROM: {'lookup': 2484, 'parking': 115, 'model_reads': 2599, 'model_parking_word': 115, 'err_cs': 0, 'err_addr': 0, 'err_word': 0, 'low_min_ns': 50.0}; events {'gate': 2599, 'rtl_E9.1': 2599, 'first_difference': None}
+         pool (lane reads, bank reads, per bank min, max, conflicts, address errors, deepest row): gate level [205664, 205664, 8186, 8286, 0, 0, 122], E9.1 RTL [205664, 205664, 8186, 8286, 0, 0, 122]
+         window: run [8165.0, 6183910.0] ns, done edge 6183905.0 ns (done_cycle 617573), power [8165.0, 6183910.0]; annotation {'vcd': 51271, 'unannotated_pins': 0, 'unannotated_not_removed': [], 'unannotated_ports': 0}
+         address-map logic: 3.9307 uJ per inference over 6.175745 ms (0.6365 mW: sequential 0.3604, combinational 0.1794, clock 0.0967)
+         by class (uJ): clock gates 0.5973, combinational 1.1072, flip-flops 2.2254, port buffers (stage 3) 0.0008
+         by part (uJ): U_CORE 2.7233, U_DEC 0.8253, U_ENTRY 0.0948, U_LANES 0.1068, top (entry buffer, ROM word select) 0.1805
+         not included (no clock tree, as E8.7): the clock net from the port to {'sky130_fd_sc_hd__dlclkp_1/CLK': 36, 'sky130_fd_sc_hd__edfxtp_1/CLK': 73, 'sky130_fd_sc_hd__dfxtp_1/CLK': 4}, pin capacitance 0.2849 pF, C V^2 per cycle over the window 0.5702 uJ
+==== for E9.5 (rule written before the run): the read-once runs; the normal runs next to them
+   model A: address-map logic 3.9087 uJ per inference (read-once run); normal run 3.9087; E8.7, the E8.5 unit in the whole chip, 9.871 (-5.9623); logic area 99721.8912 um2
+   model B: address-map logic 3.9307 uJ per inference (read-once run); normal run 3.9307; E8.7, the E8.5 unit in the whole chip, 9.717 (-5.7863); logic area 99721.8912 um2
+   ALL PASS; written /mnt/d/Project/hybrid_memory/paper2/reports/e9/e9_4/e9_4_summary.json

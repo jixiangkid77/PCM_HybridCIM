@@ -1,0 +1,45 @@
+P2R-E9.3c rest power of the address-map ROM macros of E9 and D_ROM (rules fixed before the run)
+   PASS  G0 inputs: plan of E9.3 df6400b4.. (rules: df6400b4..), plan of E9.3b db634e91.. (rules: db634e91..), E9.3b all gates passed: True; 14 macro fits, lookup model on 616 lookups
+      model A: replay with E9.3's parked power 0.117336333 uJ, E9.3b final 0.117336333 uJ
+      model B: replay with E9.3's parked power 0.114728403 uJ, E9.3b final 0.114728403 uJ
+   PASS  G1 the replay of this tool gives E9.3b's final D_ROM (relative 1e-9)
+   PASS  V0 every read right: 36 of 36 reads (data; row and word selection)
+   PASS  V1 every run complete: 8 of 8
+      F_A_k0: windows 0-3 against E9.3 A_k0: largest difference 0.00e+00 (relative); 0.10-0.35 us after the parking read 0.8264 pJ (E9.3, with its next address change and a checkpoint in it: 0.9345 pJ)
+      F_B_k0: windows 0-3 against E9.3 B_k0: largest difference 0.00e+00 (relative); 0.10-0.35 us after the parking read 0.7434 pJ (E9.3, with its next address change and a checkpoint in it: 0.8906 pJ)
+   PASS  R1 the fine runs of macro 0 give E9.3's first four windows within 1.0e-03
+      A macro 0: unread 0.3726 uW; after parking: first us 1.612, 1.1-2.1 us 0.639, 9.1-10.1 us 0.4012, 10.1-20 us -0.1263, 20-100 us 0.3799, 100-1000 us 0.3834 uW (settled / unread 1.0288); 5.1-10.1 us fine 0.4135, coarse 0.4137 (+0.05%)
+      A macro 1: unread 0.3715 uW; after parking: first us 1.048, 1.1-2.1 us 0.609, 9.1-10.1 us 0.3995, 10.1-20 us 0.9180, 20-100 us 0.3788, 100-1000 us 0.3720 uW (settled / unread 1.0013); 5.1-10.1 us fine 0.4114, coarse 0.4127 (+0.33%)
+      B macro 0: unread 0.3718 uW; after parking: first us 1.652, 1.1-2.1 us 0.650, 9.1-10.1 us 0.4048, 10.1-20 us 0.8940, 20-100 us 0.3791, 100-1000 us 0.3703 uW (settled / unread 0.9958); 5.1-10.1 us fine 0.4177, coarse 0.4138 (-0.95%)
+      B macro 1: unread 0.3713 uW; after parking: first us 1.070, 1.1-2.1 us 0.617, 9.1-10.1 us 0.4038, 10.1-20 us -0.3773, 20-100 us 0.3785, 100-1000 us 0.3819 uW (settled / unread 1.0287); 5.1-10.1 us fine 0.4162, coarse 0.4127 (-0.85%)
+   PASS  S2 fine and coarse runs within 5% from 5.1 to 10.1 us after the parking read
+   address changes with the clock low: +18.70 fJ per falling bit (parked, about 11 us after the parking read; F_A_k0 6 bits +150.6 fJ, F_A_k1 8 bits +239.8 fJ, F_B_k0 6 bits +49.5 fJ, F_B_k1 8 bits +83.8 fJ); +0.31 fJ per rising bit (unread, the first change of the 22 runs of E9.3 and E9.3b, against the 6 runs without one)
+==== D_ROM per inference (uJ): E9.3b final replay, parked segments from the measured rest power
+   main: measured rest power, address changes on idle macros          A 0.10615   B 0.10716
+   E9.3 rule (one sample, held constant)                              A 0.11734   B 0.11473
+   E9.3b clean sample 0.48 us after parking, held constant            A 0.11266   B 0.11377
+   settled level from the parking read on                             A 0.10582   B 0.10662
+   first microsecond, then the settled level (the form of E8.5g)      A 0.10587   B 0.10667
+   main without the address changes on idle macros                    A 0.10582   B 0.10683
+   model A parts (2483 lookups, 114 parking reads):
+      dense lookups (to the next read, 9 cycles low)           0.08005 uJ
+      static of unparked gaps beyond 9 cycles                  0.00019 uJ
+      last lookup of a dense run (parked 5 cycles later)       0.00024 uJ
+      parking reads after a dense run                          0.00014 uJ
+      convolution lookup-and-park pairs (macro 0)              0.00920 uJ
+      parked                                                   0.00261 uJ
+      unread (before the first read)                           0.01340 uJ
+      address changes seen by the idle macros                  0.00033 uJ
+   model B parts (2483 lookups, 114 parking reads):
+      dense lookups (to the next read, 9 cycles low)           0.08254 uJ
+      static of unparked gaps beyond 9 cycles                  0.00020 uJ
+      last lookup of a dense run (parked 5 cycles later)       0.00026 uJ
+      parking reads after a dense run                          0.00016 uJ
+      convolution lookup-and-park pairs (macro 0)              0.00754 uJ
+      parked                                                   0.00273 uJ
+      unread (before the first read)                           0.01340 uJ
+      address changes seen by the idle macros                  0.00033 uJ
+   pins (from the source currents of the fine runs): clock 4.46 fF, chip select 5.54 fF, address 7.01 fF per pin (18 / 18 / 38 rising edges); charging them in one inference (7 macros on the address bus, not in D_ROM or the unit's logic): A 0.545 nJ, B 0.545 nJ
+   model A lookup of address 6: 72.76 pJ after 300 ns parked (E9.3); F_A_k0 73.46 pJ, C_A_k0 73.50 pJ (C: maximum time step 500 ns, reported only)
+   model B lookup of address 6: not read in E9.3; F_B_k0 73.82 pJ, C_B_k0 73.94 pJ (C: maximum time step 500 ns, reported only)
+   ALL PASS: G0 True, G1 True, V0 True, V1 True, R1 True, S2 True

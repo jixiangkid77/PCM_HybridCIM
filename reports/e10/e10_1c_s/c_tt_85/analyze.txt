@@ -1,0 +1,23 @@
+P2R-E8.4c analysis: sky130_sram_128bytes_1rw_8x128_8  period 10.0 ns  vdd 1.8 V  corner tt 85.0 C  load 10.0 fF per output  points 5227
+data: simulated to 242.5 of 242.5 ns, 18 of 18 cycles complete
+E_vdd: energy from the supply from the cycle's rising edge to the next; E_in: from the input sources; P_end: supply power at the end of the cycle (stopped segment: average over its last fifth)
+  k kind   addr  data read@half read@end  ok  E_vdd pJ  E_in pJ  P_end uW t_acc ns
+  0 idle            -         -        -         4.158    0.002   -61.652 
+  1 idle            -         -        -         3.234   -0.021     4.507 
+  2 write     0    00         -        -        11.879    0.208    24.993 
+  3 write   127    ff         -        -        15.777   -0.144    25.836 
+  4 write    65    00         -        -        13.641    0.112    15.677 
+  5 write    34    ff         -        -        14.793   -0.027    35.826 
+  6 write     7    55         -        -        13.385    0.030    24.539 
+  7 idle            -         -        -         4.341   -0.044     7.130 
+  8 read      0    00        00       00 yes    11.198    0.012    25.337    1.669   after the stop: 00 yes, t_acc 1.669 ns
+  9 stop            -         -        -         0.371    0.096     3.764 
+ 10 read    127    ff        00       ff yes    13.790    0.013    33.277    8.574   after the stop: ff yes, t_acc 8.574 ns
+ 11 stop            -         -        -         0.488   -0.067     2.675 
+ 12 read     65    00        00       00 yes    12.260    0.013    23.250    1.521   after the stop: 00 yes, t_acc 1.521 ns
+ 13 stop            -         -        -         0.335   -0.000     2.835 
+ 14 read     34    ff        00       ff yes    13.342    0.013    33.460    8.574   after the stop: ff yes, t_acc 8.574 ns
+ 15 stop            -         -        -         0.262    0.004     2.700 
+ 16 read      7    55        00       55 yes    12.576    0.012    28.736    8.574   after the stop: 55 yes, t_acc 8.574 ns
+ 17 stop            -         -        -         0.229    0.000     3.594 
+summary: {"reads": 5, "reads_ok": 5, "E_read_pJ_mean": 12.6333, "E_read_pJ_min": 11.1984, "E_read_pJ_max": 13.7901, "E_write_pJ_mean": 13.8951, "E_idle_pJ_mean": 3.9114, "P_stop_uW": 3.5944, "P_stop_after_read_uW": [3.7636, 2.6748, 2.8353, 2.6998, 3.5944], "P_stop_after_idle_uW": [], "E_read_after_stop_pJ_mean": 12.992, "reads_ok_at_half": 2, "E_read_gated_pJ": [11.5321, 14.2519, 12.5669, 13.5772, 12.5897], "t_acc_ns_max": 8.5736, "reads_gated": 5, "reads_ok_after_stop": 5, "t_acc_gated_ns_max": 8.5736, "wrong_bits": [], "complete": true}

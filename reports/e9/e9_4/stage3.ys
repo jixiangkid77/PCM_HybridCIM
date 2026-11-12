@@ -1,0 +1,44 @@
+# P2R-E8.7 stage 3 (written by scripts/e8_7_tools.py stage3)
+read_liberty -lib /home/kid/sky130/orfs/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog -sv /mnt/d/Project/hybrid_memory/paper2/rtl/e9/e9_rom_stub.v
+read_verilog /home/kid/p2r_e9/e9_4/syn/n0.v
+hierarchy -top amu9_top
+flatten
+expose -evert t:e9_rom
+cd amu9_top
+rename \mac[0].U_ROM.clk0 bb0000_clk0
+rename \mac[0].U_ROM.cs0 bb0000_cs0
+rename \mac[0].U_ROM.addr0 bb0000_addr0
+rename \mac[0].U_ROM.dout0 bb0000_dout0
+rename \mac[1].U_ROM.clk0 bb0001_clk0
+rename \mac[1].U_ROM.cs0 bb0001_cs0
+rename \mac[1].U_ROM.addr0 bb0001_addr0
+rename \mac[1].U_ROM.dout0 bb0001_dout0
+rename \mac[2].U_ROM.clk0 bb0002_clk0
+rename \mac[2].U_ROM.cs0 bb0002_cs0
+rename \mac[2].U_ROM.addr0 bb0002_addr0
+rename \mac[2].U_ROM.dout0 bb0002_dout0
+rename \mac[3].U_ROM.clk0 bb0003_clk0
+rename \mac[3].U_ROM.cs0 bb0003_cs0
+rename \mac[3].U_ROM.addr0 bb0003_addr0
+rename \mac[3].U_ROM.dout0 bb0003_dout0
+rename \mac[4].U_ROM.clk0 bb0004_clk0
+rename \mac[4].U_ROM.cs0 bb0004_cs0
+rename \mac[4].U_ROM.addr0 bb0004_addr0
+rename \mac[4].U_ROM.dout0 bb0004_dout0
+rename \mac[5].U_ROM.clk0 bb0005_clk0
+rename \mac[5].U_ROM.cs0 bb0005_cs0
+rename \mac[5].U_ROM.addr0 bb0005_addr0
+rename \mac[5].U_ROM.dout0 bb0005_dout0
+rename \mac[6].U_ROM.clk0 bb0006_clk0
+rename \mac[6].U_ROM.cs0 bb0006_cs0
+rename \mac[6].U_ROM.addr0 bb0006_addr0
+rename \mac[6].U_ROM.dout0 bb0006_dout0
+cd ..
+opt_clean -purge
+hilomap -singleton -hicell sky130_fd_sc_hd__conb_1 HI -locell sky130_fd_sc_hd__conb_1 LO
+splitnets
+insbuf -buf sky130_fd_sc_hd__buf_4 A X
+rename amu9_top amu9_top_core
+tee -o /home/kid/p2r_e9/e9_4/syn/stat_core.txt stat -liberty /home/kid/sky130/orfs/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+write_verilog -noattr -norename -simple-lhs /home/kid/p2r_e9/e9_4/syn/core_raw.v

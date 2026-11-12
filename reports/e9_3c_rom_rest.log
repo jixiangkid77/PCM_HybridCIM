@@ -1,0 +1,172 @@
+==============================================================
+P2R-E9.3c rest power of the address-map ROM macros of E9, started 2026-11-12 22:15:20
+==============================================================
+
+########## 0. files, the E9.3b, E9.3, E9.2 and E9.1 results, tools ##########
+scripts/e9_3c_rom_rest.sh: OK
+scripts/e9_3c_tools.py: OK
+scripts/e9_3b_tools.py: OK
+scripts/e9_3_tools.py: OK
+scripts/e8_4_rom_bench.py: OK
+   E9.2: tables: 2 PASS, 0 FAIL, 0 INCOMPLETE   (X: the c
+   E9.2: 14 extracted netlists, macro images and LVS matches found
+   E9.3: plan b0701c21..., 14 complete runs; E9.3b: plan d1ba411e..., 14 complete runs, all gates passed
+   E9.1 events A: b1378a855a2653994ddfe7795ae3e302
+   E9.1 events B: 4693bea344662f8caa9c84c4c8fb05ec
+ngspice  : /nix/store/4ssrcgdvyb8car0yxay8cwfa5wc89f1w-ngspice-45/bin/ngspice
+   ** ngspice-45 : Circuit level simulation program
+models   : /home/kid/gf/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice
+bench    : d120197ca2914ba7720e2718f7ba51b4
+python3  : /usr/bin/python3  Python 3.12.3
+jobs     : at most 7 ngspice runs at a time (E8_MAXJOBS); timeout 0s per run (0 = none)
+disk     : 161 GB free for /mnt/d/Project/hybrid_memory/paper2/reports/e9_rom/e9_3c (needs 5 GB)
+
+########## 1. the read sequences (scripts/e9_3c_tools.py plan) ##########
+   F_A_k0: e9rom_A_40x2688_w8_r48k0, fine, maximum time step 2 ns, 20 cycles: w300,w250,r5,r383,w50,w50,w150,w750,w1000,w1000,w1000,w1000,w1000,w1000,w1000,w1000,w1000,w1000, ...
+   F_A_k1: e9rom_A_40x2688_w8_r48k1, fine, maximum time step 2 ns, 26 cycles: w300,w250,r379,w40,r380,w40,r381,w40,r382,r383,w50,w50,w150,w750,w1000,w1000,w1000,w1000,w1000,w ...
+   F_B_k0: e9rom_B_40x2688_w8_r48k0, fine, maximum time step 2 ns, 20 cycles: w300,w250,r5,r383,w50,w50,w150,w750,w1000,w1000,w1000,w1000,w1000,w1000,w1000,w1000,w1000,w1000, ...
+   F_B_k1: e9rom_B_40x2688_w8_r48k1, fine, maximum time step 2 ns, 26 cycles: w300,w250,r379,w40,r380,w40,r381,w40,r382,r383,w50,w50,w150,w750,w1000,w1000,w1000,w1000,w1000,w ...
+   C_A_k0: e9rom_A_40x2688_w8_r48k0, coarse, maximum time step 500 ns, 11 cycles: w300,w250,r5,r383,w2000,w3000,w5000,w9900,w80000,w900000,r6
+   C_A_k1: e9rom_A_40x2688_w8_r48k1, coarse, maximum time step 500 ns, 17 cycles: w300,w250,r379,w40,r380,w40,r381,w40,r382,r383,w2000,w3000,w5000,w9900,w80000,w900000,r0
+   C_B_k0: e9rom_B_40x2688_w8_r48k0, coarse, maximum time step 500 ns, 11 cycles: w300,w250,r5,r383,w2000,w3000,w5000,w9900,w80000,w900000,r6
+   C_B_k1: e9rom_B_40x2688_w8_r48k1, coarse, maximum time step 500 ns, 17 cycles: w300,w250,r379,w40,r380,w40,r381,w40,r382,r383,w2000,w3000,w5000,w9900,w80000,w900000,r0
+   model A: macro 0 parks after address 5 and rests 474.17 us (the longest rest); macro 1's last lookups 379, 380, 381, 382
+   model B: macro 0 parks after address 5 and rests 474.17 us (the longest rest); macro 1's last lookups 379, 380, 381, 382
+   plan md5 6ca5d9d7a76f1a52cfd4ada4820587c1
+
+########## 2. benches (scripts/e8_4_rom_bench.py bench, tt 25 C 1.80 V, CS 10 ns after the clock, reltol 1e-4, every bitline, no checkpoint inside a run) ##########
+   F_A_k1 (e9rom_A_40x2688_w8_r48k1, fine, maximum time step 2 ns): bench written, 94 lines
+   F_B_k1 (e9rom_B_40x2688_w8_r48k1, fine, maximum time step 2 ns): bench written, 94 lines
+   F_A_k0 (e9rom_A_40x2688_w8_r48k0, fine, maximum time step 2 ns): bench written, 94 lines
+   F_B_k0 (e9rom_B_40x2688_w8_r48k0, fine, maximum time step 2 ns): bench written, 94 lines
+   C_A_k1 (e9rom_A_40x2688_w8_r48k1, coarse, maximum time step 500 ns): bench written, 94 lines
+   C_B_k1 (e9rom_B_40x2688_w8_r48k1, coarse, maximum time step 500 ns): bench written, 94 lines
+   C_A_k0 (e9rom_A_40x2688_w8_r48k0, coarse, maximum time step 500 ns): bench written, 94 lines
+   C_B_k0 (e9rom_B_40x2688_w8_r48k0, coarse, maximum time step 500 ns): bench written, 94 lines
+
+########## 3. runs (at most 7 at a time; progress every 1800 s), started 2026-11-12 22:15:47 ##########
+   started F_A_k1 at 2026-11-12 22:15:48
+   started F_B_k1 at 2026-11-12 22:15:48
+   started F_A_k0 at 2026-11-12 22:15:48
+   started F_B_k0 at 2026-11-12 22:15:48
+   started C_A_k1 at 2026-11-12 22:15:48
+   started C_B_k1 at 2026-11-12 22:15:48
+   started C_A_k0 at 2026-11-12 22:15:48
+   started C_B_k0 at 2026-11-12 22:37:36
+   progress at 2026-11-12 22:45:53:
+      C_A_k0   done           21 min
+      C_A_k1   running        30 min
+      C_B_k0   running        8 min
+      C_B_k1   running        30 min
+      F_A_k0   running        30 min
+      F_A_k1   running        30 min
+      F_B_k0   running        30 min
+      F_B_k1   running        30 min
+
+########## 4. results of the runs (each analysed by scripts/e8_4_rom_bench.py analyze when its ngspice ended) ##########
+
+---- C_A_k0: ngspice exit 0, 21 min, complete, every read right ----
+   Total analysis time (seconds) = 1163.85
+   data: simulated to 1000800.0 of 1000800.2 ns, 11 of 11 cycles complete (complete)
+   summary: {"cycles_complete": 11, "cycles_total": 11, "simulated_ns": 1000800.0, "tstop_ns": 1000800.2000000001, "failed": false, "reads": 3, "reads_ok": 3, "reads_selection_ok": 3, "E_read_pJ_mean": 75.27685291824157, "E_read_pJ_min": 23.291281229825195, "E_read_pJ_max": 129.03516509941593, "t_access_ns_max": 15.91516299999987, "bl1_min_V": 1.23614977, "bl0_max_V": 1.7615093614292635e-05}
+
+---- C_A_k1: ngspice exit 0, 33 min, complete, every read right ----
+   Total analysis time (seconds) = 1856.07
+   data: simulated to 1001220.0 of 1001220.2 ns, 17 of 17 cycles complete (complete)
+   summary: {"cycles_complete": 17, "cycles_total": 17, "simulated_ns": 1001219.9999999999, "tstop_ns": 1001220.2000000002, "failed": false, "reads": 6, "reads_ok": 6, "reads_selection_ok": 6, "E_read_pJ_mean": 22.883248112925656, "E_read_pJ_min": 15.390941406426336, "E_read_pJ_max": 42.804236790297274, "t_access_ns_max": 14.579999999854431, "bl1_min_V": 1.62693647, "bl0_max_V": 4.49775268297002e-05}
+
+---- C_B_k0: ngspice exit 0, 21 min, complete, every read right ----
+   Total analysis time (seconds) = 1061.45
+   data: simulated to 1000800.0 of 1000800.2 ns, 11 of 11 cycles complete (complete)
+   summary: {"cycles_complete": 11, "cycles_total": 11, "simulated_ns": 1000800.0, "tstop_ns": 1000800.2000000001, "failed": false, "reads": 3, "reads_ok": 3, "reads_selection_ok": 3, "E_read_pJ_mean": 59.050195814814195, "E_read_pJ_min": 14.316269914754571, "E_read_pJ_max": 88.89618339659054, "t_access_ns_max": 15.84000000002389, "bl1_min_V": 1.50539289, "bl0_max_V": 8.956840358889792e-05}
+
+---- C_B_k1: ngspice exit 0, 32 min, complete, every read right ----
+   Total analysis time (seconds) = 1784.84
+   data: simulated to 1001220.0 of 1001220.2 ns, 17 of 17 cycles complete (complete)
+   summary: {"cycles_complete": 17, "cycles_total": 17, "simulated_ns": 1001219.9999999999, "tstop_ns": 1001220.2000000002, "failed": false, "reads": 6, "reads_ok": 6, "reads_selection_ok": 6, "E_read_pJ_mean": 21.299588835390313, "E_read_pJ_min": 14.737208615385049, "E_read_pJ_max": 42.63622743265222, "t_access_ns_max": 14.239999999911962, "bl1_min_V": 1.66576455, "bl0_max_V": 2.3061045237200252e-05}
+
+---- F_A_k0: ngspice exit 0, 39 min, complete, every read right ----
+   Total analysis time (seconds) = 2174.58
+   data: simulated to 12900.2 of 12900.2 ns, 20 of 20 cycles complete (complete)
+   summary: {"cycles_complete": 20, "cycles_total": 20, "simulated_ns": 12900.2, "tstop_ns": 12900.200000000006, "failed": false, "reads": 3, "reads_ok": 3, "reads_selection_ok": 3, "E_read_pJ_mean": 75.19651596956435, "E_read_pJ_min": 23.13123709025055, "E_read_pJ_max": 128.99993185520043, "t_access_ns_max": 15.915161999999972, "bl1_min_V": 1.22591486, "bl0_max_V": 4.622048109685734e-05}
+
+---- F_A_k1: ngspice exit 0, 46 min, complete, every read right ----
+   Total analysis time (seconds) = 2589.72
+   data: simulated to 13320.2 of 13320.2 ns, 26 of 26 cycles complete (complete)
+   summary: {"cycles_complete": 26, "cycles_total": 26, "simulated_ns": 13320.2, "tstop_ns": 13320.200000000006, "failed": false, "reads": 6, "reads_ok": 6, "reads_selection_ok": 6, "E_read_pJ_mean": 22.787284967608553, "E_read_pJ_min": 15.225160503683087, "E_read_pJ_max": 42.70722239933713, "t_access_ns_max": 14.582799999995032, "bl1_min_V": 1.62182442, "bl0_max_V": 2.9896785872200248e-05}
+
+---- F_B_k0: ngspice exit 0, 40 min, complete, every read right ----
+   Total analysis time (seconds) = 2248.67
+   data: simulated to 12900.2 of 12900.2 ns, 20 of 20 cycles complete (complete)
+   summary: {"cycles_complete": 20, "cycles_total": 20, "simulated_ns": 12900.2, "tstop_ns": 12900.200000000006, "failed": false, "reads": 3, "reads_ok": 3, "reads_selection_ok": 3, "E_read_pJ_mean": 58.88475560686157, "E_read_pJ_min": 13.962941185256659, "E_read_pJ_max": 88.87615619828587, "t_access_ns_max": 15.813999999995644, "bl1_min_V": 1.44734572, "bl0_max_V": 3.718315074772143e-05}
+
+---- F_B_k1: ngspice exit 0, 45 min, complete, every read right ----
+   Total analysis time (seconds) = 2554.18
+   data: simulated to 13320.2 of 13320.2 ns, 26 of 26 cycles complete (complete)
+   summary: {"cycles_complete": 26, "cycles_total": 26, "simulated_ns": 13320.2, "tstop_ns": 13320.200000000006, "failed": false, "reads": 6, "reads_ok": 6, "reads_selection_ok": 6, "E_read_pJ_mean": 21.388104405438508, "E_read_pJ_min": 14.596349611551826, "E_read_pJ_max": 42.56480446961398, "t_access_ns_max": 14.240999999994363, "bl1_min_V": 1.65381957, "bl0_max_V": 3.8653431020512403e-05}
+   progress at 2026-11-12 23:02:28:
+      C_A_k0   done           21 min
+      C_A_k1   done           33 min
+      C_B_k0   done           21 min
+      C_B_k1   done           32 min
+      F_A_k0   done           39 min
+      F_A_k1   done           46 min
+      F_B_k0   done           40 min
+      F_B_k1   done           45 min
+
+########## 5. the rest power and D_ROM (scripts/e9_3c_tools.py judge) ##########
+P2R-E9.3c rest power of the address-map ROM macros of E9 and D_ROM (rules fixed before the run)
+   PASS  G0 inputs: plan of E9.3 b0701c21.. (rules: b0701c21..), plan of E9.3b d1ba411e.. (rules: d1ba411e..), E9.3b all gates passed: True; 14 macro fits, lookup model on 616 lookups
+      model A: replay with E9.3's parked power 0.117336333 uJ, E9.3b final 0.117336333 uJ
+      model B: replay with E9.3's parked power 0.114728403 uJ, E9.3b final 0.114728403 uJ
+   PASS  G1 the replay of this tool gives E9.3b's final D_ROM (relative 1e-9)
+   PASS  V0 every read right: 36 of 36 reads (data; row and word selection)
+   PASS  V1 every run complete: 8 of 8
+      F_A_k0: windows 0-3 against E9.3 A_k0: largest difference 0.00e+00 (relative); 0.10-0.35 us after the parking read 0.8264 pJ (E9.3, with its next address change and a checkpoint in it: 0.9345 pJ)
+      F_B_k0: windows 0-3 against E9.3 B_k0: largest difference 0.00e+00 (relative); 0.10-0.35 us after the parking read 0.7434 pJ (E9.3, with its next address change and a checkpoint in it: 0.8906 pJ)
+   PASS  R1 the fine runs of macro 0 give E9.3's first four windows within 1.0e-03
+      A macro 0: unread 0.3726 uW; after parking: first us 1.612, 1.1-2.1 us 0.639, 9.1-10.1 us 0.4012, 10.1-20 us -0.1263, 20-100 us 0.3799, 100-1000 us 0.3834 uW (settled / unread 1.0288); 5.1-10.1 us fine 0.4135, coarse 0.4137 (+0.05%)
+      A macro 1: unread 0.3715 uW; after parking: first us 1.048, 1.1-2.1 us 0.609, 9.1-10.1 us 0.3995, 10.1-20 us 0.9180, 20-100 us 0.3788, 100-1000 us 0.3720 uW (settled / unread 1.0013); 5.1-10.1 us fine 0.4114, coarse 0.4127 (+0.33%)
+      B macro 0: unread 0.3718 uW; after parking: first us 1.652, 1.1-2.1 us 0.650, 9.1-10.1 us 0.4048, 10.1-20 us 0.8940, 20-100 us 0.3791, 100-1000 us 0.3703 uW (settled / unread 0.9958); 5.1-10.1 us fine 0.4177, coarse 0.4138 (-0.95%)
+      B macro 1: unread 0.3713 uW; after parking: first us 1.070, 1.1-2.1 us 0.617, 9.1-10.1 us 0.4038, 10.1-20 us -0.3773, 20-100 us 0.3785, 100-1000 us 0.3819 uW (settled / unread 1.0287); 5.1-10.1 us fine 0.4162, coarse 0.4127 (-0.85%)
+   PASS  S2 fine and coarse runs within 5% from 5.1 to 10.1 us after the parking read
+   address changes with the clock low: +18.70 fJ per falling bit (parked, about 11 us after the parking read; F_A_k0 6 bits +150.6 fJ, F_A_k1 8 bits +239.8 fJ, F_B_k0 6 bits +49.5 fJ, F_B_k1 8 bits +83.8 fJ); +0.31 fJ per rising bit (unread, the first change of the 22 runs of E9.3 and E9.3b, against the 6 runs without one)
+==== D_ROM per inference (uJ): E9.3b final replay, parked segments from the measured rest power
+   main: measured rest power, address changes on idle macros          A 0.10615   B 0.10716
+   E9.3 rule (one sample, held constant)                              A 0.11734   B 0.11473
+   E9.3b clean sample 0.48 us after parking, held constant            A 0.11266   B 0.11377
+   settled level from the parking read on                             A 0.10582   B 0.10662
+   first microsecond, then the settled level (the form of E8.5g)      A 0.10587   B 0.10667
+   main without the address changes on idle macros                    A 0.10582   B 0.10683
+   model A parts (2483 lookups, 114 parking reads):
+      dense lookups (to the next read, 9 cycles low)           0.08005 uJ
+      static of unparked gaps beyond 9 cycles                  0.00019 uJ
+      last lookup of a dense run (parked 5 cycles later)       0.00024 uJ
+      parking reads after a dense run                          0.00014 uJ
+      convolution lookup-and-park pairs (macro 0)              0.00920 uJ
+      parked                                                   0.00261 uJ
+      unread (before the first read)                           0.01340 uJ
+      address changes seen by the idle macros                  0.00033 uJ
+   model B parts (2483 lookups, 114 parking reads):
+      dense lookups (to the next read, 9 cycles low)           0.08254 uJ
+      static of unparked gaps beyond 9 cycles                  0.00020 uJ
+      last lookup of a dense run (parked 5 cycles later)       0.00026 uJ
+      parking reads after a dense run                          0.00016 uJ
+      convolution lookup-and-park pairs (macro 0)              0.00754 uJ
+      parked                                                   0.00273 uJ
+      unread (before the first read)                           0.01340 uJ
+      address changes seen by the idle macros                  0.00033 uJ
+   pins (from the source currents of the fine runs): clock 4.46 fF, chip select 5.54 fF, address 7.01 fF per pin (18 / 18 / 38 rising edges); charging them in one inference (7 macros on the address bus, not in D_ROM or the unit's logic): A 0.545 nJ, B 0.545 nJ
+   model A lookup of address 6: 72.76 pJ after 300 ns parked (E9.3); F_A_k0 73.46 pJ, C_A_k0 73.50 pJ (C: maximum time step 500 ns, reported only)
+   model B lookup of address 6: not read in E9.3; F_B_k0 73.82 pJ, C_B_k0 73.94 pJ (C: maximum time step 500 ns, reported only)
+   ALL PASS: G0 True, G1 True, V0 True, V1 True, R1 True, S2 True
+
+---- files: /mnt/d/Project/hybrid_memory/paper2/reports/e9_rom/e9_3c ----
+   494M	/mnt/d/Project/hybrid_memory/paper2/reports/e9_rom/e9_3c
+
+==============================================================
+Finished 2026-11-12 23:02:30.
+E9.3c: all gates pass
+Pack the results for checking:
+   cd /mnt/d/Project/hybrid_memory/paper2 && find reports/e9_rom/e9_3c -type f \( -name '*.json' -o -name '*.txt' -o -name 'ngspice.log' -o -name bench.cmd \) ! -name 'tb_*.txt' -size -20M > /tmp/e9_3c_list.txt && tar czf reports/e9_3c_results.tar.gz -T /tmp/e9_3c_list.txt
+==============================================================

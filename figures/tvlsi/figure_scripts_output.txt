@@ -1,0 +1,45 @@
+== python3 scripts/tvlsi/fig1_concept.py --out figures/tvlsi
+wrote figures/tvlsi/fig1_concept.pdf
+== python3 scripts/tvlsi/fig2_amu.py --out figures/tvlsi
+wrote figures/tvlsi/fig2_amu.pdf
+== python3 scripts/tvlsi/fig3_accuracy.py --paper2 . --out figures/tvlsi
+references: LeNet-5 98.92 %, ResNet-50 76.45 %
+LeNet-5 no protection 91.11 90.74 91.01 90.36 88.70 87.70 85.49
+LeNet-5 uniform 95.79 96.10 96.02 95.77 95.19 94.31 92.07
+LeNet-5 layer-aware 98.19 98.24 98.27 98.26 98.10 98.07 97.97
+ResNet-50 no protection 0.08 0.03 0.05 0.05
+ResNet-50 uniform 71.82 72.28 71.95 70.78
+ResNet-50 layer-aware 72.78 73.02 73.30 73.15
+wrote figures/tvlsi/fig3_accuracy.pdf
+== python3 scripts/tvlsi/fig4_rom_race.py --paper2 . --out figures/tvlsi
+13 macros, 416 reads; wrong: generated 52, CS delayed 0
+footers on after the cells are off: generated -0.518..-0.119 ns, CS delayed 9.229..9.675 ns; rise 19.4..1473.0 mV
+192-row macro: generated 4 of 10 wrong, CS delayed 2 wrong
+wrote figures/tvlsi/fig4_rom_race.pdf
+== python3 scripts/tvlsi/fig5_rom_margin.py --summary reports/e9/e9_5/e9_5_summary.json --out figures/tvlsi
+tt: lowest one-cell bit line per macro: A_k0 1.331, A_k1 1.287, A_k2 1.370, A_k3 1.291, A_k4 1.326, A_k5 1.308, A_k6 1.430, B_k0 1.293, B_k1 1.324, B_k2 1.374, B_k3 1.332, B_k4 1.295, B_k5 1.294, B_k6 1.424
+smallest margins: tt:25:1.80 0.411 V, fs:25:1.80 0.367 V, tt:25:1.60 0.378 V, fs:-40:1.60 0.351 V
+(a) lowest 1.287 V, margin 0.411 V
+(b) A tt:25:1.80: 0.411-0.627 V
+(b) A fs:25:1.80: 0.367-0.539 V
+(b) A tt:25:1.60: 0.378-0.556 V
+(b) A fs:-40:1.60: 0.351-0.516 V
+(b) B tt:25:1.80: 0.417-0.640 V
+(b) B fs:25:1.80: 0.399-0.547 V
+(b) B tt:25:1.60: 0.390-0.568 V
+(b) B fs:-40:1.60: 0.385-0.519 V
+(c) A_k0: 0.187 us 3.306, 0.62 us 1.047, 1.52 us 0.639, 2.55 us 0.520, 3.57 us 0.472, 4.57 us 0.446, 5.58 us 0.430, 6.58 us 0.419, 7.58 us 0.411, 8.59 us 0.406, 9.59 us 0.401, 10.6 us 0.398, 44.7 us 0.380, 945 us 0.379; unread 0.3726 uW
+(c) B_k0: 0.187 us 2.974, 0.62 us 1.212, 1.52 us 0.650, 2.55 us 0.528, 3.57 us 0.478, 4.57 us 0.452, 5.58 us 0.435, 6.58 us 0.424, 7.58 us 0.416, 8.59 us 0.410, 9.59 us 0.405, 10.6 us 0.401, 44.7 us 0.379, 945 us 0.379; unread 0.3718 uW
+(c) A_k1: 0.187 us 1.872, 0.62 us 0.773, 1.52 us 0.609, 2.55 us 0.510, 3.57 us 0.466, 4.57 us 0.442, 5.58 us 0.427, 6.58 us 0.417, 7.58 us 0.409, 8.59 us 0.404, 9.59 us 0.399, 10.6 us 0.396, 44.7 us 0.379, 945 us 0.378; unread 0.3715 uW
+(c) B_k1: 0.187 us 1.169, 0.62 us 1.038, 1.52 us 0.617, 2.55 us 0.517, 3.57 us 0.473, 4.57 us 0.448, 5.58 us 0.433, 6.58 us 0.422, 7.58 us 0.414, 8.59 us 0.408, 9.59 us 0.404, 10.6 us 0.400, 44.7 us 0.379, 945 us 0.378; unread 0.3713 uW
+wrote figures/tvlsi/fig5_rom_margin.pdf
+== python3 scripts/tvlsi/fig6_sram.py --paper2 . --out figures/tvlsi
+4-KB macro: data valid 10.625 ns (tt 25 C), slowest 13.48 ns; library read 23.64 pJ; read after idle 69.94 pJ; system read 86.48 pJ (85.38-90.09), 3.66 x the library; static 1.255 uW, 1/27.4 of 34.375 uW
+bank: library read 1.650 pJ (6.89 fF), 3.061 pJ (default loads); system read 12.752 pJ (12.134-13.788); as generated 12.712 pJ = 7.70 x and 4.15 x its library
+ROM lookup read 35.50 pJ, 1.50 x the 4-KB library read
+wrote figures/tvlsi/fig6_sram.pdf
+== python3 scripts/tvlsi/fig7_cost.py --summary reports/e9/e9_5/e9_5_summary.json --out figures/tvlsi
+area: digital 1.129, buffer+bias 0.695, crossbar 2.27, map 0.44 mm2; as built 5.51 mm2 (compact scheme 3.92), SRAM 0.976 / one copy 0.281 / 25 copies 7.02; budget 1 % 5.35, 50 % 7.20 mm2; SRAM at 50 %: banks 2.67, one copy 2.11, 25 copies 52.7 mm2
+energy A: A 21.10 B 5.82 C 0.263 D 4.01 total 31.20 uJ, (B+D)/(A..D) 31.5 %
+energy B: A 20.56 B 4.85 C 0.263 D 4.04 total 29.72 uJ, (B+D)/(A..D) 29.9 %
+wrote figures/tvlsi/fig7_cost.pdf

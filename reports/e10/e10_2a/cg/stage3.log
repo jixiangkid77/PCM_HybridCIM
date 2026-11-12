@@ -1,0 +1,376 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.68+36 (git sha1 17d51a330-dirty, Release, Clang /usr/bin/clang++ 21.1.8)
+
+-- Executing script file `/home/kid/p2r_e10/e10_2a/cg/syn/stage3.ys' --
+
+1. Executing Liberty frontend: /home/kid/sky130/orfs/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+Imported 428 cell types from liberty file.
+
+2. Executing Verilog-2005 frontend: /mnt/d/Project/hybrid_memory/paper2/rtl/e10/sram_bank_128x8_stub.v
+Parsing SystemVerilog input from `/mnt/d/Project/hybrid_memory/paper2/rtl/e10/sram_bank_128x8_stub.v' to AST representation.
+Generating RTLIL representation for module `\sram_bank_128x8'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: /home/kid/p2r_e10/e10_2a/cg/syn/n0.v
+Parsing Verilog input from `/home/kid/p2r_e10/e10_2a/cg/syn/n0.v' to AST representation.
+Generating RTLIL representation for module `\sram_pool_25bank_2c'.
+Successfully finished Verilog frontend.
+
+4. Executing HIERARCHY pass (managing design hierarchy).
+
+4.1. Analyzing design hierarchy..
+Top module:  \sram_pool_25bank_2c
+
+4.2. Analyzing design hierarchy..
+Top module:  \sram_pool_25bank_2c
+Removed 0 unused modules.
+
+5. Executing FLATTEN pass (flatten design).
+
+6. Executing EXPOSE pass (exposing internal signals as outputs).
+New module port: sram_pool_25bank_2c/BANK[9].U_BANK.dout (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[9].U_BANK.addr (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[9].U_BANK.csb (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[9].U_BANK.clk (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[8].U_BANK.dout (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[8].U_BANK.addr (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[8].U_BANK.csb (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[8].U_BANK.clk (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[7].U_BANK.dout (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[7].U_BANK.addr (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[7].U_BANK.csb (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[7].U_BANK.clk (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[6].U_BANK.dout (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[6].U_BANK.addr (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[6].U_BANK.csb (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[6].U_BANK.clk (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[5].U_BANK.dout (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[5].U_BANK.addr (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[5].U_BANK.csb (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[5].U_BANK.clk (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[4].U_BANK.dout (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[4].U_BANK.addr (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[4].U_BANK.csb (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[4].U_BANK.clk (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[3].U_BANK.dout (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[3].U_BANK.addr (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[3].U_BANK.csb (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[3].U_BANK.clk (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[2].U_BANK.dout (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[2].U_BANK.addr (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[2].U_BANK.csb (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[2].U_BANK.clk (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[24].U_BANK.dout (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[24].U_BANK.addr (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[24].U_BANK.csb (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[24].U_BANK.clk (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[23].U_BANK.dout (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[23].U_BANK.addr (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[23].U_BANK.csb (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[23].U_BANK.clk (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[22].U_BANK.dout (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[22].U_BANK.addr (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[22].U_BANK.csb (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[22].U_BANK.clk (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[21].U_BANK.dout (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[21].U_BANK.addr (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[21].U_BANK.csb (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[21].U_BANK.clk (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[20].U_BANK.dout (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[20].U_BANK.addr (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[20].U_BANK.csb (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[20].U_BANK.clk (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[1].U_BANK.dout (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[1].U_BANK.addr (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[1].U_BANK.csb (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[1].U_BANK.clk (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[19].U_BANK.dout (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[19].U_BANK.addr (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[19].U_BANK.csb (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[19].U_BANK.clk (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[18].U_BANK.dout (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[18].U_BANK.addr (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[18].U_BANK.csb (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[18].U_BANK.clk (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[17].U_BANK.dout (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[17].U_BANK.addr (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[17].U_BANK.csb (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[17].U_BANK.clk (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[16].U_BANK.dout (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[16].U_BANK.addr (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[16].U_BANK.csb (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[16].U_BANK.clk (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[15].U_BANK.dout (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[15].U_BANK.addr (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[15].U_BANK.csb (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[15].U_BANK.clk (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[14].U_BANK.dout (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[14].U_BANK.addr (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[14].U_BANK.csb (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[14].U_BANK.clk (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[13].U_BANK.dout (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[13].U_BANK.addr (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[13].U_BANK.csb (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[13].U_BANK.clk (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[12].U_BANK.dout (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[12].U_BANK.addr (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[12].U_BANK.csb (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[12].U_BANK.clk (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[11].U_BANK.dout (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[11].U_BANK.addr (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[11].U_BANK.csb (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[11].U_BANK.clk (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[10].U_BANK.dout (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[10].U_BANK.addr (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[10].U_BANK.csb (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[10].U_BANK.clk (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[0].U_BANK.dout (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[0].U_BANK.addr (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[0].U_BANK.csb (sram_bank_128x8)
+New module port: sram_pool_25bank_2c/BANK[0].U_BANK.clk (sram_bank_128x8)
+Removing cell: sram_pool_25bank_2c/BANK[9].U_BANK (sram_bank_128x8)
+Removing cell: sram_pool_25bank_2c/BANK[8].U_BANK (sram_bank_128x8)
+Removing cell: sram_pool_25bank_2c/BANK[7].U_BANK (sram_bank_128x8)
+Removing cell: sram_pool_25bank_2c/BANK[6].U_BANK (sram_bank_128x8)
+Removing cell: sram_pool_25bank_2c/BANK[5].U_BANK (sram_bank_128x8)
+Removing cell: sram_pool_25bank_2c/BANK[4].U_BANK (sram_bank_128x8)
+Removing cell: sram_pool_25bank_2c/BANK[3].U_BANK (sram_bank_128x8)
+Removing cell: sram_pool_25bank_2c/BANK[2].U_BANK (sram_bank_128x8)
+Removing cell: sram_pool_25bank_2c/BANK[24].U_BANK (sram_bank_128x8)
+Removing cell: sram_pool_25bank_2c/BANK[23].U_BANK (sram_bank_128x8)
+Removing cell: sram_pool_25bank_2c/BANK[22].U_BANK (sram_bank_128x8)
+Removing cell: sram_pool_25bank_2c/BANK[21].U_BANK (sram_bank_128x8)
+Removing cell: sram_pool_25bank_2c/BANK[20].U_BANK (sram_bank_128x8)
+Removing cell: sram_pool_25bank_2c/BANK[1].U_BANK (sram_bank_128x8)
+Removing cell: sram_pool_25bank_2c/BANK[19].U_BANK (sram_bank_128x8)
+Removing cell: sram_pool_25bank_2c/BANK[18].U_BANK (sram_bank_128x8)
+Removing cell: sram_pool_25bank_2c/BANK[17].U_BANK (sram_bank_128x8)
+Removing cell: sram_pool_25bank_2c/BANK[16].U_BANK (sram_bank_128x8)
+Removing cell: sram_pool_25bank_2c/BANK[15].U_BANK (sram_bank_128x8)
+Removing cell: sram_pool_25bank_2c/BANK[14].U_BANK (sram_bank_128x8)
+Removing cell: sram_pool_25bank_2c/BANK[13].U_BANK (sram_bank_128x8)
+Removing cell: sram_pool_25bank_2c/BANK[12].U_BANK (sram_bank_128x8)
+Removing cell: sram_pool_25bank_2c/BANK[11].U_BANK (sram_bank_128x8)
+Removing cell: sram_pool_25bank_2c/BANK[10].U_BANK (sram_bank_128x8)
+Removing cell: sram_pool_25bank_2c/BANK[0].U_BANK (sram_bank_128x8)
+Renaming wire BANK[0].U_BANK.clk to bb0000_clk in module sram_pool_25bank_2c.
+Renaming wire BANK[0].U_BANK.csb to bb0000_csb in module sram_pool_25bank_2c.
+Renaming wire BANK[0].U_BANK.addr to bb0000_addr in module sram_pool_25bank_2c.
+Renaming wire BANK[0].U_BANK.dout to bb0000_dout in module sram_pool_25bank_2c.
+Renaming wire BANK[10].U_BANK.clk to bb0001_clk in module sram_pool_25bank_2c.
+Renaming wire BANK[10].U_BANK.csb to bb0001_csb in module sram_pool_25bank_2c.
+Renaming wire BANK[10].U_BANK.addr to bb0001_addr in module sram_pool_25bank_2c.
+Renaming wire BANK[10].U_BANK.dout to bb0001_dout in module sram_pool_25bank_2c.
+Renaming wire BANK[11].U_BANK.clk to bb0002_clk in module sram_pool_25bank_2c.
+Renaming wire BANK[11].U_BANK.csb to bb0002_csb in module sram_pool_25bank_2c.
+Renaming wire BANK[11].U_BANK.addr to bb0002_addr in module sram_pool_25bank_2c.
+Renaming wire BANK[11].U_BANK.dout to bb0002_dout in module sram_pool_25bank_2c.
+Renaming wire BANK[12].U_BANK.clk to bb0003_clk in module sram_pool_25bank_2c.
+Renaming wire BANK[12].U_BANK.csb to bb0003_csb in module sram_pool_25bank_2c.
+Renaming wire BANK[12].U_BANK.addr to bb0003_addr in module sram_pool_25bank_2c.
+Renaming wire BANK[12].U_BANK.dout to bb0003_dout in module sram_pool_25bank_2c.
+Renaming wire BANK[13].U_BANK.clk to bb0004_clk in module sram_pool_25bank_2c.
+Renaming wire BANK[13].U_BANK.csb to bb0004_csb in module sram_pool_25bank_2c.
+Renaming wire BANK[13].U_BANK.addr to bb0004_addr in module sram_pool_25bank_2c.
+Renaming wire BANK[13].U_BANK.dout to bb0004_dout in module sram_pool_25bank_2c.
+Renaming wire BANK[14].U_BANK.clk to bb0005_clk in module sram_pool_25bank_2c.
+Renaming wire BANK[14].U_BANK.csb to bb0005_csb in module sram_pool_25bank_2c.
+Renaming wire BANK[14].U_BANK.addr to bb0005_addr in module sram_pool_25bank_2c.
+Renaming wire BANK[14].U_BANK.dout to bb0005_dout in module sram_pool_25bank_2c.
+Renaming wire BANK[15].U_BANK.clk to bb0006_clk in module sram_pool_25bank_2c.
+Renaming wire BANK[15].U_BANK.csb to bb0006_csb in module sram_pool_25bank_2c.
+Renaming wire BANK[15].U_BANK.addr to bb0006_addr in module sram_pool_25bank_2c.
+Renaming wire BANK[15].U_BANK.dout to bb0006_dout in module sram_pool_25bank_2c.
+Renaming wire BANK[16].U_BANK.clk to bb0007_clk in module sram_pool_25bank_2c.
+Renaming wire BANK[16].U_BANK.csb to bb0007_csb in module sram_pool_25bank_2c.
+Renaming wire BANK[16].U_BANK.addr to bb0007_addr in module sram_pool_25bank_2c.
+Renaming wire BANK[16].U_BANK.dout to bb0007_dout in module sram_pool_25bank_2c.
+Renaming wire BANK[17].U_BANK.clk to bb0008_clk in module sram_pool_25bank_2c.
+Renaming wire BANK[17].U_BANK.csb to bb0008_csb in module sram_pool_25bank_2c.
+Renaming wire BANK[17].U_BANK.addr to bb0008_addr in module sram_pool_25bank_2c.
+Renaming wire BANK[17].U_BANK.dout to bb0008_dout in module sram_pool_25bank_2c.
+Renaming wire BANK[18].U_BANK.clk to bb0009_clk in module sram_pool_25bank_2c.
+Renaming wire BANK[18].U_BANK.csb to bb0009_csb in module sram_pool_25bank_2c.
+Renaming wire BANK[18].U_BANK.addr to bb0009_addr in module sram_pool_25bank_2c.
+Renaming wire BANK[18].U_BANK.dout to bb0009_dout in module sram_pool_25bank_2c.
+Renaming wire BANK[19].U_BANK.clk to bb0010_clk in module sram_pool_25bank_2c.
+Renaming wire BANK[19].U_BANK.csb to bb0010_csb in module sram_pool_25bank_2c.
+Renaming wire BANK[19].U_BANK.addr to bb0010_addr in module sram_pool_25bank_2c.
+Renaming wire BANK[19].U_BANK.dout to bb0010_dout in module sram_pool_25bank_2c.
+Renaming wire BANK[1].U_BANK.clk to bb0011_clk in module sram_pool_25bank_2c.
+Renaming wire BANK[1].U_BANK.csb to bb0011_csb in module sram_pool_25bank_2c.
+Renaming wire BANK[1].U_BANK.addr to bb0011_addr in module sram_pool_25bank_2c.
+Renaming wire BANK[1].U_BANK.dout to bb0011_dout in module sram_pool_25bank_2c.
+Renaming wire BANK[20].U_BANK.clk to bb0012_clk in module sram_pool_25bank_2c.
+Renaming wire BANK[20].U_BANK.csb to bb0012_csb in module sram_pool_25bank_2c.
+Renaming wire BANK[20].U_BANK.addr to bb0012_addr in module sram_pool_25bank_2c.
+Renaming wire BANK[20].U_BANK.dout to bb0012_dout in module sram_pool_25bank_2c.
+Renaming wire BANK[21].U_BANK.clk to bb0013_clk in module sram_pool_25bank_2c.
+Renaming wire BANK[21].U_BANK.csb to bb0013_csb in module sram_pool_25bank_2c.
+Renaming wire BANK[21].U_BANK.addr to bb0013_addr in module sram_pool_25bank_2c.
+Renaming wire BANK[21].U_BANK.dout to bb0013_dout in module sram_pool_25bank_2c.
+Renaming wire BANK[22].U_BANK.clk to bb0014_clk in module sram_pool_25bank_2c.
+Renaming wire BANK[22].U_BANK.csb to bb0014_csb in module sram_pool_25bank_2c.
+Renaming wire BANK[22].U_BANK.addr to bb0014_addr in module sram_pool_25bank_2c.
+Renaming wire BANK[22].U_BANK.dout to bb0014_dout in module sram_pool_25bank_2c.
+Renaming wire BANK[23].U_BANK.clk to bb0015_clk in module sram_pool_25bank_2c.
+Renaming wire BANK[23].U_BANK.csb to bb0015_csb in module sram_pool_25bank_2c.
+Renaming wire BANK[23].U_BANK.addr to bb0015_addr in module sram_pool_25bank_2c.
+Renaming wire BANK[23].U_BANK.dout to bb0015_dout in module sram_pool_25bank_2c.
+Renaming wire BANK[24].U_BANK.clk to bb0016_clk in module sram_pool_25bank_2c.
+Renaming wire BANK[24].U_BANK.csb to bb0016_csb in module sram_pool_25bank_2c.
+Renaming wire BANK[24].U_BANK.addr to bb0016_addr in module sram_pool_25bank_2c.
+Renaming wire BANK[24].U_BANK.dout to bb0016_dout in module sram_pool_25bank_2c.
+Renaming wire BANK[2].U_BANK.clk to bb0017_clk in module sram_pool_25bank_2c.
+Renaming wire BANK[2].U_BANK.csb to bb0017_csb in module sram_pool_25bank_2c.
+Renaming wire BANK[2].U_BANK.addr to bb0017_addr in module sram_pool_25bank_2c.
+Renaming wire BANK[2].U_BANK.dout to bb0017_dout in module sram_pool_25bank_2c.
+Renaming wire BANK[3].U_BANK.clk to bb0018_clk in module sram_pool_25bank_2c.
+Renaming wire BANK[3].U_BANK.csb to bb0018_csb in module sram_pool_25bank_2c.
+Renaming wire BANK[3].U_BANK.addr to bb0018_addr in module sram_pool_25bank_2c.
+Renaming wire BANK[3].U_BANK.dout to bb0018_dout in module sram_pool_25bank_2c.
+Renaming wire BANK[4].U_BANK.clk to bb0019_clk in module sram_pool_25bank_2c.
+Renaming wire BANK[4].U_BANK.csb to bb0019_csb in module sram_pool_25bank_2c.
+Renaming wire BANK[4].U_BANK.addr to bb0019_addr in module sram_pool_25bank_2c.
+Renaming wire BANK[4].U_BANK.dout to bb0019_dout in module sram_pool_25bank_2c.
+Renaming wire BANK[5].U_BANK.clk to bb0020_clk in module sram_pool_25bank_2c.
+Renaming wire BANK[5].U_BANK.csb to bb0020_csb in module sram_pool_25bank_2c.
+Renaming wire BANK[5].U_BANK.addr to bb0020_addr in module sram_pool_25bank_2c.
+Renaming wire BANK[5].U_BANK.dout to bb0020_dout in module sram_pool_25bank_2c.
+Renaming wire BANK[6].U_BANK.clk to bb0021_clk in module sram_pool_25bank_2c.
+Renaming wire BANK[6].U_BANK.csb to bb0021_csb in module sram_pool_25bank_2c.
+Renaming wire BANK[6].U_BANK.addr to bb0021_addr in module sram_pool_25bank_2c.
+Renaming wire BANK[6].U_BANK.dout to bb0021_dout in module sram_pool_25bank_2c.
+Renaming wire BANK[7].U_BANK.clk to bb0022_clk in module sram_pool_25bank_2c.
+Renaming wire BANK[7].U_BANK.csb to bb0022_csb in module sram_pool_25bank_2c.
+Renaming wire BANK[7].U_BANK.addr to bb0022_addr in module sram_pool_25bank_2c.
+Renaming wire BANK[7].U_BANK.dout to bb0022_dout in module sram_pool_25bank_2c.
+Renaming wire BANK[8].U_BANK.clk to bb0023_clk in module sram_pool_25bank_2c.
+Renaming wire BANK[8].U_BANK.csb to bb0023_csb in module sram_pool_25bank_2c.
+Renaming wire BANK[8].U_BANK.addr to bb0023_addr in module sram_pool_25bank_2c.
+Renaming wire BANK[8].U_BANK.dout to bb0023_dout in module sram_pool_25bank_2c.
+Renaming wire BANK[9].U_BANK.clk to bb0024_clk in module sram_pool_25bank_2c.
+Renaming wire BANK[9].U_BANK.csb to bb0024_csb in module sram_pool_25bank_2c.
+Renaming wire BANK[9].U_BANK.addr to bb0024_addr in module sram_pool_25bank_2c.
+Renaming wire BANK[9].U_BANK.dout to bb0024_dout in module sram_pool_25bank_2c.
+
+7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \sram_pool_25bank_2c..
+Removed 0 unused cells and 103 unused wires.
+<suppressed ~79 debug messages>
+
+8. Executing HILOMAP pass (mapping to constant drivers).
+
+9. Executing SPLITNETS pass (splitting up multi-bit signals).
+
+10. Executing INSBUF pass (insert buffer cells for connected wires).
+Renaming module \sram_pool_25bank_2c to \sram_pool_25bank_2c_core.
+
+11. Printing statistics.
+
+=== sram_pool_25bank_2c_core ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+     7871        - wires
+     8842        - wire bits
+     7871        - public wires
+     8842        - public wire bits
+      106        - ports
+     1077        - port bits
+     8215 7.21E+04 cells
+        3   33.782   sky130_fd_sc_hd__a2111o_1
+       31   271.51   sky130_fd_sc_hd__a2111oi_0
+        8   70.067   sky130_fd_sc_hd__a211o_1
+       95  713.184   sky130_fd_sc_hd__a211oi_1
+        1    10.01   sky130_fd_sc_hd__a21bo_1
+       25   187.68   sky130_fd_sc_hd__a21boi_0
+       45  337.824   sky130_fd_sc_hd__a21o_1
+      905 4.53E+03   sky130_fd_sc_hd__a21oi_1
+       28  280.269   sky130_fd_sc_hd__a221o_1
+       98  858.323   sky130_fd_sc_hd__a221oi_1
+       16  160.154   sky130_fd_sc_hd__a222oi_1
+       22  192.685   sky130_fd_sc_hd__a22o_1
+       35  262.752   sky130_fd_sc_hd__a22oi_1
+        3   26.275   sky130_fd_sc_hd__a2bb2oi_1
+        1    10.01   sky130_fd_sc_hd__a311o_1
+       18  157.651   sky130_fd_sc_hd__a311oi_1
+       19   166.41   sky130_fd_sc_hd__a31o_1
+      115   719.44   sky130_fd_sc_hd__a31oi_1
+        3   30.029   sky130_fd_sc_hd__a32o_1
+        7   61.309   sky130_fd_sc_hd__a32oi_1
+        2   17.517   sky130_fd_sc_hd__a41oi_1
+       59  369.104   sky130_fd_sc_hd__and2_0
+       32  200.192   sky130_fd_sc_hd__and3_1
+        1    8.758   sky130_fd_sc_hd__and3b_1
+        2   17.517   sky130_fd_sc_hd__and4_1
+        1    10.01   sky130_fd_sc_hd__and4b_1
+      302 1.13E+03   sky130_fd_sc_hd__clkinv_1
+      375     9384   sky130_fd_sc_hd__dfrtp_1
+       28   490.47   sky130_fd_sc_hd__dlclkp_1
+      105 1.05E+03   sky130_fd_sc_hd__maj3_1
+       27  304.042   sky130_fd_sc_hd__mux2_1
+      252 2.52E+03   sky130_fd_sc_hd__mux2i_1
+      892 2.01E+04   sky130_fd_sc_hd__mux4_2
+      621 2.33E+03   sky130_fd_sc_hd__nand2_1
+      105   656.88   sky130_fd_sc_hd__nand2b_1
+      157  785.754   sky130_fd_sc_hd__nand3_1
+       10   75.072   sky130_fd_sc_hd__nand3b_1
+       48  300.288   sky130_fd_sc_hd__nand4_1
+        7   61.309   sky130_fd_sc_hd__nand4b_1
+        1   11.261   sky130_fd_sc_hd__nand4bb_1
+      877 3.29E+03   sky130_fd_sc_hd__nor2_1
+       81  506.736   sky130_fd_sc_hd__nor2b_1
+      302  1511.45   sky130_fd_sc_hd__nor3_1
+       18   135.13   sky130_fd_sc_hd__nor3b_1
+      222 1.39E+03   sky130_fd_sc_hd__nor4_1
+        9   78.826   sky130_fd_sc_hd__nor4b_1
+        1    10.01   sky130_fd_sc_hd__nor4bb_1
+        3   33.782   sky130_fd_sc_hd__o2111a_1
+       19   166.41   sky130_fd_sc_hd__o2111ai_1
+       33  330.317   sky130_fd_sc_hd__o211a_1
+      108  810.778   sky130_fd_sc_hd__o211ai_1
+       69  517.997   sky130_fd_sc_hd__o21a_1
+      785 3.93E+03   sky130_fd_sc_hd__o21ai_0
+       21  157.651   sky130_fd_sc_hd__o21bai_1
+       11  123.869   sky130_fd_sc_hd__o221a_1
+       69   604.33   sky130_fd_sc_hd__o221ai_1
+        3   26.275   sky130_fd_sc_hd__o22a_1
+      116  725.696   sky130_fd_sc_hd__o22ai_1
+       15  131.376   sky130_fd_sc_hd__o2bb2ai_1
+        8   80.077   sky130_fd_sc_hd__o311a_1
+       11   96.342   sky130_fd_sc_hd__o311ai_0
+        8   70.067   sky130_fd_sc_hd__o31a_1
+       51  382.867   sky130_fd_sc_hd__o31ai_1
+       18  180.173   sky130_fd_sc_hd__o32a_1
+       57  499.229   sky130_fd_sc_hd__o32ai_1
+        4   35.034   sky130_fd_sc_hd__o41ai_1
+       47  294.032   sky130_fd_sc_hd__or2_0
+       56  350.336   sky130_fd_sc_hd__or3_1
+        7   61.309   sky130_fd_sc_hd__or3b_1
+       65  487.968   sky130_fd_sc_hd__or4_1
+        8   80.077   sky130_fd_sc_hd__or4b_1
+      448 3.92E+03   sky130_fd_sc_hd__xnor2_1
+       55 1.24E+03   sky130_fd_sc_hd__xnor3_1
+      104  910.874   sky130_fd_sc_hd__xor2_1
+        1   23.773   sky130_fd_sc_hd__xor3_1
+
+   Chip area for module '\sram_pool_25bank_2c_core': 72092.892800
+     of which used for sequential elements: 9384.000000 (13.02%)
+
+12. Executing Verilog backend.
+
+12.1. Executing BMUXMAP pass.
+
+12.2. Executing DEMUXMAP pass.
+Dumping module `\sram_pool_25bank_2c_core'.
+
+End of script. Logfile hash: 3bb3193bc7, time: 1.07s, user: 0.97s, system: 0.28s, MEM: 107.93 MB peak
+Yosys 0.68+36 (git sha1 17d51a330-dirty, Release, Clang /usr/bin/clang++ 21.1.8)
+Time spent: 80% 4x read_verilog (0 sec), 5% 2x read_liberty (0 sec), ...

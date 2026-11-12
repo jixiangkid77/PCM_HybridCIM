@@ -1,0 +1,53 @@
+P2R-E9.3 ROM energy (rules written before the run: protocol P2R-E9.3 of 2026-11-12)
+   PASS  V0/V1 every run complete, every read correct: 534 of 534 reads (data; row and word selection shown for 534), 14 of 14 macros
+   PASS  V2 per macro the leave-one-out error of the lookup period <= 10 % (worst 5.6 %)
+      check window of A_k1 (mean zero bits 3.81, 14 lookups): measured 573.7 pJ, model of the fit windows 503.3 pJ (-12.3 %)
+      check window of B_k6 (mean zero bits 7.88, 14 lookups): measured 619.6 pJ, model of the fit windows 650.5 pJ (+5.0 %)
+   FAIL  V3 the model within 10 % of the measured sum of each check window
+==== D_ROM: replay of every ROM read of one inference (E9.1 event lists) over 617574 cycles
+   model A: D_ROM 0.1167 uJ per inference (2483 lookups, 114 parking reads)
+      dense lookups (to the next read, 9 cycles low) 0.07958 uJ
+      static of unparked gaps beyond 9 cycles  0.00019 uJ
+      last lookup of a dense run (parked 5 cycles later) 0.00033 uJ
+      parking reads after a dense run          0.00014 uJ
+      convolution lookup-and-park pairs (macro 0) 0.00900 uJ
+      parked                                   0.01412 uJ
+      unread (before the first read)           0.01340 uJ
+   model B: D_ROM 0.1144 uJ per inference (2483 lookups, 114 parking reads)
+      dense lookups (to the next read, 9 cycles low) 0.08215 uJ
+      static of unparked gaps beyond 9 cycles  0.00020 uJ
+      last lookup of a dense run (parked 5 cycles later) 0.00034 uJ
+      parking reads after a dense run          0.00016 uJ
+      convolution lookup-and-park pairs (macro 0) 0.00751 uJ
+      parked                                   0.01064 uJ
+      unread (before the first read)           0.01340 uJ
+==== per macro: lookup period (90 ns low after the read) and static 90 ns after a lookup (fits of the windows L and H), last lookup before parking, parking read, parked and unread static
+   A k0: period 18.29 pJ mean (row: 17.39, 0.0429; leave-one-out 2.3 %); static 7.4 uW (word, 4.9 %); last lookup measured (model) 16.67 (17.38) / 19.08 (18.61) pJ; parking read 11.35 pJ; parked 2.030 uW; unread 0.373 uW
+      convolution lookup-and-park pairs: 94.97 pJ mean (word+row: -135.7, 3.294, 0.9384; leave-one-out 20.1 %)
+      convolution pair 0: zero bits 31 (row 195): lookup 129.00 pJ (dense model 26.33), parking 23.13 pJ, parked after 6.848 uW
+      convolution pair 1: zero bits 12 (row 195): lookup 72.76 pJ (dense model 25.74), parking 11.63 pJ, parked after 7.674 uW
+      convolution pair 2: zero bits 18 (row 163): lookup 71.68 pJ (dense model 24.56), parking 11.69 pJ, parked after 6.859 uW
+      convolution pair 3: zero bits 24 (row 163): lookup 75.92 pJ (dense model 24.74), parking 12.20 pJ, parked after 5.202 uW
+      convolution pair 4: zero bits 22 (row 157): lookup 70.88 pJ (dense model 24.42), parking 11.73 pJ, parked after 5.066 uW
+      convolution pair 5: zero bits 20 (row 156): lookup 67.48 pJ (dense model 24.32), parking 11.69 pJ, parked after 4.730 uW
+   A k1: period 33.18 pJ mean (row: 20.51, 0.5061; leave-one-out 5.6 %); static 29.5 uW (word, 55.8 %); last lookup measured (model) 23.51 (24.18) / 37.36 (31.80) / 46.29 (35.75) pJ; parking read 16.08 pJ; parked 2.739 uW; unread 0.372 uW
+   A k2: period 34.11 pJ mean (word+row: 24.86, 0.3823, 0.2271; leave-one-out 0.9 %); static 9.9 uW (word, 5.8 %); last lookup measured (model) 29.22 (30.46) / 33.47 (31.15) pJ; parking read 15.10 pJ; parked 2.665 uW; unread 0.371 uW
+   A k3: period 30.92 pJ mean (word: 34.62, -0.6907; leave-one-out 3.7 %); static 55.6 uW (row, 14.7 %); last lookup measured (model) 29.04 (29.67) / 26.97 (26.68) pJ; parking read 10.67 pJ; parked 1.861 uW; unread 0.372 uW
+   A k4: period 39.46 pJ mean (word: 55.02, -3.692; leave-one-out 4.9 %); static 53.8 uW (word, 21.2 %); last lookup measured (model) 42.28 (41.39) / 30.15 (24.58) pJ; parking read 16.03 pJ; parked 2.059 uW; unread 0.372 uW
+   A k5: period 31.74 pJ mean (word+row: 32.7, 0.6514, -0.1067; leave-one-out 3.1 %); static 9.2 uW (row, 11.3 %); last lookup measured (model) 30.27 (31.48) / 30.90 (32.76) pJ; parking read 14.98 pJ; parked 2.759 uW; unread 0.371 uW
+   A k6: period 59.59 pJ mean (word+row: 29.75, 0.8887, 0.1393; leave-one-out 4.3 %); static 48.4 uW (word+row, 56.7 %); last lookup measured (model) 41.70 (42.01) / 67.76 (69.28) pJ; parking read 8.84 pJ; parked 2.229 uW; unread 0.371 uW
+   B k0: period 25.92 pJ mean (row: 33.57, -0.368; leave-one-out 3.4 %); static 8.4 uW (row, 5.6 %); last lookup measured (model) 30.16 (29.90) / 20.77 (21.49) pJ; parking read 11.48 pJ; parked 1.538 uW; unread 0.372 uW
+      convolution lookup-and-park pairs: 74.73 pJ mean (word+row: 30.01, 0.1195, 0.3525; leave-one-out 1.1 %)
+      convolution pair 0: zero bits 31 (row 196): lookup 88.88 pJ (dense model -38.48), parking 13.96 pJ, parked after 6.917 uW
+      convolution pair 1: zero bits 7 (row 108): lookup 57.10 pJ (dense model -6.30), parking 11.65 pJ, parked after 5.905 uW
+      convolution pair 2: zero bits 12 (row 111): lookup 59.04 pJ (dense model -7.40), parking 11.64 pJ, parked after 5.126 uW
+      convolution pair 3: zero bits 15 (row 108): lookup 58.91 pJ (dense model -6.30), parking 11.65 pJ, parked after 5.137 uW
+      convolution pair 4: zero bits 17 (row 112): lookup 59.08 pJ (dense model -7.76), parking 11.67 pJ, parked after 5.099 uW
+      convolution pair 5: zero bits 13 (row 94): lookup 53.17 pJ (dense model -1.18), parking 11.60 pJ, parked after 6.229 uW
+   B k1: period 32.58 pJ mean (word+row: 19.64, 2.248, 0.1546; leave-one-out 4.5 %); static 32.9 uW (word, 40.8 %); last lookup measured (model) 24.95 (28.06) / 37.76 (38.34) pJ; parking read 15.80 pJ; parked 2.064 uW; unread 0.371 uW
+   B k2: period 23.37 pJ mean (word+row: 5.786, 1.11, 0.3521; leave-one-out 3.7 %); static 31.7 uW (word+row, 26.7 %); last lookup measured (model) 16.30 (17.11) / 25.66 (26.10) pJ; parking read 13.05 pJ; parked 1.352 uW; unread 0.372 uW
+   B k3: period 38.43 pJ mean (row: 56.03, -0.508; leave-one-out 4.5 %); static 48.5 uW (word+row, 18.7 %); last lookup measured (model) 43.54 (41.41) / 29.62 (36.85) pJ; parking read 16.12 pJ; parked 1.529 uW; unread 0.372 uW
+   B k4: period 43.64 pJ mean (word: 37.43, 1.216; leave-one-out 2.4 %); static 51.8 uW (row, 16.3 %); last lookup measured (model) 39.69 (38.59) / 40.73 (45.84) pJ; parking read 16.89 pJ; parked 2.469 uW; unread 0.372 uW
+   B k5: period 32.41 pJ mean (word+row: 46.03, 0.2984, -0.2967; leave-one-out 5.5 %); static 9.3 uW (row, 37.5 %); last lookup measured (model) 36.20 (32.62) / 28.85 (29.94) pJ; parking read 19.39 pJ; parked 1.437 uW; unread 0.372 uW
+   B k6: period 61.43 pJ mean (word+row: 31.67, 0.5993, 0.1645; leave-one-out 4.1 %); static 49.0 uW (row, 52.6 %); last lookup measured (model) 39.16 (39.93) / 78.77 (81.73) / 39.30 (43.62) pJ; parking read 9.01 pJ; parked 2.363 uW; unread 0.371 uW
+   NOT ALL PASS; written /mnt/d/Project/hybrid_memory/paper2/reports/e9_rom/e9_3/e9_3_summary.json

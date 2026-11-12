@@ -1,0 +1,283 @@
+==============================================================
+P2R-E9.1 the address map of E9 in RTL, started 2026-11-11 16:42:18
+==============================================================
+
+==== 0. files, tools ====
+scripts/e9_1_amu_rtl.sh: OK
+scripts/e9_1_tables.py: OK
+scripts/e9_1_tools.py: OK
+rtl/e9/pcm_imc_unit_e9.v: OK
+rtl/e9/amu9_top.v: OK
+rtl/e9/amu9_core.v: OK
+rtl/e9/amu9_decode.v: OK
+rtl/e9/e9_rom.v: OK
+rtl/e9/e9_rom_stub.v: OK
+rtl/e9/tb/e9_1_amu_monitor.v: OK
+rtl/e8/amu_entry.v: OK
+rtl/e8/amu_lanes.v: OK
+rtl/e8/tb/e8_5c_monitor.v: OK
+rtl/tb/tb_lenet5_full_inference_v3.v: OK
+rtl/tb/e8_lookup_monitor.v: OK
+rtl/e10/sram_pool_25bank_2c_cg.v: OK
+rtl/e10/sram_bank_128x8.v: OK
+reports/e8_rom/e8_5c/res_new_A.txt: OK
+reports/e8_rom/e8_5c/res_new_B.txt: OK
+reports/e8_rom/e8_5c/res_once_A.txt: OK
+reports/e8_rom/e8_5c/res_once_B.txt: OK
+reports/e8_rom/e8_5c/e8t_new_A.txt: OK
+reports/e8_rom/e8_5c/e8t_new_B.txt: OK
+reports/e8_rom/e8_5c/e8t_once_A.txt: OK
+reports/e8_rom/e8_5c/e8t_once_B.txt: OK
+reports/e8_rom/e8_5c/e85t_new_A.txt: OK
+reports/e8_rom/e8_5c/e85t_new_B.txt: OK
+reports/e8_rom/e8_5c/e85t_once_A.txt: OK
+reports/e8_rom/e8_5c/e85t_once_B.txt: OK
+iverilog : /usr/bin/iverilog  Icarus Verilog version 12.0 (stable) ()
+python3  : /usr/bin/python3  Python 3.12.3
+yosys    : /home/kid/oss-cad-suite/bin/yosys  Yosys 0.68+36 (git sha1 17d51a330-dirty, Release, Clang /usr/bin/clang++ 21.1.8)
+liberty  : 12a1d61fcd2982fc8ba63993919c8ff8  /home/kid/sky130/orfs/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+E9.0     : deb8f80ccaf5fd004b4853f41dc8466f  /mnt/d/Project/hybrid_memory/paper2/reports/e9_rom/tables/e9rom_A_40x2688_w8.bin
+jobs     : at most 4 simulations at a time (E8_JOBS)
+   [16:42:21, 3 s since the start]
+
+==== 1. the ROM contents (scripts/e9_1_tables.py) ====
+model A: 2482 entries, 3074 protected weights [150, 1481, 335, 314, 794], 7 macros of 48 rows x 8 words, 2688 words, 99280 map bits
+   decoded 61470 weights from the image: differences {'sram_slot': 0, 'pcm_slot': 0, 'medium': 0, 'invalid_lane_not_ffff': 0, 'constant_bits': 0}; image reads back True
+   macro 0: 383 entries, zero bits 2974 (0.1936), largest per row 195
+   macro 1: 383 entries, zero bits 1457 (0.0949), largest per row 40
+   macro 2: 383 entries, zero bits 1498 (0.0975), largest per row 50
+   macro 3: 383 entries, zero bits 1974 (0.1285), largest per row 60
+   macro 4: 383 entries, zero bits 1618 (0.1053), largest per row 48
+   macro 5: 383 entries, zero bits 1695 (0.1104), largest per row 55
+   macro 6: 184 entries, zero bits 1760 (0.1146), largest per row 204
+   /mnt/d/Project/hybrid_memory/paper2/reports/e9/e9_1/tables/e9rom_A.bin  deb8f80ccaf5fd004b4853f41dc8466f
+   /mnt/d/Project/hybrid_memory/paper2/reports/e9/e9_1/tables/e9rom_A.hex  10a6012d28e169d8cd5bbade78049dbf
+model B: 2482 entries, 3074 protected weights [150, 860, 479, 745, 840], 7 macros of 48 rows x 8 words, 2688 words, 99280 map bits
+   decoded 61470 weights from the image: differences {'sram_slot': 0, 'pcm_slot': 0, 'medium': 0, 'invalid_lane_not_ffff': 0, 'constant_bits': 0}; image reads back True
+   macro 0: 383 entries, zero bits 2230 (0.1452), largest per row 196
+   macro 1: 383 entries, zero bits 1542 (0.1004), largest per row 50
+   macro 2: 383 entries, zero bits 1721 (0.1120), largest per row 53
+   macro 3: 383 entries, zero bits 1710 (0.1113), largest per row 49
+   macro 4: 383 entries, zero bits 1970 (0.1283), largest per row 57
+   macro 5: 383 entries, zero bits 2409 (0.1568), largest per row 70
+   macro 6: 184 entries, zero bits 1931 (0.1257), largest per row 213
+   /mnt/d/Project/hybrid_memory/paper2/reports/e9/e9_1/tables/e9rom_B.bin  3e16e79a55bc60aa2d00402570699676
+   /mnt/d/Project/hybrid_memory/paper2/reports/e9/e9_1/tables/e9rom_B.hex  d7fdc1d20ee9bb8b110b859b6a3fdf86
+TABLES OK
+  PASS  T0 tables: every weight decoded from the image equals the slot tables (TABLES OK)
+   [16:42:37, 19 s since the start]
+
+==== 2. full inference with the address map of E9 (RTL) ====
+model A, normal: iverilog exit 0
+model A, once: iverilog exit 0
+model B, normal: iverilog exit 0
+model B, once: iverilog exit 0
+  PASS  G0 model A, normal: compile list = the E9 unit, the address map of E9, the cg pool and the bank model; no E8.5 address map, conv1 cache or other unit
+  PASS  G0 model A, once: compile list = the E9 unit, the address map of E9, the cg pool and the bank model; no E8.5 address map, conv1 cache or other unit
+  PASS  G0 model B, normal: compile list = the E9 unit, the address map of E9, the cg pool and the bank model; no E8.5 address map, conv1 cache or other unit
+  PASS  G0 model B, once: compile list = the E9 unit, the address map of E9, the cg pool and the bank model; no E8.5 address map, conv1 cache or other unit
+---- the files of the unit and the address map in the compile (model A, normal), with checksums ----
+   7cbff15bad5d  /mnt/d/Project/hybrid_memory/paper2/rtl/e10/sram_bank_128x8.v
+   b37f41320ecc  /mnt/d/Project/hybrid_memory/paper2/rtl/e10/sram_pool_25bank_2c_cg.v
+   3dad9932b80d  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_entry.v
+   6b6743793e40  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/amu_lanes.v
+   3245fa7bbeb8  /mnt/d/Project/hybrid_memory/paper2/rtl/e9/amu9_core.v
+   55aef857037a  /mnt/d/Project/hybrid_memory/paper2/rtl/e9/amu9_decode.v
+   5a07d3b8888b  /mnt/d/Project/hybrid_memory/paper2/rtl/e9/amu9_top.v
+   66faf4bd55c7  /mnt/d/Project/hybrid_memory/paper2/rtl/e9/e9_rom.v
+   384c1b9cc728  /mnt/d/Project/hybrid_memory/paper2/rtl/e9/pcm_imc_unit_e9.v
+   c2be16497fd6  /mnt/d/Project/hybrid_memory/paper2/rtl/e9/tb/e9_1_amu_monitor.v
+---- simulate, started 2026-11-11 16:42:42 ----
+---- model A, normal: vvp exit 0, 830.17 s wall, 21760 kB peak 830 s 
+     [PASS] inference complete at cycle 617573
+   RESULT: ALL TESTS PASSED
+   E10 POOL: lane reads 8748261, bank reads 8748261 (per bank 337359 to 361658), conflict cycles 0, address errors 0, deepest row 122
+   [E9 MONITOR] ==== address-map unit (E9.1) ====
+   [E9 MONITOR] operations at the datapath start 16684, engine start pulses 16684 -> trace /home/kid/p2r_e9/e9_1/e85t_normal_A.txt
+   [E9 MONITOR] unit counters: starts 16684, stall cycles 0, lookup pulses 2484, parking pulses 115
+   [E9 MONITOR] error flags {queue,lane0,mismatch} 000; parking reads without a zero bit to park 0; macros unparked at the end 0
+   [E9 MONITOR] ROM pulses in the event list: lookup 2484, parking 115 (before start 2, after done 0) -> /home/kid/p2r_e9/e9_1/e9ev_normal_A.txt
+   [E9 MONITOR]    macro 0: lookup 385, parking 106; model reads 491 (parking word 106)
+   [E9 MONITOR]    macro 1: lookup 383, parking 1; model reads 384 (parking word 1)
+   [E9 MONITOR]    macro 2: lookup 383, parking 1; model reads 384 (parking word 1)
+   [E9 MONITOR]    macro 3: lookup 383, parking 1; model reads 384 (parking word 1)
+   [E9 MONITOR]    macro 4: lookup 383, parking 1; model reads 384 (parking word 1)
+   [E9 MONITOR]    macro 5: lookup 383, parking 2; model reads 385 (parking word 2)
+   [E9 MONITOR]    macro 6: lookup 184, parking 3; model reads 187 (parking word 3)
+   [E9 MONITOR] macro reads counted by the 7 models: 2599 (equal to the events), of them the parking word 115 (equal)
+   [E9 MONITOR] ROM protocol at the models: CS at the clock edge 0, address changed while high 0, invalid word 0, shortest clock low before a read 50.0 ns
+   [E9 MONITOR] shortest clock low before a lookup 9 cycles, before a parking read 5 cycles
+   [E9 MONITOR] slot check at 16684 operations: 416520 lane lookups (SRAM 267143, PCM 149377); slots different from the E8.5 tables: SRAM 0, PCM 0
+   [E8.5c MONITOR] datapath starts 16684, SRAM reads 267143
+---- model A, once: vvp exit 0, 553.51 s wall, 21632 kB peak 553 s 
+     [PASS] inference complete at cycle 617573
+   RESULT: ALL TESTS PASSED
+   E10 POOL: lane reads 267143, bank reads 267143 (per bank 10661 to 10761), conflict cycles 0, address errors 0, deepest row 122
+   [E9 MONITOR] ==== address-map unit (E9.1) ====
+   [E9 MONITOR] operations at the datapath start 16684, engine start pulses 16684 -> trace /home/kid/p2r_e9/e9_1/e85t_once_A.txt
+   [E9 MONITOR] unit counters: starts 16684, stall cycles 0, lookup pulses 2484, parking pulses 115
+   [E9 MONITOR] error flags {queue,lane0,mismatch} 000; parking reads without a zero bit to park 0; macros unparked at the end 0
+   [E9 MONITOR] ROM pulses in the event list: lookup 2484, parking 115 (before start 2, after done 0) -> /home/kid/p2r_e9/e9_1/e9ev_once_A.txt
+   [E9 MONITOR]    macro 0: lookup 385, parking 106; model reads 491 (parking word 106)
+   [E9 MONITOR]    macro 1: lookup 383, parking 1; model reads 384 (parking word 1)
+   [E9 MONITOR]    macro 2: lookup 383, parking 1; model reads 384 (parking word 1)
+   [E9 MONITOR]    macro 3: lookup 383, parking 1; model reads 384 (parking word 1)
+   [E9 MONITOR]    macro 4: lookup 383, parking 1; model reads 384 (parking word 1)
+   [E9 MONITOR]    macro 5: lookup 383, parking 2; model reads 385 (parking word 2)
+   [E9 MONITOR]    macro 6: lookup 184, parking 3; model reads 187 (parking word 3)
+   [E9 MONITOR] macro reads counted by the 7 models: 2599 (equal to the events), of them the parking word 115 (equal)
+   [E9 MONITOR] ROM protocol at the models: CS at the clock edge 0, address changed while high 0, invalid word 0, shortest clock low before a read 50.0 ns
+   [E9 MONITOR] shortest clock low before a lookup 9 cycles, before a parking read 5 cycles
+   [E9 MONITOR] slot check at 16684 operations: 416520 lane lookups (SRAM 267143, PCM 149377); slots different from the E8.5 tables: SRAM 0, PCM 0
+   [E8.5c MONITOR] datapath starts 16684, SRAM reads 267143
+---- model B, normal: vvp exit 0, 789.23 s wall, 21632 kB peak 789 s 
+     [PASS] inference complete at cycle 617573
+   RESULT: ALL TESTS PASSED
+   E10 POOL: lane reads 7144748, bank reads 7144748 (per bank 278089 to 312107), conflict cycles 0, address errors 0, deepest row 122
+   [E9 MONITOR] ==== address-map unit (E9.1) ====
+   [E9 MONITOR] operations at the datapath start 16684, engine start pulses 16684 -> trace /home/kid/p2r_e9/e9_1/e85t_normal_B.txt
+   [E9 MONITOR] unit counters: starts 16684, stall cycles 0, lookup pulses 2484, parking pulses 115
+   [E9 MONITOR] error flags {queue,lane0,mismatch} 000; parking reads without a zero bit to park 0; macros unparked at the end 0
+   [E9 MONITOR] ROM pulses in the event list: lookup 2484, parking 115 (before start 2, after done 0) -> /home/kid/p2r_e9/e9_1/e9ev_normal_B.txt
+   [E9 MONITOR]    macro 0: lookup 385, parking 105; model reads 490 (parking word 105)
+   [E9 MONITOR]    macro 1: lookup 383, parking 1; model reads 384 (parking word 1)
+   [E9 MONITOR]    macro 2: lookup 383, parking 1; model reads 384 (parking word 1)
+   [E9 MONITOR]    macro 3: lookup 383, parking 1; model reads 384 (parking word 1)
+   [E9 MONITOR]    macro 4: lookup 383, parking 1; model reads 384 (parking word 1)
+   [E9 MONITOR]    macro 5: lookup 383, parking 3; model reads 386 (parking word 3)
+   [E9 MONITOR]    macro 6: lookup 184, parking 3; model reads 187 (parking word 3)
+   [E9 MONITOR] macro reads counted by the 7 models: 2599 (equal to the events), of them the parking word 115 (equal)
+   [E9 MONITOR] ROM protocol at the models: CS at the clock edge 0, address changed while high 0, invalid word 0, shortest clock low before a read 50.0 ns
+   [E9 MONITOR] shortest clock low before a lookup 9 cycles, before a parking read 5 cycles
+   [E9 MONITOR] slot check at 16684 operations: 416520 lane lookups (SRAM 205664, PCM 210856); slots different from the E8.5 tables: SRAM 0, PCM 0
+   [E8.5c MONITOR] datapath starts 16684, SRAM reads 205664
+---- model B, once: vvp exit 0, 544.19 s wall, 21888 kB peak 544 s 
+     [PASS] inference complete at cycle 617573
+   RESULT: ALL TESTS PASSED
+   E10 POOL: lane reads 205664, bank reads 205664 (per bank 8186 to 8286), conflict cycles 0, address errors 0, deepest row 122
+   [E9 MONITOR] ==== address-map unit (E9.1) ====
+   [E9 MONITOR] operations at the datapath start 16684, engine start pulses 16684 -> trace /home/kid/p2r_e9/e9_1/e85t_once_B.txt
+   [E9 MONITOR] unit counters: starts 16684, stall cycles 0, lookup pulses 2484, parking pulses 115
+   [E9 MONITOR] error flags {queue,lane0,mismatch} 000; parking reads without a zero bit to park 0; macros unparked at the end 0
+   [E9 MONITOR] ROM pulses in the event list: lookup 2484, parking 115 (before start 2, after done 0) -> /home/kid/p2r_e9/e9_1/e9ev_once_B.txt
+   [E9 MONITOR]    macro 0: lookup 385, parking 105; model reads 490 (parking word 105)
+   [E9 MONITOR]    macro 1: lookup 383, parking 1; model reads 384 (parking word 1)
+   [E9 MONITOR]    macro 2: lookup 383, parking 1; model reads 384 (parking word 1)
+   [E9 MONITOR]    macro 3: lookup 383, parking 1; model reads 384 (parking word 1)
+   [E9 MONITOR]    macro 4: lookup 383, parking 1; model reads 384 (parking word 1)
+   [E9 MONITOR]    macro 5: lookup 383, parking 3; model reads 386 (parking word 3)
+   [E9 MONITOR]    macro 6: lookup 184, parking 3; model reads 187 (parking word 3)
+   [E9 MONITOR] macro reads counted by the 7 models: 2599 (equal to the events), of them the parking word 115 (equal)
+   [E9 MONITOR] ROM protocol at the models: CS at the clock edge 0, address changed while high 0, invalid word 0, shortest clock low before a read 50.0 ns
+   [E9 MONITOR] shortest clock low before a lookup 9 cycles, before a parking read 5 cycles
+   [E9 MONITOR] slot check at 16684 operations: 416520 lane lookups (SRAM 205664, PCM 210856); slots different from the E8.5 tables: SRAM 0, PCM 0
+   [E8.5c MONITOR] datapath starts 16684, SRAM reads 205664
+   [16:56:32, 854 s since the start]
+
+==== 3. synthesis of amu9_top, ROM macros as black boxes (flow B of E3) ====
+---- yosys exit 0
+        10 ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+         5 ABC: Warning: Detected 9 multi-output cells (for example, "sky130_fd_sc_hd__fa_1").
+         2 Warning: Replacing memory \rq_v with list of registers. See /mnt/d/Project/hybrid_memory/paper2/rtl/e9/amu9_core.v:201
+         2 Warning: Replacing memory \rq_s with list of registers. See /mnt/d/Project/hybrid_memory/paper2/rtl/e9/amu9_core.v:202
+         2 Warning: Replacing memory \rq_e with list of registers. See /mnt/d/Project/hybrid_memory/paper2/rtl/e9/amu9_core.v:202
+         1 Warnings: 4 unique messages, 7 total
+         1 Warning: Replacing memory \buf_w with list of registers. See /mnt/d/Project/hybrid_memory/paper2/rtl/e9/amu9_top.v:112
+   RAW: final area (logic only; the 7 ROM macros are black boxes)
+      Chip area for top module '\amu9_top': 99721.891200
+        of which used for sequential elements: 12491.980800 (12.53%)
+   RAW: ROM macros and sequential cells in the netlist
+   ROM macros instantiated: 7
+       504 sky130_fd_sc_hd__dfxtp_1
+        80 sky130_fd_sc_hd__edfxtp_1
+        37 sky130_fd_sc_hd__dlclkp_1
+   [16:57:10, 892 s since the start]
+
+==== 4. gates and summary (scripts/e9_1_tools.py judge) ====
+PASS  T0 model A: decoded weights equal the slot tables: 61470 weights, differences {'sram_slot': 0, 'pcm_slot': 0, 'medium': 0, 'invalid_lane_not_ffff': 0, 'constant_bits': 0}, image reads back True, 7 macros, 99280 map bits
+PASS  T0 model B: decoded weights equal the slot tables: 61470 weights, differences {'sram_slot': 0, 'pcm_slot': 0, 'medium': 0, 'invalid_lane_not_ffff': 0, 'constant_bits': 0}, image reads back True, 7 macros, 99280 map bits
+PASS  T0 model A: image = the table of the E9.0 probe: /mnt/d/Project/hybrid_memory/paper2/reports/e9_rom/tables/e9rom_A_40x2688_w8.bin
+PASS  G1 normal_A: all tests passed, complete at cycle 617573: passed True, 617573 True
+PASS  G2 normal_A: results, E8.2 and E8.5 traces identical to E8.5c new: {'res': True, 'e8t': True, 'e85t': True}
+PASS  G3 normal_A: E9 address map (stalls, errors, slots, ROM protocol, parking): stalls 0, flags 000, slot differences 0/0 of 416520 lane lookups, protocol 0/0/0, low before lookup 9 / parking 5 cycles, parking without zero 0, lookups 2484, parkings 115
+PASS  G4 normal_A: banked pool: {'lane_reads': 8748261, 'bank_reads': 8748261, 'per_bank_min': 337359, 'per_bank_max': 361658, 'conflict_cycles': 0, 'address_errors': 0, 'deepest_row': 122}
+PASS  G1 normal_B: all tests passed, complete at cycle 617573: passed True, 617573 True
+PASS  G2 normal_B: results, E8.2 and E8.5 traces identical to E8.5c new: {'res': True, 'e8t': True, 'e85t': True}
+PASS  G3 normal_B: E9 address map (stalls, errors, slots, ROM protocol, parking): stalls 0, flags 000, slot differences 0/0 of 416520 lane lookups, protocol 0/0/0, low before lookup 9 / parking 5 cycles, parking without zero 0, lookups 2484, parkings 115
+PASS  G4 normal_B: banked pool: {'lane_reads': 7144748, 'bank_reads': 7144748, 'per_bank_min': 278089, 'per_bank_max': 312107, 'conflict_cycles': 0, 'address_errors': 0, 'deepest_row': 122}
+PASS  G1 once_A: all tests passed, complete at cycle 617573: passed True, 617573 True
+PASS  G2 once_A: results, E8.2 and E8.5 traces identical to E8.5c once: {'res': True, 'e8t': True, 'e85t': True}
+PASS  G3 once_A: E9 address map (stalls, errors, slots, ROM protocol, parking): stalls 0, flags 000, slot differences 0/0 of 416520 lane lookups, protocol 0/0/0, low before lookup 9 / parking 5 cycles, parking without zero 0, lookups 2484, parkings 115
+PASS  G4 once_A: banked pool: {'lane_reads': 267143, 'bank_reads': 267143, 'per_bank_min': 10661, 'per_bank_max': 10761, 'conflict_cycles': 0, 'address_errors': 0, 'deepest_row': 122}
+PASS  G1 once_B: all tests passed, complete at cycle 617573: passed True, 617573 True
+PASS  G2 once_B: results, E8.2 and E8.5 traces identical to E8.5c once: {'res': True, 'e8t': True, 'e85t': True}
+PASS  G3 once_B: E9 address map (stalls, errors, slots, ROM protocol, parking): stalls 0, flags 000, slot differences 0/0 of 416520 lane lookups, protocol 0/0/0, low before lookup 9 / parking 5 cycles, parking without zero 0, lookups 2484, parkings 115
+PASS  G4 once_B: banked pool: {'lane_reads': 205664, 'bank_reads': 205664, 'per_bank_min': 8186, 'per_bank_max': 8286, 'conflict_cycles': 0, 'address_errors': 0, 'deepest_row': 122}
+PASS  S1 synthesis of amu9_top (ROM macros as black boxes): {'rc': 0, 'area_um2': 99721.8912, 'sequential_um2': 12491.9808, 'rom_instances': 7, 'flip_flops': 584, 'icg': 37}
+All gates pass
+   [16:57:13, 895 s since the start]
+
+---- files written to /mnt/d/Project/hybrid_memory/paper2/reports/e9/e9_1 ----
+   /mnt/d/Project/hybrid_memory/paper2/reports/e9/e9_1:
+   total 20
+   drwxrwxrwx 1 kid kid  4096 Nov 11  2026 .
+   drwxrwxrwx 1 kid kid  4096 Nov 11 16:42 ..
+   -rwxrwxrwx 1 kid kid 13078 Nov 11 16:57 e9_1_summary.json
+   -rwxrwxrwx 1 kid kid  3341 Nov 11  2026 e9_1_summary.txt
+   drwxrwxrwx 1 kid kid  4096 Nov 11 16:56 rtl
+   drwxrwxrwx 1 kid kid  4096 Nov 11 16:57 syn
+   drwxrwxrwx 1 kid kid  4096 Nov 11 16:42 tables
+   
+   /mnt/d/Project/hybrid_memory/paper2/reports/e9/e9_1/rtl:
+   total 320
+   drwxrwxrwx 1 kid kid  4096 Nov 11 16:56 .
+   drwxrwxrwx 1 kid kid  4096 Nov 11 16:57 ..
+   -rwxrwxrwx 1 kid kid     0 Nov 11 16:56 comp_normal_A.log
+   -rwxrwxrwx 1 kid kid     0 Nov 11 16:56 comp_normal_B.log
+   -rwxrwxrwx 1 kid kid     0 Nov 11 16:56 comp_once_A.log
+   -rwxrwxrwx 1 kid kid     0 Nov 11 16:56 comp_once_B.log
+   -rwxrwxrwx 1 kid kid  2751 Nov 11 16:56 deps_normal_A.txt
+   -rwxrwxrwx 1 kid kid  2751 Nov 11 16:56 deps_normal_B.txt
+   -rwxrwxrwx 1 kid kid  2751 Nov 11 16:56 deps_once_A.txt
+   -rwxrwxrwx 1 kid kid  2751 Nov 11 16:56 deps_once_B.txt
+   -rwxrwxrwx 1 kid kid 65883 Nov 11 16:56 e9ev_normal_A.txt
+   -rwxrwxrwx 1 kid kid 65882 Nov 11 16:56 e9ev_normal_B.txt
+   -rwxrwxrwx 1 kid kid 65883 Nov 11 16:56 e9ev_once_A.txt
+   -rwxrwxrwx 1 kid kid 65882 Nov 11 16:56 e9ev_once_B.txt
+   -rwxrwxrwx 1 kid kid  5132 Nov 11 16:56 sim_normal_A.log
+   -rwxrwxrwx 1 kid kid  5131 Nov 11 16:56 sim_normal_B.log
+   -rwxrwxrwx 1 kid kid  5114 Nov 11 16:56 sim_once_A.log
+   -rwxrwxrwx 1 kid kid  5111 Nov 11 16:56 sim_once_B.log
+   -rwxrwxrwx 1 kid kid    35 Nov 11 16:56 time_normal_A.txt
+   -rwxrwxrwx 1 kid kid    35 Nov 11 16:56 time_normal_B.txt
+   -rwxrwxrwx 1 kid kid    35 Nov 11 16:56 time_once_A.txt
+   -rwxrwxrwx 1 kid kid    35 Nov 11 16:56 time_once_B.txt
+   
+   /mnt/d/Project/hybrid_memory/paper2/reports/e9/e9_1/syn:
+   total 3884
+   drwxrwxrwx 1 kid kid    4096 Nov 11 16:57 .
+   drwxrwxrwx 1 kid kid    4096 Nov 11 16:57 ..
+   -rwxrwxrwx 1 kid kid 1708672 Nov 11 16:57 amu9_netlist.v
+   -rwxrwxrwx 1 kid kid 1638036 Nov 11 16:57 amu9_sta.v
+   -rwxrwxrwx 1 kid kid    3853 Nov 11 16:57 amu9_stat_after_clockgate.txt
+   -rwxrwxrwx 1 kid kid    3789 Nov 11 16:56 amu9_stat_after_synth.txt
+   -rwxrwxrwx 1 kid kid    3745 Nov 11 16:56 amu9_stat_after_transform.txt
+   -rwxrwxrwx 1 kid kid   20530 Nov 11 16:57 amu9_stat_final.txt
+   -rwxrwxrwx 1 kid kid  582589 Nov 11 16:57 amu9_syn.log
+   -rwxrwxrwx 1 kid kid    1902 Nov 11 16:56 amu9_syn.ys
+   -rwxrwxrwx 1 kid kid       2 Nov 11 16:57 yosys_rc.txt
+   
+   /mnt/d/Project/hybrid_memory/paper2/reports/e9/e9_1/tables:
+   total 100
+   drwxrwxrwx 1 kid kid  4096 Nov 11 16:42 .
+   drwxrwxrwx 1 kid kid  4096 Nov 11 16:57 ..
+   -rwxrwxrwx 1 kid kid  3940 Nov 11 16:42 e9_1_tables.json
+   -rwxrwxrwx 1 kid kid 13440 Nov 11 16:42 e9rom_A.bin
+   -rwxrwxrwx 1 kid kid 29568 Nov 11 16:42 e9rom_A.hex
+   -rwxrwxrwx 1 kid kid 13440 Nov 11 16:42 e9rom_B.bin
+   -rwxrwxrwx 1 kid kid 29568 Nov 11 16:42 e9rom_B.hex
+
+E9.1: all gates pass
+Pack the results for checking:
+   cd /mnt/d/Project/hybrid_memory/paper2 && tar czf reports/e9_1_results.tar.gz -C reports/e9 e9_1
+Finished 2026-11-11 16:57:13, 895 s

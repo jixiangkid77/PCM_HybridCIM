@@ -1,0 +1,61 @@
+P2R-E10.2b: energy and area with the banked SRAM, without the conv1 cache (scripts/e10_2b_recost.py)
+
+   input 50cf171966b689d80212482a2e6be463  reports/e8_6/e8_6_summary.json
+   input 0e4c0b0102602c08b64cc54ee09d4e98  reports/e10/e10_1s/e10_1_summary.json
+   input ecf87ba5bcd5f44a81b6990902a64c6d  reports/e10/e10_1f/e10_1_summary.json
+   input c05192888e01d2dd9eb39ecb2d8891bc  reports/e10/e10_1f/libgen_l689/sky130_sram_128bytes_1rw_8x128_8_TT_1p8V_25C.lib
+   input 3fd9e2cfbaef36972c043259e6a6f017  reports/e10/e10_1f/libgen_ldef/sky130_sram_128bytes_1rw_8x128_8_TT_1p8V_25C.lib
+   input 05e924a0ebb0714918373ab3f2d73da1  reports/e10/e10_1c_s/e10_1c_summary.json
+   input 1a7c4f2c927cb6054f7cc9fd1cc17384  reports/e10/e10_2a/e10_2a_summary.json
+   input 7624b29cc063a2c315fa4c624fc62f33  reports/e10/e10_2a/rtl_cg/bankpool_cg_stat_final.txt
+   input b94a310f16bfed9702ec9968ab0c3643  reports/e10/e10_2c/e10_2c_summary.json
+   input 3112ed6d5e1cee07f8249cc3a2e4387d  reports/e10_0_banked_sram.log
+
+bank S: 212.415 x 170.195 um = 36152.0 um2 (+2.95 % height over F), 25 banks 0.9038 mm2; read 12.752 pJ (12.134-13.788, 7 reads), 6.78 x less than the 4-KB macro; static after a read 0.1847 uW; data 8.56 ns
+library of the bank as generated (F): 1.650 pJ per read (6.89 fF), 3.061 pJ (default loads), leakage 1.355 uW; F reads 12.712 pJ = 7.70 x and 4.15 x the library; library leakage 6.9 x F's static
+interleaving: bank = slot mod 25, row = floor(slot / 25); A {"protected": 3074, "entries_with_protected": 609, "non_consecutive": 0, "steps_with_two_reads_in_a_bank": 0, "deepest_row": 122}; B {"protected": 3074, "entries_with_protected": 797, "non_consecutive": 0, "steps_with_two_reads_in_a_bank": 0, "deepest_row": 122}; U1 {"cycles": 200000, "lane_reads": 2556756, "mismatches": 0}
+pool logic: 72092.89 um2; 2.3888 / 2.2036 uJ (cg, conce, no cache); root clock net not included 0.2326 uJ
+
+model A: A 21.096  B 5.824 (5.659-6.101: SRAM bank reads 3.4067, SRAM bank static (25 banks) 0.0285, pool logic (gate level) 2.3888)  C 0.263  D 17.157
+   A-C 27.183, A-D 44.341 uJ; B/(A-C) 21.43 % (20.94-22.22); (B+D)/(A-D) 51.83 % (51.45-52.33); per MAC A-D 106.46 pJ, A-C 65.26 pJ
+   E8.6: B 17.568, A-D 56.085; banks with the cache: B 8.531, A-D 47.048; removing the cache saves 2.707 uJ (cache 4.628; its reads cost 1.500 in the banks + 0.421 pool logic; with the 4-KB macro they cost 10.17)
+model B: A 20.561  B 4.855 (4.728-5.068: SRAM bank reads 2.6227, SRAM bank static (25 banks) 0.0285, pool logic (gate level) 2.2036)  C 0.263  D 16.769
+   A-C 25.679, A-D 42.448 uJ; B/(A-C) 18.91 % (18.50-19.57); (B+D)/(A-D) 50.94 % (50.31-51.73); per MAC A-D 101.91 pJ, A-C 61.65 pJ
+   E8.6: B 12.202, A-D 49.795; banks with the cache: B 7.513, A-D 45.106; removing the cache saves 2.658 uJ (cache 4.578; its reads cost 1.500 in the banks + 0.421 pool logic; with the 4-KB macro they cost 10.17)
+
+condition tt:25: read x1.0000, static x1.000 (settled True), data 8.56 ns; banks A 3.407 + 0.029 = 3.435 uJ (1.00 x tt), B 2.651 uJ
+condition ss:25: read x1.0070, static x0.376 (settled False), data 10.43 ns; banks A 3.431 + 0.011 = 3.441 uJ (1.00 x tt), B 2.652 uJ
+condition ff:85: read x1.0731, static x181.234 (settled True), data 7.63 ns; banks A 3.656 + 5.169 = 8.825 uJ (2.57 x tt), B 7.983 uJ
+condition tt:85: read x1.0342, static x18.785 (settled True), data 8.57 ns; banks A 3.523 + 0.536 = 4.059 uJ (1.18 x tt), B 3.248 uJ
+condition tt:-40: read x0.9648, static x0.324 (settled False), data 8.54 ns; banks A 3.287 + 0.009 = 3.296 uJ (0.96 x tt), B 2.540 uJ
+condition ff:25: read x1.0085, static x16.551 (settled True), data 7.59 ns; banks A 3.436 + 0.472 = 3.908 uJ (1.14 x tt), B 3.117 uJ
+
+area A: fixed 8.6333, SRAM 0.9759 (banks 0.9038 + logic 0.0721), total 10.289-11.879 mm2 (E8.6 9.642-17.970); protection 7.785 mm2, 75.7 / 65.5 %; map / SRAM 6.98
+area B: fixed 8.6343, SRAM 0.9759 (banks 0.9038 + logic 0.0721), total 10.290-11.880 mm2 (E8.6 9.643-17.971); protection 7.786 mm2, 75.7 / 65.5 %; map / SRAM 6.98
+fig7 model: 61.643 um2 per word, 28261.6 um2 per bank at zero words; budget 50 %: banks 2.674, one copy 2.107, 25 copies 52.667 mm2; total (baseline) 11.720 at 1 %, 13.577 at 50 %
+VI-A A: banks by their library 0.650 uJ against 3.435 post-layout
+VI-A B: banks by their library 0.549 uJ against 2.651 post-layout
+VI-C: SRAM energy floor 1102.7 uJ = 24.87 x the LeNet-5 A-D
+
+   PASS  E10.1 bank S gate G0: PASS
+   PASS  E10.1 bank S gate G1: PASS
+   PASS  E10.1 bank S gate G1b: PASS
+   PASS  E10.1 bank S gate G2: PASS
+   PASS  E10.1 bank S gate G3: PASS
+   PASS  E10.1 bank S: all reads correct (F1 0 wrong bits, F2b gated reads within two cycles): F1 0, F2b yes
+   PASS  E10.1 bank S carries the sense-amplifier precharge in the layout: True
+   PASS  E10.0 T0: slots consecutive, no two reads of a step in one bank, rows < 128, both models: {"A": {"protected": 3074, "entries_with_protected": 609, "non_consecutive": 0, "steps_with_two_reads_in_a_bank": 0, "deepest_row": 122}, "B": {"protected": 3074, "entries_with_protected": 797, "non_consecutive": 0, "steps_with_two_reads_in_a_bank": 0, "deepest_row": 122}}
+   PASS  E10.0 U1: banked pool = 25-port pool cycle for cycle: {"cycles": 200000, "lane_reads": 2556756, "mismatches": 0}
+   PASS  E10.2c all gates pass: True
+   PASS  E10.2a all gates pass: True
+   PASS  E10.2c netlist = E10.2a cg netlist: 9c5add2a6c624da926714338401c84c8 / 9c5add2a6c624da926714338401c84c8
+   PASS  E10.2c model A: bank reads = SRAM reads of E8.5c (267143): 267143
+   PASS  E10.2c model B: bank reads = SRAM reads of E8.5c (205664): 205664
+   PASS  model A: B parts sum to B: 5.824039
+   PASS  model A: A-D = A + B + C + D: 44.340748
+   PASS  model B: B parts sum to B: 4.854798
+   PASS  model B: A-D = A + B + C + D: 42.447682
+   PASS  E10.1c S: all six conditions read correctly (5/5): tt:25 5/5, ss:25 5/5, ff:85 5/5, tt:85 5/5, tt:-40 5/5, ff:25 5/5
+   PASS  bank model reproduces the 4,096-word macro: 0.280753 mm2
+   PASS  bank model at 128 words = the bank: 36151.971 um2
+ALL CHECKS PASS

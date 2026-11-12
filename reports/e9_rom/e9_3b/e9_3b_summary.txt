@@ -1,0 +1,60 @@
+P2R-E9.3b held-out check of the lookup model (rules written before the run: protocol P2R-E9.3b of 2026-11-12)
+   PASS  W4 the inputs of the rules: plan of E9.3 df6400b4..; 14 runs of E9.3; replay with the fits of E9.3 0.116744 / 0.114395 uJ (E9.3: 0.116744 / 0.114395); lookup model from the 420 lookups of E9.3: 9.67427, 0.601429, 0.169866, 0.806921 (fixed: 9.67427, 0.601429, 0.169866, 0.806921)
+   PASS  W0/W1 every run complete, every read correct: 262 of 262 reads (data; row and word selection shown for 262), 14 of 14 runs
+   new windows (lookups 2..15), measured and fixed model (E9 + static beyond 9 cycles of the E9.3 fit):
+      A_k0: rows 13..14 (position 33.5): measured 480.7 pJ, model 502.3 pJ (+4.5%)
+      A_k1: rows 45..47 (position 0.6): measured 297.5 pJ, model 288.2 pJ (-3.1%)
+      A_k2: rows 45..47 (position 0.6): measured 245.8 pJ, model 264.3 pJ (+7.5%)
+      A_k3: rows 0..1 (position 46.5): measured 691.5 pJ, model 687.4 pJ (-0.6%)
+      A_k4: rows 15..16 (position 31.5): measured 550.7 pJ, model 541.3 pJ (-1.7%)
+      A_k5: rows 45..47 (position 0.6): measured 248.1 pJ, model 261.3 pJ (+5.3%)
+      A_k6: rows 0..1 (position 46.5): measured 646.5 pJ, model 671.3 pJ (+3.8%)
+      model A: the 7 new windows together: measured 3160.8 pJ, model 3216.2 pJ (+1.75%)
+      B_k0: rows 27..29 (position 19.0): measured 338.8 pJ, model 359.5 pJ (+6.1%)
+      B_k1: rows 45..47 (position 0.6): measured 257.7 pJ, model 277.3 pJ (+7.6%)
+      B_k2: rows 0..1 (position 46.5): measured 709.3 pJ, model 682.6 pJ (-3.8%)
+      B_k3: rows 17..18 (position 29.5): measured 539.8 pJ, model 527.4 pJ (-2.3%)
+      B_k4: rows 45..47 (position 0.6): measured 336.4 pJ, model 282.0 pJ (-16.2%)
+      B_k5: rows 0..1 (position 46.5): measured 644.5 pJ, model 688.6 pJ (+6.8%)
+      B_k6: rows 0..1 (position 46.5): measured 673.1 pJ, model 696.9 pJ (+3.5%)
+      model B: the 7 new windows together: measured 3499.6 pJ, model 3514.3 pJ (+0.42%)
+   PASS  W2 per model the sum of the new windows within 5% of the fixed lookup model
+      model A: 6 new convolution pairs: measured 527.0 pJ, E9.3 fit (word+row) 504.6 pJ (-4.26%); z 17 row 1: 83.4 (73.3), z 21 row 2: 83.6 (79.9), z 22 row 2: 89.1 (83.2), z 23 row 6: 86.4 (87.4), z 18 row 7: 82.0 (81.2), z 25 row 9: 102.5 (99.6)
+      model B: 6 new convolution pairs: measured 425.9 pJ, E9.3 fit (word+row) 423.2 pJ (-0.64%); z 14 row 1: 73.8 (69.8), z 10 row 2: 67.9 (65.7), z 22 row 4: 76.5 (74.9), z 12 row 5: 67.8 (67.7), z 16 row 8: 71.5 (72.5), z 14 row 11: 68.4 (72.6)
+   PASS  W3 per model the sum of the new pairs within 10% of the E9.3 fit
+   static levels again (E9.3b against E9.3; reported, not gated): unread uW, parked uW
+      A_k0: unread 0.373 (0.373); parked 1.395 (2.030)
+      A_k1: unread 0.372 (0.372); parked 1.264 (2.739)
+      A_k2: unread 0.371 (0.371); parked 1.264 (2.665)
+      A_k3: unread 0.372 (0.372); parked 1.434 (1.861)
+      A_k4: unread 0.372 (0.372); parked 1.451 (2.059)
+      A_k5: unread 0.371 (0.371); parked 1.265 (2.759)
+      A_k6: unread 0.371 (0.371); parked 1.435 (2.229)
+      B_k0: unread 0.372 (0.372); parked 1.428 (1.538)
+      B_k1: unread 0.371 (0.371); parked 1.275 (2.064)
+      B_k2: unread 0.372 (0.372); parked 1.447 (1.352)
+      B_k3: unread 0.372 (0.372); parked 1.452 (1.529)
+      B_k4: unread 0.372 (0.372); parked 1.240 (2.469)
+      B_k5: unread 0.372 (0.372); parked 1.443 (1.437)
+      B_k6: unread 0.371 (0.371); parked 1.432 (2.363)
+==== D_ROM: replay of every ROM read of one inference (E9.1 event lists) over 617574 cycles
+   lookup model refitted on 616 lookups (E9.3 and E9.3b): E9 = 9.7929 + 0.5904 * position + 0.1737 * row zero bits + 0.7827 * word zero bits pJ
+   model A: D_ROM 0.1173 uJ per inference (2483 lookups, 114 parking reads); with the models fixed before the runs 0.1174; E9.3 0.1167
+      dense lookups (to the next read, 9 cycles low)       0.08005 uJ
+      static of unparked gaps beyond 9 cycles              0.00019 uJ
+      last lookup of a dense run (parked 5 cycles later)   0.00024 uJ
+      parking reads after a dense run                      0.00014 uJ
+      convolution lookup-and-park pairs (macro 0)          0.00920 uJ
+      parked                                               0.01412 uJ
+      unread (before the first read)                       0.01340 uJ
+      convolution pair fit on 12 pairs: word+row, -121.7, 3.174, 0.8807 (leave-one-out 8.1%)
+   model B: D_ROM 0.1147 uJ per inference (2483 lookups, 114 parking reads); with the models fixed before the runs 0.1150; E9.3 0.1144
+      dense lookups (to the next read, 9 cycles low)       0.08254 uJ
+      static of unparked gaps beyond 9 cycles              0.00020 uJ
+      last lookup of a dense run (parked 5 cycles later)   0.00026 uJ
+      parking reads after a dense run                      0.00016 uJ
+      convolution lookup-and-park pairs (macro 0)          0.00754 uJ
+      parked                                               0.01064 uJ
+      unread (before the first read)                       0.01340 uJ
+      convolution pair fit on 12 pairs: row, 30.22, 0.3684 (leave-one-out 2.7%)
+   ALL PASS; written /mnt/d/Project/hybrid_memory/paper2/reports/e9_rom/e9_3b/e9_3b_summary.json

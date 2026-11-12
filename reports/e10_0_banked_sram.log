@@ -1,0 +1,196 @@
+==============================================================
+P2R-E10.0 banked SRAM pool (RTL), started 2026-11-10 17:51:24
+==============================================================
+---- delivered files against the manifest ----
+rtl/e10/sram_pool_25bank_2c.v: OK
+rtl/e10/sram_bank_128x8.v: OK
+rtl/e10/sram_bank_128x8_stub.v: OK
+rtl/e10/pcm_imc_unit_e10.v: OK
+rtl/e10/tb/tb_sram_pool_bank.v: OK
+scripts/e10_0_banked_sram.sh: OK
+scripts/e10_0_tables_check.py: OK
+---- E8.5e results used as the reference ----
+   4de64a6eef99f1ada89d95735dc47fc6  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5e/res_cache_A.txt
+   6eaa6eac67488fb715f955ba58eb04d0  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5e/res_cache_B.txt
+   4de64a6eef99f1ada89d95735dc47fc6  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5e/res_conce_A.txt
+   6eaa6eac67488fb715f955ba58eb04d0  /mnt/d/Project/hybrid_memory/paper2/reports/e8_rom/e8_5e/res_conce_B.txt
+iverilog : /usr/bin/iverilog  Icarus Verilog version 12.0 (stable) ()
+python3  : /usr/bin/python3  Python 3.12.3
+yosys    : /home/kid/oss-cad-suite/bin/yosys  Yosys 0.68+36 (git sha1 17d51a330-dirty, Release, Clang /usr/bin/clang++ 21.1.8)
+liberty  : 12a1d61fcd2982fc8ba63993919c8ff8  /home/kid/sky130/orfs/flow/platforms/sky130hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+jobs     : at most 2 simulations at a time (E8_JOBS)
+disk     : 821 GB free for /home/kid/p2r_e10/e10_0
+
+==== 0. tables ====
+   model A: 3074 protected weights, 609 entries with protected weights; entries with non-consecutive slots 0
+      25 banks: steps with two reads in one bank 0, deepest row 122 (words per bank needed 123)
+      32 banks: steps with two reads in one bank 0, deepest row 96 (words per bank needed 97)
+      protected weights per lane: 95 to 159
+   model B: 3074 protected weights, 797 entries with protected weights; entries with non-consecutive slots 0
+      25 banks: steps with two reads in one bank 0, deepest row 122 (words per bank needed 123)
+      32 banks: steps with two reads in one bank 0, deepest row 96 (words per bank needed 97)
+      protected weights per lane: 89 to 163
+   TABLES OK
+  PASS  T0 consecutive slots, no two reads of a step in one bank, rows < 128
+   [17:51:28, 4 s since the start]
+
+==== 1. unit test U1 ====
+   U1: cycles 200000, lane hits in range 2556756, output mismatches 0
+   U1 PASS
+   E10 POOL: lane reads 2556756, bank reads 2556756 (per bank 101456 to 102728), conflict cycles 0, address errors 0, deepest row 122
+  PASS  U1 unit test
+   [17:57:34, 370 s since the start]
+
+==== 2. full inference: cache, conce (strict mode); models A and B ====
+model A, cache: iverilog exit 0
+model A, conce: iverilog exit 0
+model B, cache: iverilog exit 0
+model B, conce: iverilog exit 0
+---- G0: the unit and the pool of the compile (model A, cache) ----
+   f0e1a6ca2704  /mnt/d/Project/hybrid_memory/paper2/rtl/e10/pcm_imc_unit_e10.v
+   7cbff15bad5d  /mnt/d/Project/hybrid_memory/paper2/rtl/e10/sram_bank_128x8.v
+   b170754e7620  /mnt/d/Project/hybrid_memory/paper2/rtl/e10/sram_pool_25bank_2c.v
+   cb7304514925  /mnt/d/Project/hybrid_memory/paper2/rtl/e8/conv1_cache.v
+  PASS  G0 compile list: rtl/e10 unit and banked pool, none of the E8.5e unit, rtl/src unit or the 25-port pool
+---- simulate, started 2026-11-10 17:57:36 ----
+---- model A, cache: vvp exit 0, 267.13 s wall, 59648 kB peak 267 s 
+   cache    [PASS] inference complete at cycle 617573
+   cache  RESULT: ALL TESTS PASSED
+   cache  E10 POOL: lane reads 3907289, bank reads 3907289 (per bank 144543 to 164503), conflict cycles 0, address errors 0, deepest row 122
+   cache  [E8.5c MONITOR] SRAM_LATENCY 2, ALIGN_DELAY 6
+   cache  [E8.5c MONITOR] results 16684 -> /home/kid/p2r_e10/e10_0/res_cache_A.txt
+   cache  [E8.5c MONITOR] datapath starts 16684, SRAM reads 267143
+   cache  [E8.5c MONITOR] shortest interval between two SRAM reads of one lane 14 cycles (lane 1); intervals below 2: 0
+   cache  [E8.5c MONITOR] cycles with a pool hit while the datapath start is low: 351936
+   cache  [E8.5e MONITOR] datapath starts 16684; SRAM macro reads 149543 (conv1 0, conv2 148100, fc1 335, fc2 314, fc3 794); conv1 cache reads 117600
+   cache  [E8.5e MONITOR] cache reads per lane: min 4704 max 4704
+   cache  [E8.5e MONITOR] cache entries different from the pool word: 0; cache reads outside conv1: 0; cycles with a pool hit in conv1: 0
+---- model A, conce: vvp exit 0, 237.45 s wall, 60032 kB peak 237 s 
+   conce    [PASS] inference complete at cycle 617573
+   conce  RESULT: ALL TESTS PASSED
+   conce  E10 POOL: lane reads 149543, bank reads 149543 (per bank 5957 to 6057), conflict cycles 0, address errors 0, deepest row 122
+   conce  [E8.5c MONITOR] SRAM_LATENCY 2, ALIGN_DELAY 6
+   conce  [E8.5c MONITOR] results 16684 -> /home/kid/p2r_e10/e10_0/res_conce_A.txt
+   conce  [E8.5c MONITOR] datapath starts 16684, SRAM reads 267143
+   conce  [E8.5c MONITOR] shortest interval between two SRAM reads of one lane 14 cycles (lane 1); intervals below 2: 0
+   conce  [E8.5c MONITOR] cycles with a pool hit while the datapath start is low: 0
+   conce  [E8.5e MONITOR] datapath starts 16684; SRAM macro reads 149543 (conv1 0, conv2 148100, fc1 335, fc2 314, fc3 794); conv1 cache reads 117600
+   conce  [E8.5e MONITOR] cache reads per lane: min 4704 max 4704
+   conce  [E8.5e MONITOR] cache entries different from the pool word: 0; cache reads outside conv1: 0; cycles with a pool hit in conv1: 0
+---- model B, cache: vvp exit 0, 281.98 s wall, 59776 kB peak 282 s 
+   cache    [PASS] inference complete at cycle 617573
+   cache  RESULT: ALL TESTS PASSED
+   cache  E10 POOL: lane reads 2303776, bank reads 2303776 (per bank 85291 to 97966), conflict cycles 0, address errors 0, deepest row 122
+   cache  [E8.5c MONITOR] SRAM_LATENCY 2, ALIGN_DELAY 6
+   cache  [E8.5c MONITOR] results 16684 -> /home/kid/p2r_e10/e10_0/res_cache_B.txt
+   cache  [E8.5c MONITOR] datapath starts 16684, SRAM reads 205664
+   cache  [E8.5c MONITOR] shortest interval between two SRAM reads of one lane 14 cycles (lane 11); intervals below 2: 0
+   cache  [E8.5c MONITOR] cycles with a pool hit while the datapath start is low: 345906
+   cache  [E8.5e MONITOR] datapath starts 16684; SRAM macro reads 88064 (conv1 0, conv2 86000, fc1 479, fc2 745, fc3 840); conv1 cache reads 117600
+   cache  [E8.5e MONITOR] cache reads per lane: min 4704 max 4704
+   cache  [E8.5e MONITOR] cache entries different from the pool word: 0; cache reads outside conv1: 0; cycles with a pool hit in conv1: 0
+---- model B, conce: vvp exit 0, 270.13 s wall, 59904 kB peak 270 s 
+   conce    [PASS] inference complete at cycle 617573
+   conce  RESULT: ALL TESTS PASSED
+   conce  E10 POOL: lane reads 88064, bank reads 88064 (per bank 3482 to 3582), conflict cycles 0, address errors 0, deepest row 122
+   conce  [E8.5c MONITOR] SRAM_LATENCY 2, ALIGN_DELAY 6
+   conce  [E8.5c MONITOR] results 16684 -> /home/kid/p2r_e10/e10_0/res_conce_B.txt
+   conce  [E8.5c MONITOR] datapath starts 16684, SRAM reads 205664
+   conce  [E8.5c MONITOR] shortest interval between two SRAM reads of one lane 14 cycles (lane 11); intervals below 2: 0
+   conce  [E8.5c MONITOR] cycles with a pool hit while the datapath start is low: 0
+   conce  [E8.5e MONITOR] datapath starts 16684; SRAM macro reads 88064 (conv1 0, conv2 86000, fc1 479, fc2 745, fc3 840); conv1 cache reads 117600
+   conce  [E8.5e MONITOR] cache reads per lane: min 4704 max 4704
+   conce  [E8.5e MONITOR] cache entries different from the pool word: 0; cache reads outside conv1: 0; cycles with a pool hit in conv1: 0
+   [18:06:45, 921 s since the start]
+
+==== 3. checks ====
+  PASS  G1 model A cache: all tests passed, inference complete at cycle 617573
+   res: identical to E8.5e
+   e8t: identical to E8.5e
+   e85t: identical to E8.5e
+   e85e: identical to E8.5e
+  PASS  G2 model A cache: results, traces and events identical to E8.5e
+   E10 POOL: lane reads 3907289, bank reads 3907289 (per bank 144543 to 164503), conflict cycles 0, address errors 0, deepest row 122
+   lane reads 3907289, bank reads 3907289, conflict cycles 0, address errors 0, deepest row 122
+  PASS  G3 model A cache: no conflict, no address error, rows < 128
+  PASS  G1 model A conce: all tests passed, inference complete at cycle 617573
+   res: identical to E8.5e
+   e8t: identical to E8.5e
+   e85t: identical to E8.5e
+   e85e: identical to E8.5e
+  PASS  G2 model A conce: results, traces and events identical to E8.5e
+   E10 POOL: lane reads 149543, bank reads 149543 (per bank 5957 to 6057), conflict cycles 0, address errors 0, deepest row 122
+   lane reads 149543 (expected 149543), bank reads 149543, conflict cycles 0, address errors 0, deepest row 122
+  PASS  G3 model A conce: no conflict, no address error, rows < 128, 149543 lane reads
+  PASS  G1 model B cache: all tests passed, inference complete at cycle 617573
+   res: identical to E8.5e
+   e8t: identical to E8.5e
+   e85t: identical to E8.5e
+   e85e: identical to E8.5e
+  PASS  G2 model B cache: results, traces and events identical to E8.5e
+   E10 POOL: lane reads 2303776, bank reads 2303776 (per bank 85291 to 97966), conflict cycles 0, address errors 0, deepest row 122
+   lane reads 2303776, bank reads 2303776, conflict cycles 0, address errors 0, deepest row 122
+  PASS  G3 model B cache: no conflict, no address error, rows < 128
+  PASS  G1 model B conce: all tests passed, inference complete at cycle 617573
+   res: identical to E8.5e
+   e8t: identical to E8.5e
+   e85t: identical to E8.5e
+   e85e: identical to E8.5e
+  PASS  G2 model B conce: results, traces and events identical to E8.5e
+   E10 POOL: lane reads 88064, bank reads 88064 (per bank 3482 to 3582), conflict cycles 0, address errors 0, deepest row 122
+   lane reads 88064 (expected 88064), bank reads 88064, conflict cycles 0, address errors 0, deepest row 122
+  PASS  G3 model B conce: no conflict, no address error, rows < 128, 88064 lane reads
+   [18:06:47, 923 s since the start]
+
+==== 4. Yosys, flow B as E8.5e: the banked pool, banks as black boxes ====
+---- yosys exit 0
+         2 ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+         1 Warnings: 1 unique messages, 1 total
+         1 Warning: Replacing memory \sel_s1 with list of registers. See /mnt/d/Project/hybrid_memory/paper2/rtl/e10/sram_pool_25bank_2c.v:142
+         1 ABC: Warning: Detected 9 multi-output cells (for example, "sky130_fd_sc_hd__fa_1").
+   RAW: final area (logic only; the 25 banks are black boxes)
+      Chip area for module '\sram_pool_25bank_2c': 70550.163200
+        of which used for sequential elements: 9384.000000 (13.30%)
+   RAW: black-box banks and sequential cells in the netlist
+   banks instantiated: 25
+       375 sky130_fd_sc_hd__dfrtp_1
+   cell lines: netlist 8163, sta 8163; lpflow / probe cells 0
+  PASS  S1 synthesis of the banked pool
+   [18:06:56, 932 s since the start]
+
+---- files written to /mnt/d/Project/hybrid_memory/paper2/reports/e10/e10_0 ----
+total 3320
+drwxrwxrwx 1 kid kid    4096 Nov 10 18:06 .
+drwxrwxrwx 1 kid kid    4096 Nov 10 17:51 ..
+-rwxrwxrwx 1 kid kid 1152011 Nov 10 18:06 bankpool_netlist.v
+-rwxrwxrwx 1 kid kid 1102691 Nov 10 18:06 bankpool_sta.v
+-rwxrwxrwx 1 kid kid     507 Nov 10 18:06 bankpool_stat_after_clockgate.txt
+-rwxrwxrwx 1 kid kid     506 Nov 10 18:06 bankpool_stat_after_synth.txt
+-rwxrwxrwx 1 kid kid     507 Nov 10 18:06 bankpool_stat_after_transform.txt
+-rwxrwxrwx 1 kid kid    3957 Nov 10 18:06 bankpool_stat_final.txt
+-rwxrwxrwx 1 kid kid  260322 Nov 10 18:06 bankpool_syn.log
+-rwxrwxrwx 1 kid kid    1734 Nov 10 18:06 bankpool_syn.ys
+-rwxrwxrwx 1 kid kid       0 Nov 10 18:06 comp_cache_A.log
+-rwxrwxrwx 1 kid kid       0 Nov 10 18:06 comp_cache_B.log
+-rwxrwxrwx 1 kid kid       0 Nov 10 18:06 comp_conce_A.log
+-rwxrwxrwx 1 kid kid       0 Nov 10 18:06 comp_conce_B.log
+-rwxrwxrwx 1 kid kid    3362 Nov 10 18:06 deps_cache_A.txt
+-rwxrwxrwx 1 kid kid    3362 Nov 10 18:06 deps_cache_B.txt
+-rwxrwxrwx 1 kid kid    3362 Nov 10 18:06 deps_conce_A.txt
+-rwxrwxrwx 1 kid kid    3362 Nov 10 18:06 deps_conce_B.txt
+-rwxrwxrwx 1 kid kid  200919 Nov 10 18:06 res_cache_A.txt
+-rwxrwxrwx 1 kid kid  204336 Nov 10 18:06 res_cache_B.txt
+-rwxrwxrwx 1 kid kid  200919 Nov 10 18:06 res_conce_A.txt
+-rwxrwxrwx 1 kid kid  204336 Nov 10 18:06 res_conce_B.txt
+-rwxrwxrwx 1 kid kid    4821 Nov 10 18:06 sim_cache_A.log
+-rwxrwxrwx 1 kid kid    4816 Nov 10 18:06 sim_cache_B.log
+-rwxrwxrwx 1 kid kid    4809 Nov 10 18:06 sim_conce_A.log
+-rwxrwxrwx 1 kid kid    4803 Nov 10 18:06 sim_conce_B.log
+-rwxrwxrwx 1 kid kid     672 Nov 10 17:51 tables_check.log
+-rwxrwxrwx 1 kid kid     312 Nov 10 17:57 u1.log
+-rwxrwxrwx 1 kid kid       0 Nov 10 17:57 u1_compile.log
+
+==============================================================
+Finished 2026-11-10 18:06:56, 15 min.
+All gates pass.
+==============================================================

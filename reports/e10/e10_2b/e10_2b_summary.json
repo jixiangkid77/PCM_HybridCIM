@@ -1,0 +1,1067 @@
+{
+ "inputs": {
+  "reports/e8_6/e8_6_summary.json": "50cf171966b689d80212482a2e6be463",
+  "reports/e10/e10_1s/e10_1_summary.json": "0e4c0b0102602c08b64cc54ee09d4e98",
+  "reports/e10/e10_1f/e10_1_summary.json": "ecf87ba5bcd5f44a81b6990902a64c6d",
+  "reports/e10/e10_1f/libgen_l689/sky130_sram_128bytes_1rw_8x128_8_TT_1p8V_25C.lib": "c05192888e01d2dd9eb39ecb2d8891bc",
+  "reports/e10/e10_1f/libgen_ldef/sky130_sram_128bytes_1rw_8x128_8_TT_1p8V_25C.lib": "3fd9e2cfbaef36972c043259e6a6f017",
+  "reports/e10/e10_1c_s/e10_1c_summary.json": "05e924a0ebb0714918373ab3f2d73da1",
+  "reports/e10/e10_2a/e10_2a_summary.json": "1a7c4f2c927cb6054f7cc9fd1cc17384",
+  "reports/e10/e10_2a/rtl_cg/bankpool_cg_stat_final.txt": "7624b29cc063a2c315fa4c624fc62f33",
+  "reports/e10/e10_2c/e10_2c_summary.json": "b94a310f16bfed9702ec9968ab0c3643",
+  "reports/e10_0_banked_sram.log": "3112ed6d5e1cee07f8249cc3a2e4387d"
+ },
+ "bank": {
+  "variant": "S",
+  "words": 128,
+  "bits": 8,
+  "banks": 25,
+  "extent_um": [
+   212.415,
+   170.195
+  ],
+  "area_um2": 36151.970924999994,
+  "banks_mm2": 0.9037992731249997,
+  "extent_F_um": [
+   212.415,
+   165.325
+  ],
+  "height_increase_over_F": 0.029457129895660072,
+  "system_read_pJ": 12.7524,
+  "system_read_range_pJ": [
+   12.1343,
+   13.788
+  ],
+  "system_read_n": 7,
+  "static_after_read_uW": 0.18473065754201715,
+  "t_acc_ns_tt": 8.558429999999776,
+  "F_system_read_pJ": 12.712214285714285,
+  "F_static_after_read_uW": 0.19543640244971447,
+  "library_read_pJ_6p89fF": 1.6500742,
+  "library_read_pJ_default_loads": 3.061066,
+  "library_leakage_uW": 1.355,
+  "F_over_library_6p89fF": 7.704025846664523,
+  "F_over_library_default": 4.15287167467617,
+  "library_leakage_over_F_static": 6.933201711736582,
+  "read_over_4KB_macro": 6.781318474505639
+ },
+ "interleaving": {
+  "A": {
+   "protected": 3074,
+   "entries_with_protected": 609,
+   "non_consecutive": 0,
+   "steps_with_two_reads_in_a_bank": 0,
+   "deepest_row": 122
+  },
+  "B": {
+   "protected": 3074,
+   "entries_with_protected": 797,
+   "non_consecutive": 0,
+   "steps_with_two_reads_in_a_bank": 0,
+   "deepest_row": 122
+  },
+  "U1": {
+   "cycles": 200000,
+   "lane_reads": 2556756,
+   "mismatches": 0
+  },
+  "bank_rule": "bank = slot mod 25, row = floor(slot / 25)"
+ },
+ "pool_logic": {
+  "area_um2": 72092.8928,
+  "area_mm2": 0.0720928928,
+  "energy_uJ": {
+   "A": 2.3888034865545005,
+   "B": 2.2035669558755004
+  },
+  "energy_by_class_uJ": {
+   "A": {
+    "bank clock gates": 0.423446,
+    "combinational": 1.264165,
+    "flip-flops": 0.593285,
+    "register clock gates": 0.107907
+   },
+   "B": {
+    "bank clock gates": 0.4202,
+    "combinational": 1.114044,
+    "flip-flops": 0.560672,
+    "register clock gates": 0.108653
+   }
+  },
+  "clock_root_net_not_included_uJ": 0.232565,
+  "flip_flops": 375,
+  "clock_gates": 28
+ },
+ "energy": {
+  "A": {
+   "A_uJ": 21.096320224150602,
+   "B_uJ": 5.82403904634705,
+   "B_parts_uJ": {
+    "SRAM bank reads": 3.4067143931999997,
+    "SRAM bank static (25 banks)": 0.02852116659254904,
+    "pool logic (gate level)": 2.3888034865545005
+   },
+   "B_range_uJ": [
+    5.6589179580470494,
+    6.100692337147049
+   ],
+   "C_uJ": 0.263,
+   "D_uJ": 17.15738826859459,
+   "D_parts_uJ": {
+    "lookup reads": 5.153947821300543,
+    "parking reads": 0.0678402886591793,
+    "static after lookup reads": 1.3326863109640001,
+    "macros at rest on an all-ones word": 0.3384423055823393,
+    "macros parked on words with zero bits": 0.39390817164894876,
+    "AMU logic": 9.87056337043958
+   },
+   "D_range_uJ": [
+    16.976565218288627,
+    17.348845769622265
+   ],
+   "D_rom_uJ": 7.28682489815501,
+   "D_rom_range_uJ": [
+    7.106001847849048,
+    7.4782823991826834
+   ],
+   "amu_uJ": 9.87056337043958,
+   "total_AC_uJ": 27.183359270497654,
+   "total_AD_uJ": 44.34074753909225,
+   "share_B_of_AC": 0.21425015901798172,
+   "share_BD_of_AD": 0.5182913818645133,
+   "share_B_of_AC_range": [
+    0.20944807429285736,
+    0.22216640737249374
+   ],
+   "share_BD_of_AD_range": [
+    0.5145035646661279,
+    0.5233237127710568
+   ],
+   "per_mac_pJ": {
+    "A-C": 65.26303483745716,
+    "A-D": 106.45526634757574,
+    "C": 0.6314222606357438
+   },
+   "reads": 267143,
+   "logic_uJ": {
+    "digital periphery (E8.7)": 21.096320224150602,
+    "pool logic (E10.2c)": 2.3888034865545005,
+    "AMU (E8.7)": 9.87056337043958
+   },
+   "compare": {
+    "E8.6_B_uJ": 17.567914597492823,
+    "E8.6_total_AD_uJ": 56.08462309023801,
+    "E8.6_share_B_of_AC": 0.45130137493673494,
+    "E8.6_share_BD_of_AD": 0.6191590662955109,
+    "E8.6_per_mac_AD_pJ": 134.65049238989246,
+    "E8.6_per_mac_AC_pJ": 93.45826087977389,
+    "banks_with_cache_B_uJ": 8.531436029602947,
+    "banks_with_cache_total_AD_uJ": 47.04814452234814,
+    "saving_by_removing_the_cache_uJ": 2.7073969832558973,
+    "conv1_cache_uJ": 4.627972919517397,
+    "conv1_reads_in_banks_uJ": 1.4996822399999998,
+    "conv1_reads_in_pool_logic_uJ": 0.4208936962615004,
+    "conv1_cache_saved_with_4KB_macro_uJ": 10.169822879999998,
+    "pool_logic_ungated_with_cache_uJ": 12.307710143695001,
+    "pool_logic_gated_with_cache_uJ": 1.967909790293
+   }
+  },
+  "B": {
+   "A_uJ": 20.560929700457145,
+   "B_uJ": 4.854797716068049,
+   "B_parts_uJ": {
+    "SRAM bank reads": 2.6227095935999998,
+    "SRAM bank static (25 banks)": 0.02852116659254904,
+    "pool logic (gate level)": 2.2035669558755004
+   },
+   "B_range_uJ": [
+    4.72767679766805,
+    5.067783354468049
+   ],
+   "C_uJ": 0.263,
+   "D_uJ": 16.7689549202265,
+   "D_parts_uJ": {
+    "lookup reads": 5.132489492239799,
+    "parking reads": 0.07926979969699566,
+    "static after lookup reads": 1.3353216158594705,
+    "macros at rest on an all-ones word": 0.3401299818887178,
+    "macros parked on words with zero bits": 0.1643220274561601,
+    "AMU logic": 9.717422003085355
+   },
+   "D_range_uJ": [
+    16.358944022602124,
+    17.246370384124617
+   ],
+   "D_rom_uJ": 7.0515329171411425,
+   "D_rom_range_uJ": [
+    6.641522019516769,
+    7.528948381039262
+   ],
+   "amu_uJ": 9.717422003085355,
+   "total_AC_uJ": 25.678727416525195,
+   "total_AD_uJ": 42.4476823367517,
+   "share_B_of_AC": 0.189059124205034,
+   "share_BD_of_AD": 0.5094212792290064,
+   "share_B_of_AC_range": [
+    0.18502464015383668,
+    0.1957299365908136
+   ],
+   "share_BD_of_AD_range": [
+    0.5031339497638323,
+    0.5172727195940575
+   ],
+   "per_mac_pJ": {
+    "A-C": 61.650646827343685,
+    "A-D": 101.91031003733721,
+    "C": 0.6314222606357438
+   },
+   "reads": 205664,
+   "logic_uJ": {
+    "digital periphery (E8.7)": 20.560929700457145,
+    "pool logic (E10.2c)": 2.2035669558755004,
+    "AMU (E8.7)": 9.717422003085355
+   },
+   "compare": {
+    "E8.6_B_uJ": 12.201842595191831,
+    "E8.6_total_AD_uJ": 49.79472721587547,
+    "E8.6_share_B_of_AC": 0.3694642622119508,
+    "E8.6_share_BD_of_AD": 0.5818045229933886,
+    "E8.6_per_mac_AD_pJ": 119.54942671630526,
+    "E8.6_per_mac_AC_pJ": 79.28976350631176,
+    "banks_with_cache_B_uJ": 7.512932490620525,
+    "banks_with_cache_total_AD_uJ": 45.10581711130417,
+    "saving_by_removing_the_cache_uJ": 2.658134774552476,
+    "conv1_cache_uJ": 4.578487148844975,
+    "conv1_reads_in_banks_uJ": 1.4996822399999998,
+    "conv1_reads_in_pool_logic_uJ": 0.42067013429250033,
+    "conv1_cache_saved_with_4KB_macro_uJ": 10.169822879999998,
+    "pool_logic_ungated_with_cache_uJ": 12.00060887208,
+    "pool_logic_gated_with_cache_uJ": 1.7828968215830001
+   }
+  }
+ },
+ "constants": {
+  "inference_ms": 6.17573,
+  "macs": 416520,
+  "reads": {
+   "A": 267143,
+   "B": 205664
+  },
+  "banks": 25
+ },
+ "conditions": {
+  "tt:25": {
+   "r_read": 1.0,
+   "r_static": 1.0,
+   "static_settled": true,
+   "read_time_ns": 8.558426000000026,
+   "reads_ok": 5,
+   "valid": true,
+   "A": {
+    "bank_reads_uJ": 3.4067143931999997,
+    "bank_static_uJ": 0.02852116659254904,
+    "banks_uJ": 3.435235559792549,
+    "banks_x_tt": 1.0,
+    "d_rom_uJ": 7.28682489815501
+   },
+   "B": {
+    "bank_reads_uJ": 2.6227095935999998,
+    "bank_static_uJ": 0.02852116659254904,
+    "banks_uJ": 2.651230760192549,
+    "banks_x_tt": 1.0,
+    "d_rom_uJ": 7.051532917141143
+   }
+  },
+  "ss:25": {
+   "r_read": 1.0070214856989128,
+   "r_static": 0.37645384938794557,
+   "static_settled": false,
+   "read_time_ns": 10.425000000000015,
+   "reads_ok": 5,
+   "valid": true,
+   "A": {
+    "bank_reads_uJ": 3.4306345895921337,
+    "bank_static_uJ": 0.010736902952799962,
+    "banks_uJ": 3.441371492544934,
+    "banks_x_tt": 1.001786175255113,
+    "d_rom_uJ": 4.540892031818518
+   },
+   "B": {
+    "bank_reads_uJ": 2.6411249115038635,
+    "bank_static_uJ": 0.010736902952799962,
+    "banks_uJ": 2.6518618144566637,
+    "banks_x_tt": 1.000238023137627,
+    "d_rom_uJ": 4.355859886374931
+   }
+  },
+  "ff:85": {
+   "r_read": 1.0731185922726398,
+   "r_static": 181.23370954597468,
+   "static_settled": true,
+   "read_time_ns": 7.625000000000017,
+   "reads_ok": 5,
+   "valid": true,
+   "A": {
+    "bank_reads_uJ": 3.655808553905724,
+    "bank_static_uJ": 5.168996822146389,
+    "banks_uJ": 8.824805376052113,
+    "banks_x_tt": 2.5689083681309577,
+    "d_rom_uJ": 87.02416763190456
+   },
+   "B": {
+    "bank_reads_uJ": 2.8144784270239787,
+    "bank_static_uJ": 5.168996822146389,
+    "banks_uJ": 7.983475249170368,
+    "banks_x_tt": 3.0112336387461642,
+    "d_rom_uJ": 86.98649895928928
+   }
+  },
+  "tt:85": {
+   "r_read": 1.0342180145410913,
+   "r_static": 18.785031791489097,
+   "static_settled": true,
+   "read_time_ns": 8.57355100000002,
+   "reads_ok": 5,
+   "valid": true,
+   "A": {
+    "bank_reads_uJ": 3.5232853958438626,
+    "bank_static_uJ": 0.5357710211713905,
+    "banks_uJ": 4.059056417015253,
+    "banks_x_tt": 1.181594783345913,
+    "d_rom_uJ": 18.648559949330156
+   },
+   "B": {
+    "bank_reads_uJ": 2.712453508610864,
+    "bank_static_uJ": 0.5357710211713905,
+    "banks_uJ": 3.2482245297822545,
+    "banks_x_tt": 1.225176087481102,
+    "d_rom_uJ": 18.613040595842463
+   }
+  },
+  "tt:-40": {
+   "r_read": 0.9647983064204081,
+   "r_static": 0.32374381743979924,
+   "static_settled": false,
+   "read_time_ns": 8.543289000000016,
+   "reads_ok": 5,
+   "valid": true,
+   "A": {
+    "bank_reads_uJ": 3.286792277017388,
+    "bank_static_uJ": 0.009233551350508297,
+    "banks_uJ": 3.2960258283678963,
+    "banks_x_tt": 0.9594759285057415,
+    "d_rom_uJ": 4.112473296497142
+   },
+   "B": {
+    "bank_reads_uJ": 2.5303857741378364,
+    "bank_static_uJ": 0.009233551350508297,
+    "banks_uJ": 2.539619325488345,
+    "banks_x_tt": 0.9579020293593387,
+    "d_rom_uJ": 3.885047509132703
+   }
+  },
+  "ff:25": {
+   "r_read": 1.0084652091393593,
+   "r_static": 16.55079841060084,
+   "static_settled": true,
+   "read_time_ns": 7.585000000000025,
+   "reads_ok": 5,
+   "valid": true,
+   "A": {
+    "bank_reads_uJ": 3.4355529430165035,
+    "bank_static_uJ": 0.47204807870844245,
+    "banks_uJ": 3.907601021724946,
+    "banks_x_tt": 1.1375059886609125,
+    "d_rom_uJ": 16.71257771678821
+   },
+   "B": {
+    "bank_reads_uJ": 2.6449113788216274,
+    "bank_static_uJ": 0.47204807870844245,
+    "banks_uJ": 3.11695945753007,
+    "banks_x_tt": 1.1756650927298748,
+    "d_rom_uJ": 16.52624191282652
+   }
+  }
+ },
+ "area": {
+  "banks_mm2": 0.9037992731249997,
+  "pool_logic_mm2": 0.0720928928,
+  "sram_mm2": 0.9758921659249997,
+  "rom_mm2": 6.508936680000001,
+  "bias_table_mm2": 0.026139275899999998,
+  "act_buffer_mm2": 0.669,
+  "crossbar_mm2": [
+   0.68,
+   2.27
+  ],
+  "sram_4KB_macro_mm2": 0.28075267745,
+  "sram_4KB_25_copies_mm2": 7.0188169362499995,
+  "removed_conv1_cache_mm2": 0.0483563776,
+  "A": {
+   "digital_periphery_mm2": 1.1287800895999998,
+   "amu_mm2": 0.30041186880000004,
+   "address_map_mm2": 6.809348548800001,
+   "fixed_mm2": 8.633267914300001,
+   "range_mm2": [
+    10.289160080225,
+    11.879160080225
+   ],
+   "protection_mm2": 7.785240714725001,
+   "protection_share": [
+    0.7566449208704269,
+    0.6553696273261722
+   ],
+   "map_over_sram": 6.977562467002445,
+   "E8.6_range_mm2": [
+    9.64237696935,
+    17.97044122815
+   ],
+   "E8.6_protection_mm2": [
+    7.138457603850001,
+    13.876521862650002
+   ]
+  },
+  "B": {
+   "digital_periphery_mm2": 1.1287788383999997,
+   "amu_mm2": 0.30140532160000005,
+   "address_map_mm2": 6.8103420016000005,
+   "fixed_mm2": 8.6342601159,
+   "range_mm2": [
+    10.290152281825,
+    11.880152281825
+   ],
+   "protection_mm2": 7.786234167525,
+   "protection_share": [
+    0.7566685073531371,
+    0.6553985153403183
+   ],
+   "map_over_sram": 6.97858046144352,
+   "E8.6_range_mm2": [
+    9.643369170949999,
+    17.97143342975
+   ],
+   "E8.6_protection_mm2": [
+    7.1394510566500005,
+    13.877515315450001
+   ]
+  }
+ },
+ "fig7": {
+  "model": "A",
+  "bank_model": {
+   "um2_per_word": 61.64332321698588,
+   "um2_per_bank_at_zero_words": 28261.6255532258,
+   "from": "128-word bank (S) and 4,096-word macro, drawn extents"
+  },
+  "blocks_mm2": {
+   "digital_periphery": 1.1287800895999998,
+   "act_buffer_and_bias": 0.6951392759,
+   "crossbar_baseline": 2.27,
+   "address_map": 6.809348548800001
+  },
+  "curve": [
+   {
+    "budget_pct": 0,
+    "words_per_bank": 0,
+    "sram_banked_mm2": 0.0,
+    "sram_single_mm2": 0.0,
+    "sram_replicated_mm2": 0.0,
+    "total_banked_baseline_mm2": 10.9032679143,
+    "total_banked_compact_mm2": 9.3132679143
+   },
+   {
+    "budget_pct": 1,
+    "words_per_bank": 25,
+    "sram_banked_mm2": 0.8171606086412612,
+    "sram_single_mm2": 0.042133464557742924,
+    "sram_replicated_mm2": 1.0533366139435731,
+    "total_banked_baseline_mm2": 11.720428522941262,
+    "total_banked_compact_mm2": 10.130428522941262
+   },
+   {
+    "budget_pct": 2,
+    "words_per_bank": 50,
+    "sram_banked_mm2": 0.8556876856518774,
+    "sram_single_mm2": 0.08426692911548585,
+    "sram_replicated_mm2": 2.1066732278871463,
+    "total_banked_baseline_mm2": 11.758955599951879,
+    "total_banked_compact_mm2": 10.168955599951879
+   },
+   {
+    "budget_pct": 3,
+    "words_per_bank": 74,
+    "sram_banked_mm2": 0.8926736795820689,
+    "sram_single_mm2": 0.12640039367322875,
+    "sram_replicated_mm2": 3.1600098418307185,
+    "total_banked_baseline_mm2": 11.79594159388207,
+    "total_banked_compact_mm2": 10.20594159388207
+   },
+   {
+    "budget_pct": 4,
+    "words_per_bank": 99,
+    "sram_banked_mm2": 0.9312007565926849,
+    "sram_single_mm2": 0.1685338582309717,
+    "sram_replicated_mm2": 4.213346455774293,
+    "total_banked_baseline_mm2": 11.834468670892685,
+    "total_banked_compact_mm2": 10.244468670892685
+   },
+   {
+    "budget_pct": 5,
+    "words_per_bank": 123,
+    "sram_banked_mm2": 0.9681867505228765,
+    "sram_single_mm2": 0.21066732278871458,
+    "sram_replicated_mm2": 5.266683069717865,
+    "total_banked_baseline_mm2": 11.871454664822878,
+    "total_banked_compact_mm2": 10.281454664822878
+   },
+   {
+    "budget_pct": 6,
+    "words_per_bank": 148,
+    "sram_banked_mm2": 1.0067138275334926,
+    "sram_single_mm2": 0.2528007873464575,
+    "sram_replicated_mm2": 6.320019683661437,
+    "total_banked_baseline_mm2": 11.909981741833493,
+    "total_banked_compact_mm2": 10.319981741833493
+   },
+   {
+    "budget_pct": 7,
+    "words_per_bank": 173,
+    "sram_banked_mm2": 1.045240904544109,
+    "sram_single_mm2": 0.2949342519042004,
+    "sram_replicated_mm2": 7.37335629760501,
+    "total_banked_baseline_mm2": 11.94850881884411,
+    "total_banked_compact_mm2": 10.35850881884411
+   },
+   {
+    "budget_pct": 8,
+    "words_per_bank": 197,
+    "sram_banked_mm2": 1.0822268984743002,
+    "sram_single_mm2": 0.3370677164619434,
+    "sram_replicated_mm2": 8.426692911548585,
+    "total_banked_baseline_mm2": 11.9854948127743,
+    "total_banked_compact_mm2": 10.3954948127743
+   },
+   {
+    "budget_pct": 9,
+    "words_per_bank": 222,
+    "sram_banked_mm2": 1.1207539754849165,
+    "sram_single_mm2": 0.3792011810196863,
+    "sram_replicated_mm2": 9.480029525492158,
+    "total_banked_baseline_mm2": 12.024021889784917,
+    "total_banked_compact_mm2": 10.434021889784917
+   },
+   {
+    "budget_pct": 10,
+    "words_per_bank": 246,
+    "sram_banked_mm2": 1.157739969415108,
+    "sram_single_mm2": 0.42133464557742917,
+    "sram_replicated_mm2": 10.53336613943573,
+    "total_banked_baseline_mm2": 12.061007883715108,
+    "total_banked_compact_mm2": 10.471007883715108
+   },
+   {
+    "budget_pct": 11,
+    "words_per_bank": 271,
+    "sram_banked_mm2": 1.1962670464257243,
+    "sram_single_mm2": 0.46346811013517214,
+    "sram_replicated_mm2": 11.586702753379303,
+    "total_banked_baseline_mm2": 12.099534960725725,
+    "total_banked_compact_mm2": 10.509534960725725
+   },
+   {
+    "budget_pct": 12,
+    "words_per_bank": 296,
+    "sram_banked_mm2": 1.2347941234363404,
+    "sram_single_mm2": 0.505601574692915,
+    "sram_replicated_mm2": 12.640039367322874,
+    "total_banked_baseline_mm2": 12.138062037736342,
+    "total_banked_compact_mm2": 10.548062037736342
+   },
+   {
+    "budget_pct": 13,
+    "words_per_bank": 320,
+    "sram_banked_mm2": 1.2717801173665317,
+    "sram_single_mm2": 0.547735039250658,
+    "sram_replicated_mm2": 13.69337598126645,
+    "total_banked_baseline_mm2": 12.175048031666533,
+    "total_banked_compact_mm2": 10.585048031666533
+   },
+   {
+    "budget_pct": 14,
+    "words_per_bank": 345,
+    "sram_banked_mm2": 1.3103071943771483,
+    "sram_single_mm2": 0.5898685038084008,
+    "sram_replicated_mm2": 14.74671259521002,
+    "total_banked_baseline_mm2": 12.21357510867715,
+    "total_banked_compact_mm2": 10.62357510867715
+   },
+   {
+    "budget_pct": 15,
+    "words_per_bank": 369,
+    "sram_banked_mm2": 1.3472931883073394,
+    "sram_single_mm2": 0.6320019683661439,
+    "sram_replicated_mm2": 15.800049209153597,
+    "total_banked_baseline_mm2": 12.25056110260734,
+    "total_banked_compact_mm2": 10.66056110260734
+   },
+   {
+    "budget_pct": 16,
+    "words_per_bank": 394,
+    "sram_banked_mm2": 1.3858202653179559,
+    "sram_single_mm2": 0.6741354329238868,
+    "sram_replicated_mm2": 16.85338582309717,
+    "total_banked_baseline_mm2": 12.289088179617956,
+    "total_banked_compact_mm2": 10.699088179617956
+   },
+   {
+    "budget_pct": 17,
+    "words_per_bank": 418,
+    "sram_banked_mm2": 1.4228062592481472,
+    "sram_single_mm2": 0.7162688974816296,
+    "sram_replicated_mm2": 17.906722437040738,
+    "total_banked_baseline_mm2": 12.326074173548148,
+    "total_banked_compact_mm2": 10.736074173548149
+   },
+   {
+    "budget_pct": 18,
+    "words_per_bank": 443,
+    "sram_banked_mm2": 1.4613333362587635,
+    "sram_single_mm2": 0.7584023620393726,
+    "sram_replicated_mm2": 18.960059050984317,
+    "total_banked_baseline_mm2": 12.364601250558763,
+    "total_banked_compact_mm2": 10.774601250558764
+   },
+   {
+    "budget_pct": 19,
+    "words_per_bank": 468,
+    "sram_banked_mm2": 1.4998604132693798,
+    "sram_single_mm2": 0.8005358265971154,
+    "sram_replicated_mm2": 20.013395664927884,
+    "total_banked_baseline_mm2": 12.40312832756938,
+    "total_banked_compact_mm2": 10.81312832756938
+   },
+   {
+    "budget_pct": 20,
+    "words_per_bank": 492,
+    "sram_banked_mm2": 1.536846407199571,
+    "sram_single_mm2": 0.8426692911548583,
+    "sram_replicated_mm2": 21.06673227887146,
+    "total_banked_baseline_mm2": 12.440114321499571,
+    "total_banked_compact_mm2": 10.850114321499571
+   },
+   {
+    "budget_pct": 21,
+    "words_per_bank": 517,
+    "sram_banked_mm2": 1.5753734842101874,
+    "sram_single_mm2": 0.8848027557126015,
+    "sram_replicated_mm2": 22.120068892815038,
+    "total_banked_baseline_mm2": 12.478641398510188,
+    "total_banked_compact_mm2": 10.888641398510188
+   },
+   {
+    "budget_pct": 22,
+    "words_per_bank": 541,
+    "sram_banked_mm2": 1.612359478140379,
+    "sram_single_mm2": 0.9269362202703443,
+    "sram_replicated_mm2": 23.173405506758606,
+    "total_banked_baseline_mm2": 12.51562739244038,
+    "total_banked_compact_mm2": 10.92562739244038
+   },
+   {
+    "budget_pct": 23,
+    "words_per_bank": 566,
+    "sram_banked_mm2": 1.650886555150995,
+    "sram_single_mm2": 0.9690696848280872,
+    "sram_replicated_mm2": 24.22674212070218,
+    "total_banked_baseline_mm2": 12.554154469450996,
+    "total_banked_compact_mm2": 10.964154469450996
+   },
+   {
+    "budget_pct": 24,
+    "words_per_bank": 591,
+    "sram_banked_mm2": 1.6894136321616113,
+    "sram_single_mm2": 1.01120314938583,
+    "sram_replicated_mm2": 25.28007873464575,
+    "total_banked_baseline_mm2": 12.592681546461613,
+    "total_banked_compact_mm2": 11.002681546461613
+   },
+   {
+    "budget_pct": 25,
+    "words_per_bank": 615,
+    "sram_banked_mm2": 1.7263996260918029,
+    "sram_single_mm2": 1.0533366139435731,
+    "sram_replicated_mm2": 26.333415348589327,
+    "total_banked_baseline_mm2": 12.629667540391804,
+    "total_banked_compact_mm2": 11.039667540391804
+   },
+   {
+    "budget_pct": 26,
+    "words_per_bank": 640,
+    "sram_banked_mm2": 1.764926703102419,
+    "sram_single_mm2": 1.095470078501316,
+    "sram_replicated_mm2": 27.3867519625329,
+    "total_banked_baseline_mm2": 12.66819461740242,
+    "total_banked_compact_mm2": 11.07819461740242
+   },
+   {
+    "budget_pct": 27,
+    "words_per_bank": 664,
+    "sram_banked_mm2": 1.8019126970326103,
+    "sram_single_mm2": 1.137603543059059,
+    "sram_replicated_mm2": 28.440088576476473,
+    "total_banked_baseline_mm2": 12.705180611332612,
+    "total_banked_compact_mm2": 11.115180611332612
+   },
+   {
+    "budget_pct": 28,
+    "words_per_bank": 689,
+    "sram_banked_mm2": 1.8404397740432268,
+    "sram_single_mm2": 1.1797370076168017,
+    "sram_replicated_mm2": 29.49342519042004,
+    "total_banked_baseline_mm2": 12.743707688343228,
+    "total_banked_compact_mm2": 11.153707688343228
+   },
+   {
+    "budget_pct": 29,
+    "words_per_bank": 714,
+    "sram_banked_mm2": 1.8789668510538429,
+    "sram_single_mm2": 1.2218704721745448,
+    "sram_replicated_mm2": 30.54676180436362,
+    "total_banked_baseline_mm2": 12.782234765353843,
+    "total_banked_compact_mm2": 11.192234765353843
+   },
+   {
+    "budget_pct": 30,
+    "words_per_bank": 738,
+    "sram_banked_mm2": 1.9159528449840344,
+    "sram_single_mm2": 1.2640039367322877,
+    "sram_replicated_mm2": 31.600098418307194,
+    "total_banked_baseline_mm2": 12.819220759284034,
+    "total_banked_compact_mm2": 11.229220759284035
+   },
+   {
+    "budget_pct": 31,
+    "words_per_bank": 763,
+    "sram_banked_mm2": 1.9544799219946507,
+    "sram_single_mm2": 1.3061374012900306,
+    "sram_replicated_mm2": 32.65343503225077,
+    "total_banked_baseline_mm2": 12.857747836294651,
+    "total_banked_compact_mm2": 11.267747836294651
+   },
+   {
+    "budget_pct": 32,
+    "words_per_bank": 787,
+    "sram_banked_mm2": 1.9914659159248418,
+    "sram_single_mm2": 1.3482708658477736,
+    "sram_replicated_mm2": 33.70677164619434,
+    "total_banked_baseline_mm2": 12.894733830224842,
+    "total_banked_compact_mm2": 11.304733830224842
+   },
+   {
+    "budget_pct": 33,
+    "words_per_bank": 812,
+    "sram_banked_mm2": 2.0299929929354583,
+    "sram_single_mm2": 1.3904043304055163,
+    "sram_replicated_mm2": 34.760108260137905,
+    "total_banked_baseline_mm2": 12.933260907235459,
+    "total_banked_compact_mm2": 11.343260907235459
+   },
+   {
+    "budget_pct": 34,
+    "words_per_bank": 836,
+    "sram_banked_mm2": 2.06697898686565,
+    "sram_single_mm2": 1.4325377949632592,
+    "sram_replicated_mm2": 35.813444874081476,
+    "total_banked_baseline_mm2": 12.97024690116565,
+    "total_banked_compact_mm2": 11.38024690116565
+   },
+   {
+    "budget_pct": 35,
+    "words_per_bank": 861,
+    "sram_banked_mm2": 2.105506063876266,
+    "sram_single_mm2": 1.474671259521002,
+    "sram_replicated_mm2": 36.866781488025055,
+    "total_banked_baseline_mm2": 13.008773978176267,
+    "total_banked_compact_mm2": 11.418773978176267
+   },
+   {
+    "budget_pct": 36,
+    "words_per_bank": 886,
+    "sram_banked_mm2": 2.144033140886882,
+    "sram_single_mm2": 1.5168047240787452,
+    "sram_replicated_mm2": 37.92011810196863,
+    "total_banked_baseline_mm2": 13.047301055186882,
+    "total_banked_compact_mm2": 11.457301055186882
+   },
+   {
+    "budget_pct": 37,
+    "words_per_bank": 910,
+    "sram_banked_mm2": 2.1810191348170735,
+    "sram_single_mm2": 1.5589381886364881,
+    "sram_replicated_mm2": 38.973454715912204,
+    "total_banked_baseline_mm2": 13.084287049117075,
+    "total_banked_compact_mm2": 11.494287049117075
+   },
+   {
+    "budget_pct": 38,
+    "words_per_bank": 935,
+    "sram_banked_mm2": 2.21954621182769,
+    "sram_single_mm2": 1.6010716531942308,
+    "sram_replicated_mm2": 40.02679132985577,
+    "total_banked_baseline_mm2": 13.12281412612769,
+    "total_banked_compact_mm2": 11.53281412612769
+   },
+   {
+    "budget_pct": 39,
+    "words_per_bank": 959,
+    "sram_banked_mm2": 2.2565322057578814,
+    "sram_single_mm2": 1.6432051177519738,
+    "sram_replicated_mm2": 41.08012794379935,
+    "total_banked_baseline_mm2": 13.159800120057882,
+    "total_banked_compact_mm2": 11.569800120057883
+   },
+   {
+    "budget_pct": 40,
+    "words_per_bank": 984,
+    "sram_banked_mm2": 2.2950592827684977,
+    "sram_single_mm2": 1.6853385823097167,
+    "sram_replicated_mm2": 42.13346455774292,
+    "total_banked_baseline_mm2": 13.198327197068497,
+    "total_banked_compact_mm2": 11.608327197068498
+   },
+   {
+    "budget_pct": 41,
+    "words_per_bank": 1009,
+    "sram_banked_mm2": 2.333586359779114,
+    "sram_single_mm2": 1.7274720468674598,
+    "sram_replicated_mm2": 43.1868011716865,
+    "total_banked_baseline_mm2": 13.236854274079114,
+    "total_banked_compact_mm2": 11.646854274079114
+   },
+   {
+    "budget_pct": 42,
+    "words_per_bank": 1033,
+    "sram_banked_mm2": 2.370572353709305,
+    "sram_single_mm2": 1.769605511425203,
+    "sram_replicated_mm2": 44.240137785630075,
+    "total_banked_baseline_mm2": 13.273840268009305,
+    "total_banked_compact_mm2": 11.683840268009305
+   },
+   {
+    "budget_pct": 43,
+    "words_per_bank": 1058,
+    "sram_banked_mm2": 2.4090994307199214,
+    "sram_single_mm2": 1.8117389759829456,
+    "sram_replicated_mm2": 45.29347439957364,
+    "total_banked_baseline_mm2": 13.312367345019922,
+    "total_banked_compact_mm2": 11.722367345019922
+   },
+   {
+    "budget_pct": 44,
+    "words_per_bank": 1082,
+    "sram_banked_mm2": 2.446085424650114,
+    "sram_single_mm2": 1.8538724405406886,
+    "sram_replicated_mm2": 46.34681101351721,
+    "total_banked_baseline_mm2": 13.349353338950115,
+    "total_banked_compact_mm2": 11.759353338950115
+   },
+   {
+    "budget_pct": 45,
+    "words_per_bank": 1107,
+    "sram_banked_mm2": 2.4846125016607292,
+    "sram_single_mm2": 1.8960059050984315,
+    "sram_replicated_mm2": 47.40014762746079,
+    "total_banked_baseline_mm2": 13.38788041596073,
+    "total_banked_compact_mm2": 11.79788041596073
+   },
+   {
+    "budget_pct": 46,
+    "words_per_bank": 1132,
+    "sram_banked_mm2": 2.523139578671345,
+    "sram_single_mm2": 1.9381393696561744,
+    "sram_replicated_mm2": 48.45348424140436,
+    "total_banked_baseline_mm2": 13.426407492971347,
+    "total_banked_compact_mm2": 11.836407492971347
+   },
+   {
+    "budget_pct": 47,
+    "words_per_bank": 1156,
+    "sram_banked_mm2": 2.5601255726015366,
+    "sram_single_mm2": 1.9802728342139173,
+    "sram_replicated_mm2": 49.50682085534793,
+    "total_banked_baseline_mm2": 13.463393486901538,
+    "total_banked_compact_mm2": 11.873393486901538
+   },
+   {
+    "budget_pct": 48,
+    "words_per_bank": 1181,
+    "sram_banked_mm2": 2.598652649612153,
+    "sram_single_mm2": 2.02240629877166,
+    "sram_replicated_mm2": 50.5601574692915,
+    "total_banked_baseline_mm2": 13.501920563912154,
+    "total_banked_compact_mm2": 11.911920563912155
+   },
+   {
+    "budget_pct": 49,
+    "words_per_bank": 1205,
+    "sram_banked_mm2": 2.635638643542345,
+    "sram_single_mm2": 2.064539763329403,
+    "sram_replicated_mm2": 51.61349408323508,
+    "total_banked_baseline_mm2": 13.538906557842346,
+    "total_banked_compact_mm2": 11.948906557842346
+   },
+   {
+    "budget_pct": 50,
+    "words_per_bank": 1230,
+    "sram_banked_mm2": 2.6741657205529603,
+    "sram_single_mm2": 2.1066732278871463,
+    "sram_replicated_mm2": 52.66683069717865,
+    "total_banked_baseline_mm2": 13.57743363485296,
+    "total_banked_compact_mm2": 11.98743363485296
+   }
+  ],
+  "as_built": {
+   "budget_pct": 5.000813404912965,
+   "sram_banked_mm2": 0.9758921659249997,
+   "sram_single_mm2": 0.28075267745,
+   "sram_replicated_mm2": 7.0188169362499995,
+   "total_baseline_mm2": 11.879160080225,
+   "total_compact_mm2": 10.289160080225
+  }
+ },
+ "vi_a": {
+  "A": {
+   "banks_by_library_uJ": 0.6500086257605999,
+   "banks_post_layout_uJ": 3.435235559792549,
+   "macro_4KB_by_library_with_cache_uJ": 3.7469458930899995
+  },
+  "B": {
+   "banks_by_library_uJ": 0.5485637140188,
+   "banks_post_layout_uJ": 2.651230760192549,
+   "macro_4KB_by_library_with_cache_uJ": 2.29380488707
+  }
+ },
+ "vi_c": {
+  "protected_weights_50pct": 12751456,
+  "sram_bits_50pct": 102011648,
+  "sram_mm2_50pct": 874.024759127409,
+  "sram_mm2_50pct_22nm": 25.0312416223471,
+  "sram_mm2_5pct": 87.40247591274091,
+  "sram_over_lenet_upper": 48.63680017818834,
+  "map_bits": 816093184,
+  "map_mm2": 2660.205759032246,
+  "map_mm2_lef_basis": 2197.498383390154,
+  "sram_energy_floor_uJ": 1102.7215049499428,
+  "floor_over_lenet_AD": 19.66174406085793,
+  "floor_over_lenet_AC": 28.327763582550514,
+  "floor_over_lenet_AD_E10": 24.869258326728648
+ },
+ "checks": [
+  {
+   "check": "E10.1 bank S gate G0",
+   "ok": true,
+   "detail": "PASS"
+  },
+  {
+   "check": "E10.1 bank S gate G1",
+   "ok": true,
+   "detail": "PASS"
+  },
+  {
+   "check": "E10.1 bank S gate G1b",
+   "ok": true,
+   "detail": "PASS"
+  },
+  {
+   "check": "E10.1 bank S gate G2",
+   "ok": true,
+   "detail": "PASS"
+  },
+  {
+   "check": "E10.1 bank S gate G3",
+   "ok": true,
+   "detail": "PASS"
+  },
+  {
+   "check": "E10.1 bank S: all reads correct (F1 0 wrong bits, F2b gated reads within two cycles)",
+   "ok": true,
+   "detail": "F1 0, F2b yes"
+  },
+  {
+   "check": "E10.1 bank S carries the sense-amplifier precharge in the layout",
+   "ok": true,
+   "detail": "True"
+  },
+  {
+   "check": "E10.0 T0: slots consecutive, no two reads of a step in one bank, rows < 128, both models",
+   "ok": true,
+   "detail": "{\"A\": {\"protected\": 3074, \"entries_with_protected\": 609, \"non_consecutive\": 0, \"steps_with_two_reads_in_a_bank\": 0, \"deepest_row\": 122}, \"B\": {\"protected\": 3074, \"entries_with_protected\": 797, \"non_consecutive\": 0, \"steps_with_two_reads_in_a_bank\": 0, \"deepest_row\": 122}}"
+  },
+  {
+   "check": "E10.0 U1: banked pool = 25-port pool cycle for cycle",
+   "ok": true,
+   "detail": "{\"cycles\": 200000, \"lane_reads\": 2556756, \"mismatches\": 0}"
+  },
+  {
+   "check": "E10.2c all gates pass",
+   "ok": true,
+   "detail": "True"
+  },
+  {
+   "check": "E10.2a all gates pass",
+   "ok": true,
+   "detail": "True"
+  },
+  {
+   "check": "E10.2c netlist = E10.2a cg netlist",
+   "ok": true,
+   "detail": "9c5add2a6c624da926714338401c84c8 / 9c5add2a6c624da926714338401c84c8"
+  },
+  {
+   "check": "E10.2c model A: bank reads = SRAM reads of E8.5c (267143)",
+   "ok": true,
+   "detail": "267143"
+  },
+  {
+   "check": "E10.2c model B: bank reads = SRAM reads of E8.5c (205664)",
+   "ok": true,
+   "detail": "205664"
+  },
+  {
+   "check": "model A: B parts sum to B",
+   "ok": true,
+   "detail": "5.824039"
+  },
+  {
+   "check": "model A: A-D = A + B + C + D",
+   "ok": true,
+   "detail": "44.340748"
+  },
+  {
+   "check": "model B: B parts sum to B",
+   "ok": true,
+   "detail": "4.854798"
+  },
+  {
+   "check": "model B: A-D = A + B + C + D",
+   "ok": true,
+   "detail": "42.447682"
+  },
+  {
+   "check": "E10.1c S: all six conditions read correctly (5/5)",
+   "ok": true,
+   "detail": "tt:25 5/5, ss:25 5/5, ff:85 5/5, tt:85 5/5, tt:-40 5/5, ff:25 5/5"
+  },
+  {
+   "check": "bank model reproduces the 4,096-word macro",
+   "ok": true,
+   "detail": "0.280753 mm2"
+  },
+  {
+   "check": "bank model at 128 words = the bank",
+   "ok": true,
+   "detail": "36151.971 um2"
+  }
+ ],
+ "all_checks_pass": true
+}

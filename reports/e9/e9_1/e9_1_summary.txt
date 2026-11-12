@@ -1,0 +1,21 @@
+PASS  T0 model A: decoded weights equal the slot tables: 61470 weights, differences {'sram_slot': 0, 'pcm_slot': 0, 'medium': 0, 'invalid_lane_not_ffff': 0, 'constant_bits': 0}, image reads back True, 7 macros, 99280 map bits
+PASS  T0 model B: decoded weights equal the slot tables: 61470 weights, differences {'sram_slot': 0, 'pcm_slot': 0, 'medium': 0, 'invalid_lane_not_ffff': 0, 'constant_bits': 0}, image reads back True, 7 macros, 99280 map bits
+PASS  T0 model A: image = the table of the E9.0 probe: /mnt/d/Project/hybrid_memory/paper2/reports/e9_rom/tables/e9rom_A_40x2688_w8.bin
+PASS  G1 normal_A: all tests passed, complete at cycle 617573: passed True, 617573 True
+PASS  G2 normal_A: results, E8.2 and E8.5 traces identical to E8.5c new: {'res': True, 'e8t': True, 'e85t': True}
+PASS  G3 normal_A: E9 address map (stalls, errors, slots, ROM protocol, parking): stalls 0, flags 000, slot differences 0/0 of 416520 lane lookups, protocol 0/0/0, low before lookup 9 / parking 5 cycles, parking without zero 0, lookups 2484, parkings 115
+PASS  G4 normal_A: banked pool: {'lane_reads': 8748261, 'bank_reads': 8748261, 'per_bank_min': 337359, 'per_bank_max': 361658, 'conflict_cycles': 0, 'address_errors': 0, 'deepest_row': 122}
+PASS  G1 normal_B: all tests passed, complete at cycle 617573: passed True, 617573 True
+PASS  G2 normal_B: results, E8.2 and E8.5 traces identical to E8.5c new: {'res': True, 'e8t': True, 'e85t': True}
+PASS  G3 normal_B: E9 address map (stalls, errors, slots, ROM protocol, parking): stalls 0, flags 000, slot differences 0/0 of 416520 lane lookups, protocol 0/0/0, low before lookup 9 / parking 5 cycles, parking without zero 0, lookups 2484, parkings 115
+PASS  G4 normal_B: banked pool: {'lane_reads': 7144748, 'bank_reads': 7144748, 'per_bank_min': 278089, 'per_bank_max': 312107, 'conflict_cycles': 0, 'address_errors': 0, 'deepest_row': 122}
+PASS  G1 once_A: all tests passed, complete at cycle 617573: passed True, 617573 True
+PASS  G2 once_A: results, E8.2 and E8.5 traces identical to E8.5c once: {'res': True, 'e8t': True, 'e85t': True}
+PASS  G3 once_A: E9 address map (stalls, errors, slots, ROM protocol, parking): stalls 0, flags 000, slot differences 0/0 of 416520 lane lookups, protocol 0/0/0, low before lookup 9 / parking 5 cycles, parking without zero 0, lookups 2484, parkings 115
+PASS  G4 once_A: banked pool: {'lane_reads': 267143, 'bank_reads': 267143, 'per_bank_min': 10661, 'per_bank_max': 10761, 'conflict_cycles': 0, 'address_errors': 0, 'deepest_row': 122}
+PASS  G1 once_B: all tests passed, complete at cycle 617573: passed True, 617573 True
+PASS  G2 once_B: results, E8.2 and E8.5 traces identical to E8.5c once: {'res': True, 'e8t': True, 'e85t': True}
+PASS  G3 once_B: E9 address map (stalls, errors, slots, ROM protocol, parking): stalls 0, flags 000, slot differences 0/0 of 416520 lane lookups, protocol 0/0/0, low before lookup 9 / parking 5 cycles, parking without zero 0, lookups 2484, parkings 115
+PASS  G4 once_B: banked pool: {'lane_reads': 205664, 'bank_reads': 205664, 'per_bank_min': 8186, 'per_bank_max': 8286, 'conflict_cycles': 0, 'address_errors': 0, 'deepest_row': 122}
+PASS  S1 synthesis of amu9_top (ROM macros as black boxes): {'rc': 0, 'area_um2': 99721.8912, 'sequential_um2': 12491.9808, 'rom_instances': 7, 'flip_flops': 584, 'icg': 37}
+All gates pass
